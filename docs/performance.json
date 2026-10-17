@@ -1,0 +1,93 @@
+{
+  "binary_sha256": "46794d3a1f5045251b9110a8f718dc9cad97e88fc6d4e66fb7c28c23c855b082",
+  "runs_per_mode": 5,
+  "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "limits": [
+    "Software rendering, not a gaming GPU",
+    "VSync disable requested; driver reports mode changes unsupported",
+    "Stationary camera samples, not human playtime",
+    "Release memory monitor unavailable"
+  ],
+  "sectors": [
+    {
+      "sector": "ASCENSEUR / REFUGE",
+      "normal": {
+        "p50_median_ms": 63.696,
+        "p50_range_ms": [
+          62.937,
+          65.663
+        ],
+        "p95_median_ms": 74.221
+      },
+      "low": {
+        "p50_median_ms": 48.205,
+        "p50_range_ms": [
+          46.606,
+          49.839
+        ],
+        "p95_median_ms": 58.702
+      }
+    },
+    {
+      "sector": "02 / MAINTENANCE",
+      "normal": {
+        "p50_median_ms": 71.843,
+        "p50_range_ms": [
+          70.311,
+          74.852
+        ],
+        "p95_median_ms": 87.538
+      },
+      "low": {
+        "p50_median_ms": 47.522,
+        "p50_range_ms": [
+          46.672,
+          50.301
+        ],
+        "p95_median_ms": 58.806
+      }
+    },
+    {
+      "sector": "03 / ARCHIVES",
+      "normal": {
+        "p50_median_ms": 61.244,
+        "p50_range_ms": [
+          60.596,
+          63.542
+        ],
+        "p95_median_ms": 72.719
+      },
+      "low": {
+        "p50_median_ms": 43.676,
+        "p50_range_ms": [
+          40.406,
+          46.818
+        ],
+        "p95_median_ms": 50.223
+      }
+    },
+    {
+      "sector": "04 / CŒUR",
+      "normal": {
+        "p50_median_ms": 53.925,
+        "p50_range_ms": [
+          52.422,
+          54.667
+        ],
+        "p95_median_ms": 67.775
+      },
+      "low": {
+        "p50_median_ms": 38.084,
+        "p50_range_ms": [
+          37.611,
+          39.58
+        ],
+        "p95_median_ms": 47.733
+      }
+    }
+  ]
+}

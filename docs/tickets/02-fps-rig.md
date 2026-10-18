@@ -37,6 +37,15 @@ DISPLAY=:97 python3 tools/prove_fps_rig.py --video --inspect
 DISPLAY=:97 python3 tools/prove_fps_rig.py --measure --baseline .cstack/issue-02/baseline-source --runs 5
 ```
 
+La copie de référence peut être préparée sans modifier le checkout courant.
+
+```bash
+mkdir -p .cstack/issue-02/baseline-source
+git archive 30ce44768d45d976d45f51caa2503cece08e23c1 | tar -x -C .cstack/issue-02/baseline-source
+cp tools/probe_fps_rig.gd .cstack/issue-02/baseline-source/tools/probe_fps_rig.gd
+./tools/godot.sh --headless --path .cstack/issue-02/baseline-source --editor --import --quit
+```
+
 Le troisième appel attend une copie de la base `30ce44768d45d976d45f51caa2503cece08e23c1`, importée par le même Godot, avec `tools/probe_fps_rig.gd` copié depuis la branche courante. Les preuves locales se trouvent dans `.cstack/issue-02/proof/`. Le script enregistre les empreintes SHA256 des sources, la résolution, le backend, les sorties Godot et les mesures brutes.
 
 Les huit suites vérifient les régressions de gameplay et le nouveau rig. Le test de rig échantillonne 186 états de pose, recharge et recul pour les deux armes. Il vérifie contacts à 2 mm et 2 degrés, longueurs constantes, origine de bouche dans le même tick, changements répétés, interruptions et refus d'une cible impossible. Le contrôle géométrique parcourt récursivement toutes les surfaces et vérifie indices, normales, triangles, poids normalisés et indices d'os.
@@ -53,14 +62,31 @@ La comparaison avant/après conserve tout le jeu visible. Le masque des mains es
 
 Cinq exécutions par version ont alterné avant puis après, sans enregistrement vidéo concurrent. La médiane du temps d'image ne montre pas de différence mesurable au regard de la dispersion des runs.
 
-| Scène | Médiane des p50 | Étendue des p50 | Appels de dessin | Triangles |
+| Arme et scène | Médiane des p50 | Étendue des p50 | Appels de dessin | Triangles |
 |---|---|---|---|---|
-| Base visible | 95,148 ms | 92,181 à 99,748 ms | 326 | 52 576 |
-| Nouveau rig visible | 94,056 ms | 91,775 à 100,840 ms | 327 | 54 080 |
-| Nouveau rig, mains masquées | 95,172 ms | 89,367 à 96,824 ms | 325 | 51 680 |
+| D9, base visible | 94,330 ms | 88,441 à 99,322 ms | 326 | 52576 |
+| D9, rig visible | 93,952 ms | 91,045 à 103,256 ms | 327 | 54080 |
+| D9, mains masquées | 91,778 ms | 88,919 à 94,999 ms | 325 | 51680 |
+| ARC, base visible | 92,946 ms | 90,972 à 98,148 ms | 326 | 53346 |
+| ARC, rig visible | 92,283 ms | 91,106 à 97,044 ms | 326 | 54138 |
+| ARC, mains masquées | 92,146 ms | 88,993 à 95,125 ms | 324 | 51738 |
 
-Un appel de mise à jour du rig prend une médiane de 0,118 ms, avec des médianes par run de 0,115 à 0,131 ms. Le masque retire exactement deux appels de dessin et 2 400 triangles. Il ne démontre aucun gain de temps d'image dans ces runs. Ces résultats concernent le rendu logiciel d'une seule scène. Ils ne remplacent pas le benchmark global ni une validation à 60 FPS sur matériel cible.
+Un appel de mise à jour du rig prend une médiane de 0,120 ms pour chaque arme. Les médianes par run vont de 0,113 à 0,123 ms pour le D9, et de 0,119 à 0,124 ms pour l'ARC. Le masque retire exactement deux appels de dessin et 2 400 triangles. Les temps d'image varient davantage entre runs que l'écart des médianes avant/après. Ces résultats concernent le rendu logiciel d'une seule scène. Ils ne remplacent pas le benchmark global ni une validation à 60 FPS sur matériel cible.
 
-Les empreintes des sources par run sont dans `proof/measurements.json`. Le commit de départ était `30ce447`, avec la modification locale enregistrée par ces empreintes. Les mesures ne doivent pas être présentées comme des résultats du code inchangé de ce commit.
+Les mesures finales portent sur le code `f00711f7b60539b11bcfe190541cefa3520c8ad1`, comparé à `30ce44768d45d976d45f51caa2503cece08e23c1`. Les empreintes de chaque source sont conservées. Les ennemis restent actifs dans la scène. Les compteurs décrivent les images observées, pas uniquement le modèle FPS.
 
 Les images, la vidéo et les contrôles géométriques sont des critères distincts. Les écarts de prise mesurés ne prouvent pas l'absence de pénétration. La qualité anatomique reste soumise à la revue visuelle indépendante du ticket.
+
+## Preuves consultables
+
+La [vidéo FPS de 23,6 secondes](media/02/fps-rig.mp4) montre le parcours exécuté dans le jeu à 1 280 × 720. Le fichier pèse environ 4,6 Mio. Les premières secondes montrent le chargement Godot. Le parcours n'est pas une mesure de performance.
+
+La capture D9 montre la pose de visée produite par le contrôleur.
+
+![D9 en pose de visée](media/02/d9-aim.png)
+
+La vue latérale ARC est une vue de contrôle du rig dans le moteur. Elle montre la poignée de support saisie par la main gauche.
+
+![Contact de la main gauche sur la poignée ARC](media/02/arc-support.png)
+
+Le [résumé et les mesures brutes](media/02/performance.json) distinguent les deux armes et le masque des mains. Le [manifeste SHA256](media/02/source-manifest.json) identifie les sources et les médias correspondants.

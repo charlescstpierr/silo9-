@@ -1,0 +1,582 @@
+{
+  "code_commit": "f00711f7b60539b11bcfe190541cefa3520c8ad1",
+  "baseline_commit": "30ce44768d45d976d45f51caa2503cece08e23c1",
+  "cpu_count": 8,
+  "platform": "Linux 7.0.0-31-generic",
+  "load_before": [
+    1.50244140625,
+    1.1923828125,
+    1.10888671875
+  ],
+  "load_after": [
+    3.28759765625,
+    2.04296875,
+    1.43603515625
+  ],
+  "summary": {
+    "before-weapon0-hands-True": {
+      "frame_p50_ms": {
+        "median": 94.33,
+        "min": 88.441,
+        "max": 99.322
+      },
+      "rig_update_call_p50_ms": {
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "draw_calls": {
+        "median": 326.0,
+        "min": 326.0,
+        "max": 326.0
+      },
+      "triangles": {
+        "median": 52576.0,
+        "min": 52576.0,
+        "max": 52576.0
+      }
+    },
+    "before-weapon1-hands-True": {
+      "frame_p50_ms": {
+        "median": 92.946,
+        "min": 90.972,
+        "max": 98.148
+      },
+      "rig_update_call_p50_ms": {
+        "median": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "draw_calls": {
+        "median": 326.0,
+        "min": 326.0,
+        "max": 326.0
+      },
+      "triangles": {
+        "median": 53346.0,
+        "min": 53346.0,
+        "max": 53346.0
+      }
+    },
+    "after-weapon0-hands-True": {
+      "frame_p50_ms": {
+        "median": 93.952,
+        "min": 91.045,
+        "max": 103.256
+      },
+      "rig_update_call_p50_ms": {
+        "median": 0.12,
+        "min": 0.113,
+        "max": 0.123
+      },
+      "draw_calls": {
+        "median": 327.0,
+        "min": 327.0,
+        "max": 327.0
+      },
+      "triangles": {
+        "median": 54080.0,
+        "min": 54080.0,
+        "max": 54080.0
+      }
+    },
+    "after-weapon0-hands-False": {
+      "frame_p50_ms": {
+        "median": 91.778,
+        "min": 88.919,
+        "max": 94.999
+      },
+      "rig_update_call_p50_ms": {
+        "median": 0.12,
+        "min": 0.11,
+        "max": 0.128
+      },
+      "draw_calls": {
+        "median": 325.0,
+        "min": 325.0,
+        "max": 325.0
+      },
+      "triangles": {
+        "median": 51680.0,
+        "min": 51680.0,
+        "max": 51680.0
+      }
+    },
+    "after-weapon1-hands-True": {
+      "frame_p50_ms": {
+        "median": 92.283,
+        "min": 91.106,
+        "max": 97.044
+      },
+      "rig_update_call_p50_ms": {
+        "median": 0.12,
+        "min": 0.119,
+        "max": 0.124
+      },
+      "draw_calls": {
+        "median": 326.0,
+        "min": 326.0,
+        "max": 326.0
+      },
+      "triangles": {
+        "median": 54138.0,
+        "min": 54138.0,
+        "max": 54138.0
+      }
+    },
+    "after-weapon1-hands-False": {
+      "frame_p50_ms": {
+        "median": 92.146,
+        "min": 88.993,
+        "max": 95.125
+      },
+      "rig_update_call_p50_ms": {
+        "median": 0.127,
+        "min": 0.112,
+        "max": 0.131
+      },
+      "draw_calls": {
+        "median": 324.0,
+        "min": 324.0,
+        "max": 324.0
+      },
+      "triangles": {
+        "median": 51738.0,
+        "min": 51738.0,
+        "max": 51738.0
+      }
+    }
+  },
+  "runs": [
+    {
+      "side": "before",
+      "run": 0,
+      "backend": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 96.634,
+          "frame_p95_ms": 108.03,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.0,
+          "samples": 21,
+          "triangles": 52576.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 90.972,
+          "frame_p95_ms": 116.022,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.0,
+          "samples": 22,
+          "triangles": 53346.0,
+          "weapon": 1
+        }
+      ],
+      "resolution": "1280x720",
+      "rig_present": false
+    },
+    {
+      "side": "after",
+      "run": 0,
+      "backend": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "draw_calls": 327.0,
+          "frame_p50_ms": 91.045,
+          "frame_p95_ms": 98.518,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.113,
+          "samples": 22,
+          "triangles": 54080.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 325.0,
+          "frame_p50_ms": 93.842,
+          "frame_p95_ms": 124.723,
+          "hands_visible": false,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.128,
+          "samples": 21,
+          "triangles": 51680.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 92.283,
+          "frame_p95_ms": 120.872,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.124,
+          "samples": 22,
+          "triangles": 54138.0,
+          "weapon": 1
+        },
+        {
+          "draw_calls": 324.0,
+          "frame_p50_ms": 94.389,
+          "frame_p95_ms": 119.519,
+          "hands_visible": false,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.129,
+          "samples": 21,
+          "triangles": 51738.0,
+          "weapon": 1
+        }
+      ],
+      "resolution": "1280x720",
+      "rig_present": true
+    },
+    {
+      "side": "before",
+      "run": 1,
+      "backend": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 94.33,
+          "frame_p95_ms": 106.855,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.0,
+          "samples": 22,
+          "triangles": 52576.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 93.513,
+          "frame_p95_ms": 105.208,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.0,
+          "samples": 22,
+          "triangles": 53346.0,
+          "weapon": 1
+        }
+      ],
+      "resolution": "1280x720",
+      "rig_present": false
+    },
+    {
+      "side": "after",
+      "run": 1,
+      "backend": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "draw_calls": 327.0,
+          "frame_p50_ms": 97.142,
+          "frame_p95_ms": 115.843,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.116,
+          "samples": 21,
+          "triangles": 54080.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 325.0,
+          "frame_p50_ms": 91.778,
+          "frame_p95_ms": 120.956,
+          "hands_visible": false,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.12,
+          "samples": 22,
+          "triangles": 51680.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 91.749,
+          "frame_p95_ms": 104.533,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.119,
+          "samples": 22,
+          "triangles": 54138.0,
+          "weapon": 1
+        },
+        {
+          "draw_calls": 324.0,
+          "frame_p50_ms": 95.125,
+          "frame_p95_ms": 123.719,
+          "hands_visible": false,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.112,
+          "samples": 21,
+          "triangles": 51738.0,
+          "weapon": 1
+        }
+      ],
+      "resolution": "1280x720",
+      "rig_present": true
+    },
+    {
+      "side": "before",
+      "run": 2,
+      "backend": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 90.176,
+          "frame_p95_ms": 105.378,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.0,
+          "samples": 22,
+          "triangles": 52576.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 91.441,
+          "frame_p95_ms": 97.569,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.0,
+          "samples": 22,
+          "triangles": 53346.0,
+          "weapon": 1
+        }
+      ],
+      "resolution": "1280x720",
+      "rig_present": false
+    },
+    {
+      "side": "after",
+      "run": 2,
+      "backend": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "draw_calls": 327.0,
+          "frame_p50_ms": 93.952,
+          "frame_p95_ms": 106.102,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.12,
+          "samples": 22,
+          "triangles": 54080.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 325.0,
+          "frame_p50_ms": 91.244,
+          "frame_p95_ms": 99.437,
+          "hands_visible": false,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.11,
+          "samples": 22,
+          "triangles": 51680.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 97.044,
+          "frame_p95_ms": 103.055,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.122,
+          "samples": 21,
+          "triangles": 54138.0,
+          "weapon": 1
+        },
+        {
+          "draw_calls": 324.0,
+          "frame_p50_ms": 88.993,
+          "frame_p95_ms": 103.321,
+          "hands_visible": false,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.131,
+          "samples": 22,
+          "triangles": 51738.0,
+          "weapon": 1
+        }
+      ],
+      "resolution": "1280x720",
+      "rig_present": true
+    },
+    {
+      "side": "before",
+      "run": 3,
+      "backend": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 99.322,
+          "frame_p95_ms": 118.363,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.0,
+          "samples": 20,
+          "triangles": 52576.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 98.148,
+          "frame_p95_ms": 129.336,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.0,
+          "samples": 20,
+          "triangles": 53346.0,
+          "weapon": 1
+        }
+      ],
+      "resolution": "1280x720",
+      "rig_present": false
+    },
+    {
+      "side": "after",
+      "run": 3,
+      "backend": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "draw_calls": 327.0,
+          "frame_p50_ms": 103.256,
+          "frame_p95_ms": 124.85,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.123,
+          "samples": 20,
+          "triangles": 54080.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 325.0,
+          "frame_p50_ms": 88.919,
+          "frame_p95_ms": 99.027,
+          "hands_visible": false,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.113,
+          "samples": 23,
+          "triangles": 51680.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 91.106,
+          "frame_p95_ms": 110.601,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.12,
+          "samples": 22,
+          "triangles": 54138.0,
+          "weapon": 1
+        },
+        {
+          "draw_calls": 324.0,
+          "frame_p50_ms": 91.181,
+          "frame_p95_ms": 105.479,
+          "hands_visible": false,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.113,
+          "samples": 22,
+          "triangles": 51738.0,
+          "weapon": 1
+        }
+      ],
+      "resolution": "1280x720",
+      "rig_present": true
+    },
+    {
+      "side": "before",
+      "run": 4,
+      "backend": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 88.441,
+          "frame_p95_ms": 105.2,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.0,
+          "samples": 23,
+          "triangles": 52576.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 92.946,
+          "frame_p95_ms": 107.508,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.0,
+          "samples": 22,
+          "triangles": 53346.0,
+          "weapon": 1
+        }
+      ],
+      "resolution": "1280x720",
+      "rig_present": false
+    },
+    {
+      "side": "after",
+      "run": 4,
+      "backend": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "draw_calls": 327.0,
+          "frame_p50_ms": 91.89,
+          "frame_p95_ms": 102.958,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.12,
+          "samples": 22,
+          "triangles": 54080.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 325.0,
+          "frame_p50_ms": 94.999,
+          "frame_p95_ms": 108.208,
+          "hands_visible": false,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.122,
+          "samples": 22,
+          "triangles": 51680.0,
+          "weapon": 0
+        },
+        {
+          "draw_calls": 326.0,
+          "frame_p50_ms": 93.036,
+          "frame_p95_ms": 115.491,
+          "hands_visible": true,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.12,
+          "samples": 22,
+          "triangles": 54138.0,
+          "weapon": 1
+        },
+        {
+          "draw_calls": 324.0,
+          "frame_p50_ms": 92.146,
+          "frame_p95_ms": 106.667,
+          "hands_visible": false,
+          "health": 100.0,
+          "rig_update_call_p50_ms": 0.127,
+          "samples": 22,
+          "triangles": 51738.0,
+          "weapon": 1
+        }
+      ],
+      "resolution": "1280x720",
+      "rig_present": true
+    }
+  ]
+}

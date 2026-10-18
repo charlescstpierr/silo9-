@@ -39,6 +39,7 @@ static func build(electric: bool) -> Node3D:
 			_part(batches[1], Vector3(0.038, 0.066, 0.04), Vector3(side * 0.073, 0.083, -0.269), 0.009)
 			_tube(batches[0], 0.015, 0.008, 0.043, Vector3(side * 0.073, 0.083, -0.288))
 		_part(batches[4], Vector3(0.025, 0.004, 0.034), Vector3(0, 0.142, 0.045), 0.002)
+		_arc_parts(root, materials)
 	else:
 		var slide := Node3D.new()
 		slide.name = "Slide"
@@ -84,6 +85,49 @@ static func build(electric: bool) -> Node3D:
 		marker.transform = Transform3D(entry[2], entry[1])
 		root.add_child(marker)
 	return root
+
+static func _arc_parts(root: Node3D, materials: Array[StandardMaterial3D]) -> void:
+	var socket := Node3D.new()
+	socket.name = "ArcSocket"
+	socket.position = Vector3(-.06,.19,.015)
+	root.add_child(socket)
+	var shell := _batches(materials)
+	for y in [-.045,.045]:
+		_part(shell[0],Vector3(.13,.014,.14),Vector3(0,y,0),.004)
+	for z in [-.063,.063]:
+		_part(shell[1],Vector3(.13,.08,.014),Vector3(0,0,z),.004)
+	_part(shell[2],Vector3(.012,.08,.12),Vector3(.065,0,0),.003)
+	for z in [-.032,.032]:
+		_part(shell[3],Vector3(.01,.027,.018),Vector3(.055,0,z),.002)
+	_meshes(socket,shell)
+	var cell := Node3D.new()
+	cell.name = "ArcCell"
+	cell.position = Vector3(-.075,.19,.015)
+	root.add_child(cell)
+	var capsule := _batches(materials)
+	_part(capsule[1],Vector3(.10,.068,.105),Vector3.ZERO,.013)
+	_part(capsule[0],Vector3(.014,.076,.112),Vector3(-.045,0,0),.008)
+	for z in [-.032,.032]:
+		_part(capsule[3],Vector3(.012,.025,.018),Vector3(.052,0,z),.002)
+	_part(capsule[2],Vector3(.009,.055,.07),Vector3(-.055,0,0),.004)
+	_meshes(cell,capsule)
+	_marker(cell,"CellGrip",Vector3(-.075,0,.04),Basis(Vector3.DOWN,Vector3.FORWARD,Vector3.RIGHT))
+	var latch := Node3D.new()
+	latch.name = "ArcLatch"
+	latch.position = Vector3(-.14,.235,.015)
+	root.add_child(latch)
+	var lever := _batches(materials)
+	_part(lever[3],Vector3(.018,.072,.018),Vector3(0,-.028,0),.005)
+	_part(lever[0],Vector3(.024,.026,.10),Vector3(0,-.06,0),.006)
+	_meshes(latch,lever)
+	_marker(latch,"LatchGrip",Vector3(-.036,-.06,.04),Basis(Vector3.DOWN,Vector3.FORWARD,Vector3.RIGHT))
+	var indicator := Node3D.new()
+	indicator.name = "EnergyIndicator"
+	indicator.position = Vector3(0,.258,.015)
+	root.add_child(indicator)
+	var light := _batches(materials)
+	_part(light[4],Vector3(.018,.008,.09),Vector3.ZERO,.002)
+	_meshes(indicator,light)
 
 static func _batches(materials: Array[StandardMaterial3D]) -> Array[SurfaceTool]:
 	var result: Array[SurfaceTool] = []

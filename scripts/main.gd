@@ -420,6 +420,13 @@ func _load_settings() -> void:
 	endpoint = str(config.get_value("conversation", "endpoint", ""))
 	model_id = str(config.get_value("conversation", "model", ""))
 
+func request_cell() -> void:
+	var from_inventory := mode == "inventory"
+	if from_inventory:
+		resume_game()
+	if not player.request_cell() and from_inventory:
+		open_inventory()
+
 func open_inventory() -> void:
 	_set_mode("inventory")
 	_clear_panel("Équipement", "INVENTAIRE  /  OPÉRATEUR")
@@ -427,9 +434,9 @@ func open_inventory() -> void:
 	_button("Utiliser une trousse [H]", func() -> void:
 		notify_player("Santé restaurée." if state.heal() else "Aucune trousse utilisable.")
 		open_inventory())
-	_button("Utiliser une cellule [B]", func() -> void:
-		notify_player("Batterie rechargée." if state.use_cell() else "Aucune cellule utilisable.")
-		open_inventory())
+	_button("Utiliser une cellule · reprend le jeu [B]", request_cell)
+	if player.weapon_index == 0:
+		_paragraph("La cellule est transférée par l’ARC, puis le D9 revient en main.")
 	_paragraph("L'atelier et la recharge gratuite se trouvent dans l'ascenseur.\nAmélioration de batterie : 3 composants. Le relais a également besoin de 3 composants.")
 	_button("Retour au terrain", resume_game)
 
@@ -533,7 +540,7 @@ func _process(delta: float) -> void:
 	health_bar.value = state.health
 	energy_bar.max_value = state.max_energy()
 	energy_bar.value = state.energy
-	ammo_label.text = "D9  %02d / %02d%s" % [state.ammo, state.reserve, "  •  RECHARGEMENT" if player.reloading else ""] if player.weapon_index == 0 else "ARC-3  •  12 ÉNERGIE / DÉCHARGE"
+	ammo_label.text = "D9  %02d / %02d%s" % [state.ammo, state.reserve, "  •  RECHARGEMENT" if player.reloading else ""] if player.weapon_index == 0 else "ARC-3  •  " + ("CELLULE EN COURS" if player.reloading else "12 ÉNERGIE / DÉCHARGE")
 	mission_label.text = state.objective()
 	sector_label.text = "SILO 9  /  " + world.sector_at(player.global_position).to_upper()
 	var target: Node = player.aim_target()
@@ -558,16 +565,14 @@ func _input(event: InputEvent) -> void:
 				KEY_F5: save_run()
 				KEY_F9: load_run()
 				KEY_H: notify_player("Santé restaurée." if state.heal() else "Aucune trousse utilisable.")
-				KEY_B: notify_player("Batterie rechargée." if state.use_cell() else "Aucune cellule utilisable.")
+				KEY_B: request_cell()
 		elif mode == "inventory":
 			match event.keycode:
 				KEY_TAB: resume_game()
 				KEY_H:
 					notify_player("Santé restaurée." if state.heal() else "Aucune trousse utilisable.")
 					open_inventory()
-				KEY_B:
-					notify_player("Batterie rechargée." if state.use_cell() else "Aucune cellule utilisable.")
-					open_inventory()
+				KEY_B: request_cell()
 
 func _configure_inputs() -> void:
 	set_layout(azerty)

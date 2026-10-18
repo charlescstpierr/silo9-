@@ -26,6 +26,7 @@ var cue_age := 0.0
 var _time := 0.0
 var _partial := 0.0
 var _rack := 0.0
+var _abort_from := 0.0
 
 func begin(empty: bool, partial_seconds: float, empty_seconds: float) -> void:
 	_time = 0.0
@@ -38,7 +39,8 @@ func begin(empty: bool, partial_seconds: float, empty_seconds: float) -> void:
 	view.lower = 0.0
 
 func cancel() -> void:
-	if view.motion == Motion.RELOAD or view.motion == Motion.READY:
+	if view.motion in [Motion.RELOAD,Motion.READY,Motion.RAISE]:
+		_abort_from = view.lower
 		view.motion = Motion.LOWER_ABORT
 		_time = 0.0
 
@@ -74,7 +76,7 @@ func advance(delta: float, active: bool) -> int:
 			else:
 				_update_gesture()
 		Motion.LOWER_ABORT:
-			view.lower = smoothstep(0,1,_time/LOWER_SECONDS)
+			view.lower = lerpf(_abort_from,1.0,smoothstep(0,1,_time/LOWER_SECONDS))
 			if _time >= LOWER_SECONDS:
 				_time -= LOWER_SECONDS
 				view.motion = Motion.HIDDEN

@@ -122,7 +122,7 @@ func equip(index: int) -> void:
 		return
 	_pending_weapon = index
 	if not reload_cycle.ready:
-		if index != weapon_index:
+		if index != weapon_index and reload_cycle.view.motion == Reload.Motion.RELOAD:
 			_cancel_reload()
 		return
 	weapon_index = index

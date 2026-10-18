@@ -34,28 +34,35 @@ func run() -> void:
 	app.player.reload_weapon()
 	await create_timer(.7).timeout
 	app._input(key(KEY_F5))
+	var old_player_id: int = app.player.get_instance_id()
+	app.state.ammo = 1
+	app.state.reserve = 2
 	app.load_run()
 	app.resume_game()
 	await process_frame
-	check(app.state.ammo == 4 and app.state.reserve == 17 and app.player.reload_cycle.ready,"save/load before commit restores previous counts with ready D9")
+	check(app.player.get_instance_id() != old_player_id and app.state.ammo == 4 and app.state.reserve == 17 and app.player.reload_cycle.ready,"save/load before commit restores previous counts with ready D9")
 	app.player.reload_weapon()
 	await create_timer(app.player.D9.reload_duration+.15).timeout
 	check(app.state.ammo == 12 and app.state.reserve == 9,"normal reload commits in live scene")
 	app._input(key(KEY_F5))
+	old_player_id = app.player.get_instance_id()
+	app.state.ammo = 2
+	app.state.reserve = 1
 	app.load_run()
 	app.resume_game()
 	await process_frame
-	check(app.state.ammo == 12 and app.state.reserve == 9 and app.player.reload_cycle.ready,"save/load after commit restores new counts with ready D9")
+	check(app.player.get_instance_id() != old_player_id and app.state.ammo == 12 and app.state.reserve == 9 and app.player.reload_cycle.ready,"save/load after commit restores new counts with ready D9")
 	app.player.set_physics_process(false)
 	var node_count := get_node_count()
 	var meshes: Array[Mesh] = []
 	for node in app.player.rig.find_children("*","MeshInstance3D",true,false): meshes.append(node.mesh)
 	for repetition in 100:
-		app.state.ammo = 0
+		app.state.ammo = 0 if repetition % 2 == 0 else 5
 		app.state.reserve = 12
 		app.player.reload_weapon()
-		app.player._advance_reload(app.player.D9.reload_empty_duration+1)
-		app.player._update_view(.01)
+		while not app.player.reload_cycle.ready:
+			app.player._advance_reload(.025)
+			app.player._update_view(.025)
 	check(get_node_count() == node_count,"100 reloads do not add scene nodes")
 	var index := 0
 	for node in app.player.rig.find_children("*","MeshInstance3D",true,false):

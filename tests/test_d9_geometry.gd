@@ -73,8 +73,7 @@ func run() -> void:
 						var mesh := node as MeshInstance3D
 						for corner in 8:
 							var point := mesh.global_transform*mesh.mesh.get_aabb().get_endpoint(corner)
-							var in_frame: bool = point.z < -.05 and absf(point.y)<-point.z*tan(deg_to_rad(fov)*.5) and absf(point.x)<-point.z*tan(deg_to_rad(fov)*.5)*aspect
-							check(not in_frame,"hidden reset lies outside supported view")
+							check(point.z < -.05 and point.y < point.z*tan(deg_to_rad(fov)*.5),"all AABB corners lie below lower frustum plane")
 		rig.restore_reload_parts()
 		cycle.advance(.2,true)
 		rig.update_visual(.2,frame)

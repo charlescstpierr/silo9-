@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SiloWeaponSpec" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/weapon_spec.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "ARC-3 · INDUCTION"
+damage = 39.0
+stun = 2.3
+energy_cost = 12.0
+capacity = 0
+cooldown = 0.52
+noise_radius = 16.0
+reach = 22.0
+recoil = 0.025

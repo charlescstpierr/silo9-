@@ -1,0 +1,93 @@
+{
+  "binary_sha256": "c115fdae995f670d14fd849aff9af4a73a9116ae7e58f2a15b3592d25e46b87f",
+  "runs_per_mode": 5,
+  "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "limits": [
+    "Software rendering, not a gaming GPU",
+    "VSync disable requested; driver reports mode changes unsupported",
+    "Stationary camera samples, not human playtime",
+    "Release memory monitor unavailable"
+  ],
+  "sectors": [
+    {
+      "sector": "ASCENSEUR / REFUGE",
+      "normal": {
+        "p50_median_ms": 152.353,
+        "p50_range_ms": [
+          147.626,
+          164.638
+        ],
+        "p95_median_ms": 187.349
+      },
+      "low": {
+        "p50_median_ms": 78.752,
+        "p50_range_ms": [
+          77.398,
+          92.791
+        ],
+        "p95_median_ms": 93.251
+      }
+    },
+    {
+      "sector": "02 / MAINTENANCE",
+      "normal": {
+        "p50_median_ms": 166.15,
+        "p50_range_ms": [
+          159.961,
+          171.191
+        ],
+        "p95_median_ms": 189.409
+      },
+      "low": {
+        "p50_median_ms": 71.874,
+        "p50_range_ms": [
+          69.122,
+          75.47
+        ],
+        "p95_median_ms": 86.53
+      }
+    },
+    {
+      "sector": "03 / ARCHIVES",
+      "normal": {
+        "p50_median_ms": 156.455,
+        "p50_range_ms": [
+          148.345,
+          160.26
+        ],
+        "p95_median_ms": 197.738
+      },
+      "low": {
+        "p50_median_ms": 68.966,
+        "p50_range_ms": [
+          65.347,
+          70.65
+        ],
+        "p95_median_ms": 77.995
+      }
+    },
+    {
+      "sector": "04 / C\u0152UR",
+      "normal": {
+        "p50_median_ms": 135.048,
+        "p50_range_ms": [
+          129.026,
+          137.173
+        ],
+        "p95_median_ms": 161.558
+      },
+      "low": {
+        "p50_median_ms": 55.577,
+        "p50_range_ms": [
+          54.818,
+          56.099
+        ],
+        "p95_median_ms": 66.496
+      }
+    }
+  ]
+}

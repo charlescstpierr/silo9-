@@ -4,7 +4,9 @@ extends CharacterBody3D
 const State = preload("res://scripts/run_state.gd")
 const WeaponSpec = preload("res://scripts/weapon_spec.gd")
 const Audio = preload("res://scripts/player_audio.gd")
+const Reload = preload("res://scripts/d9_reload.gd")
 const FpsRig = preload("res://scripts/fps_rig.gd")
+const RELOAD_EVENTS := [Reload.REMOVE, Reload.INSERT, Reload.RACK_PULL, Reload.RACK_RELEASE, Reload.COMMIT, Reload.HIDDEN]
 const D9: Resource = preload("res://data/weapons/d9.tres")
 const ARC: Resource = preload("res://data/weapons/arc3.tres")
 const STANDING_HEIGHT: float = 1.8
@@ -15,13 +17,17 @@ signal interacted(target: Node)
 signal scanned(origin: Vector3)
 signal noise_emitted(origin: Vector3, radius: float)
 signal feedback(message: String)
+signal reload_event(event: int)
 
 var state: State
 var camera: Camera3D
 var active: bool = false
 var weapon_index: int = 0
 var sensitivity: float = 0.002
-var reloading: bool = false
+var reload_cycle := Reload.new()
+var reloading: bool:
+	get: return reload_cycle.view.motion == Reload.Motion.RELOAD
+var _pending_weapon := 0
 var _body_shape: CollisionShape3D
 var _capsule: CapsuleShape3D
 var _headroom_shape: CapsuleShape3D
@@ -37,12 +43,12 @@ var _beam: MeshInstance3D
 var _impact: MeshInstance3D
 var _flash_light: OmniLight3D
 var _audio: AudioStreamPlayer
+var _manipulation_audio: AudioStreamPlayer
 var _scan_audio: AudioStreamPlayer
 var _sounds: Dictionary[String, AudioStreamWAV] = {}
 var _target: Node
 var _aim_time: float = 0.0
 var _shot_time: float = 0.0
-var _reload_time: float = 0.0
 var _scan_time: float = 0.0
 var _effect_time: float = 0.0
 var _recoil: float = 0.0
@@ -90,7 +96,11 @@ func _ready() -> void:
 	_scan_audio = AudioStreamPlayer.new()
 	_scan_audio.volume_db = -13.0
 	add_child(_scan_audio)
-	for kind: String in ["shot", "arc", "scan", "reload", "hurt"]:
+	_manipulation_audio = AudioStreamPlayer.new()
+	_manipulation_audio.volume_db = -8.0
+	add_child(_manipulation_audio)
+	_view_frame.reload = reload_cycle.view
+	for kind: String in ["shot", "arc", "scan", "remove", "insert", "rack_pull", "rack_release", "hurt"]:
 		_sounds[kind] = Audio.synthesize(kind)
 
 func set_active(value: bool) -> void:
@@ -102,14 +112,19 @@ func set_active(value: bool) -> void:
 		velocity.z = 0.0
 		_target = null
 		_recoil = 0.0
-		_view_frame = FpsRig.ViewFrame.new()
-		rig.reset_pose()
+		if reload_cycle.ready:
+			_view_frame = FpsRig.ViewFrame.new()
+			_view_frame.reload = reload_cycle.view
+			rig.reset_pose()
 
 func equip(index: int) -> void:
 	if index < 0 or index > 1:
 		return
-	if index != weapon_index:
-		_cancel_reload()
+	_pending_weapon = index
+	if not reload_cycle.ready:
+		if index != weapon_index:
+			_cancel_reload()
+		return
 	weapon_index = index
 	rig.equip(index)
 
@@ -117,7 +132,7 @@ func _weapon() -> WeaponSpec:
 	return D9 if weapon_index == 0 else ARC
 
 func fire() -> bool:
-	if not active or state == null or state.health <= 0.0 or reloading or _shot_time > 0.0:
+	if not active or state == null or state.health <= 0.0 or not reload_cycle.ready or _shot_time > 0.0:
 		return false
 	var spec := _weapon()
 	if spec.energy_cost > 0.0:
@@ -157,18 +172,40 @@ func fire() -> bool:
 	return true
 
 func reload_weapon() -> bool:
-	if not active or state == null or state.health <= 0.0 or weapon_index != 0 or reloading or state.ammo >= D9.capacity or state.reserve <= 0:
+	if not active or state == null or state.health <= 0.0 or weapon_index != 0 or not reload_cycle.ready or state.ammo >= D9.capacity or state.reserve <= 0:
 		return false
-	reloading = true
-	_reload_time = D9.reload_duration
-	_play("reload")
+	reload_cycle.begin(state.ammo == 0, D9.reload_duration, D9.reload_empty_duration)
 	feedback.emit("Rechargement…")
 	return true
 
 func _cancel_reload() -> void:
-	reloading = false
-	_reload_time = 0.0
-	_view_frame.reload_progress = -1.0
+	if not reload_cycle.ready:
+		reload_cycle.cancel()
+	_manipulation_audio.stop()
+
+func _advance_reload(delta: float) -> void:
+	var events := reload_cycle.advance(delta, active)
+	if events & Reload.HIDDEN:
+		weapon_index = _pending_weapon
+		rig.restore_reload_parts()
+		rig.equip(weapon_index)
+	if events & Reload.COMMIT:
+		state.reload_rounds(D9.capacity)
+		rig.restore_reload_parts()
+	if reload_cycle.ready and _pending_weapon != weapon_index:
+		reload_cycle.cancel()
+	var cue := ""
+	for event: int in RELOAD_EVENTS:
+		if events & event:
+			reload_event.emit(event)
+			match event:
+				Reload.REMOVE: cue = "remove"
+				Reload.INSERT: cue = "insert"
+				Reload.RACK_PULL: cue = "rack_pull"
+				Reload.RACK_RELEASE: cue = "rack_release"
+	if not cue.is_empty() and not events & Reload.COMMIT and reload_cycle.cue_age < .16:
+		_manipulation_audio.stream = _sounds[cue]
+		_manipulation_audio.play()
 
 func activate_scan() -> bool:
 	if not active or state == null or state.health <= 0.0 or _scan_time > 0.0:
@@ -199,8 +236,10 @@ func teleport(pos: Vector3, yaw: float = 0.0) -> void:
 	_target = null
 	_aim_time = 0.0
 	_recoil = 0.0
-	_view_frame = FpsRig.ViewFrame.new()
-	rig.reset_pose()
+	if reload_cycle.ready:
+		_view_frame = FpsRig.ViewFrame.new()
+		_view_frame.reload = reload_cycle.view
+		rig.reset_pose()
 	if camera != null:
 		camera.rotation = Vector3.ZERO
 
@@ -239,15 +278,10 @@ func _physics_process(delta: float) -> void:
 			_impact.visible = false
 			_flash_light.visible = false
 	_recoil = move_toward(_recoil, 0.0, delta * 0.2)
+	_advance_reload(delta)
 	if not active:
+		_update_view(delta)
 		return
-	if reloading:
-		_reload_time -= delta
-		if _reload_time <= 0.0:
-			state.reload_rounds(D9.capacity)
-			_cancel_reload()
-	if Input.is_action_pressed("fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		fire()
 	_set_crouch(Input.is_action_pressed("crouch"))
 	var input := Input.get_vector("left", "right", "forward", "back")
 	var direction := global_basis * Vector3(input.x, 0.0, input.y)
@@ -279,9 +313,11 @@ func _physics_process(delta: float) -> void:
 	if InputMap.has_action("aim") and Input.is_action_pressed("aim"):
 		_view_frame.pose = FpsRig.ViewFrame.Pose.AIM
 	_update_view(delta)
+	if Input.is_action_pressed("fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		fire()
 
 func _update_view(delta: float) -> void:
-	_view_frame.reload_progress = 1.0 - _reload_time / D9.reload_duration if reloading else -1.0
+	_view_frame.reload = reload_cycle.view
 	_view_frame.recoil = _recoil
 	rig.update_visual(delta, _view_frame)
 

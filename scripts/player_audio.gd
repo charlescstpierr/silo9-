@@ -2,7 +2,8 @@ class_name SiloPlayerAudio
 extends RefCounted
 
 static func synthesize(kind: String) -> AudioStreamWAV:
-	var duration: float = 0.28 if kind != "scan" else 0.65
+	var mechanical := kind in ["remove","insert","rack_pull","rack_release"]
+	var duration: float = .16 if mechanical else (.65 if kind == "scan" else .28)
 	var count: int = int(22050.0 * duration)
 	var bytes := PackedByteArray()
 	bytes.resize(count * 2)
@@ -19,6 +20,14 @@ static func synthesize(kind: String) -> AudioStreamWAV:
 				sample = (sin(time * 2800.0 + sin(time * 80.0) * 8.0) * 0.65 + random.randf_range(-0.3, 0.3)) * envelope
 			"scan":
 				sample = sin(time * (3200.0 - time * 1800.0)) * sin(minf(time * 30.0, PI * 0.5)) * envelope
+			"remove":
+				sample = (sin(time*2200)*.25 + random.randf_range(-.5,.5))*envelope*(1.0 if time < .025 else .12)
+			"insert":
+				sample = (sin(time*900)*.55 + sin(time*3100)*.2 + random.randf_range(-.25,.25))*envelope
+			"rack_pull":
+				sample = (sin(time*4800+sin(time*140)*3)*.25 + random.randf_range(-.55,.55))*envelope
+			"rack_release":
+				sample = (sin(time*1700)*.4 + random.randf_range(-.65,.65))*envelope*(1.0 if time < .04 else .08)
 			"hurt":
 				sample = (sin(time * 190.0) + random.randf_range(-0.2, 0.2)) * envelope
 			_:

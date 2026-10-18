@@ -3,6 +3,20 @@ extends RefCounted
 
 signal changed
 
+const RobotSpec = preload("res://scripts/data/robot_spec.gd")
+const LEGACY_KEYS: Array[String] = ["schema", "relations", "health", "energy", "ammo", "reserve", "components", "medkits", "cells", "upgraded", "phase", "ending", "collected", "defeated", "facts", "memory", "player_position", "player_yaw", "elapsed"]
+
+class DeathPose:
+	var position: Vector3
+	var yaw: float
+
+	func _init(at: Vector3, facing: float) -> void:
+		position = at
+		yaw = facing
+
+var _crate_broken: bool = false
+var _death_poses: Dictionary[String, DeathPose] = {}
+
 enum Phase { ARRIVAL, RELAY_FOUND, POWER_RESTORED, CORE_RECOVERED, COMPLETE }
 const FACT_IDS: Array[String] = ["relay_location", "power_restored", "core_recovered", "surface_signal", "n7_autonomy", "mother_directive", "ending_mother", "ending_n7", "arc_lock_disabled"]
 const SAVE_LIMIT: int = 65536
@@ -179,19 +193,55 @@ func reload_rounds(capacity: int = 12) -> int:
 		changed.emit()
 	return loaded
 
-func mark_defeated(id: String) -> void:
-	if _valid_id(id) and not defeated.has(id) and defeated.size() < 128:
-		defeated.append(id)
-		changed.emit()
+func mark_defeated(id: String, pose: DeathPose = null) -> void:
+	if not _valid_id(id) or defeated.has(id):
+		return
+	if pose != null:
+		if not RobotSpec.CATALOG.has(id) or not pose.position.is_finite() or not is_finite(pose.yaw):
+			return
+		if maxf(maxf(absf(pose.position.x), absf(pose.position.y)), absf(pose.position.z)) > 10000.0:
+			return
+	if not RobotSpec.CATALOG.has(id):
+		var historical_count: int = 0
+		for defeated_id: String in defeated:
+			if not RobotSpec.CATALOG.has(defeated_id): historical_count += 1
+		if historical_count >= 128: return
+	defeated.append(id)
+	if pose != null:
+		_death_poses[id] = DeathPose.new(pose.position, wrapf(pose.yaw, -PI, PI))
+	changed.emit()
+
+func death_pose(id: String) -> DeathPose:
+	var pose: DeathPose = _death_poses.get(id)
+	return DeathPose.new(pose.position, pose.yaw) if pose != null else null
+
+func break_crate() -> bool:
+	if _crate_broken: return false
+	_crate_broken = true
+	changed.emit()
+	return true
+
+func crate_broken() -> bool:
+	return _crate_broken
+
+func disable_arc_lock() -> bool:
+	if facts.has("arc_lock_disabled"): return false
+	facts.append("arc_lock_disabled")
+	_remember("Le verrou ARC a été désactivé.")
+	changed.emit()
+	return true
 
 func remember(event: String) -> void:
+	if _remember(event): changed.emit()
+
+func _remember(event: String) -> bool:
 	var bounded: String = event.strip_edges().left(240)
 	if bounded.is_empty() or (not memory.is_empty() and memory.back() == bounded):
-		return
+		return false
 	memory.append(bounded)
 	if memory.size() > 32:
 		memory.pop_front()
-	changed.emit()
+	return true
 
 func add_fact(id: String) -> void:
 	if FACT_IDS.has(id) and not facts.has(id):
@@ -210,16 +260,28 @@ func save_game(path: String = "user://silo9-save.json") -> Error:
 	var data: Dictionary = _snapshot()
 	if not _valid_snapshot(data):
 		return ERR_INVALID_DATA
+	var encoded: String = JSON.stringify(data)
+	if encoded.to_utf8_buffer().size() > SAVE_LIMIT:
+		return ERR_INVALID_DATA
 	var temp: String = path + ".tmp"
 	var file: FileAccess = FileAccess.open(temp, FileAccess.WRITE)
 	if file == null:
 		return FileAccess.get_open_error()
-	file.store_string(JSON.stringify(data))
+	file.store_string(encoded)
 	file.flush()
 	var result: Error = file.get_error()
 	file.close()
 	if result != OK:
 		return result
+	file = FileAccess.open(temp, FileAccess.READ)
+	if file == null: return FileAccess.get_open_error()
+	var written: String = file.get_as_text()
+	result = file.get_error()
+	file.close()
+	if result != OK: return result
+	var parser := JSON.new()
+	if written != encoded or parser.parse(written) != OK or not parser.data is Dictionary or not _valid_snapshot(parser.data):
+		return ERR_FILE_CORRUPT
 	return DirAccess.rename_absolute(temp, path)
 
 func load_game(path: String = "user://silo9-save.json") -> Error:
@@ -238,42 +300,68 @@ func load_game(path: String = "user://silo9-save.json") -> Error:
 	if not parsed is Dictionary or not _valid_snapshot(parsed):
 		return ERR_FILE_CORRUPT
 	var data: Dictionary = parsed
-	health = float(data.health)
-	energy = float(data.energy)
-	ammo = int(data.ammo)
-	reserve = int(data.reserve)
-	components = int(data.components)
-	medkits = int(data.medkits)
-	cells = int(data.cells)
+	var next_collected: Array[String] = []
+	var next_defeated: Array[String] = []
+	var next_facts: Array[String] = []
+	var next_memory: Array[String] = []
+	next_collected.assign(data.collected)
+	next_defeated.assign(data.defeated)
+	next_facts.assign(data.facts)
+	next_memory.assign(data.memory)
+	var next_relations: Dictionary[String, int] = {"mother": int(data.relations.mother), "n7": int(data.relations.n7)}
+	var next_poses: Dictionary[String, DeathPose] = {}
+	if int(data.schema) == 4:
+		for id: String in data.death_poses:
+			var pose: Dictionary = data.death_poses[id]
+			next_poses[id] = DeathPose.new(Vector3(float(pose.position[0]), float(pose.position[1]), float(pose.position[2])), float(pose.yaw))
+	var next_position := Vector3(float(data.player_position[0]), float(data.player_position[1]), float(data.player_position[2]))
+	for key: String in ["health", "energy", "player_yaw", "elapsed"]: data[key] = float(data[key])
+	for key: String in ["ammo", "reserve", "components", "medkits", "cells", "phase"]: data[key] = int(data[key])
+	health = data.health
+	energy = data.energy
+	ammo = data.ammo
+	reserve = data.reserve
+	components = data.components
+	medkits = data.medkits
+	cells = data.cells
 	upgraded = data.upgraded
-	phase = int(data.phase)
+	phase = data.phase
 	ending = data.ending
-	collected.assign(data.collected)
-	defeated.assign(data.defeated)
-	facts.assign(data.facts)
-	memory.assign(data.memory)
-	player_position = Vector3(float(data.player_position[0]), float(data.player_position[1]), float(data.player_position[2]))
-	player_yaw = float(data.player_yaw)
-	elapsed = float(data.elapsed)
-	relations.assign(data.relations)
-	_maintenance_on = data.circuits.maintenance if int(data.schema) == 3 else true
-	_archives_on = data.circuits.archives if int(data.schema) == 3 else true
+	collected = next_collected
+	defeated = next_defeated
+	facts = next_facts
+	memory = next_memory
+	player_position = next_position
+	player_yaw = data.player_yaw
+	elapsed = data.elapsed
+	relations = next_relations
+	_maintenance_on = data.circuits.maintenance if int(data.schema) >= 3 else true
+	_archives_on = data.circuits.archives if int(data.schema) >= 3 else true
+	_crate_broken = data.crate_broken if int(data.schema) == 4 else false
+	_death_poses = next_poses
 	power_revision += 1
 	changed.emit()
 	return OK
 
 func _snapshot() -> Dictionary:
-	return {"schema": 3, "circuits": {"maintenance": _maintenance_on, "archives": _archives_on}, "relations": relations, "health": health, "energy": energy, "ammo": ammo, "reserve": reserve, "components": components, "medkits": medkits, "cells": cells, "upgraded": upgraded, "phase": phase, "ending": ending, "collected": collected, "defeated": defeated, "facts": facts, "memory": memory, "player_position": [player_position.x, player_position.y, player_position.z], "player_yaw": player_yaw, "elapsed": elapsed}
+	var poses: Dictionary = {}
+	for id: String in _death_poses:
+		var pose: DeathPose = _death_poses[id]
+		poses[id] = {"position": [pose.position.x, pose.position.y, pose.position.z], "yaw": pose.yaw}
+	return {"schema": 4, "crate_broken": _crate_broken, "death_poses": poses, "circuits": {"maintenance": _maintenance_on, "archives": _archives_on}, "relations": relations, "health": health, "energy": energy, "ammo": ammo, "reserve": reserve, "components": components, "medkits": medkits, "cells": cells, "upgraded": upgraded, "phase": phase, "ending": ending, "collected": collected, "defeated": defeated, "facts": facts, "memory": memory, "player_position": [player_position.x, player_position.y, player_position.z], "player_yaw": player_yaw, "elapsed": elapsed}
 
 func _valid_snapshot(data: Dictionary) -> bool:
-	if not _number(data.get("schema"), 2, 3) or float(data.schema) != floorf(float(data.schema)): return false
-	var required: Array = _snapshot().keys()
-	if int(data.schema) == 2:
-		required.erase("circuits")
-	else:
+	if not _number(data.get("schema"), 2, 4) or float(data.schema) != floorf(float(data.schema)): return false
+	var version: int = int(data.schema)
+	var required: Array[String] = LEGACY_KEYS.duplicate()
+	if version >= 3:
+		required.append("circuits")
 		var circuits: Variant = data.get("circuits")
 		if not circuits is Dictionary or circuits.size() != 2: return false
 		if not circuits.get("maintenance") is bool or not circuits.get("archives") is bool: return false
+	if version == 4:
+		required.append_array(["crate_broken", "death_poses"])
+		if not data.get("crate_broken") is bool or not data.get("death_poses") is Dictionary: return false
 	if data.size() != required.size(): return false
 	for key: String in required:
 		if not data.has(key): return false
@@ -289,7 +377,20 @@ func _valid_snapshot(data: Dictionary) -> bool:
 	if not data.player_position is Array or data.player_position.size() != 3: return false
 	for coord: Variant in data.player_position:
 		if not _number(coord, -10000, 10000): return false
-	if not _strings(data.collected, 256, 80, true) or not _strings(data.defeated, 128, 80, true): return false
+	if not _strings(data.collected, 256, 80, true) or not _strings(data.defeated, 134 if version == 4 else 128, 80, true): return false
+	if version == 4:
+		var historical_count: int = 0
+		for id: String in data.defeated:
+			if not RobotSpec.CATALOG.has(id): historical_count += 1
+		if historical_count > 128 or data.death_poses.size() > RobotSpec.CATALOG.size(): return false
+		for id: Variant in data.death_poses:
+			if not id is String or not RobotSpec.CATALOG.has(id) or not data.defeated.has(id): return false
+			var pose: Variant = data.death_poses[id]
+			if not pose is Dictionary or pose.size() != 2: return false
+			if not pose.get("position") is Array or pose.position.size() != 3: return false
+			for coord: Variant in pose.position:
+				if not _number(coord, -10000, 10000): return false
+			if not _number(pose.get("yaw"), -PI, PI): return false
 	if not _strings(data.facts, FACT_IDS.size(), 80, true) or not _strings(data.memory, 32, 240, false): return false
 	for fact: String in data.facts:
 		if not FACT_IDS.has(fact): return false

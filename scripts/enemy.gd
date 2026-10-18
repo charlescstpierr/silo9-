@@ -193,11 +193,10 @@ func receive_hit(damage: float, stun: float) -> void:
 	if is_instance_valid(target):
 		hear_noise(target.global_position, 100)
 	if health <= 0:
-		if state != null:
-			state.mark_defeated(enemy_id)
+		var pose := State.DeathPose.new(global_position, global_rotation.y)
 		collision_layer = 0
 		set_physics_process(false)
-		var tween := create_tween()
-		tween.tween_property(self, "rotation:z", 1.5, 0.3)
-		tween.tween_property(self, "scale", Vector3.ONE * 0.01, 0.45).set_delay(1.5)
-		tween.tween_callback(queue_free)
+		hide()
+		if state != null:
+			state.mark_defeated(enemy_id, pose)
+		queue_free()

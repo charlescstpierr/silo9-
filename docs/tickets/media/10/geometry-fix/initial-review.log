@@ -1,0 +1,9 @@
+COMMAND: PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 /home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/run_initial_review.py
+PASS: 10000 SAT cases agree with independent polygon clipping, seed=1042
+PASS: bounded segment rejects behind both ends, both directions and windings
+REPRO R1: one segment, one volume, no engine/source/targets/inventory => bounded_pass=true
+REPRO R1: invalid disabled/margin and negative stats also accepted
+PASS: identical occupied triangle surface retessellated reports added hits, consistent with declared limitation
+Tool review probes completed. R1 is reproduced; no runtime claim.
+
+EXIT: 0

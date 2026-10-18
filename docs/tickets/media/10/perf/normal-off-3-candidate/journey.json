@@ -1,0 +1,9810 @@
+{
+	"ammo": 12,
+	"circuits_available": true,
+	"commands": [],
+	"cost_windows": [],
+	"defeated": [],
+	"display_driver": "X11",
+	"draw_calls_max": 273,
+	"ending": "",
+	"engine": {
+		"build": "official",
+		"hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+		"hex": 263938,
+		"major": 4,
+		"minor": 7,
+		"patch": 2,
+		"status": "stable",
+		"string": "4.7.2-stable (official)",
+		"timestamp": 0
+	},
+	"events": [],
+	"expected_ending": "mother",
+	"failures": [],
+	"final_observation": {
+		"alarms": {
+			"archives": 0.0,
+			"maintenance": 0.0
+		},
+		"camera_position": [
+			-0.000000010461917554494,
+			1.58000004291534,
+			7.54168319702148
+		],
+		"camera_rotation": [
+			0.0,
+			3.14159250259399,
+			0.0
+		],
+		"circuits": {
+			"archives": true,
+			"maintenance": true
+		},
+		"consumers": [
+			{
+				"path": "Circuit_maintenance/fan_maintenance",
+				"position": "(6.6, 1.15, -17.7)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/fan_maintenance/@MeshInstance3D@1564",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/fan_maintenance/@MeshInstance3D@1565",
+				"position": "(-0.55, 0.0, 0.08)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/fan_maintenance/@MeshInstance3D@1566",
+				"position": "(0.55, 0.0, 0.08)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/fan_maintenance/@StaticBody3D@1567",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"disabled": false,
+				"path": "Circuit_maintenance/fan_maintenance/@StaticBody3D@1567/@CollisionShape3D@1568",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/fan_maintenance/Rotor",
+				"position": "(0.0, 0.0, 0.15)",
+				"rotation": "(0.0, 0.0, 27.81067)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/fan_maintenance/@AudioStreamPlayer3D@1569",
+				"playing": true,
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/SasGauche",
+				"position": "(-2.1, 1.7, -14.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"disabled": false,
+				"path": "Circuit_maintenance/SasGauche/@CollisionShape3D@1572",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/SasGauche/@MeshInstance3D@1573",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/SasGauche/@MeshInstance3D@1574",
+				"position": "(0.0, 0.0, 0.2)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/SasDroit",
+				"position": "(2.1, 1.7, -14.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"disabled": false,
+				"path": "Circuit_maintenance/SasDroit/@CollisionShape3D@1575",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/SasDroit/@MeshInstance3D@1576",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_maintenance/SasDroit/@MeshInstance3D@1577",
+				"position": "(0.0, 0.0, 0.2)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/fan_archives",
+				"position": "(-6.6, 1.15, -38.7)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/fan_archives/@MeshInstance3D@1590",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/fan_archives/@MeshInstance3D@1591",
+				"position": "(-0.55, 0.0, 0.08)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/fan_archives/@MeshInstance3D@1592",
+				"position": "(0.55, 0.0, 0.08)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/fan_archives/@StaticBody3D@1593",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"disabled": false,
+				"path": "Circuit_archives/fan_archives/@StaticBody3D@1593/@CollisionShape3D@1594",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/fan_archives/Rotor",
+				"position": "(0.0, 0.0, 0.15)",
+				"rotation": "(0.0, 0.0, 27.81067)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/fan_archives/@AudioStreamPlayer3D@1595",
+				"playing": true,
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/SasGauche",
+				"position": "(-2.1, 1.7, -34.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"disabled": false,
+				"path": "Circuit_archives/SasGauche/@CollisionShape3D@1598",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/SasGauche/@MeshInstance3D@1599",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/SasGauche/@MeshInstance3D@1600",
+				"position": "(0.0, 0.0, 0.2)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/SasDroit",
+				"position": "(2.1, 1.7, -34.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"disabled": false,
+				"path": "Circuit_archives/SasDroit/@CollisionShape3D@1601",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/SasDroit/@MeshInstance3D@1602",
+				"position": "(0.0, 0.0, 0.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "Circuit_archives/SasDroit/@MeshInstance3D@1603",
+				"position": "(0.0, 0.0, 0.2)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": true
+			},
+			{
+				"path": "alarm_maintenance",
+				"position": "(2.0, 2.23, -18.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": false
+			},
+			{
+				"path": "alarm_archives",
+				"position": "(2.0, 2.23, -38.0)",
+				"rotation": "(0.0, 0.0, 0.0)",
+				"visible": false
+			}
+		],
+		"draw_calls": 40.0,
+		"energy": 100.0,
+		"flashlight": {
+			"energy": 2.5,
+			"intent": false,
+			"mask": 1,
+			"position": [
+				-0.380000054836273,
+				1.27999997138977,
+				8.14168357849121
+			],
+			"range": 14.0,
+			"shadow": true,
+			"visible": false
+		},
+		"fov": 76.0,
+		"health": 100.0,
+		"label": "final",
+		"lights": [
+			{
+				"color": "(1.0, 0.8824, 0.7098, 1.0)",
+				"energy": 1.29999995231628,
+				"id": "ceiling_refuge",
+				"mask": 1,
+				"position": [
+					0.0,
+					4.55999994277954,
+					6.0
+				],
+				"range": 12.0,
+				"shadow": false,
+				"visible": true
+			},
+			{
+				"color": "(0.7255, 0.898, 0.9176, 1.0)",
+				"energy": 1.29999995231628,
+				"id": "ceiling_decontamination",
+				"mask": 1,
+				"position": [
+					0.0,
+					4.55999994277954,
+					-5.0
+				],
+				"range": 12.0,
+				"shadow": false,
+				"visible": true
+			},
+			{
+				"color": "(1.0, 0.8157, 0.6039, 1.0)",
+				"energy": 0.980644226074219,
+				"id": "ceiling_maintenance",
+				"mask": 1,
+				"position": [
+					0.0,
+					4.55999994277954,
+					-22.0
+				],
+				"range": 12.0,
+				"shadow": false,
+				"visible": true
+			},
+			{
+				"color": "(0.7059, 0.8157, 0.9373, 1.0)",
+				"energy": 1.29999995231628,
+				"id": "ceiling_archives",
+				"mask": 1,
+				"position": [
+					0.0,
+					4.55999994277954,
+					-42.0
+				],
+				"range": 12.0,
+				"shadow": false,
+				"visible": true
+			},
+			{
+				"color": "(1.0, 0.8157, 0.6039, 1.0)",
+				"energy": 1.20000004768372,
+				"id": "ceiling_core_entry",
+				"mask": 1,
+				"position": [
+					0.0,
+					4.55999994277954,
+					-63.0
+				],
+				"range": 11.0,
+				"shadow": false,
+				"visible": true
+			},
+			{
+				"color": "(0.8353, 0.9059, 0.8745, 1.0)",
+				"energy": 1.0,
+				"id": "ceiling_core_end",
+				"mask": 1,
+				"position": [
+					0.0,
+					4.55999994277954,
+					-73.0
+				],
+				"range": 10.0,
+				"shadow": false,
+				"visible": true
+			},
+			{
+				"color": "(0.3882, 0.9137, 0.8784, 1.0)",
+				"energy": 2.40000009536743,
+				"id": "reactor",
+				"mask": 1,
+				"position": [
+					0.0,
+					2.38000011444092,
+					-72.0
+				],
+				"range": 7.0,
+				"shadow": false,
+				"visible": true
+			},
+			{
+				"color": "(1.0, 0.3176, 0.2314, 1.0)",
+				"energy": 0.0,
+				"id": "alarm_maintenance",
+				"mask": 1,
+				"position": [
+					2.0,
+					2.23000001907349,
+					-18.0
+				],
+				"range": 4.0,
+				"shadow": false,
+				"visible": false
+			},
+			{
+				"color": "(1.0, 0.3176, 0.2314, 1.0)",
+				"energy": 0.0,
+				"id": "alarm_archives",
+				"mask": 1,
+				"position": [
+					2.0,
+					2.23000001907349,
+					-38.0
+				],
+				"range": 4.0,
+				"shadow": false,
+				"visible": false
+			}
+		],
+		"live_enemies": [],
+		"materials": {
+			"-9223371919313596346": {
+				"albedo": "(0.3725, 0.8784, 0.8118, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371920035016625": {
+				"albedo": "(0.0682, 0.0682, 0.0682, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371920051793842": {
+				"albedo": "(1.0, 1.0, 1.0, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371921746292671": {
+				"albedo": "(0.3725, 0.8784, 0.8118, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371921763069923": {
+				"albedo": "(0.9063, 0.9063, 0.9063, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371922752925660": {
+				"albedo": "(0.0784, 0.1686, 0.2824, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371922769702875": {
+				"albedo": "(1.0, 1.0, 1.0, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371922786480090": {
+				"albedo": "(0.2235, 0.4863, 0.6275, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371922803257305": {
+				"albedo": "(0.9294, 0.5294, 0.2549, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371922820034520": {
+				"albedo": "(0.5412, 0.7176, 0.7725, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371923407237100": {
+				"albedo": "(1.0, 0.6588, 0.2941, 1.0)",
+				"emission": "(1.0, 0.6588, 0.2941, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371924397092898": {
+				"albedo": "(1.0, 1.0, 1.0, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371924430647332": {
+				"albedo": "(0.2, 0.0635, 0.0463, 1.0)",
+				"emission": "(1.0, 0.3176, 0.2314, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.0
+			},
+			"-9223371924464201766": {
+				"albedo": "(0.2, 0.0635, 0.0463, 1.0)",
+				"emission": "(1.0, 0.3176, 0.2314, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.0
+			},
+			"-9223371924531310634": {
+				"albedo": "(0.3882, 0.9137, 0.8784, 1.0)",
+				"emission": "(0.3882, 0.9137, 0.8784, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371924581642285": {
+				"albedo": "(0.8353, 0.9059, 0.8745, 1.0)",
+				"emission": "(0.8353, 0.9059, 0.8745, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371924631973936": {
+				"albedo": "(1.0, 0.8157, 0.6039, 1.0)",
+				"emission": "(1.0, 0.8157, 0.6039, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371924682305587": {
+				"albedo": "(0.7059, 0.8157, 0.9373, 1.0)",
+				"emission": "(0.7059, 0.8157, 0.9373, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371924732637238": {
+				"albedo": "(1.0, 0.8157, 0.6039, 1.0)",
+				"emission": "(1.0, 0.8157, 0.6039, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.457633972167969
+			},
+			"-9223371924782968889": {
+				"albedo": "(0.7255, 0.898, 0.9176, 1.0)",
+				"emission": "(0.7255, 0.898, 0.9176, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371924833300540": {
+				"albedo": "(1.0, 0.8824, 0.7098, 1.0)",
+				"emission": "(1.0, 0.8824, 0.7098, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371936946451158": {
+				"albedo": "(1.0, 0.302, 0.1686, 1.0)",
+				"emission": "(1.0, 0.302, 0.1686, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371936980005592": {
+				"albedo": "(1.0, 0.302, 0.1686, 1.0)",
+				"emission": "(1.0, 0.302, 0.1686, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371939110712151": {
+				"albedo": "(0.3569, 0.8941, 0.898, 1.0)",
+				"emission": "(0.3569, 0.8941, 0.898, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371940150900673": {
+				"albedo": "(1.0, 0.302, 0.1686, 1.0)",
+				"emission": "(1.0, 0.302, 0.1686, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371940436113362": {
+				"albedo": "(0.3569, 0.8941, 0.898, 1.0)",
+				"emission": "(0.3569, 0.8941, 0.898, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371940989761530": {
+				"albedo": "(0.3569, 0.8941, 0.898, 1.0)",
+				"emission": "(0.3569, 0.8941, 0.898, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371941677627413": {
+				"albedo": "(0.0784, 0.1686, 0.2824, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371941694404626": {
+				"albedo": "(0.9294, 0.5294, 0.2549, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371941711181840": {
+				"albedo": "(0.8824, 0.8314, 0.6784, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371941761513485": {
+				"albedo": "(1.0, 1.0, 1.0, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371941912508554": {
+				"albedo": "(0.7255, 0.898, 0.9176, 1.0)",
+				"emission": "(0.7255, 0.898, 0.9176, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.150000005960464
+			},
+			"-9223371941929285766": {
+				"albedo": "(1.0, 0.302, 0.1686, 1.0)",
+				"emission": "(1.0, 0.302, 0.1686, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371941946062978": {
+				"albedo": "(0.3569, 0.8941, 0.898, 1.0)",
+				"emission": "(0.3569, 0.8941, 0.898, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371941962840146": {
+				"albedo": "(1.0, 0.6588, 0.2941, 1.0)",
+				"emission": "(1.0, 0.6588, 0.2941, 1.0)",
+				"emission_enabled": true,
+				"emission_energy": 0.699999988079071
+			},
+			"-9223371941979617354": {
+				"albedo": "(0.2235, 0.4863, 0.6275, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371942013171769": {
+				"albedo": "(0.9294, 0.5294, 0.2549, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371942029948977": {
+				"albedo": "(0.0784, 0.1686, 0.2824, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371942046726048": {
+				"albedo": "(0.5412, 0.7176, 0.7725, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371942063503257": {
+				"albedo": "(1.0, 1.0, 1.0, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371942080280439": {
+				"albedo": "(1.0, 1.0, 1.0, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371974527416012": {
+				"albedo": "(1.0, 0.9569, 0.8471, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371974544193229": {
+				"albedo": "(0.5961, 0.8353, 0.8627, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371974560970446": {
+				"albedo": "(0.9569, 0.898, 0.7373, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371974577747663": {
+				"albedo": "(0.0941, 0.2353, 0.3176, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			},
+			"-9223371974594524880": {
+				"albedo": "(0.2196, 0.7176, 0.7294, 1.0)",
+				"emission": "(0.0, 0.0, 0.0, 1.0)",
+				"emission_enabled": false,
+				"emission_energy": 1.0
+			}
+		},
+		"mesh_materials": [
+			{
+				"material_ids": [
+					-9223371924397092898
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1787",
+				"position": [
+					0.0,
+					0.00499999988824129,
+					6.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924397092898
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1788",
+				"position": [
+					0.0,
+					0.00499999988824129,
+					-6.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924397092898
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1789",
+				"position": [
+					0.0,
+					0.00499999988824129,
+					-24.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924397092898
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1790",
+				"position": [
+					0.0,
+					0.00499999988824129,
+					-44.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924397092898
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1791",
+				"position": [
+					0.0,
+					0.00499999988824129,
+					-66.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1792",
+				"position": [
+					-10.0,
+					2.5,
+					6.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1793",
+				"position": [
+					0.0,
+					5.19999980926514,
+					6.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1794",
+				"position": [
+					10.0,
+					2.5,
+					6.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1795",
+				"position": [
+					-10.0,
+					2.5,
+					-6.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1796",
+				"position": [
+					0.0,
+					5.19999980926514,
+					-6.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1797",
+				"position": [
+					10.0,
+					2.5,
+					-6.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1798",
+				"position": [
+					-10.0,
+					2.5,
+					-24.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1799",
+				"position": [
+					0.0,
+					5.19999980926514,
+					-24.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1800",
+				"position": [
+					10.0,
+					2.5,
+					-24.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1801",
+				"position": [
+					-10.0,
+					2.5,
+					-44.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1802",
+				"position": [
+					0.0,
+					5.19999980926514,
+					-44.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1803",
+				"position": [
+					10.0,
+					2.5,
+					-44.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1804",
+				"position": [
+					-10.0,
+					2.5,
+					-66.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1805",
+				"position": [
+					0.0,
+					5.19999980926514,
+					-66.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1806",
+				"position": [
+					10.0,
+					2.5,
+					-66.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1807",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1808",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941677627413
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1809",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371940989761530
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1810",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941761513485
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1811",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941677627413
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1812",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1813",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941979617354
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1814",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941761513485
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1815",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941677627413
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1816",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1817",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941979617354
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1818",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941677627413
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1819",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1820",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941677627413
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1821",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1822",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941761513485
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1823",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941694404626
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1824",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941761513485
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1825",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941694404626
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1826",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941761513485
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1827",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941694404626
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1828",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941694404626
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1829",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941711181840
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1830",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941979617354
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1831",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941711181840
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1832",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941979617354
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1833",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1834",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371923407237100
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1835",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1836",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941711181840
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1837",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941711181840
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1838",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371936946451158
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1839",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371936946451158
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1840",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371940989761530
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1841",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922820034520
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1842",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922803257305
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1843",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922786480090
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1844",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922769702875
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1845",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922752925660
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1846",
+				"position": [
+					0.0,
+					0.0,
+					-80.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922820034520
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1847",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922803257305
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1848",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922786480090
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1849",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922769702875
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1850",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922752925660
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1851",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922820034520
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1852",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922803257305
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1853",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922786480090
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1854",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922769702875
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1855",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922752925660
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1856",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922820034520
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1857",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922803257305
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1858",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922786480090
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1859",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922769702875
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1860",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922752925660
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1861",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371921763069923
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1862",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371921746292671
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1863",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371921763069923
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1864",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922820034520
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1865",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922752925660
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1866",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922803257305
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1867",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371921746292671
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1868",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922786480090
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1869",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922803257305
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1870",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922786480090
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1871",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922786480090
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1872",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922786480090
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1873",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371920051793842
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1874",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371920035016625
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1875",
+				"position": [
+					0.0,
+					0.0,
+					0.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371920051793842
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1876",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371920035016625
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1877",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371920051793842
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1878",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371920035016625
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1879",
+				"position": [
+					0.0,
+					0.0,
+					-40.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371920051793842
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1880",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371920035016625
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1881",
+				"position": [
+					0.0,
+					0.0,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922803257305
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1882",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371922752925660
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1883",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371919313596346
+				],
+				"path": "@Node3D@1021/@MeshInstance3D@1884",
+				"position": [
+					0.0,
+					0.0,
+					-20.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942063503257
+				],
+				"path": "@MeshInstance3D@1023",
+				"position": [
+					0.0,
+					-0.300000011920929,
+					-34.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@MeshInstance3D@1026",
+				"position": [
+					0.0,
+					5.19999980926514,
+					-34.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@MeshInstance3D@1029",
+				"position": [
+					-10.0,
+					2.5,
+					-34.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@MeshInstance3D@1032",
+				"position": [
+					10.0,
+					2.5,
+					-34.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "@Node3D@1093/@MeshInstance3D@1094",
+				"position": [
+					0.0,
+					1.70000004768372,
+					-54.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941929285766
+				],
+				"path": "@Node3D@1093/@MeshInstance3D@1097",
+				"position": [
+					-1.39999997615814,
+					1.70000004768372,
+					-53.7999992370605
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941929285766
+				],
+				"path": "@Node3D@1093/@MeshInstance3D@1098",
+				"position": [
+					1.39999997615814,
+					1.70000004768372,
+					-53.7999992370605
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "machine2/machine",
+				"position": [
+					8.5,
+					0.0,
+					-7.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@MeshInstance3D@1415",
+				"position": [
+					8.5,
+					0.975000023841858,
+					-7.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "machine-fortified2/machine-fortified",
+				"position": [
+					-8.0,
+					0.0,
+					-25.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@MeshInstance3D@1418",
+				"position": [
+					-8.0,
+					1.01499998569489,
+					-25.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "box-large2/box-large",
+				"position": [
+					4.0,
+					0.0,
+					-12.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@MeshInstance3D@1421",
+				"position": [
+					4.0,
+					0.412499994039536,
+					-12.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "pipe-large-valve2/pipe-large-valve",
+				"position": [
+					8.0,
+					1.0,
+					-58.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@MeshInstance3D@1424",
+				"position": [
+					8.0,
+					1.75,
+					-58.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371920051793842,
+					-9223371922786480090,
+					-9223371920035016625
+				],
+				"path": "@StaticBody3D@1428/Prop_Computer2/Prop_Computer",
+				"position": [
+					3.79999995231628,
+					0.100000001490116,
+					3.97499990463257
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1433/@MeshInstance3D@1434",
+				"position": [
+					-3.79999995231628,
+					0.600000023841858,
+					4.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1433/@MeshInstance3D@1435",
+				"position": [
+					-3.79999995231628,
+					0.840000033378601,
+					4.24499988555908
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1438/@MeshInstance3D@1439",
+				"position": [
+					-3.79999995231628,
+					0.600000023841858,
+					8.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1438/@MeshInstance3D@1440",
+				"position": [
+					-3.79999995231628,
+					0.840000033378601,
+					8.24499988555908
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1443/@MeshInstance3D@1444",
+				"position": [
+					0.0,
+					0.600000023841858,
+					9.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1443/@MeshInstance3D@1445",
+				"position": [
+					0.0,
+					0.840000033378601,
+					9.24499988555908
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371920051793842,
+					-9223371922786480090,
+					-9223371920035016625
+				],
+				"path": "@StaticBody3D@1447/Prop_Computer2/Prop_Computer",
+				"position": [
+					7.0,
+					0.100000001490116,
+					-26.0249996185303
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371942080280439
+				],
+				"path": "@MeshInstance3D@1450",
+				"position": [
+					7.0,
+					1.0,
+					-25.5
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974594524880
+				],
+				"path": "@StaticBody3D@1453/Visual/@MeshInstance3D@1456",
+				"position": [
+					-7.0,
+					0.0,
+					-43.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974577747663
+				],
+				"path": "@StaticBody3D@1453/Visual/@MeshInstance3D@1457",
+				"position": [
+					-7.0,
+					0.0,
+					-43.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974560970446
+				],
+				"path": "@StaticBody3D@1453/Visual/@MeshInstance3D@1458",
+				"position": [
+					-7.0,
+					0.0,
+					-43.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974544193229
+				],
+				"path": "@StaticBody3D@1453/Visual/@MeshInstance3D@1459",
+				"position": [
+					-7.0,
+					0.0,
+					-43.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974527416012
+				],
+				"path": "@StaticBody3D@1453/Visual/@MeshInstance3D@1460",
+				"position": [
+					-7.0,
+					0.0,
+					-43.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974594524880
+				],
+				"path": "@StaticBody3D@1453/Visual/RobotLegs/@Node3D@1461/@MeshInstance3D@1462",
+				"position": [
+					-7.0,
+					0.759999990463257,
+					-43.2299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974577747663
+				],
+				"path": "@StaticBody3D@1453/Visual/RobotLegs/@Node3D@1461/@MeshInstance3D@1463",
+				"position": [
+					-7.0,
+					0.759999990463257,
+					-43.2299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974560970446
+				],
+				"path": "@StaticBody3D@1453/Visual/RobotLegs/@Node3D@1461/@MeshInstance3D@1464",
+				"position": [
+					-7.0,
+					0.759999990463257,
+					-43.2299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974544193229
+				],
+				"path": "@StaticBody3D@1453/Visual/RobotLegs/@Node3D@1461/@MeshInstance3D@1465",
+				"position": [
+					-7.0,
+					0.759999990463257,
+					-43.2299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974594524880
+				],
+				"path": "@StaticBody3D@1453/Visual/RobotLegs/@Node3D@1466/@MeshInstance3D@1467",
+				"position": [
+					-7.0,
+					0.759999990463257,
+					-42.7700004577637
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974577747663
+				],
+				"path": "@StaticBody3D@1453/Visual/RobotLegs/@Node3D@1466/@MeshInstance3D@1468",
+				"position": [
+					-7.0,
+					0.759999990463257,
+					-42.7700004577637
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974560970446
+				],
+				"path": "@StaticBody3D@1453/Visual/RobotLegs/@Node3D@1466/@MeshInstance3D@1469",
+				"position": [
+					-7.0,
+					0.759999990463257,
+					-42.7700004577637
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974544193229
+				],
+				"path": "@StaticBody3D@1453/Visual/RobotLegs/@Node3D@1466/@MeshInstance3D@1470",
+				"position": [
+					-7.0,
+					0.759999990463257,
+					-42.7700004577637
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371974594524880
+				],
+				"path": "@StaticBody3D@1453/Visual/@MeshInstance3D@1471",
+				"position": [
+					-7.0,
+					1.12000000476837,
+					-43.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941946062978
+				],
+				"path": "@StaticBody3D@1453/Visual/@MeshInstance3D@1472",
+				"position": [
+					-6.72499990463257,
+					1.55999994277954,
+					-43.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1475/@MeshInstance3D@1476",
+				"position": [
+					6.0,
+					0.600000023841858,
+					-47.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941946062978
+				],
+				"path": "@StaticBody3D@1475/@MeshInstance3D@1477",
+				"position": [
+					6.0,
+					0.840000033378601,
+					-46.7550010681152
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941946062978
+				],
+				"path": "@StaticBody3D@1479/@Node3D@1885/@MeshInstance3D@1886",
+				"position": [
+					0.0,
+					1.29999995231628,
+					-72.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "@StaticBody3D@1479/@Node3D@1885/@MeshInstance3D@1887",
+				"position": [
+					0.0,
+					1.29999995231628,
+					-72.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "@StaticBody3D@1479/@Node3D@1885/@MeshInstance3D@1888",
+				"position": [
+					0.0,
+					1.29999995231628,
+					-72.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1483/@MeshInstance3D@1484",
+				"position": [
+					2.79999995231628,
+					0.600000023841858,
+					-57.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941929285766
+				],
+				"path": "@StaticBody3D@1483/@MeshInstance3D@1485",
+				"position": [
+					2.79999995231628,
+					0.840000033378601,
+					-56.7550010681152
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941929285766
+				],
+				"path": "@Node3D@1486/@MeshInstance3D@1487",
+				"position": [
+					-1.5,
+					1.5,
+					-58.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941929285766
+				],
+				"path": "@Node3D@1486/@MeshInstance3D@1488",
+				"position": [
+					-0.75,
+					1.5,
+					-58.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941929285766
+				],
+				"path": "@Node3D@1486/@MeshInstance3D@1489",
+				"position": [
+					0.0,
+					1.5,
+					-58.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941929285766
+				],
+				"path": "@Node3D@1486/@MeshInstance3D@1490",
+				"position": [
+					0.75,
+					1.5,
+					-58.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941929285766
+				],
+				"path": "@Node3D@1486/@MeshInstance3D@1491",
+				"position": [
+					1.5,
+					1.5,
+					-58.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@Node3D@1486/@MeshInstance3D@1492",
+				"position": [
+					0.0,
+					1.5,
+					-58.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1497/@MeshInstance3D@1498",
+				"position": [
+					-4.0,
+					0.200000002980232,
+					-3.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1497/@MeshInstance3D@1499",
+				"position": [
+					-4.0,
+					0.280000001192093,
+					-2.73000001907349
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1501/@MeshInstance3D@1502",
+				"position": [
+					5.0,
+					0.200000002980232,
+					-9.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1501/@MeshInstance3D@1503",
+				"position": [
+					5.0,
+					0.280000001192093,
+					-8.72999954223633
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1505/@MeshInstance3D@1506",
+				"position": [
+					-7.0,
+					0.200000002980232,
+					-11.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1505/@MeshInstance3D@1507",
+				"position": [
+					-7.0,
+					0.280000001192093,
+					-10.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1509/@MeshInstance3D@1510",
+				"position": [
+					5.0,
+					0.200000002980232,
+					-19.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1509/@MeshInstance3D@1511",
+				"position": [
+					5.0,
+					0.280000001192093,
+					-18.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1513/@MeshInstance3D@1514",
+				"position": [
+					-4.0,
+					0.200000002980232,
+					-23.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1513/@MeshInstance3D@1515",
+				"position": [
+					-4.0,
+					0.280000001192093,
+					-22.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1517/@MeshInstance3D@1518",
+				"position": [
+					-7.0,
+					0.200000002980232,
+					-30.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1517/@MeshInstance3D@1519",
+				"position": [
+					-7.0,
+					0.280000001192093,
+					-29.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1521/@MeshInstance3D@1522",
+				"position": [
+					4.0,
+					0.200000002980232,
+					-38.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1521/@MeshInstance3D@1523",
+				"position": [
+					4.0,
+					0.280000001192093,
+					-37.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1525/@MeshInstance3D@1526",
+				"position": [
+					6.0,
+					0.200000002980232,
+					-51.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1525/@MeshInstance3D@1527",
+				"position": [
+					6.0,
+					0.280000001192093,
+					-50.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1529/@MeshInstance3D@1530",
+				"position": [
+					-6.0,
+					0.200000002980232,
+					-60.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941962840146
+				],
+				"path": "@StaticBody3D@1529/@MeshInstance3D@1531",
+				"position": [
+					-6.0,
+					0.280000001192093,
+					-59.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1533/@MeshInstance3D@1534",
+				"position": [
+					3.0,
+					0.150000005960464,
+					-11.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941946062978
+				],
+				"path": "@StaticBody3D@1533/@MeshInstance3D@1535",
+				"position": [
+					3.0,
+					0.21000000834465,
+					-10.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1537/@MeshInstance3D@1538",
+				"position": [
+					-5.0,
+					0.150000005960464,
+					-39.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941946062978
+				],
+				"path": "@StaticBody3D@1537/@MeshInstance3D@1539",
+				"position": [
+					-5.0,
+					0.21000000834465,
+					-38.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1541/@MeshInstance3D@1542",
+				"position": [
+					-4.0,
+					0.150000005960464,
+					-18.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941946062978
+				],
+				"path": "@StaticBody3D@1541/@MeshInstance3D@1543",
+				"position": [
+					-4.0,
+					0.21000000834465,
+					-17.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1545/@MeshInstance3D@1546",
+				"position": [
+					6.0,
+					0.150000005960464,
+					-45.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941946062978
+				],
+				"path": "@StaticBody3D@1545/@MeshInstance3D@1547",
+				"position": [
+					6.0,
+					0.21000000834465,
+					-44.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1549/@MeshInstance3D@1550",
+				"position": [
+					4.0,
+					0.150000005960464,
+					-31.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941946062978
+				],
+				"path": "@StaticBody3D@1549/@MeshInstance3D@1551",
+				"position": [
+					4.0,
+					0.21000000834465,
+					-30.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941979617354
+				],
+				"path": "@StaticBody3D@1553/@MeshInstance3D@1556",
+				"position": [
+					2.0,
+					0.800000011920929,
+					-18.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "@StaticBody3D@1553/@MeshInstance3D@1557",
+				"position": [
+					1.51999998092651,
+					0.850000023841858,
+					-17.9200000762939
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "@StaticBody3D@1553/@MeshInstance3D@1558",
+				"position": [
+					2.48000001907349,
+					0.850000023841858,
+					-17.9200000762939
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1553/@MeshInstance3D@1559",
+				"position": [
+					2.0,
+					1.04999995231628,
+					-17.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "@StaticBody3D@1553/@Node3D@1560/@MeshInstance3D@1561",
+				"position": [
+					2.0,
+					1.23755538463593,
+					-17.7549915313721
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "@StaticBody3D@1553/@Node3D@1560/@MeshInstance3D@1562",
+				"position": [
+					2.0,
+					1.42511069774628,
+					-17.8699817657471
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "Circuit_maintenance/fan_maintenance/@MeshInstance3D@1564",
+				"position": [
+					6.59999990463257,
+					1.14999997615814,
+					-17.7000007629395
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "Circuit_maintenance/fan_maintenance/@MeshInstance3D@1565",
+				"position": [
+					6.04999971389771,
+					1.14999997615814,
+					-17.6200008392334
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "Circuit_maintenance/fan_maintenance/@MeshInstance3D@1566",
+				"position": [
+					7.15000009536743,
+					1.14999997615814,
+					-17.6200008392334
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924464201766
+				],
+				"path": "Circuit_maintenance/@MeshInstance3D@1571",
+				"position": [
+					2.0,
+					2.34999990463257,
+					-18.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371941979617354
+				],
+				"path": "Circuit_maintenance/SasGauche/@MeshInstance3D@1573",
+				"position": [
+					-2.09999990463257,
+					1.70000004768372,
+					-14.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "Circuit_maintenance/SasGauche/@MeshInstance3D@1574",
+				"position": [
+					-2.09999990463257,
+					1.70000004768372,
+					-13.8000001907349
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941979617354
+				],
+				"path": "Circuit_maintenance/SasDroit/@MeshInstance3D@1576",
+				"position": [
+					2.09999990463257,
+					1.70000004768372,
+					-14.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "Circuit_maintenance/SasDroit/@MeshInstance3D@1577",
+				"position": [
+					2.09999990463257,
+					1.70000004768372,
+					-13.8000001907349
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941979617354
+				],
+				"path": "@StaticBody3D@1579/@MeshInstance3D@1582",
+				"position": [
+					2.0,
+					0.800000011920929,
+					-38.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "@StaticBody3D@1579/@MeshInstance3D@1583",
+				"position": [
+					1.51999998092651,
+					0.850000023841858,
+					-37.9199981689453
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "@StaticBody3D@1579/@MeshInstance3D@1584",
+				"position": [
+					2.48000001907349,
+					0.850000023841858,
+					-37.9199981689453
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "@StaticBody3D@1579/@MeshInstance3D@1585",
+				"position": [
+					2.0,
+					1.04999995231628,
+					-37.7299995422363
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942046726048
+				],
+				"path": "@StaticBody3D@1579/@Node3D@1586/@MeshInstance3D@1587",
+				"position": [
+					2.0,
+					1.23755538463593,
+					-37.7549896240234
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "@StaticBody3D@1579/@Node3D@1586/@MeshInstance3D@1588",
+				"position": [
+					2.0,
+					1.42511069774628,
+					-37.8699836730957
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942029948977
+				],
+				"path": "Circuit_archives/fan_archives/@MeshInstance3D@1590",
+				"position": [
+					-6.59999990463257,
+					1.14999997615814,
+					-38.7000007629395
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "Circuit_archives/fan_archives/@MeshInstance3D@1591",
+				"position": [
+					-7.15000009536743,
+					1.14999997615814,
+					-38.6199989318848
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "Circuit_archives/fan_archives/@MeshInstance3D@1592",
+				"position": [
+					-6.04999971389771,
+					1.14999997615814,
+					-38.6199989318848
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924430647332
+				],
+				"path": "Circuit_archives/@MeshInstance3D@1597",
+				"position": [
+					2.0,
+					2.34999990463257,
+					-38.0
+				],
+				"visible": false
+			},
+			{
+				"material_ids": [
+					-9223371941979617354
+				],
+				"path": "Circuit_archives/SasGauche/@MeshInstance3D@1599",
+				"position": [
+					-2.09999990463257,
+					1.70000004768372,
+					-34.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "Circuit_archives/SasGauche/@MeshInstance3D@1600",
+				"position": [
+					-2.09999990463257,
+					1.70000004768372,
+					-33.7999992370605
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371941979617354
+				],
+				"path": "Circuit_archives/SasDroit/@MeshInstance3D@1602",
+				"position": [
+					2.09999990463257,
+					1.70000004768372,
+					-34.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371942013171769
+				],
+				"path": "Circuit_archives/SasDroit/@MeshInstance3D@1603",
+				"position": [
+					2.09999990463257,
+					1.70000004768372,
+					-33.7999992370605
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924833300540
+				],
+				"path": "@MeshInstance3D@1780",
+				"position": [
+					0.0,
+					4.67999982833862,
+					6.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924782968889
+				],
+				"path": "@MeshInstance3D@1781",
+				"position": [
+					0.0,
+					4.67999982833862,
+					-5.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924732637238
+				],
+				"path": "@MeshInstance3D@1782",
+				"position": [
+					0.0,
+					4.67999982833862,
+					-22.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924682305587
+				],
+				"path": "@MeshInstance3D@1783",
+				"position": [
+					0.0,
+					4.67999982833862,
+					-42.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924631973936
+				],
+				"path": "@MeshInstance3D@1784",
+				"position": [
+					0.0,
+					4.67999982833862,
+					-63.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924581642285
+				],
+				"path": "@MeshInstance3D@1785",
+				"position": [
+					0.0,
+					4.67999982833862,
+					-73.0
+				],
+				"visible": true
+			},
+			{
+				"material_ids": [
+					-9223371924531310634
+				],
+				"path": "@MeshInstance3D@1786",
+				"position": [
+					0.0,
+					2.5,
+					-72.0
+				],
+				"visible": true
+			}
+		],
+		"nodes": 600.0,
+		"objects": 2756.0,
+		"phase": 0,
+		"player": "(-0.0, 0.0, 7.541683)",
+		"resources": 101.0,
+		"scale_3d": 1.0,
+		"usec": 27302996
+	},
+	"flashlight_requested": false,
+	"frame_intervals_ms": [
+		67.333,
+		70.362,
+		77.013,
+		86.493,
+		76.176,
+		66.335,
+		75.472,
+		82.128,
+		73.929,
+		67.994,
+		72.978,
+		75.025,
+		71.873,
+		69.708,
+		76.298,
+		67.496,
+		79.587,
+		70.913,
+		64.438,
+		65.597,
+		74.057,
+		77.24,
+		84.525,
+		68.908,
+		77.512,
+		83.363,
+		70.047,
+		67.243,
+		73.483,
+		82.177,
+		66.72,
+		76.139,
+		83.293,
+		77.757,
+		70.567,
+		96.129,
+		98.156,
+		73.327,
+		72.94,
+		63.892,
+		73.288,
+		66.944,
+		84.421,
+		73.31,
+		66.281,
+		70.024,
+		62.863,
+		60.29,
+		61.161,
+		61.406,
+		61.445,
+		61.717,
+		75.883,
+		65.514,
+		71.254,
+		65.954,
+		64.604,
+		56.595,
+		58.571,
+		59.926,
+		63.207,
+		63.187,
+		60.926,
+		63.314,
+		65.155,
+		71.103,
+		79.091,
+		78.984,
+		67.977,
+		61.418,
+		57.332,
+		66.398,
+		64.087,
+		64.34,
+		72.154,
+		66.402,
+		58.677,
+		60.047,
+		59.966,
+		60.872,
+		65.065,
+		67.674,
+		66.735,
+		63.934,
+		61.989,
+		65.526,
+		75.125,
+		70.045,
+		68.59,
+		59.934,
+		63.44,
+		62.304,
+		69.342,
+		66.838,
+		64.391,
+		68.622,
+		81.079,
+		72.976,
+		70.117,
+		80.438,
+		83.544,
+		63.548,
+		69.221,
+		63.408,
+		67.808,
+		74.835,
+		62.685,
+		65.5,
+		64.256,
+		64.662,
+		75.846,
+		87.071,
+		65.854,
+		72.385,
+		73.905,
+		69.361,
+		68.693,
+		65.721,
+		61.276,
+		59.452,
+		69.461,
+		62.077,
+		70.414,
+		59.094,
+		65.097,
+		62.975,
+		70.006,
+		69.95,
+		70.094,
+		61.752,
+		79.427,
+		70.073,
+		60.229,
+		75.985,
+		62.161,
+		60.213,
+		57.037,
+		63.664,
+		58.329,
+		57.631,
+		55.184,
+		58.911,
+		55.175,
+		56.042,
+		63.152,
+		59.226,
+		63.874,
+		61.624,
+		63.648,
+		69.914,
+		67.926,
+		69.03,
+		56.283,
+		61.715,
+		62.456,
+		56.087,
+		64.377,
+		65.397,
+		61.458,
+		59.48,
+		61.76,
+		67.536,
+		65.716,
+		63.026,
+		71.493,
+		71.074,
+		66.993,
+		62.04,
+		61.59,
+		61.008,
+		56.85,
+		67.509,
+		64.539,
+		63.197,
+		70.439,
+		71.02,
+		80.243,
+		71.758,
+		62.62,
+		63.125,
+		76.321,
+		66.897,
+		67.521,
+		67.246,
+		72.056,
+		66.548,
+		63.417,
+		66.919,
+		64.482,
+		72.335,
+		67.431,
+		62.321,
+		62.272,
+		66.521,
+		66.214,
+		63.878,
+		75.655,
+		66.891,
+		67.67,
+		66.451,
+		61.542,
+		68.269,
+		76.429,
+		72.629,
+		61.568,
+		58.683,
+		59.656,
+		57.68,
+		63.385,
+		63.656,
+		62.801,
+		59.994,
+		58.29,
+		62.619,
+		69.201,
+		58.857,
+		59.311,
+		58.36,
+		58.061,
+		59.295,
+		62.67,
+		63.655,
+		56.866,
+		53.865,
+		54.814,
+		58.342,
+		62.091,
+		60.047,
+		58.043,
+		66.162,
+		69.423,
+		64.901,
+		58.606,
+		57.243,
+		57.947,
+		56.892,
+		53.418,
+		55.049,
+		54.758,
+		55.251,
+		54.426,
+		54.331,
+		59.056,
+		59.978,
+		54.44,
+		48.463,
+		51.936,
+		67.729,
+		63.506,
+		63.09,
+		56.917,
+		60.579,
+		61.47,
+		53.14,
+		53.984,
+		51.36,
+		53.672,
+		59.608,
+		57.868,
+		58.993,
+		53.272,
+		63.311,
+		54.316,
+		54.955,
+		58.203,
+		51.163,
+		64.45,
+		65.967,
+		65.837,
+		50.893,
+		49.849,
+		49.976,
+		49.843,
+		47.743,
+		46.831,
+		47.471,
+		49.368,
+		50.391,
+		44.188,
+		45.413,
+		45.954,
+		47.056,
+		58.253,
+		51.443,
+		48.597,
+		52.633,
+		54.207,
+		50.96,
+		48.391,
+		52.281,
+		51.831,
+		49.222,
+		52.693,
+		50.855,
+		50.216,
+		49.272,
+		50.733,
+		53.601,
+		54.409,
+		55.366,
+		52.767,
+		52.634,
+		49.912,
+		45.79,
+		52.772,
+		46.022,
+		50.137,
+		46.487,
+		45.456,
+		51.379,
+		51.758,
+		47.259,
+		43.327,
+		47.991,
+		43.065,
+		45.07,
+		43.721,
+		47.318,
+		49.04,
+		47.603,
+		47.453,
+		42.377,
+		43.986,
+		42.289,
+		41.927,
+		44.67,
+		45.366,
+		40.456,
+		42.88,
+		47.998,
+		44.541,
+		40.922,
+		41.177,
+		44.843,
+		49.245,
+		43.326,
+		43.687,
+		46.766,
+		48.504
+	],
+	"frame_p50_ms": 62.67,
+	"frame_p95_ms": 79.091,
+	"frame_p99_ms": 86.493,
+	"frame_stages": [
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"walk_(0.0, 0.0, -10.0)",
+		"settle_-10.0",
+		"settle_-10.0",
+		"settle_-10.0",
+		"settle_-10.0",
+		"settle_-10.0",
+		"settle_-10.0",
+		"settle_-10.0",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"walk_(0.0, 0.0, -16.0)",
+		"settle_-16.0",
+		"settle_-16.0",
+		"settle_-16.0",
+		"settle_-16.0",
+		"settle_-16.0",
+		"settle_-16.0",
+		"settle_-16.0",
+		"settle_-16.0",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"walk_(0.0, 0.0, -22.0)",
+		"settle_-22.0",
+		"settle_-22.0",
+		"settle_-22.0",
+		"settle_-22.0",
+		"settle_-22.0",
+		"settle_-22.0",
+		"settle_-22.0",
+		"settle_-22.0",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"walk_(0.0, 0.0, -36.0)",
+		"walk_(0.0, 0.0, -36.0)",
+		"walk_(0.0, 0.0, -36.0)",
+		"walk_(0.0, 0.0, -36.0)",
+		"walk_(0.0, 0.0, -36.0)",
+		"walk_(0.0, 0.0, -36.0)",
+		"walk_(0.0, 0.0, -36.0)",
+		"walk_(0.0, 0.0, -36.0)",
+		"walk_(0.0, 0.0, -36.0)",
+		"walk_(0.0, 0.0, -36.0)",
+		"walk_(0.0, 0.0, -36.0)",
+		"settle_-36.0",
+		"settle_-36.0",
+		"settle_-36.0",
+		"settle_-36.0",
+		"settle_-36.0",
+		"settle_-36.0",
+		"settle_-36.0",
+		"settle_-36.0",
+		"settle_-36.0",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"walk_(0.0, 0.0, -42.0)",
+		"settle_-42.0",
+		"settle_-42.0",
+		"settle_-42.0",
+		"settle_-42.0",
+		"settle_-42.0",
+		"settle_-42.0",
+		"settle_-42.0",
+		"settle_-42.0",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"walk_(0.0, 0.0, -32.0)",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"settle_-32.0",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"walk_(0.0, 0.0, -12.0)",
+		"settle_-12.0",
+		"settle_-12.0",
+		"settle_-12.0",
+		"settle_-12.0",
+		"settle_-12.0",
+		"settle_-12.0",
+		"settle_-12.0",
+		"settle_-12.0",
+		"settle_-12.0",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"walk_(0.0, 0.0, 7.0)",
+		"settle_7.0",
+		"settle_7.0",
+		"settle_7.0",
+		"settle_7.0",
+		"settle_7.0",
+		"settle_7.0",
+		"settle_7.0",
+		"settle_7.0",
+		"settle_7.0",
+		"settle_7.0",
+		"settle_7.0",
+		"settle_7.0"
+	],
+	"frames_drawn": 340,
+	"health": 100.0,
+	"lighting_available": true,
+	"lighting_samples": [],
+	"limits": "Linux X11 only; no Windows or target GPU claim. Walking uses Input actions, yaw/camera scripted; E is native OS press/release. Perf is an isolated no-enemy bench, not full mission. Mission/capture timings include interactions and are not a comparative benchmark. Screenshots need visual review; they are not video. Dummy audio does not prove audible output. Mission/perf: no teleports after normal new_game spawn. Lighting modes: explicitly teleported scene inspection, frozen living actors, deterministic process advances, not a native journey. Lighting-perf measures only named isolated windows; global timing includes setup and is not comparative.",
+	"low_quality": false,
+	"medkits": 2,
+	"mode": "perf",
+	"nodes_max": 600,
+	"perf_flashlight_before_warmup": {
+		"flashlight": {
+			"energy": 2.5,
+			"intent": false,
+			"mask": 1,
+			"position": [
+				0.379999995231628,
+				1.27999997138977,
+				6.40000009536743
+			],
+			"range": 14.0,
+			"shadow": true,
+			"visible": false
+		},
+		"stage": "before_warmup",
+		"usec": 4289048
+	},
+	"perf_flashlight_samples": [
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					6.33055543899536
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6253477
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					6.15000009536743
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6320810
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					5.85833311080933
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6391172
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					5.45833349227905
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6468185
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					4.91666793823242
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6554678
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					4.48333549499512
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6630854
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					4.05000305175781
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6697189
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					3.50833749771118
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6772661
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					2.96667098999023
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6854789
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					2.53333759307861
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6928718
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					1.9916707277298
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 6996712
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					1.55833733081818
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7069690
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					1.01667058467865
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7144715
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					0.583337187767029
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7216588
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					0.150003790855408
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7286296
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-0.391662955284119
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7362594
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-0.82499635219574
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7430090
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-1.36666297912598
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7509677
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-1.7999963760376
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7580590
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-2.23332977294922
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7645028
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-2.66666316986084
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7710625
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-3.09999656677246
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7784682
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-3.64166307449341
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7861922
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-4.07499647140503
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 7946447
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-4.50832986831665
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8015355
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-5.04999542236328
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8092867
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-5.59166097640991
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8176230
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-6.02499341964722
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8246277
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-6.56665897369385
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8313520
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-6.99999141693115
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8387003
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-7.54165697097778
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8469180
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-7.97498941421509
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8535900
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-8.51665496826172
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8612039
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-8.94998931884766
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8695332
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-9.49165725708008
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8773089
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-9.92499160766602
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8843656
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-10.5541591644287
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 8939785
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-10.9749927520752
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -10.0)",
+			"usec": 9037941
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-11.1347150802612
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-10.0",
+			"usec": 9111268
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-11.1499929428101
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-10.0",
+			"usec": 9184208
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-11.1499929428101
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-10.0",
+			"usec": 9248100
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-11.1499929428101
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-10.0",
+			"usec": 9321388
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-11.1499929428101
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-10.0",
+			"usec": 9388332
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-11.1499929428101
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-10.0",
+			"usec": 9472753
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-11.1499929428101
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-10.0",
+			"usec": 9546063
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-11.2194375991821
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 9612344
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-11.3999929428101
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 9682368
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-11.6916599273682
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 9745231
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-12.0916604995728
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 9805521
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-12.4166612625122
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 9866682
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-12.8499956130981
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 9928088
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-13.2833299636841
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 9989533
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-13.6083307266235
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 10051250
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-14.0416650772095
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 10127133
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-14.4749994277954
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 10192647
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-14.9083337783813
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 10263901
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-15.3416681289673
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 10329855
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-15.7750024795532
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 10394459
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-16.1000022888184
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 10451054
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-16.5125026702881
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 10509625
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-16.820837020874
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -16.0)",
+			"usec": 10569551
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.0180606842041
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-16.0",
+			"usec": 10632758
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.1041698455811
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-16.0",
+			"usec": 10695945
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.1083374023438
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-16.0",
+			"usec": 10756871
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.1083374023438
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-16.0",
+			"usec": 10820185
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.1083374023438
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-16.0",
+			"usec": 10885340
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.1083374023438
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-16.0",
+			"usec": 10956443
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.1083374023438
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-16.0",
+			"usec": 11035534
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.1083374023438
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-16.0",
+			"usec": 11114518
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.1777839660645
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11182495
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.3583374023438
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11243913
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-17.6500053405762
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11301245
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-18.0500049591064
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11367643
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-18.4833393096924
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11431730
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-18.9166736602783
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11496070
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-19.3500080108643
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11568224
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-19.7833423614502
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11634626
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-20.2166767120361
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11693303
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-20.6500110626221
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11753350
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-20.9750118255615
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11813316
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-21.4083461761475
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11874188
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-21.8416805267334
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 11939253
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-22.2750148773193
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 12006927
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-22.6666812896729
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 12073662
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-22.9472370147705
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -22.0)",
+			"usec": 12137596
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.08473777771
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-22.0",
+			"usec": 12199585
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.1708469390869
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-22.0",
+			"usec": 12265111
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.1750144958496
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-22.0",
+			"usec": 12340236
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.1750144958496
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-22.0",
+			"usec": 12410281
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.1750144958496
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-22.0",
+			"usec": 12478871
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.1750144958496
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-22.0",
+			"usec": 12538805
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.1750144958496
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-22.0",
+			"usec": 12602245
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.1750144958496
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-22.0",
+			"usec": 12664549
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.2444610595703
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 12733891
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.4250144958496
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 12800729
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-23.716682434082
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 12865120
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-24.1166820526123
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 12933742
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-24.6583499908447
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13014821
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-25.2000179290771
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13087797
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-25.6333522796631
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13157914
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-26.1750202178955
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13238352
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-26.7166881561279
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13321896
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-27.1500225067139
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13385444
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-27.6916904449463
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13454665
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-28.0166912078857
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13518073
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-28.4500255584717
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13585881
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-28.8833599090576
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13660716
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-29.3166942596436
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13723401
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-29.7500286102295
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13788901
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-30.1833629608154
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13853157
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-30.6166973114014
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13917819
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-31.0500316619873
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 13993665
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-31.5916996002197
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 14080736
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-32.025032043457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 14146590
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-32.4514236450195
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 14218975
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-32.8541984558105
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 14292880
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.0514183044434
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 14362241
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.1375312805176
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 14430934
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.1416969299316
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 14496655
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.1416969299316
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 14557931
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.1416969299316
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 14617383
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.1416969299316
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 14686844
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.1416969299316
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 14748921
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.1416969299316
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 14819335
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.2111396789551
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 14878429
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.3361396789551
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 14943526
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.6000289916992
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 15006501
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-33.9750289916992
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 15076507
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-34.4083633422852
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 15146457
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-34.8416976928711
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 15216551
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-35.275032043457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 15278303
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-35.8166999816895
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 15357730
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-36.2500343322754
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 15427803
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-36.6417007446289
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 15488032
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-36.9222564697266
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -36.0)",
+			"usec": 15564017
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.0916976928711
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-36.0",
+			"usec": 15626178
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.150032043457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-36.0",
+			"usec": 15686391
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.150032043457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-36.0",
+			"usec": 15743428
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.150032043457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-36.0",
+			"usec": 15807092
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.150032043457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-36.0",
+			"usec": 15865421
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.150032043457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-36.0",
+			"usec": 15923052
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.150032043457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-36.0",
+			"usec": 15978236
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.150032043457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-36.0",
+			"usec": 16037147
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.150032043457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-36.0",
+			"usec": 16092322
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.1916961669922
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16148364
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.3444747924805
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16211516
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.5319747924805
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16270742
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-37.8791961669922
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16334616
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-38.2000312805176
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16396240
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-38.6333656311035
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16459888
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-39.0666999816895
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16529802
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-39.5000343322754
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16597728
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-39.9333686828613
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16666758
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-40.3667030334473
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16723041
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-40.6917037963867
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16784756
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-41.1250381469727
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16847212
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-41.5583724975586
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16903299
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-41.9917068481445
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 16967676
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-42.4180946350098
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 17033073
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-42.6805953979492
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 17094531
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-42.9333724975586
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -42.0)",
+			"usec": 17154011
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-43.0750389099121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-42.0",
+			"usec": 17215771
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-43.1083717346191
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-42.0",
+			"usec": 17283307
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-43.1083717346191
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-42.0",
+			"usec": 17349023
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-43.1083717346191
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-42.0",
+			"usec": 17412049
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-43.1083717346191
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-42.0",
+			"usec": 17483542
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-43.1083717346191
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-42.0",
+			"usec": 17554616
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-43.1083717346191
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-42.0",
+			"usec": 17621609
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					0.379999995231628,
+					1.27999997138977,
+					-43.1083717346191
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-42.0",
+			"usec": 17683649
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000084638596,
+					1.27999997138977,
+					-41.8389320373535
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 17745239
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-41.658374786377
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 17806247
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-41.4500427246094
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 17863097
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000203847885,
+					1.27999997138977,
+					-41.0750427246094
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 17930606
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000233650208,
+					1.27999997138977,
+					-40.6417083740234
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 17995145
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000026345253,
+					1.27999997138977,
+					-40.2083740234375
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18058342
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000323057175,
+					1.27999997138977,
+					-39.7750396728516
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18128781
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-39.3417053222656
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18199801
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-38.9083709716797
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18280044
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					-38.4750366210938
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18351802
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					-38.0417022705078
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18414422
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000084638596,
+					1.27999997138977,
+					-37.6083679199219
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18477547
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000233650208,
+					1.27999997138977,
+					-37.0666999816895
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18553868
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000233650208,
+					1.27999997138977,
+					-36.6333656311035
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18620765
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000203847885,
+					1.27999997138977,
+					-36.2000312805176
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18688286
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000203847885,
+					1.27999997138977,
+					-35.7666969299316
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18755532
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000174045563,
+					1.27999997138977,
+					-35.3333625793457
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18827588
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000174045563,
+					1.27999997138977,
+					-34.9000282287598
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18894136
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-34.4666938781738
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 18957553
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-34.0333595275879
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 19024472
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					-33.600025177002
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 19088954
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					-33.166690826416
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 19161289
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					-32.7333564758301
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 19228720
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000084638596,
+					1.27999997138977,
+					-32.3000221252441
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 19291041
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000084638596,
+					1.27999997138977,
+					-31.8666858673096
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 19353313
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-31.4541873931885
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 19419834
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-31.1458549499512
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -32.0)",
+			"usec": 19486048
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-30.9486312866211
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 19549926
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-30.8625221252441
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 19625581
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-30.8583545684814
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 19692472
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-30.8583545684814
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 19760142
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-30.8583545684814
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 19826593
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-30.8583545684814
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 19888135
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-30.8583545684814
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 19956404
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-30.8583545684814
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-32.0",
+			"usec": 20032833
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					-30.7889080047607
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20105462
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-30.6083545684814
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20167030
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000174045563,
+					1.27999997138977,
+					-30.316686630249
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20225713
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000203847885,
+					1.27999997138977,
+					-30.0250205993652
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20285369
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000233650208,
+					1.27999997138977,
+					-29.5916862487793
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20343049
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000293254852,
+					1.27999997138977,
+					-29.1583518981934
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20406434
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000323057175,
+					1.27999997138977,
+					-28.7250175476074
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20470090
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000352859497,
+					1.27999997138977,
+					-28.400016784668
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20532891
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000382661819,
+					1.27999997138977,
+					-27.966682434082
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20592885
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000412464142,
+					1.27999997138977,
+					-27.6416816711426
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20651175
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000442266464,
+					1.27999997138977,
+					-27.2083473205566
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20713794
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000501871109,
+					1.27999997138977,
+					-26.7750129699707
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20782995
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000531673431,
+					1.27999997138977,
+					-26.4500122070312
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20841852
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000531673431,
+					1.27999997138977,
+					-26.0166778564453
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20901163
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000531673431,
+					1.27999997138977,
+					-25.5833435058594
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 20959523
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000352859497,
+					1.27999997138977,
+					-25.2583427429199
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21017584
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000323057175,
+					1.27999997138977,
+					-24.825008392334
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21076879
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000323057175,
+					1.27999997138977,
+					-24.391674041748
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21139549
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000472068787,
+					1.27999997138977,
+					-24.0666732788086
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21203204
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000442266464,
+					1.27999997138977,
+					-23.6333389282227
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21260070
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000293254852,
+					1.27999997138977,
+					-23.3083381652832
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21313935
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000442266464,
+					1.27999997138977,
+					-22.9833374023438
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21368749
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000412464142,
+					1.27999997138977,
+					-22.5500030517578
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21427091
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000026345253,
+					1.27999997138977,
+					-22.2250022888184
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21489182
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000233650208,
+					1.27999997138977,
+					-21.7916679382324
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21549229
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000382661819,
+					1.27999997138977,
+					-21.466667175293
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21607272
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000382661819,
+					1.27999997138977,
+					-21.033332824707
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21673434
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000352859497,
+					1.27999997138977,
+					-20.5999984741211
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21742857
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000352859497,
+					1.27999997138977,
+					-20.1666641235352
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21807758
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000174045563,
+					1.27999997138977,
+					-19.8416633605957
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21866364
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000174045563,
+					1.27999997138977,
+					-19.4083290100098
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21923607
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-18.9749946594238
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 21981554
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000293254852,
+					1.27999997138977,
+					-18.6499938964844
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22038446
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000293254852,
+					1.27999997138977,
+					-18.2166595458984
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22091864
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					-17.891658782959
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22146913
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000026345253,
+					1.27999997138977,
+					-17.5666580200195
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22201671
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000026345253,
+					1.27999997138977,
+					-17.1333236694336
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22256922
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000084638596,
+					1.27999997138977,
+					-16.8083229064941
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22311348
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000233650208,
+					1.27999997138977,
+					-16.4833221435547
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22365679
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000203847885,
+					1.27999997138977,
+					-16.0499877929688
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22424735
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					-15.7249870300293
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22484713
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000025033951,
+					1.27999997138977,
+					-15.2916526794434
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22539153
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000174045563,
+					1.27999997138977,
+					-14.9666519165039
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22587616
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999995231628,
+					1.27999997138977,
+					-14.6416511535645
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22639552
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999995231628,
+					1.27999997138977,
+					-14.2083168029785
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22707281
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-13.8833160400391
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22770787
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-13.4499816894531
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22833877
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999965429306,
+					1.27999997138977,
+					-13.1249809265137
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22890794
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					-12.7999801635742
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 22951373
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000084638596,
+					1.27999997138977,
+					-12.3666458129883
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 23012843
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999935626984,
+					1.27999997138977,
+					-12.0416450500488
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 23065983
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-11.6083106994629
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 23119967
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-11.3249778747559
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 23171327
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-11.0444221496582
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, -12.0)",
+			"usec": 23224999
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-10.9069213867188
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-12.0",
+			"usec": 23284607
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-10.8208103179932
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-12.0",
+			"usec": 23342475
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-10.8166437149048
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-12.0",
+			"usec": 23401468
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-10.8166437149048
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-12.0",
+			"usec": 23454740
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-10.8166437149048
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-12.0",
+			"usec": 23518051
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-10.8166437149048
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-12.0",
+			"usec": 23572367
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-10.8166437149048
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-12.0",
+			"usec": 23627322
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-10.8166437149048
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-12.0",
+			"usec": 23685525
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					-10.8166437149048
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_-12.0",
+			"usec": 23736688
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000084638596,
+					1.27999997138977,
+					-10.7749767303467
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 23801138
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					-10.6221990585327
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 23867105
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000174045563,
+					1.27999997138977,
+					-10.3583097457886
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 23932942
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000203847885,
+					1.27999997138977,
+					-9.98330974578857
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 23983835
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000233650208,
+					1.27999997138977,
+					-9.65830898284912
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24033684
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000026345253,
+					1.27999997138977,
+					-9.33330821990967
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24083660
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000293254852,
+					1.27999997138977,
+					-9.00830745697021
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24133503
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000323057175,
+					1.27999997138977,
+					-8.68330669403076
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24181246
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000352859497,
+					1.27999997138977,
+					-8.35830593109131
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24228077
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000382661819,
+					1.27999997138977,
+					-8.03330516815186
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24275548
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000412464142,
+					1.27999997138977,
+					-7.70830488204956
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24324916
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000442266464,
+					1.27999997138977,
+					-7.38330459594727
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24375307
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000472068787,
+					1.27999997138977,
+					-7.05830526351929
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24419495
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000472068787,
+					1.27999997138977,
+					-6.84163904190063
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24464908
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000501871109,
+					1.27999997138977,
+					-6.51663970947266
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24510862
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000323057175,
+					1.27999997138977,
+					-6.19164037704468
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24557918
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000472068787,
+					1.27999997138977,
+					-5.8666410446167
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24616171
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000323057175,
+					1.27999997138977,
+					-5.54164171218872
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24667614
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000472068787,
+					1.27999997138977,
+					-5.21664237976074
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24716211
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000293254852,
+					1.27999997138977,
+					-4.89164304733276
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24768844
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000442266464,
+					1.27999997138977,
+					-4.56664371490479
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24823051
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000026345253,
+					1.27999997138977,
+					-4.24164438247681
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24874011
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000412464142,
+					1.27999997138977,
+					-3.91664505004883
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24922402
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000026345253,
+					1.27999997138977,
+					-3.59164547920227
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 24974683
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000412464142,
+					1.27999997138977,
+					-3.26664590835571
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25026514
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000233650208,
+					1.27999997138977,
+					-2.94164562225342
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25075736
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000382661819,
+					1.27999997138977,
+					-2.61664581298828
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25128429
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000203847885,
+					1.27999997138977,
+					-2.29164552688599
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25179284
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000352859497,
+					1.27999997138977,
+					-1.96664571762085
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25229500
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000203847885,
+					1.27999997138977,
+					-1.64164543151855
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25278772
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000352859497,
+					1.27999997138977,
+					-1.31664562225342
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25329505
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000174045563,
+					1.27999997138977,
+					-0.991645395755768
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25383106
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					-0.558311998844147
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25437515
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000293254852,
+					1.27999997138977,
+					-0.23331207036972
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25492881
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					0.0916880965232849
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25545648
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000293254852,
+					1.27999997138977,
+					0.416688024997711
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25598282
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					0.741688132286072
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25648194
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000026345253,
+					1.27999997138977,
+					1.0666880607605
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25693984
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000084638596,
+					1.27999997138977,
+					1.3916882276535
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25746756
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000233650208,
+					1.27999997138977,
+					1.71668815612793
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25792778
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000084638596,
+					1.27999997138977,
+					2.04168820381165
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25842915
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000233650208,
+					1.27999997138977,
+					2.36668825149536
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25889402
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					2.69168829917908
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25934858
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000203847885,
+					1.27999997138977,
+					3.01668810844421
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 25986237
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000025033951,
+					1.27999997138977,
+					3.34168839454651
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26037995
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000174045563,
+					1.27999997138977,
+					3.66668820381165
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26085254
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999995231628,
+					1.27999997138977,
+					3.99168848991394
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26128581
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000174045563,
+					1.27999997138977,
+					4.31668853759766
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26176572
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999995231628,
+					1.27999997138977,
+					4.64168834686279
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26219637
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999995231628,
+					1.27999997138977,
+					4.85835456848145
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26264707
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.38000014424324,
+					1.27999997138977,
+					5.18335390090942
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26308428
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999965429306,
+					1.27999997138977,
+					5.5083532333374
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26355746
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					5.83335256576538
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26404786
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000114440918,
+					1.27999997138977,
+					6.05001878738403
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26452389
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999935626984,
+					1.27999997138977,
+					6.37501811981201
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26499842
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000084638596,
+					1.27999997138977,
+					6.70001745223999
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26542219
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					7.02501678466797
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26586205
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.379999905824661,
+					1.27999997138977,
+					7.24168300628662
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26628494
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					7.54584932327271
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26670421
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					7.7139048576355
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26715091
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					7.91390514373779
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "walk_(0.0, 0.0, 7.0)",
+			"usec": 26760457
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.01251697540283
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 26800913
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.10834980010986
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 26843793
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.14168357849121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 26891791
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.14168357849121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 26936332
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.14168357849121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 26977254
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.14168357849121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 27018431
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.14168357849121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 27063274
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.14168357849121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 27112519
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.14168357849121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 27155845
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.14168357849121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 27199532
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.14168357849121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 27246298
+		},
+		{
+			"flashlight": {
+				"energy": 2.5,
+				"intent": false,
+				"mask": 1,
+				"position": [
+					-0.380000054836273,
+					1.27999997138977,
+					8.14168357849121
+				],
+				"range": 14.0,
+				"shadow": true,
+				"visible": false
+			},
+			"stage": "settle_7.0",
+			"usec": 27294802
+		}
+	],
+	"performance_valid": true,
+	"phase": 0,
+	"renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+	"rendering_method": "gl_compatibility",
+	"require_lighting": true,
+	"reserve": 48,
+	"resolution": [
+		1280,
+		720
+	],
+	"resources_max": 101,
+	"scenario": "refuge -> maintenance -> archives -> refuge; enemies removed; no circuit switching",
+	"scene_inspection": false,
+	"schema": 3,
+	"shots": 0,
+	"travelled_m": 92.4334392547607,
+	"waypoint_positions": [
+		[
+			0.0,
+			0.0,
+			-10.0
+		],
+		[
+			0.0,
+			0.0,
+			-16.0
+		],
+		[
+			0.0,
+			0.0,
+			-22.0
+		],
+		[
+			0.0,
+			0.0,
+			-32.0
+		],
+		[
+			0.0,
+			0.0,
+			-36.0
+		],
+		[
+			0.0,
+			0.0,
+			-42.0
+		],
+		[
+			0.0,
+			0.0,
+			-32.0
+		],
+		[
+			0.0,
+			0.0,
+			-12.0
+		],
+		[
+			0.0,
+			0.0,
+			7.0
+		]
+	],
+	"waypoints_completed": 9
+}

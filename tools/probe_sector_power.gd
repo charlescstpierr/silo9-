@@ -3,6 +3,9 @@ extends SceneTree
 var app: Node
 var output := ""
 var mode := "perf"
+var flashlight_requested := false
+var perf_flashlight_before_warmup: Dictionary = {}
+var perf_flashlight_samples: Array[Dictionary] = []
 var ending := "mother"
 var display := ":100"
 var require_lighting := false
@@ -39,6 +42,7 @@ func _initialize() -> void:
 		if argument == "--require-lighting": require_lighting = true
 		if argument == "--require-circuits": require_circuits = true
 		if argument == "--low": low = true
+		if argument == "--flashlight-on": flashlight_requested = true
 	run.call_deferred()
 
 func check(ok: bool, message: String) -> bool:
@@ -48,6 +52,7 @@ func check(ok: bool, message: String) -> bool:
 	return ok
 
 func run() -> void:
+	check(not flashlight_requested or mode == "perf", "--flashlight-on requires --mode perf")
 	check(DisplayServer.get_name().to_lower() == "x11", "X11 required")
 	check(RenderingServer.get_current_rendering_method() == "gl_compatibility", "Compatibility required")
 	check(RenderingServer.is_render_loop_enabled(), "render loop required")
@@ -81,10 +86,17 @@ func run() -> void:
 		app.state.energy = 0
 		app.state.changed.emit()
 	if mode == "perf":
+		if flashlight_requested:
+			var flashlight := app.player.find_child("Flashlight", true, false) as SpotLight3D
+			if check(flashlight != null and app.player.has_method("toggle_flashlight"), "perf ON requires a physical flashlight"):
+				if app.player.get("flashlight_on") == false:
+					check(app.player.call("toggle_flashlight") == true, "perf flashlight toggle accepted")
+				check(app.player.get("flashlight_on") == true and flashlight.is_visible_in_tree(), "perf flashlight enabled before warmup")
 		for enemy in app.world.enemies:
 			enemy.queue_free()
 		app.world.enemies.clear()
 		await process_frame
+		perf_flashlight_before_warmup = {"flashlight": flashlight_observation(), "usec": Time.get_ticks_usec(), "stage": "before_warmup"}
 	await wait(2.0)
 	if require_lighting and mode in ["mission", "capture"] and failures.is_empty(): await native_flashlight_on()
 	var drawn_start := Engine.get_frames_drawn()
@@ -99,7 +111,7 @@ func run() -> void:
 	check(drawn > 0, "no frames drawn")
 	if mode in ["perf", "mission", "capture"]: check(travelled >= 90.0 and waypoints >= 8, "route incomplete")
 	var report := {
-		"schema": 2, "waypoint_positions": waypoint_positions,
+		"schema": 3 if mode == "perf" else 2, "waypoint_positions": waypoint_positions,
 		"require_lighting": require_lighting, "lighting_available": lighting_available,
 		"scene_inspection": mode in ["lighting", "lighting-perf"], "lighting_samples": lighting_samples, "cost_windows": cost_windows,
 		"final_observation": observation("final"), "mode": mode, "low_quality": low, "expected_ending": ending, "ending": app.state.ending,
@@ -116,6 +128,10 @@ func run() -> void:
 		"scenario": "controlled poses; actors frozen alive; phase1 fixture; zero energy; colossus suppressed; no native journey" if mode in ["lighting", "lighting-perf"] else "refuge -> maintenance -> archives -> refuge; enemies removed; no circuit switching" if mode == "perf" else "fresh mission with live combat and native E interactions",
 		"limits": "Linux X11 only; no Windows or target GPU claim. Walking uses Input actions, yaw/camera scripted; E is native OS press/release. Perf is an isolated no-enemy bench, not full mission. Mission/capture timings include interactions and are not a comparative benchmark. Screenshots need visual review; they are not video. Dummy audio does not prove audible output. Mission/perf: no teleports after normal new_game spawn. Lighting modes: explicitly teleported scene inspection, frozen living actors, deterministic process advances, not a native journey. Lighting-perf measures only named isolated windows; global timing includes setup and is not comparative."
 	}
+	if mode == "perf":
+		report["flashlight_requested"] = flashlight_requested
+		report["perf_flashlight_before_warmup"] = perf_flashlight_before_warmup
+		report["perf_flashlight_samples"] = perf_flashlight_samples
 	var file := FileAccess.open(output + "/journey.json", FileAccess.WRITE)
 	if file == null:
 		printerr("cannot write journey.json")
@@ -316,6 +332,13 @@ func aim(point: Vector3) -> void:
 	app.player.rotation.y = atan2(-offset.x, -offset.z)
 	app.player.camera.rotation.x = atan2(offset.y, Vector2(offset.x, offset.z).length())
 
+func flashlight_observation() -> Variant:
+	var flashlight := app.player.find_child("Flashlight", true, false) as SpotLight3D
+	if flashlight == null: return null
+	var actual := {"visible": flashlight.is_visible_in_tree(), "energy": flashlight.light_energy, "shadow": flashlight.shadow_enabled, "position": vec(flashlight.global_position), "mask": flashlight.light_cull_mask, "range": flashlight.spot_range}
+	if mode == "perf": actual["intent"] = app.player.get("flashlight_on")
+	return actual
+
 func observation(label: String) -> Dictionary:
 	var consumers: Array[Dictionary] = []
 	var materials: Dictionary = {}
@@ -336,10 +359,7 @@ func observation(label: String) -> Dictionary:
 	var lights: Array[Dictionary] = []
 	for light in app.world.lights:
 		lights.append({"id": str(light.name), "position": vec(light.global_position), "visible": light.is_visible_in_tree(), "energy": light.light_energy, "color": str(light.light_color), "shadow": light.shadow_enabled, "mask": light.light_cull_mask, "range": light.omni_range})
-	var flashlight: Node = app.player.find_child("Flashlight", true, false)
-	var flashlight_actual: Variant = null
-	if flashlight is SpotLight3D:
-		flashlight_actual = {"visible": flashlight.is_visible_in_tree(), "energy": flashlight.light_energy, "shadow": flashlight.shadow_enabled, "position": vec(flashlight.global_position), "mask": flashlight.light_cull_mask, "range": flashlight.spot_range}
+	var flashlight_actual: Variant = flashlight_observation()
 	var living: Array[Dictionary] = []
 	for enemy in app.world.enemies:
 		if is_instance_valid(enemy) and enemy.health > 0: living.append({"name": str(enemy.name), "position": vec(enemy.global_position), "health": enemy.health, "visible": enemy.is_visible_in_tree()})
@@ -371,6 +391,8 @@ func capture(label: String) -> void:
 func _process(_delta: float) -> bool:
 	if measuring:
 		var now := Time.get_ticks_usec()
+		if mode == "perf":
+			perf_flashlight_samples.append({"flashlight": flashlight_observation(), "usec": now, "stage": stage})
 		if previous_usec > 0:
 			intervals.append(float(now - previous_usec) / 1000.0)
 			stages.append(stage)

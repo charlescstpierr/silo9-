@@ -1,0 +1,27 @@
+{
+  "command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "warning",
+    "-f",
+    "x11grab",
+    "-video_size",
+    "1280x720",
+    "-framerate",
+    "15",
+    "-i",
+    ":100",
+    "-c:v",
+    "libx264",
+    "-preset",
+    "ultrafast",
+    "-crf",
+    "25",
+    "-pix_fmt",
+    "yuv420p",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/native-film/mother.mp4"
+  ],
+  "exit": 0,
+  "sha256": "b43f5db7726fbb168e9baffe7298019837e19da0f7dc6a5b3a8ecc225243fbbc"
+}

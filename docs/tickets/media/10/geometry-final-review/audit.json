@@ -1,0 +1,120 @@
+{
+  "tool_and_archive_hashes": "PASS",
+  "eight_math_functions_ast_identical": true,
+  "captures": {
+    "base": {
+      "exit_code_recorded": 0,
+      "source_files_currently_matching": 84,
+      "dump_sha256": "455832459189f4413eeb9e65d0b8c741fdfc3bd05a3d1321b784c85d4dab83cb",
+      "stats": {
+        "actor": {
+          "instances": 142,
+          "mesh_instances": 142,
+          "multimesh_nodes": 0,
+          "surfaces": 143,
+          "triangles": 22896
+        },
+        "animated": {
+          "instances": 9,
+          "mesh_instances": 3,
+          "multimesh_nodes": 2,
+          "surfaces": 9,
+          "triangles": 1088
+        },
+        "decor": {
+          "instances": 105,
+          "mesh_instances": 105,
+          "multimesh_nodes": 0,
+          "surfaces": 105,
+          "triangles": 60644
+        },
+        "static": {
+          "instances": 396,
+          "mesh_instances": 112,
+          "multimesh_nodes": 41,
+          "surfaces": 400,
+          "triangles": 8940
+        }
+      },
+      "collider_count": 76
+    },
+    "candidate": {
+      "exit_code_recorded": 0,
+      "source_files_currently_matching": 84,
+      "dump_sha256": "76e0326fffc7443f2c1ceb3365ec52cec5d8d9f3007c521a43ee81b5a53e428a",
+      "stats": {
+        "actor": {
+          "instances": 142,
+          "mesh_instances": 142,
+          "multimesh_nodes": 0,
+          "surfaces": 143,
+          "triangles": 22896
+        },
+        "animated": {
+          "instances": 9,
+          "mesh_instances": 3,
+          "multimesh_nodes": 2,
+          "surfaces": 9,
+          "triangles": 1088
+        },
+        "decor": {
+          "instances": 98,
+          "mesh_instances": 98,
+          "multimesh_nodes": 0,
+          "surfaces": 98,
+          "triangles": 42068
+        },
+        "static": {
+          "instances": 396,
+          "mesh_instances": 112,
+          "multimesh_nodes": 41,
+          "surfaces": 400,
+          "triangles": 8940
+        }
+      },
+      "collider_count": 76
+    }
+  },
+  "recorded_comparison": {
+    "check_count": 30,
+    "totals": {
+      "preexisting": 160,
+      "remaining": 160,
+      "removed": 0,
+      "added": 0
+    },
+    "collider_sha256": "027fdcaf4eca80c51b4e92dee5a022cfb94e2258e0e2e350852d41b69d058e03",
+    "reported_hits_checked_against_both_dumps": true,
+    "full_intersection_scan_repeated": false
+  },
+  "guard_runs_after_implementation": [
+    {
+      "scenario": "missing-segment",
+      "label": "initial",
+      "exit_code_recorded": 0,
+      "output_exists": true,
+      "injected_copy_matches": true
+    },
+    {
+      "scenario": "missing-segment",
+      "label": "fixed",
+      "exit_code_recorded": 2,
+      "output_exists": false,
+      "injected_copy_matches": true
+    },
+    {
+      "scenario": "renamed-volume",
+      "label": "initial",
+      "exit_code_recorded": 0,
+      "output_exists": true,
+      "injected_copy_matches": true
+    },
+    {
+      "scenario": "renamed-volume",
+      "label": "fixed",
+      "exit_code_recorded": 2,
+      "output_exists": false,
+      "injected_copy_matches": true
+    }
+  ]
+}

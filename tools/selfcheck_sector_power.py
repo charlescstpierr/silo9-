@@ -1,5 +1,8 @@
 import unittest
 import copy
+import subprocess
+import sys
+from pathlib import Path
 from prove_sector_power import validate_result, LIGHT_IDS
 
 
@@ -53,6 +56,88 @@ def cost_fixture():
         windows.append({'label': label, 'frames_drawn': 61, 'intervals_ms': [100] * 60, 'observation_after': after, 'measurement_start_usec': 1000000, 'measurement_end_usec': 7000000})
         rows.append(row)
     return report | {'mode': 'lighting-perf', 'lighting_samples': rows, 'cost_windows': windows}
+
+
+def perf_flashlight_fixture(enabled=True):
+    lamp = {'visible': enabled, 'intent': enabled, 'energy': 2.0, 'range': 16.0, 'mask': 1, 'shadow': True}
+    sample = {'usec': 1000000, 'stage': 'walk', 'flashlight': lamp}
+    report = valid() | {'schema': 3, 'flashlight_requested': enabled, 'low_quality': False,
+                        'perf_flashlight_before_warmup': copy.deepcopy(sample),
+                        'perf_flashlight_samples': [copy.deepcopy(sample) for _ in range(121)],
+                        'final_observation': {'flashlight': copy.deepcopy(lamp)}}
+    return report
+
+
+class PerfFlashlightValidation(unittest.TestCase):
+    def test_on_and_explicit_off_observations_are_accepted(self):
+        for enabled in [False, True]:
+            self.assertEqual(validate_result(perf_flashlight_fixture(enabled), 0, ''), [])
+        self.assertEqual(validate_result(valid(), 0, ''), [])
+        report = perf_flashlight_fixture()
+        report['low_quality'] = True
+        for actual in [report['perf_flashlight_before_warmup'], *report['perf_flashlight_samples'], report['final_observation']]:
+            actual['flashlight']['shadow'] = False
+        self.assertEqual(validate_result(report, 0, ''), [])
+
+    def test_wrapper_request_binds_report_without_rewriting_it(self):
+        for enabled in [False, True]:
+            report = perf_flashlight_fixture(not enabled)
+            before = copy.deepcopy(report)
+            self.assertTrue(validate_result(report, 0, '', flashlight_requested=enabled))
+            self.assertEqual(report, before)
+        self.assertTrue(validate_result(valid(), 0, '', flashlight_requested=False))
+
+    def test_requested_on_observed_off_is_rejected(self):
+        report = perf_flashlight_fixture()
+        report['final_observation']['flashlight']['visible'] = False
+        self.assertTrue(validate_result(report, 0, ''))
+
+    def test_observed_route_change_is_rejected(self):
+        for enabled in [False, True]:
+            for field in ['visible', 'intent']:
+                report = perf_flashlight_fixture(enabled)
+                report['perf_flashlight_samples'][60]['flashlight'][field] = not enabled
+                with self.subTest(enabled=enabled, field=field):
+                    self.assertTrue(validate_result(report, 0, ''))
+
+    def test_before_warmup_state_is_checked(self):
+        report = perf_flashlight_fixture()
+        report['perf_flashlight_before_warmup']['flashlight']['visible'] = False
+        self.assertTrue(validate_result(report, 0, ''))
+
+    def test_missing_on_observations_or_properties_are_rejected(self):
+        for field in ['visible', 'intent', 'energy', 'range', 'mask', 'shadow']:
+            report = perf_flashlight_fixture()
+            del report['perf_flashlight_samples'][60]['flashlight'][field]
+            with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+        for field in ['perf_flashlight_before_warmup', 'perf_flashlight_samples', 'final_observation']:
+            report = perf_flashlight_fixture()
+            del report[field]
+            with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+        report = perf_flashlight_fixture()
+        report['perf_flashlight_samples'][60]['flashlight'] = None
+        self.assertTrue(validate_result(report, 0, ''))
+        report = perf_flashlight_fixture()
+        report['perf_flashlight_samples'].pop()
+        self.assertTrue(validate_result(report, 0, ''))
+
+    def test_on_must_emit_and_match_quality(self):
+        for field, value in [('energy', 0), ('energy', float('nan')), ('range', 0), ('mask', 2), ('shadow', False)]:
+            report = perf_flashlight_fixture()
+            report['perf_flashlight_samples'][60]['flashlight'][field] = value
+            with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+        report = perf_flashlight_fixture()
+        report['low_quality'] = True
+        self.assertTrue(validate_result(report, 0, ''))
+
+    def test_other_modes_reject_flag_before_starting_runtime(self):
+        for mode in ['mission', 'capture', 'lighting', 'lighting-perf']:
+            result = subprocess.run([sys.executable, str(Path(__file__).with_name('prove_sector_power.py')),
+                                     '--project', '/absent-project', '--godot', '/absent-engine', '--output', '/absent-output',
+                                     '--mode', mode, '--flashlight-on'], capture_output=True, text=True)
+            with self.subTest(mode=mode):
+                self.assertEqual(result.returncode, 2)
+                self.assertIn('--flashlight-on requires --mode perf', result.stderr)
 
 class ProofValidation(unittest.TestCase):
 

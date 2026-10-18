@@ -1,0 +1,248 @@
+FFFFFFFFFFFFFFF.FFFFFFFFFFFE................
+======================================================================
+ERROR: test_wrapper_request_binds_report_without_rewriting_it (__main__.PerfFlashlightValidation.test_wrapper_request_binds_report_without_rewriting_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 81, in test_wrapper_request_binds_report_without_rewriting_it
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=enabled))
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: validate_result() got an unexpected keyword argument 'flashlight_requested'
+
+======================================================================
+FAIL: test_before_warmup_state_is_checked (__main__.PerfFlashlightValidation.test_before_warmup_state_is_checked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 101, in test_before_warmup_state_is_checked
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_on_observations_or_properties_are_rejected (__main__.PerfFlashlightValidation.test_missing_on_observations_or_properties_are_rejected) (field='visible')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 107, in test_missing_on_observations_or_properties_are_rejected
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_on_observations_or_properties_are_rejected (__main__.PerfFlashlightValidation.test_missing_on_observations_or_properties_are_rejected) (field='intent')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 107, in test_missing_on_observations_or_properties_are_rejected
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_on_observations_or_properties_are_rejected (__main__.PerfFlashlightValidation.test_missing_on_observations_or_properties_are_rejected) (field='energy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 107, in test_missing_on_observations_or_properties_are_rejected
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_on_observations_or_properties_are_rejected (__main__.PerfFlashlightValidation.test_missing_on_observations_or_properties_are_rejected) (field='range')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 107, in test_missing_on_observations_or_properties_are_rejected
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_on_observations_or_properties_are_rejected (__main__.PerfFlashlightValidation.test_missing_on_observations_or_properties_are_rejected) (field='mask')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 107, in test_missing_on_observations_or_properties_are_rejected
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_on_observations_or_properties_are_rejected (__main__.PerfFlashlightValidation.test_missing_on_observations_or_properties_are_rejected) (field='shadow')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 107, in test_missing_on_observations_or_properties_are_rejected
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_on_observations_or_properties_are_rejected (__main__.PerfFlashlightValidation.test_missing_on_observations_or_properties_are_rejected) (field='perf_flashlight_before_warmup')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 111, in test_missing_on_observations_or_properties_are_rejected
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_on_observations_or_properties_are_rejected (__main__.PerfFlashlightValidation.test_missing_on_observations_or_properties_are_rejected) (field='perf_flashlight_samples')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 111, in test_missing_on_observations_or_properties_are_rejected
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_on_observations_or_properties_are_rejected (__main__.PerfFlashlightValidation.test_missing_on_observations_or_properties_are_rejected) (field='final_observation')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 111, in test_missing_on_observations_or_properties_are_rejected
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_missing_on_observations_or_properties_are_rejected (__main__.PerfFlashlightValidation.test_missing_on_observations_or_properties_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 114, in test_missing_on_observations_or_properties_are_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_observed_route_change_is_rejected (__main__.PerfFlashlightValidation.test_observed_route_change_is_rejected) (enabled=False, field='visible')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 96, in test_observed_route_change_is_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_observed_route_change_is_rejected (__main__.PerfFlashlightValidation.test_observed_route_change_is_rejected) (enabled=False, field='intent')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 96, in test_observed_route_change_is_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_observed_route_change_is_rejected (__main__.PerfFlashlightValidation.test_observed_route_change_is_rejected) (enabled=True, field='visible')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 96, in test_observed_route_change_is_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_observed_route_change_is_rejected (__main__.PerfFlashlightValidation.test_observed_route_change_is_rejected) (enabled=True, field='intent')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 96, in test_observed_route_change_is_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_on_must_emit_and_match_quality (__main__.PerfFlashlightValidation.test_on_must_emit_and_match_quality) (field='energy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 123, in test_on_must_emit_and_match_quality
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_on_must_emit_and_match_quality (__main__.PerfFlashlightValidation.test_on_must_emit_and_match_quality) (field='energy')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 123, in test_on_must_emit_and_match_quality
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_on_must_emit_and_match_quality (__main__.PerfFlashlightValidation.test_on_must_emit_and_match_quality) (field='range')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 123, in test_on_must_emit_and_match_quality
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_on_must_emit_and_match_quality (__main__.PerfFlashlightValidation.test_on_must_emit_and_match_quality) (field='mask')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 123, in test_on_must_emit_and_match_quality
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_on_must_emit_and_match_quality (__main__.PerfFlashlightValidation.test_on_must_emit_and_match_quality) (field='shadow')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 123, in test_on_must_emit_and_match_quality
+    with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
+                                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_on_must_emit_and_match_quality (__main__.PerfFlashlightValidation.test_on_must_emit_and_match_quality)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 126, in test_on_must_emit_and_match_quality
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_other_modes_reject_flag_before_starting_runtime (__main__.PerfFlashlightValidation.test_other_modes_reject_flag_before_starting_runtime) (mode='mission')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 135, in test_other_modes_reject_flag_before_starting_runtime
+    self.assertIn('--flashlight-on requires --mode perf', result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '--flashlight-on requires --mode perf' not found in 'usage: prove_sector_power.py [-h] --project PROJECT --godot GODOT\n                             --output OUTPUT\n                             --mode {perf,mission,capture,lighting,lighting-perf}\n                             [--ending {mother,n7}] [--display DISPLAY]\n                             [--require-circuits] [--require-lighting] [--low]\n                             [--timeout TIMEOUT]\nprove_sector_power.py: error: unrecognized arguments: --flashlight-on\n'
+
+======================================================================
+FAIL: test_other_modes_reject_flag_before_starting_runtime (__main__.PerfFlashlightValidation.test_other_modes_reject_flag_before_starting_runtime) (mode='capture')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 135, in test_other_modes_reject_flag_before_starting_runtime
+    self.assertIn('--flashlight-on requires --mode perf', result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '--flashlight-on requires --mode perf' not found in 'usage: prove_sector_power.py [-h] --project PROJECT --godot GODOT\n                             --output OUTPUT\n                             --mode {perf,mission,capture,lighting,lighting-perf}\n                             [--ending {mother,n7}] [--display DISPLAY]\n                             [--require-circuits] [--require-lighting] [--low]\n                             [--timeout TIMEOUT]\nprove_sector_power.py: error: unrecognized arguments: --flashlight-on\n'
+
+======================================================================
+FAIL: test_other_modes_reject_flag_before_starting_runtime (__main__.PerfFlashlightValidation.test_other_modes_reject_flag_before_starting_runtime) (mode='lighting')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 135, in test_other_modes_reject_flag_before_starting_runtime
+    self.assertIn('--flashlight-on requires --mode perf', result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '--flashlight-on requires --mode perf' not found in 'usage: prove_sector_power.py [-h] --project PROJECT --godot GODOT\n                             --output OUTPUT\n                             --mode {perf,mission,capture,lighting,lighting-perf}\n                             [--ending {mother,n7}] [--display DISPLAY]\n                             [--require-circuits] [--require-lighting] [--low]\n                             [--timeout TIMEOUT]\nprove_sector_power.py: error: unrecognized arguments: --flashlight-on\n'
+
+======================================================================
+FAIL: test_other_modes_reject_flag_before_starting_runtime (__main__.PerfFlashlightValidation.test_other_modes_reject_flag_before_starting_runtime) (mode='lighting-perf')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 135, in test_other_modes_reject_flag_before_starting_runtime
+    self.assertIn('--flashlight-on requires --mode perf', result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '--flashlight-on requires --mode perf' not found in 'usage: prove_sector_power.py [-h] --project PROJECT --godot GODOT\n                             --output OUTPUT\n                             --mode {perf,mission,capture,lighting,lighting-perf}\n                             [--ending {mother,n7}] [--display DISPLAY]\n                             [--require-circuits] [--require-lighting] [--low]\n                             [--timeout TIMEOUT]\nprove_sector_power.py: error: unrecognized arguments: --flashlight-on\n'
+
+======================================================================
+FAIL: test_requested_on_observed_off_is_rejected (__main__.PerfFlashlightValidation.test_requested_on_observed_off_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/perf-proof-tools/selfcheck_sector_power.py", line 88, in test_requested_on_observed_off_is_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.616s
+
+FAILED (failures=26, errors=1)

@@ -1,0 +1,65 @@
+{
+  "missions": [
+    {
+      "name": "native-mother",
+      "head": "64a948545d63764cb500f6ac1a02380c5d1513f3",
+      "exit": 0,
+      "validation_errors": [],
+      "source_unchanged": true,
+      "distance_m": 193.043108476326,
+      "health": 100.0,
+      "phase": 4,
+      "ending": "mother",
+      "shots": 15,
+      "defeated": 6,
+      "native_E_commands": 14,
+      "breakers": 6,
+      "flashlight_events": [
+        {
+          "id": "flashlight_native_f",
+          "native_exit": 0,
+          "intent_before": false,
+          "intent_after": true,
+          "visible_before": false,
+          "visible_after": true
+        }
+      ]
+    },
+    {
+      "name": "native-n7-low",
+      "head": "64a948545d63764cb500f6ac1a02380c5d1513f3",
+      "exit": 0,
+      "validation_errors": [],
+      "source_unchanged": true,
+      "distance_m": 187.480932635721,
+      "health": 70.0,
+      "phase": 4,
+      "ending": "n7",
+      "shots": 15,
+      "defeated": 6,
+      "native_E_commands": 14,
+      "breakers": 6,
+      "flashlight_events": [
+        {
+          "id": "flashlight_native_f",
+          "native_exit": 0,
+          "intent_before": false,
+          "intent_after": true,
+          "visible_before": false,
+          "visible_after": true
+        }
+      ]
+    }
+  ],
+  "film": {
+    "width": 1280,
+    "height": 720,
+    "r_frame_rate": "15/1",
+    "nb_read_frames": "1105",
+    "duration": "73.666667",
+    "ffprobe_exit": 0,
+    "decode_exit": 0,
+    "writer_exit": 0
+  },
+  "limits": "Source journeys; E/F are native OS; walking physical Input, aim scripted, combat/scan/ending through real game functions. Film no audio; no continuous viewing yet; timings include recording/captures and are not performance benchmarks."
+}

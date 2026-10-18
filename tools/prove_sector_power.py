@@ -62,14 +62,14 @@ def validate_observation(actual, row, report):
     return errors
 
 
-def validate_result(report, exit_code, log):
+def validate_result(report, exit_code, log, *, flashlight_requested=None):
     try:
-        return _validate_result(report, exit_code, log)
+        return _validate_result(report, exit_code, log, flashlight_requested)
     except (TypeError, ValueError, AttributeError, KeyError, OverflowError, StopIteration):
         return ['malformed proof report']
 
 
-def _validate_result(report, exit_code, log):
+def _validate_result(report, exit_code, log, flashlight_requested=None):
     errors = list(report.get('failures', ['missing failures field']))
     if exit_code:
         errors.append(f'engine exit {exit_code}')
@@ -87,6 +87,24 @@ def _validate_result(report, exit_code, log):
         errors.append('drawn frames disagree with intervals')
     if mode == 'perf' and (report.get('performance_valid') is not True or report.get('waypoint_positions') != PERF_ROUTE or report.get('waypoints_completed') != 9):
         errors.append('historical route contract absent')
+    if mode == 'perf' and (flashlight_requested is not None or 'flashlight_requested' in report or report.get('schema', 0) >= 3):
+        requested = report['flashlight_requested']
+        if type(requested) is not bool or flashlight_requested is not None and requested is not flashlight_requested:
+            errors.append('requested perf flashlight scenario mismatch')
+        if report.get('schema') != 3:
+            errors.append('perf flashlight observation schema absent')
+        route = report['perf_flashlight_samples']
+        if len(route) != len(samples) + 1:
+            errors.append('perf flashlight observations do not cover measured callbacks')
+        observations = [report['perf_flashlight_before_warmup'], *route, report['final_observation']]
+        for actual in observations:
+            light = actual['flashlight']
+            if light is None and requested is False:
+                continue
+            if light.get('visible') is not requested or light.get('intent') is not requested:
+                errors.append('physical perf flashlight differs from request')
+            if requested and (not emitting(light) or light.get('shadow') is not (not report.get('low_quality', False))):
+                errors.append('physical perf flashlight emission/quality mismatch')
     if mode in ('perf', 'mission', 'capture') and (report.get('travelled_m', 0) < 90 or report.get('waypoints_completed', 0) < 8):
         errors.append('physical route incomplete')
     if report.get('mode') in ('mission', 'capture'):
@@ -208,8 +226,11 @@ def main():
     p.add_argument('--require-circuits', action='store_true')
     p.add_argument('--require-lighting', action='store_true')
     p.add_argument('--low', action='store_true')
+    p.add_argument('--flashlight-on', action='store_true', help='perf only; enable the physical flashlight before warmup')
     p.add_argument('--timeout', type=int, default=900)
     a = p.parse_args()
+    if a.flashlight_on and a.mode != 'perf':
+        p.error('--flashlight-on requires --mode perf')
     project, output = a.project.resolve(), a.output.resolve()
     if output.exists():
         p.error('output must be new to prevent stale evidence')
@@ -228,9 +249,13 @@ def main():
         command.append('--require-circuits')
     if a.require_lighting:
         command.append('--require-lighting')
+    if a.flashlight_on:
+        command.append('--flashlight-on')
     if a.low:
         command.append('--low')
     manifest = {'artifacts_before': artifact_before, 'command': command, 'project': str(project), 'head': subprocess.check_output(['git', '-C', str(project), 'rev-parse', 'HEAD']).decode().strip(), 'probe_sha256': hashlib.sha256(probe.read_bytes()).hexdigest(), 'source_before': before, 'started_unix': time.time(), 'display': a.display, 'limits': 'Linux X11; renderer recorded by probe; no target GPU or Windows claim. Capture screenshots are not video or performance; Dummy audio does not prove audible output. No X server lifecycle changes.'}
+    if a.mode == 'perf':
+        manifest['flashlight_requested'] = a.flashlight_on
     (output / 'manifest.json').write_text(json.dumps(manifest, indent=2))
     with (output / 'engine.log').open('w') as log:
         try:
@@ -245,7 +270,7 @@ def main():
         report = {}
     if isinstance(report, dict):
         report['require_lighting'] = a.require_lighting
-    errors = validate_result(report, exit_code, (output / 'engine.log').read_text(errors='replace'))
+    errors = validate_result(report, exit_code, (output / 'engine.log').read_text(errors='replace'), flashlight_requested=a.flashlight_on if a.mode == 'perf' else None)
     if not isinstance(report, dict):
         report = {}
     if report.get('mode') != a.mode or report.get('low_quality') is not a.low:

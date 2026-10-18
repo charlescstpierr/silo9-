@@ -1,0 +1,93 @@
+{
+  "verdict": "PASS for bounded native coverage; limitations and invalid attempts retained",
+  "source": {
+    "head_before": "1f36f01eea2e5d34dafee7f46a665c013370cbb4",
+    "head_after": "1f36f01eea2e5d34dafee7f46a665c013370cbb4",
+    "files_checked": 773,
+    "changes": [],
+    "git_blob_mismatches": []
+  },
+  "runtime": {
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "display": ":100",
+    "renderer": "X11 OpenGL Compatibility llvmpipe",
+    "resolution": [
+      1280,
+      720
+    ],
+    "audio": "Dummy",
+    "first_exit": {
+      "state": "zombie",
+      "exit_wait_status": 0,
+      "exit_code": 0
+    },
+    "restart_exit": {
+      "exit_code": 0
+    },
+    "errors": {
+      "game.log": [],
+      "restart.log": []
+    },
+    "released": true,
+    "xvfb_left_running_pid": 2472984
+  },
+  "driver": "input.py XTest; no Godot injection/probe or production edits",
+  "observed": {
+    "d9_shot_ammo": [
+      12,
+      11
+    ],
+    "reload_ammo_reserve": [
+      12,
+      47
+    ],
+    "arc_energy": [
+      100,
+      88
+    ],
+    "d9_cell_energy": [
+      88,
+      100
+    ],
+    "cells": [
+      2,
+      1
+    ],
+    "held_fire_resume_ammo": [
+      12,
+      12,
+      11
+    ],
+    "restart_new_game_ammo": [
+      11,
+      12
+    ],
+    "persisted_settings": {
+      "base_fov": 100,
+      "aim_zoom": 1.6,
+      "aim_sensitivity": 0.2
+    },
+    "pause_held_aim": [
+      "15-fresh-resume-held-hip.png",
+      "16-fresh-repress-ads.png"
+    ],
+    "load_held_aim": [
+      "26-load-held-hip.png",
+      "27-load-repress-ads.png"
+    ],
+    "restart_new_held_aim": [
+      "37-restart-new-held.png",
+      "39-restart-repress.png"
+    ]
+  },
+  "gamepad_hardware_tested": false,
+  "limits": [
+    "Sparse screenshots do not establish transition continuity, exact FOV, aim-ray accuracy or frame timings.",
+    "No controller hardware, Windows, gaming GPU, audio listening or performance claim.",
+    "Settings mouse workflow opened at top; no claim about gamepad focus workflow.",
+    "First post-combat modal attempt invalidated by legitimate enemy death; fresh no-fire game used for accepted modal coverage.",
+    "29/30 images remained menu, F5 correctly timed out;33/34 probably resumed prior session and are excluded from new-game proof. Fresh process37/39 with saved ammo11->12 supplies actual new-game proof.",
+    "Wheel scrolling over sliders modified existing effects values; GUI restored .5/1 before final config.",
+    "Events append in execution order; seconds reset whenever input.py imported by next Python segment."
+  ]
+}

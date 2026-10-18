@@ -1,0 +1,968 @@
+{
+  "verify_sh_exit": 0,
+  "suites": 38,
+  "head_before_implementation_commit": "15cd4289bf5aeda3f1fa764765a7a8a290529a6b",
+  "source_sha256": {
+    "data/weapons/arc3.tres": "3518d25029cce90ae5186a35b23b535e9ec1682028fc5475b58e5b49937d9cc0",
+    "data/weapons/d9.tres": "8ea66c8f2b73805cb070a1055d8f5b173d33311db296130f1de9017794ebe6a9",
+    "project.godot": "6ffd321c6bd343734062ec21a46723448c1fd151ef83c1667b47239354083cfb",
+    "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+    "scripts/benchmark.gd.uid": "eb504c00cfae3156952fcec0f09f86c64725fbcf5575e1416be68366f23bbb3d",
+    "scripts/casing_pool.gd": "54fe10db8724d5e93b388d7854c891f07dbfb6f36818ee5f3515308046a92c40",
+    "scripts/casing_pool.gd.uid": "787ecbdfa2e3b04b53f08d3400df167fac7e4844846def345d457176dde172f9",
+    "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+    "scripts/dialogue.gd.uid": "0eb236f6f549dba98b3d3d2469a1915b9c46d9cc0ddac0784a59b53e33197f39",
+    "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+    "scripts/edge_smoothing.gd.uid": "5f7ba509d4184d6c9026c4a950f7ebc9a659f15a9fc3612f27e78d6e8b03d7b9",
+    "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+    "scripts/enemy.gd.uid": "057e9602b9263605318bc7b7c09ae9d3e2b32f57a3a6f00354aa90a8d438adfe",
+    "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+    "scripts/fps_hand_mesh.gd.uid": "325544f074ff98882c3b0af16aaca26c39fbad22c0a3b71275c50f6e5c8d7f33",
+    "scripts/fps_rig.gd": "d1813cada27a7e39cc5d15929e5ffd3b238d0aa4473133c59933018a789f3796",
+    "scripts/fps_rig.gd.uid": "2f4c64dd5a0fca991443f8113cc94488868e4b19dbb70482c9286e91bb161e75",
+    "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+    "scripts/interactable.gd.uid": "9e6de8e280957e812bdc499944d1d4af404f6eb81df5816e77b993acaeec8cbd",
+    "scripts/main.gd": "c2c50911f4195ab398526b74409de82303f86e45a27deb726e37a654df72a738",
+    "scripts/main.gd.uid": "60f0bb0e93fcaf7e2dd2e1079ef3fb591f0bb5c3eae72619c224ca03dfe2fedd",
+    "scripts/player.gd": "42d8bce1728a082bc3972c12dfdad5c5e95bc6f3cfd5e5ab9730e9d533fa2514",
+    "scripts/player.gd.uid": "c65b3810949d8fc77d9c715516fa3fe70662dbd4492e1aefa810dc8611471cb7",
+    "scripts/player_audio.gd": "a4311c12a49d3c3044c2fc058b6284c7457a7d980cabdd60ef463bbdfb9f2e40",
+    "scripts/player_audio.gd.uid": "a856f79733933fdba3789c870ea5d752d345afccff0742bc0d436f577bef5b47",
+    "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+    "scripts/robot_visual.gd.uid": "d39c2e712f41a5912133d6f8faf7fda798e972e25825d11c303a0f040d7cf9bb",
+    "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+    "scripts/run_state.gd.uid": "9c8a24fc24d2a1162cb55a8d24a1bd2abb24f81c56c15ed4b68b90023e2b2ee2",
+    "scripts/weapon_handling.gd": "db7031b781e1cb6eaff147b75260e287b82f46daea50f7da3b0c58c176827ddd",
+    "scripts/weapon_handling.gd.uid": "1fea7abac6bdb730ab1e99365ee13612d1e567d84b138e968ddcaa8b7a9311ac",
+    "scripts/weapon_spec.gd": "c863833b73d1a0b6fc11434e0af8c504ccdca7b87aab97c0380f4129fb90be3a",
+    "scripts/weapon_spec.gd.uid": "44302410eb8ab7a2c0561b5996b64a4ea2cf02c11ae49e583709ce26e907c072",
+    "scripts/weapon_visual.gd": "66ac65da7b09b569ed84a379fa0f76a67c4bfaf9f99ea7750c60eb023f86b509",
+    "scripts/weapon_visual.gd.uid": "aeebf2f2336c94bdccb39ea3c4bcecec900faea349ca14cbeb663a39e3850953",
+    "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+    "scripts/world.gd.uid": "e63771acc71917ac3fbc614c991cdd88f91d0981c5981b10de028f7c3e541638",
+    "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f",
+    "scripts/world_art.gd.uid": "e32215ebaff8c631c21b1aebe584dc88a3288bdb0417304d1a7e2b9b1e396073",
+    "tests/ads_fixture.gd": "13ca520c01b65125f84b4aa359712d5a4369a95c40a73538ef6d4a8a2d7f6554",
+    "tests/shot_feedback_fixture.gd": "970870a49dfa586fe0fcf4ac3fc68e78663bde888f7e4b6675bc71bc9428494b",
+    "tests/test_ads_geometry.gd": "dfc3da72329c21906190a236aa548fdb1692b26b1ecd880b3abe89e742d298e4",
+    "tests/test_ads_settings_input.gd": "3e52fc71e223c104bb87869bf76cdea438685e1f922a3aacf325cbc7d012244a",
+    "tests/test_ads_transitions.gd": "6d3872351480861f17e820c0813fd7043e1d72151684934840995ecf2aaf11f6",
+    "tests/test_arc_audio.gd": "503b449297f118f0c9f85f387082c72486c7c2af26263d7ccf82b6ca7c8ae0a3",
+    "tests/test_arc_cell_contract.gd": "28849b5249d25c0ed885b650814c5c31dfcadcc9590f8d925a1dddacfa88b73d",
+    "tests/test_arc_cell_contract.gd.uid": "fcb6e8ddc3bf2a5a1094db680b2b430b0e15e9f562f922d3af9465ba21abd5f9",
+    "tests/test_arc_cell_ui.gd": "9d43b9cd0dc1dea068b298cc27c9d8356b243845c3690ef459d7a6eaca91c5cc",
+    "tests/test_arc_cell_ui.gd.uid": "1a9ec185f1ab2b550adf5aa5caf74282d695d1fd438892a6c45680641226d351",
+    "tests/test_arc_feedback.gd": "198ed1e3d80a03f4147a9329f2a7e1f5be2ede961160d4fac3a2dbddde2a91fd",
+    "tests/test_arc_geometry.gd": "507998aa6ea624e820771cef13c92f5ef4fd536e727173cc2eb1977bebea048f",
+    "tests/test_arc_indicator.gd": "207ee79842731b6202506ef1e9b3d52bc50a0a586d8e86c42a7f43d192453f62",
+    "tests/test_arc_lifecycle.gd": "d77481bb715b9bd17166aba7971d72fe60c0f24f7e003dad4947f3803a1fd5fb",
+    "tests/test_d9_audio.gd": "052e79586613e83c06109509541a33a3645af447859744cff0c3061cc4864e9d",
+    "tests/test_d9_audio.gd.uid": "ac2930f7618c9d6411239d719f994943f9a447f97b3d1d0a230420e46a6fff69",
+    "tests/test_d9_contract.gd": "96acfad3f7da4a8e3cff927f4d353e0ab5a1960d0254fabb652947669f16d037",
+    "tests/test_d9_contract.gd.uid": "93e251f82e6c340a06cf4b919277e51f82cc7460d6bcae41873fa47ecd11fe35",
+    "tests/test_d9_geometry.gd": "7dd74eb13ab31deefd381b18d5cfa5a03ed61c7b6ab821ab0376b09d706eaa93",
+    "tests/test_d9_geometry.gd.uid": "0493c7b7de572e8bd40bdbf2281bead47a0da73a1869b16bb93c80db8260fdea",
+    "tests/test_d9_modal_save.gd": "568491c124e07061d13d5a00aa80dcf088459dcda791a72efe9f38cb8206a2b7",
+    "tests/test_d9_modal_save.gd.uid": "c6172e839d55f227c87716791b840644efac21a18d3b3df095b3bf25e7ccb49f",
+    "tests/test_d9_reload.gd": "bfdc45c3ff1df408bea96b4e9eff7df37ef9cd606d92d8715dc3e634f9a741b1",
+    "tests/test_d9_reload.gd.uid": "432f1434659f08c52863493d8b52c9a034445d5e15d815ff0865657990b331d0",
+    "tests/test_d9_timeline.gd": "1a0c7f978b07d6c892cd395348b4b92456a741a96a035763ca552c38b0ba28f5",
+    "tests/test_d9_timeline.gd.uid": "87e18364901937cc69bd8d2405272f98ca52741d2c815b37709fd46360c81ea8",
+    "tests/test_dialogue.gd": "82a8c1b1a196e764291954761f867c32c9e44115023309d422d09faea94d326d",
+    "tests/test_dialogue.gd.uid": "22b3e5797c51b5bc5adcd92ad3d4c549324ee68f6b31db3c4ffdd776241a473e",
+    "tests/test_fps_rig.gd": "39e3a0dbabeb29bea0a24f8e56f22752fe73050cb57456ab5bc6a79b72e031b7",
+    "tests/test_fps_rig.gd.uid": "04c01b2c89f1065e9c854f779d39a64163ea2183a09c817c70cee201559a886a",
+    "tests/test_journey.gd": "2e5a7e6ab09f59d518d69475feef8db2f0470071283911023893677508947d4a",
+    "tests/test_journey.gd.uid": "c473296eeb3f042147cc24852a9c4990056c7aa9ef05748e660c82ea0e59b4c2",
+    "tests/test_jump_tap.gd": "c68b58e242598cd3d03c48f6c86309d8767992fd802d9a4aafbe9d054b63aa06",
+    "tests/test_menu_held_button.gd": "615d5ab502053e3ec1f14ef369cae64fdfb88f48055ae9b602542e08310c8d7c",
+    "tests/test_player.gd": "d0deb3d67981a636ee05444f32cc8955eb7920f1909b421c4e272c94099b4f06",
+    "tests/test_player.gd.uid": "44b44386c01937c0c1cb199a0ab998f45777cd8aa73a3d4edc1826fac3bcb949",
+    "tests/test_shot_casings.gd": "b74e326b8d5ea53c3789e9ae75876752021348b685cd2e0be7ee0b888205c0a6",
+    "tests/test_shot_feedback.gd": "9658a2e6b25d34a5b444fb430e49c0fef8fcc00396808f72e4d569feed865585",
+    "tests/test_shot_settings.gd": "c7bf1fc122a98b4c652b6393bfef0d4e7d3a03e4d33257017fe39c30f70a6e7c",
+    "tests/test_state.gd": "e57538c1012f1fc3cd5e568cdb792cee5329b55b99075d3caeecef29c3a552e0",
+    "tests/test_state.gd.uid": "832c5f6ce8ec1e0461f3a8341b33fb367fd8ed523debbef2bfa01f428d92eedc",
+    "tests/test_ui.gd": "29d495b28aa8b686772fe6a7c90e98ecca627c0590b2dedd3bd3f1bc09a2a827",
+    "tests/test_ui.gd.uid": "a2a734c10999121b322e0f5b19201aef366ae8fd13796475d2def1f6c61575d5",
+    "tests/test_visual_geometry.gd": "2fe77009eb89ae8361c3584b4353a77c6ee369182ddd5a3418125d39c13beaf7",
+    "tests/test_visual_geometry.gd.uid": "fe32faf797c4d3f261a13bec8c7dd2778335f6128bb864312a3637e7c54e21b7",
+    "tests/test_weapon_activity.gd": "e8fd89d5b38dd2ca519253f6358b04d2499074fd25877bce74b3613be58f3b41",
+    "tests/test_weapon_activity.gd.uid": "7b75cfbc00a9f8defdef7ccae23a633e89cb3989a1d3d755e76395a5a3a54b63",
+    "tests/test_weapon_beam_motion.gd": "5eea97e82c05550287c681d89c428998c1768e058db9df3b3f12dc6b958fba63",
+    "tests/test_weapon_beam_motion.gd.uid": "d1e72c87ddf90995ec21a975dc7ca990a3b7354af8bcdb0ff0c3ef3cab2c80c1",
+    "tests/test_weapon_input.gd": "cde9c8c4e86511cc41f038f7ff067c17d8ea13579a4fe0af5856945adc8408b1",
+    "tests/test_weapon_input.gd.uid": "e9406ab91e81217727a1d949162e82d44d4b8a67f30eeccdcf7ca1fb031b6096",
+    "tests/test_weapon_look_direction.gd": "b4c82e67cf90b492663a6b71b44305861a5c7f37cf75f5270c82574c639ae53c",
+    "tests/test_weapon_look_direction.gd.uid": "e039236d3c9e73443044afd08ee5e0c29f5ffbeaaba208005f05adfe7d48ea32",
+    "tests/test_weapon_mask_order.gd": "2fa8379fdce1e8d4ba07b0c390a7315d1aa0929b7529a6a98fb93560eb04c436",
+    "tests/test_weapon_mask_order.gd.uid": "27d244fb15bac9a54b0332af0882ef972fe424271e88500d392f8cb085261285",
+    "tests/test_weapon_modal_input.gd": "ba73561682ef72447d7279d8fa19b0d37b86108180181c05c1ec55c1d31fd11f",
+    "tests/test_weapon_modal_input.gd.uid": "a4875b1c348103e94d5262392270facbcebcf9ee0b588162954692cf28252c62",
+    "tests/test_weapon_motion.gd": "f956e04dc048d11923f1787d72f8c78b4329c3d7d494f850e6101fe890ff288e",
+    "tests/test_weapon_motion.gd.uid": "fef06b04e06a24b30185287a45b24186a2153e8f249cb9ce8b6f2a8244e261c9",
+    "tests/test_weapon_repeat_selection.gd": "976b9c34af78a393c04f34c94eede4fc1ba739c5f36ea0cc4c0d6f2d3839dd44",
+    "tests/test_weapon_repeat_selection.gd.uid": "a4f2199c8df931622197ebef0492e6e9df74a3892e1988d6361de5dd8d6b6c83",
+    "tests/test_weapon_switch.gd": "7cd8a50c6f6fbd59bde18eff7ecf839382408b3a1375ce2fda552fccf8ae0ca1",
+    "tests/test_weapon_switch.gd.uid": "7b6a8ce7a7d04c3e889c7f46f09c5bbcca649c6260472a3508198d45daf235aa",
+    "tests/test_world.gd": "4c975c8042013a98e20291e017b3c1106e2947aa22c2c9ac1eafe69706b643bd",
+    "tests/test_world.gd.uid": "4f9689d900c90b4723907b197159fa24ff91bb0dd7e3f07afae48252957ee897",
+    "tests/weapon_ready.gd": "934f464211839f2f2c0f164c494b44c14549d1dab3f24eb7ecb277d7e8f13fdc",
+    "tests/weapon_ready.gd.uid": "4d7e01df2c70b807f72100c71b3351c9fc43951303a09838a70b5f0e7d134b4d",
+    "tools/verify.sh": "b9d48169f1e389ece0265a438d837fcb6801173a8b167d8f252631c97213fe09"
+  },
+  "binary_sha256": "8d106cbe6144c2dc7e881d61d2429c1a8a76e6b22ef48bd5e48dcf934953f71e",
+  "runs": [
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--editor",
+        "--import",
+        "--quit"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 5.496864557266235,
+      "log": "suite-logs-final/import.log",
+      "log_sha256": "0927423625f6b9d521214e5b4b666077801d3f7e1d42812dc7cb76ec7d6cdec7",
+      "passes_printed": 0,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_ads_geometry.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 1.7583017349243164,
+      "log": "suite-logs-final/test_ads_geometry.log",
+      "log_sha256": "498d4ba27081a256f75e96223a5768c6a22ea2ccb158227f2e7edfd9967e9f13",
+      "passes_printed": 161,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_ads_settings_input.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 6.2789576053619385,
+      "log": "suite-logs-final/test_ads_settings_input.log",
+      "log_sha256": "504e6b358a2d2afa7a005964af8f65aff0ed73a604ffa8ccd8bb416d3fe6f4c9",
+      "passes_printed": 95,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_ads_transitions.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 2.949265480041504,
+      "log": "suite-logs-final/test_ads_transitions.log",
+      "log_sha256": "311965e73c288f2b19ae341c7692ec3ef8a30a77670a2eb7e9a6f5f0cf2a559a",
+      "passes_printed": 95,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_arc_audio.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 1.0670716762542725,
+      "log": "suite-logs-final/test_arc_audio.log",
+      "log_sha256": "113b565d13e9f6399e0f04290a3dd6f41bc83d2265cc3bc341db137c590d641f",
+      "passes_printed": 9,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_arc_cell_contract.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 5.266167163848877,
+      "log": "suite-logs-final/test_arc_cell_contract.log",
+      "log_sha256": "7a19ba708da50e144846169d756b7f7b64472646dfedec296f6aecc3a451e9f7",
+      "passes_printed": 151,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_arc_cell_ui.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 12.264057159423828,
+      "log": "suite-logs-final/test_arc_cell_ui.log",
+      "log_sha256": "607b6a5500c40639dc986abca66fe23daf363ac227fcb9c8f6d83835f8ee84d2",
+      "passes_printed": 161,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_arc_feedback.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.6087074279785156,
+      "log": "suite-logs-final/test_arc_feedback.log",
+      "log_sha256": "c4c1d3c7837a9bac6fd6a910b95f014ccb85451ae7f77d24b33c703e272b1a16",
+      "passes_printed": 6,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_arc_geometry.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.7090306282043457,
+      "log": "suite-logs-final/test_arc_geometry.log",
+      "log_sha256": "fde194f157a1a0da29c3fb2523e6d91653d1ca35762e3b43c853f5a04a4ff1e8",
+      "passes_printed": 0,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_arc_indicator.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.7959885597229004,
+      "log": "suite-logs-final/test_arc_indicator.log",
+      "log_sha256": "e680bf092b1e5abd7599758cb515724ea4f62ba904e5cec4b97554e60381c07b",
+      "passes_printed": 13,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_arc_lifecycle.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.43501973152160645,
+      "log": "suite-logs-final/test_arc_lifecycle.log",
+      "log_sha256": "12216e024695bf30ec5fe98acdcfbb6adb9d210854d7e02f7c8d1da44c1fdb62",
+      "passes_printed": 10,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_d9_audio.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.3385653495788574,
+      "log": "suite-logs-final/test_d9_audio.log",
+      "log_sha256": "2d24fef524b50aac765bddcc32c9887a2bdf94efceaef50d07c748a2ab1670d5",
+      "passes_printed": 0,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_d9_contract.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 2.021714448928833,
+      "log": "suite-logs-final/test_d9_contract.log",
+      "log_sha256": "d25cd18dd202626558caa06ccf07119d157a03c147f2d380cc83963e00922540",
+      "passes_printed": 55,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_d9_geometry.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.6175720691680908,
+      "log": "suite-logs-final/test_d9_geometry.log",
+      "log_sha256": "c0e3f93296fb95381e3cf7d294b8296589af0b2b8cac7c874d52c29c88bd9db7",
+      "passes_printed": 0,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_d9_modal_save.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 8.276678800582886,
+      "log": "suite-logs-final/test_d9_modal_save.log",
+      "log_sha256": "0357499497c8775eeb146f97f23096b144c266d6da83676b8c68f3655480246d",
+      "passes_printed": 41,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_d9_reload.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.8970057964324951,
+      "log": "suite-logs-final/test_d9_reload.log",
+      "log_sha256": "3066a8d4619559412905be691c09187f0793b0503de5be5a90fd5af6760a1395",
+      "passes_printed": 16,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_d9_timeline.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.4425625801086426,
+      "log": "suite-logs-final/test_d9_timeline.log",
+      "log_sha256": "b3fa4feb1c3882cd2fea13b68eda843b1fd594838942ea4e15b6acc7876b8405",
+      "passes_printed": 15,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_dialogue.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 8.983689308166504,
+      "log": "suite-logs-final/test_dialogue.log",
+      "log_sha256": "3719bf2e1d7fe26749dd62425cf8554ade78063ffed58cc59c84c4c22d6b27cd",
+      "passes_printed": 0,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_fps_rig.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.5120334625244141,
+      "log": "suite-logs-final/test_fps_rig.log",
+      "log_sha256": "68fffdbf9c30ff9ec211e57b1c935ee71e07f17dda99ef4bde67a77fedfb84bb",
+      "passes_printed": 0,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_journey.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 43.43134164810181,
+      "log": "suite-logs-final/test_journey.log",
+      "log_sha256": "efe11bfeae57380a75b24bb969c043b2c4427908ff8614a1be532254ce99065a",
+      "passes_printed": 0,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_jump_tap.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 2.9200668334960938,
+      "log": "suite-logs-final/test_jump_tap.log",
+      "log_sha256": "6955dcdb4ad1a4772af98d0e2e12a59a555a42e1a4524428a3795884aed2edb4",
+      "passes_printed": 10,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_menu_held_button.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 2.880739212036133,
+      "log": "suite-logs-final/test_menu_held_button.log",
+      "log_sha256": "eff33d8d3925e5bfe412007ee3c814545a5fa997044833a6746a2cc634644be3",
+      "passes_printed": 10,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_player.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 10.729445695877075,
+      "log": "suite-logs-final/test_player.log",
+      "log_sha256": "f74b4bc19cc74a0e453548994d65d575559dccf79b8b9df6502f0cf2af3e4ac6",
+      "passes_printed": 38,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_shot_casings.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 1.0985262393951416,
+      "log": "suite-logs-final/test_shot_casings.log",
+      "log_sha256": "ef206da317edc683e0f21aaefcd1ba858daabe251ed51af4133ba1db25e07ecb",
+      "passes_printed": 60,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_shot_feedback.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 3.1922287940979004,
+      "log": "suite-logs-final/test_shot_feedback.log",
+      "log_sha256": "4542ed35df4a5453ea8195f58dff536e0386a256912708c8410afc75432f5652",
+      "passes_printed": 114,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_shot_settings.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 3.4793527126312256,
+      "log": "suite-logs-final/test_shot_settings.log",
+      "log_sha256": "e26e1724079bdc7dbc3957d22452266cd336bbce192f2d5f21be1baae0a22e96",
+      "passes_printed": 57,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_state.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.32718610763549805,
+      "log": "suite-logs-final/test_state.log",
+      "log_sha256": "8c2457c5c628bda4c633f2da30aabf4f171bd42b41d794f0914b35fc798ebf64",
+      "passes_printed": 0,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_ui.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 2.215472459793091,
+      "log": "suite-logs-final/test_ui.log",
+      "log_sha256": "b2fd796e9759f7452eaf71089d368938ce7d1977f29d487ff669146357feba7d",
+      "passes_printed": 0,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_visual_geometry.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.5008940696716309,
+      "log": "suite-logs-final/test_visual_geometry.log",
+      "log_sha256": "d5ccb8e16bb8446d357b5f1fe7679b99fe88a72935af5251ff0fdbb770be1565",
+      "passes_printed": 0,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_activity.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 3.9716298580169678,
+      "log": "suite-logs-final/test_weapon_activity.log",
+      "log_sha256": "e850a880668613de9f0e5cfb2951e1ae1d9827fb9468960e574a3b88d337293c",
+      "passes_printed": 16,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_beam_motion.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 1.7248847484588623,
+      "log": "suite-logs-final/test_weapon_beam_motion.log",
+      "log_sha256": "9fcbea42a6477364946f3fcd41a79699cd0e32dfbf1b63e320a11873cb923a73",
+      "passes_printed": 2,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_input.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 2.2910685539245605,
+      "log": "suite-logs-final/test_weapon_input.log",
+      "log_sha256": "8de036f74c11f13f98e611c0aca9228e1215e581381e53f576f2c53ee7d95492",
+      "passes_printed": 27,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_look_direction.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 5.850653171539307,
+      "log": "suite-logs-final/test_weapon_look_direction.log",
+      "log_sha256": "dcfc350dc23916f1a5a367c6c36f760952a269a190d6fd09d5e3aa83d1e2ad44",
+      "passes_printed": 16,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_mask_order.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 0.9744727611541748,
+      "log": "suite-logs-final/test_weapon_mask_order.log",
+      "log_sha256": "3c7b032d4292ea520c16fea6adf5781b889c021db0f7a3ec2f6fa5793a403e04",
+      "passes_printed": 11,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_modal_input.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 4.252779722213745,
+      "log": "suite-logs-final/test_weapon_modal_input.log",
+      "log_sha256": "a173ca0a1ab148b73530d9251d32fc114e31e343e33b6c3a8e5f52628842eecd",
+      "passes_printed": 2,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_motion.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 17.45022964477539,
+      "log": "suite-logs-final/test_weapon_motion.log",
+      "log_sha256": "ce174a3b48a1996432ca5dc4fa5cf0d615593e75060a4f8a322b5f884646388d",
+      "passes_printed": 40,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_repeat_selection.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 3.604323387145996,
+      "log": "suite-logs-final/test_weapon_repeat_selection.log",
+      "log_sha256": "196c0286aadfef7bc9dcad844e873b13b0f7755ea98638ae049f3298ffcb7c26",
+      "passes_printed": 4,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_switch.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 2.476883888244629,
+      "log": "suite-logs-final/test_weapon_switch.log",
+      "log_sha256": "aa37ad249bbb4f74434e6362c448d35484fa952da581abcb91c510ba6b466cf4",
+      "passes_printed": 42,
+      "errors": []
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_world.gd"
+      ],
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "exit": 0,
+      "seconds": 10.381643056869507,
+      "log": "suite-logs-final/test_world.log",
+      "log_sha256": "614de85032f59266609d8ac54d8051cd3e203f597f1af9c47d9b7a90e14a174f",
+      "passes_printed": 0,
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+--- .cstack/orchestrate/silo9/issue07/proof-tools/label-fix-original-probe.gd	2026-10-18 08:05:39.525586239 +0000
++++ .cstack/orchestrate/silo9/issue07/proof-tools/probe_ads.gd	2026-10-18 08:05:39.526120541 +0000
+@@ -15,6 +15,8 @@
+ var require_ads := false
+ var recording := false
+ var stage := "warmup"
++var capture_label := ""
++var overlay_location := "SILO réel"
+ var previous_usec := 0
+ var frame_ms: Array[float] = []
+ var frame_stages: Array[String] = []
+@@ -74,6 +76,7 @@
+ 		box(floor_body, Vector3(32, .2, 32), Color(.13, .17, .23))
+ 		floor_body.position = Vector3(1000, -.1, -8)
+ 		app.player.teleport(Vector3(1000, 0, 7))
++		overlay_location = "Arène isolée"
+ 	else:
+ 		app.player.teleport(Vector3(0, 0, 7))
+ 	target = ShotTarget.new()
+@@ -127,9 +130,13 @@
+ 	mesh.material_override = material
+ 	body.add_child(mesh)
+ 
+-func _process(_delta: float) -> bool:
++func refresh_label() -> void:
+ 	if is_instance_valid(label):
+-		label.text = "ADS | " + stage + "\n" + ("Film moteur fixe30fps; pas une mesure de fluidité" if mode == "film" else ("Arène isolée4cm; commandes logicielles" if mode == "inspection" else "SILO réel; cible de preuve4cm à3m"))
++		label.text = "ADS | " + (capture_label if not capture_label.is_empty() else stage) + "\n" + overlay_location + "; cible de preuve 4 cm; commandes logicielles"
++		if mode == "film": label.text += "\nFilm moteur fixe 30 fps; pas une mesure de fluidité"
++
++func _process(_delta: float) -> bool:
++	refresh_label()
+ 	if recording:
+ 		var now := Time.get_ticks_usec()
+ 		if previous_usec != 0:
+@@ -213,8 +220,11 @@
+ 	events.append(observed)
+ 
+ func capture(name: String) -> void:
++	capture_label = name
++	refresh_label()
+ 	await RenderingServer.frame_post_draw
+ 	var image := root.get_texture().get_image()
++	capture_label = ""
+ 	check(not image.is_empty() and image.get_size() == Vector2i(1280, 720), "missing render: " + name)
+ 	if image.is_empty(): return
+ 	check(image.save_png(output + "/" + name + ".png") == OK, "cannot save render")
+@@ -283,6 +293,7 @@
+ 	wall.queue_free()
+ 	aim(false)
+ 	app.player.teleport(Vector3(0, 0, 7))
++	overlay_location = "SILO réel"
+ 	await wait(.6)
+ 	for weapon in 2:
+ 		await ready_weapon(weapon)

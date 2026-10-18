@@ -1,0 +1,24 @@
+{
+  "approved": true,
+  "tests_commit": "15cd4289bf5aeda3f1fa764765a7a8a290529a6b",
+  "baseline": "2818e15a617760dcb98b93927eb563d7af05ba17",
+  "candidate_source": "../implementation/pre-jump-source-manifest.json",
+  "parent_results": [
+    {
+      "name": "baseline",
+      "exit": 0,
+      "failures": []
+    },
+    {
+      "name": "candidate",
+      "exit": 1,
+      "failures": [
+        "FAIL: complete Space tap produces upward jump velocity",
+        "FAIL: complete Space tap lifts the physical capsule"
+      ]
+    }
+  ],
+  "parent_review": "Entire78-line test read, real key tap between physics ticks, grounded actual capsule, baseline10PASS vs candidate2semanticFAIL, held/no-double controls preserved",
+  "test_sha256": "c68b58e242598cd3d03c48f6c86309d8767992fd802d9a4aafbe9d054b63aa06",
+  "correction_scope": "Consume modal activation jump input without discarding fresh gameplay taps; preserve GUI-A no-jump and existing38suites"
+}

@@ -1,0 +1,97 @@
+{
+  "before_source_sha256": "66ac65da7b09b569ed84a379fa0f76a67c4bfaf9f99ea7750c60eb023f86b509",
+  "after_source_sha256": "6c2d74b62a112239223b91b639013b5c512462fdebb0a9b81bb67e69dcf97230",
+  "runs": [
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_ads_geometry.gd"
+      ],
+      "exit": 0,
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "log": "test_ads_geometry-sight-face.log",
+      "sha256": "498d4ba27081a256f75e96223a5768c6a22ea2ccb158227f2e7edfd9967e9f13"
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_fps_rig.gd"
+      ],
+      "exit": 0,
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "log": "test_fps_rig-sight-face.log",
+      "sha256": "68fffdbf9c30ff9ec211e57b1c935ee71e07f17dda99ef4bde67a77fedfb84bb"
+    },
+    {
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_visual_geometry.gd"
+      ],
+      "exit": 0,
+      "environment": {
+        "DISPLAY": ":100",
+        "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/implementation/final-user"
+      },
+      "log": "test_visual_geometry-sight-face.log",
+      "sha256": "d5ccb8e16bb8446d357b5f1fe7679b99fe88a72935af5251ff0fdbb770be1565"
+    }
+  ],
+  "renders": {
+    "calibration-sight-face/observations.json": "c5aa39a2adfc0269d89e8d119293855fd8b16a2ee98f6e287cc09185a5784d17",
+    "calibration-sight-face/weapon0-entry-0.png": "fe4bf5cc2e54bf0fc1ed14fe76c73592cc2336251c0a7c3f833666035edb6469",
+    "calibration-sight-face/weapon0-entry-1.png": "0b630c3d9537ecb0d6d4328355b1f363011ed706c267004cee546492a64cf3ac",
+    "calibration-sight-face/weapon0-entry-2.png": "450f52dbbbb773ad8d4eb956d0b8197e1d3c0e3413ce21ac7a5953a49fbcf267",
+    "calibration-sight-face/weapon0-entry-3.png": "ce9def196bb17e512e1ef8ef445b4a1c0b8eb545a81d4d60ef857f269311cb07",
+    "calibration-sight-face/weapon0-entry-4.png": "09745fb016f91fafd040cf115baff009d3c5fba2c6e669b3bf120668fd9f28c2",
+    "calibration-sight-face/weapon0-exit-0.png": "09745fb016f91fafd040cf115baff009d3c5fba2c6e669b3bf120668fd9f28c2",
+    "calibration-sight-face/weapon0-exit-1.png": "ce9def196bb17e512e1ef8ef445b4a1c0b8eb545a81d4d60ef857f269311cb07",
+    "calibration-sight-face/weapon0-exit-2.png": "450f52dbbbb773ad8d4eb956d0b8197e1d3c0e3413ce21ac7a5953a49fbcf267",
+    "calibration-sight-face/weapon0-exit-3.png": "0b630c3d9537ecb0d6d4328355b1f363011ed706c267004cee546492a64cf3ac",
+    "calibration-sight-face/weapon0-exit-4.png": "fe4bf5cc2e54bf0fc1ed14fe76c73592cc2336251c0a7c3f833666035edb6469",
+    "calibration-sight-face/weapon0-fov100-ads.png": "801d9459b6e04fded49925ff749e6fa15c6896c4bc40b1799d04e4939d89ac02",
+    "calibration-sight-face/weapon0-fov100-hip.png": "66fe542d0949d7e966d0067063b020941bbd078c6d4d39aeda588e2cde4e7e7f",
+    "calibration-sight-face/weapon0-fov60-ads.png": "bd4d101ad642388bfe5d8c8dde8d8c1e487f81a610c641db7cc3e1232dbd8b4d",
+    "calibration-sight-face/weapon0-fov60-hip.png": "ffa141e29fced0405fbcf7971f16e25c2dcad0637fbff0607e838998cb9b5e91",
+    "calibration-sight-face/weapon0-fov76-ads.png": "efc067b8feb37820cc9bdf9da011a71591f263e83ad68186f120c52680c51ccb",
+    "calibration-sight-face/weapon0-fov76-hip.png": "fe4bf5cc2e54bf0fc1ed14fe76c73592cc2336251c0a7c3f833666035edb6469",
+    "calibration-sight-face/weapon1-entry-0.png": "7376370221219cb06ad7a4c3379637f8cc8890a7ac0c7e6b75a7ccde847b33f8",
+    "calibration-sight-face/weapon1-entry-1.png": "709af5f0ebe8774c0a1c278b2c91ce53e661c4c61ab624a02526bd6e8fa32d00",
+    "calibration-sight-face/weapon1-entry-2.png": "1d6cc49ff6c8f53f863850cd23a322928a17e970c3c2a7212f193229a866bda1",
+    "calibration-sight-face/weapon1-entry-3.png": "ecf7400909eb72e2f8fcbe01fb0e03dba0250eeb8fd45772946234a02b004c41",
+    "calibration-sight-face/weapon1-entry-4.png": "6621d8383f3c92026d342463566af67ab6e083329488b86f301ef34f4553ebaf",
+    "calibration-sight-face/weapon1-exit-0.png": "6621d8383f3c92026d342463566af67ab6e083329488b86f301ef34f4553ebaf",
+    "calibration-sight-face/weapon1-exit-1.png": "ecf7400909eb72e2f8fcbe01fb0e03dba0250eeb8fd45772946234a02b004c41",
+    "calibration-sight-face/weapon1-exit-2.png": "1d6cc49ff6c8f53f863850cd23a322928a17e970c3c2a7212f193229a866bda1",
+    "calibration-sight-face/weapon1-exit-3.png": "709af5f0ebe8774c0a1c278b2c91ce53e661c4c61ab624a02526bd6e8fa32d00",
+    "calibration-sight-face/weapon1-exit-4.png": "7376370221219cb06ad7a4c3379637f8cc8890a7ac0c7e6b75a7ccde847b33f8",
+    "calibration-sight-face/weapon1-fov100-ads.png": "53a05af2d0caaf7abd869f080cc08f4c863806ed3131f1d059134d063b8d0c70",
+    "calibration-sight-face/weapon1-fov100-hip.png": "39d712722058061d58d4db5bfd36fe50eff0d9bc1e1618c9d245a84bb9596a7c",
+    "calibration-sight-face/weapon1-fov60-ads.png": "63a95d35056f14491e52d282ab8301d57413164829e876691be235d3aabc7eed",
+    "calibration-sight-face/weapon1-fov60-hip.png": "55baa3751fa3dea9dc02db56f2299d4abc5ac22ea0c92b32b48689dae3a53c76",
+    "calibration-sight-face/weapon1-fov76-ads.png": "20212795f3452dce02e51f998a59e1fabc860c4ef73c2ca4517a0a9ed90721df",
+    "calibration-sight-face/weapon1-fov76-hip.png": "7376370221219cb06ad7a4c3379637f8cc8890a7ac0c7e6b75a7ccde847b33f8"
+  }
+}

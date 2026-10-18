@@ -1,0 +1,401 @@
+{
+  "exact_rank_sum": {
+    "frame_p50_ms": {
+      "u_baseline_greater": 17.0,
+      "exact_two_sided_p": 0.42063492063492064,
+      "permutations": 252
+    },
+    "frame_p95_ms": {
+      "u_baseline_greater": 18.0,
+      "exact_two_sided_p": 0.30952380952380953,
+      "permutations": 252
+    }
+  },
+  "source_revisions": {
+    "baseline": "2818e15a617760dcb98b93927eb563d7af05ba17",
+    "candidate": "1f36f01eea2e5d34dafee7f46a665c013370cbb4"
+  },
+  "run_count": 10,
+  "pairs": 5,
+  "order": [
+    [
+      1,
+      "baseline"
+    ],
+    [
+      1,
+      "candidate"
+    ],
+    [
+      2,
+      "candidate"
+    ],
+    [
+      2,
+      "baseline"
+    ],
+    [
+      3,
+      "baseline"
+    ],
+    [
+      3,
+      "candidate"
+    ],
+    [
+      4,
+      "candidate"
+    ],
+    [
+      4,
+      "baseline"
+    ],
+    [
+      5,
+      "baseline"
+    ],
+    [
+      5,
+      "candidate"
+    ]
+  ],
+  "checks_passed": 473,
+  "runs": [
+    {
+      "pair": 1,
+      "label": "baseline",
+      "frame_p50_ms": 94.823,
+      "frame_p95_ms": 121.903,
+      "frame_samples": 151,
+      "measured_interval_sum_seconds": 14.826186,
+      "wall_seconds": 21.804522139020264,
+      "walk_distance": 1.13333344459534,
+      "draw_calls_max": 377,
+      "nodes_max": 682,
+      "resources_max": 83,
+      "load_before": [
+        1.84716796875,
+        2.78857421875,
+        2.5634765625
+      ],
+      "load_after": [
+        2.91064453125,
+        2.953125,
+        2.62060546875
+      ]
+    },
+    {
+      "pair": 1,
+      "label": "candidate",
+      "frame_p50_ms": 92.953,
+      "frame_p95_ms": 108.13,
+      "frame_samples": 156,
+      "measured_interval_sum_seconds": 14.685754000000001,
+      "wall_seconds": 21.614610535092652,
+      "walk_distance": 1.13333344459534,
+      "draw_calls_max": 377,
+      "nodes_max": 686,
+      "resources_max": 83,
+      "load_before": [
+        2.75732421875,
+        2.92041015625,
+        2.61181640625
+      ],
+      "load_after": [
+        4.27099609375,
+        3.23779296875,
+        2.72216796875
+      ]
+    },
+    {
+      "pair": 2,
+      "label": "candidate",
+      "frame_p50_ms": 96.453,
+      "frame_p95_ms": 116.632,
+      "frame_samples": 152,
+      "measured_interval_sum_seconds": 15.052794,
+      "wall_seconds": 22.099245800171047,
+      "walk_distance": 1.13333344459534,
+      "draw_calls_max": 377,
+      "nodes_max": 686,
+      "resources_max": 83,
+      "load_before": [
+        4.0087890625,
+        3.2001953125,
+        2.712890625
+      ],
+      "load_after": [
+        3.498046875,
+        3.14990234375,
+        2.70947265625
+      ]
+    },
+    {
+      "pair": 2,
+      "label": "baseline",
+      "frame_p50_ms": 103.501,
+      "frame_p95_ms": 133.695,
+      "frame_samples": 141,
+      "measured_interval_sum_seconds": 14.934104999999999,
+      "wall_seconds": 21.670588409993798,
+      "walk_distance": 1.20000016689301,
+      "draw_calls_max": 377,
+      "nodes_max": 682,
+      "resources_max": 83,
+      "load_before": [
+        3.2978515625,
+        3.11376953125,
+        2.7001953125
+      ],
+      "load_after": [
+        4.59375,
+        3.4287109375,
+        2.8134765625
+      ]
+    },
+    {
+      "pair": 3,
+      "label": "baseline",
+      "frame_p50_ms": 96.341,
+      "frame_p95_ms": 119.371,
+      "frame_samples": 151,
+      "measured_interval_sum_seconds": 15.000707,
+      "wall_seconds": 21.597314634826034,
+      "walk_distance": 1.13333344459534,
+      "draw_calls_max": 377,
+      "nodes_max": 682,
+      "resources_max": 83,
+      "load_before": [
+        4.3857421875,
+        3.40478515625,
+        2.80908203125
+      ],
+      "load_after": [
+        4.85791015625,
+        3.5615234375,
+        2.873046875
+      ]
+    },
+    {
+      "pair": 3,
+      "label": "candidate",
+      "frame_p50_ms": 93.201,
+      "frame_p95_ms": 114.985,
+      "frame_samples": 154,
+      "measured_interval_sum_seconds": 14.775875,
+      "wall_seconds": 21.463862717151642,
+      "walk_distance": 1.06666672229767,
+      "draw_calls_max": 376,
+      "nodes_max": 686,
+      "resources_max": 83,
+      "load_before": [
+        4.62890625,
+        3.53515625,
+        2.8681640625
+      ],
+      "load_after": [
+        4.3125,
+        3.51953125,
+        2.8759765625
+      ]
+    },
+    {
+      "pair": 4,
+      "label": "candidate",
+      "frame_p50_ms": 94.664,
+      "frame_p95_ms": 112.573,
+      "frame_samples": 155,
+      "measured_interval_sum_seconds": 15.021215,
+      "wall_seconds": 21.679438088089228,
+      "walk_distance": 1.20000016689301,
+      "draw_calls_max": 376,
+      "nodes_max": 686,
+      "resources_max": 83,
+      "load_before": [
+        3.966796875,
+        3.4609375,
+        2.8603515625
+      ],
+      "load_after": [
+        5.328125,
+        3.8125,
+        2.99267578125
+      ]
+    },
+    {
+      "pair": 4,
+      "label": "baseline",
+      "frame_p50_ms": 94.611,
+      "frame_p95_ms": 111.863,
+      "frame_samples": 154,
+      "measured_interval_sum_seconds": 14.805004,
+      "wall_seconds": 21.718396878801286,
+      "walk_distance": 1.20000016689301,
+      "draw_calls_max": 377,
+      "nodes_max": 682,
+      "resources_max": 83,
+      "load_before": [
+        5.1416015625,
+        3.798828125,
+        2.9931640625
+      ],
+      "load_after": [
+        4.65576171875,
+        3.77783203125,
+        3.00341796875
+      ]
+    },
+    {
+      "pair": 5,
+      "label": "baseline",
+      "frame_p50_ms": 93.618,
+      "frame_p95_ms": 113.064,
+      "frame_samples": 156,
+      "measured_interval_sum_seconds": 14.926810999999999,
+      "wall_seconds": 21.6344481613487,
+      "walk_distance": 1.26666676998138,
+      "draw_calls_max": 377,
+      "nodes_max": 682,
+      "resources_max": 83,
+      "load_before": [
+        4.36279296875,
+        3.7314453125,
+        2.9921875
+      ],
+      "load_after": [
+        4.23876953125,
+        3.74755859375,
+        3.01318359375
+      ]
+    },
+    {
+      "pair": 5,
+      "label": "candidate",
+      "frame_p50_ms": 94.712,
+      "frame_p95_ms": 113.132,
+      "frame_samples": 153,
+      "measured_interval_sum_seconds": 14.812888000000001,
+      "wall_seconds": 21.733119966927916,
+      "walk_distance": 1.26666676998138,
+      "draw_calls_max": 376,
+      "nodes_max": 686,
+      "resources_max": 83,
+      "load_before": [
+        3.97900390625,
+        3.70166015625,
+        3.001953125
+      ],
+      "load_after": [
+        5.92431640625,
+        4.15234375,
+        3.16796875
+      ]
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "frame_p50_ms": {
+        "median": 94.823,
+        "min": 93.618,
+        "max": 103.501
+      },
+      "frame_p95_ms": {
+        "median": 119.371,
+        "min": 111.863,
+        "max": 133.695
+      },
+      "draw_calls_max": {
+        "median": 377,
+        "min": 377,
+        "max": 377
+      },
+      "nodes_max": {
+        "median": 682,
+        "min": 682,
+        "max": 682
+      },
+      "resources_max": {
+        "median": 83,
+        "min": 83,
+        "max": 83
+      }
+    },
+    "candidate": {
+      "frame_p50_ms": {
+        "median": 94.664,
+        "min": 92.953,
+        "max": 96.453
+      },
+      "frame_p95_ms": {
+        "median": 113.132,
+        "min": 108.13,
+        "max": 116.632
+      },
+      "draw_calls_max": {
+        "median": 376,
+        "min": 376,
+        "max": 377
+      },
+      "nodes_max": {
+        "median": 686,
+        "min": 686,
+        "max": 686
+      },
+      "resources_max": {
+        "median": 83,
+        "min": 83,
+        "max": 83
+      }
+    }
+  },
+  "paired_candidate_minus_baseline_ms": {
+    "frame_p50_ms": [
+      -1.8699999999999903,
+      -7.048000000000002,
+      -3.1400000000000006,
+      0.05299999999999727,
+      1.0940000000000083
+    ],
+    "frame_p95_ms": [
+      -13.77300000000001,
+      -17.062999999999988,
+      -4.385999999999996,
+      0.7099999999999937,
+      0.06800000000001205
+    ]
+  },
+  "ranges_overlap": {
+    "frame_p50_ms": true,
+    "frame_p95_ms": true
+  },
+  "profile": [
+    {
+      "window": "all",
+      "samples": 40,
+      "mean_sum_cpu_percent": 400.5661822511286,
+      "llvmpipe_share": 0.8596521657704393
+    },
+    {
+      "window": "middle60percent",
+      "samples": 24,
+      "mean_sum_cpu_percent": 471.02732328100205,
+      "llvmpipe_share": 0.9002409085775255
+    }
+  ],
+  "profile_excluded": true,
+  "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+  "tool_sha256": {
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/proof-tools/probe_ads.gd": "a0322c3f6e7186033dc97763c082a20dc50537d1fa6a9d13519cd6ede956a56d",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/proof-tools/prove_ads.py": "9e480f622584876b83a9413ca50ca07b75b0006e4433cef71c211e0655e44386",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64": "8d106cbe6144c2dc7e881d61d2429c1a8a76e6b22ef48bd5e48dcf934953f71e"
+  },
+  "limits": [
+    "Full frame CPU wall intervals include VSync and scheduling.",
+    "Source launch through editor binary; not production export performance.",
+    "Software llvmpipe renderer; dominant observed CPU work is rendering, not proof of sole saturation.",
+    "Enemy callbacks frozen; small fixture added. Functional ADS zoom changes view volume.",
+    "Fixed second waits quantize to physics/render ticks; actual horizontal movement and frame counts vary.",
+    "No target GPU, Windows, physical-controller or 60 FPS claim.",
+    "Warmup captures have PNG integrity checks only in this audit; pixel review remains separate."
+  ]
+}

@@ -1,0 +1,11 @@
+--- before/scripts/weapon_visual.gd
++++ after/scripts/weapon_visual.gd
+@@ -90,7 +90,7 @@
+ 	var front := Vector3(0, height, front_z)
+ 	var rear := Vector3(0, height, rear_z)
+ 	_part(batches[1], Vector3(.014, .03, .018), front - Vector3(0, .015, 0), .002)
+-	_part(batches[4], Vector3(.006, .008, .006), front - Vector3(0, .004, 0), .001)
++	_part(batches[4], Vector3(.006, .008, .006), front + Vector3(0, -.004, .009), .001)
+ 	for side: float in [-1.0, 1.0]:
+ 		_part(batches[1], Vector3(.012, .025, .016), rear + Vector3(side * .019, -.0125, 0), .002)
+ 		_part(batches[4], Vector3(.004, .004, .004), rear + Vector3(side * .019, -.004, .008), .001)

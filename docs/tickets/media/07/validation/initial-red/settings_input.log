@@ -1,0 +1,51 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL: Main exposes named FOV, zoom and ADS sensitivity sliders
+GUARDED: Apply/config/invalid/new/load preference coverage awaits widgets
+FAIL: main menu grants an initial usable GUI focus
+PASS: real New Game button is available for joypad activation
+FAIL: software GUI A activates focused New Game
+FAIL: actual InputMap binds trigger to aim
+FAIL: actual InputMap binds trigger to fire
+FAIL: actual InputMap binds joypad button to jump
+FAIL: actual InputMap binds joypad button to reload
+FAIL: actual InputMap binds joypad button to interact
+FAIL: actual InputMap binds joypad button to scan
+FAIL: actual InputMap binds joypad button to weapon1
+FAIL: actual InputMap binds joypad button to weapon2
+FAIL: actual InputMap binds joypad button to sprint
+FAIL: actual InputMap binds joypad button to pause
+FAIL: layout switch preserves joypad movement and scan bindings
+FAIL: layout switch preserves joypad movement and scan bindings
+FAIL: software LT event enters ADS through actual mapping
+PASS: right-stick motion inside radial deadzone does not rotate
+FAIL: diagonal stick magnitude above .2 escapes the radial deadzone
+FAIL: full software right stick rotates 2rad/s with ADS sensitivity
+FAIL: software left stick drives actual movement
+FAIL: software RT accepts exactly one D9 shot
+FAIL: software X requests real reload
+PASS: software reload completes round transfer
+FAIL: software weapon2 command selects ARC
+PASS: distinct software weapon1 command selects D9
+FAIL: software RB invokes scanner with actual energy debit
+FAIL: software Start opens actual pause menu
+PASS: software Start resumes without a gameplay command
+PASS: Start resume suppresses held fire and aim triggers
+FAIL: releasing mouse retains ADS from the other held source
+FAIL: releasing trigger retains ADS from the other held source
+PASS: pause suppresses held aim after resume/replacement
+PASS: pause remains disarmed while LT is still held
+FAIL: pause rearms only after every source released and a fresh LT press
+PASS: settings suppresses held aim after resume/replacement
+PASS: settings remains disarmed while LT is still held
+FAIL: settings rearms only after every source released and a fresh LT press
+PASS: inventory suppresses held aim after resume/replacement
+PASS: inventory remains disarmed while LT is still held
+FAIL: inventory rearms only after every source released and a fresh LT press
+PASS: new suppresses held aim after resume/replacement
+PASS: new remains disarmed while LT is still held
+FAIL: new rearms only after every source released and a fresh LT press
+PASS: load suppresses held aim after resume/replacement
+PASS: load remains disarmed while LT is still held
+FAIL: load rearms only after every source released and a fresh LT press
+ADS SETTINGS INPUT FAILURES: 31

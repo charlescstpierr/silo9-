@@ -1,0 +1,10 @@
+--- probe-before.gd
++++ probe_ads.gd
+@@ -361,6 +361,7 @@
+ 	await wait(.6)
+ 	shoot("arc-ADS-1")
+ 	await wait(.5)
++	await ready_weapon(1)
+ 	shoot("arc-ADS-2")
+ 	await wait(.5)
+ 	stage = "B-while-aim-held"

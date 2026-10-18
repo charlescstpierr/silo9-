@@ -1,0 +1,40 @@
+[
+  {
+    "name": "baseline",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/harness-collision/fix/baseline",
+      "--script",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/tests/test_jump_tap.gd"
+    ],
+    "exit": 0,
+    "seconds": 2.850719928741455,
+    "test_sha256": "c68b58e242598cd3d03c48f6c86309d8767992fd802d9a4aafbe9d054b63aa06"
+  },
+  {
+    "name": "candidate",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07",
+      "--script",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-07/tests/test_jump_tap.gd"
+    ],
+    "exit": 1,
+    "seconds": 2.8557770252227783,
+    "test_sha256": "c68b58e242598cd3d03c48f6c86309d8767992fd802d9a4aafbe9d054b63aa06"
+  }
+]

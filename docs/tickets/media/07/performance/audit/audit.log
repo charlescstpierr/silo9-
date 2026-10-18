@@ -1,0 +1,77 @@
+{
+  "checks_passed": 473,
+  "summary": {
+    "baseline": {
+      "frame_p50_ms": {
+        "median": 94.823,
+        "min": 93.618,
+        "max": 103.501
+      },
+      "frame_p95_ms": {
+        "median": 119.371,
+        "min": 111.863,
+        "max": 133.695
+      },
+      "draw_calls_max": {
+        "median": 377,
+        "min": 377,
+        "max": 377
+      },
+      "nodes_max": {
+        "median": 682,
+        "min": 682,
+        "max": 682
+      },
+      "resources_max": {
+        "median": 83,
+        "min": 83,
+        "max": 83
+      }
+    },
+    "candidate": {
+      "frame_p50_ms": {
+        "median": 94.664,
+        "min": 92.953,
+        "max": 96.453
+      },
+      "frame_p95_ms": {
+        "median": 113.132,
+        "min": 108.13,
+        "max": 116.632
+      },
+      "draw_calls_max": {
+        "median": 376,
+        "min": 376,
+        "max": 377
+      },
+      "nodes_max": {
+        "median": 686,
+        "min": 686,
+        "max": 686
+      },
+      "resources_max": {
+        "median": 83,
+        "min": 83,
+        "max": 83
+      }
+    }
+  },
+  "ranges_overlap": {
+    "frame_p50_ms": true,
+    "frame_p95_ms": true
+  },
+  "profile": [
+    {
+      "window": "all",
+      "samples": 40,
+      "mean_sum_cpu_percent": 400.5661822511286,
+      "llvmpipe_share": 0.8596521657704393
+    },
+    {
+      "window": "middle60percent",
+      "samples": 24,
+      "mean_sum_cpu_percent": 471.02732328100205,
+      "llvmpipe_share": 0.9002409085775255
+    }
+  ]
+}

@@ -26,7 +26,11 @@ func freeze_run() -> void:
 	player = app.player
 	player.set_physics_process(false)
 	player.set_process(false)
-	app.world.process_mode = Node.PROCESS_MODE_DISABLED
+	app.world.set_process(false)
+	app.world.set_physics_process(false)
+	for node in app.world.find_children("*", "Node", true, false):
+		node.set_process(false)
+		node.set_physics_process(false)
 
 func widgets() -> Array:
 	return [app.content.find_child("FovSlider", true, false), app.content.find_child("AimZoomSlider", true, false), app.content.find_child("AimSensitivitySlider", true, false)]

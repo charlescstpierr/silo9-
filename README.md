@@ -20,6 +20,7 @@ Depuis ce workspace Linux :
 | Espace | Saut |
 | Ctrl | S'accroupir |
 | Clic gauche | Tir |
+| Clic droit maintenu | Rapprocher la prise de visée. ADS complet prévu au ticket 7 |
 | 1 / 2 | D9 / ARC-3 |
 | R | Recharger le D9 |
 | Q en WASD, A en ZQSD | SCAN ÉCHO |

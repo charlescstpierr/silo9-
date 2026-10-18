@@ -2,6 +2,8 @@
 
 Version de développement du 18 octobre 2026, Godot 4.7.2 stable. Le résultat est un prototype FPS jouable. Le niveau et son équilibrage ne sont pas encore validés comme une expérience humaine de 20 à 30 minutes.
 
+Les mesures globales et captures ci-dessous correspondent à la base `8649b60`. La modification des mains est décrite séparément dans [le rapport du ticket 2](tickets/02-fps-rig.md), avec son scénario, ses preuves et les limites de ses mesures.
+
 ## Comportements vérifiés
 
 `./tools/verify.sh` importe le projet puis exécute sept suites Godot headless avec des sauvegardes isolées dans `.cstack/silo9/test-user-data`.

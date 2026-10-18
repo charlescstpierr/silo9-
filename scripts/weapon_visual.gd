@@ -11,7 +11,6 @@ static func build(electric: bool) -> Node3D:
 		_material(Color("263844"), 0.05, 0.7),
 		_material(Color("e7ad57"), 0.3, 0.4),
 		_material(Color("62c9ce") if electric else Color("edb76d"), 0.15, 0.35, 0.8),
-		_material(Color("bd9d73"), 0.0, 0.85),
 	]
 	var batches: Array[SurfaceTool] = []
 	for material in materials:
@@ -20,16 +19,19 @@ static func build(electric: bool) -> Node3D:
 		batch.set_material(material)
 		batches.append(batch)
 	_part(batches[1], Vector3(0.104, 0.067, 0.34), Vector3(0, 0.035, -0.035), 0.012)
-	_part(batches[2], Vector3(0.09, 0.19, 0.105), Vector3(0, -0.075, 0.075), 0.018, Vector3(-0.22, 0, 0))
-	_part(batches[1], Vector3(0.1, 0.025, 0.118), Vector3(0, -0.16, 0.094), 0.008)
+	_part(batches[2], Vector3(0.065, 0.135, 0.105), Vector3(0, -0.06, 0.075), 0.018, Vector3(-0.22, 0, 0))
+	_part(batches[1], Vector3(0.075, 0.025, 0.118), Vector3(0, -0.125, 0.089), 0.008)
 	for side: float in [-1.0, 1.0]:
-		_part(batches[0], Vector3(0.008, 0.115, 0.063), Vector3(side * 0.046, -0.064, 0.08), 0.002, Vector3(-0.22, 0, 0))
+		_part(batches[0], Vector3(0.008, 0.095, 0.063), Vector3(side * 0.034, -0.055, 0.08), 0.002, Vector3(-0.22, 0, 0))
 		for rib in 6:
-			_part(batches[2], Vector3(0.011, 0.008, 0.061), Vector3(side * 0.049, -0.11 + rib * 0.017, 0.08), 0.002, Vector3(-0.22, 0, 0))
+			_part(batches[2], Vector3(0.011, 0.008, 0.061), Vector3(side * 0.035, -0.095 + rib * 0.014, 0.08), 0.002, Vector3(-0.22, 0, 0))
 	_part(batches[0], Vector3(0.078, 0.018, 0.132), Vector3(0, -0.065, -0.03), 0.005)
 	_part(batches[0], Vector3(0.078, 0.082, 0.018), Vector3(0, -0.027, -0.093), 0.005, Vector3(0.22, 0, 0))
 	_part(batches[2], Vector3(0.015, 0.051, 0.014), Vector3(0, -0.024, -0.015), 0.003, Vector3(-0.33, 0, 0))
 	if electric:
+		_part(batches[1], Vector3(0.078, 0.025, 0.12), Vector3(0, 0.003, -0.21), 0.005)
+		_part(batches[2], Vector3(0.065, 0.14, 0.10), Vector3(0, -0.07, -0.21), 0.012)
+		_part(batches[3], Vector3(0.075, 0.016, 0.108), Vector3(0, -0.14, -0.21), 0.004)
 		_part(batches[0], Vector3(0.132, 0.105, 0.2), Vector3(0, 0.087, 0.005), 0.025)
 		_part(batches[1], Vector3(0.104, 0.077, 0.26), Vector3(0, 0.078, -0.13), 0.014)
 		_cylinder(batches[2], 0.039, 0.16, Vector3(0, 0.078, -0.125))
@@ -61,38 +63,19 @@ static func build(electric: bool) -> Node3D:
 	for side: float in [-1.0, 1.0]:
 		for depth: float in [-0.12, 0.085]:
 			_cylinder(batches[0], 0.006, 0.005, Vector3(side * 0.055, 0.035, depth), Vector3(0, 0, PI * 0.5))
-	_hands(batches, electric)
 	for index in batches.size():
 		var instance := MeshInstance3D.new()
 		instance.mesh = batches[index].commit()
 		instance.layers = 2
 		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		root.add_child(instance)
+	var grip_basis := Basis(Vector3.UP, Vector3.FORWARD, Vector3.LEFT)
+	for entry: Array in [["GripRight", Vector3(0.035, -0.07, 0.158), Basis(Vector3.UP, -0.35) * grip_basis], ["GripLeft", Vector3(-0.062, -0.10, -0.12) if electric else Vector3(-0.068, -0.10, 0.13), Basis(Vector3.DOWN, Vector3.FORWARD, Vector3.RIGHT)], ["Muzzle", Vector3(0, 0.087, -0.31), Basis.IDENTITY]]:
+		var marker := Marker3D.new()
+		marker.name = entry[0]
+		marker.transform = Transform3D(entry[2], entry[1])
+		root.add_child(marker)
 	return root
-
-static func _hands(batches: Array[SurfaceTool], electric: bool) -> void:
-	_part(batches[5], Vector3(0.125, 0.112, 0.108), Vector3(0.021, -0.095, 0.108), 0.028, Vector3(-0.2, 0.05, 0.13))
-	_part(batches[2], Vector3(0.085, 0.067, 0.018), Vector3(0.026, -0.085, 0.166), 0.008, Vector3(-0.2, 0, 0.13))
-	for finger in 3:
-		var level := -0.06 - float(finger) * 0.028
-		_part(batches[5], Vector3(0.097, 0.024, 0.036), Vector3(-0.005, level, 0.022), 0.008, Vector3(-0.1, 0.05, 0.06))
-		_part(batches[5], Vector3(0.036, 0.025, 0.073), Vector3(-0.057, level, 0.049), 0.009, Vector3(-0.12, 0.12, 0))
-	_part(batches[5], Vector3(0.037, 0.065, 0.041), Vector3(-0.057, -0.043, 0.095), 0.012, Vector3(-0.55, 0, -0.32))
-	_part(batches[5], Vector3(0.036, 0.028, 0.061), Vector3(-0.062, -0.021, 0.065), 0.009, Vector3(-0.18, 0.08, 0))
-	_part(batches[5], Vector3(0.028, 0.025, 0.09), Vector3(0.052, -0.026, -0.011), 0.008, Vector3(0.05, -0.15, 0))
-	_part(batches[2], Vector3(0.14, 0.042, 0.125), Vector3(0.045, -0.157, 0.132), 0.012, Vector3(-0.25, 0, 0.33))
-	_part(batches[1], Vector3(0.145, 0.23, 0.14), Vector3(0.087, -0.272, 0.167), 0.035, Vector3(-0.25, 0, 0.33))
-	_part(batches[3], Vector3(0.09, 0.014, 0.008), Vector3(0.055, -0.17, 0.199), 0.003, Vector3(0, 0, 0.33))
-	if not electric:
-		return
-	_part(batches[5], Vector3(0.105, 0.066, 0.125), Vector3(-0.023, -0.023, -0.146), 0.022, Vector3(0.08, 0.0, -0.2))
-	for finger in 4:
-		var depth := -0.098 - float(finger) * 0.028
-		_part(batches[5], Vector3(0.03, 0.055, 0.023), Vector3(-0.078, 0.014, depth), 0.009, Vector3(0, 0, -0.18))
-		_part(batches[5], Vector3(0.044, 0.025, 0.024), Vector3(-0.06, 0.044, depth), 0.008, Vector3(0, 0, -0.2))
-	_part(batches[5], Vector3(0.037, 0.032, 0.085), Vector3(0.043, 0.002, -0.122), 0.01, Vector3(0, -0.12, 0))
-	_part(batches[2], Vector3(0.104, 0.045, 0.10), Vector3(-0.068, -0.065, -0.139), 0.014, Vector3(0.12, 0, -0.55))
-	_part(batches[1], Vector3(0.117, 0.24, 0.12), Vector3(-0.139, -0.171, -0.117), 0.032, Vector3(-0.18, 0, -0.55))
 
 static func _material(color: Color, metal: float, rough: float, glow: float = 0.035) -> StandardMaterial3D:
 	var result := StandardMaterial3D.new()
@@ -148,7 +131,7 @@ static func _bevel_box(size: Vector3, bevel: float) -> ArrayMesh:
 		var depth: float = [-z, -z + cut, z - cut, z][layer]
 		var width := x - inset
 		var height := y - inset
-		var corner := cut * 0.5
+		var corner := minf(cut * 0.5, minf(width, height) * 0.4)
 		rings.append(PackedVector3Array([
 			Vector3(width - corner, height, depth), Vector3(-width + corner, height, depth),
 			Vector3(-width, height - corner, depth), Vector3(-width, -height + corner, depth),

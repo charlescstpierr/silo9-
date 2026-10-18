@@ -4,7 +4,7 @@ extends CharacterBody3D
 const State = preload("res://scripts/run_state.gd")
 const WeaponSpec = preload("res://scripts/weapon_spec.gd")
 const Audio = preload("res://scripts/player_audio.gd")
-const WeaponVisual = preload("res://scripts/weapon_visual.gd")
+const FpsRig = preload("res://scripts/fps_rig.gd")
 const D9: Resource = preload("res://data/weapons/d9.tres")
 const ARC: Resource = preload("res://data/weapons/arc3.tres")
 const STANDING_HEIGHT: float = 1.8
@@ -30,8 +30,8 @@ var _aim_query := PhysicsRayQueryParameters3D.new()
 var _shot_query := PhysicsRayQueryParameters3D.new()
 var _step_query := PhysicsRayQueryParameters3D.new()
 var _step_collision := KinematicCollision3D.new()
-var _gun_root: Node3D
-var _guns: Array[Node3D] = []
+var rig: FpsRig
+var _view_frame := FpsRig.ViewFrame.new()
 var _muzzle: MeshInstance3D
 var _beam: MeshInstance3D
 var _impact: MeshInstance3D
@@ -101,6 +101,9 @@ func set_active(value: bool) -> void:
 		velocity.x = 0.0
 		velocity.z = 0.0
 		_target = null
+		_recoil = 0.0
+		_view_frame = FpsRig.ViewFrame.new()
+		rig.reset_pose()
 
 func equip(index: int) -> void:
 	if index < 0 or index > 1:
@@ -108,8 +111,7 @@ func equip(index: int) -> void:
 	if index != weapon_index:
 		_cancel_reload()
 	weapon_index = index
-	for slot in _guns.size():
-		_guns[slot].visible = slot == index
+	rig.equip(index)
 
 func _weapon() -> WeaponSpec:
 	return D9 if weapon_index == 0 else ARC
@@ -127,6 +129,7 @@ func fire() -> bool:
 		return false
 	_shot_time = spec.cooldown
 	_recoil = spec.recoil
+	_update_view(0.0)
 	_effect_time = 0.09 if weapon_index == 0 else 0.16
 	_muzzle.visible = true
 	_flash_light.visible = true
@@ -165,6 +168,7 @@ func reload_weapon() -> bool:
 func _cancel_reload() -> void:
 	reloading = false
 	_reload_time = 0.0
+	_view_frame.reload_progress = -1.0
 
 func activate_scan() -> bool:
 	if not active or state == null or state.health <= 0.0 or _scan_time > 0.0:
@@ -194,6 +198,9 @@ func teleport(pos: Vector3, yaw: float = 0.0) -> void:
 	_cancel_reload()
 	_target = null
 	_aim_time = 0.0
+	_recoil = 0.0
+	_view_frame = FpsRig.ViewFrame.new()
+	rig.reset_pose()
 	if camera != null:
 		camera.rotation = Vector3.ZERO
 
@@ -267,8 +274,16 @@ func _physics_process(delta: float) -> void:
 		_walk_phase += delta * speed * 1.7
 	var bob: float = sin(_walk_phase) * 0.008 if moving else 0.0
 	camera.position.y = move_toward(camera.position.y, (0.94 if _crouched else 1.58) + bob, delta * 4.0)
-	_gun_root.position.y = -0.24 + bob - (sin((_reload_time / D9.reload_duration) * PI) * 0.17 if reloading else 0.0)
-	_gun_root.position.z = -0.42 + _recoil
+	_view_frame.bob = bob
+	_view_frame.pose = FpsRig.ViewFrame.Pose.RUN if moving and Input.is_action_pressed("sprint") else FpsRig.ViewFrame.Pose.REST
+	if InputMap.has_action("aim") and Input.is_action_pressed("aim"):
+		_view_frame.pose = FpsRig.ViewFrame.Pose.AIM
+	_update_view(delta)
+
+func _update_view(delta: float) -> void:
+	_view_frame.reload_progress = 1.0 - _reload_time / D9.reload_duration if reloading else -1.0
+	_view_frame.recoil = _recoil
+	rig.update_visual(delta, _view_frame)
 
 func _set_crouch(wanted: bool) -> void:
 	if wanted == _crouched:
@@ -345,33 +360,27 @@ func _box(parent: Node3D, size: Vector3, pos: Vector3, material: StandardMateria
 func _build_weapons() -> void:
 	var orange := _material(Color("f6a63d"), 1.3)
 	var cyan := _material(Color("49e7ed"), 1.5)
-	_gun_root = Node3D.new()
-	_gun_root.position = Vector3(0.24, -0.24, -0.42)
-	camera.add_child(_gun_root)
-	for index in 2:
-		var gun := WeaponVisual.build(index == 1)
-		_gun_root.add_child(gun)
-		_guns.append(gun)
-		gun.visible = index == 0
+	rig = FpsRig.new()
+	camera.add_child(rig)
 	var key := OmniLight3D.new()
 	key.position = Vector3(-0.25, 0.32, 0.06)
 	key.light_color = Color("d0e7ef")
-	key.light_energy = 0.65
+	key.light_energy = 0.42
 	key.light_specular = 0.45
 	key.omni_range = 1.4
 	key.omni_attenuation = 0.8
 	key.light_cull_mask = 2
 	key.shadow_enabled = false
 	camera.add_child(key)
-	_muzzle = _box(_gun_root, Vector3(0.045, 0.045, 0.07), Vector3(-0.01, 0.061, -0.36), orange)
+	_muzzle = _box(rig.muzzle, Vector3(0.045, 0.045, 0.07), Vector3.ZERO, orange)
 	_muzzle.visible = false
 	_flash_light = OmniLight3D.new()
-	_flash_light.position = Vector3(-0.01, 0.061, -0.35)
+	_flash_light.position = Vector3.ZERO
 	_flash_light.omni_range = 3.0
 	_flash_light.light_energy = 1.5
 	_flash_light.shadow_enabled = false
 	_flash_light.visible = false
-	_gun_root.add_child(_flash_light)
+	rig.muzzle.add_child(_flash_light)
 	_beam = _box(self, Vector3.ONE, Vector3.ZERO, cyan)
 	_beam.top_level = true
 	_beam.visible = false

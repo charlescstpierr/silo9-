@@ -38,7 +38,7 @@ func box(pos: Vector3, size: Vector3) -> StaticBody3D:
 	return body
 
 func run() -> void:
-	for action: String in ["forward", "back", "left", "right", "sprint", "jump", "crouch", "interact", "fire", "reload", "scan", "weapon1", "weapon2"]:
+	for action: String in ["forward", "back", "left", "right", "sprint", "jump", "crouch", "interact", "fire", "reload", "scan", "weapon1", "weapon2", "aim"]:
 		if not InputMap.has_action(action):
 			InputMap.add_action(action)
 	var floor_body := box(Vector3(0, -0.5, 0), Vector3(40, 1, 40))
@@ -48,6 +48,7 @@ func run() -> void:
 	root.add_child(player)
 	await process_frame
 	check(player.camera != null, "ready creates first-person camera")
+	check(player.rig.skeleton.get_bone_count() == 35, "player owns articulated rig")
 	check(not player.active and not player.fire(), "inactive player cannot shoot")
 	player.equip(1)
 	check(player.weapon_index == 1, "equip selects ARC")
@@ -56,9 +57,17 @@ func run() -> void:
 	player.equip(0)
 	player.set_active(true)
 	check(player.fire() and run_state.ammo == 11, "D9 shot consumes one round")
+	check(player._muzzle.global_position.distance_to(player.rig.muzzle.global_position) < .0001, "shot flash follows current rig muzzle")
 	check(not player.fire() and run_state.ammo == 11, "fire cooldown prevents double consumption")
+	Input.action_press("aim")
+	await ticks(12)
+	check(player._view_frame.pose == player.FpsRig.ViewFrame.Pose.AIM and player.rig._pose_offset.x < -.1, "aim input moves both hands and selected weapon")
+	Input.action_release("aim")
 	check(player.reload_weapon(), "partial magazine accepts reload")
+	await ticks(5)
+	check(player.rig._frame.reload_progress >= 0.0, "reload is presented before switch")
 	player.equip(1)
+	check(player.rig._frame.reload_progress < 0.0, "switch clears reload presentation in same tick")
 	check(not player.reloading and run_state.ammo == 11, "switch cancels reload without free rounds")
 	await create_timer(0.6).timeout
 	check(player.fire() and run_state.energy == 88.0, "ARC shot consumes shared energy")
@@ -139,6 +148,10 @@ func run() -> void:
 	check(player.reload_weapon(), "reload can start before death")
 	player.apply_damage(100.0)
 	check(not player.active and not player.reloading and not player.fire(), "death cancels reload and blocks fire")
+	check(player.rig.left_in_contact and player.rig._settle == 0.0, "death clears stale hand transition")
+	player.equip(1)
+	player.teleport(Vector3.ZERO)
+	check(player.rig.left_in_contact and player.rig._pose_offset == Vector3.ZERO, "teleport resets hand pose")
 	floor_body.queue_free()
 	player.queue_free()
 	await create_timer(0.35).timeout

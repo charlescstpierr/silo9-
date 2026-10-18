@@ -109,6 +109,8 @@ func _ready() -> void:
 func set_active(value: bool) -> void:
 	active = value and state != null and state.health > 0.0
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if active else Input.MOUSE_MODE_VISIBLE
+	if active:
+		_capture_fire = InputMap.has_action("fire") and Input.is_action_pressed("fire")
 	if not active:
 		_cancel_reload()
 		_clear_motion_input()

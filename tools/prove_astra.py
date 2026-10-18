@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import signal
 import struct
 import subprocess
 
@@ -74,8 +75,17 @@ def main():
         environment['LC_NUMERIC'] = 'C'
     (output / 'command.json').write_text(json.dumps(command, indent=2))
     with (output / 'engine.log').open('w') as log:
-        result = subprocess.run(command, cwd=project, env=environment, stdout=log,
-                                stderr=subprocess.STDOUT, timeout=600)
+        result = subprocess.Popen(command, cwd=project, env=environment, stdout=log,
+                                  stderr=subprocess.STDOUT, start_new_session=True)
+        try:
+            result.wait(timeout=600)
+        except (subprocess.TimeoutExpired, KeyboardInterrupt):
+            try:
+                os.killpg(result.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+            result.wait()
+            raise
     log_text = (output / 'engine.log').read_text()
     if result.returncode or re.search(r'(?m)^\s*(ERROR:|SCRIPT ERROR:|FAIL:)', log_text):
         raise RuntimeError(f'Godot failed; inspect {output / "engine.log"}')
@@ -88,10 +98,13 @@ def main():
         method = re.search(r' - (Compatibility|Forward\+|Mobile) - ', log_text)
         if method is None:
             raise RuntimeError('Actual rendering method missing from Godot startup log')
-        report['rendering_method'] = {'Compatibility': 'gl_compatibility', 'Forward+': 'forward_plus', 'Mobile': 'mobile'}[method[1]]
+        actual_method = {'Compatibility': 'gl_compatibility', 'Forward+': 'forward_plus', 'Mobile': 'mobile'}[method[1]]
+        if report.get('rendering_method', actual_method) != actual_method:
+            raise RuntimeError('Engine API and startup log disagree on rendering method')
+        report['rendering_method'] = actual_method
         if report['resolution'] != [1920, 1080] or len(report['samples']) != 4:
             raise RuntimeError('Benchmark resolution/station count invalid')
-        if any(s['frames'] < 10 or s['draw_calls'] <= 0 or not s['player_alive'] for s in report['samples']):
+        if any(s['frames'] < 20 or s['draw_calls'] <= 0 or not s['player_alive'] for s in report['samples']):
             raise RuntimeError('Benchmark did not render enough live gameplay')
         report['process'] = json.loads((output / 'process.json').read_text()) if (output / 'process.json').exists() else None
         if report['process'] is not None:

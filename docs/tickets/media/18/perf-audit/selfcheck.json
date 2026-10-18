@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "checks": 20,
+  "details": [
+    "synthetic-positive-reference-False",
+    "synthetic-positive-reference-True",
+    "synthetic-positive-candidate-False",
+    "synthetic-positive-candidate-True",
+    "reject-quantile",
+    "reject-frame_count",
+    "reject-raw_timestamp",
+    "reject-nan",
+    "reject-lamp_off",
+    "reject-missing_station",
+    "reject-short_warmup",
+    "reject-transient_effect",
+    "reject-robot_collision",
+    "reject-fake_damage_bool",
+    "reject-crate_miss",
+    "reject-missing_trace",
+    "reject-new_material",
+    "synthetic-positive-host",
+    "reject-foreign_parent",
+    "reject-profiler"
+  ],
+  "scope": "Synthetic audit-validator controls only; no engine and no campaign verdict"
+}

@@ -1,0 +1,1180 @@
+[
+  {
+    "side": "reference",
+    "start": 1792341128.501743,
+    "end": 1792341165.881276,
+    "exit_code": 0,
+    "command": [
+      "python3",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/prove_sector_power.py",
+      "--godot",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--project",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-10",
+      "--mode",
+      "perf",
+      "--output",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/perf/normal-3-reference",
+      "--timeout",
+      "120",
+      "--require-circuits",
+      "--require-lighting",
+      "--flashlight-on",
+      "--terminal-variant",
+      "reference"
+    ],
+    "wrapper_pid": 3405119,
+    "host_samples": [
+      {
+        "unix": 1792341128.514875,
+        "load_average": [
+          3.2548828125,
+          2.8701171875,
+          2.591796875
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341129.5328202,
+        "load_average": [
+          3.07421875,
+          2.8388671875,
+          2.5830078125
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341130.566112,
+        "load_average": [
+          3.07421875,
+          2.8388671875,
+          2.5830078125
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341131.58065,
+        "load_average": [
+          3.07421875,
+          2.8388671875,
+          2.5830078125
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341132.5957057,
+        "load_average": [
+          3.07421875,
+          2.8388671875,
+          2.5830078125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341133.6176486,
+        "load_average": [
+          3.07421875,
+          2.8388671875,
+          2.5830078125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341134.6337228,
+        "load_average": [
+          2.90771484375,
+          2.80810546875,
+          2.57421875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341135.64873,
+        "load_average": [
+          2.90771484375,
+          2.80810546875,
+          2.57421875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341136.6937232,
+        "load_average": [
+          2.90771484375,
+          2.80810546875,
+          2.57421875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341137.753256,
+        "load_average": [
+          2.90771484375,
+          2.80810546875,
+          2.57421875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341138.7689486,
+        "load_average": [
+          2.90771484375,
+          2.80810546875,
+          2.57421875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341139.8005192,
+        "load_average": [
+          3.39599609375,
+          2.9111328125,
+          2.60888671875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341140.830885,
+        "load_average": [
+          3.39599609375,
+          2.9111328125,
+          2.60888671875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341141.8605397,
+        "load_average": [
+          3.39599609375,
+          2.9111328125,
+          2.60888671875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341142.8807788,
+        "load_average": [
+          3.39599609375,
+          2.9111328125,
+          2.60888671875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341143.9112866,
+        "load_average": [
+          3.39599609375,
+          2.9111328125,
+          2.60888671875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341144.9406302,
+        "load_average": [
+          3.76513671875,
+          2.99609375,
+          2.63818359375
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341145.9631917,
+        "load_average": [
+          3.76513671875,
+          2.99609375,
+          2.63818359375
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341146.9925976,
+        "load_average": [
+          3.76513671875,
+          2.99609375,
+          2.63818359375
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341148.0282478,
+        "load_average": [
+          3.76513671875,
+          2.99609375,
+          2.63818359375
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341149.0509024,
+        "load_average": [
+          3.76513671875,
+          2.99609375,
+          2.63818359375
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341150.0687392,
+        "load_average": [
+          4.1044921875,
+          3.07958984375,
+          2.6669921875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341151.096159,
+        "load_average": [
+          4.1044921875,
+          3.07958984375,
+          2.6669921875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341152.1233065,
+        "load_average": [
+          4.1044921875,
+          3.07958984375,
+          2.6669921875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341153.166395,
+        "load_average": [
+          4.1044921875,
+          3.07958984375,
+          2.6669921875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341154.1888816,
+        "load_average": [
+          4.015625,
+          3.078125,
+          2.6689453125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341155.2230556,
+        "load_average": [
+          4.015625,
+          3.078125,
+          2.6689453125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341156.2513142,
+        "load_average": [
+          4.015625,
+          3.078125,
+          2.6689453125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341157.273793,
+        "load_average": [
+          4.015625,
+          3.078125,
+          2.6689453125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341158.2943063,
+        "load_average": [
+          4.015625,
+          3.078125,
+          2.6689453125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341159.3154452,
+        "load_average": [
+          4.5751953125,
+          3.2099609375,
+          2.7138671875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341160.3444178,
+        "load_average": [
+          4.5751953125,
+          3.2099609375,
+          2.7138671875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341161.3680103,
+        "load_average": [
+          4.5751953125,
+          3.2099609375,
+          2.7138671875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341162.396045,
+        "load_average": [
+          4.5751953125,
+          3.2099609375,
+          2.7138671875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3405143,
+            "parent": 3405119,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341163.4245532,
+        "load_average": [
+          4.5751953125,
+          3.2099609375,
+          2.7138671875
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341164.4385984,
+        "load_average": [
+          4.36865234375,
+          3.189453125,
+          2.7099609375
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341165.4522696,
+        "load_average": [
+          4.36865234375,
+          3.189453125,
+          2.7099609375
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341165.8812363,
+        "load_average": [
+          4.36865234375,
+          3.189453125,
+          2.7099609375
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      }
+    ],
+    "unexpected_processes": []
+  },
+  {
+    "side": "candidate",
+    "start": 1792341177.0038815,
+    "end": 1792341214.8978145,
+    "exit_code": 0,
+    "command": [
+      "python3",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/prove_sector_power.py",
+      "--godot",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--project",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--mode",
+      "perf",
+      "--output",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/perf/normal-3-candidate",
+      "--timeout",
+      "120",
+      "--require-circuits",
+      "--require-lighting",
+      "--flashlight-on",
+      "--terminal-variant",
+      "candidate"
+    ],
+    "wrapper_pid": 3406098,
+    "host_samples": [
+      {
+        "unix": 1792341177.01841,
+        "load_average": [
+          3.85009765625,
+          3.11669921875,
+          2.69140625
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341178.042166,
+        "load_average": [
+          3.85009765625,
+          3.11669921875,
+          2.69140625
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341179.0603685,
+        "load_average": [
+          3.85009765625,
+          3.11669921875,
+          2.69140625
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341180.0805259,
+        "load_average": [
+          3.62158203125,
+          3.08154296875,
+          2.68212890625
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341181.1116185,
+        "load_average": [
+          3.62158203125,
+          3.08154296875,
+          2.68212890625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341182.125952,
+        "load_average": [
+          3.62158203125,
+          3.08154296875,
+          2.68212890625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341183.1413333,
+        "load_average": [
+          3.62158203125,
+          3.08154296875,
+          2.68212890625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341184.156813,
+        "load_average": [
+          3.41162109375,
+          3.046875,
+          2.6728515625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341185.1734178,
+        "load_average": [
+          3.41162109375,
+          3.046875,
+          2.6728515625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341186.1971543,
+        "load_average": [
+          3.41162109375,
+          3.046875,
+          2.6728515625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341187.211906,
+        "load_average": [
+          3.41162109375,
+          3.046875,
+          2.6728515625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341188.253568,
+        "load_average": [
+          3.41162109375,
+          3.046875,
+          2.6728515625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341189.289953,
+        "load_average": [
+          3.21826171875,
+          3.0126953125,
+          2.66357421875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341190.3081667,
+        "load_average": [
+          3.21826171875,
+          3.0126953125,
+          2.66357421875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341191.3324478,
+        "load_average": [
+          3.21826171875,
+          3.0126953125,
+          2.66357421875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341192.3632863,
+        "load_average": [
+          3.21826171875,
+          3.0126953125,
+          2.66357421875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341193.4024117,
+        "load_average": [
+          3.21826171875,
+          3.0126953125,
+          2.66357421875
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341194.4194534,
+        "load_average": [
+          3.6015625,
+          3.095703125,
+          2.6923828125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341195.4341881,
+        "load_average": [
+          3.6015625,
+          3.095703125,
+          2.6923828125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341196.4528034,
+        "load_average": [
+          3.6015625,
+          3.095703125,
+          2.6923828125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341197.4776387,
+        "load_average": [
+          3.6015625,
+          3.095703125,
+          2.6923828125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341198.5279317,
+        "load_average": [
+          3.6015625,
+          3.095703125,
+          2.6923828125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341199.556593,
+        "load_average": [
+          3.9541015625,
+          3.17724609375,
+          2.72119140625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341200.5809155,
+        "load_average": [
+          3.9541015625,
+          3.17724609375,
+          2.72119140625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341201.5944788,
+        "load_average": [
+          3.9541015625,
+          3.17724609375,
+          2.72119140625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341202.6304352,
+        "load_average": [
+          3.9541015625,
+          3.17724609375,
+          2.72119140625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341203.6549075,
+        "load_average": [
+          3.9541015625,
+          3.17724609375,
+          2.72119140625
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341204.686195,
+        "load_average": [
+          4.3583984375,
+          3.27392578125,
+          2.75537109375
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341205.7199957,
+        "load_average": [
+          4.3583984375,
+          3.27392578125,
+          2.75537109375
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341206.741974,
+        "load_average": [
+          4.3583984375,
+          3.27392578125,
+          2.75537109375
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341207.765785,
+        "load_average": [
+          4.3583984375,
+          3.27392578125,
+          2.75537109375
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341208.7997973,
+        "load_average": [
+          4.3583984375,
+          3.27392578125,
+          2.75537109375
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341209.8316681,
+        "load_average": [
+          4.32958984375,
+          3.2861328125,
+          2.76220703125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341210.8724818,
+        "load_average": [
+          4.32958984375,
+          3.2861328125,
+          2.76220703125
+        ],
+        "logical_cpus": 8,
+        "processes": [
+          {
+            "pid": 3406195,
+            "parent": 3406098,
+            "name": "Godot_v4.7.2-st"
+          }
+        ]
+      },
+      {
+        "unix": 1792341211.8877745,
+        "load_average": [
+          4.32958984375,
+          3.2861328125,
+          2.76220703125
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341212.902399,
+        "load_average": [
+          4.32958984375,
+          3.2861328125,
+          2.76220703125
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341213.916273,
+        "load_average": [
+          4.32958984375,
+          3.2861328125,
+          2.76220703125
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      },
+      {
+        "unix": 1792341214.8977606,
+        "load_average": [
+          4.142578125,
+          3.2646484375,
+          2.7578125
+        ],
+        "logical_cpus": 8,
+        "processes": []
+      }
+    ],
+    "unexpected_processes": []
+  }
+]

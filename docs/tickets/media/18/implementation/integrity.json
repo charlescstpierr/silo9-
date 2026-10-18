@@ -1,0 +1,27 @@
+{
+  "head": "28e402821469655598c6a84bc415d8ea04da97c2",
+  "branch": "feat/issue-18-world-persistence",
+  "tracked_count_checked": 2557,
+  "changed_tracked_paths": [
+    "scripts/enemy.gd",
+    "scripts/robot_visual.gd",
+    "scripts/run_state.gd",
+    "scripts/world.gd",
+    "tests/test_sector_power_state.gd"
+  ],
+  "changes_since_source_freeze": [],
+  "red_test_preservation": {
+    "world_red_assertions_preserved": true,
+    "reconstructed_original_sha256": "74b7288a9a950fff5b6d62c21adecae96d4c6d1a8df143abf972257dbf1ecf1e",
+    "only_addition": "\t\tapp.world.set_circuit(&\"maintenance\", false)\n\t\tcheck(app.world.set_circuit(&\"maintenance\", true) == app.world.PowerOutcome.CHANGED, \"circuit commands remain usable after the defeated robot node is freed\")\n",
+    "state_unchanged": true,
+    "fixture_unchanged": true
+  },
+  "preview_sha256": {
+    "remains-normal.png": "37c0f1b8f1ce4ba82068a90e3d9cc116461a53ce2cef07b21709c5a14f0f451b",
+    "remains-low.png": "195880b484fbb11c3d4bf1f7cc7e20869505af66dfdcf30898578b93b1e5854c",
+    "preview.gd": "23b9ba941f1f3cf8241965520a2849f8f2ac86e97b1b1bd624cda6fe87f7c1e8",
+    "preview-measurements.json": "d6ee13abd4e25dceeb04555719736e94135b0fbb4091f8594c2f7151c57418a0"
+  },
+  "winding_probe_sha256": "e9e4e41e836a3167ec25d0a1ca2882936440358cdf7976741fdd5fbe6836aa84"
+}

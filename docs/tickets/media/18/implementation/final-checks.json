@@ -1,0 +1,116 @@
+[
+  {
+    "name": "remains_geometry",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_remains_geometry.gd"
+    ],
+    "environment": {},
+    "exit": 0,
+    "seconds": 0.33724341401830316,
+    "script_sha256": "657df091c8edc02b99e4de5572ca50a3cc29688b820b6fb9884a7d2f698b5757",
+    "errors": [],
+    "warnings": [],
+    "tail": [
+      "PASS: generated geometry is a single-surface ArrayMesh",
+      "PASS: generated triangle index buffer is complete",
+      "PASS: actual generated triangles agree with their outward normals",
+      "PASS: remains disable shadows and use 45m local visibility",
+      "PASS: six carcasses share at most six meshes and three materials",
+      "PASS: negative control catches deliberately reversed real triangles",
+      "PASS: negative control leaves shared mesh resource unchanged",
+      "REMAINS GEOMETRY: 0 failures"
+    ]
+  },
+  {
+    "name": "persistence_state",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_persistence_state.gd"
+    ],
+    "environment": {},
+    "exit": 0,
+    "seconds": 0.5666791792027652,
+    "script_sha256": "0a109337c2c759f854ea38f19ff14162b97c7f46e40d0de8171ee288d6d8a4c5",
+    "errors": [],
+    "warnings": [],
+    "tail": [
+      "PASS: fixture can write save.json.tmp",
+      "PASS: fixture denies directory rename while temp remains writable",
+      "PASS: failed rename preserves previous file bytes",
+      "PASS: seed file for controlled write failure",
+      "PASS: fixture directs temporary writes to full device",
+      "PASS: write failure returns an error",
+      "PASS: write failure preserves previous valid save",
+      "PERSISTENCE STATE: 179 checks, 0 failures"
+    ]
+  },
+  {
+    "name": "world_persistence",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_world_persistence.gd"
+    ],
+    "environment": {},
+    "exit": 0,
+    "seconds": 20.386913436930627,
+    "script_sha256": "1debcf08c4a30762d65cd42f4b8c599e1d7f77739eb2bc285dbc810c2645dbce",
+    "errors": [],
+    "warnings": [
+      "WARNING: 4 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+    ],
+    "tail": [
+      "PASS: GATE_RED restored gate collider is already above doorway",
+      "PASS: GATE_RED restored doorway permits passage after physics synchronization",
+      "CASE invalid load: active world retained",
+      "PASS: fixture can write silo9-save.json",
+      "PASS: invalid orphan pose leaves active state, Player and World unchanged",
+      "WORLD PERSISTENCE: 58 checks, 0 failures",
+      "WARNING: 4 ObjectDB instances were leaked at exit (run with `--verbose` for details).",
+      "   at: cleanup (core/object/object.cpp:2536)"
+    ]
+  },
+  {
+    "name": "preview",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/implementation/preview.gd"
+    ],
+    "environment": {
+      "DISPLAY": ":100",
+      "LIBGL_ALWAYS_SOFTWARE": "1"
+    },
+    "exit": 0,
+    "seconds": 5.838523245882243,
+    "script_sha256": "23b9ba941f1f3cf8241965520a2849f8f2ac86e97b1b1bd624cda6fe87f7c1e8",
+    "errors": [],
+    "warnings": [
+      "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+    ],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.",
+      "     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)",
+      "OpenGL API 4.5 (Core Profile) Mesa 26.0.8-1ubuntu0.3 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 21.1.8, 256 bits)",
+      "",
+      "PREVIEW: captures=2 robots=6 shared_meshes=6 materials=3"
+    ]
+  }
+]

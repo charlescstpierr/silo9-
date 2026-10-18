@@ -62,7 +62,7 @@ Le benchmark rend les quatre secteurs en 1080p, avec l'IA ennemie active et un s
 ./tools/godot.sh --path . -- --benchmark --low
 ```
 
-Les résultats distinguent le moteur graphique, les temps de frame et les limites de la machine. Un test headless ne mesure pas les performances graphiques. Voir [les résultats de validation](docs/VALIDATION.md), [la preuve du rechargement D9](docs/tickets/03-d9-reload.md), [le maniement des armes](docs/tickets/05-weapon-handling.md), [les effets de tir](docs/tickets/06-shot-feedback.md), [la visée ADS](docs/tickets/07-ads.md), [les matériaux FPS](docs/tickets/08-materials.md), [la lampe et les éclairages](docs/tickets/09-lighting.md) et [l’identité des trois secteurs](docs/tickets/10-environment.md).
+Les résultats distinguent le moteur graphique, les temps de frame et les limites de la machine. Un test headless ne mesure pas les performances graphiques. Voir [les résultats de validation](docs/VALIDATION.md), [la preuve du rechargement D9](docs/tickets/03-d9-reload.md), [le maniement des armes](docs/tickets/05-weapon-handling.md), [les effets de tir](docs/tickets/06-shot-feedback.md), [la visée ADS](docs/tickets/07-ads.md), [les matériaux FPS](docs/tickets/08-materials.md), [la lampe et les éclairages](docs/tickets/09-lighting.md), [l’identité des trois secteurs](docs/tickets/10-environment.md) et [la persistance des traces](docs/tickets/18-persistence.md).
 
 ## Ressources et licences
 

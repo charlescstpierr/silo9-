@@ -1,6 +1,24 @@
 extends SceneTree
 
 var app: Node
+var terminal_variant := ""
+var terminal_data: Dictionary = {}
+var persistence_data: Dictionary = {}
+var persistence_actions: Array[Dictionary] = []
+var persistence_observations: Array[Dictionary] = []
+var persistence_visits: Array[Dictionary] = []
+var persistence_images: Array[Dictionary] = []
+var movement_samples: Array[Array] = []
+var movement_clock := 0.0
+var movement_ticks := 0
+var track_movement := false
+var witness_spawn := Vector3.ZERO
+var crate_body: Node3D
+var arc_disabled_signals := 0
+var arc_changed_signals := 0
+var arc_changed_snapshots: Array[Dictionary] = []
+var arc_messages := 0
+var measurement_start_usec := 0
 var output := ""
 var mode := "perf"
 var flashlight_requested := false
@@ -43,6 +61,7 @@ func _initialize() -> void:
 		if argument == "--require-circuits": require_circuits = true
 		if argument == "--low": low = true
 		if argument == "--flashlight-on": flashlight_requested = true
+		if argument.begins_with("--terminal-variant="): terminal_variant = argument.trim_prefix("--terminal-variant=")
 	run.call_deferred()
 
 func check(ok: bool, message: String) -> bool:
@@ -52,6 +71,7 @@ func check(ok: bool, message: String) -> bool:
 	return ok
 
 func run() -> void:
+	check(terminal_variant.is_empty() or (mode == "perf" and terminal_variant in ["reference", "candidate"]), "terminal preparation requires perf and a known variant")
 	check(not flashlight_requested or mode == "perf", "--flashlight-on requires --mode perf")
 	check(DisplayServer.get_name().to_lower() == "x11", "X11 required")
 	check(RenderingServer.get_current_rendering_method() == "gl_compatibility", "Compatibility required")
@@ -85,6 +105,15 @@ func run() -> void:
 		app.state.phase = 1
 		app.state.energy = 0
 		app.state.changed.emit()
+	if mode == "persistence":
+		check(app.state.has_method("crate_broken") and app.state.has_method("death_pose"), "persistence capabilities required")
+		for enemy in app.world.enemies:
+			if is_instance_valid(enemy) and enemy.enemy_id == "sentinel_1": witness_spawn = enemy.global_position
+		track_movement = true
+		await physics_frame
+		crate_body = find_crate_body()
+		await native_flashlight_on()
+		await persistence_stage("initial")
 	if mode == "perf":
 		if flashlight_requested:
 			var flashlight := app.player.find_child("Flashlight", true, false) as SpotLight3D
@@ -92,13 +121,27 @@ func run() -> void:
 				if app.player.get("flashlight_on") == false:
 					check(app.player.call("toggle_flashlight") == true, "perf flashlight toggle accepted")
 				check(app.player.get("flashlight_on") == true and flashlight.is_visible_in_tree(), "perf flashlight enabled before warmup")
-		for enemy in app.world.enemies:
-			enemy.queue_free()
-		app.world.enemies.clear()
-		await process_frame
+		if terminal_variant.is_empty():
+			for enemy in app.world.enemies: enemy.queue_free()
+			app.world.enemies.clear()
+			await process_frame
+		else:
+			check(flashlight_requested, "terminal campaign requires flashlight ON")
+			await prepare_terminal()
 		perf_flashlight_before_warmup = {"flashlight": flashlight_observation(), "usec": Time.get_ticks_usec(), "stage": "before_warmup"}
 	await wait(2.0)
-	if require_lighting and mode in ["mission", "capture"] and failures.is_empty(): await native_flashlight_on()
+	if (require_lighting and mode in ["mission", "capture"]) and failures.is_empty(): await native_flashlight_on()
+	if not terminal_variant.is_empty() and not terminal_data.is_empty():
+		while Time.get_ticks_usec() - int(terminal_data["before_warmup"]["usec"]) < 2000000:
+			await process_frame
+		terminal_data["before_measure"] = terminal_observation()
+	travelled = 0.0
+	waypoints = 0
+	waypoint_positions.clear()
+	previous_usec = 0
+	intervals.clear()
+	stages.clear()
+	measurement_start_usec = Time.get_ticks_usec()
 	var drawn_start := Engine.get_frames_drawn()
 	measuring = true
 	if failures.is_empty():
@@ -106,15 +149,19 @@ func run() -> void:
 		elif mode in ["lighting", "lighting-perf"]: await lighting_route()
 		else: await mission_route()
 	measuring = false
+	track_movement = false
+	if not terminal_data.is_empty():
+		terminal_data["measurement_start_usec"] = measurement_start_usec
+		terminal_data["measurement_end_usec"] = Time.get_ticks_usec()
 	for action in ["forward", "sprint"]: Input.action_release(action)
 	var drawn := Engine.get_frames_drawn() - drawn_start
 	check(drawn > 0, "no frames drawn")
 	if mode in ["perf", "mission", "capture"]: check(travelled >= 90.0 and waypoints >= 8, "route incomplete")
 	var report := {
-		"schema": 3 if mode == "perf" else 2, "waypoint_positions": waypoint_positions,
+		"schema": 4 if mode == "persistence" else (3 if mode == "perf" else 2), "waypoint_positions": waypoint_positions,
 		"require_lighting": require_lighting, "lighting_available": lighting_available,
 		"scene_inspection": mode in ["lighting", "lighting-perf"], "lighting_samples": lighting_samples, "cost_windows": cost_windows,
-		"final_observation": observation("final"), "mode": mode, "low_quality": low, "expected_ending": ending, "ending": app.state.ending,
+		"final_observation": observation("final"), "mode": mode, "low_quality": app.low_quality, "expected_ending": ending, "ending": app.state.ending,
 		"phase": app.state.phase, "health": app.state.health, "ammo": app.state.ammo, "reserve": app.state.reserve,
 		"medkits": app.state.medkits, "shots": shots, "defeated": app.state.defeated,
 		"circuits_available": circuits, "travelled_m": travelled, "waypoints_completed": waypoints,
@@ -126,18 +173,25 @@ func run() -> void:
 		"rendering_method": RenderingServer.get_current_rendering_method(), "renderer": RenderingServer.get_video_adapter_name(),
 		"resolution": [root.size.x, root.size.y], "performance_valid": mode == "perf" and failures.is_empty(),
 		"scenario": "controlled poses; actors frozen alive; phase1 fixture; zero energy; colossus suppressed; no native journey" if mode in ["lighting", "lighting-perf"] else "refuge -> maintenance -> archives -> refuge; enemies removed; no circuit switching" if mode == "perf" else "fresh mission with live combat and native E interactions",
-		"limits": "Linux X11 only; no Windows or target GPU claim. Walking uses Input actions, yaw/camera scripted; E is native OS press/release. Perf is an isolated no-enemy bench, not full mission. Mission/capture timings include interactions and are not a comparative benchmark. Screenshots need visual review; they are not video. Dummy audio does not prove audible output. Mission/perf: no teleports after normal new_game spawn. Lighting modes: explicitly teleported scene inspection, frozen living actors, deterministic process advances, not a native journey. Lighting-perf measures only named isolated windows; global timing includes setup and is not comparative."
+		"limits": "Linux X11 only; no Windows or target GPU claim. Walking uses Input actions, yaw/camera scripted; E is native OS press/release. Perf is an isolated no-enemy bench, not full mission. Mission/capture timings include interactions and are not a comparative benchmark. Screenshots need visual review; they are not video. Dummy audio does not prove audible output. Historical mission/perf without terminal fixture: no teleports after normal new_game spawn. Terminal preparation teleports are explicitly outside warmup and measurement. Lighting modes: explicitly teleported scene inspection, frozen living actors, deterministic process advances, not a native journey. Lighting-perf measures only named isolated windows; global timing includes setup and is not comparative."
 	}
 	if mode == "perf":
 		report["flashlight_requested"] = flashlight_requested
 		report["perf_flashlight_before_warmup"] = perf_flashlight_before_warmup
 		report["perf_flashlight_samples"] = perf_flashlight_samples
+	if not terminal_data.is_empty(): report["terminal"] = terminal_data
+	if mode == "persistence":
+		persistence_data.merge({"schema": 1, "observations": persistence_observations, "actions": persistence_actions, "movement": movement_samples, "visits": persistence_visits, "images": persistence_images})
+		report["persistence"] = persistence_data
+		report["scenario"] = "real shots; Input physics walking; native X11 E/F5/F9; controlled cameras only for labeled images"
+		report["limits"] += " Persistence controlled cameras do not count as movement. Native save/load is bounded by new Player/World IDs."
+	if not terminal_data.is_empty(): report["scenario"] = "terminal fixture: six real receive_hit deaths and real crate shot before warmup; physical nine-station route"
 	var file := FileAccess.open(output + "/journey.json", FileAccess.WRITE)
 	if file == null:
 		printerr("cannot write journey.json")
 		quit(1)
 		return
-	file.store_string(JSON.stringify(report, "\t"))
+	file.store_string(JSON.stringify(report, "\t", true, true))
 	file.close()
 	print("SECTOR_PROOF mode=%s travelled=%.1f failures=%d" % [mode, travelled, failures.size()])
 	app.queue_free()
@@ -158,6 +212,14 @@ func mission_route() -> void:
 	await use_object("component_0", Vector3(-2.5,0,-3))
 	await walk_to(Vector3(0,0,-7))
 	await use_object("component_1", Vector3(3.3,0,-9))
+	if mode == "persistence":
+		await walk_to(Vector3(4,0,-9))
+		await ready_weapon(0)
+		aim(Vector3(4,.4125,-12))
+		await wait(.1)
+		var shot := observed_shot(crate_body)
+		persistence_actions.append({"id": "crate", "shot": shot})
+		check(app.state.call("crate_broken"), "real ballistic shot breaks crate")
 	await walk_to(Vector3(0,0,-11))
 	await use_object("component_2", Vector3(-5.3,0,-11))
 	if not check(app.state.components == 3, "three gathered repair components"): return
@@ -181,7 +243,7 @@ func mission_route() -> void:
 	await use_object("evidence", Vector3(4.2,0,-46))
 	if not check(app.state.facts.has("surface_signal"), "physical archive read"): return
 	await walk_to(Vector3(0,0,-56))
-	if ending == "n7":
+	if ending == "n7" or mode == "persistence":
 		await use_arc_lock()
 		await walk_to(Vector3(0,0,-61))
 	else:
@@ -190,6 +252,9 @@ func mission_route() -> void:
 	await walk_to(Vector3(0,0,-65))
 	await use_object("core", Vector3(0,0,-69.5))
 	if not check(app.state.phase == 3, "physical core extracted"): return
+	if mode == "persistence":
+		await persistence_revisits_and_load()
+		if not failures.is_empty(): return
 	await walk_to(Vector3(3.6,0,-61))
 	await walk_to(Vector3(3.6,0,-56))
 	await walk_to(Vector3(0,0,-53))
@@ -209,7 +274,10 @@ func use_arc_lock() -> void:
 		await physics_frame
 	aim(object.global_position + Vector3(0,.7,0))
 	await wait(.1)
-	check(app.player.fire(), "ARC fires from earned starting energy")
+	if mode == "persistence":
+		persistence_actions.append({"id": "arc", "shot": observed_shot(object)})
+	else:
+		check(app.player.fire(), "ARC fires from earned starting energy")
 	await wait(.2)
 	check(app.state.facts.has("arc_lock_disabled"), "ARC destroys mission lock")
 	app.player.equip(0)
@@ -245,7 +313,7 @@ func use_object(id: String, approach: Vector3) -> void:
 	aim(object.global_position + Vector3(0,.25 if id.begins_with("component") else .7,0))
 	await wait(.15)
 	if not check(app.player.aim_target() == object, "aim immediately before native E: " + id): return
-	var before := observation("before_" + id)
+	var before := {"usec": Time.get_ticks_usec(), "phase": app.state.phase} if mode == "persistence" else observation("before_" + id)
 	var native_output: Array = []
 	var native_code := OS.execute("python3", [ProjectSettings.globalize_path("res://tools/x11_input.py"), "key", "e", "--display", display, "--duration", "0.1"], native_output, true)
 	await wait(.3)
@@ -257,7 +325,7 @@ func use_object(id: String, approach: Vector3) -> void:
 		check(changed, "native E changes circuit and revision: " + circuit)
 		check(prompt_changed, "breaker prompt changes: " + circuit)
 	check(native_code == 0, "native E helper exit")
-	commands.append({"id": id, "native": native_code == 0, "aim_valid": aimed, "changed": changed, "prompt_changed": prompt_changed, "prompt_before": prompt_before, "prompt_after": str(object.get_meta("prompt", "")), "bit_before": bit_before if breaker else null, "bit_after": app.state.call("circuit_on", StringName(circuit)) if breaker else null, "before": before, "after": observation("after_" + id), "native_output": native_output})
+	commands.append({"id": id, "native": native_code == 0, "aim_valid": aimed, "changed": changed, "prompt_changed": prompt_changed, "prompt_before": prompt_before, "prompt_after": str(object.get_meta("prompt", "")), "bit_before": bit_before if breaker else null, "bit_after": app.state.call("circuit_on", StringName(circuit)) if breaker else null, "before": before, "after": ({"usec": Time.get_ticks_usec(), "phase": app.state.phase} if mode == "persistence" else observation("after_" + id)), "native_output": native_output})
 	await capture("after_%02d_%s" % [commands.size(), id])
 	if breaker: await capture_consumers(circuit, "after_%02d" % commands.size())
 	aim(object.global_position + Vector3(0,.25 if id.begins_with("component") else .7,0))
@@ -271,7 +339,7 @@ func capture_consumers(circuit: String, label: String) -> void:
 		if app.state.health < 55 and app.state.medkits > 0: app.state.heal()
 		aim(enemy.global_position + Vector3(0,.35 if enemy.crawler else 1,0))
 		if app.state.ammo == 0: app.player.reload_weapon()
-		elif app.player.fire(): shots += 1
+		elif combat_fire(enemy): shots += 1
 		await physics_frame
 	if not check(visible_enemy() == null, "capture threat cleared with real combat"): return
 	var maintenance := circuit == "maintenance"
@@ -285,6 +353,7 @@ func capture_consumers(circuit: String, label: String) -> void:
 
 func walk_to(destination: Vector3) -> void:
 	if not failures.is_empty(): return
+	if mode == "persistence": print("PERSISTENCE walk ", destination)
 	app.resume_game()
 	stage = "walk_" + str(destination)
 	var reached := false
@@ -303,7 +372,7 @@ func walk_to(destination: Vector3) -> void:
 			Input.action_release("sprint")
 			aim(enemy.global_position + Vector3(0,.35 if enemy.crawler else 1,0))
 			if app.state.ammo == 0: app.player.reload_weapon()
-			elif app.player.fire(): shots += 1
+			elif combat_fire(enemy): shots += 1
 		else:
 			app.player.rotation.y = atan2(-offset.x, -offset.z)
 			app.player.camera.rotation.x = 0
@@ -534,3 +603,257 @@ func native_flashlight_on() -> void:
 	var visible_after := flashlight.is_visible_in_tree()
 	events.append({"id": "flashlight_native_f", "native_exit": native_code, "intent_before": intent_before, "intent_after": intent_after, "visible_before": visible_before, "visible_after": visible_after, "native_output": native_output, "observation": observation("native_f_after")})
 	check(native_code == 0 and not intent_before and intent_after and not visible_before and visible_after, "native F enables real flashlight before mission")
+
+func find_crate_body() -> Node3D:
+	for shape: CollisionShape3D in app.world.find_children("*", "CollisionShape3D", true, false):
+		if shape.shape is BoxShape3D and shape.global_position.distance_to(Vector3(4,.4125,-12)) < .03:
+			return shape.get_parent() as Node3D
+	check(false, "real crate collider not found at historical position")
+	return null
+
+func collider_bounds(target: Node3D) -> AABB:
+	for shape: CollisionShape3D in target.find_children("*", "CollisionShape3D", true, false):
+		var half := Vector3.ZERO
+		if shape.shape is BoxShape3D: half = shape.shape.size / 2.0
+		elif shape.shape is CapsuleShape3D: half = Vector3(shape.shape.radius, shape.shape.height / 2.0, shape.shape.radius)
+		if half != Vector3.ZERO:
+			return shape.global_transform * AABB(-half, half * 2.0)
+	check(false, "target collision geometry absent")
+	return AABB()
+
+func observed_shot(target: Node3D) -> Dictionary:
+	if not check(is_instance_valid(target), "shot target instance exists"): return {}
+	var bounds := collider_bounds(target)
+	var ammo_before: int = app.state.ammo
+	var energy_before: float = app.state.energy
+	var target_id := target.get_instance_id()
+	# Clear only the transient marker so a miss cannot reuse the preceding hit.
+	app.player._impact.visible = false
+	var accepted: bool = app.player.fire()
+	var query: PhysicsRayQueryParameters3D = app.player._shot_query
+	return {"accepted": accepted, "weapon": app.player.weapon_index, "ammo_before": ammo_before, "ammo_after": app.state.ammo, "energy_before": energy_before, "energy_after": app.state.energy, "energy_cost": app.player._weapon().energy_cost, "impact_visible": app.player._impact.visible, "impact": vec(app.player._impact.global_position), "ray_from": vec(query.from), "ray_to": vec(query.to), "target_before": target_id, "target_position": vec(bounds.get_center()), "target_half_size": vec(bounds.size / 2.0), "usec": Time.get_ticks_usec()}
+
+func ready_weapon(index: int) -> void:
+	app.player.equip(index)
+	for tick in 1200:
+		if app.player.weapon_index == index and app.player.reload_cycle.ready and app.player._shot_time <= 0.0: return
+		await physics_frame
+	check(false, "weapon did not become ready")
+
+func casing_count() -> int:
+	var count := 0
+	for slot in app.player._casings._slots:
+		if slot.motion != 0 and slot.mesh.is_visible_in_tree(): count += 1
+	return count
+
+func crate_observation(with_position: bool = false) -> Dictionary:
+	var candidate: bool = app.state.has_method("crate_broken")
+	var broken: bool = app.state.call("crate_broken") if candidate else false
+	var intact := false
+	var panels := 0
+	if candidate:
+		var crate: Node3D = app.world.find_child("DestructibleCrate", true, false)
+		if is_instance_valid(crate):
+			intact = crate._intact.is_visible_in_tree()
+			if crate._remains.is_visible_in_tree(): panels = crate._remains.multimesh.instance_count
+	else:
+		for child in app.world.get_children():
+			if child is Node3D and not child is CollisionObject3D and child.global_position.distance_to(Vector3(4,0,-12)) < .03:
+				for mesh in child.find_children("*", "MeshInstance3D", true, false):
+					intact = intact or mesh.is_visible_in_tree()
+	var body := find_crate_body()
+	var result := {"broken": broken, "intact": intact, "panels": panels, "collision": body.collision_layer if is_instance_valid(body) else -1}
+	if with_position:
+		result["position"] = vec(body.global_position) if is_instance_valid(body) else []
+		result["instance"] = body.get_instance_id() if is_instance_valid(body) else 0
+	return result
+
+func terminal_observation() -> Dictionary:
+	var live: Array[String] = []
+	for enemy in app.world.enemies:
+		if is_instance_valid(enemy) and enemy.health > 0: live.append(enemy.enemy_id)
+	var traces: int = app.world.find_children("Remains_*", "Node3D", true, false).size()
+	return {"defeated": app.state.defeated.duplicate(), "live_ids": live, "trace_count": traces, "crate": crate_observation(), "flashlight": flashlight_observation(), "position": vec(app.player.global_position), "velocity": vec(app.player.velocity), "casings": casing_count(), "effects": {"impact": app.player._impact.is_visible_in_tree(), "muzzle": app.player._d9_flash.is_visible_in_tree() or app.player._arc_pulse.is_visible_in_tree(), "beam": app.player._beam.is_visible_in_tree(), "light": app.player._flash_light.is_visible_in_tree(), "remaining": app.player._effect_time}, "usec": Time.get_ticks_usec()}
+
+func prepare_terminal() -> void:
+	var start: Vector3 = app.player.global_position
+	var rows: Array[Dictionary] = []
+	for enemy in app.world.enemies:
+		if not is_instance_valid(enemy): continue
+		enemy.set_physics_process(false)
+		var row := {"id": enemy.enemy_id, "instance": enemy.get_instance_id(), "position_before": vec(enemy.global_position), "yaw_before": enemy.global_rotation.y, "health_before": enemy.health, "collision_before": enemy.collision_layer, "damage": 1000.0}
+		enemy.receive_hit(1000.0, 0.0)
+		row.merge({"position_after": vec(enemy.global_position), "yaw_after": enemy.global_rotation.y, "health_after": enemy.health, "collision_after": enemy.collision_layer, "physics_after": enemy.is_physics_processing(), "defeated": app.state.defeated.has(enemy.enemy_id)})
+		rows.append(row)
+	await wait(.5)
+	crate_body = find_crate_body()
+	app.player.teleport(Vector3(4,0,-9))
+	await physics_frame
+	await ready_weapon(0)
+	aim(Vector3(4,.4125,-12))
+	var shot := observed_shot(crate_body)
+	await wait(2.1)
+	app.player.teleport(start)
+	for action in ["forward", "sprint"]: Input.action_release(action)
+	await physics_frame
+	terminal_data = {"schema": 1, "variant": terminal_variant, "fixture": true, "robots": rows, "crate_shot": shot, "preparation_start": vec(start), "before_warmup": terminal_observation()}
+
+func witness_observation() -> Dictionary:
+	for enemy in app.world.enemies:
+		if is_instance_valid(enemy) and enemy.enemy_id == "sentinel_1" and enemy.health > 0:
+			return {"instance": enemy.get_instance_id(), "alive": true, "defeated": app.state.defeated.has("sentinel_1"), "position": vec(enemy.global_position), "yaw": enemy.global_rotation.y, "visible": enemy.is_visible_in_tree(), "collision": enemy.collision_layer, "processing": enemy.is_physics_processing(), "meshes": 0}
+	var trace: Node3D = app.world.find_child("Remains_sentinel_1", true, false)
+	if not check(trace != null, "witness trace exists"): return {}
+	var collision := 0
+	var processing := trace.is_processing() or trace.is_physics_processing()
+	for node in trace.find_children("*", "Node", true, false):
+		processing = processing or node.is_processing() or node.is_physics_processing()
+		if node is CollisionObject3D: collision |= node.collision_layer
+	return {"instance": trace.get_instance_id(), "alive": false, "defeated": app.state.defeated.has("sentinel_1"), "position": vec(trace.global_position), "yaw": trace.global_rotation.y, "visible": trace.is_visible_in_tree(), "collision": collision, "processing": processing, "meshes": trace.find_children("*", "MeshInstance3D", true, false).size()}
+
+func persistence_stage(label: String) -> void:
+	if not failures.is_empty(): return
+	print("PERSISTENCE stage ", label)
+	var device: Node3D = app.world.objects["device"]
+	var emissive := false
+	for mesh: MeshInstance3D in device.find_children("*", "MeshInstance3D", true, false):
+		var material: Material = mesh.get_active_material(0)
+		if material is BaseMaterial3D: emissive = emissive or material.emission_enabled
+	var ray := PhysicsRayQueryParameters3D.create(Vector3(0,1,-53), Vector3(0,1,-55), 1)
+	var blocked: bool = not app.player.get_world_3d().direct_space_state.intersect_ray(ray).is_empty()
+	var objects := {"crate": crate_observation(true), "sentinel_1": witness_observation(), "arc": {"instance": device.get_instance_id(), "disabled": device.is_disabled, "fact": app.state.facts.has("arc_lock_disabled"), "barrier": is_instance_valid(app.world.barrier) and not app.world.barrier.is_queued_for_deletion(), "prompt": str(device.get_meta("prompt", "")), "emissive": emissive, "position": vec(device.global_position)}}
+	persistence_observations.append({"label": label, "usec": Time.get_ticks_usec(), "objects": objects, "player_id": app.player.get_instance_id(), "world_id": app.world.get_instance_id(), "gate_y": app.world.reactor_gate.position.y, "gate_blocked": blocked, "circuits": {"maintenance": app.state.call("circuit_on", &"maintenance"), "archives": app.state.call("circuit_on", &"archives")}, "core_available": app.world.objects["core"].is_visible_in_tree() and app.world.objects["core"].collision_layer != 0})
+	for id in ["crate", "sentinel_1", "arc"]:
+		if objects[id].is_empty(): continue
+		var position: Array = objects[id]["position"]
+		await capture_persistence(label, id, Vector3(position[0], position[1], position[2]))
+
+func capture_persistence(label: String, id: String, target: Vector3) -> void:
+	var camera := Camera3D.new()
+	app.world.add_child(camera)
+	camera.global_position = target + Vector3(3,2.2,3)
+	camera.look_at(target + Vector3(0,.5,0))
+	camera.fov = 76
+	camera.make_current()
+	await RenderingServer.frame_post_draw
+	var filename := label + "_" + id + ".png"
+	check(root.get_texture().get_image().save_png(output + "/" + filename) == OK, "persistence PNG written")
+	persistence_images.append({"label": label, "id": id, "file": filename, "camera_position": vec(camera.global_position), "camera_rotation": vec(camera.global_rotation), "fov": camera.fov, "controlled_camera": true})
+	app.player.camera.make_current()
+	camera.queue_free()
+
+func _physics_process(delta: float) -> bool:
+	if track_movement and is_instance_valid(app) and is_instance_valid(app.player):
+		movement_clock += delta
+		movement_ticks += 1
+		if movement_ticks % 6 == 0: movement_sample()
+	return false
+
+func movement_sample() -> void:
+	if not movement_samples.is_empty() and movement_samples[-1][0] == movement_clock: return
+	var position: Vector3 = app.player.global_position
+	movement_samples.append([movement_clock, position.x, position.y, position.z, app.world.get_instance_id()])
+
+func visit_primary(label: String) -> void:
+	var ids: Array = ["arc", "sentinel_1", "crate"] if label == "modified" else ["crate", "sentinel_1", "arc"]
+	for id in ids:
+		var target := Vector3(4,0,-12) if id == "crate" else Vector3(2.8,0,-57)
+		if id == "sentinel_1":
+			var observed := witness_observation()
+			if observed.is_empty(): return
+			var position: Array = observed["position"]
+			target = Vector3(position[0], 0, position[2])
+		await walk_to(Vector3(0,0,app.player.global_position.z))
+		await walk_to(Vector3(0,0,target.z + 2.5))
+		await walk_to(Vector3(target.x,0,target.z + 2.5))
+		movement_sample()
+		persistence_visits.append({"label": label, "id": id, "sample": movement_samples.size()-1})
+
+func native_key(key_name: String) -> int:
+	var native_output: Array = []
+	var result := OS.execute("python3", [ProjectSettings.globalize_path("res://tools/x11_input.py"), "key", key_name, "--display", display, "--duration", "0.03"], native_output, true)
+	await process_frame
+	return result
+
+func persistence_revisits_and_load() -> void:
+	# Return along the central passage before approaching the breaker furniture.
+	await walk_to(Vector3(0,0,-36))
+	await use_object("breaker_archives", Vector3(2,0,-36))
+	await visit_primary("modified")
+	await persistence_stage("modified")
+	await walk_to(Vector3(0,0,7))
+	await visit_primary("revisited")
+	await persistence_stage("revisited")
+	await walk_to(Vector3(0,0,7))
+	if not failures.is_empty(): return
+	await ready_weapon(0)
+	aim(Vector3(0,2,10))
+	check(app.player.fire(), "real shot emits casing before F5")
+	var save_path := "user://silo9-save.json"
+	var result := {"before_ids": [app.player.get_instance_id(), app.world.get_instance_id()], "file_absent_before": not FileAccess.file_exists(save_path), "casings_before_f5": casing_count(), "f5_usec": Time.get_ticks_usec()}
+	persistence_data["save_load"] = result
+	result["f5_exit"] = await native_key("F5")
+	var save_deadline := Time.get_ticks_usec() + 2000000
+	while not FileAccess.file_exists(save_path) and Time.get_ticks_usec() < save_deadline:
+		await process_frame
+	result["casings_after_f5"] = casing_count()
+	if not check(FileAccess.file_exists(save_path), "native F5 produced save"): return
+	var serialized := FileAccess.get_file_as_string(save_path)
+	result["saved"] = JSON.parse_string(serialized)
+	result["save_file"] = "save.json"
+	result["save_bytes"] = serialized.to_utf8_buffer().size()
+	var file := FileAccess.open(output + "/save.json", FileAccess.WRITE)
+	if not check(file != null, "copy save artifact opened"): return
+	file.store_string(serialized)
+	file.close()
+	result["save_sha256"] = FileAccess.get_sha256(output + "/save.json")
+	result["f9_usec"] = Time.get_ticks_usec()
+	result["f9_exit"] = await native_key("F9")
+	var load_deadline := Time.get_ticks_usec() + 2000000
+	while (app.player.get_instance_id() == result["before_ids"][0] or app.world.get_instance_id() == result["before_ids"][1]) and Time.get_ticks_usec() < load_deadline:
+		await process_frame
+	result["after_ids"] = [app.player.get_instance_id(), app.world.get_instance_id()]
+	result["casings_after_f9"] = casing_count()
+	result["restored"] = app.state._snapshot().duplicate(true)
+	persistence_data["save_load"] = result
+	crate_body = find_crate_body()
+	await native_flashlight_on()
+	await persistence_stage("restored")
+	await visit_primary("restored")
+	await walk_to(Vector3(2.8,0,-54.5))
+	await ready_weapon(1)
+	var device: Node3D = app.world.objects["device"]
+	device.disabled.connect(count_arc_disabled)
+	app.state.changed.connect(count_arc_changed)
+	app.world.message.connect(count_arc_message)
+	var memory_before: Array = app.state.memory.duplicate()
+	var facts_before: Array = app.state.facts.duplicate()
+	var state_before: Dictionary = app.state._snapshot().duplicate(true)
+	aim(device.global_position + Vector3(0,.7,0))
+	var shot := observed_shot(device)
+	device.disabled.disconnect(count_arc_disabled)
+	app.state.changed.disconnect(count_arc_changed)
+	app.world.message.disconnect(count_arc_message)
+	persistence_data["arc_repeat"] = {"disabled_signals": arc_disabled_signals, "changed_signals": arc_changed_signals, "messages": arc_messages, "memory_before": memory_before, "memory_after": app.state.memory.duplicate(), "facts_before": facts_before, "facts_after": app.state.facts.duplicate(), "state_before": state_before, "state_after": app.state._snapshot().duplicate(true), "changed_snapshots": arc_changed_snapshots, "shot": shot}
+	await ready_weapon(0)
+
+func count_arc_disabled() -> void:
+	arc_disabled_signals += 1
+
+func count_arc_changed() -> void:
+	arc_changed_signals += 1
+	arc_changed_snapshots.append(app.state._snapshot().duplicate(true))
+
+func count_arc_message(_text: String) -> void:
+	arc_messages += 1
+
+func combat_fire(enemy: Node3D) -> bool:
+	if mode != "persistence": return app.player.fire()
+	var position_before: Vector3 = enemy.global_position
+	var yaw_before: float = enemy.global_rotation.y
+	var health_before: float = enemy.health
+	var enemy_id: String = enemy.enemy_id
+	var shot := observed_shot(enemy)
+	if shot.get("accepted", false) and enemy_id == "sentinel_1" and enemy.health <= 0:
+		persistence_actions.append({"id": enemy_id, "shot": shot, "health_before": health_before, "health_after": enemy.health, "position_before": vec(position_before), "yaw_before": yaw_before, "spawn": vec(witness_spawn)})
+	return shot.get("accepted", false)

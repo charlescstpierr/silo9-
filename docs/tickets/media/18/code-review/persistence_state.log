@@ -1,0 +1,187 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE migration: schemas 2/3, all phases and both endings
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 2 phase 0 ending  loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 2 phase 1 ending  loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 2 phase 2 ending  loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 2 phase 3 ending  loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 2 phase 4 ending mother loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 2 phase 4 ending n7 loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-legacy-bound.json
+PASS: legacy schema 2 accepts 128 historical IDs
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: legacy schema 2 rejects ID 129
+PASS: legacy schema 2 rejects ID 129 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 3 phase 0 ending  loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 3 phase 1 ending  loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 3 phase 2 ending  loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 3 phase 3 ending  loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 3 phase 4 ending mother loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-migration.json
+PASS: schema 3 phase 4 ending n7 loads
+PASS: legacy progression, facts and IDs preserved
+PASS: schema 2 defaults ON; schema 3 preserves mixed circuits
+PASS: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses
+PASS: fixture can write persistence-3349456-legacy-bound.json
+PASS: legacy schema 3 accepts 128 historical IDs
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: legacy schema 3 rejects ID 129
+PASS: legacy schema 3 rejects ID 129 is atomic without changed or revision
+CASE schema 4: valid poses, strict validation and atomic rejection
+PASS: fixture can write persistence-3349456-four.json
+PASS: SCHEMA_RED valid schema 4 with defeated robot pose loads
+PASS: schema 4 restores crate and pose annotations
+PASS: schema 4 retains mixed circuits
+PASS: repeated defeat cannot replace existing death pose or emit
+PASS: loaded robot exposes pose readback
+PASS: returned DeathPose is a defensive copy
+PASS: incoming DeathPose is copied before caller can mutate it
+PASS: death recording normalizes yaw
+PASS: second defeat with different pose cannot move an existing trace
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 00
+PASS: reject invalid schema 4 pose/type/key case 00 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 01
+PASS: reject invalid schema 4 pose/type/key case 01 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 02
+PASS: reject invalid schema 4 pose/type/key case 02 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 03
+PASS: reject invalid schema 4 pose/type/key case 03 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 04
+PASS: reject invalid schema 4 pose/type/key case 04 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 05
+PASS: reject invalid schema 4 pose/type/key case 05 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 06
+PASS: reject invalid schema 4 pose/type/key case 06 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 07
+PASS: reject invalid schema 4 pose/type/key case 07 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 08
+PASS: reject invalid schema 4 pose/type/key case 08 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 09
+PASS: reject invalid schema 4 pose/type/key case 09 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 10
+PASS: reject invalid schema 4 pose/type/key case 10 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 11
+PASS: reject invalid schema 4 pose/type/key case 11 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 12
+PASS: reject invalid schema 4 pose/type/key case 12 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 13
+PASS: reject invalid schema 4 pose/type/key case 13 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 14
+PASS: reject invalid schema 4 pose/type/key case 14 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 15
+PASS: reject invalid schema 4 pose/type/key case 15 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 16
+PASS: reject invalid schema 4 pose/type/key case 16 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject invalid schema 4 pose/type/key case 17
+PASS: reject invalid schema 4 pose/type/key case 17 is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject missing crate_broken
+PASS: reject missing crate_broken is atomic without changed or revision
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: reject missing death_poses
+PASS: reject missing death_poses is atomic without changed or revision
+PASS: fixture can write persistence-3349456-edges.json
+PASS: SCHEMA_RED inclusive pose boundaries remain loadable
+PASS: reject nonfinite position before mutation
+PASS: reject nonfinite yaw before mutation
+CASE capacity: 128 historical IDs plus six catalog robots
+PASS: fixture can write persistence-3349456-capacity-old.json
+PASS: full historical save loads before six real deaths
+PASS: CAPACITY_RED six real robot IDs fit beyond 128 historical IDs
+PASS: CAPACITY_RED no historical ID evicted and every real robot recorded
+PASS: generic historical IDs remain capped at 128
+PASS: full capacity saves
+PASS: CAPACITY_RED all 134 IDs survive disk roundtrip
+PASS: fixture can write persistence-3349456-invalid.json
+PASS: schema 4 rejects 129 generic plus six real IDs
+PASS: schema 4 rejects 129 generic plus six real IDs is atomic without changed or revision
+CASE file bytes: exact limit, one byte over, old target/temp preservation
+PASS: fixture produces exactly 65536 UTF-8 bytes
+PASS: UTF-8 fixture satisfies field counts and character limits
+PASS: exactly 65536 UTF-8 bytes can be saved
+PASS: saved file measures 65536 bytes, not characters
+PASS: exact limit is readable
+PASS: fixture produces exactly 65537 UTF-8 bytes
+PASS: UTF-8 fixture satisfies field counts and character limits
+PASS: fixture can write persistence-3349456-utf8.json.tmp
+PASS: SIZE_RED refuse 65537 UTF-8 bytes before touching files
+PASS: SIZE_RED oversized save preserves previous valid file byte-for-byte
+PASS: SIZE_RED oversized save does not open or truncate temporary
+PASS: oversized save rejection leaves in-memory state and signals unchanged
+PASS: SIZE_RED previous valid save remains loadable after refused write
+CASE file failures: temporary open, failed rename, controlled write failure
+PASS: seed file for temporary open error
+PASS: fixture blocks temporary path with directory
+PASS: temporary open error preserves old save
+PASS: fixture creates rename-error directory
+PASS: seed file for failed rename
+PASS: fixture can write save.json.tmp
+PASS: fixture denies directory rename while temp remains writable
+PASS: failed rename preserves previous file bytes
+PASS: seed file for controlled write failure
+PASS: fixture directs temporary writes to full device
+PASS: write failure returns an error
+PASS: write failure preserves previous valid save
+PERSISTENCE STATE: 179 checks, 0 failures

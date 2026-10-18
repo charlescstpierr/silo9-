@@ -1,0 +1,20 @@
+..E.....................................
+======================================================================
+ERROR: test_artifacts_require_real_contained_png_and_exact_save (__main__.Issue18BoundaryValidation.test_artifacts_require_real_contained_png_and_exact_save)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18/tools/selfcheck_sector_power.py", line 527, in test_artifacts_require_real_contained_png_and_exact_save
+    with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1] / 'proof-tool-tests') as directory:
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/tempfile.py", line 907, in __init__
+    self.name = mkdtemp(suffix, prefix, dir)
+                ~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/tempfile.py", line 381, in mkdtemp
+    _os.mkdir(file, 0o700)
+    ~~~~~~~~~^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18/proof-tool-tests/tmpatj9tcc6'
+
+----------------------------------------------------------------------
+Ran 40 tests in 0.700s
+
+FAILED (errors=1)

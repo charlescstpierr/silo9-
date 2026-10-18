@@ -1,0 +1,505 @@
+diff --git a/scripts/enemy.gd b/scripts/enemy.gd
+index 176a235..3a65b11 100644
+--- a/scripts/enemy.gd
++++ b/scripts/enemy.gd
+@@ -193,11 +193,10 @@ func receive_hit(damage: float, stun: float) -> void:
+ 	if is_instance_valid(target):
+ 		hear_noise(target.global_position, 100)
+ 	if health <= 0:
+-		if state != null:
+-			state.mark_defeated(enemy_id)
++		var pose := State.DeathPose.new(global_position, global_rotation.y)
+ 		collision_layer = 0
+ 		set_physics_process(false)
+-		var tween := create_tween()
+-		tween.tween_property(self, "rotation:z", 1.5, 0.3)
+-		tween.tween_property(self, "scale", Vector3.ONE * 0.01, 0.45).set_delay(1.5)
+-		tween.tween_callback(queue_free)
++		hide()
++		if state != null:
++			state.mark_defeated(enemy_id, pose)
++		queue_free()
+diff --git a/scripts/robot_visual.gd b/scripts/robot_visual.gd
+index d2c11e5..35cf4d9 100644
+--- a/scripts/robot_visual.gd
++++ b/scripts/robot_visual.gd
+@@ -10,6 +10,8 @@ static var cube: BoxMesh
+ static var cached_sentry: Array[ArrayMesh] = []
+ static var cached_crawler: Array[ArrayMesh] = []
+ static var cached_friendly: Array[ArrayMesh] = []
++static var _fallen_sentry: Array[ArrayMesh] = []
++static var _fallen_crawler: Array[ArrayMesh] = []
+ 
+ static func build(parent: Node3D, crawler: bool, eye_material: Material, friendly: bool = false) -> Array[MeshInstance3D]:
+ 	_prepare()
+@@ -193,3 +195,56 @@ static func _chamfered_hull() -> ArrayMesh:
+ 	tool.generate_normals()
+ 	tool.index()
+ 	return tool.commit()
++
++static func build_remains(parent: Node3D, crawler: bool) -> void:
++	_prepare()
++	var meshes: Array[ArrayMesh] = _fallen_crawler if crawler else _fallen_sentry
++	if meshes.is_empty():
++		meshes = _remains_geometry(crawler)
++		if crawler: _fallen_crawler = meshes
++		else: _fallen_sentry = meshes
++	for index in meshes.size():
++		var instance := _instance(parent, meshes[index], Vector3.ONE, Vector3.ZERO, materials[index])
++		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
++		instance.visibility_range_end = 45
++
++static func _remains_geometry(crawler: bool) -> Array[ArrayMesh]:
++	var batches: Array[SurfaceTool] = []
++	for index in 3:
++		var batch := SurfaceTool.new()
++		batch.begin(Mesh.PRIMITIVE_TRIANGLES)
++		batches.append(batch)
++	var fallen := Transform3D(Basis.IDENTITY.scaled(Vector3(1, 0.45, 1)), Vector3(0, 0.025, 0)) if crawler else Transform3D(Basis.from_euler(Vector3(PI / 2, 0, 0)), Vector3(0, 0.36, -0.85))
++	var palette: Array[int] = [0, 1, 2, 1, 2]
++	var body: Array[ArrayMesh] = _geometry(crawler)
++	for index in body.size():
++		if body[index] != null: batches[palette[index]].append_from(body[index], 0, fallen)
++	var legs: Array[ArrayMesh] = _leg_geometry(crawler)
++	var mirrored_legs: Array[ArrayMesh] = []
++	for mesh: ArrayMesh in legs: mirrored_legs.append(_reversed_winding(mesh))
++	for side in [-1.0, 1.0]:
++		for index in (3 if crawler else 1):
++			var origin := Vector3(side * 0.24, 0.29, (index - 1) * 0.2) if crawler else Vector3(side * 0.23, 0.76, 0)
++			var angle: float = (index - 1) * -0.4 * side if crawler else 0.0
++			var leg := Transform3D(Basis.from_euler(Vector3(0, angle, 0)).scaled_local(Vector3(side, 1, 1)), origin)
++			for material_index in legs.size():
++				batches[palette[material_index]].append_from(mirrored_legs[material_index] if side < 0 else legs[material_index], 0, fallen * leg)
++	var hull_size := Vector3(0.65, 0.25 if crawler else 0.56, 0.49)
++	var hull_position := Vector3(0, 0.38 if crawler else 1.12, 0)
++	batches[0].append_from(hull, 0, fallen * Transform3D(Basis.IDENTITY.scaled(hull_size), hull_position))
++	batches[1].append_from(cube, 0, fallen * Transform3D(Basis.IDENTITY.scaled(Vector3(0.28 if crawler else 0.31, 0.1, 0.04)), Vector3(0, 0.44 if crawler else 1.56, -0.275)))
++	var result: Array[ArrayMesh] = []
++	for batch in batches: result.append(batch.commit())
++	return result
++
++static func _reversed_winding(mesh: ArrayMesh) -> ArrayMesh:
++	var arrays: Array = mesh.surface_get_arrays(0)
++	var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
++	for triangle in range(0, indices.size(), 3):
++		var second: int = indices[triangle + 1]
++		indices[triangle + 1] = indices[triangle + 2]
++		indices[triangle + 2] = second
++	arrays[Mesh.ARRAY_INDEX] = indices
++	var reversed := ArrayMesh.new()
++	reversed.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
++	return reversed
+diff --git a/scripts/run_state.gd b/scripts/run_state.gd
+index 130dd10..fe259df 100644
+--- a/scripts/run_state.gd
++++ b/scripts/run_state.gd
+@@ -3,6 +3,20 @@ extends RefCounted
+ 
+ signal changed
+ 
++const RobotSpec = preload("res://scripts/data/robot_spec.gd")
++const LEGACY_KEYS: Array[String] = ["schema", "relations", "health", "energy", "ammo", "reserve", "components", "medkits", "cells", "upgraded", "phase", "ending", "collected", "defeated", "facts", "memory", "player_position", "player_yaw", "elapsed"]
++
++class DeathPose:
++	var position: Vector3
++	var yaw: float
++
++	func _init(at: Vector3, facing: float) -> void:
++		position = at
++		yaw = facing
++
++var _crate_broken: bool = false
++var _death_poses: Dictionary[String, DeathPose] = {}
++
+ enum Phase { ARRIVAL, RELAY_FOUND, POWER_RESTORED, CORE_RECOVERED, COMPLETE }
+ const FACT_IDS: Array[String] = ["relay_location", "power_restored", "core_recovered", "surface_signal", "n7_autonomy", "mother_directive", "ending_mother", "ending_n7", "arc_lock_disabled"]
+ const SAVE_LIMIT: int = 65536
+@@ -179,19 +193,55 @@ func reload_rounds(capacity: int = 12) -> int:
+ 		changed.emit()
+ 	return loaded
+ 
+-func mark_defeated(id: String) -> void:
+-	if _valid_id(id) and not defeated.has(id) and defeated.size() < 128:
+-		defeated.append(id)
+-		changed.emit()
++func mark_defeated(id: String, pose: DeathPose = null) -> void:
++	if not _valid_id(id) or defeated.has(id):
++		return
++	if pose != null:
++		if not RobotSpec.CATALOG.has(id) or not pose.position.is_finite() or not is_finite(pose.yaw):
++			return
++		if maxf(maxf(absf(pose.position.x), absf(pose.position.y)), absf(pose.position.z)) > 10000.0:
++			return
++	if not RobotSpec.CATALOG.has(id):
++		var historical_count: int = 0
++		for defeated_id: String in defeated:
++			if not RobotSpec.CATALOG.has(defeated_id): historical_count += 1
++		if historical_count >= 128: return
++	defeated.append(id)
++	if pose != null:
++		_death_poses[id] = DeathPose.new(pose.position, wrapf(pose.yaw, -PI, PI))
++	changed.emit()
++
++func death_pose(id: String) -> DeathPose:
++	var pose: DeathPose = _death_poses.get(id)
++	return DeathPose.new(pose.position, pose.yaw) if pose != null else null
++
++func break_crate() -> bool:
++	if _crate_broken: return false
++	_crate_broken = true
++	changed.emit()
++	return true
++
++func crate_broken() -> bool:
++	return _crate_broken
++
++func disable_arc_lock() -> bool:
++	if facts.has("arc_lock_disabled"): return false
++	facts.append("arc_lock_disabled")
++	_remember("Le verrou ARC a été désactivé.")
++	changed.emit()
++	return true
+ 
+ func remember(event: String) -> void:
++	if _remember(event): changed.emit()
++
++func _remember(event: String) -> bool:
+ 	var bounded: String = event.strip_edges().left(240)
+ 	if bounded.is_empty() or (not memory.is_empty() and memory.back() == bounded):
+-		return
++		return false
+ 	memory.append(bounded)
+ 	if memory.size() > 32:
+ 		memory.pop_front()
+-	changed.emit()
++	return true
+ 
+ func add_fact(id: String) -> void:
+ 	if FACT_IDS.has(id) and not facts.has(id):
+@@ -210,16 +260,28 @@ func save_game(path: String = "user://silo9-save.json") -> Error:
+ 	var data: Dictionary = _snapshot()
+ 	if not _valid_snapshot(data):
+ 		return ERR_INVALID_DATA
++	var encoded: String = JSON.stringify(data)
++	if encoded.to_utf8_buffer().size() > SAVE_LIMIT:
++		return ERR_INVALID_DATA
+ 	var temp: String = path + ".tmp"
+ 	var file: FileAccess = FileAccess.open(temp, FileAccess.WRITE)
+ 	if file == null:
+ 		return FileAccess.get_open_error()
+-	file.store_string(JSON.stringify(data))
++	file.store_string(encoded)
+ 	file.flush()
+ 	var result: Error = file.get_error()
+ 	file.close()
+ 	if result != OK:
+ 		return result
++	file = FileAccess.open(temp, FileAccess.READ)
++	if file == null: return FileAccess.get_open_error()
++	var written: String = file.get_as_text()
++	result = file.get_error()
++	file.close()
++	if result != OK: return result
++	var parser := JSON.new()
++	if written != encoded or parser.parse(written) != OK or not parser.data is Dictionary or not _valid_snapshot(parser.data):
++		return ERR_FILE_CORRUPT
+ 	return DirAccess.rename_absolute(temp, path)
+ 
+ func load_game(path: String = "user://silo9-save.json") -> Error:
+@@ -238,42 +300,68 @@ func load_game(path: String = "user://silo9-save.json") -> Error:
+ 	if not parsed is Dictionary or not _valid_snapshot(parsed):
+ 		return ERR_FILE_CORRUPT
+ 	var data: Dictionary = parsed
+-	health = float(data.health)
+-	energy = float(data.energy)
+-	ammo = int(data.ammo)
+-	reserve = int(data.reserve)
+-	components = int(data.components)
+-	medkits = int(data.medkits)
+-	cells = int(data.cells)
++	var next_collected: Array[String] = []
++	var next_defeated: Array[String] = []
++	var next_facts: Array[String] = []
++	var next_memory: Array[String] = []
++	next_collected.assign(data.collected)
++	next_defeated.assign(data.defeated)
++	next_facts.assign(data.facts)
++	next_memory.assign(data.memory)
++	var next_relations: Dictionary[String, int] = {"mother": int(data.relations.mother), "n7": int(data.relations.n7)}
++	var next_poses: Dictionary[String, DeathPose] = {}
++	if int(data.schema) == 4:
++		for id: String in data.death_poses:
++			var pose: Dictionary = data.death_poses[id]
++			next_poses[id] = DeathPose.new(Vector3(float(pose.position[0]), float(pose.position[1]), float(pose.position[2])), float(pose.yaw))
++	var next_position := Vector3(float(data.player_position[0]), float(data.player_position[1]), float(data.player_position[2]))
++	for key: String in ["health", "energy", "player_yaw", "elapsed"]: data[key] = float(data[key])
++	for key: String in ["ammo", "reserve", "components", "medkits", "cells", "phase"]: data[key] = int(data[key])
++	health = data.health
++	energy = data.energy
++	ammo = data.ammo
++	reserve = data.reserve
++	components = data.components
++	medkits = data.medkits
++	cells = data.cells
+ 	upgraded = data.upgraded
+-	phase = int(data.phase)
++	phase = data.phase
+ 	ending = data.ending
+-	collected.assign(data.collected)
+-	defeated.assign(data.defeated)
+-	facts.assign(data.facts)
+-	memory.assign(data.memory)
+-	player_position = Vector3(float(data.player_position[0]), float(data.player_position[1]), float(data.player_position[2]))
+-	player_yaw = float(data.player_yaw)
+-	elapsed = float(data.elapsed)
+-	relations.assign(data.relations)
+-	_maintenance_on = data.circuits.maintenance if int(data.schema) == 3 else true
+-	_archives_on = data.circuits.archives if int(data.schema) == 3 else true
++	collected = next_collected
++	defeated = next_defeated
++	facts = next_facts
++	memory = next_memory
++	player_position = next_position
++	player_yaw = data.player_yaw
++	elapsed = data.elapsed
++	relations = next_relations
++	_maintenance_on = data.circuits.maintenance if int(data.schema) >= 3 else true
++	_archives_on = data.circuits.archives if int(data.schema) >= 3 else true
++	_crate_broken = data.crate_broken if int(data.schema) == 4 else false
++	_death_poses = next_poses
+ 	power_revision += 1
+ 	changed.emit()
+ 	return OK
+ 
+ func _snapshot() -> Dictionary:
+-	return {"schema": 3, "circuits": {"maintenance": _maintenance_on, "archives": _archives_on}, "relations": relations, "health": health, "energy": energy, "ammo": ammo, "reserve": reserve, "components": components, "medkits": medkits, "cells": cells, "upgraded": upgraded, "phase": phase, "ending": ending, "collected": collected, "defeated": defeated, "facts": facts, "memory": memory, "player_position": [player_position.x, player_position.y, player_position.z], "player_yaw": player_yaw, "elapsed": elapsed}
++	var poses: Dictionary = {}
++	for id: String in _death_poses:
++		var pose: DeathPose = _death_poses[id]
++		poses[id] = {"position": [pose.position.x, pose.position.y, pose.position.z], "yaw": pose.yaw}
++	return {"schema": 4, "crate_broken": _crate_broken, "death_poses": poses, "circuits": {"maintenance": _maintenance_on, "archives": _archives_on}, "relations": relations, "health": health, "energy": energy, "ammo": ammo, "reserve": reserve, "components": components, "medkits": medkits, "cells": cells, "upgraded": upgraded, "phase": phase, "ending": ending, "collected": collected, "defeated": defeated, "facts": facts, "memory": memory, "player_position": [player_position.x, player_position.y, player_position.z], "player_yaw": player_yaw, "elapsed": elapsed}
+ 
+ func _valid_snapshot(data: Dictionary) -> bool:
+-	if not _number(data.get("schema"), 2, 3) or float(data.schema) != floorf(float(data.schema)): return false
+-	var required: Array = _snapshot().keys()
+-	if int(data.schema) == 2:
+-		required.erase("circuits")
+-	else:
++	if not _number(data.get("schema"), 2, 4) or float(data.schema) != floorf(float(data.schema)): return false
++	var version: int = int(data.schema)
++	var required: Array[String] = LEGACY_KEYS.duplicate()
++	if version >= 3:
++		required.append("circuits")
+ 		var circuits: Variant = data.get("circuits")
+ 		if not circuits is Dictionary or circuits.size() != 2: return false
+ 		if not circuits.get("maintenance") is bool or not circuits.get("archives") is bool: return false
++	if version == 4:
++		required.append_array(["crate_broken", "death_poses"])
++		if not data.get("crate_broken") is bool or not data.get("death_poses") is Dictionary: return false
+ 	if data.size() != required.size(): return false
+ 	for key: String in required:
+ 		if not data.has(key): return false
+@@ -289,7 +377,20 @@ func _valid_snapshot(data: Dictionary) -> bool:
+ 	if not data.player_position is Array or data.player_position.size() != 3: return false
+ 	for coord: Variant in data.player_position:
+ 		if not _number(coord, -10000, 10000): return false
+-	if not _strings(data.collected, 256, 80, true) or not _strings(data.defeated, 128, 80, true): return false
++	if not _strings(data.collected, 256, 80, true) or not _strings(data.defeated, 134 if version == 4 else 128, 80, true): return false
++	if version == 4:
++		var historical_count: int = 0
++		for id: String in data.defeated:
++			if not RobotSpec.CATALOG.has(id): historical_count += 1
++		if historical_count > 128 or data.death_poses.size() > RobotSpec.CATALOG.size(): return false
++		for id: Variant in data.death_poses:
++			if not id is String or not RobotSpec.CATALOG.has(id) or not data.defeated.has(id): return false
++			var pose: Variant = data.death_poses[id]
++			if not pose is Dictionary or pose.size() != 2: return false
++			if not pose.get("position") is Array or pose.position.size() != 3: return false
++			for coord: Variant in pose.position:
++				if not _number(coord, -10000, 10000): return false
++			if not _number(pose.get("yaw"), -PI, PI): return false
+ 	if not _strings(data.facts, FACT_IDS.size(), 80, true) or not _strings(data.memory, 32, 240, false): return false
+ 	for fact: String in data.facts:
+ 		if not FACT_IDS.has(fact): return false
+diff --git a/scripts/world.gd b/scripts/world.gd
+index da2b97e..32bc3cf 100644
+--- a/scripts/world.gd
++++ b/scripts/world.gd
+@@ -43,6 +43,8 @@ class Luminaire:
+ 		low_energy = low
+ 		radius = reach
+ 
++const RobotSpec = preload("res://scripts/data/robot_spec.gd")
++const Crate = preload("res://scripts/destructible_crate.gd")
+ const RobotVisual = preload("res://scripts/robot_visual.gd")
+ const Art = preload("res://scripts/world_art.gd")
+ const State = preload("res://scripts/run_state.gd")
+@@ -58,6 +60,8 @@ var materials: Dictionary = {}
+ var art: Art
+ var objects: Dictionary = {}
+ var enemies: Array[Enemy] = []
++var _death_traces: Dictionary[String, Node3D] = {}
++var _crate: Crate
+ var lights: Array[OmniLight3D] = []
+ var box_mesh := BoxMesh.new()
+ var relay_position := Vector3(7, 0, -26)
+@@ -186,6 +190,9 @@ func _build_structure() -> void:
+ 	_bulkhead(-34, "03", "ARCHIVES")
+ 	_bulkhead(-54, "04", "CŒUR / ACCÈS RÉSERVÉ", true)
+ 	reactor_gate = Node3D.new()
++	if state.phase >= State.Phase.POWER_RESTORED:
++		reactor_gate.position.y = 4.0
++		reactor_gate_open = true
+ 	add_child(reactor_gate)
+ 	_box(Vector3(0,1.7,-54), Vector3(5.1,3.4,0.35), "steel", true, reactor_gate)
+ 	for side in [-1.0, 1.0]:
+@@ -270,7 +277,12 @@ func _batch_static_geometry() -> void:
+ 		add_child(instances)
+ 
+ func _kenney_props() -> void:
+-	for entry in [["machine", Vector3(8.5, 0, -7), Vector3(1.8,1.95,2.25)], ["machine-fortified", Vector3(-8, 0, -25), Vector3(1.8,2.03,2.4)], ["box-large", Vector3(4, 0, -12), Vector3(1.65,0.825,1.5)], ["pipe-large-valve", Vector3(8, 1, -58), Vector3(1.5,1.5,1.52)]]:
++	_crate = Crate.new()
++	_crate.name = "DestructibleCrate"
++	_crate.position = Vector3(4, 0, -12)
++	_crate.setup(state, materials["steel"], box_mesh)
++	add_child(_crate)
++	for entry in [["machine", Vector3(8.5, 0, -7), Vector3(1.8,1.95,2.25)], ["machine-fortified", Vector3(-8, 0, -25), Vector3(1.8,2.03,2.4)], ["pipe-large-valve", Vector3(8, 1, -58), Vector3(1.5,1.5,1.52)]]:
+ 		var path: String = "res://assets/kenney/" + entry[0] + ".glb"
+ 		if ResourceLoader.exists(path):
+ 			var packed := load(path) as PackedScene
+@@ -347,18 +359,33 @@ func _build_interactables() -> void:
+ 		item.set_meta("amount", entry[3])
+ 
+ func _build_enemies() -> void:
+-	for entry in [["sentinel_1", false, Vector3(3,0,-20)], ["crawler_1", true, Vector3(-5,0,-28)], ["sentinel_2", false, Vector3(-3,0,-45)], ["crawler_2", true, Vector3(3,0,-51)], ["sentinel_3", false, Vector3(0,0,-66)], ["crawler_3", true, Vector3(-3,0,-70)]]:
++	for id: String in RobotSpec.CATALOG:
++		if state.defeated.has(id): continue
++		var spec: Dictionary = RobotSpec.CATALOG[id]
+ 		var enemy := Enemy.new()
+-		enemy.enemy_id = entry[0]
+-		enemy.crawler = entry[1]
++		enemy.enemy_id = id
++		enemy.crawler = spec.crawler
+ 		enemy.health = 35.0 if enemy.crawler else 65.0
+ 		enemy.state = state
+ 		enemy.target = player
+-		enemy.position = entry[2]
+-		enemy.patrol = [entry[2], entry[2] + Vector3(0,0,4), entry[2] + Vector3(-2,0,2)]
++		enemy.position = spec.spawn
++		enemy.patrol = [spec.spawn, spec.spawn + Vector3(0,0,4), spec.spawn + Vector3(-2,0,2)]
+ 		add_child(enemy)
+ 		enemies.append(enemy)
+ 
++func _restore_death_traces() -> void:
++	for id: String in RobotSpec.CATALOG:
++		if _death_traces.has(id): continue
++		var pose: State.DeathPose = state.death_pose(id)
++		if pose == null: continue
++		var trace := Node3D.new()
++		trace.name = "Remains_" + id
++		trace.position = pose.position
++		trace.rotation.y = pose.yaw
++		add_child(trace)
++		RobotVisual.build_remains(trace, RobotSpec.CATALOG[id].crawler)
++		_death_traces[id] = trace
++
+ func interact(target: Node) -> void:
+ 	if target == null or not target.has_meta("id"):
+ 		return
+@@ -438,20 +465,26 @@ func emit_noise(origin: Vector3, radius: float) -> void:
+ 			enemy.hear_noise(origin, radius)
+ 
+ func _disable_barrier() -> void:
+-	barrier_disabled = true
+-	state.add_fact("arc_lock_disabled")
+-	state.remember("Le verrou ARC a été désactivé.")
+-	if is_instance_valid(barrier) and not barrier.is_queued_for_deletion():
+-		barrier.queue_free()
+-	message.emit("Verrou électrique hors tension.")
++	if state.disable_arc_lock():
++		message.emit("Verrou électrique hors tension.")
+ 
+ func refresh() -> void:
+ 	if state.phase >= 2 and not reactor_gate_open:
+ 		reactor_gate_open = true
+ 		create_tween().tween_property(reactor_gate, "position:y", 4.0, 0.65)
+-	if state.facts.has("arc_lock_disabled") and is_instance_valid(barrier) and not barrier.is_queued_for_deletion():
++	if state.facts.has("arc_lock_disabled"):
+ 		barrier_disabled = true
+-		barrier.queue_free()
++		var device: Interactable = objects["device"]
++		device.is_disabled = true
++		device.set_meta("prompt", "Verrou hors tension")
++		for mesh: MeshInstance3D in device.find_children("*", "MeshInstance3D", true, false):
++			mesh.material_override = materials["dark"]
++		if is_instance_valid(barrier) and not barrier.is_queued_for_deletion():
++			for body: CollisionObject3D in barrier.find_children("*", "CollisionObject3D", true, false):
++				body.collision_layer = 0
++			barrier.queue_free()
++	_crate.refresh()
++	_restore_death_traces()
+ 	for id: String in objects:
+ 		var object: StaticBody3D = objects[id]
+ 		var available: bool = not state.collected.has(id)
+diff --git a/tests/test_sector_power_state.gd b/tests/test_sector_power_state.gd
+index 9b9542b..2669e49 100644
+--- a/tests/test_sector_power_state.gd
++++ b/tests/test_sector_power_state.gd
+@@ -13,6 +13,8 @@ func run() -> void:
+ 	state.repair_relay()
+ 	var historical: Dictionary = saved()
+ 	historical.erase("circuits")
++	historical.erase("crate_broken")
++	historical.erase("death_poses")
+ 	historical.schema = 2
+ 	for progress: Array in [[0, ""], [1, ""], [2, ""], [3, ""], [4, "mother"], [4, "n7"]]:
+ 		var legacy_run := State.new()
+@@ -25,6 +27,8 @@ func run() -> void:
+ 		check(legacy_run.save_game("user://legacy-source.json") == OK, "Generate valid historical progression through mission API")
+ 		var legacy_data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("user://legacy-source.json"))
+ 		legacy_data.erase("circuits")
++		legacy_data.erase("crate_broken")
++		legacy_data.erase("death_poses")
+ 		legacy_data.schema = 2
+ 		write_save(legacy_data)
+ 		check(state.load_game("user://power-input.json") == OK, "Migrate historical phase %s ending %s" % progress)
+@@ -39,23 +43,35 @@ func run() -> void:
+ 	check(revision() > before_revision, "Loading existing state invalidates prior electrical context")
+ 	command(&"maintenance", false)
+ 	var valid: Dictionary = saved()
+-	check(valid.schema == 3 and valid.get("circuits") == {"maintenance": false, "archives": true}, "Schema 3 persists the mixed circuit state")
++	check(valid.schema == 4 and valid.get("circuits") == {"maintenance": false, "archives": true}, "Schema 4 persists the mixed circuit state")
+ 	check(not valid.has("power_revision"), "Runtime revision is not serialized")
+ 	check(state.phase == 2 and state.facts.has("power_restored"), "Cutting power preserves repaired relay and progression")
+ 	command(&"maintenance", true)
++	var legacy_three: Dictionary = valid.duplicate(true)
++	legacy_three.schema = 3
++	legacy_three.erase("crate_broken")
++	legacy_three.erase("death_poses")
++	write_save(legacy_three)
++	check(state.load_game("user://power-input.json") == OK, "Real schema 3 fixture still loads")
++	check(not on(&"maintenance") and on(&"archives"), "Historical schema 3 preserves mixed circuits")
++	command(&"maintenance", true)
+ 	write_save(valid)
+-	check(state.load_game("user://power-input.json") == OK, "Schema 3 loads")
++	check(state.load_game("user://power-input.json") == OK, "Schema 4 loads")
+ 	check(not on(&"maintenance") and on(&"archives"), "Mixed state survives roundtrip")
+ 	var rejected: Array[Dictionary] = []
+ 	for circuits: Variant in [{"maintenance": 0, "archives": true}, {"maintenance": false}, {"maintenance": false, "archives": true, "core": true}, [false, true], null]:
+ 		var malformed: Dictionary = valid.duplicate(true)
+ 		malformed.circuits = circuits
+ 		rejected.append(malformed)
+-	for base: Dictionary in [historical, valid]:
+-		for mutation: Dictionary in [{"phase": 0}, {"extra": true}, {"relations": {"mother": 0}}, {"facts": ["relay_location"]}, {"schema": 4}]:
++	for base: Dictionary in [historical, legacy_three, valid]:
++		for mutation: Dictionary in [{"phase": 0}, {"extra": true}, {"relations": {"mother": 0}}, {"facts": ["relay_location"]}, {"schema": 5}]:
+ 			var malformed: Dictionary = base.duplicate(true)
+ 			malformed.merge(mutation, true)
+ 			rejected.append(malformed)
++	for base: Dictionary in [historical, legacy_three]:
++		var false_upgrade: Dictionary = base.duplicate(true)
++		false_upgrade.schema = 4
++		rejected.append(false_upgrade)
+ 	var missing: Dictionary = historical.duplicate(true)
+ 	missing.erase("health")
+ 	rejected.append(missing)

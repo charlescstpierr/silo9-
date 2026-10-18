@@ -1,0 +1,264 @@
+[
+  {
+    "test": "persistence_state",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_persistence_state.gd"
+    ],
+    "exit": 0,
+    "seconds": 0.5154727129265666,
+    "test_sha256": "0a109337c2c759f854ea38f19ff14162b97c7f46e40d0de8171ee288d6d8a4c5",
+    "errors": [],
+    "warnings": [],
+    "tail": [
+      "PASS: fixture can write save.json.tmp",
+      "PASS: fixture denies directory rename while temp remains writable",
+      "PASS: failed rename preserves previous file bytes",
+      "PASS: seed file for controlled write failure",
+      "PASS: fixture directs temporary writes to full device",
+      "PASS: write failure returns an error",
+      "PASS: write failure preserves previous valid save",
+      "PERSISTENCE STATE: 179 checks, 0 failures"
+    ]
+  },
+  {
+    "test": "world_persistence",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_world_persistence.gd"
+    ],
+    "exit": 0,
+    "seconds": 20.094761427026242,
+    "test_sha256": "74b7288a9a950fff5b6d62c21adecae96d4c6d1a8df143abf972257dbf1ecf1e",
+    "errors": [],
+    "warnings": [
+      "WARNING: 4 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+    ],
+    "tail": [
+      "PASS: GATE_RED restored gate collider is already above doorway",
+      "PASS: GATE_RED restored doorway permits passage after physics synchronization",
+      "CASE invalid load: active world retained",
+      "PASS: fixture can write silo9-save.json",
+      "PASS: invalid orphan pose leaves active state, Player and World unchanged",
+      "WORLD PERSISTENCE: 56 checks, 0 failures",
+      "WARNING: 4 ObjectDB instances were leaked at exit (run with `--verbose` for details).",
+      "   at: cleanup (core/object/object.cpp:2536)"
+    ]
+  },
+  {
+    "test": "state",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_state.gd"
+    ],
+    "exit": 0,
+    "seconds": 0.4399877330288291,
+    "test_sha256": "e57538c1012f1fc3cd5e568cdb792cee5329b55b99075d3caeecef29c3a552e0",
+    "errors": [],
+    "warnings": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "State checks failures: 0"
+    ]
+  },
+  {
+    "test": "world",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_world.gd"
+    ],
+    "exit": 0,
+    "seconds": 10.729572243988514,
+    "test_sha256": "b7712cef26ef65a972713faeb03e8ce862192a35e4b4f6b9baf82072f0c05657",
+    "errors": [],
+    "warnings": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "Portal investigation final position: (2.632028, 0.000842, -12.14012)",
+      "WORLD: 0 failures"
+    ]
+  },
+  {
+    "test": "sector_power_state",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_sector_power_state.gd"
+    ],
+    "exit": 0,
+    "seconds": 2.2927040490321815,
+    "test_sha256": "9ec820c2f14833edf37c2d4131948d96087141ebae6d56d4b953d3416e689c80",
+    "errors": [],
+    "warnings": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "SECTOR POWER: 0 failures"
+    ]
+  },
+  {
+    "test": "sector_power_commands",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_sector_power_commands.gd"
+    ],
+    "exit": 0,
+    "seconds": 2.7567109973169863,
+    "test_sha256": "0ead73ecea6af19fb2f77b5e802a82e54a99cab60a34d2f139c1986d714408ca",
+    "errors": [],
+    "warnings": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "SECTOR POWER: 0 failures"
+    ]
+  },
+  {
+    "test": "sector_power_effects",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_sector_power_effects.gd"
+    ],
+    "exit": 0,
+    "seconds": 4.435796753037721,
+    "test_sha256": "7ad768d657f73003c62cb989bdcddb9838b5e04080e554cf929913f9616de61f",
+    "errors": [],
+    "warnings": [
+      "WARNING: 6 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+    ],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "SECTOR POWER: 0 failures",
+      "WARNING: 6 ObjectDB instances were leaked at exit (run with `--verbose` for details).",
+      "   at: cleanup (core/object/object.cpp:2536)"
+    ]
+  },
+  {
+    "test": "sector_power_dialogue",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_sector_power_dialogue.gd"
+    ],
+    "exit": 0,
+    "seconds": 2.3892109063453972,
+    "test_sha256": "af3833ff2550e6fa10c1abb44af21ac21729266448e43636271b96ecc9b2a895",
+    "errors": [],
+    "warnings": [],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "SECTOR POWER: 0 failures"
+    ]
+  },
+  {
+    "test": "journey",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_journey.gd"
+    ],
+    "exit": 0,
+    "seconds": 43.67788144061342,
+    "test_sha256": "2e5a7e6ab09f59d518d69475feef8db2f0470071283911023893677508947d4a",
+    "errors": [],
+    "warnings": [
+      "WARNING: 8 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+    ],
+    "tail": [
+      "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+      "",
+      "JOURNEY: failures=0 travelled=184.7m simulation=40.7s shots=15 health=77",
+      "WARNING: 8 ObjectDB instances were leaked at exit (run with `--verbose` for details).",
+      "   at: cleanup (core/object/object.cpp:2536)"
+    ]
+  },
+  {
+    "test": "d9_modal_save",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_d9_modal_save.gd"
+    ],
+    "exit": 0,
+    "seconds": 8.628996361978352,
+    "test_sha256": "568491c124e07061d13d5a00aa80dcf088459dcda791a72efe9f38cb8206a2b7",
+    "errors": [],
+    "warnings": [],
+    "tail": [
+      "PASS: reload reuses mesh resource 25",
+      "PASS: reload reuses mesh resource 26",
+      "PASS: reload reuses mesh resource 27",
+      "PASS: reload reuses mesh resource 28",
+      "PASS: reload reuses mesh resource 29",
+      "PASS: reload reuses mesh resource 30",
+      "PASS: reload reuses mesh resource 31",
+      "D9 MODAL/SAVE FAILURES: 0"
+    ]
+  },
+  {
+    "test": "shot_casings",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_shot_casings.gd"
+    ],
+    "exit": -15,
+    "seconds": 44.5309309149161,
+    "test_sha256": "b74e326b8d5ea53c3789e9ae75876752021348b685cd2e0be7ee0b888205c0a6",
+    "errors": [],
+    "warnings": [],
+    "tail": [
+      "PASS: one D9 case per accepted shot with eight-slot cap",
+      "PASS: one D9 case per accepted shot with eight-slot cap",
+      "PASS: one D9 case per accepted shot with eight-slot cap",
+      "PASS: one D9 case per accepted shot with eight-slot cap",
+      "PASS: one D9 case per accepted shot with eight-slot cap",
+      "PASS: coalesced shots spend twelve real rounds",
+      "PASS: empty refusal cannot emit ninth case",
+      "PASS: new casings do not simulate before first submitted frame"
+    ]
+  }
+]

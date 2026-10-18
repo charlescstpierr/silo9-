@@ -1,0 +1,58 @@
+[
+  {
+    "case": "ARC repetition before reconstruction",
+    "accepted": false,
+    "errors": [
+      "issue18 contract: second ARC is not on the reconstructed object"
+    ]
+  },
+  {
+    "case": "crate action hits unrelated distant collider",
+    "accepted": false,
+    "errors": [
+      "issue18 contract: shot collider differs from primary pose"
+    ]
+  },
+  {
+    "case": "restored image from unrelated camera pose",
+    "accepted": false,
+    "errors": [
+      "issue18 contract: comparison camera changed"
+    ]
+  },
+  {
+    "case": "ARC action and repeat share same target instance across new World",
+    "accepted": false,
+    "errors": [
+      "issue18 contract: second ARC is not on the reconstructed object"
+    ]
+  },
+  {
+    "case": "frame timestamps disagree with intervals",
+    "accepted": false,
+    "errors": [
+      "issue18 contract: frame timestamps outside measured window"
+    ]
+  },
+  {
+    "case": "injected unknown proof top-level field",
+    "accepted": false,
+    "errors": [
+      "issue18 contract: unknown proof top-level field"
+    ]
+  },
+  {
+    "case": "health bool instead of number",
+    "accepted": false,
+    "errors": [
+      "issue18 contract: persistence mission incomplete"
+    ]
+  },
+  {
+    "case": "snapshot health bool instead of number",
+    "accepted": false,
+    "errors": [
+      "issue18 contract: snapshot numeric type: health"
+    ]
+  }
+]

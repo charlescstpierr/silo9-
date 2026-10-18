@@ -1,0 +1,11 @@
+--- 
++++ 
+@@ -524,7 +524,7 @@
+             return struct.pack('>I', len(data)) + kind + data + struct.pack('>I', zlib.crc32(kind+data))
+         png = b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('>IIBBBBB', 1280, 720, 8, 2, 0, 0, 0))
+         png += chunk(b'IDAT', zlib.compress((b'\0' + b'\0' * (1280*3)) * 720)) + chunk(b'IEND', b'')
+-        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1] / 'proof-tool-tests') as directory:
++        with tempfile.TemporaryDirectory() as directory:
+             output = Path(directory); report = persistence_fixture()
+             data = json.dumps(report['persistence']['save_load']['saved']).encode()
+             (output/'save.json').write_bytes(data)

@@ -1,0 +1,14 @@
+..F.................................
+======================================================================
+FAIL: test_nonfinite_snapshot_value_is_rejected (__main__.Issue18BoundaryValidation.test_nonfinite_snapshot_value_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 460, in test_nonfinite_snapshot_value_is_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 36 tests in 1.054s
+
+FAILED (failures=1)

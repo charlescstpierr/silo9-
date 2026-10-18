@@ -1,0 +1,61 @@
+{
+  "journeys": [
+    {
+      "folder": "native-mother",
+      "head": "c105da61b2b490546f01c9d67703bfb405a2a44f",
+      "exit_code": 0,
+      "validation_errors": [],
+      "ending": "mother",
+      "phase": 4,
+      "health": 70.0,
+      "travelled_m": 525.4839181103744,
+      "save_bytes": 1511,
+      "new_player_and_world": true,
+      "casings_at_f5_and_f9": [
+        1,
+        1,
+        0
+      ],
+      "arc_changed_events": 1,
+      "arc_disabled_events": 0,
+      "snapshots_checked": true,
+      "images": 12
+    },
+    {
+      "folder": "native-n7-low",
+      "head": "c105da61b2b490546f01c9d67703bfb405a2a44f",
+      "exit_code": 0,
+      "validation_errors": [],
+      "ending": "n7",
+      "phase": 4,
+      "health": 70.0,
+      "travelled_m": 524.6722128409892,
+      "save_bytes": 1511,
+      "new_player_and_world": true,
+      "casings_at_f5_and_f9": [
+        1,
+        1,
+        0
+      ],
+      "arc_changed_events": 1,
+      "arc_disabled_events": 0,
+      "snapshots_checked": true,
+      "images": 12
+    }
+  ],
+  "native_campaign_child_exits": [
+    0,
+    0
+  ],
+  "supervisor_session": 24873,
+  "supervisor_exit": 143,
+  "supervisor_exit_cause": "not established; both recorded child commands and video writer/decoder completed successfully",
+  "video_writer": 0,
+  "video_decoder": {
+    "ffprobe_exit": 0,
+    "decode_exit": 0
+  },
+  "video_seconds": 145.733333,
+  "video_frames": 2186,
+  "limits": "Source instrumented journeys. Input physics movement and direct Player.fire; X11 E/F/F5/F9. Controlled cameras are separate. Recorded/captured timing excluded from performance campaign. Sentinel original terminal images obscured; supplement required."
+}

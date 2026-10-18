@@ -1,0 +1,78 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:372)
+OpenGL API 4.5 (Core Profile) Mesa 26.0.8-1ubuntu0.3 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 21.1.8, 256 bits)
+ALSA lib confmisc.c:855:(parse_card) [error.core] cannot find card '0'
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) [error.core] error evaluating strings
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) [error.core] error evaluating name
+ALSA lib conf.c:5211:(_snd_config_evaluate) [error.core] function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5734:(snd_config_expand) [error.core] Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) [error.pcm] Unknown PCM default
+ERROR: Condition "status < 0" is true. Returning: ERR_CANT_OPEN
+   at: init_output_device (drivers/alsa/audio_driver_alsa.cpp:97)
+WARNING: All audio drivers failed, falling back to the dummy driver.
+     at: initialize (servers/audio/audio_server.cpp:258)
+
+PASS: fixture reaches READY
+PASS: accepted design provides a world casing pool owned by Player
+PASS: D9 has composed ejection marker
+PASS: decorative pool cannot intercept hitscan or player motion
+PASS: Player exposes configure_feedback
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: one D9 case per accepted shot with eight-slot cap
+PASS: coalesced shots spend twelve real rounds
+PASS: empty refusal cannot emit ninth case
+PASS: new casings do not simulate before first submitted frame
+PASS: ejected cases stay in world space when player moves
+PASS: Player exposes configure_feedback
+PASS: reducing normal to reduced immediately removes excess cases
+PASS: reduced TTL consumes full elapsed delta and stops empty simulation
+PASS: Player exposes configure_feedback
+PASS: raising budget never resurrects expired cases
+PASS: post-expiry shot accepted
+PASS: expired slot is reused
+PASS: Player exposes configure_feedback
+PASS: minimal budget removes casings, idle simulation and light immediately
+PASS: minimal budget keeps departure but emits no cases
+PASS: Player exposes configure_feedback
+PASS: ARC ready after D9 effects
+PASS: accepted ARC shot emits zero cases
+PASS: D9 ready for recycle cycles
+PASS: repeated real fire/expiry cycles preserve node count
+PASS: recycled slots reuse their original meshes and materials
+PASS: ejection fixture accepts real D9 shot
+PASS: case starts at same-tick composed ejection port
+PASS: LOWER_ABORT lowers ejection with frozen muzzle pose
+PASS: reload and lowering preserve world casing
+PASS: HIDDEN completes after aborted reload
+PASS: weapon identity change preserves world casing
+PASS: D9 restores after port fixture
+PASS: Player exposes configure_feedback
+PASS: Player exposes configure_feedback
+PASS: budget reduction removes oldest case rather than newest
+PASS: Player exposes configure_feedback
+PASS: world casing inherits player motion
+PASS: live casing between camera and target cannot block real hitscan
+PASS: point sweeps keep cases above floor and outside wall/ceiling
+PASS: case spawned inside solid is retired rather than frozen inside geometry
+PASS: floor contact can settle a case before normal TTL
+PASS: settled case has no continuing movement
+PASS: inactive casing fixture emits
+PASS: inactive clears world casings
+PASS: teleport casing fixture emits
+PASS: teleport clears world casings
+PASS: death casing fixture emits
+PASS: death clears world casings
+SHOT CASINGS FAILURES: 0

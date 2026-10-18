@@ -1,0 +1,30 @@
+[
+  {
+    "suite": "test_persistence_state",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_persistence_state.gd"
+    ],
+    "exit": 1,
+    "seconds": 0.3394017512910068,
+    "sha256": "1f350b3d942c5b119dff0496c791d3182370cfcf10c7e80a9b2888212e0a6cd8"
+  },
+  {
+    "suite": "test_world_persistence",
+    "command": [
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--headless",
+      "--path",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+      "--script",
+      "tests/test_world_persistence.gd"
+    ],
+    "exit": 1,
+    "seconds": 0.329931051004678,
+    "sha256": "cd17ca5d5d9d875c0ed9a56b6a7b414a4103529079d4000e895699adf9c6d8c5"
+  }
+]

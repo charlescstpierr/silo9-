@@ -1,0 +1,13 @@
+# Protocole de coût avant implémentation du ticket18
+
+Question : coût local des états terminaux visibles, comparé à28e4028, à qualité et lampe identiques. Ce protocole ne promet pas un gain : les carcasses ajoutent du rendu là où les robots disparaissaient.
+
+Observer d'abord les budgets structurels : six traces au maximum, dix-neuf instances/surfaces graphiques au maximum pour les restes, ressources partagées, absence de physique/IA/traitement par frame, aucune croissance après répétitions des impacts, refresh et chargements. Compter sommets/indices et mémoire des meshes sans les appeler des triangles effectivement rendus. Mesurer séparément le temps des transitions et reconstruire une vraie partie pour le contrôle des allocations.
+
+Campagne prévue : cinq paires alternées référence/candidat en Normal, puis cinq en Low, lampe réellement ON dans les deux versions. Vingt runs sans capture/encodeur/profil concurrent. Même binaire Godot4.7.2, X11 Compatibility, fenêtre1280x720 llvmpipe, même outil figé, chauffe nominale2s, trajet physique neuf stations92,433m déjà existant. Les combats/actions préparatoires précèdent la fenêtre mesurée et sont identiques dans les deux versions : six robots reçoivent leurs impacts réels au même emplacement prévu ; la caisse reçoit le même impact balistique, même si la référence ne sait pas la détruire. L'état visuel résultant diffère intentionnellement : c'est le coût de la fonctionnalité.
+
+Le nouvel outil de préparation doit lier les états observés à la scène réelle et aux actions, conserver le compteur de frames et les intervalles bruts, et avoir ses contre-exemples de validation. Prévoir un diagnostic exclu des chiffres. Geler source/moteur/outils avant campagne, ne pas modifier les worktrees jusqu'à sa fin. Le parent possède exclusivement le runtime. Audit indépendant des quantiles, étapes, entrées et hashes.
+
+Comparer les médianes et plages des cinq p50/p95/p99 par côté, ainsi que les différences appariées. Compteurs de drawcalls/nœuds/ressources conservés. Profil CPU séparé hors campagne pour documenter le limiteur de l'hôte si un chiffre est revendiqué ; pas d'attribution causale automatique depuis le nombre de meshes. Un coût reproductible demande optimisation dans la forme acceptée ou compromis chiffré explicite avant livraison.
+
+Limites : projets source instrumentés, scène sans IA vivante dans le trajet mesuré, lampe ON seulement. Aucun benchmark de mission complète, exécutables release, lampeOFF, GPU joueur, Windows ou60FPS1080p. Les parcours natifs avec sauvegarde/rechargement et images sont des preuves distinctes, non incluses dans les timings.

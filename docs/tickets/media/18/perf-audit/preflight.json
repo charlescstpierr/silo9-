@@ -1,0 +1,33 @@
+{
+  "utc": "2026-10-18T16:20:13.419131+00:00",
+  "passed": true,
+  "checks": {
+    "heads": true,
+    "runner": true,
+    "engine": true,
+    "separate_real_tool_files": true,
+    "reference_source": true,
+    "candidate_source": true
+  },
+  "changed": {
+    "reference": [],
+    "candidate": []
+  },
+  "source_counts": {
+    "reference": 2591,
+    "candidate": 2602
+  },
+  "freeze_sha256": "17857f5b48a0dddab62a5087f0c0c9d8ffb04e8e05c3a4a26d73860156d8bbb5",
+  "runner_sha256": "310a18a0188af2a335e6032936777821cfb9fc658082dc56018bc21096d4d14c",
+  "proof_tool_hashes": {
+    "probe_sector_power.gd": "92fa2c5f61b5b6ece8b8421ce86a0751a099c72facd581ba87f0c5b94f666cf0",
+    "prove_sector_power.py": "6a5b699bb008c890bc394bc67da33d753b74825ff185086880931a098d2d8c81",
+    "selfcheck_sector_power.py": "ab7a711aae3606668bd53c9f9f3ca47298328199b2a6567708ca27e2404cb5fa"
+  },
+  "audit_tool_hashes": {
+    "audit_campaign.py": "62bf0d1cc4a9b82b30eac592027621dbd0dafeb1959ea9ba7c5ed546798dae38",
+    "preflight.py": "224bdaf548028b7ce373b552ad922be5c3f0e46fc9b36c0c90bd489073e684cc",
+    "selfcheck.py": "337a0be7c956b2739c45f0ea79c0060ef873c2a5b7329bc473cf91e53a875b2f"
+  },
+  "scope": "Pre-campaign source and tool identity only; no runtime or performance claim"
+}

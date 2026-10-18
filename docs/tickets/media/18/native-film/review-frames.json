@@ -1,0 +1,68 @@
+{
+  "duration_s": 145.733333,
+  "nominal_interval_s": 12.144444416666666,
+  "frames": [
+    {
+      "file": "review-frames/frame-01.png",
+      "sha256": "02d43c9245fdbef8f5fea8ea2c9f0f2190c5f1ef6497fc212cfe5bf47824a59b"
+    },
+    {
+      "file": "review-frames/frame-02.png",
+      "sha256": "e33271ce8f778fb541e4133c192565711c03889e208daa4cb468aed4b18d8822"
+    },
+    {
+      "file": "review-frames/frame-03.png",
+      "sha256": "8847307c2a2e61cc8e4f7a4af2684e58918eb69848b7002e4cca720561febbd1"
+    },
+    {
+      "file": "review-frames/frame-04.png",
+      "sha256": "67e289307ef0d92fc794b095693b2d5c212cf92c803617a26645f65b2d521387"
+    },
+    {
+      "file": "review-frames/frame-05.png",
+      "sha256": "842d38304f1a0cdfe43339de5689f03784ce0e9e5bd2d962bc4035f2672446c3"
+    },
+    {
+      "file": "review-frames/frame-06.png",
+      "sha256": "6f1b04059894fb5a6bba5124c46231db64df0cd8f6e91d4f3e93dac003b841af"
+    },
+    {
+      "file": "review-frames/frame-07.png",
+      "sha256": "283f36a10981ee1250c357a2fbf760d246236875058adae1dff2e5ae5734f67e"
+    },
+    {
+      "file": "review-frames/frame-08.png",
+      "sha256": "1f72e760d22801257c5a7d9d310e0ca2f845ced80f0d2575174e0ea4a06b6cb8"
+    },
+    {
+      "file": "review-frames/frame-09.png",
+      "sha256": "152fc7193eef6157b8785214594820b9eb8ebeaa061ed5e192f259d4de5b0f74"
+    },
+    {
+      "file": "review-frames/frame-10.png",
+      "sha256": "babf02a18117e61f194e22bb49b1eed6e853ae5180cdda3ac502582c8e4e202d"
+    },
+    {
+      "file": "review-frames/frame-11.png",
+      "sha256": "a19c87c611feb7c14191584e9a8ac4302b16ce5cb39593fb9f9654565ecab74e"
+    },
+    {
+      "file": "review-frames/frame-12.png",
+      "sha256": "aa44bedec9226f8b44378de31a6bd03485c73d115f5ecfbf170d12fb25c4f6df"
+    }
+  ],
+  "command": [
+    "ffmpeg",
+    "-v",
+    "error",
+    "-i",
+    ".cstack/orchestrate/silo9/issue18/native-film/mother.mp4",
+    "-vf",
+    "fps=0.082342177681478",
+    "-frames:v",
+    "12",
+    ".cstack/orchestrate/silo9/issue18/native-film/review-frames/frame-%02d.png"
+  ],
+  "exit_code": 0,
+  "limits": "Twelve sampled frames; no continuous video viewing."
+}

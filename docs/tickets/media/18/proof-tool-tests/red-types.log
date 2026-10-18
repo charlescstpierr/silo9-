@@ -1,0 +1,14 @@
+...F...................................
+======================================================================
+FAIL: test_booleans_are_not_health_numbers (__main__.Issue18BoundaryValidation.test_booleans_are_not_health_numbers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 463, in test_booleans_are_not_health_numbers
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 39 tests in 1.100s
+
+FAILED (failures=1)

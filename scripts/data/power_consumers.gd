@@ -33,9 +33,9 @@ func build(config: Spec, body: StaticBody3D, palette: Dictionary) -> void:
 	part(lever, Vector3(0, 0.22, 0), Vector3(0.08, 0.44, 0.08), palette.steel)
 	part(lever, Vector3(0, 0.44, 0), Vector3(0.36, 0.14, 0.16), palette.yellow)
 	status = Label3D.new()
-	status.position = Vector3(0, 1.95, 0.32)
+	status.position = Vector3(0, 1.6, 0.32)
 	status.font_size = 30
-	status.pixel_size = 0.009
+	status.pixel_size = 0.002
 	breaker.add_child(status)
 	fan = Node3D.new()
 	fan.name = "fan_" + str(spec.id)

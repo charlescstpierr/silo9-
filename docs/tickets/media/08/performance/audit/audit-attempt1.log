@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue08/perf-audit/audit.py", line 159, in <module>
+    require(profile_journey == profile_result['journey'], 'profile journey agrees with result')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue08/perf-audit/audit.py", line 18, in require
+    raise AssertionError(message)
+AssertionError: profile journey agrees with result

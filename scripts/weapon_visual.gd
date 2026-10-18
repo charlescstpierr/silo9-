@@ -1,16 +1,21 @@
 class_name SiloWeaponVisual
 extends RefCounted
 
+const PAINT_D9 = preload("res://assets/fps/materials/paint_d9.tres")
+const PAINT_ARC = preload("res://assets/fps/materials/paint_arc.tres")
+const STEEL = preload("res://assets/fps/materials/steel.tres")
+const INSULATOR = preload("res://assets/fps/materials/insulator.tres")
+const CONTACTS = preload("res://assets/fps/materials/contacts.tres")
+const SIGNAL_D9 = preload("res://assets/fps/materials/signal_d9.tres")
+const SIGNAL_ARC = preload("res://assets/fps/materials/signal_arc.tres")
+
 static func build(electric: bool) -> Node3D:
 	var root := Node3D.new()
 	root.scale = Vector3.ONE * 0.76
 	root.position = Vector3(-0.01, -0.005, -0.12)
 	var materials: Array[StandardMaterial3D] = [
-		_material(Color("608da7") if not electric else Color("466677"), 0.16, 0.42),
-		_material(Color("314e66"), 0.12, 0.48),
-		_material(Color("263844"), 0.05, 0.7),
-		_material(Color("e7ad57"), 0.3, 0.4),
-		_material(Color("62c9ce") if electric else Color("edb76d"), 0.15, 0.35, 0.8),
+		PAINT_ARC if electric else PAINT_D9, STEEL, INSULATOR, CONTACTS,
+		SIGNAL_ARC if electric else SIGNAL_D9,
 	]
 	var batches := _batches(materials)
 	_part(batches[1], Vector3(0.104, 0.067, 0.34), Vector3(0, 0.035, -0.035), 0.012)
@@ -175,16 +180,6 @@ static func _marker(parent: Node3D, label: String, pos: Vector3, basis: Basis) -
 	marker.transform = Transform3D(basis,pos)
 	parent.add_child(marker)
 
-static func _material(color: Color, metal: float, rough: float, glow: float = 0.035) -> StandardMaterial3D:
-	var result := StandardMaterial3D.new()
-	result.albedo_color = color
-	result.metallic = metal
-	result.roughness = rough
-	result.emission_enabled = true
-	result.emission = color
-	result.emission_energy_multiplier = glow
-	return result
-
 static func _part(batch: SurfaceTool, size: Vector3, pos: Vector3, bevel: float, angle: Vector3 = Vector3.ZERO) -> void:
 	batch.append_from(_bevel_box(size, bevel), 0, Transform3D(Basis.from_euler(angle), pos))
 
@@ -260,4 +255,10 @@ static func _triangle(tool: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, out
 		vertices = [a, b, c]
 	for point: Vector3 in vertices:
 		tool.set_normal(normal)
+		var uv: Vector2
+		match normal.abs().max_axis_index():
+			Vector3.AXIS_X: uv = Vector2(point.z * signf(normal.x), point.y)
+			Vector3.AXIS_Y: uv = Vector2(point.x, point.z * signf(normal.y))
+			_: uv = Vector2(point.x * signf(normal.z), point.y)
+		tool.set_uv(uv * 8.0)
 		tool.add_vertex(point)

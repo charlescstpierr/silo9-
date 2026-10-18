@@ -1,0 +1,734 @@
+{
+  "method": "Raw PNG read, transient crop x0,y96,w1100,h32 into tesseract --psm7; no persisted proof-image editing. Whole image manually inspected only for d9-reload/movie-000079.png. OCR verifies labels, not visual material quality.",
+  "script_sha256": "6e5c25cc4af725dcda57d27cd35da8865276aa5ee14c82b88bfa8918b877759b",
+  "command": [
+    "/usr/bin/tesseract",
+    "stdin",
+    "stdout",
+    "--psm",
+    "7"
+  ],
+  "checks": [
+    {
+      "file": "d9-reload/movie-000079.png",
+      "movie_index_zero_based": 79,
+      "engine_frame_matching_observed_label": 79,
+      "expected": "film-w0-cold-frame-039",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-039",
+      "observed": "film-w0-cold-frame-039",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000080.png",
+      "movie_index_zero_based": 80,
+      "engine_frame_matching_observed_label": 80,
+      "expected": "film-w0-cold-frame-040",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-040",
+      "observed": "film-w0-cold-frame-040",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000081.png",
+      "movie_index_zero_based": 81,
+      "engine_frame_matching_observed_label": 81,
+      "expected": "film-w0-cold-frame-041",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-041",
+      "observed": "film-w0-cold-frame-041",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000082.png",
+      "movie_index_zero_based": 82,
+      "engine_frame_matching_observed_label": 82,
+      "expected": "film-w0-cold-frame-042",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-042",
+      "observed": "film-w0-cold-frame-042",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000083.png",
+      "movie_index_zero_based": 83,
+      "engine_frame_matching_observed_label": 83,
+      "expected": "film-w0-cold-frame-043",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-043",
+      "observed": "film-w0-cold-frame-043",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000084.png",
+      "movie_index_zero_based": 84,
+      "engine_frame_matching_observed_label": 84,
+      "expected": "film-w0-cold-frame-044",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-044",
+      "observed": "film-w0-cold-frame-044",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000085.png",
+      "movie_index_zero_based": 85,
+      "engine_frame_matching_observed_label": 85,
+      "expected": "film-w0-cold-frame-045",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-045",
+      "observed": "film-w0-cold-frame-045",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000086.png",
+      "movie_index_zero_based": 86,
+      "engine_frame_matching_observed_label": 86,
+      "expected": "film-w0-cold-frame-046",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-046",
+      "observed": "film-w0-cold-frame-046",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000087.png",
+      "movie_index_zero_based": 87,
+      "engine_frame_matching_observed_label": 87,
+      "expected": "film-w0-cold-frame-047",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-047",
+      "observed": "film-w0-cold-frame-047",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000088.png",
+      "movie_index_zero_based": 88,
+      "engine_frame_matching_observed_label": 88,
+      "expected": "film-w0-cold-frame-048",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-048",
+      "observed": "film-w0-cold-frame-048",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000089.png",
+      "movie_index_zero_based": 89,
+      "engine_frame_matching_observed_label": 89,
+      "expected": "film-w0-cold-frame-049",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-049",
+      "observed": "film-w0-cold-frame-049",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-reload/movie-000090.png",
+      "movie_index_zero_based": 90,
+      "engine_frame_matching_observed_label": 90,
+      "expected": "film-w0-cold-frame-050",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-cold-frame-050",
+      "observed": "film-w0-cold-frame-050",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000701.png",
+      "movie_index_zero_based": 701,
+      "engine_frame_matching_observed_label": 701,
+      "expected": "film-w1-cold-frame-049",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-049",
+      "observed": "film-w1-cold-frame-049",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000702.png",
+      "movie_index_zero_based": 702,
+      "engine_frame_matching_observed_label": 702,
+      "expected": "film-w1-cold-frame-050",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-050",
+      "observed": "film-w1-cold-frame-050",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000703.png",
+      "movie_index_zero_based": 703,
+      "engine_frame_matching_observed_label": 703,
+      "expected": "film-w1-cold-frame-051",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-051",
+      "observed": "film-w1-cold-frame-051",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000704.png",
+      "movie_index_zero_based": 704,
+      "engine_frame_matching_observed_label": 704,
+      "expected": "film-w1-cold-frame-052",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-052",
+      "observed": "film-w1-cold-frame-052",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000705.png",
+      "movie_index_zero_based": 705,
+      "engine_frame_matching_observed_label": 705,
+      "expected": "film-w1-cold-frame-053",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-053",
+      "observed": "film-w1-cold-frame-053",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000706.png",
+      "movie_index_zero_based": 706,
+      "engine_frame_matching_observed_label": 706,
+      "expected": "film-w1-cold-frame-054",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-054",
+      "observed": "film-w1-cold-frame-054",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000707.png",
+      "movie_index_zero_based": 707,
+      "engine_frame_matching_observed_label": 707,
+      "expected": "film-w1-cold-frame-055",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-055",
+      "observed": "film-w1-cold-frame-055",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000708.png",
+      "movie_index_zero_based": 708,
+      "engine_frame_matching_observed_label": 708,
+      "expected": "film-w1-cold-frame-056",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-056",
+      "observed": "film-w1-cold-frame-056",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000709.png",
+      "movie_index_zero_based": 709,
+      "engine_frame_matching_observed_label": 709,
+      "expected": "film-w1-cold-frame-057",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-057",
+      "observed": "film-w1-cold-frame-057",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000710.png",
+      "movie_index_zero_based": 710,
+      "engine_frame_matching_observed_label": 710,
+      "expected": "film-w1-cold-frame-058",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-058",
+      "observed": "film-w1-cold-frame-058",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000711.png",
+      "movie_index_zero_based": 711,
+      "engine_frame_matching_observed_label": 711,
+      "expected": "film-w1-cold-frame-059",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-059",
+      "observed": "film-w1-cold-frame-059",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-cell/movie-000712.png",
+      "movie_index_zero_based": 712,
+      "engine_frame_matching_observed_label": 712,
+      "expected": "film-w1-cold-frame-060",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-cold-frame-060",
+      "observed": "film-w1-cold-frame-060",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001193.png",
+      "movie_index_zero_based": 1193,
+      "engine_frame_matching_observed_label": 1193,
+      "expected": "film-w1-dim-frame-139",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-139",
+      "observed": "film-w1-dim-frame-139",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001194.png",
+      "movie_index_zero_based": 1194,
+      "engine_frame_matching_observed_label": 1194,
+      "expected": "film-w1-dim-frame-140",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-140",
+      "observed": "film-w1-dim-frame-140",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001195.png",
+      "movie_index_zero_based": 1195,
+      "engine_frame_matching_observed_label": 1195,
+      "expected": "film-w1-dim-frame-141",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-141",
+      "observed": "film-w1-dim-frame-141",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001196.png",
+      "movie_index_zero_based": 1196,
+      "engine_frame_matching_observed_label": 1196,
+      "expected": "film-w1-dim-frame-142",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-142",
+      "observed": "film-w1-dim-frame-142",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001197.png",
+      "movie_index_zero_based": 1197,
+      "engine_frame_matching_observed_label": 1197,
+      "expected": "film-w1-dim-frame-143",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-143",
+      "observed": "film-w1-dim-frame-143",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001198.png",
+      "movie_index_zero_based": 1198,
+      "engine_frame_matching_observed_label": 1198,
+      "expected": "film-w1-dim-frame-144",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-144",
+      "observed": "film-w1-dim-frame-144",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001199.png",
+      "movie_index_zero_based": 1199,
+      "engine_frame_matching_observed_label": 1199,
+      "expected": "film-w1-dim-frame-145",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-145",
+      "observed": "film-w1-dim-frame-145",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001200.png",
+      "movie_index_zero_based": 1200,
+      "engine_frame_matching_observed_label": 1200,
+      "expected": "film-w1-dim-frame-146",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-146",
+      "observed": "film-w1-dim-frame-146",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001201.png",
+      "movie_index_zero_based": 1201,
+      "engine_frame_matching_observed_label": 1201,
+      "expected": "film-w1-dim-frame-147",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-147",
+      "observed": "film-w1-dim-frame-147",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001202.png",
+      "movie_index_zero_based": 1202,
+      "engine_frame_matching_observed_label": 1202,
+      "expected": "film-w1-dim-frame-148",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-148",
+      "observed": "film-w1-dim-frame-148",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001203.png",
+      "movie_index_zero_based": 1203,
+      "engine_frame_matching_observed_label": 1203,
+      "expected": "film-w1-dim-frame-149",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-149",
+      "observed": "film-w1-dim-frame-149",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-camera/movie-001204.png",
+      "movie_index_zero_based": 1204,
+      "engine_frame_matching_observed_label": 1204,
+      "expected": "film-w1-dim-frame-150",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-dim-frame-150",
+      "observed": "film-w1-dim-frame-150",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000280.png",
+      "movie_index_zero_based": 280,
+      "engine_frame_matching_observed_label": 280,
+      "expected": "film-w0-red-frame-039",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-039",
+      "observed": "film-w0-red-frame-039",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000281.png",
+      "movie_index_zero_based": 281,
+      "engine_frame_matching_observed_label": 281,
+      "expected": "film-w0-red-frame-040",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-040",
+      "observed": "film-w0-red-frame-040",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000282.png",
+      "movie_index_zero_based": 282,
+      "engine_frame_matching_observed_label": 282,
+      "expected": "film-w0-red-frame-041",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-041",
+      "observed": "film-w0-red-frame-041",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000283.png",
+      "movie_index_zero_based": 283,
+      "engine_frame_matching_observed_label": 283,
+      "expected": "film-w0-red-frame-042",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-042",
+      "observed": "film-w0-red-frame-042",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000284.png",
+      "movie_index_zero_based": 284,
+      "engine_frame_matching_observed_label": 284,
+      "expected": "film-w0-red-frame-043",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-043",
+      "observed": "film-w0-red-frame-043",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000285.png",
+      "movie_index_zero_based": 285,
+      "engine_frame_matching_observed_label": 285,
+      "expected": "film-w0-red-frame-044",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-044",
+      "observed": "film-w0-red-frame-044",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000286.png",
+      "movie_index_zero_based": 286,
+      "engine_frame_matching_observed_label": 286,
+      "expected": "film-w0-red-frame-045",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-045",
+      "observed": "film-w0-red-frame-045",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000287.png",
+      "movie_index_zero_based": 287,
+      "engine_frame_matching_observed_label": 287,
+      "expected": "film-w0-red-frame-046",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-046",
+      "observed": "film-w0-red-frame-046",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000288.png",
+      "movie_index_zero_based": 288,
+      "engine_frame_matching_observed_label": 288,
+      "expected": "film-w0-red-frame-047",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-047",
+      "observed": "film-w0-red-frame-047",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000289.png",
+      "movie_index_zero_based": 289,
+      "engine_frame_matching_observed_label": 289,
+      "expected": "film-w0-red-frame-048",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-048",
+      "observed": "film-w0-red-frame-048",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000290.png",
+      "movie_index_zero_based": 290,
+      "engine_frame_matching_observed_label": 290,
+      "expected": "film-w0-red-frame-049",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-049",
+      "observed": "film-w0-red-frame-049",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-red/movie-000291.png",
+      "movie_index_zero_based": 291,
+      "engine_frame_matching_observed_label": 291,
+      "expected": "film-w0-red-frame-050",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-red-frame-050",
+      "observed": "film-w0-red-frame-050",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000581.png",
+      "movie_index_zero_based": 581,
+      "engine_frame_matching_observed_label": 581,
+      "expected": "film-w0-dim-frame-139",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-139",
+      "observed": "film-w0-dim-frame-139",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000582.png",
+      "movie_index_zero_based": 582,
+      "engine_frame_matching_observed_label": 582,
+      "expected": "film-w0-dim-frame-140",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-140",
+      "observed": "film-w0-dim-frame-140",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000583.png",
+      "movie_index_zero_based": 583,
+      "engine_frame_matching_observed_label": 583,
+      "expected": "film-w0-dim-frame-141",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-141",
+      "observed": "film-w0-dim-frame-141",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000584.png",
+      "movie_index_zero_based": 584,
+      "engine_frame_matching_observed_label": 584,
+      "expected": "film-w0-dim-frame-142",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-142",
+      "observed": "film-w0-dim-frame-142",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000585.png",
+      "movie_index_zero_based": 585,
+      "engine_frame_matching_observed_label": 585,
+      "expected": "film-w0-dim-frame-143",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-143",
+      "observed": "film-w0-dim-frame-143",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000586.png",
+      "movie_index_zero_based": 586,
+      "engine_frame_matching_observed_label": 586,
+      "expected": "film-w0-dim-frame-144",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-144",
+      "observed": "film-w0-dim-frame-144",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000587.png",
+      "movie_index_zero_based": 587,
+      "engine_frame_matching_observed_label": 587,
+      "expected": "film-w0-dim-frame-145",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-145",
+      "observed": "film-w0-dim-frame-145",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000588.png",
+      "movie_index_zero_based": 588,
+      "engine_frame_matching_observed_label": 588,
+      "expected": "film-w0-dim-frame-146",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-146",
+      "observed": "film-w0-dim-frame-146",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000589.png",
+      "movie_index_zero_based": 589,
+      "engine_frame_matching_observed_label": 589,
+      "expected": "film-w0-dim-frame-147",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-147",
+      "observed": "film-w0-dim-frame-147",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000590.png",
+      "movie_index_zero_based": 590,
+      "engine_frame_matching_observed_label": 590,
+      "expected": "film-w0-dim-frame-148",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-148",
+      "observed": "film-w0-dim-frame-148",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000591.png",
+      "movie_index_zero_based": 591,
+      "engine_frame_matching_observed_label": 591,
+      "expected": "film-w0-dim-frame-149",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-149",
+      "observed": "film-w0-dim-frame-149",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "d9-dim/movie-000592.png",
+      "movie_index_zero_based": 592,
+      "engine_frame_matching_observed_label": 592,
+      "expected": "film-w0-dim-frame-150",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w0-dim-frame-150",
+      "observed": "film-w0-dim-frame-150",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000902.png",
+      "movie_index_zero_based": 902,
+      "engine_frame_matching_observed_label": 902,
+      "expected": "film-w1-red-frame-049",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-049",
+      "observed": "film-w1-red-frame-049",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000903.png",
+      "movie_index_zero_based": 903,
+      "engine_frame_matching_observed_label": 903,
+      "expected": "film-w1-red-frame-050",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-050",
+      "observed": "film-w1-red-frame-050",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000904.png",
+      "movie_index_zero_based": 904,
+      "engine_frame_matching_observed_label": 904,
+      "expected": "film-w1-red-frame-051",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-051",
+      "observed": "film-w1-red-frame-051",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000905.png",
+      "movie_index_zero_based": 905,
+      "engine_frame_matching_observed_label": 905,
+      "expected": "film-w1-red-frame-052",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-052",
+      "observed": "film-w1-red-frame-052",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000906.png",
+      "movie_index_zero_based": 906,
+      "engine_frame_matching_observed_label": 906,
+      "expected": "film-w1-red-frame-053",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-053",
+      "observed": "film-w1-red-frame-053",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000907.png",
+      "movie_index_zero_based": 907,
+      "engine_frame_matching_observed_label": 907,
+      "expected": "film-w1-red-frame-054",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-054",
+      "observed": "film-w1-red-frame-054",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000908.png",
+      "movie_index_zero_based": 908,
+      "engine_frame_matching_observed_label": 908,
+      "expected": "film-w1-red-frame-055",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-055",
+      "observed": "film-w1-red-frame-055",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000909.png",
+      "movie_index_zero_based": 909,
+      "engine_frame_matching_observed_label": 909,
+      "expected": "film-w1-red-frame-056",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-056",
+      "observed": "film-w1-red-frame-056",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000910.png",
+      "movie_index_zero_based": 910,
+      "engine_frame_matching_observed_label": 910,
+      "expected": "film-w1-red-frame-057",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-057",
+      "observed": "film-w1-red-frame-057",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000911.png",
+      "movie_index_zero_based": 911,
+      "engine_frame_matching_observed_label": 911,
+      "expected": "film-w1-red-frame-058",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-058",
+      "observed": "film-w1-red-frame-058",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000912.png",
+      "movie_index_zero_based": 912,
+      "engine_frame_matching_observed_label": 912,
+      "expected": "film-w1-red-frame-059",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-059",
+      "observed": "film-w1-red-frame-059",
+      "exit_code": 0,
+      "pass": true
+    },
+    {
+      "file": "arc-red/movie-000913.png",
+      "movie_index_zero_based": 913,
+      "engine_frame_matching_observed_label": 913,
+      "expected": "film-w1-red-frame-060",
+      "ocr": "final-efc2a581fd32-frontal-z8 | film-w1-red-frame-060",
+      "observed": "film-w1-red-frame-060",
+      "exit_code": 0,
+      "pass": true
+    }
+  ],
+  "all_pass": true
+}

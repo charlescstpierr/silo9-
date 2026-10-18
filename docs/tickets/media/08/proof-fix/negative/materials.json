@@ -1,0 +1,33 @@
+{
+	"adapter": "llvmpipe (LLVM 21.1.8, 256 bits)",
+	"captures": [],
+	"display": "X11",
+	"engine": {
+		"build": "official",
+		"hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+		"hex": 263938,
+		"major": 4,
+		"minor": 7,
+		"patch": 2,
+		"status": "stable",
+		"string": "4.7.2-stable (official)",
+		"timestamp": 0
+	},
+	"evidence_label": "final-efc2a581fd32-frontal-z8",
+	"failures": [
+		"film requires actual engine movie output"
+	],
+	"film_frames": [],
+	"fixture_changes": "Isolated physical bay and one Omni; duplicate ambient/fog environment in bay; actual FPS light retained. Enemy callbacks frozen, collisions retained. Film rotations directly controlled; software right movement and RMB; R/B call production APIs with declared resource setup. No rig geometry/material changes.",
+	"inventory_after": {},
+	"inventory_before": {},
+	"limits": "Film fixed 30fps is not performance. No physical input, Windows, gaming GPU, continuous viewing or aesthetic PASS established by fixture.",
+	"mode": "film",
+	"performance_valid": false,
+	"pixel_review": "pending independent human/agent inspection",
+	"render_loop": true,
+	"rendering_driver": "opengl3",
+	"rendering_method": "gl_compatibility",
+	"schema": 1,
+	"segments": []
+}

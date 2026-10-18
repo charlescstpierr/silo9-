@@ -1,0 +1,31 @@
+{
+  "command": [
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+    "--path",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+    "--display-driver",
+    "x11",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--position",
+    "0,0",
+    "--resolution",
+    "1280x720",
+    "--fixed-fps",
+    "30",
+    "--script",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue08/visual-proof/probe_materials_film.gd",
+    "--",
+    "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue08/render-final/film-fix-negative",
+    "--probe-mode=film",
+    "--evidence-label=final-efc2a581fd32-frontal-z8"
+  ],
+  "exit": 1,
+  "failures": [
+    "film requires actual engine movie output"
+  ],
+  "captures": 0,
+  "probe_sha256": "44ad5e220bfb29672a6e8e3a7683278316c62a1d3ed85758e0a71b708d4b9570"
+}

@@ -1,0 +1,141 @@
+{
+  "verdict": "PASS",
+  "scope": "Publication/docs/public proof tool only; independent from their authors. Not an independent review of own tests.",
+  "reviewed_head": "b1b77e34969c78d0319da166073bbb3b9953135a",
+  "runtime_source_revision": "efc2a581fd329321a852507d775af6fcda0a9cb1",
+  "runtime_source_unchanged": true,
+  "media_manifest_sha256": "20b3ec718d0f105468e3eece226b0d2cdea6b0fb522059a8266b8083ea0a9892",
+  "media_entries_verified": 278,
+  "media_files_including_manifest": 279,
+  "sha_mismatches": [],
+  "extra_or_missing_media": [],
+  "links": [
+    {
+      "file": "README.md",
+      "target": "docs/VALIDATION.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/tickets/03-d9-reload.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/tickets/05-weapon-handling.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/tickets/06-shot-feedback.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/tickets/07-ads.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/tickets/08-materials.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/OPEN_SOURCE.md",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "assets/kenney/LICENSE.txt",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "assets/quaternius/LICENSE.txt",
+      "exists": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/licenses/GODOT.txt",
+      "exists": true
+    },
+    {
+      "file": "docs/tickets/08-materials.md",
+      "target": "../../assets/fps/README.md",
+      "exists": true
+    },
+    {
+      "file": "docs/tickets/08-materials.md",
+      "target": "media/08/film/materials.mp4",
+      "exists": true
+    },
+    {
+      "file": "docs/tickets/08-materials.md",
+      "target": "media/08/performance/performance.json",
+      "exists": true
+    },
+    {
+      "file": "docs/tickets/08-materials.md",
+      "target": "media/08/performance/audit/report.md",
+      "exists": true
+    },
+    {
+      "file": "docs/tickets/08-materials.md",
+      "target": "media/08/SHA256.json",
+      "exists": true
+    },
+    {
+      "file": "docs/tickets/08-materials.md",
+      "target": "media/08/inspection/silo-w1-normal-hip.png",
+      "exists": true
+    },
+    {
+      "file": "docs/tickets/08-materials.md",
+      "target": "media/08/comparisons/frontal-w1-cold.png",
+      "exists": true
+    }
+  ],
+  "public_probe_sha256": "44ad5e220bfb29672a6e8e3a7683278316c62a1d3ed85758e0a71b708d4b9570",
+  "public_probe_identical_to_recorded_film": true,
+  "archived_patch_matches_original_bytes": true,
+  "whitespace_check_exit_code": 0,
+  "recomputed_from_raw_frames": {
+    "baseline": {
+      "frame_p50_ms": {
+        "median": 93.027,
+        "min": 90.327,
+        "max": 95.993
+      },
+      "frame_p95_ms": {
+        "median": 110.534,
+        "min": 107.561,
+        "max": 115.877
+      }
+    },
+    "candidate": {
+      "frame_p50_ms": {
+        "median": 91.925,
+        "min": 91.217,
+        "max": 96.786
+      },
+      "frame_p95_ms": {
+        "median": 109.625,
+        "min": 107.784,
+        "max": 117.703
+      }
+    }
+  },
+  "independent_perf_audit_recorded_assertions": 542,
+  "forbidden_artifact_paths": [],
+  "known_secret_pattern_scan_hits": [],
+  "secret_scan_limit": "Common token/key patterns and artifact paths only; not proof against every possible secret encoding.",
+  "no_runtime_or_ffmpeg_launched": true,
+  "files_released": true,
+  "inspected_public_files_sha256": {
+    ".gitattributes": "cb7cfa2f5536953558f7e3f3c3d247862f78b7cbfa6b3c3eb585c1f5928e0b79",
+    "README.md": "0b264c7c687b94115413f529fc6bbed07e9b33dbd9b54effffe8b1d5f0ef0b74",
+    "docs/tickets/08-materials.md": "f7a9aecf87e3fb99347ba4c674dbdbae44c8399ad115e1178c26b23074fb388c",
+    "tools/probe_fps_materials.gd": "44ad5e220bfb29672a6e8e3a7683278316c62a1d3ed85758e0a71b708d4b9570"
+  }
+}

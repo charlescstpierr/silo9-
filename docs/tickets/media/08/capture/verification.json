@@ -1,0 +1,521 @@
+{
+  "inspection": {
+    "exit_code": 0,
+    "source_tools_unchanged": true,
+    "head": "efc2a581fd329321a852507d775af6fcda0a9cb1",
+    "captures": 17,
+    "failures": [],
+    "materials_all_rig": 11,
+    "named_fps_finish_materials": 9,
+    "textures": [
+      "res://assets/fps/textures/cloth_albedo.png",
+      "res://assets/fps/textures/cloth_roughness.png",
+      "res://assets/fps/textures/glove_albedo.png",
+      "res://assets/fps/textures/glove_roughness.png"
+    ],
+    "rgba8_full_mips_estimate_bytes": 349520,
+    "engine_bytes_whole_viewport": {
+      "buffer": 10018722.0,
+      "texture": 250477570.0,
+      "video": 260496292.0
+    },
+    "quality_low_verified": [
+      [
+        "silo-w0-low-hip",
+        0.670000016689301
+      ],
+      [
+        "silo-w1-low-hip",
+        0.670000016689301
+      ]
+    ]
+  },
+  "limits": "No performance claim. No continuous viewing/listening/native input/Windows.",
+  "film": {
+    "head": "efc2a581fd329321a852507d775af6fcda0a9cb1",
+    "exit_code": 0,
+    "source_tools_unchanged": true,
+    "failures": [],
+    "captures": 13,
+    "samples": 1080,
+    "segments": [
+      {
+        "name": "film-w0-cold",
+        "accepted": true,
+        "yaw_range": 0.523598849773407,
+        "pitch_range": 0.174525864422321,
+        "max_displacement": 1.3331298828125,
+        "before": {
+          "aim_weight": 0.0,
+          "ammo": 8,
+          "camera_position": [
+            1000.0,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cells": 2,
+          "energy": 40.0,
+          "fov": 76.0,
+          "frame": 39,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1000.0,
+            0.0,
+            7.0
+          ],
+          "process_frame": 39,
+          "ready": true,
+          "reserve": 48,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w0-cold-start",
+          "weapon": 0
+        },
+        "after": {
+          "aim_weight": 1.0,
+          "ammo": 12,
+          "camera_position": [
+            1001.33312988281,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            -2.1374044280266e-17,
+            0.261799424886703,
+            0.0
+          ],
+          "cells": 2,
+          "energy": 40.0,
+          "fov": 64.0131149291992,
+          "frame": 220,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1001.33312988281,
+            0.0,
+            7.0
+          ],
+          "process_frame": 220,
+          "ready": true,
+          "reserve": 44,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w0-cold-end",
+          "weapon": 0
+        }
+      },
+      {
+        "name": "film-w0-red",
+        "accepted": true,
+        "yaw_range": 0.523598849773407,
+        "pitch_range": 0.174525313079357,
+        "max_displacement": 1.33306884765625,
+        "before": {
+          "aim_weight": 0.0,
+          "ammo": 8,
+          "camera_position": [
+            1000.0,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cells": 2,
+          "energy": 40.0,
+          "fov": 76.0,
+          "frame": 240,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1000.0,
+            0.0,
+            7.0
+          ],
+          "process_frame": 240,
+          "ready": true,
+          "reserve": 48,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w0-red-start",
+          "weapon": 0
+        },
+        "after": {
+          "aim_weight": 1.0,
+          "ammo": 12,
+          "camera_position": [
+            1001.33306884766,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            -2.13739731427334e-17,
+            0.261799424886703,
+            0.0
+          ],
+          "cells": 2,
+          "energy": 40.0,
+          "fov": 64.0131149291992,
+          "frame": 421,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1001.33306884766,
+            0.0,
+            7.0
+          ],
+          "process_frame": 421,
+          "ready": true,
+          "reserve": 44,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w0-red-end",
+          "weapon": 0
+        }
+      },
+      {
+        "name": "film-w0-dim",
+        "accepted": true,
+        "yaw_range": 0.523598849773407,
+        "pitch_range": 0.17452472448349,
+        "max_displacement": 1.33306884765625,
+        "before": {
+          "aim_weight": 0.0,
+          "ammo": 8,
+          "camera_position": [
+            1000.0,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cells": 2,
+          "energy": 40.0,
+          "fov": 76.0,
+          "frame": 441,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1000.0,
+            0.0,
+            7.0
+          ],
+          "process_frame": 441,
+          "ready": true,
+          "reserve": 48,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w0-dim-start",
+          "weapon": 0
+        },
+        "after": {
+          "aim_weight": 1.0,
+          "ammo": 12,
+          "camera_position": [
+            1001.33306884766,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            -2.13739036595619e-17,
+            0.261799424886703,
+            0.0
+          ],
+          "cells": 2,
+          "energy": 40.0,
+          "fov": 64.0131149291992,
+          "frame": 622,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1001.33306884766,
+            0.0,
+            7.0
+          ],
+          "process_frame": 622,
+          "ready": true,
+          "reserve": 44,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w0-dim-end",
+          "weapon": 0
+        }
+      },
+      {
+        "name": "film-w1-cold",
+        "accepted": true,
+        "yaw_range": 0.523598819971085,
+        "pitch_range": 0.17452422529459,
+        "max_displacement": 1.33306884765625,
+        "before": {
+          "aim_weight": 0.0,
+          "ammo": 8,
+          "camera_position": [
+            1000.0,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cells": 2,
+          "energy": 40.0,
+          "fov": 76.0,
+          "frame": 651,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1000.0,
+            0.0,
+            7.0
+          ],
+          "process_frame": 651,
+          "ready": true,
+          "reserve": 48,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w1-cold-start",
+          "weapon": 1
+        },
+        "after": {
+          "aim_weight": 1.0,
+          "ammo": 8,
+          "camera_position": [
+            1001.33306884766,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            -2.1373845756919e-17,
+            0.261799395084381,
+            0.0
+          ],
+          "cells": 1,
+          "energy": 100.0,
+          "fov": 64.0131149291992,
+          "frame": 832,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1001.33306884766,
+            0.0,
+            7.0
+          ],
+          "process_frame": 832,
+          "ready": true,
+          "reserve": 48,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w1-cold-end",
+          "weapon": 1
+        }
+      },
+      {
+        "name": "film-w1-red",
+        "accepted": true,
+        "yaw_range": 0.523598730564117,
+        "pitch_range": 0.1745236068964,
+        "max_displacement": 1.33306884765625,
+        "before": {
+          "aim_weight": 0.0,
+          "ammo": 8,
+          "camera_position": [
+            1000.0,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cells": 2,
+          "energy": 40.0,
+          "fov": 76.0,
+          "frame": 852,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1000.0,
+            0.0,
+            7.0
+          ],
+          "process_frame": 852,
+          "ready": true,
+          "reserve": 48,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w1-red-start",
+          "weapon": 1
+        },
+        "after": {
+          "aim_weight": 1.0,
+          "ammo": 8,
+          "camera_position": [
+            1001.33306884766,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            -2.13737680019414e-17,
+            0.261799365282059,
+            0.0
+          ],
+          "cells": 1,
+          "energy": 100.0,
+          "fov": 64.0131149291992,
+          "frame": 1033,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1001.33306884766,
+            0.0,
+            7.0
+          ],
+          "process_frame": 1033,
+          "ready": true,
+          "reserve": 48,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w1-red-end",
+          "weapon": 1
+        }
+      },
+      {
+        "name": "film-w1-dim",
+        "accepted": true,
+        "yaw_range": 0.52359876036644,
+        "pitch_range": 0.174523055553436,
+        "max_displacement": 1.33306884765625,
+        "before": {
+          "aim_weight": 0.0,
+          "ammo": 8,
+          "camera_position": [
+            1000.0,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cells": 2,
+          "energy": 40.0,
+          "fov": 76.0,
+          "frame": 1053,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1000.0,
+            0.0,
+            7.0
+          ],
+          "process_frame": 1053,
+          "ready": true,
+          "reserve": 48,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w1-dim-start",
+          "weapon": 1
+        },
+        "after": {
+          "aim_weight": 1.0,
+          "ammo": 8,
+          "camera_position": [
+            1001.33306884766,
+            1.58000004291534,
+            7.0
+          ],
+          "camera_rotation": [
+            -2.13736952100475e-17,
+            0.261799365282059,
+            0.0
+          ],
+          "cells": 1,
+          "energy": 100.0,
+          "fov": 64.0131149291992,
+          "frame": 1234,
+          "gesture": 0,
+          "gesture_fraction": 0.0,
+          "health": 100.0,
+          "low_quality": false,
+          "motion": 0,
+          "near": 0.0500000007450581,
+          "player_position": [
+            1001.33306884766,
+            0.0,
+            7.0
+          ],
+          "process_frame": 1234,
+          "ready": true,
+          "reserve": 48,
+          "scaling_3d_scale": 1.0,
+          "stage": "film-w1-dim-end",
+          "weapon": 1
+        }
+      }
+    ],
+    "video": {
+      "width": 1280,
+      "height": 720,
+      "avg_frame_rate": "30/1",
+      "nb_read_frames": "1236",
+      "duration": "41.200000"
+    },
+    "decoded_completely": true,
+    "overlay_matches": 72,
+    "consecutive_images": 72,
+    "mp4_sha256": "8019a953652f6bae3d53ad532ed77c9f2617a4eb0a9b2a6e754646969afd743f",
+    "mp4_bytes": 3820263,
+    "probe_sha256": "44ad5e220bfb29672a6e8e3a7683278316c62a1d3ed85758e0a71b708d4b9570",
+    "notes": "Front light Z8 supplement; original Z5 retained in inspection. Initial wrong CLI guard rejected real MovieMaker; separate corrected copy, preserved failure."
+  },
+  "runtime_released": true
+}

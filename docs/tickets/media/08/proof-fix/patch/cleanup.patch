@@ -1,0 +1,14 @@
+--- probe_materials_frontal.gd
++++ probe_materials_film.gd
+@@ -52,10 +52,7 @@
+ 	check(not RenderingServer.get_video_adapter_name().strip_edges().is_empty(), "missing video adapter")
+ 	check(RenderingServer.is_render_loop_enabled(), "disabled render loop")
+ 	if mode == "film":
+-		var arguments := OS.get_cmdline_args()
+-		var fixed := arguments.find("--fixed-fps")
+-		check(fixed >= 0 and fixed + 1 < arguments.size() and arguments[fixed + 1] == "30", "film requires --fixed-fps 30")
+-		check(arguments.has("--write-movie"), "film requires actual engine movie output")
++		check(not Engine.get_write_movie_path().is_empty(), "film requires actual engine movie output")
+ 	if not failures.is_empty():
+ 		finish()
+ 		return

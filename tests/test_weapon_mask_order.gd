@@ -36,10 +36,13 @@ func run() -> void:
 	root.add_child(player)
 	player.set_physics_process(false)
 	player.set_active(true)
-	player.rig.free()
+	var old_rig := player.rig
 	var rig := ObservedRig.new()
 	player.camera.add_child(rig)
+	for effect in [player._d9_flash, player._arc_pulse, player._flash_light]:
+		effect.reparent(rig.muzzle, false)
 	player.rig = rig
+	old_rig.free()
 	for weapon in [0,1]:
 		player.equip(weapon)
 		check(Ready.wait_for(player, weapon), "mask fixture reaches requested READY")

@@ -112,7 +112,7 @@ func run() -> void:
 		var speed := Vector2(player.velocity.x, player.velocity.z).length()
 		var before_shot := player.rig.muzzle.position
 		check(player.fire(), "sprint inertia does not delay urgent fire")
-		check(player.rig.muzzle.position.distance_to(before_shot) > .001 and player._muzzle.global_position.distance_to(player.rig._weapons[weapon].get_node("Muzzle").global_position) < .0001, "new recoil recomposes muzzle at delta zero in the same shot")
+		check(player.rig.muzzle.position.distance_to(before_shot) > .001 and (player._d9_flash if weapon == 0 else player._arc_pulse).global_position.distance_to(player.rig._weapons[weapon].get_node("Muzzle").global_position) < .0001, "new recoil recomposes muzzle at delta zero in the same shot")
 		await ticks(3)
 		check(absf(wrist().x - rest_x) < run_x * .95, "urgent fire reduces sprint pose")
 		check(Vector2(player.velocity.x, player.velocity.z).length() >= speed - .01, "urgent fire preserves sprint movement speed")

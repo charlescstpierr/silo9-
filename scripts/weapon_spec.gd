@@ -17,3 +17,9 @@ extends Resource
 @export var look_gain: float = 0.012
 @export var look_limit: float = 0.018
 @export var bob_amplitude: float = 0.006
+
+@export var recoil_duration: float = 0.20
+@export var fov_impulse: float = 0.8
+@export var departure_duration: float = 0.09
+@export var shot_slide: float = 0.018
+@export var shot_slide_duration: float = 0.07

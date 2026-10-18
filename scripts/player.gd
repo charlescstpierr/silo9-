@@ -5,6 +5,7 @@ const State = preload("res://scripts/run_state.gd")
 const WeaponSpec = preload("res://scripts/weapon_spec.gd")
 const Audio = preload("res://scripts/player_audio.gd")
 const Reload = preload("res://scripts/weapon_handling.gd")
+const CasingPool = preload("res://scripts/casing_pool.gd")
 const FpsRig = preload("res://scripts/fps_rig.gd")
 const RELOAD_EVENTS := [Reload.REMOVE, Reload.INSERT, Reload.RACK_PULL, Reload.RACK_RELEASE, Reload.COMMIT, Reload.HIDDEN, Reload.CELL_UNLOCK, Reload.CELL_REMOVE, Reload.CELL_INSERT, Reload.CELL_TRANSFER, Reload.CELL_DONE, Reload.CELL_REFUSED]
 const D9: Resource = preload("res://data/weapons/d9.tres")
@@ -38,7 +39,19 @@ var _step_query := PhysicsRayQueryParameters3D.new()
 var _step_collision := KinematicCollision3D.new()
 var rig: FpsRig
 var _view_frame := FpsRig.ViewFrame.new()
-var _muzzle: MeshInstance3D
+var _d9_flash: MeshInstance3D
+var _arc_pulse: MeshInstance3D
+var _casings: CasingPool
+var _camera_strength := 0.5
+var _light_strength := 1.0
+var _effects_budget := 2
+var _shot_age := 0.0
+var _shot_generation := 0
+var _submitted_generation := 0
+var _drawn_generation := 0
+var _shot_spec: WeaponSpec
+var _recoil_active := false
+var _rest_fov := 76.0
 var _beam: MeshInstance3D
 var _beam_hit := Vector3.ZERO
 var _impact: MeshInstance3D
@@ -94,6 +107,10 @@ func _ready() -> void:
 	camera.current = true
 	add_child(camera)
 	_build_weapons()
+	_casings = CasingPool.new()
+	add_child(_casings)
+	RenderingServer.frame_pre_draw.connect(_before_draw)
+	RenderingServer.frame_post_draw.connect(_after_draw)
 	_audio = AudioStreamPlayer.new()
 	_audio.volume_db = -11.0
 	add_child(_audio)
@@ -119,7 +136,7 @@ func set_active(value: bool) -> void:
 		velocity.x = 0.0
 		velocity.z = 0.0
 		_target = null
-		_recoil = 0.0
+		_clear_feedback()
 		if reload_cycle.ready:
 			rig.reset_pose()
 
@@ -145,12 +162,14 @@ func fire() -> bool:
 		feedback.emit("Chargeur vide · R pour recharger")
 		return false
 	_shot_time = spec.cooldown
-	_recoil = spec.recoil
+	if not _recoil_active:
+		_rest_fov = camera.fov
+	_shot_spec = spec
+	_shot_age = 0.0
+	_shot_generation += 1
+	_recoil_active = true
+	_compose_feedback()
 	_update_view(0.0)
-	_effect_time = 0.09 if weapon_index == 0 else 0.16
-	_muzzle.visible = true
-	_flash_light.visible = true
-	_flash_light.light_color = Color(1.0, 0.58, 0.19) if weapon_index == 0 else Color(0.12, 0.85, 1.0)
 	noise_emitted.emit(global_position, spec.noise_radius)
 	_play("shot" if weapon_index == 0 else "arc")
 	_shot_query.from = camera.global_position
@@ -167,12 +186,14 @@ func fire() -> bool:
 			feedback.emit("IMPACT" if weapon_index == 0 else "SYSTÈME IMMOBILISÉ")
 	if weapon_index == 1:
 		_beam_hit = hit_position
-		_beam.visible = true
 		_update_beam()
+	else:
+		_casings.emit(rig.ejection.global_transform, velocity)
+	_compose_feedback()
 	return true
 
 func _update_beam() -> void:
-	var start := _muzzle.global_position
+	var start := rig.muzzle.global_position
 	_beam.global_position = (start + _beam_hit) * 0.5
 	_beam.look_at(_beam_hit, Vector3.UP)
 	_beam.scale = Vector3(0.022, 0.022, maxf(start.distance_to(_beam_hit), 0.01))
@@ -182,11 +203,16 @@ func reload_weapon() -> bool:
 		if weapon_index == 1:
 			feedback.emit(reload_cycle.refusal)
 		return false
+	_cancel_recoil()
+	_update_view(0.0)
 	feedback.emit("Remplacement de cellule…" if weapon_index == 1 else "Rechargement…")
 	return true
 
 func request_cell() -> bool:
 	var accepted := reload_cycle.request_cell(active)
+	if accepted:
+		_cancel_recoil()
+		_update_view(0.0)
 	feedback.emit("Remplacement de cellule · passage par ARC…" if accepted else reload_cycle.refusal)
 	return accepted
 
@@ -197,6 +223,7 @@ func _cancel_reload() -> void:
 func _advance_reload(delta: float) -> void:
 	var events := reload_cycle.advance(delta, active)
 	if events & Reload.HIDDEN:
+		_clear_shot()
 		rig.apply_hidden_weapon(weapon_index)
 	elif events & (Reload.COMMIT | Reload.CELL_DONE):
 		rig.restore_reload_parts()
@@ -249,7 +276,7 @@ func teleport(pos: Vector3, yaw: float = 0.0) -> void:
 	_clear_motion_input()
 	_target = null
 	_aim_time = 0.0
-	_recoil = 0.0
+	_clear_feedback()
 	if reload_cycle.ready:
 		rig.reset_pose()
 	if camera != null:
@@ -305,14 +332,6 @@ func _physics_process(delta: float) -> void:
 	if not Input.is_action_pressed("fire"):
 		_capture_fire = false
 	_scan_time = maxf(0.0, _scan_time - delta)
-	if _effect_time > 0.0:
-		_effect_time -= delta
-		if _effect_time <= 0.0:
-			_muzzle.visible = false
-			_beam.visible = false
-			_impact.visible = false
-			_flash_light.visible = false
-	_recoil = move_toward(_recoil, 0.0, delta * 0.2)
 	_advance_reload(delta)
 	if not active:
 		_update_view(delta)
@@ -448,11 +467,38 @@ func _build_weapons() -> void:
 	key.light_cull_mask = 2
 	key.shadow_enabled = false
 	camera.add_child(key)
-	_muzzle = _box(rig.muzzle, Vector3(0.045, 0.045, 0.07), Vector3.ZERO, orange)
-	_muzzle.visible = false
+	var departure_orange := _material(Color("ff9b32"), 1.3)
+	departure_orange.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	var departure_cyan := _material(Color("49e7ed"), 1.5)
+	departure_cyan.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	_d9_flash = MeshInstance3D.new()
+	var cross := SurfaceTool.new()
+	cross.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var arm := BoxMesh.new()
+	arm.size = Vector3(.075, .018, .035)
+	cross.append_from(arm, 0, Transform3D.IDENTITY)
+	cross.append_from(arm, 0, Transform3D(Basis(Vector3.FORWARD, PI*.5), Vector3.ZERO))
+	_d9_flash.mesh = cross.commit()
+	_d9_flash.material_override = departure_orange
+	_d9_flash.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	rig.muzzle.add_child(_d9_flash)
+	_d9_flash.visible = false
+	_arc_pulse = MeshInstance3D.new()
+	var ring := TorusMesh.new()
+	ring.inner_radius = .025
+	ring.outer_radius = .038
+	ring.rings = 16
+	ring.ring_segments = 8
+	_arc_pulse.mesh = ring
+	_arc_pulse.rotation.x = PI*.5
+	_arc_pulse.material_override = departure_cyan
+	_arc_pulse.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	rig.muzzle.add_child(_arc_pulse)
+	_arc_pulse.visible = false
 	_flash_light = OmniLight3D.new()
 	_flash_light.position = Vector3.ZERO
-	_flash_light.omni_range = 3.0
+	_flash_light.omni_range = 2.0
+	_flash_light.light_cull_mask = 3
 	_flash_light.light_energy = 1.5
 	_flash_light.shadow_enabled = false
 	_flash_light.visible = false
@@ -463,3 +509,76 @@ func _build_weapons() -> void:
 	_impact = _box(self, Vector3(0.055, 0.055, 0.055), Vector3.ZERO, orange)
 	_impact.top_level = true
 	_impact.visible = false
+
+func configure_feedback(camera_strength: float, light_strength: float, budget: int) -> void:
+	_camera_strength = camera_strength
+	_light_strength = light_strength
+	_effects_budget = budget
+	_casings.set_budget(budget)
+	_compose_feedback()
+
+func _before_draw() -> void:
+	_submitted_generation = _shot_generation
+
+func _after_draw() -> void:
+	_drawn_generation = _submitted_generation
+
+func _exit_tree() -> void:
+	RenderingServer.frame_pre_draw.disconnect(_before_draw)
+	RenderingServer.frame_post_draw.disconnect(_after_draw)
+
+func _process(delta: float) -> void:
+	if _shot_spec == null or (_effect_time == 0.0 and not _recoil_active):
+		return
+	if _drawn_generation == _shot_generation:
+		_shot_age += delta
+	_compose_feedback()
+	_update_view(0.0)
+
+func _compose_feedback() -> void:
+	if _shot_spec != null:
+		_effect_time = maxf(0.0, _shot_spec.departure_duration - _shot_age)
+		if _recoil_active:
+			var envelope := 1.0 - smoothstep(0.0, _shot_spec.recoil_duration, _shot_age)
+			_recoil = _shot_spec.recoil * envelope
+			camera.fov = _rest_fov + _shot_spec.fov_impulse * _camera_strength * envelope
+			_view_frame.shot_slide = _shot_spec.shot_slide * (1.0 - smoothstep(0.0, _shot_spec.shot_slide_duration, _shot_age))
+			if envelope == 0.0:
+				_cancel_recoil()
+	var electric := _shot_spec == ARC
+	var visible_shot := _effect_time > 0.0 and _light_strength > 0.0
+	_d9_flash.visible = visible_shot and not electric
+	_arc_pulse.visible = visible_shot and electric
+	_arc_pulse.scale = Vector3.ONE * (1.0 + clampf(_shot_age / ARC.departure_duration, 0.0, 1.0))
+	_beam.visible = visible_shot and electric
+	_flash_light.visible = visible_shot and _effects_budget == 2
+	_flash_light.light_color = Color("49e7ed") if electric else Color("ff9b32")
+	_flash_light.light_energy = 1.5 * _light_strength
+	_attenuate(_d9_flash, Color("ff9b32"), 1.3)
+	_attenuate(_arc_pulse, Color("49e7ed"), 1.5)
+	_attenuate(_beam, Color("49e7ed"), 1.5)
+	if _effect_time <= 0.0:
+		_impact.visible = false
+
+func _attenuate(mesh: MeshInstance3D, color: Color, energy: float) -> void:
+	var material := mesh.material_override as StandardMaterial3D
+	material.albedo_color = Color(color.r * _light_strength, color.g * _light_strength, color.b * _light_strength)
+	material.emission_energy_multiplier = energy * _light_strength
+
+func _cancel_recoil() -> void:
+	if _recoil_active:
+		camera.fov = _rest_fov
+		rig.clear_shot_slide()
+	_recoil_active = false
+	_recoil = 0.0
+	_view_frame.shot_slide = 0.0
+
+func _clear_shot() -> void:
+	_cancel_recoil()
+	_shot_spec = null
+	_effect_time = 0.0
+	_compose_feedback()
+
+func _clear_feedback() -> void:
+	_clear_shot()
+	_casings.clear()

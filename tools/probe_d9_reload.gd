@@ -89,7 +89,10 @@ func film() -> void:
 	await wait(.65)
 	assert(app.state.ammo == 5 and app.state.reserve == 19)
 	app.player.equip(0)
-	await wait(.3)
+	for tick in 120:
+		if app.player.reload_cycle.ready and app.player.weapon_index == 0: break
+		await physics_frame
+	assert(app.player.reload_cycle.ready and app.player.weapon_index == 0)
 	scenario = "INTERROMPU APRÈS INSERTION · pause"
 	app.state.ammo = 0
 	await press_reload()

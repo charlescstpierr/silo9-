@@ -1,0 +1,36 @@
+{
+  "head": "463aabf5bcc7d250ce35120841e2ed75a57c9e84",
+  "checks": [
+    {
+      "test": "test_weapon_beam_motion",
+      "command": [
+        "./tools/godot.sh",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_beam_motion.gd"
+      ],
+      "exit": 0
+    },
+    {
+      "test": "test_weapon_look_direction",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./tools/godot.sh",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_look_direction.gd"
+      ],
+      "exit": 0
+    }
+  ]
+}

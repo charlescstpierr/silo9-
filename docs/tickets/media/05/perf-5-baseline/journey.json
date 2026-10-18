@@ -1,0 +1,448 @@
+{
+	"camera_y_range_m": 0.0154149532318115,
+	"captures": [],
+	"draw_calls_max": 371,
+	"draw_calls_min": 306,
+	"end_frame": 249,
+	"events": [
+		{
+			"ammo": 5,
+			"cells": 2,
+			"energy": 76.0,
+			"event": 1,
+			"frame": 90,
+			"stage": "d9-partial",
+			"weapon": 0
+		},
+		{
+			"ammo": 5,
+			"cells": 2,
+			"energy": 76.0,
+			"event": 2,
+			"frame": 104,
+			"stage": "d9-partial-return",
+			"weapon": 0
+		},
+		{
+			"ammo": 12,
+			"cells": 2,
+			"energy": 76.0,
+			"event": 16,
+			"frame": 111,
+			"stage": "d9-partial-return",
+			"weapon": 0
+		},
+		{
+			"ammo": 0,
+			"cells": 2,
+			"energy": 76.0,
+			"event": 1,
+			"frame": 121,
+			"stage": "d9-empty",
+			"weapon": 0
+		},
+		{
+			"ammo": 0,
+			"cells": 2,
+			"energy": 76.0,
+			"event": 2,
+			"frame": 135,
+			"stage": "d9-empty",
+			"weapon": 0
+		},
+		{
+			"ammo": 0,
+			"cells": 2,
+			"energy": 76.0,
+			"event": 4,
+			"frame": 140,
+			"stage": "d9-empty",
+			"weapon": 0
+		},
+		{
+			"ammo": 0,
+			"cells": 2,
+			"energy": 76.0,
+			"event": 8,
+			"frame": 143,
+			"stage": "d9-empty-return",
+			"weapon": 0
+		},
+		{
+			"ammo": 12,
+			"cells": 2,
+			"energy": 76.0,
+			"event": 16,
+			"frame": 150,
+			"stage": "d9-empty-return",
+			"weapon": 0
+		},
+		{
+			"ammo": 12,
+			"cells": 4,
+			"energy": 10.0,
+			"event": 64,
+			"frame": 162,
+			"stage": "arc-cell",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 4,
+			"energy": 10.0,
+			"event": 128,
+			"frame": 168,
+			"stage": "arc-cell",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 4,
+			"energy": 10.0,
+			"event": 256,
+			"frame": 179,
+			"stage": "arc-cell-return",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 3,
+			"energy": 70.0,
+			"event": 512,
+			"frame": 184,
+			"stage": "arc-cell-return",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 3,
+			"energy": 70.0,
+			"event": 1024,
+			"frame": 188,
+			"stage": "arc-cell-return",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 3,
+			"energy": 10.0,
+			"event": 32,
+			"frame": 201,
+			"stage": "b-from-d9",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 3,
+			"energy": 10.0,
+			"event": 64,
+			"frame": 209,
+			"stage": "b-return",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 3,
+			"energy": 10.0,
+			"event": 128,
+			"frame": 214,
+			"stage": "b-return",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 3,
+			"energy": 10.0,
+			"event": 256,
+			"frame": 225,
+			"stage": "b-return",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 2,
+			"energy": 70.0,
+			"event": 512,
+			"frame": 230,
+			"stage": "b-return",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 2,
+			"energy": 70.0,
+			"event": 1024,
+			"frame": 235,
+			"stage": "b-return",
+			"weapon": 1
+		},
+		{
+			"ammo": 12,
+			"cells": 2,
+			"energy": 70.0,
+			"event": 32,
+			"frame": 237,
+			"stage": "b-return",
+			"weapon": 0
+		}
+	],
+	"film_start_frame": 0,
+	"frame_p50_ms": 94.947,
+	"frame_p95_ms": 113.553,
+	"gestures": {
+		"0": 113,
+		"1": 6,
+		"10": 6,
+		"11": 5,
+		"12": 4,
+		"13": 7,
+		"14": 7,
+		"15": 7,
+		"16": 8,
+		"17": 4,
+		"18": 6,
+		"19": 9,
+		"2": 7,
+		"3": 10,
+		"4": 10,
+		"5": 8,
+		"6": 3,
+		"7": 2,
+		"8": 3,
+		"9": 14
+	},
+	"godot": "4.7.2-stable (official)",
+	"health": 100.0,
+	"max_actual_speed": 6.50000047683716,
+	"max_contact_m": 0.000000492415153985348,
+	"max_muzzle_error_m": 0.000000493541222112981,
+	"mode": "perf",
+	"motions": {
+		"0": 107,
+		"1": 63,
+		"2": 3,
+		"4": 3,
+		"5": 63
+	},
+	"renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+	"resolution": "1280x720",
+	"samples": 239,
+	"stage_motion": {
+		"0-aim": {
+			"end_wrist": "(0.066858, -0.173284, -0.374855)",
+			"grounded_frames": 5,
+			"max_speed": 0.0,
+			"start_wrist": "(0.110383, -0.187474, -0.363835)"
+		},
+		"0-fire": {
+			"end_wrist": "(0.20658, -0.218194, -0.339925)",
+			"grounded_frames": 7,
+			"max_speed": 0.0,
+			"start_wrist": "(0.066664, -0.173221, -0.359904)"
+		},
+		"0-look": {
+			"end_wrist": "(0.231591, -0.254173, -0.314929)",
+			"grounded_frames": 1,
+			"max_speed": 6.49999713897705,
+			"start_wrist": "(0.231591, -0.254173, -0.314929)"
+		},
+		"0-rest": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 4,
+			"max_speed": 0.0,
+			"start_wrist": "(0.2066, -0.2182, -0.33992)"
+		},
+		"0-sprint": {
+			"end_wrist": "(0.231571, -0.247436, -0.314949)",
+			"grounded_frames": 5,
+			"max_speed": 6.50000047683716,
+			"start_wrist": "(0.225435, -0.252161, -0.321085)"
+		},
+		"0-stop": {
+			"end_wrist": "(0.207198, -0.219037, -0.339322)",
+			"grounded_frames": 3,
+			"max_speed": 4.41037750244141,
+			"start_wrist": "(0.214384, -0.229098, -0.332136)"
+		},
+		"0-urgent-sprint": {
+			"end_wrist": "(0.231598, -0.260733, -0.299922)",
+			"grounded_frames": 1,
+			"max_speed": 6.49999713897705,
+			"start_wrist": "(0.231598, -0.260733, -0.299922)"
+		},
+		"0-walk": {
+			"end_wrist": "(0.2066, -0.219357, -0.33992)",
+			"grounded_frames": 5,
+			"max_speed": 3.99999594688416,
+			"start_wrist": "(0.2066, -0.21317, -0.33992)"
+		},
+		"1-aim": {
+			"end_wrist": "(0.066858, -0.173284, -0.374855)",
+			"grounded_frames": 4,
+			"max_speed": 0.0,
+			"start_wrist": "(0.094012, -0.18209, -0.368012)"
+		},
+		"1-fire": {
+			"end_wrist": "(0.206584, -0.218195, -0.339924)",
+			"grounded_frames": 7,
+			"max_speed": 0.0,
+			"start_wrist": "(0.06664, -0.173213, -0.37491)"
+		},
+		"1-look": {
+			"end_wrist": "(0.231591, -0.245624, -0.314929)",
+			"grounded_frames": 1,
+			"max_speed": 6.49999713897705,
+			"start_wrist": "(0.231591, -0.245624, -0.314929)"
+		},
+		"1-rest": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 4,
+			"max_speed": 0.0,
+			"start_wrist": "(0.2066, -0.2182, -0.33992)"
+		},
+		"1-sprint": {
+			"end_wrist": "(0.231564, -0.252082, -0.314956)",
+			"grounded_frames": 5,
+			"max_speed": 6.50000047683716,
+			"start_wrist": "(0.225435, -0.238964, -0.321085)"
+		},
+		"1-stop": {
+			"end_wrist": "(0.206975, -0.218725, -0.339545)",
+			"grounded_frames": 3,
+			"max_speed": 3.99370884895325,
+			"start_wrist": "(0.212764, -0.22683, -0.333756)"
+		},
+		"1-urgent-sprint": {
+			"end_wrist": "(0.231598, -0.24747, -0.309922)",
+			"grounded_frames": 1,
+			"max_speed": 6.49999713897705,
+			"start_wrist": "(0.231598, -0.24747, -0.309922)"
+		},
+		"1-walk": {
+			"end_wrist": "(0.2066, -0.210582, -0.33992)",
+			"grounded_frames": 5,
+			"max_speed": 3.99999594688416,
+			"start_wrist": "(0.2066, -0.225748, -0.33992)"
+		},
+		"arc-cell": {
+			"end_wrist": "(0.1466, -0.2332, -0.31992)",
+			"grounded_frames": 12,
+			"max_speed": 0.0,
+			"start_wrist": "(0.191044, -0.222089, -0.334735)"
+		},
+		"arc-cell-return": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 22,
+			"max_speed": 0.0,
+			"start_wrist": "(0.1466, -0.2332, -0.31992)"
+		},
+		"arc-selection": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 4,
+			"max_speed": 0.0,
+			"start_wrist": "(0.2066, -0.2182, -0.33992)"
+		},
+		"b-from-d9": {
+			"end_wrist": "(0.1466, -0.2332, -0.31992)",
+			"grounded_frames": 9,
+			"max_speed": 0.0,
+			"start_wrist": "(0.2066, -0.2182, -0.33992)"
+		},
+		"b-return": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 36,
+			"max_speed": 0.0,
+			"start_wrist": "(0.1466, -0.2332, -0.31992)"
+		},
+		"d9-empty": {
+			"end_wrist": "(0.1366, -0.1182, -0.28992)",
+			"grounded_frames": 27,
+			"max_speed": 0.0,
+			"start_wrist": "(0.191844, -0.19712, -0.32938)"
+		},
+		"d9-empty-return": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 12,
+			"max_speed": 0.0,
+			"start_wrist": "(0.1366, -0.1182, -0.28992)"
+		},
+		"d9-partial": {
+			"end_wrist": "(0.1366, -0.1182, -0.28992)",
+			"grounded_frames": 8,
+			"max_speed": 0.0,
+			"start_wrist": "(0.191844, -0.19712, -0.32938)"
+		},
+		"d9-partial-return": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 22,
+			"max_speed": 0.0,
+			"start_wrist": "(0.1366, -0.1182, -0.28992)"
+		},
+		"d9-selection": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 4,
+			"max_speed": 0.0,
+			"start_wrist": "(0.2066, -0.2182, -0.33992)"
+		},
+		"final-ready": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 5,
+			"max_speed": 0.0,
+			"start_wrist": "(0.2066, -0.2182, -0.33992)"
+		},
+		"rapid-selection": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 9,
+			"max_speed": 0.0,
+			"start_wrist": "(0.2066, -0.2182, -0.33992)"
+		},
+		"selection-0": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 4,
+			"max_speed": 0.0,
+			"start_wrist": "(0.2066, -0.2182, -0.33992)"
+		},
+		"selection-1": {
+			"end_wrist": "(0.2066, -0.2182, -0.33992)",
+			"grounded_frames": 4,
+			"max_speed": 0.0,
+			"start_wrist": "(0.2066, -0.2182, -0.33992)"
+		}
+	},
+	"stages": {
+		"0-aim": 5,
+		"0-fire": 7,
+		"0-look": 1,
+		"0-rest": 4,
+		"0-sprint": 5,
+		"0-stop": 3,
+		"0-urgent-sprint": 1,
+		"0-walk": 5,
+		"1-aim": 4,
+		"1-fire": 7,
+		"1-look": 1,
+		"1-rest": 4,
+		"1-sprint": 5,
+		"1-stop": 3,
+		"1-urgent-sprint": 1,
+		"1-walk": 5,
+		"arc-cell": 12,
+		"arc-cell-return": 22,
+		"arc-selection": 4,
+		"b-from-d9": 9,
+		"b-return": 36,
+		"d9-empty": 27,
+		"d9-empty-return": 12,
+		"d9-partial": 8,
+		"d9-partial-return": 22,
+		"d9-selection": 4,
+		"final-ready": 5,
+		"rapid-selection": 9,
+		"selection-0": 4,
+		"selection-1": 4
+	},
+	"triangles_max": 73365,
+	"triangles_min": 49494,
+	"warm_rig_zero_p50_ms": 0.061,
+	"warm_rig_zero_p95_ms": 0.111
+}

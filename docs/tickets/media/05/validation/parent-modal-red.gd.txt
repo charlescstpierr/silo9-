@@ -1,0 +1,60 @@
+extends SceneTree
+
+func _initialize() -> void:
+	run.call_deferred()
+
+func key(code: Key, down: bool) -> void:
+	var event := InputEventKey.new()
+	event.keycode = code
+	event.physical_keycode = code
+	event.pressed = down
+	Input.parse_input_event(event)
+
+func click(down: bool) -> void:
+	var event := InputEventMouseButton.new()
+	event.button_index = MOUSE_BUTTON_LEFT
+	event.position = Vector2(1200, 680)
+	event.pressed = down
+	Input.parse_input_event(event)
+
+func run() -> void:
+	var app: Node = load("res://scripts/main.gd").new()
+	app.boot_world = false
+	root.add_child(app)
+	await process_frame
+	app.new_game()
+	app.player.teleport(Vector3(0, 0, 7))
+	await create_timer(.1).timeout
+	key(KEY_2, true)
+	key(KEY_2, false)
+	await create_timer(.4).timeout
+	print("initial_arc=", app.player.weapon_index)
+	for code in [KEY_1, KEY_2, KEY_1]:
+		key(code, true)
+		await create_timer(.03).timeout
+		key(code, false)
+	await create_timer(.8).timeout
+	print("rapid_final=", app.player.weapon_index, " destination=", app.player.reload_cycle._destination)
+	click(true)
+	click(false)
+	await process_frame
+	print("rapid_accounts=", app.state.ammo, "/", app.state.energy)
+	key(KEY_ESCAPE, true)
+	key(KEY_ESCAPE, false)
+	await process_frame
+	print("paused=", paused, " capture_guard=", app.player._capture_fire)
+	var before_modal: int = app.state.ammo
+	click(true)
+	await process_frame
+	print("modal_held=", Input.is_action_pressed("fire"), " capture_guard=", app.player._capture_fire)
+	key(KEY_ESCAPE, true)
+	key(KEY_ESCAPE, false)
+	await create_timer(.5).timeout
+	print("after_resume_accounts=", app.state.ammo, "/", app.state.energy, " capture_guard=", app.player._capture_fire)
+	var failed: bool = app.state.ammo != before_modal
+	print("FAIL: modal press fires on resume" if failed else "PASS: modal press suppressed")
+	click(false)
+	app.free()
+	paused = false
+	await create_timer(.2).timeout
+	quit(1 if failed else 0)

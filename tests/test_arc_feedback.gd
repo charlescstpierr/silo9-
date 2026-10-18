@@ -1,4 +1,5 @@
 extends SceneTree
+const Ready = preload("res://tests/weapon_ready.gd")
 const Player = preload("res://scripts/player.gd")
 const State = preload("res://scripts/run_state.gd")
 var failures := 0
@@ -22,6 +23,7 @@ func run() -> void:
 	check(notices.back().contains("réserve"),"late stock refusal announces reason")
 	check(player.weapon_index == 0 and state.energy == 10,"late refusal returns to D9 without success")
 	player.equip(1)
+	check(Ready.wait_for(player, 1), "ARC fixture reaches final READY")
 	state.energy = 100
 	notices.clear()
 	check(not player.reload_weapon(),"R refuses full battery")

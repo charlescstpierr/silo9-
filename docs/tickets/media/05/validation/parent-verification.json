@@ -1,0 +1,68 @@
+{
+  "verdict": "PASS local Linux behavior, rendered evidence and measured cost; target hardware remains unverified",
+  "issue": 5,
+  "baseline_head": "090055e002bf8f3a96e52b979f402d44a9370f87",
+  "runtime_head": "463aabf5bcc7d250ce35120841e2ed75a57c9e84",
+  "tdd": [
+    {
+      "gate": "tests-gate.json",
+      "parent_red_assertions": 27,
+      "tests_commit": "eecf9a9c0776d8f9c9be9fb4d9ecdac14a56441b"
+    },
+    {
+      "red": "parent-modal-red.log",
+      "green": "parent-modal-green.log",
+      "case": "Press begun during modal, released after resume"
+    },
+    {
+      "gate": "echo-tests-gate.json",
+      "parent_red_assertions": 2,
+      "tests_commit": "4114198ce3382523a9e8a5ff346c29ff8e8efd1b"
+    },
+    {
+      "gate": "visual-tests-gate.json",
+      "parent_red_assertions": 9,
+      "tests_commit": "6ccb314cc1480e68282070b062ee9c7daae16c96"
+    }
+  ],
+  "suite_scope": {
+    "parent_full_suite": {
+      "head": "15d2b91a13a393b212236d195bda75a23cdc0a45",
+      "suites": 28,
+      "exit": 0,
+      "log": "parent-verify-final.log"
+    },
+    "builder_final_full_suite": {
+      "head": "463aabf5bcc7d250ce35120841e2ed75a57c9e84",
+      "suites": 30,
+      "exit": 0,
+      "parent_review": "All30 test/log hashes verified and logs read; no failures/errors/warnings"
+    },
+    "parent_final_new_tests": "parent-visual-green.json",
+    "independent_code_review": "code-review-runtime-final.md"
+  },
+  "native": "../native/verification.json",
+  "native_final_supplement": "../native/moving-shot/verification.json",
+  "visual_review": "art-review-final.md",
+  "render": {
+    "source_head": "463aabf5bcc7d250ce35120841e2ed75a57c9e84",
+    "inspection_images": 50,
+    "film_frames": 701,
+    "film_duration_s": 23.366667,
+    "fixed_capture_fps": 30,
+    "engine_exit": 0,
+    "outer_wrapper_exit": 143,
+    "outer_wrapper_note": "Unexplained signal after complete artifact writes; not claimed successful. Source/tool hashes, final container and full decode independently verified.",
+    "fps_proof": false,
+    "audio_presence_windows": 14,
+    "audio_listened": false,
+    "continuous_playback_viewed": false
+  },
+  "performance": "parent-performance-verification.json",
+  "limits": [
+    "Software-rendered Linux, no Windows execution or gamingGPU measurements",
+    "No Fortnite quality parity claim",
+    "Native screenshot sampling missed brief beam; actual moving endpoint validated in physics tests and final rendered inspection",
+    "Historical initial invalid phase snapshots, setup failures and pre-fix performance are excluded from final claims"
+  ]
+}

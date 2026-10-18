@@ -1,0 +1,70 @@
+{
+  "verdict": "No measurable frame-time difference on llvmpipe; ranges overlap",
+  "baseline": "090055e002bf8f3a96e52b979f402d44a9370f87",
+  "candidate": "463aabf5bcc7d250ce35120841e2ed75a57c9e84",
+  "runs_checked": 10,
+  "source_entries_verified_against_git": 74,
+  "summary": {
+    "baseline": {
+      "frame_p50_ms": {
+        "median": 94.791,
+        "min": 92.183,
+        "max": 95.611
+      },
+      "frame_p95_ms": {
+        "median": 113.553,
+        "min": 107.011,
+        "max": 118.992
+      },
+      "warm_rig_zero_p50_ms": {
+        "median": 0.061,
+        "min": 0.058,
+        "max": 0.062
+      },
+      "warm_rig_zero_p95_ms": {
+        "median": 0.108,
+        "min": 0.1,
+        "max": 0.112
+      }
+    },
+    "candidate": {
+      "frame_p50_ms": {
+        "median": 94.587,
+        "min": 93.337,
+        "max": 95.316
+      },
+      "frame_p95_ms": {
+        "median": 113.264,
+        "min": 112.051,
+        "max": 118.956
+      },
+      "warm_rig_zero_p50_ms": {
+        "median": 0.06,
+        "min": 0.059,
+        "max": 0.063
+      },
+      "warm_rig_zero_p95_ms": {
+        "median": 0.116,
+        "min": 0.102,
+        "max": 0.12
+      }
+    }
+  },
+  "camera_ranges": {
+    "baseline": [
+      0.0156615972518921,
+      0.015974760055542,
+      0.0157452821731567,
+      0.0158911943435669,
+      0.0154149532318115
+    ],
+    "candidate": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "limits": "Software renderer and development executable; not Windows/gamingGPU. Warm zero-delta rig call is a micro measurement, not CPU frame cost. Final probe disables enemy AI equally, actual movement and manipulation phases verified."
+}

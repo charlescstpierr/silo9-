@@ -2,11 +2,13 @@
 
 Version de développement du 18 octobre 2026, Godot 4.7.2 stable. Le résultat est un prototype FPS jouable. Le niveau et son équilibrage ne sont pas encore validés comme une expérience humaine de 20 à 30 minutes.
 
-Les mesures globales et captures ci-dessous correspondent à la base `8649b60`. La modification des mains est décrite séparément dans [le rapport du ticket 2](tickets/02-fps-rig.md), avec son scénario, ses preuves et les limites de ses mesures. Le [rapport du ticket 3](tickets/03-d9-reload.md) ajoute le rechargement mécanique du D9, sa vidéo sonore et les mesures pendant le geste.
+Les mesures globales et captures ci-dessous correspondent à la base `8649b60`. La modification des mains est décrite séparément dans [le rapport du ticket 2](tickets/02-fps-rig.md), avec son scénario, ses preuves et les limites de ses mesures. Le [rapport du ticket 3](tickets/03-d9-reload.md) ajoute le rechargement mécanique du D9, sa vidéo sonore et les mesures pendant le geste. Le [ticket 4](tickets/04-arc-cell.md) couvre la cellule ARC et le [ticket 5](tickets/05-weapon-handling.md) les transitions et la réponse au mouvement.
 
 ## Comportements vérifiés
 
-`./tools/verify.sh` importe le projet puis exécute sept suites Godot headless avec des sauvegardes isolées dans `.cstack/silo9/test-user-data`.
+Sur la base `8649b60`, `./tools/verify.sh` importait le projet puis exécutait sept suites Godot headless avec des sauvegardes isolées dans `.cstack/silo9/test-user-data`. Le tableau ci-dessous décrit cette base.
+
+Après le ticket 5, la commande exécute 30 suites, dont quatre nécessitent X11 ou `xvfb-run` pour la capture souris. Les [preuves du maniement](tickets/05-weapon-handling.md) donnent les résultats et les prérequis actuels.
 
 | Vérification | Résultat observé |
 |---|---|
@@ -69,4 +71,4 @@ Les résultats complets et le SHA du binaire mesuré sont dans [performance.json
 - Durée, difficulté et plaisir de jeu à calibrer avec Charles et Lou.
 - Aucun test sur un PC Windows physique ni mesure sur GPU matériel.
 - Réponses IA encadrées ; pas de génération libre de nouveaux faits narratifs.
-- Aucun dépôt distant configuré : livraison locale et archives, sans PR ni publication.
+- Le dépôt distant est [charlescstpierr/silo9-](https://github.com/charlescstpierr/silo9-). Les livraisons sont préparées dans des branches et pull requests ; leur préparation ne vaut pas fusion.

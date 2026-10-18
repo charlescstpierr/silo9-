@@ -1,0 +1,30 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: click fixture reaches final READY
+PASS: short READY click spends exactly one shot before physics for weapon 0
+PASS: released short click cannot be replayed by physics
+PASS: held fixture reaches final READY
+PASS: input plus held physics path spends only once inside cooldown
+PASS: held trigger repeats when cooldown expires
+PASS: click fixture reaches final READY
+PASS: short READY click spends exactly one shot before physics for weapon 1
+PASS: released short click cannot be replayed by physics
+PASS: held fixture reaches final READY
+PASS: input plus held physics path spends only once inside cooldown
+PASS: held trigger repeats when cooldown expires
+PASS: READY press fires synchronously before a long tick
+PASS: first long tick cannot spend time from before the input to duplicate shot
+PASS: later elapsed cooldown allows held second shot
+PASS: capture click only recaptures cursor
+PASS: same capture click remains suppressed through held physics until release
+PASS: fresh click after capture release fires normally
+PASS: switch refuses short click without debit
+PASS: switch refused click is not queued for READY
+PASS: refused click fixture begins reload
+PASS: reload refuses short click without debit
+PASS: reload refused click is not queued for READY
+PASS: held fire cannot use intermediate READY during reversed change
+PASS: held fire retries at first final READY with final weapon
+FAIL: repeated activation preserves an already active held trigger
+PASS: reactivation cannot replay a held pre-deactivation click
+WEAPON INPUT FAILURES: 1

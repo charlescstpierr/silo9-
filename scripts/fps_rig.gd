@@ -1,6 +1,8 @@
 class_name SiloFpsRig
 extends Node3D
 
+const D9 = preload("res://data/weapons/d9.tres")
+const ARC = preload("res://data/weapons/arc3.tres")
 const Visual = preload("res://scripts/weapon_visual.gd")
 const Reload = preload("res://scripts/weapon_handling.gd")
 const HandMesh = preload("res://scripts/fps_hand_mesh.gd")
@@ -13,7 +15,10 @@ class ViewFrame extends RefCounted:
 	var pose: Pose = Pose.REST
 	var reload := Reload.View.new()
 	var recoil: float = 0.0
-	var bob: float = 0.0
+	var local_velocity := Vector3.ZERO
+	var grounded := false
+	var crouched := false
+	var look_delta := Vector2.ZERO
 	var energy := 100.0
 	var capacity := 100.0
 
@@ -29,8 +34,12 @@ var _weapons: Array[Node3D] = []
 var _rest_wrists: Array[Transform3D] = []
 var _rest_elbows: Array[Vector3] = []
 var _pose_offset := Vector3.ZERO
-var _settle := 0.0
-var _left_from := Transform3D.IDENTITY
+var _profile: SiloWeaponSpec = D9
+var _look_offset := Vector2.ZERO
+var _walk_phase := 0.0
+var _bob := 0.0
+var _crouch_offset := 0.0
+var _hidden_frame := ViewFrame.new()
 var _frame := ViewFrame.new()
 var _magazine: Node3D
 var _slide: Node3D
@@ -107,30 +116,48 @@ func _add_bone(label: String, parent: int, global_rest: Transform3D) -> void:
 func equip(index: int) -> void:
 	if index < 0 or index >= _weapons.size():
 		return
-	_left_from = skeleton.get_bone_global_pose(20)
-	_settle = 0.22
+	_bind_weapon(index)
+	_reset_motion()
+	update_visual(0.0, _frame)
+
+func _bind_weapon(index: int) -> void:
 	weapon_index = index
+	_profile = D9 if index == 0 else ARC
 	for slot in _weapons.size():
 		_weapons[slot].visible = slot == index
 	var gun := _weapons[index]
 	var contact := gun.transform*(gun.get_node("GripRight") as Marker3D).transform
 	contact.basis = contact.basis.orthonormalized()
 	_mount.transform = contact.affine_inverse()
-	update_visual(0.0,_frame)
+
+func apply_hidden_weapon(index: int) -> void:
+	skeleton.position.y = -1.15
+	muzzle.position.y -= (1.0 - _last_lower) * 1.15
+	_last_lower = 1.0
+	restore_reload_parts()
+	_bind_weapon(index)
+	_reset_motion()
+	_hidden_frame.reload.lower = 1.0
+	update_visual(0.0, _hidden_frame)
+
+func _reset_motion() -> void:
+	_pose_offset = Vector3.ZERO
+	_look_offset = Vector2.ZERO
+	_walk_phase = 0.0
+	_bob = 0.0
+	_crouch_offset = 0.0
 
 func reset_pose() -> void:
-	_settle = 0.0
-	_pose_offset = Vector3.ZERO
+	_reset_motion()
 	_frame = ViewFrame.new()
 	restore_reload_parts()
-	update_visual(0.0,_frame)
+	update_visual(0.0, _frame)
 
 func restore_reload_parts() -> void:
 	_magazine.position = _seat
 	_slide.position = Vector3.ZERO
 	_cell.position = _cell_seat
 	_latch.rotation = Vector3.ZERO
-	_settle = 0.0
 
 func update_visual(delta: float, frame: ViewFrame) -> void:
 	_frame = frame
@@ -142,13 +169,23 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 		_last_lower = lower
 		return
 	_last_lower = lower
-	_settle = maxf(0.0,_settle-delta)
 	var target := Vector3.ZERO
-	if frame.pose == ViewFrame.Pose.RUN:
+	if frame.pose == ViewFrame.Pose.RUN and frame.recoil <= 0.0:
 		target = Vector3(.025,-.035,.025)
 	elif frame.pose == ViewFrame.Pose.AIM:
 		target = Vector3(-.14,.045,-.035)
-	_pose_offset = _pose_offset.lerp(target,1.0-exp(-delta*14.0))
+	var response := 1.0-exp(-delta*_profile.motion_response)
+	_pose_offset = _pose_offset.lerp(target,response)
+	if delta > 0.0:
+		var speed := Vector2(frame.local_velocity.x, frame.local_velocity.z).length() if frame.grounded else 0.0
+		if speed > .1:
+			_walk_phase = fmod(_walk_phase + delta * speed * 1.7, TAU)
+		var attenuation := .2 if frame.pose == ViewFrame.Pose.AIM else 1.0
+		var bob_target := sin(_walk_phase) * _profile.bob_amplitude * minf(speed / 4.0, 1.0) * attenuation
+		_bob = lerpf(_bob, bob_target, response)
+		var look_target := (Vector2(frame.look_delta.x, -frame.look_delta.y) / delta * _profile.look_gain).limit_length(_profile.look_limit) * attenuation
+		_look_offset = _look_offset.lerp(look_target, response)
+		_crouch_offset = lerpf(_crouch_offset, -.008 if frame.crouched else 0.0, response)
 	var gesture := frame.reload.gesture
 	var t := smoothstep(0,1,frame.reload.fraction)
 	var manipulating := frame.reload.motion in [Reload.Motion.RELOAD, Reload.Motion.CELL]
@@ -156,7 +193,7 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 	if manipulating:
 		amount = t if gesture in [Reload.Gesture.REACH, Reload.Gesture.CELL_REACH] else (1.0-t if gesture in [Reload.Gesture.RETURN, Reload.Gesture.CELL_RETURN] else 1.0)
 	var wrist := _rest_wrists[0]
-	wrist.origin += _pose_offset*(1.0-amount) + Vector3(0,frame.bob,frame.recoil)*(1.0-amount)
+	wrist.origin += _pose_offset*(1.0-amount) + Vector3(_look_offset.x, _bob + _look_offset.y + _crouch_offset, frame.recoil)*(1.0-amount)
 	wrist.origin += (Vector3(-.06,-.015,.02) if frame.reload.motion == Reload.Motion.CELL else Vector3(-.07,.10,.05))*amount
 	wrist.basis = Basis(Vector3.FORWARD,deg_to_rad(22)*amount)*wrist.basis
 	if frame.reload.motion == Reload.Motion.CELL:
@@ -170,13 +207,9 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 	var support := gun.get_node("GripLeft") as Marker3D
 	var left := gun_pose*support.transform
 	active_left_grip = support
-	left_in_contact = _settle <= 0.0
+	left_in_contact = true
 	if manipulating:
 		left = _arc_pose(gun_pose,frame.reload,t,left) if frame.reload.motion == Reload.Motion.CELL else _reload_pose(gun_pose,frame.reload,t,left)
-	elif not left_in_contact:
-		var blend := 1.0-_settle/.22
-		left = _left_from.interpolate_with(left,smoothstep(0,1,blend))
-		left.origin += Vector3(-.025, -.025, .015)*sin(blend*PI)
 	left.basis = left.basis.orthonormalized()
 	if not _pose_arm(1,left):
 		return

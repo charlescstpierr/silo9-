@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "mode": "inspection",
+      "manifest_sha256": "015ebebcdbdacda6c21b627aaa66882e9370126232ce8b3cf606a88c6e7b2c98",
+      "production_verified_against_git": true,
+      "archived_tools_match_launch": true,
+      "engine_exit": 0
+    },
+    {
+      "mode": "film",
+      "manifest_sha256": "69f585fa7ab041c24f731700420b3d0e711a72316a9d5f5904e418b7594fefab",
+      "production_verified_against_git": true,
+      "archived_tools_match_launch": true,
+      "engine_exit": 0
+    }
+  ],
+  "wrapper_exit": 143,
+  "wrapper_status_unexplained": true,
+  "complete_video_decode_exit": 0,
+  "decode_log_empty": true,
+  "movie": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "nb_frames": "701"
+      },
+      {
+        "codec_name": "aac",
+        "r_frame_rate": "0/0",
+        "nb_frames": "1097"
+      }
+    ],
+    "format": {
+      "duration": "23.366667"
+    }
+  }
+}

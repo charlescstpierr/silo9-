@@ -1,0 +1,45 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL: manual selection lowers old weapon before changing identity
+FAIL: repeated destination does not restart lower clock
+PASS: first final READY has both grips and muzzle coherent
+PASS: selection alone preserves resources
+PASS: final ARC READY spends ARC battery only
+FAIL: normal change refuses fire without resource debit
+FAIL: R routes to effective D9 and refuses during normal descent
+FAIL: reversing before hidden still completes the trajectory
+PASS: pre-hidden reversal returns coherent D9 without an extra trip
+FAIL: post-hidden reversal has no usable READY gap
+PASS: post-hidden reversal reaches final D9
+PASS: large delta consumes lower and raise without requiring a rendered hidden frame
+PASS: same-index hidden fixture starts a D9 reload
+PASS: same-index cancelled exit crosses one hidden milestone with coherent final grips
+PASS: same-index cancelled exit never commits D9 resources
+PASS: scanner remains available through normal or cancelled exit
+PASS: normal or cancelled exit accepts one B intention
+PASS: pending B refuses duplicates
+PASS: B returns to desired ARC and transfers exactly one cell
+PASS: B never commits a cancelled D9 reload
+PASS: cancelled exit starts D9 reload
+PASS: scanner remains available through normal or cancelled exit
+PASS: normal or cancelled exit accepts one B intention
+PASS: pending B refuses duplicates
+PASS: B returns to desired ARC and transfers exactly one cell
+PASS: B never commits a cancelled D9 reload
+PASS: R uses effective ARC during raise and queues one cell
+PASS: R cannot duplicate pending ARC cell
+PASS: ARC R during raise commits exactly one cell
+PASS: inactive preserves both local wrist poses through lowering
+PASS: inactive cannot spend resources
+PASS: teleport preserves both local wrist poses through lowering
+PASS: teleport cannot spend resources
+PASS: death preserves both local wrist poses through lowering
+PASS: death cannot spend resources
+PASS: visible wrists, weapon and muzzle remain continuous during a complete selection
+PASS: 100 alternating selections finish with both grips and muzzle coherent
+PASS: 100 selections do not allocate nodes
+PASS: 100 selections reuse actual meshes
+PASS: visibility observer covers actual model changes
+FAIL: all visibility changes occur with actual mesh corners below FOV 60/76/90: unsafe=228
+FAIL: every HIDDEN callback exposes a masked coherent assembly including same-index and large deltas: unsafe=2
+WEAPON SWITCH FAILURES: 8

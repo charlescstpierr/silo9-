@@ -40,6 +40,7 @@ var rig: FpsRig
 var _view_frame := FpsRig.ViewFrame.new()
 var _muzzle: MeshInstance3D
 var _beam: MeshInstance3D
+var _beam_hit := Vector3.ZERO
 var _impact: MeshInstance3D
 var _flash_light: OmniLight3D
 var _audio: AudioStreamPlayer
@@ -53,7 +54,9 @@ var _scan_time: float = 0.0
 var _effect_time: float = 0.0
 var _recoil: float = 0.0
 var _crouched: bool = false
-var _walk_phase: float = 0.0
+var _look_delta := Vector2.ZERO
+var _capture_fire := false
+var _event_shot := false
 
 func setup(run: State) -> void:
 	state = run
@@ -105,17 +108,19 @@ func _ready() -> void:
 		_sounds[kind] = Audio.synthesize(kind)
 
 func set_active(value: bool) -> void:
+	var was_active := active
 	active = value and state != null and state.health > 0.0
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if active else Input.MOUSE_MODE_VISIBLE
+	if active and not was_active:
+		_capture_fire = InputMap.has_action("fire") and Input.is_action_pressed("fire")
 	if not active:
 		_cancel_reload()
+		_clear_motion_input()
 		velocity.x = 0.0
 		velocity.z = 0.0
 		_target = null
 		_recoil = 0.0
 		if reload_cycle.ready:
-			_view_frame = FpsRig.ViewFrame.new()
-			_view_frame.reload = reload_cycle.view
 			rig.reset_pose()
 
 func equip(index: int) -> void:
@@ -124,8 +129,6 @@ func equip(index: int) -> void:
 	reload_cycle.select(index)
 	if reload_cycle.view.motion == Reload.Motion.LOWER_ABORT:
 		_manipulation_audio.stop()
-	if rig.weapon_index != weapon_index:
-		rig.equip(weapon_index)
 
 func _weapon() -> WeaponSpec:
 	return D9 if weapon_index == 0 else ARC
@@ -163,12 +166,16 @@ func fire() -> bool:
 			target.call("receive_hit", spec.damage, spec.stun)
 			feedback.emit("IMPACT" if weapon_index == 0 else "SYSTÈME IMMOBILISÉ")
 	if weapon_index == 1:
-		var start := _muzzle.global_position
-		_beam.global_position = (start + hit_position) * 0.5
-		_beam.look_at(hit_position, Vector3.UP)
-		_beam.scale = Vector3(0.022, 0.022, maxf(start.distance_to(hit_position), 0.01))
+		_beam_hit = hit_position
 		_beam.visible = true
+		_update_beam()
 	return true
+
+func _update_beam() -> void:
+	var start := _muzzle.global_position
+	_beam.global_position = (start + _beam_hit) * 0.5
+	_beam.look_at(_beam_hit, Vector3.UP)
+	_beam.scale = Vector3(0.022, 0.022, maxf(start.distance_to(_beam_hit), 0.01))
 
 func reload_weapon() -> bool:
 	if not reload_cycle.request_reload(active):
@@ -189,10 +196,10 @@ func _cancel_reload() -> void:
 
 func _advance_reload(delta: float) -> void:
 	var events := reload_cycle.advance(delta, active)
-	if events & (Reload.HIDDEN | Reload.COMMIT | Reload.CELL_DONE):
+	if events & Reload.HIDDEN:
+		rig.apply_hidden_weapon(weapon_index)
+	elif events & (Reload.COMMIT | Reload.CELL_DONE):
 		rig.restore_reload_parts()
-	if rig.weapon_index != weapon_index:
-		rig.equip(weapon_index)
 	var cue := ""
 	for event: int in RELOAD_EVENTS:
 		if events & event:
@@ -239,15 +246,23 @@ func teleport(pos: Vector3, yaw: float = 0.0) -> void:
 	rotation.y = yaw
 	velocity = Vector3.ZERO
 	_cancel_reload()
+	_clear_motion_input()
 	_target = null
 	_aim_time = 0.0
 	_recoil = 0.0
 	if reload_cycle.ready:
-		_view_frame = FpsRig.ViewFrame.new()
-		_view_frame.reload = reload_cycle.view
 		rig.reset_pose()
 	if camera != null:
 		camera.rotation = Vector3.ZERO
+
+func _clear_motion_input() -> void:
+	_look_delta = Vector2.ZERO
+	_view_frame.look_delta = Vector2.ZERO
+	_view_frame.local_velocity = Vector3.ZERO
+	_view_frame.grounded = false
+	_view_frame.pose = FpsRig.ViewFrame.Pose.REST
+	_capture_fire = InputMap.has_action("fire") and Input.is_action_pressed("fire")
+	_event_shot = false
 
 func aim_target() -> Node:
 	return _target if is_instance_valid(_target) else null
@@ -256,11 +271,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not active:
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		rotate_y(-event.relative.x * sensitivity)
-		camera.rotation.x = clampf(camera.rotation.x - event.relative.y * sensitivity, -1.45, 1.45)
-	if event.is_action_pressed("weapon1"):
+		var yaw: float = -event.screen_relative.x * sensitivity
+		var pitch := camera.rotation.x
+		rotate_y(yaw)
+		camera.rotation.x = clampf(pitch - event.screen_relative.y * sensitivity, -1.45, 1.45)
+		_look_delta += Vector2(yaw, camera.rotation.x - pitch)
+	if event.is_action_pressed("weapon1", true):
 		equip(0)
-	elif event.is_action_pressed("weapon2"):
+	elif event.is_action_pressed("weapon2", true):
 		equip(1)
 	elif event.is_action_pressed("reload"):
 		reload_weapon()
@@ -270,11 +288,22 @@ func _unhandled_input(event: InputEvent) -> void:
 		_update_target()
 		if is_instance_valid(_target):
 			interacted.emit(_target)
-	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if not event.pressed:
+			_capture_fire = false
+		elif Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+			_capture_fire = true
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		elif not _capture_fire and fire():
+			_event_shot = true
 
 func _physics_process(delta: float) -> void:
-	_shot_time = maxf(0.0, _shot_time - delta)
+	var event_shot := _event_shot
+	_event_shot = false
+	if not event_shot:
+		_shot_time = maxf(0.0, _shot_time - delta)
+	if not Input.is_action_pressed("fire"):
+		_capture_fire = false
 	_scan_time = maxf(0.0, _scan_time - delta)
 	if _effect_time > 0.0:
 		_effect_time -= delta
@@ -309,17 +338,18 @@ func _physics_process(delta: float) -> void:
 	if _aim_time <= 0.0:
 		_update_target()
 		_aim_time = 0.1
-	var moving := is_on_floor() and input.length_squared() > 0.01
-	if moving:
-		_walk_phase += delta * speed * 1.7
-	var bob: float = sin(_walk_phase) * 0.008 if moving else 0.0
-	camera.position.y = move_toward(camera.position.y, (0.94 if _crouched else 1.58) + bob, delta * 4.0)
-	_view_frame.bob = bob
+	_view_frame.local_velocity = global_basis.inverse() * get_real_velocity()
+	_view_frame.grounded = is_on_floor()
+	_view_frame.crouched = _crouched
+	_view_frame.look_delta = _look_delta
+	_look_delta = Vector2.ZERO
+	var moving := is_on_floor() and Vector2(_view_frame.local_velocity.x, _view_frame.local_velocity.z).length_squared() > .01
+	camera.position.y = move_toward(camera.position.y, 0.94 if _crouched else 1.58, delta * 4.0)
 	_view_frame.pose = FpsRig.ViewFrame.Pose.RUN if moving and Input.is_action_pressed("sprint") else FpsRig.ViewFrame.Pose.REST
 	if InputMap.has_action("aim") and Input.is_action_pressed("aim"):
 		_view_frame.pose = FpsRig.ViewFrame.Pose.AIM
 	_update_view(delta)
-	if Input.is_action_pressed("fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+	if not event_shot and not _capture_fire and Input.is_action_pressed("fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		fire()
 
 func _update_view(delta: float) -> void:
@@ -328,6 +358,8 @@ func _update_view(delta: float) -> void:
 	_view_frame.energy = state.energy
 	_view_frame.capacity = state.max_energy()
 	rig.update_visual(delta, _view_frame)
+	if _beam.visible:
+		_update_beam()
 
 func _set_crouch(wanted: bool) -> void:
 	if wanted == _crouched:

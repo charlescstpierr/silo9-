@@ -34,7 +34,8 @@ func run() -> void:
 					cycle.advance(float(phase)/30*3.25,true)
 				frame.reload = cycle.view
 				frame.recoil = .045 if phase % 2 == 0 else 0.0
-				frame.bob = sin(phase)*.008
+				frame.local_velocity = Vector3(0,0,-4)
+				frame.grounded = true
 				rig.update_visual(.05,frame)
 				var gun: Node3D = rig._weapons[weapon]
 				for side in 2:
@@ -58,7 +59,7 @@ func run() -> void:
 		rig.update_visual(.01,frame)
 		rig.reset_pose()
 		check(rig.left_in_contact,"reset cancels free hand transition")
-		check(rig._settle == 0.0 and rig._pose_offset == Vector3.ZERO,"reset removes obsolete transition")
+		check(rig.skeleton.get_bone_global_pose(3).is_equal_approx(rig._rest_wrists[0]),"reset returns right wrist to calibrated rest")
 	check(rig.calibration_valid,"rapid equipment keeps IK targets reachable")
 	rig.equip(1)
 	rig.reset_pose()

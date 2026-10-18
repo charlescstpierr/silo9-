@@ -1,4 +1,5 @@
 extends SceneTree
+const Ready = preload("res://tests/weapon_ready.gd")
 
 var failures := 0
 var app: Node
@@ -25,6 +26,7 @@ func reset(weapon: int = 0, energy: float = 10.0, cells: int = 3) -> void:
 	app.state.energy = energy
 	app.state.cells = cells
 	app.player.equip(weapon)
+	check(Ready.wait_for(app.player, weapon), "UI fixture reaches final READY")
 	saw_arc = weapon == 1
 	step(.016)
 
@@ -177,6 +179,7 @@ func run() -> void:
 		finish()
 		check(app.state.energy == expected_energy and app.state.cells == expected_cells, "loaded player has no ghost operation")
 		app.player.equip(1)
+		check(Ready.wait_for(app.player, 1), "loaded ARC reaches final READY")
 		app.player._shot_time = 0.0
 		check(app.player.fire() == after_transfer, "loaded weapon readiness uses restored energy")
 		await reset(1, 10.0, 2)

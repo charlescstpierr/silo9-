@@ -78,7 +78,7 @@ func demonstrate() -> void:
 		await wait(.5)
 		Input.action_release("aim")
 		var accepted: bool = app.player.reload_weapon()
-		assert(accepted == (weapon == 0), "only D9 has timed reload")
+		assert(accepted, "D9 and ARC accept their timed reload after firing")
 		print("RELOAD weapon=",weapon," accepted=",accepted)
 		await wait(.65)
 		await capture("weapon%d-reload"%weapon)
@@ -100,7 +100,7 @@ func measure() -> void:
 	app.player.set_active(false)
 	var records: Array[Dictionary] = []
 	for weapon in 2:
-		app.player.equip(weapon)
+		await prepare_weapon(weapon)
 		if rig != null:
 			rig.reset_pose()
 		var visibility_modes := [true,false] if rig != null else [true]
@@ -137,10 +137,19 @@ func inspect() -> void:
 	app.player.set_active(false)
 	app.ui.visible = false
 	for weapon in 2:
-		app.player.equip(weapon)
+		await prepare_weapon(weapon)
 		rig.reset_pose()
 		for angle in 3:
 			rig.rotation.y = [0.0,-.65,.65][angle]
 			rig.position = [Vector3(0,.09,-.05),Vector3(-.28,.09,0),Vector3(.28,.09,-.1)][angle]
 			await wait(.3)
 			await capture("inspection-%d-%d"%[weapon,angle])
+
+func prepare_weapon(index: int) -> void:
+	app.player.set_active(true)
+	app.player.equip(index)
+	for tick in 120:
+		if app.player.reload_cycle.ready and app.player.weapon_index == index: break
+		await physics_frame
+	assert(app.player.reload_cycle.ready and app.player.weapon_index == index)
+	app.player.set_active(false)

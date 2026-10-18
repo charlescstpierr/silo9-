@@ -1,4 +1,5 @@
 extends SceneTree
+const Ready = preload("res://tests/weapon_ready.gd")
 const Player = preload("res://scripts/player.gd")
 const State = preload("res://scripts/run_state.gd")
 var failures := 0
@@ -21,6 +22,7 @@ func run() -> void:
 		player.set_physics_process(false)
 		player.set_active(true)
 		player.equip(weapon)
+		check(Ready.wait_for(player, weapon), "audio fixture reaches final READY")
 		check(player.reload_weapon(),"audio fixture starts manipulation")
 		player._advance_reload(.55 if weapon == 1 else Player.D9.reload_duration*.28+.001)
 		check(player._manipulation_audio.playing,"threshold starts manipulation audio")

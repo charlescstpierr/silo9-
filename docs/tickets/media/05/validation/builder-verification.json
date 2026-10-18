@@ -1,0 +1,159 @@
+{
+  "head": "463aabf5bcc7d250ce35120841e2ed75a57c9e84",
+  "command": "env -u DISPLAY bash tools/verify.sh",
+  "exit": 0,
+  "suites": 30,
+  "checks": [
+    {
+      "test": "tests/test_arc_audio.gd",
+      "test_sha256": "503b449297f118f0c9f85f387082c72486c7c2af26263d7ccf82b6ca7c8ae0a3",
+      "log_sha256": "113b565d13e9f6399e0f04290a3dd6f41bc83d2265cc3bc341db137c590d641f"
+    },
+    {
+      "test": "tests/test_arc_cell_contract.gd",
+      "test_sha256": "28849b5249d25c0ed885b650814c5c31dfcadcc9590f8d925a1dddacfa88b73d",
+      "log_sha256": "7a19ba708da50e144846169d756b7f7b64472646dfedec296f6aecc3a451e9f7"
+    },
+    {
+      "test": "tests/test_arc_cell_ui.gd",
+      "test_sha256": "9d43b9cd0dc1dea068b298cc27c9d8356b243845c3690ef459d7a6eaca91c5cc",
+      "log_sha256": "607b6a5500c40639dc986abca66fe23daf363ac227fcb9c8f6d83835f8ee84d2"
+    },
+    {
+      "test": "tests/test_arc_feedback.gd",
+      "test_sha256": "198ed1e3d80a03f4147a9329f2a7e1f5be2ede961160d4fac3a2dbddde2a91fd",
+      "log_sha256": "c4c1d3c7837a9bac6fd6a910b95f014ccb85451ae7f77d24b33c703e272b1a16"
+    },
+    {
+      "test": "tests/test_arc_geometry.gd",
+      "test_sha256": "507998aa6ea624e820771cef13c92f5ef4fd536e727173cc2eb1977bebea048f",
+      "log_sha256": "d0675c11308a57ccc2a71c075efdfb007c78dffec5f65a6262105d77ba5f16f3"
+    },
+    {
+      "test": "tests/test_arc_indicator.gd",
+      "test_sha256": "207ee79842731b6202506ef1e9b3d52bc50a0a586d8e86c42a7f43d192453f62",
+      "log_sha256": "e680bf092b1e5abd7599758cb515724ea4f62ba904e5cec4b97554e60381c07b"
+    },
+    {
+      "test": "tests/test_arc_lifecycle.gd",
+      "test_sha256": "d77481bb715b9bd17166aba7971d72fe60c0f24f7e003dad4947f3803a1fd5fb",
+      "log_sha256": "12216e024695bf30ec5fe98acdcfbb6adb9d210854d7e02f7c8d1da44c1fdb62"
+    },
+    {
+      "test": "tests/test_d9_audio.gd",
+      "test_sha256": "052e79586613e83c06109509541a33a3645af447859744cff0c3061cc4864e9d",
+      "log_sha256": "2d24fef524b50aac765bddcc32c9887a2bdf94efceaef50d07c748a2ab1670d5"
+    },
+    {
+      "test": "tests/test_d9_contract.gd",
+      "test_sha256": "96acfad3f7da4a8e3cff927f4d353e0ab5a1960d0254fabb652947669f16d037",
+      "log_sha256": "d25cd18dd202626558caa06ccf07119d157a03c147f2d380cc83963e00922540"
+    },
+    {
+      "test": "tests/test_d9_geometry.gd",
+      "test_sha256": "7dd74eb13ab31deefd381b18d5cfa5a03ed61c7b6ab821ab0376b09d706eaa93",
+      "log_sha256": "231a58b13ca0e11ca94008897c52589ef533e5d033b3ca4333ba4f39ff0194ee"
+    },
+    {
+      "test": "tests/test_d9_modal_save.gd",
+      "test_sha256": "568491c124e07061d13d5a00aa80dcf088459dcda791a72efe9f38cb8206a2b7",
+      "log_sha256": "7d45c58929b34d469b78edd30cbf63710278a87e9694d1b0f60328de4a99df6c"
+    },
+    {
+      "test": "tests/test_d9_reload.gd",
+      "test_sha256": "bfdc45c3ff1df408bea96b4e9eff7df37ef9cd606d92d8715dc3e634f9a741b1",
+      "log_sha256": "3066a8d4619559412905be691c09187f0793b0503de5be5a90fd5af6760a1395"
+    },
+    {
+      "test": "tests/test_d9_timeline.gd",
+      "test_sha256": "1a0c7f978b07d6c892cd395348b4b92456a741a96a035763ca552c38b0ba28f5",
+      "log_sha256": "b3fa4feb1c3882cd2fea13b68eda843b1fd594838942ea4e15b6acc7876b8405"
+    },
+    {
+      "test": "tests/test_dialogue.gd",
+      "test_sha256": "82a8c1b1a196e764291954761f867c32c9e44115023309d422d09faea94d326d",
+      "log_sha256": "3719bf2e1d7fe26749dd62425cf8554ade78063ffed58cc59c84c4c22d6b27cd"
+    },
+    {
+      "test": "tests/test_fps_rig.gd",
+      "test_sha256": "868eb11db9834d457faf7f0e21879fcff91168d5ff113af543e743b75bd65b12",
+      "log_sha256": "68fffdbf9c30ff9ec211e57b1c935ee71e07f17dda99ef4bde67a77fedfb84bb"
+    },
+    {
+      "test": "tests/test_journey.gd",
+      "test_sha256": "2e5a7e6ab09f59d518d69475feef8db2f0470071283911023893677508947d4a",
+      "log_sha256": "efe11bfeae57380a75b24bb969c043b2c4427908ff8614a1be532254ce99065a"
+    },
+    {
+      "test": "tests/test_player.gd",
+      "test_sha256": "349dd03abcde04eed767992d4f12488744cee570b17547af39b47b369228c60c",
+      "log_sha256": "f74b4bc19cc74a0e453548994d65d575559dccf79b8b9df6502f0cf2af3e4ac6"
+    },
+    {
+      "test": "tests/test_state.gd",
+      "test_sha256": "e57538c1012f1fc3cd5e568cdb792cee5329b55b99075d3caeecef29c3a552e0",
+      "log_sha256": "8c2457c5c628bda4c633f2da30aabf4f171bd42b41d794f0914b35fc798ebf64"
+    },
+    {
+      "test": "tests/test_ui.gd",
+      "test_sha256": "29d495b28aa8b686772fe6a7c90e98ecca627c0590b2dedd3bd3f1bc09a2a827",
+      "log_sha256": "b2fd796e9759f7452eaf71089d368938ce7d1977f29d487ff669146357feba7d"
+    },
+    {
+      "test": "tests/test_visual_geometry.gd",
+      "test_sha256": "2fe77009eb89ae8361c3584b4353a77c6ee369182ddd5a3418125d39c13beaf7",
+      "log_sha256": "d5ccb8e16bb8446d357b5f1fe7679b99fe88a72935af5251ff0fdbb770be1565"
+    },
+    {
+      "test": "tests/test_weapon_activity.gd",
+      "test_sha256": "e8fd89d5b38dd2ca519253f6358b04d2499074fd25877bce74b3613be58f3b41",
+      "log_sha256": "e850a880668613de9f0e5cfb2951e1ae1d9827fb9468960e574a3b88d337293c"
+    },
+    {
+      "test": "tests/test_weapon_beam_motion.gd",
+      "test_sha256": "5eea97e82c05550287c681d89c428998c1768e058db9df3b3f12dc6b958fba63",
+      "log_sha256": "bd86ae3b47e29268b61badb5ed01a9780cc5ce6339f62d33ba2d29aa00b4933f"
+    },
+    {
+      "test": "tests/test_weapon_input.gd",
+      "test_sha256": "cde9c8c4e86511cc41f038f7ff067c17d8ea13579a4fe0af5856945adc8408b1",
+      "log_sha256": "8de036f74c11f13f98e611c0aca9228e1215e581381e53f576f2c53ee7d95492"
+    },
+    {
+      "test": "tests/test_weapon_look_direction.gd",
+      "test_sha256": "d01051ab745c7703cae5090f694171cd546c2d73bcd7b096b67f8ce817cb5e1b",
+      "log_sha256": "b8e5d780804c5ee69810bad40cf828c9948dd1032f081d36dc630e6e7030d19f"
+    },
+    {
+      "test": "tests/test_weapon_mask_order.gd",
+      "test_sha256": "1eb9cd93efeec3062f443b6f9de9b21d497903a51a7be256a786cf4f070b0d8f",
+      "log_sha256": "3c7b032d4292ea520c16fea6adf5781b889c021db0f7a3ec2f6fa5793a403e04"
+    },
+    {
+      "test": "tests/test_weapon_modal_input.gd",
+      "test_sha256": "ba73561682ef72447d7279d8fa19b0d37b86108180181c05c1ec55c1d31fd11f",
+      "log_sha256": "a173ca0a1ab148b73530d9251d32fc114e31e343e33b6c3a8e5f52628842eecd"
+    },
+    {
+      "test": "tests/test_weapon_motion.gd",
+      "test_sha256": "aa5a284c67c9eddb5bbdf158e3fc4df8886c1eee0c1dec3ca36b2f6610b6131c",
+      "log_sha256": "ce174a3b48a1996432ca5dc4fa5cf0d615593e75060a4f8a322b5f884646388d"
+    },
+    {
+      "test": "tests/test_weapon_repeat_selection.gd",
+      "test_sha256": "976b9c34af78a393c04f34c94eede4fc1ba739c5f36ea0cc4c0d6f2d3839dd44",
+      "log_sha256": "196c0286aadfef7bc9dcad844e873b13b0f7755ea98638ae049f3298ffcb7c26"
+    },
+    {
+      "test": "tests/test_weapon_switch.gd",
+      "test_sha256": "7cd8a50c6f6fbd59bde18eff7ecf839382408b3a1375ce2fda552fccf8ae0ca1",
+      "log_sha256": "aa37ad249bbb4f74434e6362c448d35484fa952da581abcb91c510ba6b466cf4"
+    },
+    {
+      "test": "tests/test_world.gd",
+      "test_sha256": "4c975c8042013a98e20291e017b3c1106e2947aa22c2c9ac1eafe69706b643bd",
+      "log_sha256": "614de85032f59266609d8ac54d8051cd3e203f597f1af9c47d9b7a90e14a174f"
+    }
+  ],
+  "complete_log": "verify-delivery.log"
+}

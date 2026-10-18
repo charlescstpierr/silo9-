@@ -1,0 +1,80 @@
+{
+  "phase": "TESTS ONLY; expected behavioral red before production",
+  "baseline": "090055e002bf8f3a96e52b979f402d44a9370f87",
+  "worktree": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-05",
+  "branch": "feat/issue-05-weapon-handling",
+  "utc": "2026-10-18T04:04:29.435961+00:00",
+  "tracked_non_test_files": 285,
+  "source_unchanged": true,
+  "test_hashes": "test-hashes.json",
+  "exact_test_copies": "exact-tests/tests/",
+  "source_before": "source-before.json",
+  "source_after": "source-after.json",
+  "commands_environment_results": "final-results.json",
+  "final_logs": "final/",
+  "final_suite_count": 14,
+  "passing_suites": [
+    "test_arc_audio",
+    "test_arc_cell_contract",
+    "test_arc_cell_ui",
+    "test_arc_feedback",
+    "test_arc_geometry",
+    "test_arc_indicator",
+    "test_player",
+    "test_d9_contract",
+    "test_d9_timeline",
+    "test_arc_lifecycle"
+  ],
+  "red_suites": {
+    "test_weapon_switch": [
+      "FAIL: manual selection lowers old weapon before changing identity",
+      "FAIL: repeated destination does not restart lower clock",
+      "FAIL: normal change refuses fire without resource debit",
+      "FAIL: R routes to effective D9 and refuses during normal descent",
+      "FAIL: reversing before hidden still completes the trajectory",
+      "FAIL: post-hidden reversal has no usable READY gap",
+      "FAIL: all visibility changes occur with actual mesh corners below FOV 60/76/90: unsafe=228",
+      "FAIL: every HIDDEN callback exposes a masked coherent assembly including same-index and large deltas: unsafe=2"
+    ],
+    "test_weapon_activity": [
+      "FAIL: pause fixture is inside normal selection",
+      "FAIL: inventory fixture is inside normal selection",
+      "FAIL: pause fixture is inside normal selection",
+      "FAIL: inventory fixture is inside normal selection"
+    ],
+    "test_weapon_input": [
+      "FAIL: short READY click spends exactly one shot before physics for weapon 0",
+      "FAIL: short READY click spends exactly one shot before physics for weapon 1",
+      "FAIL: READY press fires synchronously before a long tick",
+      "FAIL: same capture click remains suppressed through held physics until release",
+      "FAIL: fresh click after capture release fires normally",
+      "FAIL: held fire cannot use intermediate READY during reversed change",
+      "FAIL: reactivation cannot replay a held pre-deactivation click"
+    ],
+    "test_weapon_motion": [
+      "FAIL: walking leaves camera height stable: range=0.015990",
+      "FAIL: blocked movement stops periodic wrist bob: range=0.013688",
+      "FAIL: blocked sprint returns local wrist to rest pose",
+      "FAIL: urgent fire reduces sprint pose",
+      "FAIL: urgent fire reduces sprint pose",
+      "FAIL: D9 normalized sprint response is faster than ARC: D9=0.606760 ARC=0.606760",
+      "FAIL: look uses screen_relative even when relative is zero",
+      "FAIL: applied gaze creates local wrist inertia"
+    ]
+  },
+  "behavioral_failure_count": 27,
+  "engine_errors_or_warnings": [],
+  "display": "Parent-owned :100 borrowed for X11 dummy-renderer input/motion; no rendered graphics/performance claims",
+  "followups": [
+    "tools/verify.sh must use X11 --rendering-driver dummy for test_weapon_input and test_weapon_motion; headless intentionally exits 2 with DISPLAY REQUIRED",
+    "test_fps_rig.gd lines 37 and 61 retain old bob/_settle APIs until production migration",
+    "Legacy tools/probe_fps_rig D9-only assertion remains outside test-only scope"
+  ],
+  "released": true,
+  "commit": "eecf9a9c0776d8f9c9be9fb4d9ecdac14a56441b",
+  "final_status": "",
+  "processes": "No owned test/import/Xvfb process remains; parent Xvfb :100 preserved",
+  "godot_version": "4.7.2.stable.official.ed1daf0bf",
+  "godot_binary": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+  "godot_sha256": "8d106cbe6144c2dc7e881d61d2429c1a8a76e6b22ef48bd5e48dcf934953f71e"
+}

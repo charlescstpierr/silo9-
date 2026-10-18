@@ -1,0 +1,54 @@
+{
+  "verdict": "PASS red gate before bounded beam/look fixes",
+  "tests_head": "6ccb314cc1480e68282070b062ee9c7daae16c96",
+  "production_head": "15d2b91a13a393b212236d195bda75a23cdc0a45",
+  "production_unchanged": true,
+  "results": [
+    {
+      "test": "test_weapon_beam_motion",
+      "command": [
+        "./tools/godot.sh",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_beam_motion.gd"
+      ],
+      "exit": 1,
+      "failures": [
+        "FAIL: active ARC beam leaves moving muzzle error_m=0.34333568811417"
+      ],
+      "sha256": "5eea97e82c05550287c681d89c428998c1768e058db9df3b3f12dc6b958fba63"
+    },
+    {
+      "test": "test_weapon_look_direction",
+      "command": [
+        "xvfb-run",
+        "-a",
+        "./tools/godot.sh",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_weapon_look_direction.gd"
+      ],
+      "exit": 1,
+      "failures": [
+        "FAIL: vertical lag opposes applied pitch: weapon=0 pixels=-20.000000 offset=0.003227",
+        "FAIL: aimed vertical lag opposes applied camera pitch",
+        "FAIL: vertical lag opposes applied pitch: weapon=0 pixels=20.000000 offset=-0.003227",
+        "FAIL: aimed vertical lag opposes applied camera pitch",
+        "FAIL: vertical lag opposes applied pitch: weapon=1 pixels=-20.000000 offset=0.002840",
+        "FAIL: aimed vertical lag opposes applied camera pitch",
+        "FAIL: vertical lag opposes applied pitch: weapon=1 pixels=20.000000 offset=-0.002840",
+        "FAIL: aimed vertical lag opposes applied camera pitch"
+      ],
+      "sha256": "d01051ab745c7703cae5090f694171cd546c2d73bcd7b096b67f8ce817cb5e1b"
+    }
+  ]
+}

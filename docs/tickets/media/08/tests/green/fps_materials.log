@@ -1,0 +1,28 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: expanded triangles, normals, skin weights/bones, transforms and markers preserve baseline
+PASS: weapon 0 surface budget
+PASS: weapon 0 including mixed primitive batches UV cardinality (missing surfaces=0)
+PASS: weapon 0 including mixed primitive batches finite, nondegenerate mapping (bad values=0, collapsed triangles=0)
+PASS: weapon 0 including mixed primitive batches shared flat-face UV continuity (conflicts=0)
+PASS: weapon 1 surface budget
+PASS: weapon 1 including mixed primitive batches UV cardinality (missing surfaces=0)
+PASS: weapon 1 including mixed primitive batches finite, nondegenerate mapping (bad values=0, collapsed triangles=0)
+PASS: weapon 1 including mixed primitive batches shared flat-face UV continuity (conflicts=0)
+PASS: arms retain two surfaces
+PASS: actual glove and cloth UV cardinality (missing surfaces=0)
+PASS: actual glove and cloth finite, nondegenerate mapping (bad values=0, collapsed triangles=0)
+PASS: arm vertex and triangle budgets
+PASS: loft duplicates each ring seam and last angular slice stays narrow
+PASS: loft longitudinal UV follows unequal rest lengths
+PASS: at most nine shared materials across two independently built rigs (actual=9)
+PASS: nine authored material families actually bound to meshes
+PASS: native opaque materials without extra passes, AO or normal maps
+PASS: ordinary materials add no unlit emission
+PASS: D9 and ARC signals retain .8 emission
+PASS: metal and dielectric families retain distinct physical response
+PASS: unique texture dimensions/count and conservative RGBA8 full-mip texel budget
+TEXTURES unique=4 estimated_full_mip_bytes=349520 (not measured VRAM; mip presence requires renderer evidence)
+PASS: cell manipulation starts
+PASS: mesh/material/texture identities and stored material properties remain stable through reload, cell, ADS and equip
+FPS MATERIALS passes=24 failures=0

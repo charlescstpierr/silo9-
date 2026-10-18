@@ -1,0 +1,16 @@
+{
+  "status": "production_authorized_after_parent_red",
+  "tests_commit": "5a0251378457e1223f5dcbe31caa1e35c0d88247",
+  "production_base": "98f2d4a735d7c2fe1ad6f3d8431ab86772db1e8a",
+  "passes": 9,
+  "expected_semantic_failures": 15,
+  "technical_errors": 0,
+  "parent_read_complete_test": true,
+  "reference_independently_recaptured_identical": true,
+  "test_sha256": "d625af40655015321e5aefd7ee2acd61ebfd1f7f88c8a56372fe246085f91fa4",
+  "reference_sha256": "8b6073e2ed4915017c7c047a90044956e5ec375009d93289a842b9d57153b642",
+  "evidence": "tests-parent-red/verification.json",
+  "design": "design/accepted.md",
+  "visual_exception": "Palette and bitmap presentation comparison approved before edits; mapping/resource behavior remains TDD",
+  "test_change_rule": "No weakening. Any proven harness flaw returns to parent before a separate test fix assignment."
+}

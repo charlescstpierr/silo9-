@@ -1,0 +1,142 @@
+{
+  "environment": {
+    "DISPLAY": ":100",
+    "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue08/implementation/green-final/user-data"
+  },
+  "runs": [
+    {
+      "name": "import",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+        "--editor",
+        "--import",
+        "--quit"
+      ],
+      "exit": 0,
+      "passes": 0,
+      "failures": 0,
+      "technical_errors": 0,
+      "log_sha256": "0b4558e93a9c885fe03fc874d009d8b0037cf55bccd269934750f205cd132527"
+    },
+    {
+      "name": "fps_materials",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+        "--script",
+        "res://tests/test_fps_materials.gd"
+      ],
+      "exit": 0,
+      "passes": 24,
+      "failures": 0,
+      "technical_errors": 0,
+      "log_sha256": "47e37df3ba59047f26f2205aab2a627ad455283bd70c5a59abb162e9d0c38ece"
+    },
+    {
+      "name": "visual_geometry",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+        "--script",
+        "res://tests/test_visual_geometry.gd"
+      ],
+      "exit": 0,
+      "passes": 0,
+      "failures": 0,
+      "technical_errors": 0,
+      "log_sha256": "e5654c8e1c145e31746677674b00d7e89f07028a2dff9f1bee88e0bd76feeba1"
+    },
+    {
+      "name": "fps_rig",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+        "--script",
+        "res://tests/test_fps_rig.gd"
+      ],
+      "exit": 0,
+      "passes": 0,
+      "failures": 0,
+      "technical_errors": 0,
+      "log_sha256": "68fffdbf9c30ff9ec211e57b1c935ee71e07f17dda99ef4bde67a77fedfb84bb"
+    },
+    {
+      "name": "d9_geometry",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+        "--script",
+        "res://tests/test_d9_geometry.gd"
+      ],
+      "exit": 0,
+      "passes": 0,
+      "failures": 0,
+      "technical_errors": 0,
+      "log_sha256": "c0e3f93296fb95381e3cf7d294b8296589af0b2b8cac7c874d52c29c88bd9db7"
+    },
+    {
+      "name": "arc_geometry",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+        "--script",
+        "res://tests/test_arc_geometry.gd"
+      ],
+      "exit": 0,
+      "passes": 0,
+      "failures": 0,
+      "technical_errors": 0,
+      "log_sha256": "fde194f157a1a0da29c3fb2523e6d91653d1ca35762e3b43c853f5a04a4ff1e8"
+    },
+    {
+      "name": "arc_indicator",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+        "--script",
+        "res://tests/test_arc_indicator.gd"
+      ],
+      "exit": 0,
+      "passes": 13,
+      "failures": 0,
+      "technical_errors": 0,
+      "log_sha256": "e680bf092b1e5abd7599758cb515724ea4f62ba904e5cec4b97554e60381c07b"
+    },
+    {
+      "name": "ads_geometry",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+        "--script",
+        "res://tests/test_ads_geometry.gd"
+      ],
+      "exit": 0,
+      "passes": 161,
+      "failures": 0,
+      "technical_errors": 0,
+      "log_sha256": "498d4ba27081a256f75e96223a5768c6a22ea2ccb158227f2e7edfd9967e9f13"
+    }
+  ]
+}

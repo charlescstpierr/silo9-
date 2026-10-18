@@ -1,0 +1,183 @@
+{
+  "checks_passed": 542,
+  "summary": {
+    "baseline": {
+      "frame_p50_ms": {
+        "median": 93.027,
+        "min": 90.327,
+        "max": 95.993
+      },
+      "frame_p95_ms": {
+        "median": 110.534,
+        "min": 107.561,
+        "max": 115.877
+      },
+      "draw_calls_max": {
+        "median": 377,
+        "min": 377,
+        "max": 377
+      },
+      "nodes_max": {
+        "median": 686,
+        "min": 686,
+        "max": 686
+      },
+      "resources_max": {
+        "median": 83,
+        "min": 83,
+        "max": 83
+      }
+    },
+    "candidate": {
+      "frame_p50_ms": {
+        "median": 91.925,
+        "min": 91.217,
+        "max": 96.786
+      },
+      "frame_p95_ms": {
+        "median": 109.625,
+        "min": 107.784,
+        "max": 117.703
+      },
+      "draw_calls_max": {
+        "median": 377,
+        "min": 376,
+        "max": 377
+      },
+      "nodes_max": {
+        "median": 686,
+        "min": 686,
+        "max": 686
+      },
+      "resources_max": {
+        "median": 96,
+        "min": 96,
+        "max": 96
+      }
+    }
+  },
+  "ranges_overlap": {
+    "frame_p50_ms": true,
+    "frame_p95_ms": true
+  },
+  "profile": [
+    {
+      "window": "all",
+      "samples": 40,
+      "mean_sum_cpu_percent": 396.19983852589576,
+      "llvmpipe_share": 0.8555034836181934,
+      "cpu_capacity_percent": 800,
+      "mean_host_capacity_fraction": 0.4952497981573697,
+      "sample_time_span_seconds": 20.409877427853644,
+      "top_threads_cpu_share": [
+        {
+          "name": "Godot_v4.7.2-st",
+          "share": 0.14209448750304887
+        },
+        {
+          "name": "llvmpipe-1",
+          "share": 0.10858703648625168
+        },
+        {
+          "name": "llvmpipe-3",
+          "share": 0.10857119057668804
+        },
+        {
+          "name": "llvmpipe-2",
+          "share": 0.10713892610569907
+        },
+        {
+          "name": "llvmpipe-5",
+          "share": 0.10703627314180113
+        },
+        {
+          "name": "llvmpipe-0",
+          "share": 0.10702750177407243
+        },
+        {
+          "name": "llvmpipe-6",
+          "share": 0.10668691742803688
+        },
+        {
+          "name": "llvmpipe-4",
+          "share": 0.10523000665760741
+        },
+        {
+          "name": "llvmpipe-7",
+          "share": 0.1052256314480369
+        },
+        {
+          "name": "WorkerThread 3",
+          "share": 0.00036390908201305205
+        },
+        {
+          "name": "WorkerThread 0",
+          "share": 0.0003617918775377145
+        },
+        {
+          "name": "WorkerThread 2",
+          "share": 0.000360420166050003
+        }
+      ]
+    },
+    {
+      "window": "middle60percent",
+      "samples": 24,
+      "mean_sum_cpu_percent": 461.2118734019053,
+      "llvmpipe_share": 0.8985985420852577,
+      "cpu_capacity_percent": 800,
+      "mean_host_capacity_fraction": 0.5765148417523815,
+      "sample_time_span_seconds": 12.057525872252882,
+      "top_threads_cpu_share": [
+        {
+          "name": "llvmpipe-3",
+          "share": 0.11390753625015093
+        },
+        {
+          "name": "llvmpipe-1",
+          "share": 0.11357079327901311
+        },
+        {
+          "name": "llvmpipe-5",
+          "share": 0.11306278420207767
+        },
+        {
+          "name": "llvmpipe-6",
+          "share": 0.11222074724659124
+        },
+        {
+          "name": "llvmpipe-0",
+          "share": 0.11220691077245278
+        },
+        {
+          "name": "llvmpipe-2",
+          "share": 0.11184376499906026
+        },
+        {
+          "name": "llvmpipe-4",
+          "share": 0.11097821861402125
+        },
+        {
+          "name": "llvmpipe-7",
+          "share": 0.1108077867218904
+        },
+        {
+          "name": "Godot_v4.7.2-st",
+          "share": 0.09967522772643067
+        },
+        {
+          "name": "WorkerThread 3",
+          "share": 0.000348464870985537
+        },
+        {
+          "name": "WorkerThread 0",
+          "share": 0.0003462501787390329
+        },
+        {
+          "name": "WorkerThread 5",
+          "share": 0.00017367803547651796
+        }
+      ]
+    }
+  ]
+}

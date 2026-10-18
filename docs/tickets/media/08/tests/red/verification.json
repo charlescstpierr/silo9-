@@ -1,0 +1,30 @@
+{
+  "command": [
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+    "--script",
+    "res://tests/test_fps_materials.gd"
+  ],
+  "exit": 1,
+  "passes": 9,
+  "failures": 15,
+  "technical_errors": 0,
+  "source_verified": 40,
+  "changed_files": [
+    "tests/fixtures/fps_geometry_98f2d4a.json",
+    "tests/test_fps_materials.gd"
+  ],
+  "reference_recapture_command": [
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+    "--headless",
+    "--path",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-08",
+    "--script",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue08/tests-parent-red/capture.gd"
+  ],
+  "reference_identical": true,
+  "reference_sha256": "8b6073e2ed4915017c7c047a90044956e5ec375009d93289a842b9d57153b642",
+  "test_sha256": "d625af40655015321e5aefd7ee2acd61ebfd1f7f88c8a56372fe246085f91fa4"
+}

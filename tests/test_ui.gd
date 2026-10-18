@@ -17,6 +17,11 @@ func run() -> void:
 	check(main.mode == "settings", "Settings releases gameplay into a modal state")
 	main.set_layout(true)
 	check(InputMap.has_action("forward"), "FPS movement actions configured")
+	var right_click := InputEventMouseButton.new()
+	right_click.button_index = MOUSE_BUTTON_RIGHT
+	right_click.pressed = true
+	check(InputMap.event_is_action(right_click, "aim"), "right mouse button maps to aim")
+	check(not InputMap.event_is_action(right_click, "fire"), "right mouse button cannot fire")
 	check(InputMap.event_is_action(key_event(KEY_Z, KEY_W), "forward"), "AZERTY logical Z moves forward")
 	check(InputMap.event_is_action(key_event(KEY_Q, KEY_A), "left"), "AZERTY logical Q moves left")
 	check(not InputMap.event_is_action(key_event(KEY_Q, KEY_A), "scan"), "AZERTY Q does not trigger scanner")

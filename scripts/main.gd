@@ -579,6 +579,12 @@ func _configure_inputs() -> void:
 	var click := InputEventMouseButton.new()
 	click.button_index = MOUSE_BUTTON_LEFT
 	InputMap.action_add_event("fire", click)
+	if not InputMap.has_action("aim"):
+		InputMap.add_action("aim")
+	InputMap.action_erase_events("aim")
+	var aim := InputEventMouseButton.new()
+	aim.button_index = MOUSE_BUTTON_RIGHT
+	InputMap.action_add_event("aim", aim)
 
 func set_layout(use_azerty: bool) -> void:
 	azerty = use_azerty

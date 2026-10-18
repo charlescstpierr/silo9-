@@ -2,21 +2,15 @@ class_name SiloFpsHandMesh
 extends RefCounted
 
 const SIDES := 12
+const GLOVE = preload("res://assets/fps/materials/glove.tres")
+const CLOTH = preload("res://assets/fps/materials/cloth.tres")
 
 static func build(skeleton: Skeleton3D, wrists: Array[Transform3D], elbows: Array[Vector3], shoulders: Array[Vector3]) -> MeshInstance3D:
-	var glove := StandardMaterial3D.new()
-	glove.albedo_color = Color("a18c70")
-	glove.roughness = 0.94
-	glove.vertex_color_use_as_albedo = true
-	var cloth := StandardMaterial3D.new()
-	cloth.albedo_color = Color("314b60")
-	cloth.roughness = 0.98
-	cloth.vertex_color_use_as_albedo = true
 	var mesh := ArrayMesh.new()
 	for surface_index in 2:
 		var tool := SurfaceTool.new()
 		tool.begin(Mesh.PRIMITIVE_TRIANGLES)
-		tool.set_material(glove if surface_index == 0 else cloth)
+		tool.set_material(GLOVE if surface_index == 0 else CLOTH)
 		for side in 2:
 			var base := 1 + side * 17
 			var wrist := wrists[side]
@@ -82,7 +76,9 @@ static func thumb_path(side: int) -> Array[Vector3]:
 
 static func _loft(tool: SurfaceTool, centers: Array[Vector3], sizes: Array[Vector2], bones: Array[int], transform: Transform3D, align_cuff: bool = false) -> void:
 	var rings: Array[PackedVector3Array] = []
+	var lengths: Array[float] = [0.0]
 	for i in centers.size():
+		if i > 0: lengths.append(lengths[-1] + centers[i].distance_to(centers[i-1]))
 		var tangent := (centers[mini(i+1,centers.size()-1)] - centers[maxi(0,i-1)]).normalized()
 		if i == centers.size()-1 and align_cuff:
 			tangent = Vector3.UP
@@ -97,22 +93,28 @@ static func _loft(tool: SurfaceTool, centers: Array[Vector3], sizes: Array[Vecto
 		rings.append(ring)
 	for i in rings.size()-1:
 		for j in SIDES:
-			var next := (j+1)%SIDES
+			var next := j+1
 			for vertex: Vector2i in [Vector2i(i,j),Vector2i(i,next),Vector2i(i+1,next),Vector2i(i,j),Vector2i(i+1,next),Vector2i(i+1,j)]:
 				var layer := vertex.x
-				var point := rings[layer][vertex.y]
+				var point := rings[layer][vertex.y % SIDES]
 				var normal := (point-centers[layer]).normalized()
 				tool.set_normal(transform.basis * normal)
+				tool.set_uv(Vector2(float(vertex.y) / SIDES, lengths[layer] * 8.0))
 				tool.set_color(Color.WHITE * (0.95 + 0.05*cos(vertex.y * TAU / SIDES)))
 				tool.set_bones(PackedInt32Array([bones[layer],bones[maxi(0,layer-1)],0,0]))
 				tool.set_weights(PackedFloat32Array([.8,.2,0,0]))
 				tool.add_vertex(transform * point)
 	for end in [0,rings.size()-1]:
 		var outward := (centers[end]-centers[1 if end == 0 else end-1]).normalized()
+		var right := (rings[end][0] - centers[end]).normalized()
+		var depth := (rings[end][SIDES / 4] - centers[end]).normalized()
 		for j in SIDES:
 			var points: Array = [centers[end],rings[end][(j+1)%SIDES],rings[end][j]] if end == 0 else [centers[end],rings[end][j],rings[end][(j+1)%SIDES]]
 			for point in points:
 				tool.set_normal(transform.basis*outward)
+				var offset: Vector3 = point - centers[end]
+				tool.set_uv(Vector2(offset.dot(right), offset.dot(depth)) * 8.0)
+				tool.set_color(Color.WHITE)
 				tool.set_bones(PackedInt32Array([bones[end],0,0,0]))
 				tool.set_weights(PackedFloat32Array([1,0,0,0]))
 				tool.add_vertex(transform*point)

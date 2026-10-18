@@ -112,3 +112,7 @@ Cet audit vérifie les sources et les conditions d'intégration. Il ne prétend 
 ## Modèle local utilisé pour la vérification
 
 Qwen2.5-0.5B-Instruct-GGUF, révision `9217f5db79a29953eb74d5343926648285ec7e67`, fichier `qwen2.5-0.5b-instruct-q4_k_m.gguf`, [source officielle](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/tree/9217f5db79a29953eb74d5343926648285ec7e67), licence Apache-2.0. SHA-256 : `74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db`. Le modèle et llama.cpp restent des outils locaux de QA, exclus des exécutables et archives source distribués. Les licences sont conservées avec eux dans `.tools/llama/`. Les deux personnages ont reçu une réponse du vrai modèle via le jeu. Le test initial de prose libre a révélé des inventions. La version finale affiche uniquement des réactions approuvées et les faits canoniques sélectionnés par le modèle ; deux essais répétés avec MÈRE et N-7 ont validé cette connexion encadrée.
+
+## Matériaux FPS originaux
+
+Les neuf matériaux et quatre textures de `assets/fps/` sont créés pour SILO 9, sans copie ni téléchargement tiers. Le générateur déterministe `tools/generate_fps_materials.py` utilise la bibliothèque standard Python ; les images, paramètres et empreintes sont versionnés. Voir [la provenance FPS](../assets/fps/README.md). Aucune licence CC0/MIT n’est attribuée à ces créations par cet audit : le dépôt ne déclare pas de licence générale. Aucun contenu Fortnite n’est utilisé.

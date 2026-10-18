@@ -7,6 +7,7 @@ func run() -> void:
 	if not await prepare():
 		await finish()
 		return
+	check(world.find_child("ceiling_maintenance", true, false) is OmniLight3D, "Observer contract has a real named maintenance source")
 	var before: int = revision()
 	var first_enemy: CharacterBody3D = world.enemies[0]
 	first_enemy.position = Vector3(0, 0, -20)
@@ -16,7 +17,7 @@ func run() -> void:
 	var observe := func() -> void:
 		publications.append({"save": saved(), "nested": world.call("set_circuit", &"archives", false)})
 		for light: OmniLight3D in world.lights:
-			if light.global_position.z <= -14 and light.global_position.z > -34:
+			if light.name == &"ceiling_maintenance":
 				check(not light.visible and is_zero_approx(light.light_energy), "Observer sees committed lighting before publication")
 	state.changed.connect(observe)
 	command(&"maintenance", false)

@@ -80,8 +80,8 @@ func select(index: int) -> void:
 	_cell = Cell.NONE
 	_cell_return = -1
 	_destination = index
-	if ready:
-		weapon_index = index
+	if ready and index != weapon_index:
+		_lower()
 	elif view.motion == Motion.CELL or (view.motion == Motion.RELOAD and index != weapon_index):
 		_lower()
 

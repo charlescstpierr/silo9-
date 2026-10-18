@@ -15,6 +15,10 @@ func run() -> void:
 	app.set_quality(false)
 	app.player.teleport(Vector3(0,0,7))
 	app.player.equip(1)
+	for tick in 120:
+		if app.player.reload_cycle.ready and app.player.weapon_index == 1: break
+		await physics_frame
+	assert(app.player.reload_cycle.ready and app.player.weapon_index == 1)
 	app.player.set_physics_process(false)
 	app.ui.visible = false
 	var rows: Array[Dictionary] = []
@@ -31,7 +35,7 @@ func run() -> void:
 		var previous := Time.get_ticks_usec()
 		var delta := 1.0/60.0
 		while Time.get_ticks_usec()<end:
-			if active and not app.player.reloading:
+			if active and app.player.reload_cycle.ready:
 				app.state.energy = 10
 				app.state.cells = 1
 				assert(app.player.reload_weapon())

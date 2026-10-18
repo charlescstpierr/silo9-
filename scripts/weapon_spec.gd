@@ -12,3 +12,8 @@ extends Resource
 @export var noise_radius: float = 28.0
 @export var reach: float = 70.0
 @export var recoil: float = 0.035
+
+@export var motion_response: float = 16.0
+@export var look_gain: float = 0.012
+@export var look_limit: float = 0.018
+@export var bob_amplitude: float = 0.006

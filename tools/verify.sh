@@ -7,7 +7,15 @@ export XDG_DATA_HOME="$PWD/.cstack/silo9/test-user-data"
 if rg -q 'SCRIPT ERROR|Parse Error|ERROR:' .cstack/silo9/evidence/import.log; then exit 1; fi
 for test_file in tests/test_*.gd; do
     log_file=".cstack/silo9/evidence/$(basename "$test_file" .gd).log"
-    timeout 120 ./tools/godot.sh --headless --path . --script "$test_file" 2>&1 | tee "$log_file"
+    if [[ "$test_file" == tests/test_weapon_input.gd || "$test_file" == tests/test_weapon_motion.gd ]]; then
+        if [[ -n "${DISPLAY:-}" ]]; then
+            timeout 120 ./tools/godot.sh --display-driver x11 --rendering-driver dummy --audio-driver Dummy --path . --script "$test_file" 2>&1 | tee "$log_file"
+        else
+            timeout 120 xvfb-run -a ./tools/godot.sh --display-driver x11 --rendering-driver dummy --audio-driver Dummy --path . --script "$test_file" 2>&1 | tee "$log_file"
+        fi
+    else
+        timeout 120 ./tools/godot.sh --headless --path . --script "$test_file" 2>&1 | tee "$log_file"
+    fi
     if rg -q 'SCRIPT ERROR|Parse Error|^FAIL:|^FAIL |^ERROR:' "$log_file"; then exit 1; fi
 done
 git diff --check

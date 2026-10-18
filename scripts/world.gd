@@ -11,7 +11,37 @@ var power_materials := PowerMaterials.new()
 var _power_busy: bool = false
 var _low_quality: bool = false
 var _colossus_gain: float = 1.0
-var _light_colors: Array[Color] = []
+var _reduced_light_effects: bool = false
+var _neon_phase: float = 0.0
+var _luminaires: Array[Luminaire] = []
+
+class Luminaire:
+	enum Role { CEILING, REACTOR, ALARM }
+	enum Supply { MAIN, AUTONOMOUS }
+	var id: StringName
+	var role: Role
+	var supply: Supply
+	var circuit: StringName
+	var origin: Vector3
+	var tint: Color
+	var normal_energy: float
+	var low_energy: float
+	var radius: float
+	var faulty: bool = false
+	var light: OmniLight3D
+	var emitter: StandardMaterial3D
+	var lens: MeshInstance3D
+
+	func _init(source_id: StringName, kind: Role, power: Supply, circuit_id: StringName, position: Vector3, color: Color, normal: float, low: float, reach: float) -> void:
+		id = source_id
+		role = kind
+		supply = power
+		circuit = circuit_id
+		origin = position
+		tint = color
+		normal_energy = normal
+		low_energy = low
+		radius = reach
 
 const RobotVisual = preload("res://scripts/robot_visual.gd")
 const Art = preload("res://scripts/world_art.gd")
@@ -59,6 +89,7 @@ func _ready() -> void:
 	_build_power()
 	_build_enemies()
 	_batch_static_geometry()
+	_build_luminaires()
 	art.build()
 	art.build_core(objects["core"])
 	art.build_console(objects["mother"])
@@ -81,6 +112,13 @@ func _materials() -> void:
 		material.emission = Color(entry[1])
 		material.emission_energy_multiplier = 0.7
 		materials[entry[0]] = material
+
+	var route := StandardMaterial3D.new()
+	route.albedo_color = Color("b9e5ea")
+	route.emission_enabled = true
+	route.emission = route.albedo_color
+	route.emission_energy_multiplier = 0.15
+	materials["route"] = route
 
 func _environment() -> void:
 	ambience = WorldEnvironment.new()
@@ -127,17 +165,6 @@ func _text(text: String, pos: Vector3, size: int = 44, color: Color = Color("bed
 	parent.add_child(label)
 	return label
 
-func _light(pos: Vector3, color: Color, energy: float, radius: float) -> void:
-	var light := OmniLight3D.new()
-	light.position = pos
-	light.light_color = color
-	light.light_energy = energy
-	light.omni_range = radius
-	light.shadow_enabled = false
-	add_child(light)
-	lights.append(light)
-	_light_colors.append(color)
-
 func _bulkhead(z: float, number: String, title: String, locked: bool = false) -> void:
 	for side in [-1.0, 1.0]:
 		_box(Vector3(side * 6.4, 2.5, z), Vector3(7.2, 5, 0.5), "wall", true)
@@ -167,16 +194,13 @@ func _build_structure() -> void:
 	for z in range(-76, 10, 4):
 		for side in [-1.0, 1.0]:
 			_box(Vector3(side * 9.7, 2.5, z), Vector3(0.35, 5, 0.25), "steel")
-			_box(Vector3(side * 2.1, 0.025, z), Vector3(0.08, 0.03, 2.5), "yellow")
+			var route := _box(Vector3(side * 2.1, 0.025, z), Vector3(0.08, 0.03, 2.5), "yellow")
+			route.material_override = materials["route"]
 			_box(Vector3(side * 9.6, 0.5, z), Vector3(0.12, 0.08, 1.7), "cyan")
 		_box(Vector3(0, 5, z), Vector3(20, 0.22, 0.2), "steel")
 		_box(Vector3(0, 0.012, z), Vector3(20, 0.02, 0.035), "dark")
-	for z in [6, -5, -22, -42, -63, -73]:
-		_box(Vector3(0, 4.9, z), Vector3(3.8, 0.08, 0.18), "glow")
-		_light(Vector3(-1.3, 3.8, z), Color("b0d6df") if z in [-5,-42] else Color("ffd19d"), 1.3, 13)
 	for z in [-30, -58]:
 		_box(Vector3(-9.6, 3.6, z), Vector3(0.16, 0.4, 0.7), "danger")
-		_light(Vector3(-8, 2.9, z), Color("ff6439"), 1.5, 7)
 	for z in [-6, -19, -29, -40, -49, -62]:
 		var side: float = -1 if int(z) % 2 == 0 else 1
 		_box(Vector3(side * 6.6, 0.8, z), Vector3(2.3, 1.6, 2.5), "dark", true)
@@ -216,7 +240,6 @@ func _reactor() -> void:
 			_box(Vector3(side * 7.5, 2.2, z + 1.02), Vector3(0.12, 3.5, 0.05), "danger")
 	_box(Vector3(0, 0.3, -72), Vector3(3.6, 0.6, 3.6), "steel", true)
 	_text("CŒUR MÉMORIEL\nNE PAS EXTRAIRE SOUS TENSION", Vector3(0, 3.2, -77.5), 38, Color("ffc27d"))
-	_light(Vector3(0, 2.7, -72), Color("56e6ed"), 3, 8)
 
 func _batch_static_geometry() -> void:
 	var batches: Dictionary = {}
@@ -461,6 +484,8 @@ func sector_at(pos: Vector3) -> String:
 	return "04 / CŒUR"
 
 func _process(delta: float) -> void:
+	_neon_phase = fposmod(_neon_phase + delta, 6.0)
+	_compose_lights(true)
 	if scan_timer > 0:
 		scan_timer -= delta
 		if scan_timer <= 0:
@@ -474,9 +499,6 @@ func _process(delta: float) -> void:
 	time_to_check -= delta
 	if time_to_check > 0: return
 	time_to_check = 0.5
-	if is_instance_valid(player):
-		art.update_focus(player.global_position)
-		_compose_lights()
 	if is_instance_valid(player) and player.position.z < -55 and not colossus_triggered:
 		colossus_triggered = true
 		colossus_sound.play()
@@ -548,24 +570,85 @@ func _refresh_power() -> void:
 	_compose_lights()
 	power_materials.apply(state)
 
-func _powered_at(z: float) -> bool:
-	var circuit: StringName = Spec.at_z(z)
-	return circuit == &"" or state.circuit_on(circuit)
-
 func _set_colossus_gain(value: float) -> void:
 	_colossus_gain = value
 	_compose_lights()
 
-func _compose_lights() -> void:
-	var ending_color: Color = Color("ff6737") if state.ending == "mother" else Color("63e9e0")
-	for i: int in lights.size():
-		var powered: bool = _powered_at(lights[i].position.z)
-		var base: float = (2.1 if _low_quality else 1.3) if i < 6 else (3.0 if i == 8 else 1.5)
-		lights[i].visible = powered and (not _low_quality or i < 6)
-		lights[i].light_energy = base * _colossus_gain if powered else 0.0
-		lights[i].light_color = _light_colors[i] if state.ending.is_empty() else ending_color
-	if art.shadow_key != null:
-		var powered: bool = _powered_at(art.focused_z)
-		art.shadow_key.visible = powered and not _low_quality
-		art.shadow_key.light_energy = 3.0 * _colossus_gain if powered and not _low_quality else 0.0
-		art.shadow_key.light_color = art.focus_color if state.ending.is_empty() else ending_color
+func set_reduced_light_effects(value: bool) -> void:
+	_reduced_light_effects = value
+	_compose_lights()
+
+func _build_luminaires() -> void:
+	_luminaires = [
+		Luminaire.new(&"ceiling_refuge", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"", Vector3(0, 4.68, 6), Color("ffe1b5"), 1.3, 2.1, 12),
+		Luminaire.new(&"ceiling_decontamination", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"", Vector3(0, 4.68, -5), Color("b9e5ea"), 1.3, 2.1, 12),
+		Luminaire.new(&"ceiling_maintenance", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"maintenance", Vector3(0, 4.68, -22), Color("ffd09a"), 1.5, 2.2, 12),
+		Luminaire.new(&"ceiling_archives", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"archives", Vector3(0, 4.68, -42), Color("b4d0ef"), 1.3, 2.1, 12),
+		Luminaire.new(&"ceiling_core_entry", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"", Vector3(0, 4.68, -63), Color("ffd09a"), 1.2, 2.0, 11),
+		Luminaire.new(&"ceiling_core_end", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"", Vector3(0, 4.68, -73), Color("d5e7df"), 1.0, 1.9, 10),
+		Luminaire.new(&"reactor", Luminaire.Role.REACTOR, Luminaire.Supply.MAIN, &"", Vector3(0, 2.5, -72), Color("63e9e0"), 2.4, 0.0, 7),
+	]
+	for circuit: StringName in power_consumers:
+		var consumer: Consumers = power_consumers[circuit]
+		_luminaires.append(Luminaire.new(StringName("alarm_" + str(circuit)), Luminaire.Role.ALARM, Luminaire.Supply.AUTONOMOUS, circuit, consumer.spec.alarm_position, Color("ff513b"), 0.9, 0.65, 4))
+	for binding: Luminaire in _luminaires:
+		binding.faulty = binding.id == &"ceiling_maintenance"
+		binding.emitter = StandardMaterial3D.new()
+		binding.emitter.albedo_color = binding.tint
+		binding.emitter.emission_enabled = true
+		binding.emitter.emission = binding.tint
+		binding.emitter.emission_energy_multiplier = 0.7
+		if binding.role == Luminaire.Role.ALARM:
+			binding.lens = power_consumers[binding.circuit].alarm_lens
+		else:
+			binding.lens = MeshInstance3D.new()
+			binding.lens.position = binding.origin
+			if binding.role == Luminaire.Role.CEILING:
+				binding.lens.mesh = box_mesh
+				binding.lens.scale = Vector3(3.8, 0.08, 0.24)
+			else:
+				var ring := TorusMesh.new()
+				ring.inner_radius = 0.84
+				ring.outer_radius = 1.0
+				ring.rings = 32
+				ring.ring_segments = 6
+				binding.lens.mesh = ring
+				binding.lens.scale = Vector3(1.1, 0.3, 1.1)
+			add_child(binding.lens)
+		binding.lens.material_override = binding.emitter
+		binding.lens.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		binding.light = OmniLight3D.new()
+		binding.light.name = binding.id
+		binding.light.position = binding.origin + Vector3(0, -0.12, 0)
+		binding.light.omni_range = binding.radius
+		binding.light.shadow_enabled = false
+		binding.light.light_cull_mask = 1
+		add_child(binding.light)
+		lights.append(binding.light)
+
+func _compose_lights(animated_only: bool = false) -> void:
+	var ending_color := Color("ff6737") if state.ending == "mother" else Color("63e9e0")
+	for binding: Luminaire in _luminaires:
+		if animated_only and binding.role != Luminaire.Role.ALARM and (not binding.faulty or _reduced_light_effects or not state.ending.is_empty()): continue
+		var powered: bool = binding.supply == Luminaire.Supply.AUTONOMOUS or binding.circuit == &"" or state.circuit_on(binding.circuit)
+		var gain: float = 1.0 if _reduced_light_effects else _colossus_gain
+		var color: Color = binding.tint if state.ending.is_empty() else ending_color
+		if binding.role == Luminaire.Role.ALARM:
+			var consumer: Consumers = power_consumers[binding.circuit]
+			powered = consumer.alarm_remaining > 0 and state.ending != "n7"
+			gain = 1.0 if _reduced_light_effects else lerpf(0.2, 1.0, clampf((consumer.spec.alarm_duration - consumer.alarm_remaining) / 0.15, 0, 1))
+			color = binding.tint
+			binding.lens.visible = powered
+		elif binding.faulty and not _reduced_light_effects and state.ending.is_empty():
+			if _neon_phase > 5.2:
+				gain *= lerpf(0.65, 1.0, smoothstep(5.2, 6.0, _neon_phase))
+			elif _neon_phase > 4.8:
+				gain *= lerpf(1.0, 0.65, smoothstep(4.8, 5.2, _neon_phase))
+		if not powered: gain = 0.0
+		var energy: float = binding.low_energy if _low_quality else binding.normal_energy
+		binding.light.visible = powered and energy > 0
+		binding.light.light_energy = energy * gain
+		binding.light.light_color = color
+		binding.emitter.albedo_color = color if powered else color.darkened(0.8)
+		binding.emitter.emission = color
+		binding.emitter.emission_energy_multiplier = 0.7 * gain

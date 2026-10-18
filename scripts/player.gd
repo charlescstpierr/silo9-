@@ -23,6 +23,9 @@ signal reload_event(event: int)
 var state: State
 var camera: Camera3D
 var active: bool = false
+var flashlight_on: bool = false
+var _flashlight: SpotLight3D
+var _capture_flashlight: bool = false
 var weapon_index: int:
 	get: return reload_cycle.weapon_index
 var aim_weight: float:
@@ -115,6 +118,7 @@ func _ready() -> void:
 	camera.current = true
 	add_child(camera)
 	_build_weapons()
+	_build_flashlight()
 	_casings = CasingPool.new()
 	add_child(_casings)
 	RenderingServer.frame_pre_draw.connect(_before_draw)
@@ -140,6 +144,10 @@ func set_active(value: bool) -> void:
 		_capture_fire = _fire_held()
 		_capture_aim = _aim_held()
 		_capture_jump = true
+		_capture_flashlight = Input.is_action_pressed("flashlight") if InputMap.has_action("flashlight") else false
+	if state.health <= 0:
+		flashlight_on = false
+		_flashlight.visible = false
 	if not active:
 		_cancel_reload()
 		_clear_motion_input()
@@ -149,6 +157,45 @@ func set_active(value: bool) -> void:
 		_clear_feedback()
 		if reload_cycle.ready:
 			rig.reset_pose()
+
+func _build_flashlight() -> void:
+	_flashlight = SpotLight3D.new()
+	_flashlight.name = "Flashlight"
+	_flashlight.position = Vector3(0.12, -0.10, -0.15)
+	_flashlight.light_color = Color("f2e8d4")
+	_flashlight.light_energy = 2.5
+	_flashlight.light_cull_mask = 1
+	_flashlight.spot_range = 14
+	_flashlight.spot_angle = 32
+	_flashlight.shadow_enabled = true
+	_flashlight.visible = false
+	camera.add_child(_flashlight)
+	var housing := MeshInstance3D.new()
+	var shape := CylinderMesh.new()
+	shape.top_radius = 0.025
+	shape.bottom_radius = 0.03
+	shape.height = 0.1
+	shape.radial_segments = 8
+	housing.mesh = shape
+	housing.position = Vector3(0.12, -0.10, -0.10)
+	housing.rotation.x = PI / 2
+	housing.layers = 2
+	housing.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var material := StandardMaterial3D.new()
+	material.albedo_color = Color("394a57")
+	material.roughness = 0.6
+	housing.material_override = material
+	camera.add_child(housing)
+
+func toggle_flashlight() -> bool:
+	if not active or state.health <= 0 or Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		return false
+	flashlight_on = not flashlight_on
+	_flashlight.visible = flashlight_on
+	return true
+
+func set_flashlight_quality(low: bool) -> void:
+	_flashlight.shadow_enabled = not low
 
 func equip(index: int) -> void:
 	if index < 0 or index > 1:
@@ -304,6 +351,8 @@ func aim_target() -> Node:
 	return _target if is_instance_valid(_target) else null
 
 func _unhandled_input(event: InputEvent) -> void:
+	if InputMap.has_action("flashlight") and event.is_action_released("flashlight"):
+		_capture_flashlight = Input.is_action_pressed("flashlight")
 	if not active:
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -312,7 +361,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotate_y(yaw)
 		camera.rotation.x = clampf(pitch - event.screen_relative.y * sensitivity * _look_scale(), -1.45, 1.45)
 		_look_delta += Vector2(yaw, camera.rotation.x - pitch)
-	if event.is_action_pressed("weapon1", true):
+	if InputMap.has_action("flashlight") and event.is_action_pressed("flashlight") and not event.is_echo():
+		if not _capture_flashlight:
+			toggle_flashlight()
+		_capture_flashlight = true
+	elif event.is_action_pressed("weapon1", true):
 		equip(0)
 	elif event.is_action_pressed("weapon2", true):
 		equip(1)

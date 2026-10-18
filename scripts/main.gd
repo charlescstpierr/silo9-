@@ -16,6 +16,8 @@ var previous_mode: String = "menu"
 var character: String = "mother"
 var azerty: bool = false
 var low_quality: bool = false
+var reduced_light_effects: bool = false
+var reduced_light_check: CheckButton
 var sensitivity: float = 0.002
 var base_fov := 76.0
 var aim_zoom := 1.25
@@ -314,6 +316,7 @@ func _start_run(run: RefCounted) -> void:
 	world.process_mode = Node.PROCESS_MODE_PAUSABLE
 	world.setup(state, player)
 	add_child(world)
+	world.set_reduced_light_effects(reduced_light_effects)
 	set_quality(low_quality)
 	player.interacted.connect(world.interact)
 	player.scanned.connect(world.scan)
@@ -397,6 +400,10 @@ func open_settings() -> void:
 	quality_check.text = "Mode performance • résolution 3D 67 % et éclairage simplifié"
 	quality_check.button_pressed = low_quality
 	content.add_child(quality_check)
+	reduced_light_check = CheckButton.new()
+	reduced_light_check.text = "Réduire les variations lumineuses"
+	reduced_light_check.button_pressed = reduced_light_effects
+	content.add_child(reduced_light_check)
 	_label(content, "Impulsion caméra", 18)
 	camera_slider = _effect_slider(camera_impulse)
 	_label(content, "Lumière des départs et faisceaux", 18)
@@ -420,7 +427,10 @@ func open_settings() -> void:
 	_button("Appliquer et revenir", _apply_settings)
 
 func _apply_settings() -> void:
-	if is_instance_valid(dialogue) and not dialogue.configure(endpoint_input.text.strip_edges(), model_input.text.strip_edges()):
+	if not is_instance_valid(dialogue):
+		dialogue = load("res://scripts/dialogue.gd").new()
+		add_child(dialogue)
+	if not dialogue.configure(endpoint_input.text.strip_edges(), model_input.text.strip_edges()):
 		notify_player("Adresse refusée. Utilisez localhost ou un proxy HTTPS, sans identifiants.")
 		return
 	base_fov = fov_slider.value
@@ -432,6 +442,7 @@ func _apply_settings() -> void:
 	sensitivity = sensitivity_slider.value
 	azerty = layout_check.button_pressed
 	low_quality = quality_check.button_pressed
+	reduced_light_effects = reduced_light_check.button_pressed
 	endpoint = endpoint_input.text.strip_edges()
 	model_id = model_input.text.strip_edges()
 	set_layout(azerty)
@@ -440,6 +451,8 @@ func _apply_settings() -> void:
 		player.configure_feedback(camera_impulse, shot_light, effects_budget)
 		player.configure_aim(base_fov, aim_zoom, aim_sensitivity)
 		set_quality(low_quality)
+	if is_instance_valid(world):
+		world.set_reduced_light_effects(reduced_light_effects)
 	var config := ConfigFile.new()
 	config.set_value("controls", "base_fov", base_fov)
 	config.set_value("controls", "aim_zoom", aim_zoom)
@@ -447,6 +460,7 @@ func _apply_settings() -> void:
 	config.set_value("controls", "sensitivity", sensitivity)
 	config.set_value("controls", "azerty", azerty)
 	config.set_value("graphics", "low_quality", low_quality)
+	config.set_value("graphics", "reduced_light_effects", reduced_light_effects)
 	config.set_value("graphics", "camera_impulse", camera_impulse)
 	config.set_value("graphics", "shot_light", shot_light)
 	config.set_value("graphics", "effects_budget", effects_budget)
@@ -470,6 +484,8 @@ func _load_settings() -> void:
 	sensitivity = clampf(float(config.get_value("controls", "sensitivity", 0.002)), 0.0005, 0.006)
 	azerty = bool(config.get_value("controls", "azerty", false))
 	low_quality = bool(config.get_value("graphics", "low_quality", false))
+	var reduced: Variant = config.get_value("graphics", "reduced_light_effects", false)
+	reduced_light_effects = reduced if reduced is bool else false
 	camera_impulse = _effect_strength(config.get_value("graphics", "camera_impulse", .5), .5)
 	shot_light = _effect_strength(config.get_value("graphics", "shot_light", 1.0), 1.0)
 	effects_budget = _effect_budget(config.get_value("graphics", "effects_budget", 2))
@@ -599,6 +615,7 @@ func _process(delta: float) -> void:
 	energy_bar.max_value = state.max_energy()
 	energy_bar.value = state.energy
 	ammo_label.text = "D9  %02d / %02d%s" % [state.ammo, state.reserve, "  •  RECHARGEMENT" if player.reloading else ""] if player.weapon_index == 0 else "ARC-3  •  " + ("CELLULE EN COURS" if player.reloading else "12 ÉNERGIE / DÉCHARGE")
+	if player.flashlight_on: ammo_label.text += "  •  LAMPE ON"
 	mission_label.text = state.objective()
 	sector_label.text = "SILO 9  /  " + world.sector_at(player.global_position).to_upper()
 	var target: Node = player.aim_target()
@@ -635,7 +652,7 @@ func _input(event: InputEvent) -> void:
 
 func _configure_inputs() -> void:
 	set_layout(azerty)
-	for binding: Array in [["sprint", KEY_SHIFT], ["jump", KEY_SPACE], ["crouch", KEY_CTRL], ["interact", KEY_E], ["reload", KEY_R], ["weapon1", KEY_1], ["weapon2", KEY_2]]:
+	for binding: Array in [["flashlight", KEY_F], ["sprint", KEY_SHIFT], ["jump", KEY_SPACE], ["crouch", KEY_CTRL], ["interact", KEY_E], ["reload", KEY_R], ["weapon1", KEY_1], ["weapon2", KEY_2]]:
 		_bind_key(binding[0], binding[1])
 	_bind_key("pause", KEY_ESCAPE, false)
 	if not InputMap.has_action("fire"):
@@ -655,7 +672,7 @@ func _configure_inputs() -> void:
 		axis.axis = binding[1]
 		axis.axis_value = binding[2]
 		_bind_joy_event(binding[0], axis)
-	for binding: Array in [["jump", JOY_BUTTON_A], ["reload", JOY_BUTTON_X], ["interact", JOY_BUTTON_Y], ["scan", JOY_BUTTON_RIGHT_SHOULDER], ["weapon1", JOY_BUTTON_LEFT_SHOULDER], ["weapon2", JOY_BUTTON_DPAD_RIGHT], ["sprint", JOY_BUTTON_LEFT_STICK], ["pause", JOY_BUTTON_START], ["ui_accept", JOY_BUTTON_A], ["ui_up", JOY_BUTTON_DPAD_UP], ["ui_down", JOY_BUTTON_DPAD_DOWN], ["ui_left", JOY_BUTTON_DPAD_LEFT], ["ui_right", JOY_BUTTON_DPAD_RIGHT]]:
+	for binding: Array in [["flashlight", JOY_BUTTON_RIGHT_STICK], ["jump", JOY_BUTTON_A], ["reload", JOY_BUTTON_X], ["interact", JOY_BUTTON_Y], ["scan", JOY_BUTTON_RIGHT_SHOULDER], ["weapon1", JOY_BUTTON_LEFT_SHOULDER], ["weapon2", JOY_BUTTON_DPAD_RIGHT], ["sprint", JOY_BUTTON_LEFT_STICK], ["pause", JOY_BUTTON_START], ["ui_accept", JOY_BUTTON_A], ["ui_up", JOY_BUTTON_DPAD_UP], ["ui_down", JOY_BUTTON_DPAD_DOWN], ["ui_left", JOY_BUTTON_DPAD_LEFT], ["ui_right", JOY_BUTTON_DPAD_RIGHT]]:
 		var button := InputEventJoypadButton.new()
 		button.button_index = binding[1]
 		_bind_joy_event(binding[0], button)
@@ -677,7 +694,7 @@ func set_layout(use_azerty: bool) -> void:
 
 func _update_controls_label() -> void:
 	if is_instance_valid(controls_label):
-		controls_label.text = "1 / 2 Armes • R Recharger • %s ÉCHO • E Interagir • TAB Sac • ÉCHAP Pause" % ("A" if azerty else "Q")
+		controls_label.text = "1 / 2 Armes • R Recharger • %s ÉCHO • E Interagir • F / R3 Lampe • TAB Sac • ÉCHAP Pause" % ("A" if azerty else "Q")
 
 func _bind_key(action: String, key: Key, physical: bool = true) -> void:
 	if not InputMap.has_action(action):
@@ -694,6 +711,8 @@ func _bind_key(action: String, key: Key, physical: bool = true) -> void:
 
 func set_quality(low: bool) -> void:
 	low_quality = low
+	if is_instance_valid(player):
+		player.set_flashlight_quality(low)
 	if is_instance_valid(world):
 		world.set_quality(low)
 	if is_instance_valid(edge_smoothing):

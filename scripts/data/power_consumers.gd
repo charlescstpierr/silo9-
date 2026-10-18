@@ -19,6 +19,7 @@ var closure_query := PhysicsShapeQueryParameters3D.new()
 var _box := BoxMesh.new()
 
 func build(config: Spec, body: StaticBody3D, palette: Dictionary) -> void:
+	process_priority = -1
 	spec = config
 	breaker = body
 	for child: Node in breaker.get_children():
@@ -66,7 +67,6 @@ func build(config: Spec, body: StaticBody3D, palette: Dictionary) -> void:
 	airflow = sound(fan, Vector3.ZERO, tone(1.0, true), -31, 9)
 	alarm = sound(self, spec.alarm_position, tone(spec.alarm_duration, false), -13, 16)
 	alarm_lens = part(self, spec.alarm_position, Vector3(0.35, 0.16, 0.2), palette.glow)
-	alarm_lens.visible = false
 	var query_shape := BoxShape3D.new()
 	query_shape.size = Vector3(1.0, 3.4, 0.35)
 	var clearance := BoxShape3D.new()
@@ -137,14 +137,12 @@ func cut_alarm() -> bool:
 	if cooldown_remaining > 0: return false
 	cooldown_remaining = spec.alarm_cooldown
 	alarm_remaining = spec.alarm_duration
-	alarm_lens.visible = true
 	alarm.play()
 	return true
 
 func stop_alarm() -> void:
 	alarm_remaining = 0
 	alarm.stop()
-	alarm_lens.visible = false
 
 func _pose_leaves(value: bool) -> void:
 	closed = value

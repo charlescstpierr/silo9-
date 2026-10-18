@@ -1,0 +1,123 @@
+..FFFFFFFFFFFF............
+======================================================================
+FAIL: test_cost_clock_accepts_long_initial_unmeasured_gap (__main__.ProofValidation.test_cost_clock_accepts_long_initial_unmeasured_gap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 106, in test_cost_clock_accepts_long_initial_unmeasured_gap
+    self.assertEqual(validate_result(report, 0, ''), [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['cost before/after duration mismatch', 'c[109 chars]tch'] != []
+
+First list contains 4 additional elements.
+First extra element 0:
+'cost before/after duration mismatch'
+
++ []
+- ['cost before/after duration mismatch',
+-  'cost before/after duration mismatch',
+-  'cost before/after duration mismatch',
+-  'cost before/after duration mismatch']
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='missing_start')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='missing_end')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='sum_mismatch')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='before_start')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='after_end')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='short')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='rounding_too_long')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='noninteger')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='bool')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='nan')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_clock_rejects_forged_bounds_and_duration (__main__.ProofValidation.test_cost_clock_rejects_forged_bounds_and_duration) (problem='negative')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/cost-proof-tools/selfcheck_sector_power.py", line 128, in test_cost_clock_rejects_forged_bounds_and_duration
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.077s
+
+FAILED (failures=12)

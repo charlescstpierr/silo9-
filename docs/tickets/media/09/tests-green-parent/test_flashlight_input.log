@@ -1,0 +1,55 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Player exposes real camera-mounted Flashlight and guarded toggle/quality APIs
+PASS: New session starts with flashlight OFF
+PASS: Flashlight follows actual camera and lights world layer only
+PASS: Real InputMap exposes flashlight action
+PASS: WASD/ZQSD keep physical F and right-stick bindings
+PASS: Physical F dispatch toggles ON
+PASS: Key repeat cannot toggle again
+PASS: Right-stick dispatch toggles OFF
+PASS: WASD/ZQSD keep physical F and right-stick bindings
+PASS: Physical F dispatch toggles ON
+PASS: Key repeat cannot toggle again
+PASS: Right-stick dispatch toggles OFF
+PASS: Guarded toggle accepts live captured player with zero energy
+PASS: Zero battery still permits exploration lamp
+PASS: Visible HUD reports flashlight ON
+PASS: Flashlight consumes no battery, emits no noise, never discovers mandatory relay
+PASS: Real lamp transforms with camera orientation
+PASS: Quality retains flashlight intent
+PASS: Exploration shadow follows Main quality
+PASS: Active scene stays within exploration shadow budget
+PASS: Quality retains flashlight intent
+PASS: Exploration shadow follows Main quality
+PASS: Active scene stays within exploration shadow budget
+PASS: Quality retains flashlight intent
+PASS: Exploration shadow follows Main quality
+PASS: Active scene stays within exploration shadow budget
+PASS: Quality retains flashlight intent
+PASS: Exploration shadow follows Main quality
+PASS: Active scene stays within exploration shadow budget
+PASS: Toggle refuses inactive player in pause
+PASS: Modal F press retains previous light state
+PASS: Held F cannot activate after modal resume
+PASS: Fresh press after release rearms flashlight
+PASS: Flashlight can be switched back on after modal
+PASS: Toggle refuses inactive player in settings
+PASS: Modal F press retains previous light state
+PASS: Held F cannot activate after modal resume
+PASS: Fresh press after release rearms flashlight
+PASS: Flashlight can be switched back on after modal
+PASS: Toggle refuses inactive player in inventory
+PASS: Modal F press retains previous light state
+PASS: Held F cannot activate after modal resume
+PASS: Fresh press after release rearms flashlight
+PASS: Flashlight can be switched back on after modal
+PASS: Toggle refuses freely released cursor even if player remains active
+PASS: Free-cursor key does not toggle
+PASS: Flashlight stays transient outside save schema3
+PASS: Loading creates a new player with lamp OFF
+PASS: Replacement player can activate lamp
+PASS: New game resets previously enabled lamp
+PASS: Death extinguishes flashlight
+PASS: Dead player cannot activate flashlight
+FLASHLIGHT INPUT FAILURES: 0

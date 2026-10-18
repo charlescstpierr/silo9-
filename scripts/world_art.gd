@@ -4,7 +4,6 @@ extends Node3D
 const Spec = preload("res://scripts/data/circuit_spec.gd")
 const PowerMaterials = preload("res://scripts/data/power_materials.gd")
 var power_materials: PowerMaterials
-var focus_color := Color("cce4ef")
 var palette: Dictionary = {}
 var batches: Dictionary = {}
 var asset_batches: Dictionary = {}
@@ -12,8 +11,6 @@ var prepared_meshes: Dictionary = {}
 var prepared_materials: Dictionary = {}
 var surfaces: Dictionary = {}
 var decor_groups: Array[MeshInstance3D] = []
-var shadow_key: SpotLight3D
-var focused_z: float = INF
 var core_rotor: Node3D
 var mesh_box := BoxMesh.new()
 var mesh_pipe := CylinderMesh.new()
@@ -82,7 +79,6 @@ func build() -> void:
 	_flush()
 	_flush_assets()
 	_commit_surfaces()
-	_shadow_light()
 
 func _part(shape: String, pos: Vector3, size: Vector3, material: String, angles: Vector3 = Vector3.ZERO) -> void:
 	var bucket: int = clampi(int((-pos.z + 10.0) / 20.0), 0, 4)
@@ -166,9 +162,8 @@ func _walls_and_deck() -> void:
 			_part("pipe", Vector3(side * 8.6,4.15,z + 1.8), Vector3(0.5,0.14,0.5), "rubber", Vector3(PI/2,0,0))
 		if z < -54:
 			_part("box", Vector3(0,0.018,z), Vector3(3.8,0.025,3.85), "grate")
-	for z in [-5,-22,-42,-63,-73]:
+	for z in [6,-5,-22,-42,-63,-73]:
 		_part("box", Vector3(0,4.82,z), Vector3(4.35,0.24,0.65), "rubber")
-		_part("box", Vector3(0,4.68,z), Vector3(3.8,0.08,0.24), "glow")
 		for x in [-1.6,-0.8,0.0,0.8,1.6]:
 			_part("box", Vector3(x,4.62,z), Vector3(0.045,0.12,0.45), "steel")
 
@@ -240,7 +235,6 @@ func _reactor() -> void:
 		var z: float = -72 + cos(angle)*1.3
 		_part("pipe", Vector3(x,2.1,z), Vector3(0.12,2.9,0.12), "steel")
 	_part("pipe", Vector3(0,4.3,-72), Vector3(0.65,1.4,0.65), "steel")
-	_part("ring", Vector3(0,2.5,-72), Vector3(1.1,0.3,1.1), "cyan")
 	_part("ring", Vector3(0,0.62,-72), Vector3(1.6,0.5,1.6), "cyan")
 	_part("box", Vector3(0,3.5,-77.65), Vector3(8.5,2.6,0.12), "grate")
 
@@ -379,37 +373,6 @@ func build_core(parent: Node3D) -> void:
 func _process(delta: float) -> void:
 	if is_instance_valid(core_rotor) and core_rotor.is_visible_in_tree():
 		core_rotor.rotation.y += delta * 0.35
-
-func _shadow_light() -> void:
-	shadow_key = SpotLight3D.new()
-	shadow_key.rotation_degrees.x = -90
-	shadow_key.spot_range = 12
-	shadow_key.spot_angle = 58
-	shadow_key.spot_attenuation = 0.8
-	shadow_key.shadow_enabled = true
-	shadow_key.shadow_bias = 0.12
-	shadow_key.shadow_normal_bias = 1.2
-	shadow_key.light_cull_mask = 1
-	add_child(shadow_key)
-	update_focus(Vector3(0,0,7))
-
-func update_focus(pos: Vector3) -> void:
-	if shadow_key == null: return
-	var z: float = 6 if pos.z > 2 else (-5 if pos.z > -14 else (-22 if pos.z > -34 else (-42 if pos.z > -54 else (-63 if pos.z > -68 else -73))))
-	if z == focused_z: return
-	focused_z = z
-	shadow_key.position = Vector3(-1.3,4.5,z)
-	shadow_key.rotation_degrees = Vector3(-90,0,0)
-	focus_color = Color("ffe0bb") if z in [6.0,-22.0,-42.0,-63.0] else Color("b9e7f3")
-	if z == 6:
-		shadow_key.position = Vector3(1.5,4.5,6)
-		shadow_key.look_at(Vector3(3.8,0.8,4), Vector3.UP)
-	elif z == -22:
-		shadow_key.position = Vector3(3.0,4.5,-24)
-		shadow_key.look_at(Vector3(6.6,1.1,-27), Vector3.UP)
-	elif z == -42:
-		shadow_key.position = Vector3(-3.5,4.5,-41)
-		shadow_key.look_at(Vector3(-7,0.7,-43), Vector3.UP)
 
 func set_quality(low: bool) -> void:
 	for group in decor_groups:

@@ -1,0 +1,62 @@
+{
+  "exit": 0,
+  "source_unchanged": true,
+  "validation_errors": [],
+  "head": "653e2a79c7f36e9ac7422335c85cef3b937ed0f9",
+  "windows": [
+    {
+      "label": "core_off",
+      "frames": 153,
+      "intervals": 152,
+      "sum_ms": 6029.608,
+      "bounds_ms": 6029.608,
+      "last_ms": 34.695,
+      "initial_unmeasured_gap_ms": 35.774,
+      "end_to_after_ms": 17.175,
+      "same_frame_identity": true,
+      "bounds_enclosed": true
+    },
+    {
+      "label": "core_on",
+      "frames": 135,
+      "intervals": 134,
+      "sum_ms": 6025.345,
+      "bounds_ms": 6025.345,
+      "last_ms": 38.553,
+      "initial_unmeasured_gap_ms": 46.33,
+      "end_to_after_ms": 10.9,
+      "same_frame_identity": true,
+      "bounds_enclosed": true
+    },
+    {
+      "label": "maintenance_alarm_off",
+      "frames": 107,
+      "intervals": 106,
+      "sum_ms": 6006.178,
+      "bounds_ms": 6006.178,
+      "last_ms": 52.033,
+      "initial_unmeasured_gap_ms": 52.262,
+      "end_to_after_ms": 10.848,
+      "same_frame_identity": true,
+      "bounds_enclosed": true
+    },
+    {
+      "label": "maintenance_alarm_on",
+      "frames": 101,
+      "intervals": 100,
+      "sum_ms": 6039.22,
+      "bounds_ms": 6039.22,
+      "last_ms": 58.147,
+      "initial_unmeasured_gap_ms": 53.477,
+      "end_to_after_ms": 13.151,
+      "same_frame_identity": true,
+      "bounds_enclosed": true
+    }
+  ],
+  "artifacts": {
+    "engine": "8d106cbe6144c2dc7e881d61d2429c1a8a76e6b22ef48bd5e48dcf934953f71e",
+    "wrapper": "3ef85d5266ae6702ac5d5e4ab2d6c82f850a54e338b71799295fe543181235e4",
+    "probe": "de78246bd9cdb7b9ea67ea8fd15becd5ec8e9ab0e2f41a3ddc07f19275d1976c"
+  },
+  "purpose": "diagnostic tool check, excluded from performance delivery"
+}

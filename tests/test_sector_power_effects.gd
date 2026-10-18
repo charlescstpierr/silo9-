@@ -1,5 +1,7 @@
 extends "res://tests/power_fixture.gd"
 
+var light_reference: Dictionary = {}
+
 func _initialize() -> void:
 	call_deferred("run")
 
@@ -11,19 +13,25 @@ func poses(node: Node) -> Dictionary:
 
 func assert_lights(low: bool) -> void:
 	check(world.lights.size() == 9, "Composition preserves nine real Omni lights")
-	for index: int in world.lights.size():
-		var light: OmniLight3D = world.lights[index]
-		var z: float = light.global_position.z
-		var powered: bool = on(&"maintenance") if z <= -14 and z > -34 else (on(&"archives") if z <= -34 and z > -54 else true)
-		check(light.visible == (powered and (not low or index < 6)), "Circuit and quality compose light visibility %d" % index)
-		var base: float = (2.1 if low else 1.3) if index < 6 else (3.0 if index == 8 else 1.5)
-		check(is_equal_approx(light.light_energy, base if powered else 0.0), "Circuit and quality compose energy without drift %d" % index)
+	for light: OmniLight3D in world.lights:
+		if str(light.name).begins_with("alarm_"): continue
+		var id: String = str(light.name).trim_prefix("ceiling_")
+		var powered: bool = on(StringName(id)) if id in ["maintenance", "archives"] else true
+		var expected: bool = powered and (not low or light.name != &"reactor")
+		check(light.visible == expected, "Circuit and quality compose visibility: " + str(light.name))
+		check(is_equal_approx(light.light_energy, light_reference[low][light.get_instance_id()] if expected else 0.0), "Composition restores measured source amplitude without drift: " + str(light.name))
 
 func run() -> void:
 	if not await prepare():
 		await finish()
 		return
 	world.set_quality(false)
+	if world.has_method("set_reduced_light_effects"): world.call("set_reduced_light_effects", true)
+	for low: bool in [true, false]:
+		world.set_quality(low)
+		var levels: Dictionary = {}
+		for light: OmniLight3D in world.lights: levels[light.get_instance_id()] = light.light_energy
+		light_reference[low] = levels
 	var initial: Dictionary = material_values()
 	var initial_nodes: int = world.find_children("*", "AudioStreamPlayer3D", true, false).size()
 	command(&"maintenance", false)
@@ -46,20 +54,17 @@ func run() -> void:
 		world.set_quality(low)
 		world.refresh()
 		assert_lights(low)
-	player.position = Vector3(0, 0, -22)
-	await create_timer(0.6).timeout
-	check(not world.art.shadow_key.visible and is_zero_approx(world.art.shadow_key.light_energy), "Focus spot stays off inside unpowered maintenance")
 	command(&"maintenance", true)
-	check(world.art.shadow_key.visible and world.art.shadow_key.light_energy > 0, "Focus spot resumes when its circuit returns")
+	assert_lights(false)
 	world.set_quality(true)
-	check(not world.art.shadow_key.visible, "Low quality overrides powered spot visibility")
+	assert_lights(true)
 	world.set_quality(false)
 	command(&"maintenance", false)
 	player.position = Vector3(0, 0, -60)
 	await create_timer(0.65).timeout
 	check(world.colossus_triggered, "Colossus event ran in the real world")
 	for light: OmniLight3D in world.lights:
-		if light.global_position.z <= -14 and light.global_position.z > -54:
+		if light.name in [&"ceiling_maintenance", &"ceiling_archives"]:
 			check(not light.visible and is_zero_approx(light.light_energy), "Colossus cannot revive a cut circuit")
 	await create_timer(1.2).timeout
 	assert_lights(false)
@@ -104,6 +109,7 @@ func run() -> void:
 	world.set_quality(true)
 	world.set_quality(false)
 	for light: OmniLight3D in world.lights:
+		if str(light.name).begins_with("alarm_"): continue
 		check(light.light_color.is_equal_approx(Color("63e9e0")), "Ending tint survives circuit and quality changes")
 	for enemy: CharacterBody3D in world.enemies:
 		check(not enemy.is_physics_processing(), "Restoring power never reactivates N7 ending enemies")

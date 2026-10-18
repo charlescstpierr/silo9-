@@ -1,0 +1,203 @@
+{
+  "command": [
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09/builds/linux/SILO9.x86_64",
+    "--display-driver",
+    "x11",
+    "--rendering-method",
+    "gl_compatibility",
+    "--audio-driver",
+    "Dummy",
+    "--resolution",
+    "1280x720",
+    "--position",
+    "0,0"
+  ],
+  "binary_sha256": "a79cee3a0ed5584735474ee427e61328eafb7e210c753effd32becc3be43869a",
+  "events": [
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "move",
+        "300,360",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329334.9487739
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "click",
+        "300,360",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329335.4157252
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "key",
+        "w",
+        "--display",
+        ":100",
+        "--duration",
+        "2.2"
+      ],
+      "exit_code": 0,
+      "unix": 1792329339.0636442
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "key",
+        "f",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329339.9809625
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "key",
+        "q",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329340.8951645
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "key",
+        "Escape",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329341.8418148
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "key",
+        "Escape",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329342.7274857
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "key",
+        "f",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329343.6333723
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "key",
+        "Escape",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329344.557546
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "move",
+        "300,418",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329345.2733252
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "click",
+        "300,418",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329345.7372751
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "move",
+        "300,590",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329346.888044
+    },
+    {
+      "command": [
+        "python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/tools/x11_input.py",
+        "click",
+        "300,590",
+        "--display",
+        ":100",
+        "--duration",
+        "0.1"
+      ],
+      "exit_code": 0,
+      "unix": 1792329347.3657792
+    }
+  ],
+  "exit_code": 0,
+  "game_source_head": "653e2a79c7f36e9ac7422335c85cef3b937ed0f9",
+  "limits": "Exported Linux binary, native menu/movement/F/scan/pause/resume/quit smoke only; no full mission and no Windows execution. Screenshots require visual inspection."
+}

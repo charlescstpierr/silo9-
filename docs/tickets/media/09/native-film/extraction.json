@@ -1,0 +1,18 @@
+{
+  "command": [
+    "ffmpeg",
+    "-v",
+    "error",
+    "-i",
+    ".cstack/orchestrate/silo9/issue09/native-film/mother-final.mp4",
+    "-vf",
+    "fps=1/6",
+    ".cstack/orchestrate/silo9/issue09/native-film/frames/frame-%02d.png"
+  ],
+  "exit_code": 0,
+  "tool_session": 48317,
+  "video_sha256": "146d3107abf61b66954414edd5251de4c0635959e8553ea22a5f12e7f5f28ccd",
+  "frames": 12,
+  "cadence_seconds": 6,
+  "limits": "Default fps filter rounding; report image numbers and nominal sampling cadence, not exact source-frame timestamps. No continuous viewing."
+}

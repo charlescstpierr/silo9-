@@ -1,0 +1,98 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: ADS enters gradually on physical time
+PASS: zero-delta physics/render/recompose do not advance ADS
+PASS: mid-entry release reverses continuously
+PASS: release returns exactly to current hip FOV
+PASS: 50 irregular ADS cycles settle both endpoints without cumulative zoom
+PASS: 50 cycles retain nodes, mesh resources and material resources
+PASS: fixture reaches READY
+PASS: weapon resource exposes a positive configurable ADS entry duration
+PASS: Player exposes configure_aim
+PASS: changing resource entry duration changes actual half-time zoom
+PASS: changed entry duration reaches ADS at configured time
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: entry shot accepted
+PASS: release during recoil restores current hip FOV without aim-axis drift
+PASS: fully aimed shot accepted
+PASS: Player exposes configure_aim
+PASS: recoil return uses newly applied base and zoom instead of captured old FOV
+PASS: release after option change restores new base
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: Player exposes configure_aim
+PASS: actual yaw/pitch obey configured ADS mouse factor 0.2
+PASS: sensitivity proof has physical sights
+PASS: sensitivity change and mouse look preserve stable sight alignment
+PASS: release restores hip sensitivity
+PASS: Player exposes configure_aim
+PASS: actual yaw/pitch obey configured ADS mouse factor 1.0
+PASS: sensitivity proof has physical sights
+PASS: sensitivity change and mouse look preserve stable sight alignment
+PASS: release restores hip sensitivity
+PASS: ADS-aware mouse retains pitch clamp
+PASS: ready ADS overrides sprint with 4m/s walking
+PASS: crouched ADS retains 2.2m/s speed
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: d9_reload accepts manipulation and blocks firing
+PASS: blocked fire during d9_reload has no debit
+PASS: d9_reload starts without an instantaneous FOV jump
+PASS: d9_reload exits smoothly through HIDDEN/handling without a camera reset jump
+PASS: d9_reload returns to ADS at READY when aim remains held
+PASS: d9_reload restores reachable hand contacts
+PASS: ADS reload conserves D9 rounds
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: arc_reload accepts manipulation and blocks firing
+PASS: blocked fire during arc_reload has no debit
+PASS: arc_reload starts without an instantaneous FOV jump
+PASS: arc_reload exits smoothly through HIDDEN/handling without a camera reset jump
+PASS: arc_reload returns to ADS at READY when aim remains held
+PASS: arc_reload restores reachable hand contacts
+PASS: ADS cell manipulation transfers exactly one cell
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: cell accepts manipulation and blocks firing
+PASS: blocked fire during cell has no debit
+PASS: cell starts without an instantaneous FOV jump
+PASS: cell exits smoothly through HIDDEN/handling without a camera reset jump
+PASS: cell returns to ADS at READY when aim remains held
+PASS: cell restores reachable hand contacts
+PASS: ADS cell manipulation transfers exactly one cell
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: switch accepts manipulation and blocks firing
+PASS: blocked fire during switch has no debit
+PASS: switch starts without an instantaneous FOV jump
+PASS: switch exits smoothly through HIDDEN/handling without a camera reset jump
+PASS: switch returns to ADS at READY when aim remains held
+PASS: switch restores reachable hand contacts
+PASS: ADS switch binds once and preserves resources
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: full D9 magazine refuses reload
+PASS: refused reload retains ADS target
+PASS: rapid ADS switches converge to final requested READY weapon
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: inactive purges ADS camera channel
+PASS: inactive held RMB cannot reactivate ADS after interruption
+PASS: inactive fresh RMB after release rearms ADS
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: teleport purges ADS camera channel
+PASS: teleport held RMB cannot reactivate ADS after interruption
+PASS: teleport fresh RMB after release rearms ADS
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: capture purges ADS camera channel
+PASS: capture held RMB cannot reactivate ADS after interruption
+PASS: capture fresh RMB after release rearms ADS
+PASS: fixture reaches READY
+PASS: Player exposes configure_aim
+PASS: death purges ADS camera channel
+ADS TRANSITIONS FAILURES: 0

@@ -1,0 +1,110 @@
+{
+  "runs": [
+    {
+      "ending": "mother",
+      "health": 100.0,
+      "travelled_m": 193.181754376739,
+      "phase": 4,
+      "defeated": [
+        "sentinel_1",
+        "crawler_1",
+        "crawler_2",
+        "sentinel_2",
+        "sentinel_3",
+        "crawler_3"
+      ],
+      "shots": 15,
+      "run": "native-mother-final",
+      "head": "653e2a79c7f36e9ac7422335c85cef3b937ed0f9",
+      "exit": 0,
+      "source_unchanged": true,
+      "errors": [],
+      "flashlight": [
+        {
+          "id": "flashlight_native_f",
+          "native_exit": 0,
+          "intent_before": false,
+          "intent_after": true,
+          "visible_before": false,
+          "visible_after": true
+        }
+      ],
+      "breaker_commands": 6
+    },
+    {
+      "ending": "n7",
+      "health": 70.0,
+      "travelled_m": 187.371201389935,
+      "phase": 4,
+      "defeated": [
+        "sentinel_1",
+        "crawler_1",
+        "crawler_2",
+        "sentinel_2",
+        "sentinel_3",
+        "crawler_3"
+      ],
+      "shots": 15,
+      "run": "native-n7-low-final",
+      "head": "653e2a79c7f36e9ac7422335c85cef3b937ed0f9",
+      "exit": 0,
+      "source_unchanged": true,
+      "errors": [],
+      "flashlight": [
+        {
+          "id": "flashlight_native_f",
+          "native_exit": 0,
+          "intent_before": false,
+          "intent_after": true,
+          "visible_before": false,
+          "visible_after": true
+        }
+      ],
+      "breaker_commands": 6
+    }
+  ],
+  "recording": {
+    "ffmpeg_command": [
+      "ffmpeg",
+      "-hide_banner",
+      "-loglevel",
+      "warning",
+      "-f",
+      "x11grab",
+      "-video_size",
+      "1280x720",
+      "-framerate",
+      "15",
+      "-i",
+      ":100",
+      "-an",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "ultrafast",
+      "-crf",
+      "23",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/native-film/mother-final.mp4"
+    ],
+    "probe_command": [
+      "python3",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/prove_sector_power.py",
+      "--project",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09",
+      "--godot",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--output",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/native-mother-final",
+      "--mode",
+      "mission",
+      "--ending",
+      "mother",
+      "--require-circuits",
+      "--require-lighting"
+    ],
+    "ffmpeg_exit": 0,
+    "probe_exit": 0
+  },
+  "outer_session_exit": 143,
+  "outer_session_note": "Tool session27142 reported143 after printing N7_LOW0. Both engine manifests and subprocess return values were0; film writer0 and full decode0. Cause of outer status not established."
+}

@@ -38,7 +38,7 @@ Les commandes reproductibles utilisent `.tools/Godot_v4.7.2-stable_linux.x86_64`
 
 `DISPLAY=:99 python3 tools/prove_arc_cell.py --inspect --film` produit les rendus et la vidéo. `--measure --baseline <archive-ef8350b> --runs 5` effectue les paires alternées. La baseline doit être importée par le même Godot avant la mesure. Les bruts sont dans `.cstack/issue-04`.
 
-La preuve clavier/souris native et la livraison distante appartiennent au coordinateur. Aucun résultat GPU matériel, Windows ou comparaison Fortnite n'est déduit de ce serveur llvmpipe.
+Aucun résultat GPU matériel, Windows ou comparaison Fortnite n'est déduit de ce serveur llvmpipe.
 
 ## Médias livrés
 
@@ -71,3 +71,11 @@ L'ARC prêt ajoute 13 appels de rendu et 1 088 triangles. Le second appel `updat
 Un diagnostic séparé, exclu des cinq paires, a enregistré les threads avec `pidstat`: médiane 459,5 % CPU pour Godot, dont 419 % pour les threads llvmpipe et 42 % pour le thread principal, sur huit CPU logiques. Ce diagnostic a précédé le dernier ajustement de prise. Il identifie le rendu logiciel comme consommateur dominant dans cette scène. Les valeurs d'environ 100 ms par image décrivent ce serveur, pas une cible GPU matériel.
 
 Les [résultats complets](media/04/performance.json), les [manifestes par essai](media/04/performance), la [méthode](media/04/benchmark-method.md) et le [diagnostic CPU](media/04/profile-summary.json) accompagnent ce tableau. Les fichiers de production des captures, du film et des cinq essais candidat correspondent aux mêmes empreintes `d60db49`.
+
+## Vérification finale par le coordinateur
+
+`bash tools/verify.sh` passe les 21 suites sur le runtime `d60db49`, sans erreur ni avertissement dans les logs de tests. Le parcours de mission traverse 184,2 m, tire 15 fois et atteint les deux conclusions, sans échec. Les [sorties complètes](media/04/parent-full-suite.log) conservent les résultats. Le commit de médias `e27a93e` ne change pas la production.
+
+Le coordinateur a ensuite piloté le jeu normal avec le clavier et la souris X11. Il a inspecté les captures et les sauvegardes F5. R, B sur le terrain, B dans l'inventaire et le bouton cliqué utilisent le transfert animé. Le D9 revient après B. Sans cellule, l'inventaire reste ouvert. La pause et la sélection manuelle avant transfert conservent les ressources. F9 restaure les comptes sauvegardés avant comme après le transfert. Le déplacement jusqu'à la borne du refuge, la visée à la souris et E rétablissent 100 énergie avec zéro cellule.
+
+Les [preuves natives et comptes](media/04/native/verification.json), la [recharge en cours](media/04/native/03-arc-extraction.png), le [retour D9](media/04/native/09-returned-d9.png), le [refus sans cellule](media/04/native/14-inventory-refused.png) et la [borne visée](media/04/native/refuge-target.png) accompagnent ces observations. Le premier affichage virtuel s'était fermé avant les entrées; aucun résultat n'est retenu de cet essai. Le parcours réussi utilise l'affichage détenu par le coordinateur et le jeu se ferme normalement avec code 0. Le pilote llvmpipe signale que la synchronisation verticale est indisponible.

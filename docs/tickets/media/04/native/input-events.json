@@ -1,0 +1,186 @@
+[
+  {
+    "seconds": 0.15,
+    "event": "screenshot",
+    "name": "00-menu"
+  },
+  {
+    "seconds": 1.75,
+    "event": "observe_energy",
+    "expected": 100,
+    "exit": 0,
+    "receipt": "{\"ready\": true, \"energy\": 100, \"ocr\": \"ENERGIE 100/100\\n\", \"elapsed_s\": 1.36, \"source\": \"native X11 screenshot\"}"
+  },
+  {
+    "seconds": 1.751,
+    "event": "key",
+    "key": "q"
+  },
+  {
+    "seconds": 3.429,
+    "event": "observe_energy",
+    "expected": 80,
+    "exit": 0,
+    "receipt": "{\"ready\": true, \"energy\": 80, \"ocr\": \"ENERGIE 080/100\\n\", \"elapsed_s\": 1.313, \"source\": \"native X11 screenshot\"}"
+  },
+  {
+    "seconds": 3.429,
+    "event": "key",
+    "key": "2"
+  },
+  {
+    "seconds": 4.026,
+    "event": "key",
+    "key": "r"
+  },
+  {
+    "seconds": 4.965,
+    "event": "screenshot",
+    "name": "03-arc-extraction"
+  },
+  {
+    "seconds": 4.966,
+    "event": "key",
+    "key": "F5"
+  },
+  {
+    "seconds": 5.187,
+    "event": "saved_counts",
+    "energy": 80,
+    "cells": 2
+  },
+  {
+    "seconds": 8.21,
+    "event": "observe_energy",
+    "expected": 100,
+    "exit": 0,
+    "receipt": "{\"ready\": true, \"energy\": 100, \"ocr\": \"ENERGIE 100/100\\n\", \"elapsed_s\": 2.856, \"source\": \"native X11 screenshot\"}"
+  },
+  {
+    "seconds": 9.303,
+    "event": "screenshot",
+    "name": "05-arc-ready"
+  },
+  {
+    "seconds": 9.304,
+    "event": "key",
+    "key": "F9"
+  },
+  {
+    "seconds": 11.014,
+    "event": "observe_energy",
+    "expected": 80,
+    "exit": 0,
+    "receipt": "{\"ready\": true, \"energy\": 80, \"ocr\": \"ENERGIE 080/100\\n\", \"elapsed_s\": 1.378, \"source\": \"native X11 screenshot\"}"
+  },
+  {
+    "seconds": 11.015,
+    "event": "key",
+    "key": "Tab"
+  },
+  {
+    "seconds": 11.764,
+    "event": "screenshot",
+    "name": "07-inventory"
+  },
+  {
+    "seconds": 11.765,
+    "event": "key",
+    "key": "b"
+  },
+  {
+    "seconds": 15.776,
+    "event": "observe_energy",
+    "expected": 100,
+    "exit": 0,
+    "receipt": "{\"ready\": true, \"energy\": 100, \"ocr\": \"ENERGIE 100/100\\n\", \"elapsed_s\": 3.587, \"source\": \"native X11 screenshot\"}"
+  },
+  {
+    "seconds": 16.882,
+    "event": "screenshot",
+    "name": "09-returned-d9"
+  },
+  {
+    "seconds": 16.882,
+    "event": "key",
+    "key": "F5"
+  },
+  {
+    "seconds": 17.072,
+    "event": "saved_counts",
+    "energy": 100,
+    "cells": 1
+  },
+  {
+    "seconds": 17.072,
+    "event": "key",
+    "key": "q"
+  },
+  {
+    "seconds": 18.68,
+    "event": "observe_energy",
+    "expected": 80,
+    "exit": 0,
+    "receipt": "{\"ready\": true, \"energy\": 80, \"ocr\": \"ENERGIE 080/100\\n\", \"elapsed_s\": 1.261, \"source\": \"native X11 screenshot\"}"
+  },
+  {
+    "seconds": 18.68,
+    "event": "key",
+    "key": "b"
+  },
+  {
+    "seconds": 22.535,
+    "event": "observe_energy",
+    "expected": 100,
+    "exit": 0,
+    "receipt": "{\"ready\": true, \"energy\": 100, \"ocr\": \"ENERGIE 100/100\\n\", \"elapsed_s\": 3.46, \"source\": \"native X11 screenshot\"}"
+  },
+  {
+    "seconds": 23.336,
+    "event": "key",
+    "key": "F5"
+  },
+  {
+    "seconds": 23.562,
+    "event": "saved_counts",
+    "energy": 100,
+    "cells": 0
+  },
+  {
+    "seconds": 23.815,
+    "event": "screenshot",
+    "name": "12-field-returned-d9"
+  },
+  {
+    "seconds": 23.817,
+    "event": "key",
+    "key": "q"
+  },
+  {
+    "seconds": 25.484,
+    "event": "observe_energy",
+    "expected": 80,
+    "exit": 0,
+    "receipt": "{\"ready\": true, \"energy\": 80, \"ocr\": \"ENERGIE 080/100\\n\", \"elapsed_s\": 1.317, \"source\": \"native X11 screenshot\"}"
+  },
+  {
+    "seconds": 25.485,
+    "event": "key",
+    "key": "Tab"
+  },
+  {
+    "seconds": 26.089,
+    "event": "key",
+    "key": "b"
+  },
+  {
+    "seconds": 26.839,
+    "event": "screenshot",
+    "name": "14-inventory-refused"
+  },
+  {
+    "seconds": 26.839,
+    "event": "sequence_complete",
+    "requires_visual_review": true
+  }
+]

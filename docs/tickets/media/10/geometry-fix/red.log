@@ -1,0 +1,1781 @@
+COMMAND: PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 /home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/run_initial_tests.py
+test_aabb_overlap_without_triangle_overlap_is_accepted (test_geometry_check.GeometryCheck.test_aabb_overlap_without_triangle_overlap_is_accepted) ... ok
+test_collider_change_rejected (test_geometry_check.GeometryCheck.test_collider_change_rejected) ... ok
+test_complete_capture_passes_all_thirty_checks (test_geometry_check.GeometryCheck.test_complete_capture_passes_all_thirty_checks) ... ok
+test_edge_in_reserve_with_origin_outside (test_geometry_check.GeometryCheck.test_edge_in_reserve_with_origin_outside) ... ok
+test_empty_geometry_rejected (test_geometry_check.GeometryCheck.test_empty_geometry_rejected) ... ok
+test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) ... 
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=0, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=0, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=0, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=1, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=1, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=1, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=2, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=2, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=2, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=3, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=3, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=3, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=4, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=4, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=4, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=5, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=5, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=5, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=6, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=6, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=6, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=7, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=7, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=7, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=8, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=8, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=8, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=9, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=9, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=9, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=10, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=10, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=10, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=11, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=11, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=11, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=0, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=0, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=0, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=1, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=1, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=1, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=2, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=2, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=2, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=3, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=3, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=3, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=4, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=4, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=4, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=5, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=5, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=5, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=6, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=6, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=6, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=7, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=7, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=7, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=8, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=8, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=8, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=9, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=9, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=9, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=10, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=10, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=10, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=11, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=11, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=11, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=12, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=12, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=12, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=13, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=13, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=13, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=14, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=14, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=14, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=15, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=15, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=15, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=16, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=16, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=16, mode='extra') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=17, mode='remove') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=17, mode='replace') ... FAIL
+  test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=17, mode='extra') ... FAIL
+test_existing_hits_are_explicit_and_new_hit_is_regression (test_geometry_check.GeometryCheck.test_existing_hits_are_explicit_and_new_hit_is_regression) ... ok
+test_integral_json_float_counts_and_multimesh_supported (test_geometry_check.GeometryCheck.test_integral_json_float_counts_and_multimesh_supported) ... 
+  test_integral_json_float_counts_and_multimesh_supported (test_geometry_check.GeometryCheck.test_integral_json_float_counts_and_multimesh_supported) (value=-2) ... FAIL
+  test_integral_json_float_counts_and_multimesh_supported (test_geometry_check.GeometryCheck.test_integral_json_float_counts_and_multimesh_supported) (value=2) ... FAIL
+  test_integral_json_float_counts_and_multimesh_supported (test_geometry_check.GeometryCheck.test_integral_json_float_counts_and_multimesh_supported) (value=True) ... FAIL
+  test_integral_json_float_counts_and_multimesh_supported (test_geometry_check.GeometryCheck.test_integral_json_float_counts_and_multimesh_supported) (value=0.5) ... FAIL
+test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) ... 
+  test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='project') ... FAIL
+  test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='engine') ... FAIL
+  test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='source_sha256') ... FAIL
+  test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='measurement') ... FAIL
+  test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='targets') ... FAIL
+  test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='mesh_inventory') ... FAIL
+test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) ... 
+  test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) (change={'disabled': 'not a bool'}) ... FAIL
+  test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) (change={'disabled': 0}) ... FAIL
+  test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) (change={'margin': -10}) ... FAIL
+  test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) (change={'margin': True}) ... FAIL
+test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) ... FAIL
+test_malformed_inputs_fail_closed (test_geometry_check.GeometryCheck.test_malformed_inputs_fail_closed) ... ok
+test_plate_before_relay_rejected (test_geometry_check.GeometryCheck.test_plate_before_relay_rejected) ... ok
+test_plate_behind_target_accepted (test_geometry_check.GeometryCheck.test_plate_behind_target_accepted) ... ok
+test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) ... 
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='project', mode='missing') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='project', mode='empty') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='engine', mode='missing') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='engine', mode='empty') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='source_sha256', mode='missing') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='source_sha256', mode='empty') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='measurement', mode='missing') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='measurement', mode='empty') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='targets', mode='missing') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='targets', mode='empty') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='mesh_inventory', mode='missing') ... FAIL
+  test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='mesh_inventory', mode='empty') ... FAIL
+test_rotated_triangle_enters_reserve (test_geometry_check.GeometryCheck.test_rotated_triangle_enters_reserve) ... ok
+test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) ... 
+  test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) (key='mesh_instances', value=-999) ... FAIL
+  test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) (key='mesh_instances', value=0.5) ... FAIL
+  test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) (key='mesh_instances', value=True) ... FAIL
+  test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) (key='mesh_instances', value='1') ... FAIL
+  test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) (key='mesh_instances', value=None) ... FAIL
+test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) ... FAIL
+test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) ... 
+  test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) (mutation='missing') ... FAIL
+  test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) (mutation='duplicate') ... FAIL
+  test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) (mutation='wrong_aim') ... FAIL
+  test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) (mutation='bad_transform') ... FAIL
+  test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) (mutation='bad_eye') ... FAIL
+test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) ... 
+  test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='stats') ... FAIL
+  test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='inventory_count') ... FAIL
+  test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='inventory_path') ... FAIL
+  test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='inventory_visibility') ... FAIL
+  test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='inventory_range') ... FAIL
+  test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='inventory_kind') ... FAIL
+  test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='extra_mesh') ... FAIL
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=0, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=0, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=0, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=1, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=1, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=1, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=2, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=2, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=2, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=3, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=3, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=3, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=4, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=4, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=4, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=5, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=5, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=5, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=6, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=6, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=6, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=7, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=7, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=7, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=8, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=8, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=8, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=9, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=9, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=9, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=10, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=10, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=10, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=11, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=11, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='segments', index=11, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=0, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=0, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=0, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=1, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=1, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=1, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=2, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=2, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=2, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=3, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=3, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=3, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=4, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=4, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=4, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=5, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=5, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=5, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=6, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=6, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=6, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=7, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=7, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=7, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=8, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=8, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=8, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=9, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=9, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=9, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=10, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=10, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=10, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=11, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=11, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=11, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=12, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=12, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=12, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=13, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=13, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=13, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=14, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=14, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=14, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=15, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=15, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=15, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=16, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=16, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=16, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=17, mode='remove')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=17, mode='replace')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) (kind='volumes', index=17, mode='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 93, in test_exact_catalogue_required
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_integral_json_float_counts_and_multimesh_supported (test_geometry_check.GeometryCheck.test_integral_json_float_counts_and_multimesh_supported) (value=-2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 193, in test_integral_json_float_counts_and_multimesh_supported
+    self.assert_invalid(invalid)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_integral_json_float_counts_and_multimesh_supported (test_geometry_check.GeometryCheck.test_integral_json_float_counts_and_multimesh_supported) (value=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 193, in test_integral_json_float_counts_and_multimesh_supported
+    self.assert_invalid(invalid)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_integral_json_float_counts_and_multimesh_supported (test_geometry_check.GeometryCheck.test_integral_json_float_counts_and_multimesh_supported) (value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 193, in test_integral_json_float_counts_and_multimesh_supported
+    self.assert_invalid(invalid)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_integral_json_float_counts_and_multimesh_supported (test_geometry_check.GeometryCheck.test_integral_json_float_counts_and_multimesh_supported) (value=0.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 193, in test_integral_json_float_counts_and_multimesh_supported
+    self.assert_invalid(invalid)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='project')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 115, in test_invalid_capture_records
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='engine')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 115, in test_invalid_capture_records
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='source_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 115, in test_invalid_capture_records
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='measurement')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 115, in test_invalid_capture_records
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='targets')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 115, in test_invalid_capture_records
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) (key='mesh_inventory')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 115, in test_invalid_capture_records
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) (change={'disabled': 'not a bool'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 146, in test_malformed_collider_rejected
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) (change={'disabled': 0})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 146, in test_malformed_collider_rejected
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) (change={'margin': -10})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 146, in test_malformed_collider_rejected
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) (change={'margin': True})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 146, in test_malformed_collider_rejected
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 150, in test_malformed_collider_rejected
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='project', mode='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='project', mode='empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='engine', mode='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='engine', mode='empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='source_sha256', mode='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='source_sha256', mode='empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='measurement', mode='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='measurement', mode='empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='targets', mode='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='targets', mode='empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='mesh_inventory', mode='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) (key='mesh_inventory', mode='empty')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 104, in test_required_capture_fields
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) (key='mesh_instances', value=-999)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 158, in test_statistics_require_all_nonnegative_integral_counts
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) (key='mesh_instances', value=0.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 158, in test_statistics_require_all_nonnegative_integral_counts
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) (key='mesh_instances', value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 158, in test_statistics_require_all_nonnegative_integral_counts
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) (key='mesh_instances', value='1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 158, in test_statistics_require_all_nonnegative_integral_counts
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) (key='mesh_instances', value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 158, in test_statistics_require_all_nonnegative_integral_counts
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 161, in test_statistics_require_all_nonnegative_integral_counts
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) (mutation='missing')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 131, in test_target_catalogue_and_aim_consistency
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) (mutation='duplicate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 131, in test_target_catalogue_and_aim_consistency
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) (mutation='wrong_aim')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 131, in test_target_catalogue_and_aim_consistency
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) (mutation='bad_transform')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 131, in test_target_catalogue_and_aim_consistency
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) (mutation='bad_eye')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 131, in test_target_catalogue_and_aim_consistency
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='stats')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 181, in test_triangle_count_and_inventory_must_match_export
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='inventory_count')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 181, in test_triangle_count_and_inventory_must_match_export
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='inventory_path')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 181, in test_triangle_count_and_inventory_must_match_export
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='inventory_visibility')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 181, in test_triangle_count_and_inventory_must_match_export
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='inventory_range')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 181, in test_triangle_count_and_inventory_must_match_export
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='inventory_kind')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 181, in test_triangle_count_and_inventory_must_match_export
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) (mutation='extra_mesh')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 181, in test_triangle_count_and_inventory_must_match_export
+    self.assert_invalid(data)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 68, in assert_invalid
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.311s
+
+FAILED (failures=135)
+
+EXIT: 1

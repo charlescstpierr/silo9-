@@ -1,0 +1,26 @@
+COMMAND: PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s /home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools -p test_geometry_check.py -v
+test_aabb_overlap_without_triangle_overlap_is_accepted (test_geometry_check.GeometryCheck.test_aabb_overlap_without_triangle_overlap_is_accepted) ... ok
+test_collider_change_rejected (test_geometry_check.GeometryCheck.test_collider_change_rejected) ... ok
+test_complete_capture_passes_all_thirty_checks (test_geometry_check.GeometryCheck.test_complete_capture_passes_all_thirty_checks) ... ok
+test_edge_in_reserve_with_origin_outside (test_geometry_check.GeometryCheck.test_edge_in_reserve_with_origin_outside) ... ok
+test_empty_geometry_rejected (test_geometry_check.GeometryCheck.test_empty_geometry_rejected) ... ok
+test_exact_catalogue_required (test_geometry_check.GeometryCheck.test_exact_catalogue_required) ... ok
+test_existing_hits_are_explicit_and_new_hit_is_regression (test_geometry_check.GeometryCheck.test_existing_hits_are_explicit_and_new_hit_is_regression) ... ok
+test_integral_json_float_counts_and_multimesh_supported (test_geometry_check.GeometryCheck.test_integral_json_float_counts_and_multimesh_supported) ... ok
+test_invalid_capture_records (test_geometry_check.GeometryCheck.test_invalid_capture_records) ... ok
+test_malformed_collider_rejected (test_geometry_check.GeometryCheck.test_malformed_collider_rejected) ... ok
+test_malformed_inputs_fail_closed (test_geometry_check.GeometryCheck.test_malformed_inputs_fail_closed) ... ok
+test_plate_before_relay_rejected (test_geometry_check.GeometryCheck.test_plate_before_relay_rejected) ... ok
+test_plate_behind_target_accepted (test_geometry_check.GeometryCheck.test_plate_behind_target_accepted) ... ok
+test_required_capture_fields (test_geometry_check.GeometryCheck.test_required_capture_fields) ... ok
+test_rotated_triangle_enters_reserve (test_geometry_check.GeometryCheck.test_rotated_triangle_enters_reserve) ... ok
+test_statistics_require_all_nonnegative_integral_counts (test_geometry_check.GeometryCheck.test_statistics_require_all_nonnegative_integral_counts) ... ok
+test_target_catalogue_and_aim_consistency (test_geometry_check.GeometryCheck.test_target_catalogue_and_aim_consistency) ... ok
+test_triangle_count_and_inventory_must_match_export (test_geometry_check.GeometryCheck.test_triangle_count_and_inventory_must_match_export) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.116s
+
+OK
+
+EXIT: 0

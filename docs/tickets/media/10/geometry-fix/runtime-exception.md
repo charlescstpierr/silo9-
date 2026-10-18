@@ -1,0 +1,1 @@
+Avant modification de l’extracteur : aucun Godot/headless/X11 autorisé, runtime exclusif du builder selon le parent. La garde GDScript de catalogue sera inspectée statiquement. Son exécution et sa syntaxe restent non vérifiées jusqu’à libération explicite ; le vert Python ne sera pas présenté comme preuve GDScript. Aucun bypass de test ne sera ajouté.

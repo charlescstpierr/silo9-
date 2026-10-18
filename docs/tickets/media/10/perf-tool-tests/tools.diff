@@ -1,0 +1,281 @@
+--- route-proof-tools/probe_sector_power.gd
++++ perf-proof-tools/probe_sector_power.gd
+@@ -3,6 +3,9 @@
+ var app: Node
+ var output := ""
+ var mode := "perf"
++var flashlight_requested := false
++var perf_flashlight_before_warmup: Dictionary = {}
++var perf_flashlight_samples: Array[Dictionary] = []
+ var ending := "mother"
+ var display := ":100"
+ var require_lighting := false
+@@ -39,6 +42,7 @@
+ 		if argument == "--require-lighting": require_lighting = true
+ 		if argument == "--require-circuits": require_circuits = true
+ 		if argument == "--low": low = true
++		if argument == "--flashlight-on": flashlight_requested = true
+ 	run.call_deferred()
+ 
+ func check(ok: bool, message: String) -> bool:
+@@ -48,6 +52,7 @@
+ 	return ok
+ 
+ func run() -> void:
++	check(not flashlight_requested or mode == "perf", "--flashlight-on requires --mode perf")
+ 	check(DisplayServer.get_name().to_lower() == "x11", "X11 required")
+ 	check(RenderingServer.get_current_rendering_method() == "gl_compatibility", "Compatibility required")
+ 	check(RenderingServer.is_render_loop_enabled(), "render loop required")
+@@ -81,10 +86,17 @@
+ 		app.state.energy = 0
+ 		app.state.changed.emit()
+ 	if mode == "perf":
++		if flashlight_requested:
++			var flashlight := app.player.find_child("Flashlight", true, false) as SpotLight3D
++			if check(flashlight != null and app.player.has_method("toggle_flashlight"), "perf ON requires a physical flashlight"):
++				if app.player.get("flashlight_on") == false:
++					check(app.player.call("toggle_flashlight") == true, "perf flashlight toggle accepted")
++				check(app.player.get("flashlight_on") == true and flashlight.is_visible_in_tree(), "perf flashlight enabled before warmup")
+ 		for enemy in app.world.enemies:
+ 			enemy.queue_free()
+ 		app.world.enemies.clear()
+ 		await process_frame
++		perf_flashlight_before_warmup = {"flashlight": flashlight_observation(), "usec": Time.get_ticks_usec(), "stage": "before_warmup"}
+ 	await wait(2.0)
+ 	if require_lighting and mode in ["mission", "capture"] and failures.is_empty(): await native_flashlight_on()
+ 	var drawn_start := Engine.get_frames_drawn()
+@@ -99,7 +111,7 @@
+ 	check(drawn > 0, "no frames drawn")
+ 	if mode in ["perf", "mission", "capture"]: check(travelled >= 90.0 and waypoints >= 8, "route incomplete")
+ 	var report := {
+-		"schema": 2, "waypoint_positions": waypoint_positions,
++		"schema": 3 if mode == "perf" else 2, "waypoint_positions": waypoint_positions,
+ 		"require_lighting": require_lighting, "lighting_available": lighting_available,
+ 		"scene_inspection": mode in ["lighting", "lighting-perf"], "lighting_samples": lighting_samples, "cost_windows": cost_windows,
+ 		"final_observation": observation("final"), "mode": mode, "low_quality": low, "expected_ending": ending, "ending": app.state.ending,
+@@ -116,6 +128,10 @@
+ 		"scenario": "controlled poses; actors frozen alive; phase1 fixture; zero energy; colossus suppressed; no native journey" if mode in ["lighting", "lighting-perf"] else "refuge -> maintenance -> archives -> refuge; enemies removed; no circuit switching" if mode == "perf" else "fresh mission with live combat and native E interactions",
+ 		"limits": "Linux X11 only; no Windows or target GPU claim. Walking uses Input actions, yaw/camera scripted; E is native OS press/release. Perf is an isolated no-enemy bench, not full mission. Mission/capture timings include interactions and are not a comparative benchmark. Screenshots need visual review; they are not video. Dummy audio does not prove audible output. Mission/perf: no teleports after normal new_game spawn. Lighting modes: explicitly teleported scene inspection, frozen living actors, deterministic process advances, not a native journey. Lighting-perf measures only named isolated windows; global timing includes setup and is not comparative."
+ 	}
++	if mode == "perf":
++		report["flashlight_requested"] = flashlight_requested
++		report["perf_flashlight_before_warmup"] = perf_flashlight_before_warmup
++		report["perf_flashlight_samples"] = perf_flashlight_samples
+ 	var file := FileAccess.open(output + "/journey.json", FileAccess.WRITE)
+ 	if file == null:
+ 		printerr("cannot write journey.json")
+@@ -316,6 +332,13 @@
+ 	app.player.rotation.y = atan2(-offset.x, -offset.z)
+ 	app.player.camera.rotation.x = atan2(offset.y, Vector2(offset.x, offset.z).length())
+ 
++func flashlight_observation() -> Variant:
++	var flashlight := app.player.find_child("Flashlight", true, false) as SpotLight3D
++	if flashlight == null: return null
++	var actual := {"visible": flashlight.is_visible_in_tree(), "energy": flashlight.light_energy, "shadow": flashlight.shadow_enabled, "position": vec(flashlight.global_position), "mask": flashlight.light_cull_mask, "range": flashlight.spot_range}
++	if mode == "perf": actual["intent"] = app.player.get("flashlight_on")
++	return actual
++
+ func observation(label: String) -> Dictionary:
+ 	var consumers: Array[Dictionary] = []
+ 	var materials: Dictionary = {}
+@@ -336,10 +359,7 @@
+ 	var lights: Array[Dictionary] = []
+ 	for light in app.world.lights:
+ 		lights.append({"id": str(light.name), "position": vec(light.global_position), "visible": light.is_visible_in_tree(), "energy": light.light_energy, "color": str(light.light_color), "shadow": light.shadow_enabled, "mask": light.light_cull_mask, "range": light.omni_range})
+-	var flashlight: Node = app.player.find_child("Flashlight", true, false)
+-	var flashlight_actual: Variant = null
+-	if flashlight is SpotLight3D:
+-		flashlight_actual = {"visible": flashlight.is_visible_in_tree(), "energy": flashlight.light_energy, "shadow": flashlight.shadow_enabled, "position": vec(flashlight.global_position), "mask": flashlight.light_cull_mask, "range": flashlight.spot_range}
++	var flashlight_actual: Variant = flashlight_observation()
+ 	var living: Array[Dictionary] = []
+ 	for enemy in app.world.enemies:
+ 		if is_instance_valid(enemy) and enemy.health > 0: living.append({"name": str(enemy.name), "position": vec(enemy.global_position), "health": enemy.health, "visible": enemy.is_visible_in_tree()})
+@@ -371,6 +391,8 @@
+ func _process(_delta: float) -> bool:
+ 	if measuring:
+ 		var now := Time.get_ticks_usec()
++		if mode == "perf":
++			perf_flashlight_samples.append({"flashlight": flashlight_observation(), "usec": now, "stage": stage})
+ 		if previous_usec > 0:
+ 			intervals.append(float(now - previous_usec) / 1000.0)
+ 			stages.append(stage)
+--- route-proof-tools/prove_sector_power.py
++++ perf-proof-tools/prove_sector_power.py
+@@ -62,14 +62,14 @@
+     return errors
+ 
+ 
+-def validate_result(report, exit_code, log):
++def validate_result(report, exit_code, log, *, flashlight_requested=None):
+     try:
+-        return _validate_result(report, exit_code, log)
++        return _validate_result(report, exit_code, log, flashlight_requested)
+     except (TypeError, ValueError, AttributeError, KeyError, OverflowError, StopIteration):
+         return ['malformed proof report']
+ 
+ 
+-def _validate_result(report, exit_code, log):
++def _validate_result(report, exit_code, log, flashlight_requested=None):
+     errors = list(report.get('failures', ['missing failures field']))
+     if exit_code:
+         errors.append(f'engine exit {exit_code}')
+@@ -87,6 +87,24 @@
+         errors.append('drawn frames disagree with intervals')
+     if mode == 'perf' and (report.get('performance_valid') is not True or report.get('waypoint_positions') != PERF_ROUTE or report.get('waypoints_completed') != 9):
+         errors.append('historical route contract absent')
++    if mode == 'perf' and (flashlight_requested is not None or 'flashlight_requested' in report or report.get('schema', 0) >= 3):
++        requested = report['flashlight_requested']
++        if type(requested) is not bool or flashlight_requested is not None and requested is not flashlight_requested:
++            errors.append('requested perf flashlight scenario mismatch')
++        if report.get('schema') != 3:
++            errors.append('perf flashlight observation schema absent')
++        route = report['perf_flashlight_samples']
++        if len(route) != len(samples) + 1:
++            errors.append('perf flashlight observations do not cover measured callbacks')
++        observations = [report['perf_flashlight_before_warmup'], *route, report['final_observation']]
++        for actual in observations:
++            light = actual['flashlight']
++            if light is None and requested is False:
++                continue
++            if light.get('visible') is not requested or light.get('intent') is not requested:
++                errors.append('physical perf flashlight differs from request')
++            if requested and (not emitting(light) or light.get('shadow') is not (not report.get('low_quality', False))):
++                errors.append('physical perf flashlight emission/quality mismatch')
+     if mode in ('perf', 'mission', 'capture') and (report.get('travelled_m', 0) < 90 or report.get('waypoints_completed', 0) < 8):
+         errors.append('physical route incomplete')
+     if report.get('mode') in ('mission', 'capture'):
+@@ -208,8 +226,11 @@
+     p.add_argument('--require-circuits', action='store_true')
+     p.add_argument('--require-lighting', action='store_true')
+     p.add_argument('--low', action='store_true')
++    p.add_argument('--flashlight-on', action='store_true', help='perf only; enable the physical flashlight before warmup')
+     p.add_argument('--timeout', type=int, default=900)
+     a = p.parse_args()
++    if a.flashlight_on and a.mode != 'perf':
++        p.error('--flashlight-on requires --mode perf')
+     project, output = a.project.resolve(), a.output.resolve()
+     if output.exists():
+         p.error('output must be new to prevent stale evidence')
+@@ -228,9 +249,13 @@
+         command.append('--require-circuits')
+     if a.require_lighting:
+         command.append('--require-lighting')
++    if a.flashlight_on:
++        command.append('--flashlight-on')
+     if a.low:
+         command.append('--low')
+     manifest = {'artifacts_before': artifact_before, 'command': command, 'project': str(project), 'head': subprocess.check_output(['git', '-C', str(project), 'rev-parse', 'HEAD']).decode().strip(), 'probe_sha256': hashlib.sha256(probe.read_bytes()).hexdigest(), 'source_before': before, 'started_unix': time.time(), 'display': a.display, 'limits': 'Linux X11; renderer recorded by probe; no target GPU or Windows claim. Capture screenshots are not video or performance; Dummy audio does not prove audible output. No X server lifecycle changes.'}
++    if a.mode == 'perf':
++        manifest['flashlight_requested'] = a.flashlight_on
+     (output / 'manifest.json').write_text(json.dumps(manifest, indent=2))
+     with (output / 'engine.log').open('w') as log:
+         try:
+@@ -245,7 +270,7 @@
+         report = {}
+     if isinstance(report, dict):
+         report['require_lighting'] = a.require_lighting
+-    errors = validate_result(report, exit_code, (output / 'engine.log').read_text(errors='replace'))
++    errors = validate_result(report, exit_code, (output / 'engine.log').read_text(errors='replace'), flashlight_requested=a.flashlight_on if a.mode == 'perf' else None)
+     if not isinstance(report, dict):
+         report = {}
+     if report.get('mode') != a.mode or report.get('low_quality') is not a.low:
+--- route-proof-tools/selfcheck_sector_power.py
++++ perf-proof-tools/selfcheck_sector_power.py
+@@ -1,5 +1,8 @@
+ import unittest
+ import copy
++import subprocess
++import sys
++from pathlib import Path
+ from prove_sector_power import validate_result, LIGHT_IDS
+ 
+ 
+@@ -54,6 +57,88 @@
+         rows.append(row)
+     return report | {'mode': 'lighting-perf', 'lighting_samples': rows, 'cost_windows': windows}
+ 
++
++def perf_flashlight_fixture(enabled=True):
++    lamp = {'visible': enabled, 'intent': enabled, 'energy': 2.0, 'range': 16.0, 'mask': 1, 'shadow': True}
++    sample = {'usec': 1000000, 'stage': 'walk', 'flashlight': lamp}
++    report = valid() | {'schema': 3, 'flashlight_requested': enabled, 'low_quality': False,
++                        'perf_flashlight_before_warmup': copy.deepcopy(sample),
++                        'perf_flashlight_samples': [copy.deepcopy(sample) for _ in range(121)],
++                        'final_observation': {'flashlight': copy.deepcopy(lamp)}}
++    return report
++
++
++class PerfFlashlightValidation(unittest.TestCase):
++    def test_on_and_explicit_off_observations_are_accepted(self):
++        for enabled in [False, True]:
++            self.assertEqual(validate_result(perf_flashlight_fixture(enabled), 0, ''), [])
++        self.assertEqual(validate_result(valid(), 0, ''), [])
++        report = perf_flashlight_fixture()
++        report['low_quality'] = True
++        for actual in [report['perf_flashlight_before_warmup'], *report['perf_flashlight_samples'], report['final_observation']]:
++            actual['flashlight']['shadow'] = False
++        self.assertEqual(validate_result(report, 0, ''), [])
++
++    def test_wrapper_request_binds_report_without_rewriting_it(self):
++        for enabled in [False, True]:
++            report = perf_flashlight_fixture(not enabled)
++            before = copy.deepcopy(report)
++            self.assertTrue(validate_result(report, 0, '', flashlight_requested=enabled))
++            self.assertEqual(report, before)
++        self.assertTrue(validate_result(valid(), 0, '', flashlight_requested=False))
++
++    def test_requested_on_observed_off_is_rejected(self):
++        report = perf_flashlight_fixture()
++        report['final_observation']['flashlight']['visible'] = False
++        self.assertTrue(validate_result(report, 0, ''))
++
++    def test_observed_route_change_is_rejected(self):
++        for enabled in [False, True]:
++            for field in ['visible', 'intent']:
++                report = perf_flashlight_fixture(enabled)
++                report['perf_flashlight_samples'][60]['flashlight'][field] = not enabled
++                with self.subTest(enabled=enabled, field=field):
++                    self.assertTrue(validate_result(report, 0, ''))
++
++    def test_before_warmup_state_is_checked(self):
++        report = perf_flashlight_fixture()
++        report['perf_flashlight_before_warmup']['flashlight']['visible'] = False
++        self.assertTrue(validate_result(report, 0, ''))
++
++    def test_missing_on_observations_or_properties_are_rejected(self):
++        for field in ['visible', 'intent', 'energy', 'range', 'mask', 'shadow']:
++            report = perf_flashlight_fixture()
++            del report['perf_flashlight_samples'][60]['flashlight'][field]
++            with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
++        for field in ['perf_flashlight_before_warmup', 'perf_flashlight_samples', 'final_observation']:
++            report = perf_flashlight_fixture()
++            del report[field]
++            with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
++        report = perf_flashlight_fixture()
++        report['perf_flashlight_samples'][60]['flashlight'] = None
++        self.assertTrue(validate_result(report, 0, ''))
++        report = perf_flashlight_fixture()
++        report['perf_flashlight_samples'].pop()
++        self.assertTrue(validate_result(report, 0, ''))
++
++    def test_on_must_emit_and_match_quality(self):
++        for field, value in [('energy', 0), ('energy', float('nan')), ('range', 0), ('mask', 2), ('shadow', False)]:
++            report = perf_flashlight_fixture()
++            report['perf_flashlight_samples'][60]['flashlight'][field] = value
++            with self.subTest(field=field): self.assertTrue(validate_result(report, 0, ''))
++        report = perf_flashlight_fixture()
++        report['low_quality'] = True
++        self.assertTrue(validate_result(report, 0, ''))
++
++    def test_other_modes_reject_flag_before_starting_runtime(self):
++        for mode in ['mission', 'capture', 'lighting', 'lighting-perf']:
++            result = subprocess.run([sys.executable, str(Path(__file__).with_name('prove_sector_power.py')),
++                                     '--project', '/absent-project', '--godot', '/absent-engine', '--output', '/absent-output',
++                                     '--mode', mode, '--flashlight-on'], capture_output=True, text=True)
++            with self.subTest(mode=mode):
++                self.assertEqual(result.returncode, 2)
++                self.assertIn('--flashlight-on requires --mode perf', result.stderr)
++
+ class ProofValidation(unittest.TestCase):
+ 
+     def test_requested_power_matches_effective_even_baseline(self):

@@ -1,0 +1,29 @@
+{
+  "command": [
+    "ffmpeg",
+    "-v",
+    "error",
+    "-i",
+    ".cstack/orchestrate/silo9/issue10/native-film/mother.mp4",
+    "-vf",
+    "fps=1/6",
+    ".cstack/orchestrate/silo9/issue10/native-film/frames/frame-%02d.png"
+  ],
+  "exit": 0,
+  "video_sha256": "b43f5db7726fbb168e9baffe7298019837e19da0f7dc6a5b3a8ecc225243fbbc",
+  "frames": [
+    "frame-01.png",
+    "frame-02.png",
+    "frame-03.png",
+    "frame-04.png",
+    "frame-05.png",
+    "frame-06.png",
+    "frame-07.png",
+    "frame-08.png",
+    "frame-09.png",
+    "frame-10.png",
+    "frame-11.png",
+    "frame-12.png"
+  ],
+  "limits": "fps filter selects nominal six-second samples; these are not exact source presentation timestamps; not continuous viewing"
+}

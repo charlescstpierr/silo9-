@@ -1,0 +1,73 @@
+{
+  "proof-tools-initial": {
+    "extract_world_geometry.gd": "e9678d1a96be24ebbca704bde4846fb4e3ee86d0a1217d873c8cd139116caadd",
+    "geometry_check.py": "8f1bad1aedae5e2dd556f8e448b3b8f00487ef70f73dc96ba4cf2c1d375e53ab",
+    "test_geometry_check.py": "f3cc66b0f926c282276d41ca38481c5ee39608db0b8e7cd791564cbfab599365"
+  },
+  "proof-tools": {
+    "extract_world_geometry.gd": "acff3e7e7bc4d09e8266027130de316c7bcea86e77f357f9bab5d4969af73fc1",
+    "geometry_check.py": "906218a8261f9dc65c9ccaffcab0d6b55f35747162c4bfe1c27b1a95dbc294a1",
+    "test_geometry_check.py": "de5393bb9cf2f3434bfbb3f8d46401df01823f68e63d7bccedbb41acd1d5e4b7"
+  },
+  "archive_identity_matches_initial_report": true,
+  "unchanged_math_functions": {
+    "sub": true,
+    "dot": true,
+    "cross": true,
+    "bounds": true,
+    "overlap": true,
+    "triangle_box": true,
+    "segment_triangle": true,
+    "triangle_key": true
+  },
+  "cli": [
+    {
+      "label": "complete",
+      "command": [
+        "/usr/bin/python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/geometry_check.py",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/complete.json",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/complete.json",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/complete-report.json"
+      ],
+      "exit_code": 0,
+      "report_exists": true
+    },
+    {
+      "label": "truncated",
+      "command": [
+        "/usr/bin/python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/geometry_check.py",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/truncated.json",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/truncated.json",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/truncated-report.json"
+      ],
+      "exit_code": 2,
+      "report_exists": false
+    },
+    {
+      "label": "bad_collider",
+      "command": [
+        "/usr/bin/python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/geometry_check.py",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/bad_collider.json",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/bad_collider.json",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/bad_collider-report.json"
+      ],
+      "exit_code": 2,
+      "report_exists": false
+    },
+    {
+      "label": "bad_stats",
+      "command": [
+        "/usr/bin/python3",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/geometry_check.py",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/bad_stats.json",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/bad_stats.json",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/geometry-fix/cli/bad_stats-report.json"
+      ],
+      "exit_code": 2,
+      "report_exists": false
+    }
+  ]
+}

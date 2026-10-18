@@ -1,0 +1,67 @@
+test_aabb_overlap_without_triangle_overlap_is_accepted (test_geometry_check.GeometryCheck.test_aabb_overlap_without_triangle_overlap_is_accepted) ... ok
+test_collider_change_rejected (test_geometry_check.GeometryCheck.test_collider_change_rejected) ... FAIL
+test_edge_in_reserve_with_origin_outside (test_geometry_check.GeometryCheck.test_edge_in_reserve_with_origin_outside) ... FAIL
+test_existing_hits_are_explicit_and_new_hit_is_regression (test_geometry_check.GeometryCheck.test_existing_hits_are_explicit_and_new_hit_is_regression) ... FAIL
+test_malformed_inputs_fail_closed (test_geometry_check.GeometryCheck.test_malformed_inputs_fail_closed) ... FAIL
+test_plate_before_relay_rejected (test_geometry_check.GeometryCheck.test_plate_before_relay_rejected) ... FAIL
+test_plate_behind_target_accepted (test_geometry_check.GeometryCheck.test_plate_behind_target_accepted) ... ok
+test_rotated_triangle_enters_reserve (test_geometry_check.GeometryCheck.test_rotated_triangle_enters_reserve) ... FAIL
+
+======================================================================
+FAIL: test_collider_change_rejected (test_geometry_check.GeometryCheck.test_collider_change_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 64, in test_collider_change_rejected
+    self.assertFalse(compare(before, after)['bounded_pass'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_edge_in_reserve_with_origin_outside (test_geometry_check.GeometryCheck.test_edge_in_reserve_with_origin_outside)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 29, in test_edge_in_reserve_with_origin_outside
+    self.assertTrue(result['hits']['volume:approach'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_existing_hits_are_explicit_and_new_hit_is_regression (test_geometry_check.GeometryCheck.test_existing_hits_are_explicit_and_new_hit_is_regression)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 56, in test_existing_hits_are_explicit_and_new_hit_is_regression
+    self.assertTrue(same['checks']['segment:relay']['preexisting'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_malformed_inputs_fail_closed (test_geometry_check.GeometryCheck.test_malformed_inputs_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 44, in test_malformed_inputs_fail_closed
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_plate_before_relay_rejected (test_geometry_check.GeometryCheck.test_plate_before_relay_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 20, in test_plate_before_relay_rejected
+    self.assertTrue(result['hits']['segment:relay'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rotated_triangle_enters_reserve (test_geometry_check.GeometryCheck.test_rotated_triangle_enters_reserve)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue10/proof-tools/test_geometry_check.py", line 34, in test_rotated_triangle_enters_reserve
+    self.assertTrue(result['hits']['volume:approach'])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+FAILED (failures=6)

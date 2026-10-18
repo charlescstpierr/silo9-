@@ -1,0 +1,17 @@
+{
+  "six_published_tools_match_frozen_tools": true,
+  "production_source_sha256": "c3a973b5774ba521a29deff13dd9234db260c5e0329a0ecfc20da3d53b866cf0",
+  "test_sources_match_recorded_runs": 9,
+  "linux_binary_matches_native_smoke_sha256": "805265ca0c872372cba7cb78b1d707f3d791147ae599747f7904f1b39bb17d77",
+  "native_inputs_success": 13,
+  "selfchecks": {
+    "test_geometry_check.py": {
+      "exit": 0,
+      "output": "..................\n----------------------------------------------------------------------\nRan 18 tests in 0.106s\n\nOK\n"
+    },
+    "selfcheck_sector_power.py": {
+      "exit": 0,
+      "output": "........................\n----------------------------------------------------------------------\nRan 24 tests in 0.499s\n\nOK\n"
+    }
+  }
+}

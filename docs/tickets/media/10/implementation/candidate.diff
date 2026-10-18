@@ -1,0 +1,123 @@
+diff --git a/scripts/world_art.gd b/scripts/world_art.gd
+index fce2cce..976b366 100644
+--- a/scripts/world_art.gd
++++ b/scripts/world_art.gd
+@@ -75,6 +75,9 @@ func build() -> void:
+ 	_walls_and_deck()
+ 	_frames()
+ 	_machines()
++	_decontamination_dressing()
++	_maintenance_dressing()
++	_archives_dressing()
+ 	_reactor()
+ 	_flush()
+ 	_flush_assets()
+@@ -146,10 +149,8 @@ func _walls_and_deck() -> void:
+ 			var angle: float = PI if side > 0 else 0.0
+ 			var wall_name: String = "WallAstra_Straight_Window" if z > -14 else "WallAstra_Straight"
+ 			_asset(wall_name, Vector3(side * (7.65 if z > -14 else 8.1), 0, z), Vector3.ONE, Vector3(0,angle,0))
+-			if z < -14 and z > -34:
+-				_asset("TopCables_Straight", Vector3(side * 7.7,0,z), Vector3.ONE, Vector3(0,angle,0))
+-			else:
+-				_part("box", Vector3(side * 9.55,3.8,z), Vector3(0.12,1.1,3.7), "grate")
++			if z > -54: continue
++			_part("box", Vector3(side * 9.55,3.8,z), Vector3(0.12,1.1,3.7), "grate")
+ 			_part("box", Vector3(side * 9.4,0.25,z), Vector3(0.26,0.5,3.9), "rubber")
+ 			_part("box", Vector3(side * 9.5,3.05,z), Vector3(0.3,0.2,3.9), "steel")
+ 			_part("box", Vector3(side * 4.2,4.58,z), Vector3(1.0,0.12,3.9), "grate")
+@@ -170,6 +171,7 @@ func _walls_and_deck() -> void:
+ func _frames() -> void:
+ 	for z in [2.0,-14.0,-34.0,-54.0]:
+ 		_asset("Door_Frame_SquareTall", Vector3(0,-0.6,z), Vector3(2.05,1.05,1.0))
++		if z != 2.0: continue
+ 		for side in [-1.0,1.0]:
+ 			for x in [4.3,6.6,8.8]:
+ 				_part("box", Vector3(side * x,1.9,z + 0.3), Vector3(2.0,3.4,0.12), "wall")
+@@ -185,6 +187,31 @@ func _machines() -> void:
+ 		_part("box", Vector3(side * 6.6,1.65,z), Vector3(2.35,0.08,2.55), "grate")
+ 		_asset("Prop_Computer", Vector3(side * 6.6,1.68,z), Vector3(0.8,0.8,0.8))
+ 		_part("pipe", Vector3(side * 7.2,2.8,z - 0.7), Vector3(0.14,2.3,0.14), "rust")
++
++func _decontamination_dressing() -> void:
++	for side in [-1.0,1.0]:
++		for z in [-4.75,-9.25]:
++			_part("box", Vector3(side * 9.66,1.5,z), Vector3(0.15,2.0,4.35), "paint")
++			_part("box", Vector3(side * 9.57,1.15,z), Vector3(0.025,0.22,3.6), "teal")
++		_part("box", Vector3(side * 9.55,4.5,-7), Vector3(0.18,0.16,9), "steel")
++		for x in [4.55,8.05]:
++			_part("box", Vector3(side * x,2.1,-13.70), Vector3(3.3,3.7,0.12), "paint")
++			_part("box", Vector3(side * x,1.15,-13.625), Vector3(2.75,0.24,0.025), "teal")
++			for y in [0.34,3.86]:
++				_part("box", Vector3(side * x,y,-13.615), Vector3(3.2,0.10,0.035), "steel")
++			for dx in [-1.55,1.55]:
++				_part("box", Vector3(side * x + dx,2.1,-13.615), Vector3(0.075,3.45,0.035), "steel")
++		_part("box", Vector3(side * 6.3,2.1,-13.625), Vector3(0.15,3.7,0.025), "rubber")
++		_part("box", Vector3(side * 3.55,4.13,-13.70), Vector3(1.25,0.14,0.12), "steel", Vector3(0,0,side * 0.35))
++	_part("box", Vector3(8.94,2.5,-13.59), Vector3(1.45,2.4,0.035), "rubber")
++	for y in [1.4,3.6]:
++		_part("box", Vector3(8.94,y,-13.56), Vector3(1.35,0.085,0.025), "steel")
++	for x in [8.34,9.54]:
++		_part("box", Vector3(x,2.5,-13.56), Vector3(0.09,0.22,0.025), "steel")
++	for x in [6.55,6.8]:
++		_part("box", Vector3(x,0.65,-13.62), Vector3(0.055,0.6,0.025), "rubber")
++
++func _maintenance_dressing() -> void:
+ 	_part("pipe", Vector3(6.6,1.97,-29.4), Vector3(0.55,1.45,0.55), "steel", Vector3(0,0,PI/2))
+ 	for x in [5.95,7.25]:
+ 		_part("pipe", Vector3(x,1.97,-29.4), Vector3(0.72,0.16,0.72), "yellow", Vector3(0,0,PI/2))
+@@ -203,21 +230,42 @@ func _machines() -> void:
+ 	_part("pipe", Vector3(7.6,2.8,-27.2), Vector3(0.12,3.3,0.12), "rust", Vector3(PI/2,0,0))
+ 	_part("box", Vector3(4.8,4.7,-27), Vector3(1.5,0.2,0.45), "rubber")
+ 	_part("box", Vector3(4.8,4.57,-27), Vector3(1.3,0.06,0.24), "glow")
++	for z in [-20,-28]:
++		_asset("TopCables_Straight", Vector3(-7.7,0,z))
++	_part("pipe", Vector3(-9.15,3.9,-24), Vector3(0.55,14.0,0.55), "steel", Vector3(PI/2,0,0))
++	for z in [-17,-31]:
++		_part("box", Vector3(-9.15,3.9,z), Vector3(0.57,0.57,0.57), "steel")
++		_part("pipe", Vector3(-9.15,3.45,z), Vector3(0.55,0.9,0.55), "steel")
++		_part("pipe", Vector3(-9.15,3.05,z), Vector3(0.6,0.12,0.6), "rubber")
++	for z in [-18,-24,-30]:
++		_part("box", Vector3(-9.15,3.9,z), Vector3(0.65,0.65,0.18), "yellow")
++	_part("box", Vector3(-9.71,2.4,-24), Vector3(0.06,1.1,1.85), "rust", Vector3(0.18,0,0))
++	for z in [-23.7,-24.05]:
++		_part("box", Vector3(-9.665,3.15,z), Vector3(0.02,0.85,0.09), "rubber")
+ 	for side in [-1.0,1.0]:
++		for x in [4.55,8.05]:
++			_part("box", Vector3(side * x,2.1,-33.70), Vector3(3.3,3.7,0.12), "rust" if side < 0 else "rubber")
++			for y in [0.4,3.8]:
++				_part("box", Vector3(side * x,y,-33.625), Vector3(3.05,0.12,0.025), "steel")
++			for dx in [-1.55,1.55]:
++				_part("box", Vector3(side * x + dx,2.1,-33.625), Vector3(0.08,3.4,0.025), "steel")
++		_part("box", Vector3(side * 6.3,2.1,-33.625), Vector3(0.18,3.7,0.025), "steel")
++
++func _archives_dressing() -> void:
++	for side in [-1.0,1.0]:
++		_part("box", Vector3(side * 9.5,3.35,-44), Vector3(0.3,0.2,18.0), "steel")
+ 		for z in [-38,-46,-51]:
+-			for y in [0.55,1.25,1.95,2.65]:
+-				_part("box", Vector3(side * 8.28,y,z), Vector3(0.05,0.55,2.4), "grate")
+-				for dz in [-0.85,-0.6,-0.35]:
+-					_part("box", Vector3(side * 8.23,y + 0.14,z + dz), Vector3(0.06,0.04,0.07), "cyan")
+-	for z in [-20,-28]:
+-		for side in [-1.0,1.0]:
+-			_part("pipe", Vector3(side * 8.9,1.25,z), Vector3(0.65,2.5,0.65), "steel")
+-			for y in [0.2,2.2]:
+-				_part("pipe", Vector3(side * 8.9,y,z), Vector3(0.78,0.13,0.78), "yellow")
+-	for z in [-4,-10]:
+-		for side in [-1.0,1.0]:
+-			_part("box", Vector3(side * 9.5,1.1,z), Vector3(0.15,1.7,2.8), "paint")
+-			_part("box", Vector3(side * 9.4,1.1,z), Vector3(0.06,0.18,2.8), "teal")
++			for dz in [-0.57,0.57]:
++				_part("box", Vector3(side * 8.33,1.675,z + dz), Vector3(0.02,2.95,1.08), "rubber")
++			for dz in [-1.12,1.12]:
++				if side < 0 and z == -46 and dz > 0: continue
++				_part("box", Vector3(side * 8.325,1.675,z + dz), Vector3(0.03,2.95,0.12), "paint")
++		for x in [3.5,6.25,9.0]:
++			_part("box", Vector3(side * x,2.1,-53.735), Vector3(0.95,3.7,0.02), "rubber")
++			for dx in [-0.535,0.535]:
++				_part("box", Vector3(side * x + dx,2.1,-53.735), Vector3(0.12,3.7,0.02), "paint")
++	for y in [1.85,2.5]:
++		_part("box", Vector3(-8.3125,y,-45.45), Vector3(0.005,0.055,0.65), "steel", Vector3(-0.12,0,0))
+ 
+ func _reactor() -> void:
+ 	for side in [-1.0,1.0]:

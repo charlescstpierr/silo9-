@@ -1,0 +1,216 @@
+{
+  "bounded_pass": true,
+  "checks": {
+    "segment:relay": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:breaker_maintenance": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:breaker_archives": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:n7": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:evidence": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:component_0": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:component_1": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:component_2": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:combat_sentinel_1": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:combat_crawler_1": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:combat_sentinel_2": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "segment:combat_crawler_2": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:approach_relay": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:approach_breaker_maintenance": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:approach_breaker_archives": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:approach_n7": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:approach_evidence": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:approach_component_0": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:approach_component_1": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:approach_component_2": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:central_route": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:arc_bypass": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:patrol_sentinel_1": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:patrol_crawler_1": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:patrol_sentinel_2": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:patrol_crawler_2": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:door_sweep_maintenance_SasGauche": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:door_sweep_maintenance_SasDroit": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:door_sweep_archives_SasGauche": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    },
+    "volume:door_sweep_archives_SasDroit": {
+      "preexisting": [],
+      "remaining": [],
+      "removed": [],
+      "added": []
+    }
+  },
+  "stats_before": {
+    "decor": {
+      "mesh_instances": 1,
+      "multimesh_nodes": 0,
+      "instances": 1,
+      "surfaces": 1,
+      "triangles": 1
+    }
+  },
+  "stats_after": {
+    "decor": {
+      "mesh_instances": 1,
+      "multimesh_nodes": 0,
+      "instances": 1,
+      "surfaces": 1,
+      "triangles": 1
+    }
+  },
+  "colliders": {
+    "before_sha256": "27f0a45d7d8a7f536404667644b7b887b6e4af3a0b15bf01fb7bb322e902f4d9",
+    "after_sha256": "27f0a45d7d8a7f536404667644b7b887b6e4af3a0b15bf01fb7bb322e902f4d9",
+    "equal": true,
+    "removed": [],
+    "added": []
+  },
+  "limits": [
+    "Only exported WorldArt triangle surfaces and declared segments/reserves are checked.",
+    "Coplanar segment overlap is conservative; inspect any reported candidate.",
+    "A reserve entirely enclosed by a closed mesh without surface crossing is not detected.",
+    "No assertion about pixels, shadows, animation, all firing angles, or universal visibility."
+  ]
+}

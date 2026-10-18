@@ -1,0 +1,1 @@
+Présentation pure hors TDD, déclarée avant édition. Aucun comportement, collider, API, matériau ou éclairage nouveau. Vérification: suites existantes et rendus réels, preuve géométrique séparée du parent. Seulement scripts/world_art.gd autorisé. Décontamination puis aperçu; autres secteurs ensuite.

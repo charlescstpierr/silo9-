@@ -1,0 +1,98 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Main exposes named FOV, zoom and ADS sensitivity sliders
+PASS: absent ADS config loads documented defaults
+PASS: real widgets expose accepted physical option ranges
+PASS: Apply actually writes local settings.cfg
+PASS: Apply persists ADS preference 91.00
+PASS: Apply persists ADS preference 1.40
+PASS: Apply persists ADS preference 0.40
+PASS: new game applies hip FOV to actual camera
+PASS: new game applies optical magnification
+PASS: new game applies ADS sensitivity to actual rotation
+PASS: Escape discards unapplied ADS controls
+PASS: cancelled options applies hip FOV to actual camera
+PASS: cancelled options applies optical magnification
+PASS: cancelled options applies ADS sensitivity to actual rotation
+PASS: invalid endpoint refuses entire Apply
+PASS: refused Apply leaves persisted FOV unchanged
+PASS: Apply to current Player applies hip FOV to actual camera
+PASS: Apply to current Player applies optical magnification
+PASS: Apply to current Player applies ADS sensitivity to actual rotation
+PASS: ADS preferences keep gameplay schema 2
+PASS: ADS preference stays outside gameplay save: base_fov
+PASS: ADS preference stays outside gameplay save: aim_zoom
+PASS: ADS preference stays outside gameplay save: aim_sensitivity
+PASS: load constructs a replacement Player
+PASS: load applies hip FOV to actual camera
+PASS: load applies optical magnification
+PASS: load applies ADS sensitivity to actual rotation
+PASS: fresh Main reads actual persisted preferences
+PASS: boundary fixture writes actual config
+PASS: numeric finite values clamp; bool/type/nonfinite values default
+PASS: loaded boundary config applies hip FOV to actual camera
+PASS: loaded boundary config applies optical magnification
+PASS: loaded boundary config applies ADS sensitivity to actual rotation
+PASS: boundary fixture writes actual config
+PASS: numeric finite values clamp; bool/type/nonfinite values default
+PASS: loaded boundary config applies hip FOV to actual camera
+PASS: loaded boundary config applies optical magnification
+PASS: loaded boundary config applies ADS sensitivity to actual rotation
+PASS: boundary fixture writes actual config
+PASS: numeric finite values clamp; bool/type/nonfinite values default
+PASS: loaded boundary config applies hip FOV to actual camera
+PASS: loaded boundary config applies optical magnification
+PASS: loaded boundary config applies ADS sensitivity to actual rotation
+PASS: boundary fixture writes actual config
+PASS: numeric finite values clamp; bool/type/nonfinite values default
+PASS: loaded boundary config applies hip FOV to actual camera
+PASS: loaded boundary config applies optical magnification
+PASS: loaded boundary config applies ADS sensitivity to actual rotation
+PASS: main menu grants an initial usable GUI focus
+PASS: real New Game button is available for joypad activation
+PASS: software GUI A activates focused New Game
+PASS: GUI A used to enter game does not also jump
+PASS: actual InputMap binds trigger to aim
+PASS: actual InputMap binds trigger to fire
+PASS: actual InputMap binds joypad button to jump
+PASS: actual InputMap binds joypad button to reload
+PASS: actual InputMap binds joypad button to interact
+PASS: actual InputMap binds joypad button to scan
+PASS: actual InputMap binds joypad button to weapon1
+PASS: actual InputMap binds joypad button to weapon2
+PASS: actual InputMap binds joypad button to sprint
+PASS: actual InputMap binds joypad button to pause
+PASS: layout switch preserves joypad movement and scan bindings
+PASS: layout switch preserves joypad movement and scan bindings
+PASS: software LT event enters ADS through actual mapping
+PASS: right-stick motion inside radial deadzone does not rotate
+PASS: diagonal stick magnitude above .2 escapes the radial deadzone
+PASS: full software right stick rotates 2rad/s with ADS sensitivity
+PASS: software left stick drives actual movement
+PASS: software RT accepts exactly one D9 shot
+PASS: software X requests real reload
+PASS: software reload completes round transfer
+PASS: software weapon2 command selects ARC
+PASS: distinct software weapon1 command selects D9
+PASS: software RB invokes scanner with actual energy debit
+PASS: software Start opens actual pause menu
+PASS: software Start resumes without a gameplay command
+PASS: Start resume suppresses held fire and aim triggers
+PASS: releasing mouse retains ADS from the other held source
+PASS: releasing trigger retains ADS from the other held source
+PASS: pause suppresses held aim after resume/replacement
+PASS: pause remains disarmed while LT is still held
+PASS: pause rearms only after every source released and a fresh LT press
+PASS: settings suppresses held aim after resume/replacement
+PASS: settings remains disarmed while LT is still held
+PASS: settings rearms only after every source released and a fresh LT press
+PASS: inventory suppresses held aim after resume/replacement
+PASS: inventory remains disarmed while LT is still held
+PASS: inventory rearms only after every source released and a fresh LT press
+PASS: new suppresses held aim after resume/replacement
+PASS: new remains disarmed while LT is still held
+PASS: new rearms only after every source released and a fresh LT press
+PASS: load suppresses held aim after resume/replacement
+PASS: load remains disarmed while LT is still held
+PASS: load rearms only after every source released and a fresh LT press
+ADS SETTINGS INPUT FAILURES: 0

@@ -17,6 +17,9 @@ var character: String = "mother"
 var azerty: bool = false
 var low_quality: bool = false
 var sensitivity: float = 0.002
+var base_fov := 76.0
+var aim_zoom := 1.25
+var aim_sensitivity := .65
 var camera_impulse := .5
 var shot_light := 1.0
 var effects_budget := 2
@@ -27,6 +30,7 @@ var overlay: ColorRect
 var panel: PanelContainer
 var content: VBoxContainer
 var hud: Control
+var crosshair: Label
 var health_label: Label
 var energy_label: Label
 var health_bar: ProgressBar
@@ -42,6 +46,9 @@ var notice_time: float = 0.0
 var ui_clock: float = 0.0
 var chat_log: RichTextLabel
 var chat_input: LineEdit
+var fov_slider: HSlider
+var aim_zoom_slider: HSlider
+var aim_sensitivity_slider: HSlider
 var camera_slider: HSlider
 var shot_light_slider: HSlider
 var effects_budget_option: OptionButton
@@ -122,7 +129,7 @@ func _build_ui() -> void:
 	ammo_label = _label(bottom, "", 20, AMBER)
 	controls_label = _label(bottom, "", 14, MUTED)
 	_update_controls_label()
-	var crosshair := Label.new()
+	crosshair = Label.new()
 	crosshair.text = "+"
 	crosshair.add_theme_font_size_override("font_size", 22)
 	crosshair.add_theme_color_override("font_color", Color(0.8, 1, 1, 0.7))
@@ -245,6 +252,8 @@ func _button(text: String, callback: Callable, node_name: String = "") -> Button
 			callback.call()
 	)
 	content.add_child(button)
+	if get_viewport().gui_get_focus_owner() == null:
+		button.grab_focus()
 	return button
 
 func _clear_panel(title: String, tag: String) -> void:
@@ -299,6 +308,7 @@ func _start_run(run: RefCounted) -> void:
 	add_child(player)
 	player.sensitivity = sensitivity
 	player.configure_feedback(camera_impulse, shot_light, effects_budget)
+	player.configure_aim(base_fov, aim_zoom, aim_sensitivity)
 	player.teleport(state.player_position, state.player_yaw)
 	world = load("res://scripts/world.gd").new()
 	world.process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -373,6 +383,12 @@ func open_settings() -> void:
 	sensitivity_slider.step = 0.0001
 	sensitivity_slider.value = sensitivity
 	content.add_child(sensitivity_slider)
+	_label(content, "Champ de vision vertical", 18)
+	fov_slider = _aim_slider("FovSlider", base_fov, 60, 100, 1)
+	_label(content, "Grossissement en visée", 18)
+	aim_zoom_slider = _aim_slider("AimZoomSlider", aim_zoom, 1, 1.6, .05)
+	_label(content, "Sensibilité en visée", 18)
+	aim_sensitivity_slider = _aim_slider("AimSensitivitySlider", aim_sensitivity, .2, 1, .05)
 	layout_check = CheckButton.new()
 	layout_check.text = "Disposition ZQSD (sinon WASD)"
 	layout_check.button_pressed = azerty
@@ -407,6 +423,9 @@ func _apply_settings() -> void:
 	if is_instance_valid(dialogue) and not dialogue.configure(endpoint_input.text.strip_edges(), model_input.text.strip_edges()):
 		notify_player("Adresse refusée. Utilisez localhost ou un proxy HTTPS, sans identifiants.")
 		return
+	base_fov = fov_slider.value
+	aim_zoom = aim_zoom_slider.value
+	aim_sensitivity = aim_sensitivity_slider.value
 	camera_impulse = _effect_strength(camera_slider.value / 100.0, .5)
 	shot_light = _effect_strength(shot_light_slider.value / 100.0, 1.0)
 	effects_budget = _effect_budget(effects_budget_option.selected)
@@ -419,8 +438,12 @@ func _apply_settings() -> void:
 	if is_instance_valid(player):
 		player.sensitivity = sensitivity
 		player.configure_feedback(camera_impulse, shot_light, effects_budget)
+		player.configure_aim(base_fov, aim_zoom, aim_sensitivity)
 		set_quality(low_quality)
 	var config := ConfigFile.new()
+	config.set_value("controls", "base_fov", base_fov)
+	config.set_value("controls", "aim_zoom", aim_zoom)
+	config.set_value("controls", "aim_sensitivity", aim_sensitivity)
 	config.set_value("controls", "sensitivity", sensitivity)
 	config.set_value("controls", "azerty", azerty)
 	config.set_value("graphics", "low_quality", low_quality)
@@ -441,6 +464,9 @@ func _load_settings() -> void:
 	var config := ConfigFile.new()
 	if config.load("user://settings.cfg") != OK:
 		return
+	base_fov = _aim_option(config.get_value("controls", "base_fov", 76.0), 76, 60, 100)
+	aim_zoom = _aim_option(config.get_value("controls", "aim_zoom", 1.25), 1.25, 1, 1.6)
+	aim_sensitivity = _aim_option(config.get_value("controls", "aim_sensitivity", .65), .65, .2, 1)
 	sensitivity = clampf(float(config.get_value("controls", "sensitivity", 0.002)), 0.0005, 0.006)
 	azerty = bool(config.get_value("controls", "azerty", false))
 	low_quality = bool(config.get_value("graphics", "low_quality", false))
@@ -554,6 +580,8 @@ func _process(delta: float) -> void:
 		state.elapsed += delta
 		if state.health <= 0:
 			_death()
+	if is_instance_valid(player):
+		crosshair.modulate.a = 1.0 - player.aim_weight
 	notice_time = maxf(0, notice_time - delta)
 	notice_label.visible = notice_time > 0 and mode != "dialogue"
 	ui_clock += delta
@@ -577,17 +605,18 @@ func _process(delta: float) -> void:
 	prompt_label.text = "E  •  " + str(target.get_meta("prompt", "Interagir")) if is_instance_valid(target) else ""
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		if mode == "playing":
+			open_pause()
+		elif mode == "settings":
+			show_menu() if previous_mode == "menu" else open_pause()
+		elif mode != "menu" and mode != "death":
+			resume_game()
+		get_viewport().set_input_as_handled()
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_F3:
 			show_perf = not show_perf
-			get_viewport().set_input_as_handled()
-		elif event.keycode == KEY_ESCAPE:
-			if mode == "playing":
-				open_pause()
-			elif mode == "settings":
-				show_menu() if previous_mode == "menu" else open_pause()
-			elif mode != "menu" and mode != "death":
-				resume_game()
 			get_viewport().set_input_as_handled()
 		elif mode == "playing":
 			match event.keycode:
@@ -608,6 +637,7 @@ func _configure_inputs() -> void:
 	set_layout(azerty)
 	for binding: Array in [["sprint", KEY_SHIFT], ["jump", KEY_SPACE], ["crouch", KEY_CTRL], ["interact", KEY_E], ["reload", KEY_R], ["weapon1", KEY_1], ["weapon2", KEY_2]]:
 		_bind_key(binding[0], binding[1])
+	_bind_key("pause", KEY_ESCAPE, false)
 	if not InputMap.has_action("fire"):
 		InputMap.add_action("fire")
 	InputMap.action_erase_events("fire")
@@ -620,6 +650,21 @@ func _configure_inputs() -> void:
 	var aim := InputEventMouseButton.new()
 	aim.button_index = MOUSE_BUTTON_RIGHT
 	InputMap.action_add_event("aim", aim)
+	for binding: Array in [["left", JOY_AXIS_LEFT_X, -1], ["right", JOY_AXIS_LEFT_X, 1], ["forward", JOY_AXIS_LEFT_Y, -1], ["back", JOY_AXIS_LEFT_Y, 1], ["look_left", JOY_AXIS_RIGHT_X, -1], ["look_right", JOY_AXIS_RIGHT_X, 1], ["look_up", JOY_AXIS_RIGHT_Y, -1], ["look_down", JOY_AXIS_RIGHT_Y, 1], ["aim", JOY_AXIS_TRIGGER_LEFT, 1], ["fire", JOY_AXIS_TRIGGER_RIGHT, 1]]:
+		var axis := InputEventJoypadMotion.new()
+		axis.axis = binding[1]
+		axis.axis_value = binding[2]
+		_bind_joy_event(binding[0], axis)
+	for binding: Array in [["jump", JOY_BUTTON_A], ["reload", JOY_BUTTON_X], ["interact", JOY_BUTTON_Y], ["scan", JOY_BUTTON_RIGHT_SHOULDER], ["weapon1", JOY_BUTTON_LEFT_SHOULDER], ["weapon2", JOY_BUTTON_DPAD_RIGHT], ["sprint", JOY_BUTTON_LEFT_STICK], ["pause", JOY_BUTTON_START], ["ui_accept", JOY_BUTTON_A], ["ui_up", JOY_BUTTON_DPAD_UP], ["ui_down", JOY_BUTTON_DPAD_DOWN], ["ui_left", JOY_BUTTON_DPAD_LEFT], ["ui_right", JOY_BUTTON_DPAD_RIGHT]]:
+		var button := InputEventJoypadButton.new()
+		button.button_index = binding[1]
+		_bind_joy_event(binding[0], button)
+
+func _bind_joy_event(action: String, event: InputEvent) -> void:
+	if not InputMap.has_action(action):
+		InputMap.add_action(action)
+	if not InputMap.action_has_event(action, event):
+		InputMap.action_add_event(action, event)
 
 func set_layout(use_azerty: bool) -> void:
 	azerty = use_azerty
@@ -637,7 +682,9 @@ func _update_controls_label() -> void:
 func _bind_key(action: String, key: Key, physical: bool = true) -> void:
 	if not InputMap.has_action(action):
 		InputMap.add_action(action)
-	InputMap.action_erase_events(action)
+	for previous in InputMap.action_get_events(action):
+		if previous is InputEventKey:
+			InputMap.action_erase_event(action, previous)
 	var event := InputEventKey.new()
 	if physical:
 		event.physical_keycode = key
@@ -668,3 +715,18 @@ func _effect_strength(value: Variant, fallback: float) -> float:
 
 func _effect_budget(value: Variant) -> int:
 	return value if value is int and value >= 0 and value <= 2 else 2
+
+func _aim_slider(node_name: String, value: float, minimum: float, maximum: float, increment: float) -> HSlider:
+	var slider := HSlider.new()
+	slider.name = node_name
+	slider.min_value = minimum
+	slider.max_value = maximum
+	slider.step = increment
+	slider.value = value
+	content.add_child(slider)
+	return slider
+
+func _aim_option(value: Variant, fallback: float, minimum: float, maximum: float) -> float:
+	if (value is float or value is int) and is_finite(float(value)):
+		return clampf(float(value), minimum, maximum)
+	return fallback

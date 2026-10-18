@@ -1,0 +1,56 @@
+ffmpeg version 8.0.1-3ubuntu2 Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 15 (Ubuntu 15.2.0-13ubuntu3)
+  configuration: --prefix=/usr --extra-version=3ubuntu2 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-pocketsphinx --disable-libcaca --disable-libmfx --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libdvdnav --enable-libdvdread --enable-libjack --enable-libjxl --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-librsvg --enable-shared
+  libavutil      60.  8.100 / 60.  8.100
+  libavcodec     62. 11.100 / 62. 11.100
+  libavformat    62.  3.100 / 62.  3.100
+  libavdevice    62.  1.100 / 62.  1.100
+  libavfilter    11.  4.100 / 11.  4.100
+  libswscale      9.  1.100 /  9.  1.100
+  libswresample   6.  1.100 /  6.  1.100
+[aist#0:1/pcm_s16le @ 0x61b432e16a80] Guessed Channel Layout: stereo
+Input #0, avi, from '/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/film-final/film/ads.avi':
+  Duration: 00:00:16.00, start: 0.000000, bitrate: 26242 kb/s
+  Stream #0:0: Video: mjpeg (Baseline) (MJPG / 0x47504A4D), yuvj420p(pc, bt470bg/unknown/unknown), 1280x720 [SAR 1:1 DAR 16:9], 24746 kb/s, 30 fps, 30 tbr, 30 tbn
+  Stream #0:1: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (mjpeg (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (pcm_s16le (native) -> aac (native))
+Press [q] to stop, [?] for help
+[swscaler @ 0x7a22140149c0] deprecated pixel format used, make sure you did set range correctly
+[libx264 @ 0x61b432e181c0] using SAR=1/1
+[libx264 @ 0x61b432e181c0] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2
+[libx264 @ 0x61b432e181c0] profile High, level 3.1, 4:2:0, 8-bit
+[libx264 @ 0x61b432e181c0] 264 - core 165 - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=12 lookahead_threads=2 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=22.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to '/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/film-final/film/ads.mp4':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(pc, bt470bg/unknown/unknown, progressive), 1280x720 [SAR 1:1 DAR 16:9], q=2-31, 30 fps, 15360 tbn
+    Metadata:
+      encoder         : Lavc62.11.100 libx264
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+  Stream #0:1: Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 128 kb/s
+    Metadata:
+      encoder         : Lavc62.11.100 aac
+frame=   22 fps=0.0 q=28.0 size=       0KiB time=00:00:00.66 bitrate=   0.6kbits/s speed=1.33x elapsed=0:00:00.50    frame=   76 fps= 76 q=28.0 size=     256KiB time=00:00:02.46 bitrate= 850.4kbits/s speed=2.47x elapsed=0:00:01.00    frame=  127 fps= 85 q=28.0 size=     512KiB time=00:00:04.16 bitrate=1006.7kbits/s speed=2.78x elapsed=0:00:01.50    frame=  190 fps= 95 q=28.0 size=     768KiB time=00:00:06.26 bitrate=1004.0kbits/s speed=3.13x elapsed=0:00:02.00    frame=  237 fps= 95 q=28.0 size=    1024KiB time=00:00:07.83 bitrate=1070.9kbits/s speed=3.13x elapsed=0:00:02.50    frame=  285 fps= 95 q=28.0 size=    1536KiB time=00:00:09.43 bitrate=1333.9kbits/s speed=3.14x elapsed=0:00:03.00    frame=  344 fps= 98 q=28.0 size=    1792KiB time=00:00:11.40 bitrate=1287.8kbits/s speed=3.25x elapsed=0:00:03.50    frame=  399 fps=100 q=28.0 size=    2048KiB time=00:00:13.23 bitrate=1267.8kbits/s speed=3.31x elapsed=0:00:04.00    [out#0/mp4 @ 0x61b432e16d40] video:2318KiB audio:62KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.780935%
+frame=  480 fps=109 q=-1.0 Lsize=    2398KiB time=00:00:15.93 bitrate=1232.9kbits/s speed=3.63x elapsed=0:00:04.38    
+[libx264 @ 0x61b432e181c0] frame I:2     Avg QP:18.59  size: 81197
+[libx264 @ 0x61b432e181c0] frame P:127   Avg QP:19.94  size: 11572
+[libx264 @ 0x61b432e181c0] frame B:351   Avg QP:22.91  size:  2110
+[libx264 @ 0x61b432e181c0] consecutive B-frames:  1.5%  2.5%  1.9% 94.2%
+[libx264 @ 0x61b432e181c0] mb I  I16..4: 17.3% 68.7% 14.0%
+[libx264 @ 0x61b432e181c0] mb P  I16..4:  3.2%  7.9%  1.5%  P16..4:  9.6%  4.1%  2.7%  0.0%  0.0%    skip:71.0%
+[libx264 @ 0x61b432e181c0] mb B  I16..4:  0.8%  1.1%  0.1%  B16..8:  9.5%  2.3%  0.4%  direct: 0.5%  skip:85.3%  L0:43.4% L1:49.9% BI: 6.7%
+[libx264 @ 0x61b432e181c0] 8x8 transform intra:60.6% inter:78.8%
+[libx264 @ 0x61b432e181c0] coded y,uvDC,uvAC intra: 41.1% 51.5% 20.7% inter: 2.7% 4.0% 1.1%
+[libx264 @ 0x61b432e181c0] i16 v,h,dc,p: 24% 59%  5% 12%
+[libx264 @ 0x61b432e181c0] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 29% 27% 32%  2%  2%  2%  2%  2%  3%
+[libx264 @ 0x61b432e181c0] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 33% 39% 12%  2%  2%  3%  3%  2%  3%
+[libx264 @ 0x61b432e181c0] i8c dc,h,v,p: 38% 38% 21%  3%
+[libx264 @ 0x61b432e181c0] Weighted P-Frames: Y:0.8% UV:0.8%
+[libx264 @ 0x61b432e181c0] ref P L0: 58.7%  9.2% 23.0%  9.1%
+[libx264 @ 0x61b432e181c0] ref B L0: 82.7% 14.3%  3.0%
+[libx264 @ 0x61b432e181c0] ref B L1: 93.5%  6.5%
+[libx264 @ 0x61b432e181c0] kb/s:1186.28
+[aac @ 0x61b432e38bc0] Qavg: 53645.512

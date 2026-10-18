@@ -1,0 +1,75 @@
+{
+  "runs": [
+    {
+      "run": "perf-1-baseline",
+      "p50": 94.823,
+      "p95": 121.903,
+      "samples": 151
+    },
+    {
+      "run": "perf-1-candidate",
+      "p50": 92.953,
+      "p95": 108.13,
+      "samples": 156
+    },
+    {
+      "run": "perf-2-baseline",
+      "p50": 103.501,
+      "p95": 133.695,
+      "samples": 141
+    },
+    {
+      "run": "perf-2-candidate",
+      "p50": 96.453,
+      "p95": 116.632,
+      "samples": 152
+    },
+    {
+      "run": "perf-3-baseline",
+      "p50": 96.341,
+      "p95": 119.371,
+      "samples": 151
+    },
+    {
+      "run": "perf-3-candidate",
+      "p50": 93.201,
+      "p95": 114.985,
+      "samples": 154
+    },
+    {
+      "run": "perf-4-baseline",
+      "p50": 94.611,
+      "p95": 111.863,
+      "samples": 154
+    },
+    {
+      "run": "perf-4-candidate",
+      "p50": 94.664,
+      "p95": 112.573,
+      "samples": 155
+    },
+    {
+      "run": "perf-5-baseline",
+      "p50": 93.618,
+      "p95": 113.064,
+      "samples": 156
+    },
+    {
+      "run": "perf-5-candidate",
+      "p50": 94.712,
+      "p95": 113.132,
+      "samples": 153
+    }
+  ],
+  "medians": {
+    "baseline": {
+      "p50": 94.823,
+      "p95": 119.371
+    },
+    "candidate": {
+      "p50": 94.664,
+      "p95": 113.132
+    }
+  },
+  "verdict": "no distinct full-frame cost beyond overlapping variation; source llvmpipe only"
+}

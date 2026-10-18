@@ -1,0 +1,22 @@
+SYNTHETIC guardrails: temporary Git trees and fake executable; NO Godot runtime or pixel/performance proof
+test_bad_intervals_and_percentiles_refused (__main__.Guardrails.test_bad_intervals_and_percentiles_refused) ... ok
+test_binary_change_refused (__main__.Guardrails.test_binary_change_refused) ... ok
+test_changed_capture_size_refused (__main__.Guardrails.test_changed_capture_size_refused) ... ok
+test_clean_git_identity (__main__.Guardrails.test_clean_git_identity) ... ok
+test_complete_lifecycle_accepted (__main__.Guardrails.test_complete_lifecycle_accepted) ... ok
+test_import_failure_records_evidence (__main__.Guardrails.test_import_failure_records_evidence) ... ok
+test_invalid_movement_refused (__main__.Guardrails.test_invalid_movement_refused) ... ok
+test_missing_capture_refused (__main__.Guardrails.test_missing_capture_refused) ... ok
+test_modified_source_refused (__main__.Guardrails.test_modified_source_refused) ... ok
+test_modified_tests_refused (__main__.Guardrails.test_modified_tests_refused) ... ok
+test_nonzero_invocation_refused (__main__.Guardrails.test_nonzero_invocation_refused) ... ok
+test_reload_without_transfer_refused (__main__.Guardrails.test_reload_without_transfer_refused) ... ok
+test_renderer_and_draw_progress_required (__main__.Guardrails.test_renderer_and_draw_progress_required) ... ok
+test_revision_change_refused (__main__.Guardrails.test_revision_change_refused) ... ok
+test_stale_lifecycle_refused (__main__.Guardrails.test_stale_lifecycle_refused) ... ok
+test_untracked_source_refused (__main__.Guardrails.test_untracked_source_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 6.333s
+
+OK

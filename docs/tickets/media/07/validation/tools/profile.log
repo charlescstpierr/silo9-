@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/perf-profile/run.py", line 37, in <module>
+    result=runner.invoke(args,WORK,OUT/'run','perf')
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/proof-tools/prove_ads.py", line 181, in invoke
+    raise RuntimeError(f"Failed run: {destination}; read godot.log and manifest.json")
+RuntimeError: Failed run: /home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue07/perf-profile/run; read godot.log and manifest.json

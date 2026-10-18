@@ -11,8 +11,9 @@ const FOREARM_LENGTH := 0.30
 const SHOULDERS: Array[Vector3] = [Vector3(.23,-.40,.04),Vector3(-.16,-.40,-.04)]
 
 class ViewFrame extends RefCounted:
-	enum Pose { REST, RUN, AIM }
+	enum Pose { REST, RUN }
 	var pose: Pose = Pose.REST
+	var aim_weight := 0.0
 	var reload := Reload.View.new()
 	var recoil: float = 0.0
 	var shot_slide: float = 0.0
@@ -30,6 +31,7 @@ var arms: MeshInstance3D
 var weapon_index := 0
 var left_in_contact := true
 var calibration_valid := true
+var _aim_wrist := Transform3D.IDENTITY
 var _mount: Node3D
 var _attachment: BoneAttachment3D
 var _weapons: Array[Node3D] = []
@@ -134,6 +136,19 @@ func _bind_weapon(index: int) -> void:
 	var contact := gun.transform*(gun.get_node("GripRight") as Marker3D).transform
 	contact.basis = contact.basis.orthonormalized()
 	_mount.transform = contact.affine_inverse()
+	var rear := gun.find_child("SightRear", true, false) as Marker3D
+	var front := gun.find_child("SightFront", true, false) as Marker3D
+	var model_to_mount := _mount.transform * gun.transform
+	var inverse_model := gun.global_transform.affine_inverse()
+	var r := model_to_mount * (inverse_model * rear.global_position)
+	var f := model_to_mount * (inverse_model * front.global_position)
+	var z := -(f - r).normalized()
+	var up := (model_to_mount.basis * Vector3.UP).slide(z).normalized()
+	assert(r.is_finite() and f.is_finite() and r.distance_to(f) > .001 and up.length_squared() > .99, "Invalid sight calibration")
+	var x := up.cross(z)
+	var rotation := Basis(x, z.cross(x), z).transposed()
+	assert(is_equal_approx(rotation.determinant(), 1.0), "Sight calibration must be rigid")
+	_aim_wrist = Transform3D(rotation, Vector3(0, 0, -_profile.aim_rear_distance) - rotation * r)
 
 func apply_hidden_weapon(index: int) -> void:
 	skeleton.position.y = -1.15
@@ -181,18 +196,15 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 	var target := Vector3.ZERO
 	if frame.pose == ViewFrame.Pose.RUN and frame.recoil <= 0.0:
 		target = Vector3(.025,-.035,.025)
-	elif frame.pose == ViewFrame.Pose.AIM:
-		target = Vector3(-.14,.045,-.035)
 	var response := 1.0-exp(-delta*_profile.motion_response)
 	_pose_offset = _pose_offset.lerp(target,response)
 	if delta > 0.0:
 		var speed := Vector2(frame.local_velocity.x, frame.local_velocity.z).length() if frame.grounded else 0.0
 		if speed > .1:
 			_walk_phase = fmod(_walk_phase + delta * speed * 1.7, TAU)
-		var attenuation := .2 if frame.pose == ViewFrame.Pose.AIM else 1.0
-		var bob_target := sin(_walk_phase) * _profile.bob_amplitude * minf(speed / 4.0, 1.0) * attenuation
+		var bob_target := sin(_walk_phase) * _profile.bob_amplitude * minf(speed / 4.0, 1.0)
 		_bob = lerpf(_bob, bob_target, response)
-		var look_target := (Vector2(frame.look_delta.x, -frame.look_delta.y) / delta * _profile.look_gain).limit_length(_profile.look_limit) * attenuation
+		var look_target := (Vector2(frame.look_delta.x, -frame.look_delta.y) / delta * _profile.look_gain).limit_length(_profile.look_limit)
 		_look_offset = _look_offset.lerp(look_target, response)
 		_crouch_offset = lerpf(_crouch_offset, -.008 if frame.crouched else 0.0, response)
 	var gesture := frame.reload.gesture
@@ -202,11 +214,15 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 	if manipulating:
 		amount = t if gesture in [Reload.Gesture.REACH, Reload.Gesture.CELL_REACH] else (1.0-t if gesture in [Reload.Gesture.RETURN, Reload.Gesture.CELL_RETURN] else 1.0)
 	var wrist := _rest_wrists[0]
-	wrist.origin += _pose_offset*(1.0-amount) + Vector3(_look_offset.x, _bob + _look_offset.y + _crouch_offset, frame.recoil)*(1.0-amount)
-	wrist.origin += (Vector3(-.06,-.015,.02) if frame.reload.motion == Reload.Motion.CELL else Vector3(-.07,.10,.05))*amount
-	wrist.basis = Basis(Vector3.FORWARD,deg_to_rad(22)*amount)*wrist.basis
+	wrist.origin += _pose_offset + Vector3(_look_offset.x, _bob + _look_offset.y + _crouch_offset, 0)
+	wrist = wrist.interpolate_with(_aim_wrist, frame.aim_weight)
+	var manipulation := _rest_wrists[0]
+	manipulation.origin += Vector3(-.06,-.015,.02) if frame.reload.motion == Reload.Motion.CELL else Vector3(-.07,.10,.05)
+	manipulation.basis = Basis(Vector3.FORWARD,deg_to_rad(22))*manipulation.basis
 	if frame.reload.motion == Reload.Motion.CELL:
-		wrist.basis = Basis(Vector3.UP,1.15*amount)*wrist.basis
+		manipulation.basis = Basis(Vector3.UP,1.15)*manipulation.basis
+	wrist = wrist.interpolate_with(manipulation, amount)
+	wrist.origin.z += frame.recoil * (1.0 - amount)
 	if not _pose_arm(0,wrist):
 		return
 	skeleton.force_update_all_bone_transforms()

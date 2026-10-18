@@ -1,0 +1,61 @@
+{
+  "source": "1f36f01eea2e5d34dafee7f46a665c013370cbb4",
+  "valid_workload": true,
+  "excluded_from_comparison": true,
+  "summaries": [
+    {
+      "window": "all",
+      "samples": 40,
+      "mean_sum_cpu_percent": 400.56618225112857,
+      "llvmpipe_share": 0.8596521657704393,
+      "mean_cpu_by_name": {
+        "Godot_v4.7.2-st": 55.59818513559934,
+        "WorkerThread 0": 0.09514436433318559,
+        "WorkerThread 1": 0.09671162838737253,
+        "WorkerThread 2": 0.09578084645686562,
+        "WorkerThread 3": 0.09566430939853374,
+        "WorkerThread 4": 0.04822132937321567,
+        "WorkerThread 5": 0.09555038129317431,
+        "WorkerThread 6": 0.046222788605036,
+        "WorkerThread 7": 0.04711536110267004,
+        "llvmpipe-0": 42.95866312080504,
+        "llvmpipe-1": 42.33979724574626,
+        "llvmpipe-2": 42.90118823397912,
+        "llvmpipe-3": 43.96169121730104,
+        "llvmpipe-4": 43.38354182782686,
+        "llvmpipe-5": 42.784858794150395,
+        "llvmpipe-6": 42.47717597818267,
+        "llvmpipe-7": 43.54066968858778,
+        "Godot_v:disk$0": 0.0,
+        "async-io": 0.0
+      }
+    },
+    {
+      "window": "middle60percent",
+      "samples": 24,
+      "mean_sum_cpu_percent": 471.0273232810021,
+      "llvmpipe_share": 0.9002409085775254,
+      "mean_cpu_by_name": {
+        "Godot_v4.7.2-st": 46.19371484167016,
+        "WorkerThread 0": 0.1585739405553093,
+        "WorkerThread 1": 0.08105813652490625,
+        "WorkerThread 2": 0.07928013058439423,
+        "WorkerThread 3": 0.1594405156642229,
+        "WorkerThread 4": 0.08036888228869278,
+        "WorkerThread 5": 0.0812577755391251,
+        "WorkerThread 6": 0.07703798100839333,
+        "WorkerThread 7": 0.0785256018377834,
+        "llvmpipe-0": 52.84365562430876,
+        "llvmpipe-1": 52.207170828799754,
+        "llvmpipe-2": 52.67803429335575,
+        "llvmpipe-3": 54.198594374074396,
+        "llvmpipe-4": 53.47536061725819,
+        "llvmpipe-5": 52.789366235644025,
+        "llvmpipe-6": 52.43286115511299,
+        "llvmpipe-7": 53.41302234677525,
+        "Godot_v:disk$0": 0.0,
+        "async-io": 0.0
+      }
+    }
+  ]
+}

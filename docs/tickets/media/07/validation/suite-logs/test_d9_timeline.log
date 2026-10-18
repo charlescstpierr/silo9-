@@ -1,0 +1,18 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload stays blocked at partial duration
+PASS: large step retains remove and insert events
+PASS: rack pull precedes rack release
+PASS: empty sequence releases slide before readiness
+PASS: no event can repeat after completion
+PASS: partial reload skips both rack cues
+PASS: cancel freezes sampled manipulation
+PASS: cancel lowers continuously before hidden
+PASS: long cancellation emits hidden without commit
+PASS: large delta traverses hidden and full raise without lost time
+PASS: inactive controller stays hidden without commit
+PASS: hidden event occurs once while inactive
+PASS: reactivation accounts for elapsed raise time
+PASS: deactivation during raise cannot jump the visible height
+PASS: deactivation during raise waits hidden
+D9 TIMELINE FAILURES: 0

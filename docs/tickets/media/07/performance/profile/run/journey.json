@@ -1,0 +1,1110 @@
+{
+	"accepted_shots": 8,
+	"aim_api": true,
+	"base_fov": 76,
+	"captures": [
+		{
+			"camera_rotation": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"camera_world": [
+				0.0,
+				1.58000004291534,
+				7.0
+			],
+			"depth_limit": "AABB bounds include invisible arm extensions; review actual pixels, no general anti-clipping guarantee",
+			"file": "renderer-warmup.png",
+			"fov": 76.0,
+			"frame": 11,
+			"label": "renderer-warmup",
+			"markers": {
+				"SightFront": {
+					"center_error_px": 144.950561523438,
+					"depth": 0.583879947662354,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightFront",
+					"pixel": [
+						782.050109863281,
+						388.851898193359
+					],
+					"world": [
+						0.180000022053719,
+						1.54344010353088,
+						6.41612005233765
+					]
+				},
+				"SightRear": {
+					"center_error_px": 217.388687133789,
+					"depth": 0.389319896697998,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightRear",
+					"pixel": [
+						853.038757324219,
+						403.270446777344
+					],
+					"world": [
+						0.180000022053719,
+						1.54344010353088,
+						6.610680103302
+					]
+				}
+			},
+			"mesh_bounds": [
+				{
+					"bounds_depth_max": 0.482179641723633,
+					"bounds_depth_min": -0.0635614395141602,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/ArmsMesh"
+				},
+				{
+					"bounds_depth_max": 0.610480308532715,
+					"bounds_depth_min": 0.382480144500732,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/@MeshInstance3D@932"
+				},
+				{
+					"bounds_depth_max": 0.594900131225586,
+					"bounds_depth_min": 0.383240222930908,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/@MeshInstance3D@933"
+				},
+				{
+					"bounds_depth_max": 0.51092004776001,
+					"bounds_depth_min": 0.386894226074219,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/@MeshInstance3D@934"
+				},
+				{
+					"bounds_depth_max": 0.55955982208252,
+					"bounds_depth_min": 0.452020168304443,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/@MeshInstance3D@935"
+				},
+				{
+					"bounds_depth_max": 0.579319953918457,
+					"bounds_depth_min": 0.381720066070557,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/@MeshInstance3D@936"
+				},
+				{
+					"bounds_depth_max": 0.43720006942749,
+					"bounds_depth_min": 0.347520351409912,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Magazine/@MeshInstance3D@937"
+				},
+				{
+					"bounds_depth_max": 0.434514045715332,
+					"bounds_depth_min": 0.359326362609863,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Magazine/@MeshInstance3D@938"
+				},
+				{
+					"bounds_depth_max": 0.411360263824463,
+					"bounds_depth_min": 0.35968017578125,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Magazine/@MeshInstance3D@939"
+				},
+				{
+					"bounds_depth_max": 0.676219940185547,
+					"bounds_depth_min": 0.368290901184082,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/@MeshInstance3D@940"
+				},
+				{
+					"bounds_depth_max": 0.653800010681152,
+					"bounds_depth_min": 0.357399940490723,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/@MeshInstance3D@941"
+				},
+				{
+					"bounds_depth_max": 0.649240016937256,
+					"bounds_depth_min": 0.355852127075195,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/@MeshInstance3D@942"
+				}
+			],
+			"near": 0.0500000007450581,
+			"target_pixel": [
+				640.0,
+				360.0
+			],
+			"target_world": [
+				0.0,
+				1.58000004291534,
+				4.0
+			],
+			"weapon": 0
+		}
+	],
+	"display_driver": "X11",
+	"draw_calls_max": 376,
+	"engine_version": {
+		"build": "official",
+		"hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+		"hex": 263938,
+		"major": 4,
+		"minor": 7,
+		"patch": 2,
+		"status": "stable",
+		"string": "4.7.2-stable (official)",
+		"timestamp": 0
+	},
+	"events": [
+		{
+			"ammo_after": 11,
+			"ammo_before": 12,
+			"camera_rotation": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"camera_world": [
+				0.0,
+				1.58000004291534,
+				7.0
+			],
+			"damage": 28.0,
+			"energy_after": 100.0,
+			"energy_before": 100.0,
+			"fov": 76.4000015258789,
+			"frame": 18,
+			"impact": [
+				0.0,
+				1.58000004291534,
+				4.01999998092651
+			],
+			"label": "d9-hip",
+			"markers": {
+				"SightFront": {
+					"center_error_px": 157.002014160156,
+					"depth": 0.535200119018555,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightFront",
+					"pixel": [
+						793.860412597656,
+						391.250701904297
+					],
+					"world": [
+						0.180000022053719,
+						1.54344010353088,
+						6.46479988098145
+					]
+				},
+				"SightRear": {
+					"center_error_px": 246.675354003906,
+					"depth": 0.340640068054199,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightRear",
+					"pixel": [
+						881.739379882812,
+						409.099884033203
+					],
+					"world": [
+						0.180000022053719,
+						1.54344010353088,
+						6.6593599319458
+					]
+				}
+			},
+			"near": 0.0500000007450581,
+			"ray_from": [
+				0.0,
+				1.58000004291534,
+				7.0
+			],
+			"ray_to": [
+				0.0,
+				1.58000004291534,
+				-63.0
+			],
+			"target_pixel": [
+				640.0,
+				360.0
+			],
+			"target_world": [
+				0.0,
+				1.58000004291534,
+				4.0
+			],
+			"weapon": 0
+		},
+		{
+			"ammo_after": 10,
+			"ammo_before": 11,
+			"camera_rotation": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"camera_world": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"damage": 28.0,
+			"energy_after": 100.0,
+			"energy_before": 100.0,
+			"fov": 70.4065551757812,
+			"frame": 31,
+			"impact": [
+				1.0,
+				1.58000004291534,
+				4.01999998092651
+			],
+			"label": "d9-during-entry",
+			"markers": {
+				"SightFront": {
+					"center_error_px": 91.7882080078125,
+					"depth": 0.510540008544922,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightFront",
+					"pixel": [
+						729.952514648438,
+						378.265258789062
+					],
+					"world": [
+						1.0900000333786,
+						1.56172513961792,
+						6.48945999145508
+					]
+				},
+				"SightRear": {
+					"center_error_px": 148.305465698242,
+					"depth": 0.315979957580566,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightRear",
+					"pixel": [
+						785.339477539062,
+						389.511810302734
+					],
+					"world": [
+						1.0900000333786,
+						1.56172513961792,
+						6.68402004241943
+					]
+				}
+			},
+			"near": 0.0500000007450581,
+			"ray_from": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"ray_to": [
+				1.0,
+				1.58000004291534,
+				-63.0
+			],
+			"target_pixel": [
+				640.0,
+				360.0
+			],
+			"target_world": [
+				1.0,
+				1.58000004291534,
+				4.0
+			],
+			"weapon": 0
+		},
+		{
+			"ammo_after": 9,
+			"ammo_before": 10,
+			"camera_rotation": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"camera_world": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"damage": 28.0,
+			"energy_after": 100.0,
+			"energy_before": 100.0,
+			"fov": 70.4065551757812,
+			"frame": 38,
+			"impact": [
+				1.0,
+				1.58000004291534,
+				4.01999998092651
+			],
+			"label": "d9-during-inversion",
+			"markers": {
+				"SightFront": {
+					"center_error_px": 91.7891998291016,
+					"depth": 0.510540008544922,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightFront",
+					"pixel": [
+						729.952514648438,
+						378.270263671875
+					],
+					"world": [
+						1.0900000333786,
+						1.56172013282776,
+						6.48945999145508
+					]
+				},
+				"SightRear": {
+					"center_error_px": 148.307067871094,
+					"depth": 0.315979957580566,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightRear",
+					"pixel": [
+						785.339477539062,
+						389.519897460938
+					],
+					"world": [
+						1.0900000333786,
+						1.56172013282776,
+						6.68402004241943
+					]
+				}
+			},
+			"near": 0.0500000007450581,
+			"ray_from": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"ray_to": [
+				1.0,
+				1.58000004291534,
+				-63.0
+			],
+			"target_pixel": [
+				640.0,
+				360.0
+			],
+			"target_world": [
+				1.0,
+				1.58000004291534,
+				4.0
+			],
+			"weapon": 0
+		},
+		{
+			"ammo_after": 8,
+			"ammo_before": 9,
+			"camera_rotation": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"camera_world": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"damage": 28.0,
+			"energy_after": 100.0,
+			"energy_before": 100.0,
+			"fov": 64.4131164550781,
+			"frame": 45,
+			"impact": [
+				1.0,
+				1.58000004291534,
+				4.01999998092651
+			],
+			"label": "d9-full-ADS",
+			"markers": {
+				"SightFront": {
+					"center_error_px": 0.000152587890625,
+					"depth": 0.485879898071289,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightFront",
+					"pixel": [
+						640.0,
+						359.999847412109
+					],
+					"world": [
+						1.0,
+						1.58000016212463,
+						6.51412010192871
+					]
+				},
+				"SightRear": {
+					"center_error_px": 0.000244140625,
+					"depth": 0.291319847106934,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightRear",
+					"pixel": [
+						640.0,
+						359.999755859375
+					],
+					"world": [
+						1.0,
+						1.58000016212463,
+						6.70868015289307
+					]
+				}
+			},
+			"near": 0.0500000007450581,
+			"ray_from": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"ray_to": [
+				1.0,
+				1.58000004291534,
+				-63.0
+			],
+			"target_pixel": [
+				640.0,
+				360.0
+			],
+			"target_world": [
+				1.0,
+				1.58000004291534,
+				4.0
+			],
+			"weapon": 0
+		},
+		{
+			"ammo_after": 11,
+			"ammo_before": 12,
+			"camera_rotation": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"camera_world": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"damage": 28.0,
+			"energy_after": 100.0,
+			"energy_before": 100.0,
+			"fov": 64.4131164550781,
+			"frame": 77,
+			"impact": [
+				1.0,
+				1.58000004291534,
+				4.01999998092651
+			],
+			"label": "d9-after-R",
+			"markers": {
+				"SightFront": {
+					"center_error_px": 0.000152587890625,
+					"depth": 0.485879898071289,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightFront",
+					"pixel": [
+						640.0,
+						359.999847412109
+					],
+					"world": [
+						1.0,
+						1.58000016212463,
+						6.51412010192871
+					]
+				},
+				"SightRear": {
+					"center_error_px": 0.000244140625,
+					"depth": 0.291319847106934,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightRear",
+					"pixel": [
+						640.0,
+						359.999755859375
+					],
+					"world": [
+						1.0,
+						1.58000016212463,
+						6.70868015289307
+					]
+				}
+			},
+			"near": 0.0500000007450581,
+			"ray_from": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"ray_to": [
+				1.0,
+				1.58000004291534,
+				-63.0
+			],
+			"target_pixel": [
+				640.0,
+				360.0
+			],
+			"target_world": [
+				1.0,
+				1.58000004291534,
+				4.0
+			],
+			"weapon": 0
+		},
+		{
+			"ammo_after": 11,
+			"ammo_before": 11,
+			"camera_rotation": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"camera_world": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"damage": 39.0,
+			"energy_after": 88.0,
+			"energy_before": 100.0,
+			"fov": 64.2631149291992,
+			"frame": 91,
+			"impact": [
+				1.0,
+				1.58000004291534,
+				4.01999998092651
+			],
+			"label": "arc-ADS-1",
+			"markers": {
+				"SightFront": {
+					"center_error_px": 0.0001220703125,
+					"depth": 0.601000308990479,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@963/SightFront",
+					"pixel": [
+						640.000122070312,
+						360.0
+					],
+					"world": [
+						1.00000011920929,
+						1.58000004291534,
+						6.39899969100952
+					]
+				},
+				"SightRear": {
+					"center_error_px": 0.00018310546875,
+					"depth": 0.335000038146973,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@963/SightRear",
+					"pixel": [
+						640.000183105469,
+						360.0
+					],
+					"world": [
+						1.00000011920929,
+						1.58000004291534,
+						6.66499996185303
+					]
+				}
+			},
+			"near": 0.0500000007450581,
+			"ray_from": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"ray_to": [
+				1.0,
+				1.58000004291534,
+				-15.0
+			],
+			"target_pixel": [
+				640.0,
+				360.0
+			],
+			"target_world": [
+				1.0,
+				1.58000004291534,
+				4.0
+			],
+			"weapon": 1
+		},
+		{
+			"ammo_after": 11,
+			"ammo_before": 11,
+			"camera_rotation": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"camera_world": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"damage": 39.0,
+			"energy_after": 76.0,
+			"energy_before": 88.0,
+			"fov": 64.2631149291992,
+			"frame": 97,
+			"impact": [
+				1.0,
+				1.58000004291534,
+				4.01999998092651
+			],
+			"label": "arc-ADS-2",
+			"markers": {
+				"SightFront": {
+					"center_error_px": 0.0001220703125,
+					"depth": 0.601000308990479,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@963/SightFront",
+					"pixel": [
+						640.000122070312,
+						360.0
+					],
+					"world": [
+						1.00000011920929,
+						1.58000004291534,
+						6.39899969100952
+					]
+				},
+				"SightRear": {
+					"center_error_px": 0.00018310546875,
+					"depth": 0.335000038146973,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@963/SightRear",
+					"pixel": [
+						640.000183105469,
+						360.0
+					],
+					"world": [
+						1.00000011920929,
+						1.58000004291534,
+						6.66499996185303
+					]
+				}
+			},
+			"near": 0.0500000007450581,
+			"ray_from": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"ray_to": [
+				1.0,
+				1.58000004291534,
+				-15.0
+			],
+			"target_pixel": [
+				640.0,
+				360.0
+			],
+			"target_world": [
+				1.0,
+				1.58000004291534,
+				4.0
+			],
+			"weapon": 1
+		},
+		{
+			"ammo_after": 10,
+			"ammo_before": 11,
+			"camera_rotation": [
+				0.0,
+				0.0,
+				0.0
+			],
+			"camera_world": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"damage": 28.0,
+			"energy_after": 100.0,
+			"energy_before": 100.0,
+			"fov": 64.4131164550781,
+			"frame": 143,
+			"impact": [
+				1.0,
+				1.58000004291534,
+				4.01999998092651
+			],
+			"label": "d9-final",
+			"markers": {
+				"SightFront": {
+					"center_error_px": 0.0001220703125,
+					"depth": 0.485879421234131,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightFront",
+					"pixel": [
+						640.000122070312,
+						360.0
+					],
+					"world": [
+						1.00000011920929,
+						1.58000004291534,
+						6.51412057876587
+					]
+				},
+				"SightRear": {
+					"center_error_px": 0.000244140625,
+					"depth": 0.291319370269775,
+					"path": "/root/Silo9/@CharacterBody3D@927/@Camera3D@929/@Node3D@930/Skeleton/@BoneAttachment3D@961/WeaponMount/@Node3D@962/Slide/SightRear",
+					"pixel": [
+						640.000244140625,
+						360.0
+					],
+					"world": [
+						1.00000011920929,
+						1.58000004291534,
+						6.70868062973022
+					]
+				}
+			},
+			"near": 0.0500000007450581,
+			"ray_from": [
+				1.0,
+				1.58000004291534,
+				7.0
+			],
+			"ray_to": [
+				1.0,
+				1.58000004291534,
+				-63.0
+			],
+			"target_pixel": [
+				640.0,
+				360.0
+			],
+			"target_world": [
+				1.0,
+				1.58000004291534,
+				4.0
+			],
+			"weapon": 0
+		}
+	],
+	"failures": [],
+	"frame_intervals_ms": [
+		98.646,
+		91.328,
+		84.96,
+		86.881,
+		142.752,
+		93.386,
+		84.368,
+		87.024,
+		84.923,
+		83.434,
+		83.46,
+		80.902,
+		88.096,
+		99.426,
+		95.96,
+		107.153,
+		108.531,
+		119.026,
+		105.753,
+		105.077,
+		121.726,
+		94.249,
+		97.115,
+		101.119,
+		99.387,
+		99.12,
+		88.779,
+		86.536,
+		95.155,
+		92.625,
+		93.728,
+		108.14,
+		91.338,
+		93.337,
+		106.975,
+		100.493,
+		118.482,
+		111.723,
+		110.931,
+		118.206,
+		108.123,
+		141.43,
+		95.312,
+		86.318,
+		88.274,
+		86.612,
+		95.824,
+		104.83,
+		95.268,
+		86.309,
+		102.48,
+		106.1,
+		105.543,
+		98.903,
+		96.422,
+		106.661,
+		101.247,
+		92.84,
+		102.097,
+		92.699,
+		100.895,
+		92.299,
+		99.638,
+		101.717,
+		108.935,
+		97.649,
+		86.268,
+		101.065,
+		105.727,
+		93.615,
+		91.65,
+		95.392,
+		95.771,
+		106.626,
+		124.441,
+		100.479,
+		91.064,
+		92.499,
+		103.438,
+		93.683,
+		98.475,
+		94.71,
+		95.824,
+		105.9,
+		126.589,
+		104.494,
+		93.318,
+		101.04,
+		96.732,
+		97.635,
+		85.443,
+		82.712,
+		85.547,
+		90.861,
+		92.438,
+		96.932,
+		96.432,
+		92.817,
+		86.892,
+		94.889,
+		87.303,
+		99.598,
+		92.702,
+		104.398,
+		108.18,
+		103.93,
+		97.343,
+		128.498,
+		102.737,
+		92.107,
+		91.857,
+		90.593,
+		84.699,
+		85.176,
+		85.697,
+		86.949,
+		107.654,
+		110.08,
+		106.188,
+		100.06,
+		102.977,
+		94.139,
+		88.014,
+		91.705,
+		92.665,
+		102.7,
+		89.775,
+		112.963,
+		100.792,
+		109.284,
+		100.4,
+		101.88,
+		83.426,
+		97.04,
+		87.087,
+		89.236,
+		106.336,
+		104.066,
+		94.012,
+		91.618,
+		98.58,
+		103.938,
+		93.065,
+		89.414,
+		85.145,
+		91.764,
+		92.879,
+		78.472,
+		89.88,
+		84.48,
+		81.884
+	],
+	"frame_p50_ms": 95.824,
+	"frame_p95_ms": 118.482,
+	"frame_samples": 151,
+	"frame_stages": [
+		"hip-still",
+		"hip-still",
+		"hip-still",
+		"hip-still",
+		"d9-hip",
+		"d9-hip",
+		"d9-hip",
+		"d9-hip",
+		"d9-hip",
+		"walk-right-hip",
+		"walk-right-hip",
+		"walk-right-hip",
+		"walk-right-hip",
+		"walk-right-hip",
+		"walk-right-hip",
+		"walk-right-hip",
+		"enter-ADS",
+		"release-during-recoil",
+		"release-during-recoil",
+		"release-during-recoil",
+		"release-during-recoil",
+		"enter-before-inversion",
+		"inversion",
+		"inversion",
+		"d9-during-inversion",
+		"d9-during-inversion",
+		"d9-during-inversion",
+		"d9-during-inversion",
+		"d9-during-inversion",
+		"d9-during-inversion",
+		"d9-during-inversion",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"R-while-aim-held",
+		"d9-after-R",
+		"d9-after-R",
+		"d9-after-R",
+		"d9-after-R",
+		"d9-after-R",
+		"switch-ARC-held-ADS",
+		"switch-ARC-held-ADS",
+		"switch-ARC-held-ADS",
+		"switch-ARC-held-ADS",
+		"switch-ARC-held-ADS",
+		"switch-ARC-held-ADS",
+		"switch-ARC-held-ADS",
+		"switch-ARC-held-ADS",
+		"switch-ARC-held-ADS",
+		"arc-ADS-1",
+		"arc-ADS-1",
+		"arc-ADS-1",
+		"arc-ADS-1",
+		"arc-ADS-1",
+		"arc-ADS-1",
+		"arc-ADS-2",
+		"arc-ADS-2",
+		"arc-ADS-2",
+		"arc-ADS-2",
+		"arc-ADS-2",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"B-while-aim-held",
+		"return-D9-held-ADS",
+		"return-D9-held-ADS",
+		"return-D9-held-ADS",
+		"return-D9-held-ADS",
+		"return-D9-held-ADS",
+		"return-D9-held-ADS",
+		"return-D9-held-ADS",
+		"return-D9-held-ADS",
+		"return-D9-held-ADS",
+		"return-D9-held-ADS",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip",
+		"settled-hip"
+	],
+	"frames_drawn_end": 165,
+	"frames_drawn_start": 13,
+	"godot": "4.7.2-stable (official)",
+	"lifecycle": [
+		{
+			"direction": [
+				1.0,
+				0.0,
+				0.0
+			],
+			"end": [
+				1.0,
+				0.0,
+				7.0
+			],
+			"forward_distance": 1.0,
+			"horizontal_distance": 1.0,
+			"kind": "walk-right",
+			"start": [
+				0.0,
+				0.0,
+				7.0
+			]
+		},
+		{
+			"ammo_after": 12,
+			"ammo_before": 8,
+			"kind": "reload",
+			"reserve_after": 44,
+			"reserve_before": 48
+		}
+	],
+	"limits": "Inspection matrix uses temporary proof bay at x1000; perf/film use actual SILO at(0,0,7), visible3m collider; software action inputs, not XTest/controller hardware. Film fixed30fps is not performance. Candidate zoom changes viewing volume versus baseline; no target GPU or Windows claim.",
+	"mode": "perf",
+	"nodes_max": 686,
+	"normal_quality": true,
+	"performance_valid": true,
+	"pixel_review": "pending manual review; projections/depth bounds are not a visual PASS",
+	"render_loop_enabled": true,
+	"renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+	"rendering_driver": "opengl3",
+	"rendering_method": "gl_compatibility",
+	"resolution": "1280x720",
+	"resources_max": 83,
+	"scenario": "SILO elevator: movement, 6D9+2ARC, R, B, switches, settle",
+	"schema": 1,
+	"target_damage": 246.0,
+	"target_hits": 8,
+	"transitions": [],
+	"warmup_capture": "renderer-warmup.png"
+}

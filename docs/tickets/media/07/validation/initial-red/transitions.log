@@ -1,0 +1,79 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+FAIL: ADS enters gradually on physical time
+PASS: zero-delta physics/render/recompose do not advance ADS
+FAIL: mid-entry release reverses continuously
+PASS: release returns exactly to current hip FOV
+FAIL: 50 irregular ADS cycles settle both endpoints without cumulative zoom
+PASS: 50 cycles retain nodes, mesh resources and material resources
+PASS: fixture reaches READY
+FAIL: weapon resource exposes a positive configurable ADS entry duration
+GUARDED: alternate timing behavior awaits weapon ADS duration
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+GUARDED: changing options during recoil awaits configure_aim
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+GUARDED: configurable ADS mouse factors await configure_aim
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+PASS: d9_reload accepts manipulation and blocks firing
+PASS: blocked fire during d9_reload has no debit
+PASS: d9_reload starts without an instantaneous FOV jump
+PASS: d9_reload exits smoothly through HIDDEN/handling without a camera reset jump
+FAIL: d9_reload returns to ADS at READY when aim remains held
+PASS: d9_reload restores reachable hand contacts
+PASS: ADS reload conserves D9 rounds
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+PASS: arc_reload accepts manipulation and blocks firing
+PASS: blocked fire during arc_reload has no debit
+PASS: arc_reload starts without an instantaneous FOV jump
+PASS: arc_reload exits smoothly through HIDDEN/handling without a camera reset jump
+FAIL: arc_reload returns to ADS at READY when aim remains held
+PASS: arc_reload restores reachable hand contacts
+PASS: ADS cell manipulation transfers exactly one cell
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+PASS: cell accepts manipulation and blocks firing
+PASS: blocked fire during cell has no debit
+PASS: cell starts without an instantaneous FOV jump
+PASS: cell exits smoothly through HIDDEN/handling without a camera reset jump
+FAIL: cell returns to ADS at READY when aim remains held
+PASS: cell restores reachable hand contacts
+PASS: ADS cell manipulation transfers exactly one cell
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+PASS: switch accepts manipulation and blocks firing
+PASS: blocked fire during switch has no debit
+PASS: switch starts without an instantaneous FOV jump
+PASS: switch exits smoothly through HIDDEN/handling without a camera reset jump
+FAIL: switch returns to ADS at READY when aim remains held
+PASS: switch restores reachable hand contacts
+PASS: ADS switch binds once and preserves resources
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+PASS: full D9 magazine refuses reload
+FAIL: refused reload retains ADS target
+FAIL: rapid ADS switches converge to final requested READY weapon
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+PASS: inactive purges ADS camera channel
+PASS: inactive held RMB cannot reactivate ADS after interruption
+FAIL: inactive fresh RMB after release rearms ADS
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+PASS: teleport purges ADS camera channel
+PASS: teleport held RMB cannot reactivate ADS after interruption
+FAIL: teleport fresh RMB after release rearms ADS
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+PASS: capture purges ADS camera channel
+PASS: capture held RMB cannot reactivate ADS after interruption
+FAIL: capture fresh RMB after release rearms ADS
+PASS: fixture reaches READY
+FAIL: Player exposes configure_aim
+PASS: death purges ADS camera channel
+ADS TRANSITIONS FAILURES: 25

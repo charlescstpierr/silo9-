@@ -26,7 +26,8 @@ func run() -> void:
 	for weapon in 2:
 		rig.equip(weapon)
 		for pose in 3:
-			frame.pose = pose
+			frame.pose = Rig.ViewFrame.Pose.RUN if pose == 1 else Rig.ViewFrame.Pose.REST
+			frame.aim_weight = 1.0 if pose == 2 else 0.0
 			for phase in 31:
 				var cycle := Rig.Reload.new()
 				if weapon == 0:

@@ -1,0 +1,23 @@
+{
+  "source": "1f36f01eea2e5d34dafee7f46a665c013370cbb4",
+  "inspection": {
+    "exit": 0,
+    "shots": 18,
+    "damage": 603.0,
+    "failures": [],
+    "captures": 45
+  },
+  "labels_verified": [
+    "w0-fov60-3m-ads.png",
+    "silo-w1-ads.png"
+  ],
+  "label_patch_review": "presentation-only; no changed gameplay/protocol assertions/timing; exact final labels observed",
+  "native": "native/parent-audit.json",
+  "film_decode": "film-final/film/decode-verification.json",
+  "art_review": "PASS WITH NOTES; art-review-final.md; wall intersection at30cm",
+  "performance": "10validruns; independent audit473PASS and parent recomputation concordant; no winner proven",
+  "film_parent_pixels": "inversion contact sheet frames101..124 inspected; no continuous playback",
+  "proof_tool_delta": "Film/render uses bce35; performance uses a0322 after readiness wait before second ARC; production identical",
+  "performance_pixels": "All10warmup PNGs inspected on parent-warmup-sheet.jpg; real SILO/weapon/UI visible",
+  "deslop": "No unrelated source changes, no code removal; parent read complete tool deltas, installed16selfchecks pass; production reviewed independently"
+}

@@ -23,3 +23,7 @@ extends Resource
 @export var departure_duration: float = 0.09
 @export var shot_slide: float = 0.018
 @export var shot_slide_duration: float = 0.07
+
+@export var aim_rear_distance: float = .34
+@export var aim_enter_seconds: float = .20
+@export var aim_exit_seconds: float = .14

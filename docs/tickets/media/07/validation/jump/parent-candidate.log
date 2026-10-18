@@ -1,0 +1,14 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real capsule is grounded on the collision floor before tap
+PASS: complete Space tap retains a fresh press despite released key
+TAP velocity_y=0.0 rise=0.0
+FAIL: complete Space tap produces upward jump velocity
+FAIL: complete Space tap lifts the physical capsule
+PASS: player is grounded again before held-jump control
+PASS: held Space control starts with a fresh press
+PASS: held Space also jumps
+PASS: double-jump check starts during ascent
+PASS: a fresh airborne tap cannot reset jump velocity
+PASS: gravity returns the player to the real floor
+JUMP TAP FAILURES: 2

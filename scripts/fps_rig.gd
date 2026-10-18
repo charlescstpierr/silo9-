@@ -183,7 +183,7 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 		var attenuation := .2 if frame.pose == ViewFrame.Pose.AIM else 1.0
 		var bob_target := sin(_walk_phase) * _profile.bob_amplitude * minf(speed / 4.0, 1.0) * attenuation
 		_bob = lerpf(_bob, bob_target, response)
-		var look_target := (frame.look_delta / delta * _profile.look_gain).limit_length(_profile.look_limit) * attenuation
+		var look_target := (Vector2(frame.look_delta.x, -frame.look_delta.y) / delta * _profile.look_gain).limit_length(_profile.look_limit) * attenuation
 		_look_offset = _look_offset.lerp(look_target, response)
 		_crouch_offset = lerpf(_crouch_offset, -.008 if frame.crouched else 0.0, response)
 	var gesture := frame.reload.gesture

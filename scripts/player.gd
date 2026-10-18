@@ -40,6 +40,7 @@ var rig: FpsRig
 var _view_frame := FpsRig.ViewFrame.new()
 var _muzzle: MeshInstance3D
 var _beam: MeshInstance3D
+var _beam_hit := Vector3.ZERO
 var _impact: MeshInstance3D
 var _flash_light: OmniLight3D
 var _audio: AudioStreamPlayer
@@ -165,12 +166,16 @@ func fire() -> bool:
 			target.call("receive_hit", spec.damage, spec.stun)
 			feedback.emit("IMPACT" if weapon_index == 0 else "SYSTÈME IMMOBILISÉ")
 	if weapon_index == 1:
-		var start := _muzzle.global_position
-		_beam.global_position = (start + hit_position) * 0.5
-		_beam.look_at(hit_position, Vector3.UP)
-		_beam.scale = Vector3(0.022, 0.022, maxf(start.distance_to(hit_position), 0.01))
+		_beam_hit = hit_position
 		_beam.visible = true
+		_update_beam()
 	return true
+
+func _update_beam() -> void:
+	var start := _muzzle.global_position
+	_beam.global_position = (start + _beam_hit) * 0.5
+	_beam.look_at(_beam_hit, Vector3.UP)
+	_beam.scale = Vector3(0.022, 0.022, maxf(start.distance_to(_beam_hit), 0.01))
 
 func reload_weapon() -> bool:
 	if not reload_cycle.request_reload(active):
@@ -353,6 +358,8 @@ func _update_view(delta: float) -> void:
 	_view_frame.energy = state.energy
 	_view_frame.capacity = state.max_energy()
 	rig.update_visual(delta, _view_frame)
+	if _beam.visible:
+		_update_beam()
 
 func _set_crouch(wanted: bool) -> void:
 	if wanted == _crouched:

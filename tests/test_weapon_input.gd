@@ -113,6 +113,13 @@ func run() -> void:
 	click(false)
 	reset()
 	click(true)
+	step(.01)
+	player.set_active(true)
+	step(Player.D9.cooldown + .01)
+	check(player.state.ammo == 10, "repeated activation preserves an already active held trigger")
+	click(false)
+	reset()
+	click(true)
 	var before_inactive := player.state.ammo
 	player.set_active(false)
 	player.set_active(true)

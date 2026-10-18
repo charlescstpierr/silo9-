@@ -25,6 +25,8 @@ Le squelette contient 35 os.
 
 L'os 0 est la racine. Les deux bras réunis comptent 1 564 sommets, 2 400 triangles et deux surfaces. Le budget est de 24 000 sommets, 16 000 triangles et 48 os. L'arme visible ajoute cinq surfaces. Aucune géométrie ni aucun matériau n'est reconstruit pendant `update_visual()`.
 
+L'ARC possède une poignée de support reliée au corps sous le canon. Un rayon depuis la paume gauche vérifie un contact avec les triangles réels de ce support, en plus des tests de marqueurs.
+
 La poignée commune a été ramenée à 4,94 cm de large et 10,26 cm de haut pour correspondre aux mains. Les dimensions des armes n'influencent pas les raycasts de dégâts. Le contrôle géométrique a aussi révélé des triangles dégénérés dans les anciens petits biseaux. Leur rayon de coin est maintenant borné par la section disponible.
 
 ## Vérifications reproductibles

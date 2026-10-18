@@ -29,6 +29,9 @@ static func build(electric: bool) -> Node3D:
 	_part(batches[0], Vector3(0.078, 0.082, 0.018), Vector3(0, -0.027, -0.093), 0.005, Vector3(0.22, 0, 0))
 	_part(batches[2], Vector3(0.015, 0.051, 0.014), Vector3(0, -0.024, -0.015), 0.003, Vector3(-0.33, 0, 0))
 	if electric:
+		_part(batches[1], Vector3(0.078, 0.025, 0.12), Vector3(0, 0.003, -0.21), 0.005)
+		_part(batches[2], Vector3(0.065, 0.14, 0.10), Vector3(0, -0.07, -0.21), 0.012)
+		_part(batches[3], Vector3(0.075, 0.016, 0.108), Vector3(0, -0.14, -0.21), 0.004)
 		_part(batches[0], Vector3(0.132, 0.105, 0.2), Vector3(0, 0.087, 0.005), 0.025)
 		_part(batches[1], Vector3(0.104, 0.077, 0.26), Vector3(0, 0.078, -0.13), 0.014)
 		_cylinder(batches[2], 0.039, 0.16, Vector3(0, 0.078, -0.125))
@@ -67,7 +70,7 @@ static func build(electric: bool) -> Node3D:
 		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		root.add_child(instance)
 	var grip_basis := Basis(Vector3.UP, Vector3.FORWARD, Vector3.LEFT)
-	for entry: Array in [["GripRight", Vector3(0.035, -0.07, 0.158), Basis(Vector3.UP, -0.35) * grip_basis], ["GripLeft", Vector3(-0.075, -0.10, -0.12) if electric else Vector3(-0.068, -0.10, 0.13), Basis(Vector3.DOWN, Vector3.FORWARD, Vector3.RIGHT)], ["Muzzle", Vector3(0, 0.087, -0.31), Basis.IDENTITY]]:
+	for entry: Array in [["GripRight", Vector3(0.035, -0.07, 0.158), Basis(Vector3.UP, -0.35) * grip_basis], ["GripLeft", Vector3(-0.062, -0.10, -0.12) if electric else Vector3(-0.068, -0.10, 0.13), Basis(Vector3.DOWN, Vector3.FORWARD, Vector3.RIGHT)], ["Muzzle", Vector3(0, 0.087, -0.31), Basis.IDENTITY]]:
 		var marker := Marker3D.new()
 		marker.name = entry[0]
 		marker.transform = Transform3D(entry[2], entry[1])

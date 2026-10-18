@@ -72,12 +72,12 @@ if ARGS.measure:
             rows.append(dict(side=label, run=run, source_sha256={str(path.relative_to(project)): hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted((project / "scripts").glob("*.gd"))}, **data))
     (OUT / "measurements.json").write_text(json.dumps(rows, indent=2))
     summary = {}
-    for label in {row["side"] for row in rows}:
+    for label, weapon in [(label, weapon) for label in {row["side"] for row in rows} for weapon in range(2)]:
         for visible in [True, False]:
-            records = [record for row in rows if row["side"] == label for record in row["records"] if record["hands_visible"] == visible]
+            records = [record for row in rows if row["side"] == label for record in row["records"] if record["hands_visible"] == visible and record["weapon"] == weapon]
             if not records:
                 continue
-            summary[f"{label}-hands-{visible}"] = {metric: {"median": statistics.median(record[metric] for record in records), "min": min(record[metric] for record in records), "max": max(record[metric] for record in records)} for metric in ["frame_p50_ms", "rig_update_call_p50_ms", "draw_calls", "triangles"]}
+            summary[f"{label}-weapon{weapon}-hands-{visible}"] = {metric: {"median": statistics.median(record[metric] for record in records), "min": min(record[metric] for record in records), "max": max(record[metric] for record in records)} for metric in ["frame_p50_ms", "rig_update_call_p50_ms", "draw_calls", "triangles"]}
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2))
 metadata["load_after"] = os.getloadavg()
 (OUT / ("metadata-measure.json" if ARGS.measure else "metadata-video.json")).write_text(json.dumps(metadata, indent=2))

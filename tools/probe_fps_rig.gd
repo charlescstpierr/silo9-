@@ -99,30 +99,34 @@ func demonstrate() -> void:
 func measure() -> void:
 	app.player.set_active(false)
 	var records: Array[Dictionary] = []
-	var visibility_modes := [true,false] if rig != null else [true]
-	for visible: bool in visibility_modes:
+	for weapon in 2:
+		app.player.equip(weapon)
 		if rig != null:
-			rig.arms.visible = visible
-		await wait(1.0)
-		var samples: Array[float] = []
-		var cpu_samples: Array[float] = []
-		var until := Time.get_ticks_usec()+2000000
-		var previous := Time.get_ticks_usec()
-		while Time.get_ticks_usec()<until:
+			rig.reset_pose()
+		var visibility_modes := [true,false] if rig != null else [true]
+		for visible: bool in visibility_modes:
 			if rig != null:
-				var begin := Time.get_ticks_usec()
-				rig.update_visual(1.0/60.0,frame)
-				cpu_samples.append(float(Time.get_ticks_usec()-begin)/1000.0)
-			await RenderingServer.frame_post_draw
-			var now := Time.get_ticks_usec()
-			samples.append(float(now-previous)/1000.0)
-			previous = now
-			await process_frame
-		samples.sort()
-		cpu_samples.sort()
-		var record := {"hands_visible":visible,"samples":samples.size(),"frame_p50_ms":samples[samples.size()/2],"frame_p95_ms":samples[int(samples.size()*.95)],"rig_update_call_p50_ms":cpu_samples[cpu_samples.size()/2] if not cpu_samples.is_empty() else 0.0,"draw_calls":Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME),"triangles":Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME),"health":app.state.health}
-		records.append(record)
-		await capture("cost-visible" if visible else "cost-hidden")
+				rig.arms.visible = visible
+			await wait(1.0)
+			var samples: Array[float] = []
+			var cpu_samples: Array[float] = []
+			var until := Time.get_ticks_usec()+2000000
+			var previous := Time.get_ticks_usec()
+			while Time.get_ticks_usec()<until:
+				if rig != null:
+					var begin := Time.get_ticks_usec()
+					rig.update_visual(1.0/60.0,frame)
+					cpu_samples.append(float(Time.get_ticks_usec()-begin)/1000.0)
+				await RenderingServer.frame_post_draw
+				var now := Time.get_ticks_usec()
+				samples.append(float(now-previous)/1000.0)
+				previous = now
+				await process_frame
+			samples.sort()
+			cpu_samples.sort()
+			var record := {"weapon":weapon,"hands_visible":visible,"samples":samples.size(),"frame_p50_ms":samples[samples.size()/2],"frame_p95_ms":samples[int(samples.size()*.95)],"rig_update_call_p50_ms":cpu_samples[cpu_samples.size()/2] if not cpu_samples.is_empty() else 0.0,"draw_calls":Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME),"triangles":Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME),"health":app.state.health}
+			records.append(record)
+			await capture("cost-weapon%d-"%weapon + ("visible" if visible else "hidden"))
 	assert(app.state.health > 0, "cost scene stays alive")
 	var result := {"backend":RenderingServer.get_video_adapter_name(),"resolution":"1280x720","godot":Engine.get_version_info().string,"rig_present":rig!=null,"records":records}
 	var file := FileAccess.open(output+"/cost.json",FileAccess.WRITE)

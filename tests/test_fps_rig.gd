@@ -56,6 +56,11 @@ func run() -> void:
 		rig.reset_pose()
 		check(rig.left_in_contact,"reset cancels free hand transition")
 		check(rig._settle == 0.0 and rig._pose_offset == Vector3.ZERO,"reset removes obsolete transition")
+	check(rig.calibration_valid,"rapid equipment keeps IK targets reachable")
+	rig.equip(1)
+	rig.reset_pose()
+	var support_distance := palm_support_distance(rig)
+	check(absf(support_distance-.022) < .008,"ARC palm meets actual support geometry measured %f"%support_distance)
 	var wrist_before := rig.skeleton.get_bone_global_pose(20)
 	check(not rig._pose_arm(1,Transform3D(Basis.IDENTITY,Vector3(10,10,10))),"unreachable calibration rejected")
 	check(rig.skeleton.get_bone_global_pose(20).is_equal_approx(wrist_before),"unreachable target cannot stretch arm")
@@ -63,3 +68,23 @@ func run() -> void:
 	rig.queue_free()
 	await process_frame
 	quit(1 if failures else 0)
+
+func palm_support_distance(rig: SiloFpsRig) -> float:
+	var hand := rig.skeleton.global_transform*rig.skeleton.get_bone_global_pose(20)
+	var origin := hand*Vector3(0,.04,0)
+	var direction := hand.basis*Vector3(0,0,1)
+	var closest := INF
+	for child in rig._weapons[1].find_children("*","MeshInstance3D",true,false):
+		var mesh_node := child as MeshInstance3D
+		for surface in mesh_node.mesh.get_surface_count():
+			var arrays := mesh_node.mesh.surface_get_arrays(surface)
+			var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+			var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+			for i in range(0,indices.size(),3):
+				var a := mesh_node.global_transform*vertices[indices[i]]
+				var b := mesh_node.global_transform*vertices[indices[i+1]]
+				var c := mesh_node.global_transform*vertices[indices[i+2]]
+				var hit: Variant = Geometry3D.ray_intersects_triangle(origin,direction,a,b,c)
+				if hit is Vector3:
+					closest = minf(closest,origin.distance_to(hit))
+	return closest

@@ -5,7 +5,7 @@ const Visual = preload("res://scripts/weapon_visual.gd")
 const HandMesh = preload("res://scripts/fps_hand_mesh.gd")
 const UPPER_LENGTH := 0.32
 const FOREARM_LENGTH := 0.30
-const SHOULDERS: Array[Vector3] = [Vector3(.23,-.40,.04),Vector3(-.18,-.40,-.04)]
+const SHOULDERS: Array[Vector3] = [Vector3(.23,-.40,.04),Vector3(-.16,-.40,-.04)]
 
 class ViewFrame extends RefCounted:
 	enum Pose { REST, RUN, AIM }

@@ -142,7 +142,7 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 		amount = t if gesture == Reload.Gesture.REACH else (1.0-t if gesture == Reload.Gesture.RETURN else 1.0)
 	var wrist := _rest_wrists[0]
 	wrist.origin += _pose_offset*(1.0-amount) + Vector3(0,frame.bob,frame.recoil)*(1.0-amount)
-	wrist.origin += Vector3(-.07,.02,.025)*amount
+	wrist.origin += Vector3(-.07,.10,.05)*amount
 	wrist.basis = Basis(Vector3.FORWARD,deg_to_rad(22)*amount)*wrist.basis
 	if not _pose_arm(0,wrist):
 		return

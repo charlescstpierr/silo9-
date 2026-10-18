@@ -1,0 +1,34 @@
+{
+  "game_source_head": "2c205f59520d935e09c921574a20e42379999348",
+  "export_source_head": "8727432731bb3743dfb54bae968f3804726eb8b7",
+  "export_exit": 0,
+  "binaries": {
+    "linux": {
+      "sha256": "08385f77fe8d723e7a269cb723a04ce591d3bff0100773581fc783f6d0aa28bc",
+      "bytes": 90854224
+    },
+    "windows": {
+      "sha256": "7b428b0478e133044ab6f523b7b9d35d33a98c78dc6b46d6fed466a9307d7e25",
+      "bytes": 126603296
+    }
+  },
+  "linux": {
+    "extracted_archive_sha256": "417e34c9b0bdaecd5109945ff4541c81767e7a00c7a2830b4b35cb3a1ad998f1",
+    "extracted_binary_matches": true,
+    "native_exit": 0,
+    "observed": [
+      "main menu",
+      "new game",
+      "native W movement to sector01",
+      "Q scan visible and energy80",
+      "pause",
+      "return to main menu",
+      "Quit exit0"
+    ],
+    "full_mission_on_export": false
+  },
+  "windows": {
+    "executed": false
+  },
+  "limits": "Two full missions were exercised from source. Exported Linux smoke used real OS input; Windows was exported but not executed. The initial archive hash identifies the archive used for extraction; final archive hashes live in builds/SHA256.json because docs are completed afterward."
+}

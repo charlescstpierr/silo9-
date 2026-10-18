@@ -4,6 +4,8 @@ Version de développement du 18 octobre 2026, Godot 4.7.2 stable. Le résultat e
 
 Les mesures globales et captures ci-dessous correspondent à la base `8649b60`. La modification des mains est décrite séparément dans [le rapport du ticket 2](tickets/02-fps-rig.md), avec son scénario, ses preuves et les limites de ses mesures. Le [rapport du ticket 3](tickets/03-d9-reload.md) ajoute le rechargement mécanique du D9, sa vidéo sonore et les mesures pendant le geste. Le [ticket 4](tickets/04-arc-cell.md) couvre la cellule ARC et le [ticket 5](tickets/05-weapon-handling.md) les transitions et la réponse au mouvement. Le [ticket 6](tickets/06-shot-feedback.md) ajoute le retour de tir, les douilles et les réglages des effets.
 
+Le [ticket 12](tickets/12-sector-power.md) ajoute les circuits Maintenance et Archives, les sauvegardes de schéma 3 avec migration du schéma 2, et deux parcours complets par commandes natives. Ses mesures distinctes signalent un surcoût en qualité normale sur llvmpipe. Le tableau historique ci-dessous reste celui de la base.
+
 ## Comportements vérifiés
 
 Sur la base `8649b60`, `./tools/verify.sh` importait le projet puis exécutait sept suites Godot headless avec des sauvegardes isolées dans `.cstack/silo9/test-user-data`. Le tableau ci-dessous décrit cette base.

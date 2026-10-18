@@ -146,7 +146,7 @@ func run() -> void:
 		fire_from_app(false, false, 0)
 		app.save_run()
 		var save: Variant = JSON.parse_string(FileAccess.get_file_as_string(SAVE))
-		check(save is Dictionary and save.get("schema") == 2 and not save.has("camera_impulse") and not save.has("shot_light") and not save.has("effects_budget"), "graphics preferences stay outside gameplay save")
+		check(save is Dictionary and save.get("schema") == 3 and not save.has("camera_impulse") and not save.has("shot_light") and not save.has("effects_budget"), "graphics preferences stay outside gameplay save")
 		old_player = app.player.get_instance_id()
 		app.load_run()
 		check(app.player.get_instance_id() != old_player, "load replaces Player")

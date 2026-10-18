@@ -1,0 +1,86 @@
+FFFFFFFFF.
+======================================================================
+FAIL: test_mission_requires_native_breakers_and_ending (test_runner.ProofValidation.test_mission_requires_native_breakers_and_ending)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue12/proof-tools/test_runner.py", line 24, in test_mission_requires_native_breakers_and_ending
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_failed_or_empty_runtime (test_runner.ProofValidation.test_rejects_failed_or_empty_runtime) (key='failures')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue12/proof-tools/test_runner.py", line 18, in test_rejects_failed_or_empty_runtime
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_failed_or_empty_runtime (test_runner.ProofValidation.test_rejects_failed_or_empty_runtime) (key='frames_drawn')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue12/proof-tools/test_runner.py", line 18, in test_rejects_failed_or_empty_runtime
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_failed_or_empty_runtime (test_runner.ProofValidation.test_rejects_failed_or_empty_runtime) (key='frame_intervals_ms')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue12/proof-tools/test_runner.py", line 18, in test_rejects_failed_or_empty_runtime
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_failed_or_empty_runtime (test_runner.ProofValidation.test_rejects_failed_or_empty_runtime) (key='travelled_m')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue12/proof-tools/test_runner.py", line 18, in test_rejects_failed_or_empty_runtime
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_failed_or_empty_runtime (test_runner.ProofValidation.test_rejects_failed_or_empty_runtime) (key='waypoints_completed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue12/proof-tools/test_runner.py", line 18, in test_rejects_failed_or_empty_runtime
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_failed_or_empty_runtime (test_runner.ProofValidation.test_rejects_failed_or_empty_runtime) (key='renderer')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue12/proof-tools/test_runner.py", line 18, in test_rejects_failed_or_empty_runtime
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_failed_or_empty_runtime (test_runner.ProofValidation.test_rejects_failed_or_empty_runtime) (key='resolution')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue12/proof-tools/test_runner.py", line 18, in test_rejects_failed_or_empty_runtime
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_failed_or_empty_runtime (test_runner.ProofValidation.test_rejects_failed_or_empty_runtime)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue12/proof-tools/test_runner.py", line 19, in test_rejects_failed_or_empty_runtime
+    self.assertTrue(validate_result(valid(), 1, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+FAILED (failures=9)

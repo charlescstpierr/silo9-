@@ -1,0 +1,84 @@
+[
+  {
+    "test": "test_sector_power_commands",
+    "command": [
+      "./tools/godot.sh",
+      "--headless",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_sector_power_commands.gd"
+    ],
+    "exit_code": 0
+  },
+  {
+    "test": "test_sector_power_effects",
+    "command": [
+      "./tools/godot.sh",
+      "--headless",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_sector_power_effects.gd"
+    ],
+    "exit_code": 0
+  },
+  {
+    "test": "test_sector_power_state",
+    "command": [
+      "./tools/godot.sh",
+      "--headless",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_sector_power_state.gd"
+    ],
+    "exit_code": 0
+  },
+  {
+    "test": "test_sector_power_dialogue",
+    "command": [
+      "./tools/godot.sh",
+      "--headless",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_sector_power_dialogue.gd"
+    ],
+    "exit_code": 0
+  },
+  {
+    "test": "test_ads_settings_input",
+    "command": [
+      "./tools/godot.sh",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_ads_settings_input.gd"
+    ],
+    "exit_code": 1
+  },
+  {
+    "test": "test_shot_settings",
+    "command": [
+      "./tools/godot.sh",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_shot_settings.gd"
+    ],
+    "exit_code": 1
+  }
+]

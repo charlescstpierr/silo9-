@@ -1,0 +1,36 @@
+[
+  {
+    "test": "test_ads_settings_input",
+    "command": [
+      "./tools/godot.sh",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_ads_settings_input.gd"
+    ],
+    "exit_code": 0
+  },
+  {
+    "test": "test_shot_settings",
+    "command": [
+      "./tools/godot.sh",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_shot_settings.gd"
+    ],
+    "exit_code": 0
+  }
+]

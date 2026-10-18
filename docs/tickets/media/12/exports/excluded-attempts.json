@@ -1,0 +1,22 @@
+[
+  {
+    "attempt": "packaged-run",
+    "status": "failed",
+    "reason": "Release binary rejects --path override; no game journey."
+  },
+  {
+    "attempt": "packaged-run-no-path",
+    "status": "failed",
+    "reason": "External script did not take control; main menu remained, no journey.json, harness timed out after240s. Manual intermediate screenshots not used for final smoke."
+  },
+  {
+    "attempt": "packaged-native",
+    "status": "failed",
+    "reason": "Driver used Quit at y530, but live-session main menu adds Resume and Quit is at y590. Fixed from screenshot; startup capture also waited too briefly."
+  },
+  {
+    "attempt": "packaged-native-final",
+    "status": "passed",
+    "reason": "Native controls, four screenshots inspected, game quit exit0. Not a complete mission."
+  }
+]

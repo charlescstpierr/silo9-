@@ -25,6 +25,30 @@ var player_yaw: float = 0.0
 var elapsed: float = 0.0
 var relations: Dictionary[String, int] = {"mother": 0, "n7": 0}
 
+var _maintenance_on: bool = true
+var _archives_on: bool = true
+var power_revision: int = 0
+
+func circuit_on(id: StringName) -> bool:
+	match id:
+		&"maintenance": return _maintenance_on
+		&"archives": return _archives_on
+		_: return false
+
+func _commit_circuit(id: StringName, enabled: bool) -> void:
+	if id == &"maintenance": _maintenance_on = enabled
+	elif id == &"archives": _archives_on = enabled
+	else: return
+	power_revision += 1
+
+func power_summary(character: String) -> String:
+	var summary: Array[String] = []
+	if character == "mother":
+		summary.append("Maintenance : " + ("sous tension" if _maintenance_on else "hors tension"))
+	if character in ["mother", "n7"]:
+		summary.append("Archives : " + ("sous tension" if _archives_on else "hors tension"))
+	return ". ".join(summary) + ("." if not summary.is_empty() else "")
+
 func change_trust(character: String, delta: int) -> bool:
 	if not relations.has(character) or delta not in [-1, 1]:
 		return false
@@ -232,18 +256,28 @@ func load_game(path: String = "user://silo9-save.json") -> Error:
 	player_yaw = float(data.player_yaw)
 	elapsed = float(data.elapsed)
 	relations.assign(data.relations)
+	_maintenance_on = data.circuits.maintenance if int(data.schema) == 3 else true
+	_archives_on = data.circuits.archives if int(data.schema) == 3 else true
+	power_revision += 1
 	changed.emit()
 	return OK
 
 func _snapshot() -> Dictionary:
-	return {"schema": 2, "relations": relations, "health": health, "energy": energy, "ammo": ammo, "reserve": reserve, "components": components, "medkits": medkits, "cells": cells, "upgraded": upgraded, "phase": phase, "ending": ending, "collected": collected, "defeated": defeated, "facts": facts, "memory": memory, "player_position": [player_position.x, player_position.y, player_position.z], "player_yaw": player_yaw, "elapsed": elapsed}
+	return {"schema": 3, "circuits": {"maintenance": _maintenance_on, "archives": _archives_on}, "relations": relations, "health": health, "energy": energy, "ammo": ammo, "reserve": reserve, "components": components, "medkits": medkits, "cells": cells, "upgraded": upgraded, "phase": phase, "ending": ending, "collected": collected, "defeated": defeated, "facts": facts, "memory": memory, "player_position": [player_position.x, player_position.y, player_position.z], "player_yaw": player_yaw, "elapsed": elapsed}
 
 func _valid_snapshot(data: Dictionary) -> bool:
+	if not _number(data.get("schema"), 2, 3) or float(data.schema) != floorf(float(data.schema)): return false
 	var required: Array = _snapshot().keys()
+	if int(data.schema) == 2:
+		required.erase("circuits")
+	else:
+		var circuits: Variant = data.get("circuits")
+		if not circuits is Dictionary or circuits.size() != 2: return false
+		if not circuits.get("maintenance") is bool or not circuits.get("archives") is bool: return false
 	if data.size() != required.size(): return false
 	for key: String in required:
 		if not data.has(key): return false
-	if not _number(data.schema, 2, 2) or not data.upgraded is bool or not data.ending is String: return false
+	if not data.upgraded is bool or not data.ending is String: return false
 	if not data.relations is Dictionary or data.relations.size() != 2: return false
 	for character: String in ["mother", "n7"]:
 		if not _number(data.relations.get(character), -5, 5) or float(data.relations[character]) != floorf(float(data.relations[character])): return false

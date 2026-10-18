@@ -1,0 +1,1431 @@
+{
+  "proof_verdict": "PASS",
+  "errors": [],
+  "pending": [],
+  "runs": 20,
+  "expected_heads": {
+    "baseline": "6126e4cdc0c5c89122627789ce394d8a1f1b521e",
+    "candidate": "2c205f59520d935e09c921574a20e42379999348"
+  },
+  "probe_sha256": "23fe1bd0a24df6dd40559792b20add6e9c75d39debfa2a9ef6a48a1b912fc971",
+  "summaries": {
+    "normal": {
+      "p50": {
+        "baseline": {
+          "median": 81.805,
+          "min": 81.682,
+          "max": 83.331
+        },
+        "candidate": {
+          "median": 83.699,
+          "min": 82.812,
+          "max": 84.614
+        },
+        "median_change_percent": 2.3152619033066424,
+        "paired_delta": [
+          1.5229999999999961,
+          1.0069999999999908,
+          2.932000000000002,
+          1.6869999999999976,
+          1.024000000000001
+        ],
+        "rank_test": {
+          "baseline_U": 1.0,
+          "two_sided_p": 0.015873015873015872,
+          "labelings": 252
+        }
+      },
+      "p95": {
+        "baseline": {
+          "median": 99.678,
+          "min": 97.743,
+          "max": 101.339
+        },
+        "candidate": {
+          "median": 106.725,
+          "min": 103.5,
+          "max": 108.442
+        },
+        "median_change_percent": 7.069764642147702,
+        "paired_delta": [
+          10.698999999999998,
+          9.103000000000009,
+          3.8220000000000027,
+          3.3870000000000005,
+          5.385999999999996
+        ],
+        "rank_test": {
+          "baseline_U": 0.0,
+          "two_sided_p": 0.007936507936507936,
+          "labelings": 252
+        }
+      },
+      "p99": {
+        "baseline": {
+          "median": 109.758,
+          "min": 107.948,
+          "max": 115.847
+        },
+        "candidate": {
+          "median": 118.01,
+          "min": 112.595,
+          "max": 138.827
+        },
+        "median_change_percent": 7.518358570673667,
+        "paired_delta": [
+          7.451000000000008,
+          22.980000000000004,
+          4.143000000000001,
+          8.25200000000001,
+          6.858999999999995
+        ],
+        "rank_test": {
+          "baseline_U": 2.0,
+          "two_sided_p": 0.031746031746031744,
+          "labelings": 252
+        }
+      },
+      "duration_ms": {
+        "baseline": {
+          "median": 20987.531,
+          "min": 20922.269,
+          "max": 21004.796
+        },
+        "candidate": {
+          "median": 21037.563,
+          "min": 20911.615,
+          "max": 21293.124
+        },
+        "median_change_percent": 0.23838916545257938,
+        "paired_delta": [
+          -75.91599999999744,
+          45.426000000003114,
+          115.29399999999805,
+          15.486000000000786,
+          337.1990000000005
+        ],
+        "rank_test": {
+          "baseline_U": 5.0,
+          "two_sided_p": 0.15079365079365079,
+          "labelings": 252
+        }
+      },
+      "draw_max": {
+        "baseline": {
+          "median": 261,
+          "min": 259,
+          "max": 263
+        },
+        "candidate": {
+          "median": 298,
+          "min": 298,
+          "max": 298
+        },
+        "median_change_percent": 14.176245210727977,
+        "paired_delta": [
+          35,
+          37,
+          35,
+          37,
+          39
+        ],
+        "rank_test": {
+          "baseline_U": 0.0,
+          "two_sided_p": 0.007936507936507936,
+          "labelings": 252
+        }
+      },
+      "nodes_max": {
+        "baseline": {
+          "median": 541,
+          "min": 541,
+          "max": 541
+        },
+        "candidate": {
+          "median": 603,
+          "min": 603,
+          "max": 603
+        },
+        "median_change_percent": 11.460258780036959,
+        "paired_delta": [
+          62,
+          62,
+          62,
+          62,
+          62
+        ],
+        "rank_test": {
+          "baseline_U": 0.0,
+          "two_sided_p": 0.007936507936507936,
+          "labelings": 252
+        }
+      },
+      "resources_max": {
+        "baseline": {
+          "median": 96,
+          "min": 96,
+          "max": 96
+        },
+        "candidate": {
+          "median": 101,
+          "min": 101,
+          "max": 101
+        },
+        "median_change_percent": 5.208333333333326,
+        "paired_delta": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "rank_test": {
+          "baseline_U": 0.0,
+          "two_sided_p": 0.007936507936507936,
+          "labelings": 252
+        }
+      }
+    },
+    "low": {
+      "p50": {
+        "baseline": {
+          "median": 43.639,
+          "min": 42.842,
+          "max": 44.726
+        },
+        "candidate": {
+          "median": 43.1,
+          "min": 42.478,
+          "max": 43.653
+        },
+        "median_change_percent": -1.2351337106716542,
+        "paired_delta": [
+          -0.08500000000000085,
+          -1.7419999999999973,
+          -0.07200000000000273,
+          0.013999999999995794,
+          -0.3639999999999972
+        ],
+        "rank_test": {
+          "baseline_U": 18.0,
+          "two_sided_p": 0.30952380952380953,
+          "labelings": 252
+        }
+      },
+      "p95": {
+        "baseline": {
+          "median": 58.475,
+          "min": 55.59,
+          "max": 59.34
+        },
+        "candidate": {
+          "median": 55.121,
+          "min": 54.196,
+          "max": 57.463
+        },
+        "median_change_percent": -5.735784523300557,
+        "paired_delta": [
+          -0.4690000000000012,
+          -4.2790000000000035,
+          -3.7680000000000007,
+          -1.8770000000000024,
+          -0.3089999999999975
+        ],
+        "rank_test": {
+          "baseline_U": 22.0,
+          "two_sided_p": 0.05555555555555555,
+          "labelings": 252
+        }
+      },
+      "p99": {
+        "baseline": {
+          "median": 65.111,
+          "min": 63.623,
+          "max": 69.004
+        },
+        "candidate": {
+          "median": 62.052,
+          "min": 58.867,
+          "max": 69.189
+        },
+        "median_change_percent": -4.698130884182405,
+        "paired_delta": [
+          -1.8089999999999975,
+          -10.137000000000008,
+          -3.3490000000000038,
+          3.6459999999999866,
+          -0.742999999999995
+        ],
+        "rank_test": {
+          "baseline_U": 20.0,
+          "two_sided_p": 0.15079365079365079,
+          "labelings": 252
+        }
+      },
+      "duration_ms": {
+        "baseline": {
+          "median": 21028.368,
+          "min": 20934.364,
+          "max": 21119.914
+        },
+        "candidate": {
+          "median": 21010.037,
+          "min": 20986.393,
+          "max": 21080.02
+        },
+        "median_change_percent": -0.08717271830128714,
+        "paired_delta": [
+          -120.24300000000221,
+          -28.229000000002998,
+          33.49399999999878,
+          145.65599999999904,
+          -41.974999999998545
+        ],
+        "rank_test": {
+          "baseline_U": 13.0,
+          "two_sided_p": 1.0,
+          "labelings": 252
+        }
+      },
+      "draw_max": {
+        "baseline": {
+          "median": 229,
+          "min": 229,
+          "max": 229
+        },
+        "candidate": {
+          "median": 265,
+          "min": 265,
+          "max": 265
+        },
+        "median_change_percent": 15.720524017467241,
+        "paired_delta": [
+          36,
+          36,
+          36,
+          36,
+          36
+        ],
+        "rank_test": {
+          "baseline_U": 0.0,
+          "two_sided_p": 0.007936507936507936,
+          "labelings": 252
+        }
+      },
+      "nodes_max": {
+        "baseline": {
+          "median": 541,
+          "min": 541,
+          "max": 541
+        },
+        "candidate": {
+          "median": 603,
+          "min": 603,
+          "max": 603
+        },
+        "median_change_percent": 11.460258780036959,
+        "paired_delta": [
+          62,
+          62,
+          62,
+          62,
+          62
+        ],
+        "rank_test": {
+          "baseline_U": 0.0,
+          "two_sided_p": 0.007936507936507936,
+          "labelings": 252
+        }
+      },
+      "resources_max": {
+        "baseline": {
+          "median": 96,
+          "min": 96,
+          "max": 96
+        },
+        "candidate": {
+          "median": 101,
+          "min": 101,
+          "max": 101
+        },
+        "median_change_percent": 5.208333333333326,
+        "paired_delta": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "rank_test": {
+          "baseline_U": 0.0,
+          "two_sided_p": 0.007936507936507936,
+          "labelings": 252
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "name": "normal-1-baseline",
+      "quality": "normal",
+      "index": 1,
+      "side": "baseline",
+      "p50": 82.176,
+      "p95": 97.743,
+      "p99": 107.948,
+      "samples": 262,
+      "drawn": 263,
+      "duration_ms": 20987.531,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 263,
+      "nodes_max": 541,
+      "resources_max": 96,
+      "source_files": 1408,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 7,
+        "settle_-32.0": 12,
+        "settle_7.0": 9,
+        "settle_-22.0": 6,
+        "settle_-42.0": 7,
+        "walk_(0.0, 0.0, 7.0)": 48,
+        "walk_(0.0, 0.0, -22.0)": 11,
+        "settle_-12.0": 8,
+        "walk_(0.0, 0.0, -16.0)": 11,
+        "walk_(0.0, 0.0, -12.0)": 42,
+        "walk_(0.0, 0.0, -42.0)": 12,
+        "walk_(0.0, 0.0, -36.0)": 8,
+        "walk_(0.0, 0.0, -32.0)": 39,
+        "settle_-16.0": 6,
+        "settle_-10.0": 6,
+        "walk_(0.0, 0.0, -10.0)": 30
+      },
+      "warnings": 1
+    },
+    {
+      "name": "normal-1-candidate",
+      "quality": "normal",
+      "index": 1,
+      "side": "candidate",
+      "p50": 83.699,
+      "p95": 108.442,
+      "p99": 115.399,
+      "samples": 253,
+      "drawn": 254,
+      "duration_ms": 20911.615,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 298,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "source_files": 1426,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 6,
+        "settle_-32.0": 12,
+        "settle_7.0": 9,
+        "settle_-22.0": 6,
+        "settle_-42.0": 6,
+        "walk_(0.0, 0.0, 7.0)": 47,
+        "walk_(0.0, 0.0, -22.0)": 10,
+        "settle_-12.0": 8,
+        "walk_(0.0, 0.0, -16.0)": 12,
+        "walk_(0.0, 0.0, -12.0)": 41,
+        "walk_(0.0, 0.0, -42.0)": 12,
+        "walk_(0.0, 0.0, -36.0)": 8,
+        "walk_(0.0, 0.0, -32.0)": 36,
+        "settle_-16.0": 6,
+        "settle_-10.0": 6,
+        "walk_(0.0, 0.0, -10.0)": 28
+      },
+      "warnings": 1
+    },
+    {
+      "name": "normal-2-candidate",
+      "quality": "normal",
+      "index": 2,
+      "side": "candidate",
+      "p50": 82.812,
+      "p95": 107.292,
+      "p99": 138.827,
+      "samples": 260,
+      "drawn": 261,
+      "duration_ms": 21050.222,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 298,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "source_files": 1426,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 7,
+        "settle_-32.0": 13,
+        "settle_7.0": 9,
+        "settle_-22.0": 6,
+        "settle_-42.0": 6,
+        "walk_(0.0, 0.0, 7.0)": 51,
+        "walk_(0.0, 0.0, -22.0)": 11,
+        "settle_-12.0": 7,
+        "walk_(0.0, 0.0, -16.0)": 12,
+        "walk_(0.0, 0.0, -12.0)": 43,
+        "walk_(0.0, 0.0, -42.0)": 12,
+        "walk_(0.0, 0.0, -36.0)": 8,
+        "walk_(0.0, 0.0, -32.0)": 38,
+        "settle_-16.0": 5,
+        "settle_-10.0": 6,
+        "walk_(0.0, 0.0, -10.0)": 26
+      },
+      "warnings": 1
+    },
+    {
+      "name": "normal-2-baseline",
+      "quality": "normal",
+      "index": 2,
+      "side": "baseline",
+      "p50": 81.805,
+      "p95": 98.189,
+      "p99": 115.847,
+      "samples": 265,
+      "drawn": 266,
+      "duration_ms": 21004.796,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 261,
+      "nodes_max": 541,
+      "resources_max": 96,
+      "source_files": 1408,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 6,
+        "settle_-32.0": 12,
+        "settle_7.0": 8,
+        "settle_-22.0": 6,
+        "settle_-42.0": 7,
+        "walk_(0.0, 0.0, 7.0)": 50,
+        "walk_(0.0, 0.0, -22.0)": 12,
+        "settle_-12.0": 8,
+        "walk_(0.0, 0.0, -16.0)": 12,
+        "walk_(0.0, 0.0, -12.0)": 44,
+        "walk_(0.0, 0.0, -42.0)": 12,
+        "walk_(0.0, 0.0, -36.0)": 8,
+        "walk_(0.0, 0.0, -32.0)": 38,
+        "settle_-16.0": 6,
+        "settle_-10.0": 6,
+        "walk_(0.0, 0.0, -10.0)": 30
+      },
+      "warnings": 1
+    },
+    {
+      "name": "normal-3-baseline",
+      "quality": "normal",
+      "index": 3,
+      "side": "baseline",
+      "p50": 81.682,
+      "p95": 99.678,
+      "p99": 108.452,
+      "samples": 265,
+      "drawn": 266,
+      "duration_ms": 20922.269,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 263,
+      "nodes_max": 541,
+      "resources_max": 96,
+      "source_files": 1408,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 7,
+        "settle_-32.0": 12,
+        "settle_7.0": 9,
+        "settle_-22.0": 6,
+        "settle_-42.0": 7,
+        "walk_(0.0, 0.0, 7.0)": 49,
+        "walk_(0.0, 0.0, -22.0)": 11,
+        "settle_-12.0": 9,
+        "walk_(0.0, 0.0, -16.0)": 11,
+        "walk_(0.0, 0.0, -12.0)": 43,
+        "walk_(0.0, 0.0, -42.0)": 12,
+        "walk_(0.0, 0.0, -36.0)": 9,
+        "walk_(0.0, 0.0, -32.0)": 38,
+        "settle_-16.0": 6,
+        "settle_-10.0": 6,
+        "walk_(0.0, 0.0, -10.0)": 30
+      },
+      "warnings": 1
+    },
+    {
+      "name": "normal-3-candidate",
+      "quality": "normal",
+      "index": 3,
+      "side": "candidate",
+      "p50": 84.614,
+      "p95": 103.5,
+      "p99": 112.595,
+      "samples": 256,
+      "drawn": 257,
+      "duration_ms": 21037.563,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 298,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "source_files": 1426,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 6,
+        "settle_-32.0": 12,
+        "settle_7.0": 8,
+        "settle_-22.0": 6,
+        "settle_-42.0": 7,
+        "walk_(0.0, 0.0, 7.0)": 48,
+        "walk_(0.0, 0.0, -22.0)": 10,
+        "settle_-12.0": 8,
+        "walk_(0.0, 0.0, -16.0)": 12,
+        "walk_(0.0, 0.0, -12.0)": 40,
+        "walk_(0.0, 0.0, -42.0)": 12,
+        "walk_(0.0, 0.0, -36.0)": 8,
+        "walk_(0.0, 0.0, -32.0)": 37,
+        "settle_-16.0": 6,
+        "settle_-10.0": 6,
+        "walk_(0.0, 0.0, -10.0)": 30
+      },
+      "warnings": 1
+    },
+    {
+      "name": "normal-4-candidate",
+      "quality": "normal",
+      "index": 4,
+      "side": "candidate",
+      "p50": 83.459,
+      "p95": 104.582,
+      "p99": 118.01,
+      "samples": 259,
+      "drawn": 260,
+      "duration_ms": 21015.585,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 298,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "source_files": 1426,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 6,
+        "settle_-32.0": 12,
+        "settle_7.0": 9,
+        "settle_-22.0": 6,
+        "settle_-42.0": 7,
+        "walk_(0.0, 0.0, 7.0)": 49,
+        "walk_(0.0, 0.0, -22.0)": 10,
+        "settle_-12.0": 8,
+        "walk_(0.0, 0.0, -16.0)": 12,
+        "walk_(0.0, 0.0, -12.0)": 42,
+        "walk_(0.0, 0.0, -42.0)": 12,
+        "walk_(0.0, 0.0, -36.0)": 8,
+        "walk_(0.0, 0.0, -32.0)": 36,
+        "settle_-16.0": 6,
+        "settle_-10.0": 6,
+        "walk_(0.0, 0.0, -10.0)": 30
+      },
+      "warnings": 2
+    },
+    {
+      "name": "normal-4-baseline",
+      "quality": "normal",
+      "index": 4,
+      "side": "baseline",
+      "p50": 81.772,
+      "p95": 101.195,
+      "p99": 109.758,
+      "samples": 264,
+      "drawn": 265,
+      "duration_ms": 21000.099,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 261,
+      "nodes_max": 541,
+      "resources_max": 96,
+      "source_files": 1408,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 6,
+        "settle_-32.0": 12,
+        "settle_7.0": 9,
+        "settle_-22.0": 6,
+        "settle_-42.0": 7,
+        "walk_(0.0, 0.0, 7.0)": 50,
+        "walk_(0.0, 0.0, -22.0)": 11,
+        "settle_-12.0": 7,
+        "walk_(0.0, 0.0, -16.0)": 12,
+        "walk_(0.0, 0.0, -12.0)": 43,
+        "walk_(0.0, 0.0, -42.0)": 12,
+        "walk_(0.0, 0.0, -36.0)": 9,
+        "walk_(0.0, 0.0, -32.0)": 39,
+        "settle_-16.0": 6,
+        "settle_-10.0": 6,
+        "walk_(0.0, 0.0, -10.0)": 29
+      },
+      "warnings": 1
+    },
+    {
+      "name": "normal-5-baseline",
+      "quality": "normal",
+      "index": 5,
+      "side": "baseline",
+      "p50": 83.331,
+      "p95": 101.339,
+      "p99": 111.593,
+      "samples": 261,
+      "drawn": 262,
+      "duration_ms": 20955.925,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 259,
+      "nodes_max": 541,
+      "resources_max": 96,
+      "source_files": 1408,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 6,
+        "settle_-32.0": 12,
+        "settle_7.0": 9,
+        "settle_-22.0": 6,
+        "settle_-42.0": 7,
+        "walk_(0.0, 0.0, 7.0)": 50,
+        "walk_(0.0, 0.0, -22.0)": 11,
+        "settle_-12.0": 8,
+        "walk_(0.0, 0.0, -16.0)": 11,
+        "walk_(0.0, 0.0, -12.0)": 42,
+        "walk_(0.0, 0.0, -42.0)": 12,
+        "walk_(0.0, 0.0, -36.0)": 8,
+        "walk_(0.0, 0.0, -32.0)": 39,
+        "settle_-16.0": 6,
+        "settle_-10.0": 6,
+        "walk_(0.0, 0.0, -10.0)": 28
+      },
+      "warnings": 1
+    },
+    {
+      "name": "normal-5-candidate",
+      "quality": "normal",
+      "index": 5,
+      "side": "candidate",
+      "p50": 84.355,
+      "p95": 106.725,
+      "p99": 118.452,
+      "samples": 259,
+      "drawn": 260,
+      "duration_ms": 21293.124,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 298,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "source_files": 1426,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 7,
+        "settle_-32.0": 13,
+        "settle_7.0": 9,
+        "settle_-22.0": 6,
+        "settle_-42.0": 6,
+        "walk_(0.0, 0.0, 7.0)": 49,
+        "walk_(0.0, 0.0, -22.0)": 11,
+        "settle_-12.0": 8,
+        "walk_(0.0, 0.0, -16.0)": 12,
+        "walk_(0.0, 0.0, -12.0)": 39,
+        "walk_(0.0, 0.0, -42.0)": 12,
+        "walk_(0.0, 0.0, -36.0)": 9,
+        "walk_(0.0, 0.0, -32.0)": 36,
+        "settle_-16.0": 6,
+        "settle_-10.0": 6,
+        "walk_(0.0, 0.0, -10.0)": 30
+      },
+      "warnings": 1
+    },
+    {
+      "name": "low-1-baseline",
+      "quality": "low",
+      "index": 1,
+      "side": "baseline",
+      "p50": 43.185,
+      "p95": 55.59,
+      "p99": 63.861,
+      "samples": 497,
+      "drawn": 498,
+      "duration_ms": 21119.914,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 229,
+      "nodes_max": 541,
+      "resources_max": 96,
+      "source_files": 1408,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 12,
+        "settle_-32.0": 23,
+        "settle_7.0": 16,
+        "settle_-22.0": 12,
+        "settle_-42.0": 12,
+        "walk_(0.0, 0.0, 7.0)": 95,
+        "walk_(0.0, 0.0, -22.0)": 22,
+        "settle_-12.0": 15,
+        "walk_(0.0, 0.0, -16.0)": 19,
+        "walk_(0.0, 0.0, -12.0)": 77,
+        "walk_(0.0, 0.0, -42.0)": 26,
+        "walk_(0.0, 0.0, -36.0)": 16,
+        "walk_(0.0, 0.0, -32.0)": 75,
+        "settle_-16.0": 11,
+        "settle_-10.0": 10,
+        "walk_(0.0, 0.0, -10.0)": 56
+      },
+      "warnings": 1
+    },
+    {
+      "name": "low-1-candidate",
+      "quality": "low",
+      "index": 1,
+      "side": "candidate",
+      "p50": 43.1,
+      "p95": 55.121,
+      "p99": 62.052,
+      "samples": 497,
+      "drawn": 498,
+      "duration_ms": 20999.671,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 265,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "source_files": 1426,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 12,
+        "settle_-32.0": 21,
+        "settle_7.0": 18,
+        "settle_-22.0": 11,
+        "settle_-42.0": 13,
+        "walk_(0.0, 0.0, 7.0)": 98,
+        "walk_(0.0, 0.0, -22.0)": 23,
+        "settle_-12.0": 14,
+        "walk_(0.0, 0.0, -16.0)": 21,
+        "walk_(0.0, 0.0, -12.0)": 76,
+        "walk_(0.0, 0.0, -42.0)": 25,
+        "walk_(0.0, 0.0, -36.0)": 17,
+        "walk_(0.0, 0.0, -32.0)": 75,
+        "settle_-16.0": 11,
+        "settle_-10.0": 9,
+        "walk_(0.0, 0.0, -10.0)": 53
+      },
+      "warnings": 2
+    },
+    {
+      "name": "low-2-candidate",
+      "quality": "low",
+      "index": 2,
+      "side": "candidate",
+      "p50": 42.984,
+      "p95": 54.196,
+      "p99": 58.867,
+      "samples": 503,
+      "drawn": 504,
+      "duration_ms": 21059.634,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 265,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "source_files": 1426,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 12,
+        "settle_-32.0": 23,
+        "settle_7.0": 18,
+        "settle_-22.0": 12,
+        "settle_-42.0": 12,
+        "walk_(0.0, 0.0, 7.0)": 102,
+        "walk_(0.0, 0.0, -22.0)": 21,
+        "settle_-12.0": 14,
+        "walk_(0.0, 0.0, -16.0)": 22,
+        "walk_(0.0, 0.0, -12.0)": 77,
+        "walk_(0.0, 0.0, -42.0)": 24,
+        "walk_(0.0, 0.0, -36.0)": 17,
+        "walk_(0.0, 0.0, -32.0)": 75,
+        "settle_-16.0": 10,
+        "settle_-10.0": 11,
+        "walk_(0.0, 0.0, -10.0)": 53
+      },
+      "warnings": 2
+    },
+    {
+      "name": "low-2-baseline",
+      "quality": "low",
+      "index": 2,
+      "side": "baseline",
+      "p50": 44.726,
+      "p95": 58.475,
+      "p99": 69.004,
+      "samples": 482,
+      "drawn": 483,
+      "duration_ms": 21087.863,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 229,
+      "nodes_max": 541,
+      "resources_max": 96,
+      "source_files": 1408,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 12,
+        "settle_-32.0": 23,
+        "settle_7.0": 18,
+        "settle_-22.0": 10,
+        "settle_-42.0": 11,
+        "walk_(0.0, 0.0, 7.0)": 97,
+        "walk_(0.0, 0.0, -22.0)": 21,
+        "settle_-12.0": 14,
+        "walk_(0.0, 0.0, -16.0)": 18,
+        "walk_(0.0, 0.0, -12.0)": 74,
+        "walk_(0.0, 0.0, -42.0)": 25,
+        "walk_(0.0, 0.0, -36.0)": 16,
+        "walk_(0.0, 0.0, -32.0)": 71,
+        "settle_-16.0": 10,
+        "settle_-10.0": 10,
+        "walk_(0.0, 0.0, -10.0)": 52
+      },
+      "warnings": 1
+    },
+    {
+      "name": "low-3-baseline",
+      "quality": "low",
+      "index": 3,
+      "side": "baseline",
+      "p50": 43.661,
+      "p95": 58.549,
+      "p99": 65.111,
+      "samples": 484,
+      "drawn": 485,
+      "duration_ms": 20976.543,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 229,
+      "nodes_max": 541,
+      "resources_max": 96,
+      "source_files": 1408,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 12,
+        "settle_-32.0": 21,
+        "settle_7.0": 15,
+        "settle_-22.0": 11,
+        "settle_-42.0": 12,
+        "walk_(0.0, 0.0, 7.0)": 93,
+        "walk_(0.0, 0.0, -22.0)": 22,
+        "settle_-12.0": 15,
+        "walk_(0.0, 0.0, -16.0)": 20,
+        "walk_(0.0, 0.0, -12.0)": 74,
+        "walk_(0.0, 0.0, -42.0)": 25,
+        "walk_(0.0, 0.0, -36.0)": 17,
+        "walk_(0.0, 0.0, -32.0)": 73,
+        "settle_-16.0": 11,
+        "settle_-10.0": 10,
+        "walk_(0.0, 0.0, -10.0)": 53
+      },
+      "warnings": 1
+    },
+    {
+      "name": "low-3-candidate",
+      "quality": "low",
+      "index": 3,
+      "side": "candidate",
+      "p50": 43.589,
+      "p95": 54.781,
+      "p99": 61.762,
+      "samples": 497,
+      "drawn": 498,
+      "duration_ms": 21010.037,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 265,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "source_files": 1426,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 13,
+        "settle_-32.0": 24,
+        "settle_7.0": 15,
+        "settle_-22.0": 12,
+        "settle_-42.0": 12,
+        "walk_(0.0, 0.0, 7.0)": 97,
+        "walk_(0.0, 0.0, -22.0)": 23,
+        "settle_-12.0": 15,
+        "walk_(0.0, 0.0, -16.0)": 21,
+        "walk_(0.0, 0.0, -12.0)": 78,
+        "walk_(0.0, 0.0, -42.0)": 23,
+        "walk_(0.0, 0.0, -36.0)": 17,
+        "walk_(0.0, 0.0, -32.0)": 71,
+        "settle_-16.0": 11,
+        "settle_-10.0": 10,
+        "walk_(0.0, 0.0, -10.0)": 55
+      },
+      "warnings": 1
+    },
+    {
+      "name": "low-4-candidate",
+      "quality": "low",
+      "index": 4,
+      "side": "candidate",
+      "p50": 43.653,
+      "p95": 57.463,
+      "p99": 69.189,
+      "samples": 490,
+      "drawn": 491,
+      "duration_ms": 21080.02,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 265,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "source_files": 1426,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 14,
+        "settle_-32.0": 23,
+        "settle_7.0": 17,
+        "settle_-22.0": 10,
+        "settle_-42.0": 12,
+        "walk_(0.0, 0.0, 7.0)": 99,
+        "walk_(0.0, 0.0, -22.0)": 21,
+        "settle_-12.0": 14,
+        "walk_(0.0, 0.0, -16.0)": 20,
+        "walk_(0.0, 0.0, -12.0)": 76,
+        "walk_(0.0, 0.0, -42.0)": 25,
+        "walk_(0.0, 0.0, -36.0)": 16,
+        "walk_(0.0, 0.0, -32.0)": 72,
+        "settle_-16.0": 10,
+        "settle_-10.0": 10,
+        "walk_(0.0, 0.0, -10.0)": 51
+      },
+      "warnings": 1
+    },
+    {
+      "name": "low-4-baseline",
+      "quality": "low",
+      "index": 4,
+      "side": "baseline",
+      "p50": 43.639,
+      "p95": 59.34,
+      "p99": 65.543,
+      "samples": 485,
+      "drawn": 486,
+      "duration_ms": 20934.364,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 229,
+      "nodes_max": 541,
+      "resources_max": 96,
+      "source_files": 1408,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 13,
+        "settle_-32.0": 21,
+        "settle_7.0": 18,
+        "settle_-22.0": 12,
+        "settle_-42.0": 12,
+        "walk_(0.0, 0.0, 7.0)": 98,
+        "walk_(0.0, 0.0, -22.0)": 22,
+        "settle_-12.0": 13,
+        "walk_(0.0, 0.0, -16.0)": 20,
+        "walk_(0.0, 0.0, -12.0)": 74,
+        "walk_(0.0, 0.0, -42.0)": 23,
+        "walk_(0.0, 0.0, -36.0)": 17,
+        "walk_(0.0, 0.0, -32.0)": 71,
+        "settle_-16.0": 10,
+        "settle_-10.0": 10,
+        "walk_(0.0, 0.0, -10.0)": 51
+      },
+      "warnings": 1
+    },
+    {
+      "name": "low-5-baseline",
+      "quality": "low",
+      "index": 5,
+      "side": "baseline",
+      "p50": 42.842,
+      "p95": 56.448,
+      "p99": 63.623,
+      "samples": 498,
+      "drawn": 499,
+      "duration_ms": 21028.368,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 229,
+      "nodes_max": 541,
+      "resources_max": 96,
+      "source_files": 1408,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 13,
+        "settle_-32.0": 21,
+        "settle_7.0": 19,
+        "settle_-22.0": 12,
+        "settle_-42.0": 12,
+        "walk_(0.0, 0.0, 7.0)": 97,
+        "walk_(0.0, 0.0, -22.0)": 22,
+        "settle_-12.0": 15,
+        "walk_(0.0, 0.0, -16.0)": 21,
+        "walk_(0.0, 0.0, -12.0)": 81,
+        "walk_(0.0, 0.0, -42.0)": 24,
+        "walk_(0.0, 0.0, -36.0)": 17,
+        "walk_(0.0, 0.0, -32.0)": 71,
+        "settle_-16.0": 11,
+        "settle_-10.0": 9,
+        "walk_(0.0, 0.0, -10.0)": 53
+      },
+      "warnings": 1
+    },
+    {
+      "name": "low-5-candidate",
+      "quality": "low",
+      "index": 5,
+      "side": "candidate",
+      "p50": 42.478,
+      "p95": 56.139,
+      "p99": 62.88,
+      "samples": 500,
+      "drawn": 501,
+      "duration_ms": 20986.393,
+      "travelled_m": 92.4334392547607,
+      "waypoints": 9,
+      "draw_max": 265,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "source_files": 1426,
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "stage_counts": {
+        "settle_-36.0": 13,
+        "settle_-32.0": 23,
+        "settle_7.0": 18,
+        "settle_-22.0": 12,
+        "settle_-42.0": 12,
+        "walk_(0.0, 0.0, 7.0)": 99,
+        "walk_(0.0, 0.0, -22.0)": 22,
+        "settle_-12.0": 13,
+        "walk_(0.0, 0.0, -16.0)": 18,
+        "walk_(0.0, 0.0, -12.0)": 79,
+        "walk_(0.0, 0.0, -42.0)": 24,
+        "walk_(0.0, 0.0, -36.0)": 17,
+        "walk_(0.0, 0.0, -32.0)": 75,
+        "settle_-16.0": 10,
+        "settle_-10.0": 10,
+        "walk_(0.0, 0.0, -10.0)": 55
+      },
+      "warnings": 1
+    }
+  ],
+  "pairs": [
+    {
+      "quality": "normal",
+      "index": 1,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "start": 1792321530.1299372,
+      "end": 1792321590.261529
+    },
+    {
+      "quality": "normal",
+      "index": 2,
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "start": 1792321612.6690943,
+      "end": 1792321672.725553
+    },
+    {
+      "quality": "normal",
+      "index": 3,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "start": 1792321704.7659123,
+      "end": 1792321764.6380932
+    },
+    {
+      "quality": "normal",
+      "index": 4,
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "start": 1792321785.4234803,
+      "end": 1792321845.6936276
+    },
+    {
+      "quality": "normal",
+      "index": 5,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "start": 1792321860.4992466,
+      "end": 1792321920.9877949
+    },
+    {
+      "quality": "low",
+      "index": 1,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "start": 1792321959.9912412,
+      "end": 1792322019.0325634
+    },
+    {
+      "quality": "low",
+      "index": 2,
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "start": 1792322062.0156348,
+      "end": 1792322120.5041752
+    },
+    {
+      "quality": "low",
+      "index": 3,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "start": 1792322140.880389,
+      "end": 1792322199.4787345
+    },
+    {
+      "quality": "low",
+      "index": 4,
+      "order": [
+        "candidate",
+        "baseline"
+      ],
+      "start": 1792322212.3032794,
+      "end": 1792322271.1931791
+    },
+    {
+      "quality": "low",
+      "index": 5,
+      "order": [
+        "baseline",
+        "candidate"
+      ],
+      "start": 1792322303.0435047,
+      "end": 1792322361.4704466
+    }
+  ]
+}

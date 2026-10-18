@@ -1,0 +1,68 @@
+{
+  "timestamp": "2026-10-18T10:39:21.590496+00:00",
+  "base": "6126e4cdc0c5c89122627789ce394d8a1f1b521e",
+  "tests_sha256": {
+    "tests/power_fixture.gd": "ff6588969dffa7dca13a511ee78e9c25b1e2d4cb31ec262bfd943f34203571a2",
+    "tests/test_sector_power_commands.gd": "2a947776e7adddf68fb97d2a965e6c3c23927b0f1f8c443eca02c62a0431a971",
+    "tests/test_sector_power_dialogue.gd": "af3833ff2550e6fa10c1abb44af21ac21729266448e43636271b96ecc9b2a895",
+    "tests/test_sector_power_effects.gd": "0ec2606b69bb85453b6e4e201cfc81554629994d55c520904747ca8a4d5f9d57",
+    "tests/test_sector_power_state.gd": "f268560b9b6844a5aa6f94b68ee2ce86cc284edecc09a0850d751f391f36d5e4"
+  },
+  "unchanged": true,
+  "tracked_diff": [],
+  "checks": [
+    {
+      "test": "tests/test_sector_power_commands.gd",
+      "command": [
+        "./tools/godot.sh",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_sector_power_commands.gd"
+      ],
+      "exit_code": 1,
+      "expected_semantic_red": true
+    },
+    {
+      "test": "tests/test_sector_power_dialogue.gd",
+      "command": [
+        "./tools/godot.sh",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_sector_power_dialogue.gd"
+      ],
+      "exit_code": 1,
+      "expected_semantic_red": true
+    },
+    {
+      "test": "tests/test_sector_power_effects.gd",
+      "command": [
+        "./tools/godot.sh",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_sector_power_effects.gd"
+      ],
+      "exit_code": 1,
+      "expected_semantic_red": true
+    },
+    {
+      "test": "tests/test_sector_power_state.gd",
+      "command": [
+        "./tools/godot.sh",
+        "--headless",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_sector_power_state.gd"
+      ],
+      "exit_code": 1,
+      "expected_semantic_red": true
+    }
+  ],
+  "passed": true
+}

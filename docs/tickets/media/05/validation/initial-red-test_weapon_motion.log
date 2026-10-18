@@ -1,0 +1,43 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: motion fixture reaches final READY
+PASS: walking fixture traverses real floor
+PASS: real walking animates local wrist
+FAIL: walking leaves camera height stable: range=0.015990
+PASS: releasing movement does not snap wrist bob
+PASS: stopped player returns wrist to rest
+PASS: wall fixture blocks actual displacement despite held movement
+FAIL: blocked movement stops periodic wrist bob: range=0.013688
+FAIL: blocked sprint returns local wrist to rest pose
+PASS: motion fixture reaches final READY
+PASS: sprint has measurable weapon pose
+PASS: sprint inertia does not delay urgent fire
+PASS: new recoil recomposes muzzle at delta zero in the same shot
+FAIL: urgent fire reduces sprint pose
+PASS: urgent fire preserves sprint movement speed
+PASS: aim overrides sprint pose without waiting for motion to settle
+PASS: aimed fire leaves camera ray orientation unchanged
+PASS: motion fixture reaches final READY
+PASS: sprint has measurable weapon pose
+PASS: sprint inertia does not delay urgent fire
+PASS: new recoil recomposes muzzle at delta zero in the same shot
+FAIL: urgent fire reduces sprint pose
+PASS: urgent fire preserves sprint movement speed
+PASS: aim overrides sprint pose without waiting for motion to settle
+PASS: aimed fire leaves camera ray orientation unchanged
+FAIL: D9 normalized sprint response is faster than ARC: D9=0.606760 ARC=0.606760
+PASS: motion fixture reaches final READY
+FAIL: look uses screen_relative even when relative is zero
+FAIL: applied gaze creates local wrist inertia
+PASS: gaze cessation returns to rest without unbounded motion
+PASS: clamped-away pitch contributes no gaze impulse
+PASS: extreme applied gaze remains bounded
+PASS: repeated update_visual zero leaves every bone and muzzle unchanged
+PASS: teleport purges gaze motion
+PASS: camera still follows crouch height
+PASS: standing restores camera height
+PASS: real step climb retains horizontal movement presentation
+PASS: jump fixture leaves the floor
+PASS: airborne player without horizontal motion has no walking oscillation
+PASS: landing adds no camera bob impulse
+WEAPON MOTION FAILURES: 8

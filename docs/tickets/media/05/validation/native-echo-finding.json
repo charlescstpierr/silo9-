@@ -1,0 +1,52 @@
+{
+  "runtime_sha": "c68212d018b48a5e191e30aa939558cb8adb592f",
+  "trace": ".cstack/orchestrate/silo9/issue05-native-final/trace-input.log",
+  "echo_presses": [
+    {
+      "echo": true,
+      "key": 49,
+      "mode": "playing",
+      "one": false,
+      "physical": 49,
+      "pressed": true,
+      "text": "1",
+      "time": 19563,
+      "two": false
+    },
+    {
+      "echo": true,
+      "key": 49,
+      "mode": "playing",
+      "one": false,
+      "physical": 49,
+      "pressed": true,
+      "text": "1",
+      "time": 22796,
+      "two": false
+    },
+    {
+      "echo": true,
+      "key": 49,
+      "mode": "playing",
+      "one": false,
+      "physical": 49,
+      "pressed": true,
+      "text": "1",
+      "time": 29087,
+      "two": false
+    },
+    {
+      "echo": true,
+      "key": 49,
+      "mode": "playing",
+      "one": false,
+      "physical": 49,
+      "pressed": true,
+      "text": "1",
+      "time": 30687,
+      "two": false
+    }
+  ],
+  "cause": "X11/Godot coalesced re-press becomes echo; Player ignores event.is_action_pressed default allow_echo=false",
+  "status": "Confirmed native reproduction; source fix pending red gate"
+}

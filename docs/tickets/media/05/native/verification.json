@@ -1,0 +1,150 @@
+{
+  "verdict": "PASS native final input/resource sequence",
+  "head": "15d2b91a13a393b212236d195bda75a23cdc0a45",
+  "source_hashes_match": true,
+  "drive_exit": 0,
+  "game_exit": 0,
+  "record_exit": 255,
+  "record_stop": "intentional SIGINT, valid MP4; no FPS measurement",
+  "checks": [
+    {
+      "case": "modal-1",
+      "before": [
+        12,
+        100.0
+      ],
+      "held_resume": [
+        12,
+        100.0
+      ],
+      "fresh_click": [
+        11,
+        100.0
+      ]
+    },
+    {
+      "case": "modal-2",
+      "before": [
+        11,
+        100.0
+      ],
+      "held_resume": [
+        11,
+        100.0
+      ],
+      "fresh_click": [
+        11,
+        88.0
+      ]
+    },
+    {
+      "case": "native-rapid-1-2-1-0",
+      "press_duration_s": 0.03,
+      "before": [
+        11,
+        88.0
+      ],
+      "after": [
+        10,
+        88.0
+      ]
+    },
+    {
+      "case": "native-rapid-1-2-1-1",
+      "press_duration_s": 0.03,
+      "before": [
+        10,
+        88.0
+      ],
+      "after": [
+        9,
+        88.0
+      ]
+    },
+    {
+      "case": "native-rapid-1-2-1-2",
+      "press_duration_s": 0.03,
+      "before": [
+        9,
+        88.0
+      ],
+      "after": [
+        8,
+        88.0
+      ]
+    }
+  ],
+  "remaining_cases": [
+    "D9 reload returns12",
+    "ARC recharge spends1cell and reaches100",
+    "scanner spends20",
+    "B fromD9 transfersonecell then D9 shot spendsoneammo",
+    "F9 restores11ammo/100energy/0cells"
+  ],
+  "final_state": {
+    "ammo": 11,
+    "cells": 0,
+    "collected": [],
+    "components": 0,
+    "defeated": [
+      "sentinel_1"
+    ],
+    "elapsed": 38.4888551111111,
+    "ending": "",
+    "energy": 100.0,
+    "facts": [],
+    "health": 93.0,
+    "medkits": 2,
+    "memory": [],
+    "phase": 0,
+    "player_position": [
+      0.0,
+      0.0,
+      7.0
+    ],
+    "player_yaw": 0.0,
+    "relations": {
+      "mother": 0,
+      "n7": 0
+    },
+    "reserve": 44,
+    "schema": 2,
+    "upgraded": false
+  },
+  "visual_review": [
+    "modal-1-held-resumed.png",
+    "modal-2-held-resumed.png",
+    "rapid-2-final.png",
+    "arc-reload.png",
+    "final-after-load.png"
+  ],
+  "excluded_attempts": [
+    "initial screenshot01-ready false and menu-not-ready script excluded",
+    "issue05-native/ failedrapid and death afteridle were diagnostic",
+    "issue05-native-final/ reproducedecho and led to fix"
+  ],
+  "limitations": [
+    "Real native XTest game on llvmpipe, not targetGPU",
+    "No Windows execution",
+    "Raw video captured but not continuously viewed/listened",
+    "Earlier locomotion native captures from7a4c79f; motion code unchanged through15d2b91"
+  ],
+  "final_runtime_head": "463aabf5bcc7d250ce35120841e2ed75a57c9e84",
+  "final_runtime_native_supplement": "moving-shot/verification.json",
+  "unchanged_input_function_sha256": {
+    "set_active": "e9d111cafa8ca26b602ebed9c6ead300a5e32a27b6bc90e81f0262c9fbcf230c",
+    "_unhandled_input": "f9370178fb64f70449ca8b4842988d54c74a5f479fff846173339ae5d0fad2d8",
+    "_physics_process": "098d547dfbe96c96c7434c7f7ecc6c25c5d1e0b73514d74feb1fcf7e3c3591d6",
+    "reload_weapon": "737424ec0e21ec6495f7d4e9d7f65f2a33aa3b9a9d65f73292df12317ee2dc26",
+    "request_cell": "9e0c42e7dab3875624541538fbf842438d54bcf7f6b36e5f0572d42f6b6b64c0"
+  },
+  "scope_note": "Full native input/resource sequence ran on15d2. Final463 changes beam presentation and vertical look only; listed input/physics/reload function bodies verified identical. Additional native moving ARC shot ran on463, while actual beam attachment is proven by regression tests and final deterministic renders.",
+  "event_log": {
+    "raw": "events.jsonl",
+    "raw_sha256": "cbce7c2d509985a3c91a663c0825c79dde311b3427a53d7608c592e84e488f80",
+    "successful_run": "events-verified.jsonl",
+    "first_raw_line": 9,
+    "last_raw_line": 149,
+    "excluded_prefix_reason": "Initial menu readiness attempt; successful drive starts at monotonic timestamp reset."
+  }
+}

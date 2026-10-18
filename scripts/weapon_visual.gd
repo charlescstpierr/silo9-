@@ -111,7 +111,7 @@ static func _arc_parts(root: Node3D, materials: Array[StandardMaterial3D]) -> vo
 		_part(capsule[3],Vector3(.012,.025,.018),Vector3(.052,0,z),.002)
 	_part(capsule[2],Vector3(.009,.055,.07),Vector3(-.055,0,0),.004)
 	_meshes(cell,capsule)
-	_marker(cell,"CellGrip",Vector3(-.08,0,.04),Basis(Vector3.DOWN,Vector3.FORWARD,Vector3.RIGHT))
+	_marker(cell,"CellGrip",Vector3(-.065,-.06,0),Basis(Vector3.BACK,Vector3.RIGHT,Vector3.UP))
 	var latch := Node3D.new()
 	latch.name = "ArcLatch"
 	latch.position = Vector3(-.14,.235,.015)

@@ -39,6 +39,10 @@ func run() -> void:
 	player._advance_reload(1)
 	check(player.fire(),"ready ARC fires after transfer")
 	check(is_equal_approx(indicator.scale.x,.88),"fire updates indicator with new balance")
+	for stream in [player._audio,player._manipulation_audio,player._scan_audio]:
+		stream.stop()
+		stream.stream = null
+	await create_timer(.2).timeout
 	player.free()
 	await process_frame
 	await create_timer(.2).timeout

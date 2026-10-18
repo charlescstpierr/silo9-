@@ -26,6 +26,10 @@ func run() -> void:
 		check(player._manipulation_audio.playing,"threshold starts manipulation audio")
 		player.equip(1-weapon)
 		check(not player._manipulation_audio.playing,"manual selection stops old manipulation cue")
+		for stream in [player._audio,player._manipulation_audio,player._scan_audio]:
+			stream.stop()
+			stream.stream = null
+		await create_timer(.2).timeout
 		player.free()
 	await process_frame
 	await create_timer(.2).timeout

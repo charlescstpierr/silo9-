@@ -240,7 +240,10 @@ func _button(text: String, callback: Callable, node_name: String = "") -> Button
 	button.custom_minimum_size.y = 44
 	if not node_name.is_empty():
 		button.name = node_name
-	button.pressed.connect(callback)
+	button.pressed.connect(func() -> void:
+		if button.is_visible_in_tree():
+			callback.call()
+	)
 	content.add_child(button)
 	return button
 

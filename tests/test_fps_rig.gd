@@ -1,6 +1,7 @@
 extends SceneTree
 const Visual = preload("res://scripts/weapon_visual.gd")
 const Rig = preload("res://scripts/fps_rig.gd")
+const HandMesh = preload("res://scripts/fps_hand_mesh.gd")
 var failures := 0
 func check(value: bool, label: String) -> void:
 	if not value:
@@ -50,6 +51,30 @@ func run() -> void:
 	check(max_position <= .002,"contact <=2mm measured %f"%max_position)
 	check(max_angle <= deg_to_rad(2),"orientation <=2deg measured %f"%rad_to_deg(max_angle))
 	check(rig.calibration_valid,"all sampled IK targets reachable")
+	var frame_reload := Rig.ViewFrame.new()
+	var max_handling := 0.0
+	var max_support_error := 0.0
+	rig.equip(0)
+	rig.reset_pose()
+	for needs_rack in [false,true]:
+		frame_reload.reload_requires_rack = needs_rack
+		for pose in 3:
+			frame_reload.pose = pose
+			for phase in 101:
+				frame_reload.reload_progress = phase/100.0
+				frame_reload.recoil = .035 if phase%2 == 0 else 0.0
+				rig.update_visual(.02,frame_reload)
+				check(rig.calibration_valid,"full reload targets stay reachable")
+				if rig.handling_contact:
+					var hand := rig.skeleton.get_bone_global_pose(20)
+					max_handling = maxf(max_handling,hand.origin.distance_to(rig.handling_target.origin))
+					var support := palm_support_distance(rig,0)
+					max_support_error = maxf(max_support_error,absf(support-.019))
+				if not needs_rack:
+					check(absf(rig._weapons[0].get_node("Slide").position.z + .048 - frame_reload.recoil/.035*.035)<.001,"tactical reload does not rack")
+	check(max_handling < .002,"handling wrist contact <=2mm")
+	check(max_support_error < .012,"palm contacts physical magazine or slide surface: error %f" % max_support_error)
+	print("RELOAD handling_error=",max_handling," palm_surface_error=",max_support_error)
 	for index in 10:
 		rig.equip(index%2)
 		rig.update_visual(.01,frame)
@@ -61,6 +86,25 @@ func run() -> void:
 	rig.reset_pose()
 	var support_distance := palm_support_distance(rig)
 	check(absf(support_distance-.022) < .008,"ARC palm meets actual support geometry measured %f"%support_distance)
+	for weapon in 2:
+		rig.equip(weapon)
+		for progress in [-1.0,.28,.60,.85,.90]:
+			frame_reload.reload_progress = progress
+			frame_reload.reload_requires_rack = true
+			frame_reload.pose = Rig.ViewFrame.Pose.REST
+			frame_reload.recoil = 0.0
+			rig.update_visual(.3,frame_reload)
+			for side in 2:
+				for finger in 4:
+					var path := HandMesh.finger_path(finger,side)
+					for sample in range(2,6):
+						var base := 1+side*17+3+finger*3
+						var bone := base+mini(sample/2,2)
+						var previous := base+mini((sample-1)/2,2)
+						var rest_point: Vector3 = rig._rest_wrists[side]*path[sample]
+						var point: Vector3 = rig.skeleton.get_bone_global_pose(bone)*rig.skeleton.get_bone_global_rest(bone).affine_inverse()*rest_point*.8
+						point += rig.skeleton.get_bone_global_pose(previous)*rig.skeleton.get_bone_global_rest(previous).affine_inverse()*rest_point*.2
+						check(not inside_weapon(rig._weapons[weapon],rig.global_transform*point),"finger center outside weapon %d phase %.2f side %d finger %d sample %d" % [weapon,progress,side,finger,sample])
 	var wrist_before := rig.skeleton.get_bone_global_pose(20)
 	check(not rig._pose_arm(1,Transform3D(Basis.IDENTITY,Vector3(10,10,10))),"unreachable calibration rejected")
 	check(rig.skeleton.get_bone_global_pose(20).is_equal_approx(wrist_before),"unreachable target cannot stretch arm")
@@ -69,13 +113,15 @@ func run() -> void:
 	await process_frame
 	quit(1 if failures else 0)
 
-func palm_support_distance(rig: SiloFpsRig) -> float:
+func palm_support_distance(rig: SiloFpsRig, weapon: int = 1) -> float:
 	var hand := rig.skeleton.global_transform*rig.skeleton.get_bone_global_pose(20)
 	var origin := hand*Vector3(0,.04,0)
 	var direction := hand.basis*Vector3(0,0,1)
 	var closest := INF
-	for child in rig._weapons[1].find_children("*","MeshInstance3D",true,false):
+	for child in rig._weapons[weapon].find_children("*","MeshInstance3D",true,false):
 		var mesh_node := child as MeshInstance3D
+		if not mesh_node.is_visible_in_tree():
+			continue
 		for surface in mesh_node.mesh.get_surface_count():
 			var arrays := mesh_node.mesh.surface_get_arrays(surface)
 			var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
@@ -88,3 +134,22 @@ func palm_support_distance(rig: SiloFpsRig) -> float:
 				if hit is Vector3:
 					closest = minf(closest,origin.distance_to(hit))
 	return closest
+
+func inside_weapon(gun: Node3D, point: Vector3) -> bool:
+	var direction := Vector3(.73,.39,.56).normalized()
+	var hits := 0
+	for child: MeshInstance3D in gun.find_children("*","MeshInstance3D",true,false):
+		if not child.is_visible_in_tree():
+			continue
+		for surface in child.mesh.get_surface_count():
+			var arrays := child.mesh.surface_get_arrays(surface)
+			var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+			var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+			for index in range(0,indices.size(),3):
+				var a: Vector3 = child.global_transform*vertices[indices[index]]
+				var b: Vector3 = child.global_transform*vertices[indices[index+1]]
+				var c: Vector3 = child.global_transform*vertices[indices[index+2]]
+				var hit: Variant = Geometry3D.ray_intersects_triangle(point,direction,a,b,c)
+				if hit is Vector3:
+					hits += 1
+	return hits%2 == 1

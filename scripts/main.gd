@@ -612,6 +612,8 @@ func _bind_key(action: String, key: Key, physical: bool = true) -> void:
 
 func set_quality(low: bool) -> void:
 	low_quality = low
+	if is_instance_valid(player):
+		player.rig.set_quality(low)
 	if is_instance_valid(world):
 		world.set_quality(low)
 	if is_instance_valid(edge_smoothing):

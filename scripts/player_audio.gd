@@ -3,6 +3,12 @@ extends RefCounted
 
 static func synthesize(kind: String) -> AudioStreamWAV:
 	var duration: float = 0.28 if kind != "scan" else 0.65
+	if kind == "mag_out":
+		duration = .12
+	elif kind == "mag_in":
+		duration = .14
+	elif kind == "rack":
+		duration = .18
 	var count: int = int(22050.0 * duration)
 	var bytes := PackedByteArray()
 	bytes.resize(count * 2)
@@ -19,6 +25,12 @@ static func synthesize(kind: String) -> AudioStreamWAV:
 				sample = (sin(time * 2800.0 + sin(time * 80.0) * 8.0) * 0.65 + random.randf_range(-0.3, 0.3)) * envelope
 			"scan":
 				sample = sin(time * (3200.0 - time * 1800.0)) * sin(minf(time * 30.0, PI * 0.5)) * envelope
+			"mag_out":
+				sample = (random.randf_range(-.5,.5) + sin(time*1800)*.25)*envelope
+			"mag_in":
+				sample = (random.randf_range(-.8,.8) + sin(time*950)*.3)*envelope
+			"rack":
+				sample = (random.randf_range(-.7,.7) + sin(time*3100)*.2)*envelope
 			"hurt":
 				sample = (sin(time * 190.0) + random.randf_range(-0.2, 0.2)) * envelope
 			_:

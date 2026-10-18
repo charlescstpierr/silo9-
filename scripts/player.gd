@@ -475,9 +475,11 @@ func _build_weapons() -> void:
 	var cross := SurfaceTool.new()
 	cross.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var arm := BoxMesh.new()
-	arm.size = Vector3(.075, .018, .035)
-	cross.append_from(arm, 0, Transform3D.IDENTITY)
-	cross.append_from(arm, 0, Transform3D(Basis(Vector3.FORWARD, PI*.5), Vector3.ZERO))
+	arm.size = Vector3(.095, .022, .035)
+	cross.append_from(arm, 0, Transform3D(Basis.IDENTITY, Vector3(0, 0, -.28)))
+	cross.append_from(arm, 0, Transform3D(Basis(Vector3.FORWARD, PI*.5), Vector3(0, 0, -.28)))
+	arm.size = Vector3(.015, .015, .28)
+	cross.append_from(arm, 0, Transform3D(Basis.IDENTITY, Vector3(0, 0, -.14)))
 	_d9_flash.mesh = cross.commit()
 	_d9_flash.material_override = departure_orange
 	_d9_flash.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
@@ -485,12 +487,14 @@ func _build_weapons() -> void:
 	_d9_flash.visible = false
 	_arc_pulse = MeshInstance3D.new()
 	var ring := TorusMesh.new()
-	ring.inner_radius = .025
-	ring.outer_radius = .038
+	ring.inner_radius = .060
+	ring.outer_radius = .075
 	ring.rings = 16
 	ring.ring_segments = 8
-	_arc_pulse.mesh = ring
-	_arc_pulse.rotation.x = PI*.5
+	var pulse := SurfaceTool.new()
+	pulse.begin(Mesh.PRIMITIVE_TRIANGLES)
+	pulse.append_from(ring, 0, Transform3D(Basis(Vector3.RIGHT, PI*.5), Vector3(0, 0, -.42)))
+	_arc_pulse.mesh = pulse.commit()
 	_arc_pulse.material_override = departure_cyan
 	_arc_pulse.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	rig.muzzle.add_child(_arc_pulse)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CircuitSpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/data/circuit_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"maintenance"
+title = "MAINTENANCE"
+sector = "02 / MAINTENANCE"
+breaker_position = Vector3(2, 0, -18)
+fan_position = Vector3(6.6, 1.15, -17.7)
+gate_z = -14.0
+alarm_position = Vector3(2, 2.35, -18)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CircuitSpec" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/data/circuit_spec.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"archives"
+title = "ARCHIVES"
+sector = "03 / ARCHIVES"
+breaker_position = Vector3(2, 0, -38)
+fan_position = Vector3(-6.6, 1.15, -38.7)
+gate_z = -34.0
+alarm_position = Vector3(2, 2.35, -38)

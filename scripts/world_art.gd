@@ -1,6 +1,10 @@
 class_name SiloWorldArt
 extends Node3D
 
+const Spec = preload("res://scripts/data/circuit_spec.gd")
+const PowerMaterials = preload("res://scripts/data/power_materials.gd")
+var power_materials: PowerMaterials
+var focus_color := Color("cce4ef")
 var palette: Dictionary = {}
 var batches: Dictionary = {}
 var asset_batches: Dictionary = {}
@@ -82,14 +86,14 @@ func build() -> void:
 
 func _part(shape: String, pos: Vector3, size: Vector3, material: String, angles: Vector3 = Vector3.ZERO) -> void:
 	var bucket: int = clampi(int((-pos.z + 10.0) / 20.0), 0, 4)
-	var key: String = str(bucket) + ":" + shape + ":" + material
+	var key: String = str(bucket) + ":" + shape + ":" + material + ":" + str(Spec.at_z(pos.z))
 	if not batches.has(key): batches[key] = []
 	var basis := Basis.from_euler(angles).scaled_local(size)
 	batches[key].append(Transform3D(basis, pos))
 
 func _asset(name: String, pos: Vector3, scale_value: Vector3 = Vector3.ONE, angles: Vector3 = Vector3.ZERO) -> void:
 	var bucket: int = clampi(int((-pos.z + 10.0) / 20.0), 0, 4)
-	var key: String = str(bucket) + ":" + name
+	var key: String = str(bucket) + ":" + name + ":" + str(Spec.at_z(pos.z))
 	if not asset_batches.has(key): asset_batches[key] = []
 	asset_batches[key].append(Transform3D(Basis.from_euler(angles).scaled_local(scale_value), pos))
 
@@ -244,14 +248,15 @@ func _flush() -> void:
 	for key: String in batches:
 		var parts: PackedStringArray = key.split(":")
 		var mesh: Mesh = mesh_box if parts[1] == "box" else (mesh_pipe if parts[1] == "pipe" else mesh_ring)
-		_make_batch(mesh, batches[key], int(parts[0]), palette[parts[2]], parts[2] not in ["glow","cyan","danger","floor","wall","grate"])
+		_make_batch(mesh, batches[key], int(parts[0]), palette[parts[2]], parts[2] not in ["glow","cyan","danger","floor","wall","grate"], StringName(parts[3]))
 	batches.clear()
 
-func _make_batch(mesh: Mesh, transforms: Array, bucket: int, material: Material = null, casts_shadow: bool = true) -> void:
+func _make_batch(mesh: Mesh, transforms: Array, bucket: int, material: Material = null, casts_shadow: bool = true, circuit: StringName = &"") -> void:
 	var origin := Vector3(0,0,-bucket*20.0)
 	for surface in mesh.get_surface_count():
 		var surface_material: Material = material if material != null else mesh.surface_get_material(surface)
 		if surface_material == null: continue
+		surface_material = power_materials.for_sector(surface_material, circuit)
 		var key: String = str(bucket) + ":" + str(surface_material.get_instance_id()) + ":" + str(casts_shadow)
 		if not surfaces.has(key):
 			var builder := SurfaceTool.new()
@@ -293,7 +298,7 @@ func _flush_assets() -> void:
 			var transforms: Array = []
 			for transform: Transform3D in asset_batches[key]:
 				transforms.append(transform * source_transform)
-			_make_batch(_local_mesh(child.mesh), transforms, int(parts[0]), null, not parts[1].begins_with("Wall"))
+			_make_batch(_local_mesh(child.mesh), transforms, int(parts[0]), null, not parts[1].begins_with("Wall"), StringName(parts[2]))
 		source.free()
 	asset_batches.clear()
 
@@ -381,8 +386,6 @@ func _shadow_light() -> void:
 	shadow_key.spot_range = 12
 	shadow_key.spot_angle = 58
 	shadow_key.spot_attenuation = 0.8
-	shadow_key.light_energy = 3.0
-	shadow_key.light_color = Color("cce4ef")
 	shadow_key.shadow_enabled = true
 	shadow_key.shadow_bias = 0.12
 	shadow_key.shadow_normal_bias = 1.2
@@ -397,7 +400,7 @@ func update_focus(pos: Vector3) -> void:
 	focused_z = z
 	shadow_key.position = Vector3(-1.3,4.5,z)
 	shadow_key.rotation_degrees = Vector3(-90,0,0)
-	shadow_key.light_color = Color("ffe0bb") if z in [6.0,-22.0,-42.0,-63.0] else Color("b9e7f3")
+	focus_color = Color("ffe0bb") if z in [6.0,-22.0,-42.0,-63.0] else Color("b9e7f3")
 	if z == 6:
 		shadow_key.position = Vector3(1.5,4.5,6)
 		shadow_key.look_at(Vector3(3.8,0.8,4), Vector3.UP)
@@ -409,7 +412,6 @@ func update_focus(pos: Vector3) -> void:
 		shadow_key.look_at(Vector3(-7,0.7,-43), Vector3.UP)
 
 func set_quality(low: bool) -> void:
-	shadow_key.visible = not low
 	for group in decor_groups:
 		group.visibility_range_end = 32.0 if low else 44.0
 	for material in textured_materials:

@@ -1,6 +1,18 @@
 class_name SiloWorld
 extends Node3D
 
+const Spec = preload("res://scripts/data/circuit_spec.gd")
+const Consumers = preload("res://scripts/data/power_consumers.gd")
+const PowerMaterials = preload("res://scripts/data/power_materials.gd")
+const CIRCUITS: Array[Resource] = [preload("res://scripts/data/maintenance.tres"), preload("res://scripts/data/archives.tres")]
+enum PowerOutcome { CHANGED, UNCHANGED, UNKNOWN_CIRCUIT, BUSY, INACTIVE }
+var power_consumers: Dictionary[StringName, Consumers] = {}
+var power_materials := PowerMaterials.new()
+var _power_busy: bool = false
+var _low_quality: bool = false
+var _colossus_gain: float = 1.0
+var _light_colors: Array[Color] = []
+
 const RobotVisual = preload("res://scripts/robot_visual.gd")
 const Art = preload("res://scripts/world_art.gd")
 const State = preload("res://scripts/run_state.gd")
@@ -38,11 +50,13 @@ func setup(run: State, actor: CharacterBody3D) -> void:
 func _ready() -> void:
 	_materials()
 	art = Art.new()
+	art.power_materials = power_materials
 	art.prepare_materials(materials)
 	add_child(art)
 	_environment()
 	_build_structure()
 	_build_interactables()
+	_build_power()
 	_build_enemies()
 	_batch_static_geometry()
 	art.build()
@@ -88,7 +102,7 @@ func _box(pos: Vector3, size: Vector3, material: String, solid: bool = false, pa
 	mesh.mesh = box_mesh
 	mesh.position = pos
 	mesh.scale = size
-	mesh.material_override = materials[material]
+	mesh.material_override = power_materials.at_position(materials[material], pos) if parent == self else materials[material]
 	parent.add_child(mesh)
 	if solid:
 		var body := StaticBody3D.new()
@@ -122,6 +136,7 @@ func _light(pos: Vector3, color: Color, energy: float, radius: float) -> void:
 	light.shadow_enabled = false
 	add_child(light)
 	lights.append(light)
+	_light_colors.append(color)
 
 func _bulkhead(z: float, number: String, title: String, locked: bool = false) -> void:
 	for side in [-1.0, 1.0]:
@@ -325,6 +340,11 @@ func interact(target: Node) -> void:
 	if target == null or not target.has_meta("id"):
 		return
 	var id: String = target.get_meta("id")
+	if objects.get(id) != target: return
+	if id.begins_with("breaker_"):
+		var circuit: StringName = StringName(id.trim_prefix("breaker_"))
+		set_circuit(circuit, not state.circuit_on(circuit))
+		return
 	if target.has_meta("kind"):
 		if state.collect(id, target.get_meta("kind"), target.get_meta("amount", 1)):
 			message.emit("Ressource récupérée.")
@@ -424,8 +444,6 @@ func refresh() -> void:
 		if is_instance_valid(enemy) and state.defeated.has(enemy.enemy_id) and enemy.health > 0:
 			enemy.queue_free()
 	if state.ending != "":
-		for light in lights:
-			light.light_color = Color("ff6737") if state.ending == "mother" else Color("63e9e0")
 		if state.ending == "n7":
 			for enemy in enemies:
 				if is_instance_valid(enemy):
@@ -433,11 +451,13 @@ func refresh() -> void:
 					if enemy.eye_material != null:
 						enemy.eye_material.emission = Color("4cead3")
 
+	_refresh_power()
+
 func sector_at(pos: Vector3) -> String:
 	if pos.z > 2: return "ASCENSEUR / REFUGE"
 	if pos.z > -14: return "01 / DÉCONTAMINATION"
-	if pos.z > -34: return "02 / MAINTENANCE"
-	if pos.z > -54: return "03 / ARCHIVES"
+	if Spec.at_z(pos.z) == &"maintenance": return "02 / MAINTENANCE"
+	if Spec.at_z(pos.z) == &"archives": return "03 / ARCHIVES"
 	return "04 / CŒUR"
 
 func _process(delta: float) -> void:
@@ -454,15 +474,16 @@ func _process(delta: float) -> void:
 	time_to_check -= delta
 	if time_to_check > 0: return
 	time_to_check = 0.5
-	if is_instance_valid(player): art.update_focus(player.global_position)
+	if is_instance_valid(player):
+		art.update_focus(player.global_position)
+		_compose_lights()
 	if is_instance_valid(player) and player.position.z < -55 and not colossus_triggered:
 		colossus_triggered = true
 		colossus_sound.play()
 		message.emit("Quelque chose bouge sous vos pieds. MÈRE : « Poursuivez. Ce n'est qu'une dilatation thermique. »")
-		for light in lights:
-			var tween := create_tween()
-			tween.tween_property(light, "light_energy", 0.1, 0.15)
-			tween.tween_property(light, "light_energy", 2.0, 0.8).set_delay(0.15)
+		var tween := create_tween()
+		tween.tween_method(_set_colossus_gain, 1.0, 0.05, 0.15)
+		tween.tween_method(_set_colossus_gain, 0.05, 1.0, 0.8).set_delay(0.15)
 
 func _build_audio() -> void:
 	colossus_sound = AudioStreamPlayer3D.new()
@@ -484,11 +505,67 @@ func _build_audio() -> void:
 	add_child(colossus_sound)
 
 func set_quality(low: bool) -> void:
+	_low_quality = low
 	art.set_quality(low)
 	get_viewport().scaling_3d_scale = 0.67 if low else 1.0
 	get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 	get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
-	for i in lights.size():
-		lights[i].visible = not low or i < 6
-		if i < 6: lights[i].light_energy = 2.1 if low else 1.3
+	_compose_lights()
 	ambience.environment.fog_enabled = not low
+
+func _build_power() -> void:
+	for resource: Resource in CIRCUITS:
+		var spec := resource as Spec
+		assert(spec != null and spec.valid() and not power_consumers.has(spec.id))
+		var breaker: StaticBody3D = _object("breaker_" + str(spec.id), "", spec.breaker_position, "teal", Vector3(1.1, 1.8, 0.65))
+		var consumers := Consumers.new()
+		consumers.name = "Circuit_" + str(spec.id)
+		add_child(consumers)
+		consumers.build(spec, breaker, materials)
+		power_consumers[spec.id] = consumers
+
+func set_circuit(id: StringName, enabled: bool) -> PowerOutcome:
+	if not power_consumers.has(id): return PowerOutcome.UNKNOWN_CIRCUIT
+	if _power_busy: return PowerOutcome.BUSY
+	if not is_instance_valid(player) or not player.active or state.health <= 0: return PowerOutcome.INACTIVE
+	if state.circuit_on(id) == enabled: return PowerOutcome.UNCHANGED
+	_power_busy = true
+	state._commit_circuit(id, enabled)
+	_refresh_power()
+	var consumers: Consumers = power_consumers[id]
+	if not enabled and state.ending != "n7" and consumers.cut_alarm():
+		for enemy: Enemy in enemies:
+			if is_instance_valid(enemy) and enemy.health > 0 and enemy.stunned <= 0:
+				enemy.hear_noise(consumers.spec.alarm_position, consumers.spec.alarm_radius)
+	state.changed.emit()
+	_power_busy = false
+	return PowerOutcome.CHANGED
+
+func _refresh_power() -> void:
+	for id: StringName in power_consumers:
+		power_consumers[id].apply(state.circuit_on(id))
+		if state.ending == "n7": power_consumers[id].stop_alarm()
+	_compose_lights()
+	power_materials.apply(state)
+
+func _powered_at(z: float) -> bool:
+	var circuit: StringName = Spec.at_z(z)
+	return circuit == &"" or state.circuit_on(circuit)
+
+func _set_colossus_gain(value: float) -> void:
+	_colossus_gain = value
+	_compose_lights()
+
+func _compose_lights() -> void:
+	var ending_color: Color = Color("ff6737") if state.ending == "mother" else Color("63e9e0")
+	for i: int in lights.size():
+		var powered: bool = _powered_at(lights[i].position.z)
+		var base: float = (2.1 if _low_quality else 1.3) if i < 6 else (3.0 if i == 8 else 1.5)
+		lights[i].visible = powered and (not _low_quality or i < 6)
+		lights[i].light_energy = base * _colossus_gain if powered else 0.0
+		lights[i].light_color = _light_colors[i] if state.ending.is_empty() else ending_color
+	if art.shadow_key != null:
+		var powered: bool = _powered_at(art.focused_z)
+		art.shadow_key.visible = powered and not _low_quality
+		art.shadow_key.light_energy = 3.0 * _colossus_gain if powered and not _low_quality else 0.0
+		art.shadow_key.light_color = art.focus_color if state.ending.is_empty() else ending_color

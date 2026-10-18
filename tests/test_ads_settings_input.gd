@@ -170,7 +170,7 @@ func settings_contract() -> void:
 	observe_options(Vector3(60, 1.6, .2), "Apply to current Player")
 	app.save_run()
 	var save: Variant = JSON.parse_string(FileAccess.get_file_as_string(SAVE))
-	check(save is Dictionary and save.get("schema") == 2, "ADS preferences keep gameplay schema 2")
+	check(save is Dictionary and save.get("schema") == 3, "ADS preferences keep the sector-power save schema")
 	if save is Dictionary:
 		for location in setting_locations: check(not save.has(location[1]), "ADS preference stays outside gameplay save: " + location[1])
 	var previous: int = player.get_instance_id()

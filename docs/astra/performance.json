@@ -1,0 +1,2830 @@
+{
+  "runs_per_configuration": 5,
+  "failed_runs": 0,
+  "environment": {
+    "cpu_count": 8,
+    "load_average_start": [
+      7.365234375,
+      4.7724609375,
+      3.41943359375
+    ],
+    "load_average_end": [
+      5.54052734375,
+      5.68359375,
+      4.4833984375
+    ]
+  },
+  "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+  "rendering_method": "gl_compatibility",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "stations": [
+    {
+      "quality": "normal",
+      "sector": "ASCENSEUR / REFUGE",
+      "baseline": {
+        "p50_ms": {
+          "median": 163.495,
+          "range": [
+            150.733,
+            231.149
+          ]
+        },
+        "p95_ms": {
+          "median": 1642.019,
+          "range": [
+            171.339,
+            1919.622
+          ]
+        },
+        "draw_calls": {
+          "median": 326.0,
+          "range": [
+            326.0,
+            326.0
+          ]
+        },
+        "triangles": {
+          "median": 52576.0,
+          "range": [
+            52576.0,
+            52576.0
+          ]
+        }
+      },
+      "current": {
+        "p50_ms": {
+          "median": 191.172,
+          "range": [
+            187.531,
+            196.69
+          ]
+        },
+        "p95_ms": {
+          "median": 1913.078,
+          "range": [
+            1805.036,
+            1989.16
+          ]
+        },
+        "draw_calls": {
+          "median": 349.0,
+          "range": [
+            349.0,
+            349.0
+          ]
+        },
+        "triangles": {
+          "median": 61672.0,
+          "range": [
+            61672.0,
+            61672.0
+          ]
+        }
+      }
+    },
+    {
+      "quality": "normal",
+      "sector": "02 / MAINTENANCE",
+      "baseline": {
+        "p50_ms": {
+          "median": 175.189,
+          "range": [
+            160.249,
+            248.893
+          ]
+        },
+        "p95_ms": {
+          "median": 235.875,
+          "range": [
+            185.493,
+            337.983
+          ]
+        },
+        "draw_calls": {
+          "median": 342.0,
+          "range": [
+            334.0,
+            351.0
+          ]
+        },
+        "triangles": {
+          "median": 102463.0,
+          "range": [
+            101595.0,
+            103411.0
+          ]
+        }
+      },
+      "current": {
+        "p50_ms": {
+          "median": 199.522,
+          "range": [
+            186.908,
+            208.94
+          ]
+        },
+        "p95_ms": {
+          "median": 250.632,
+          "range": [
+            232.864,
+            362.058
+          ]
+        },
+        "draw_calls": {
+          "median": 356.0,
+          "range": [
+            351.0,
+            356.0
+          ]
+        },
+        "triangles": {
+          "median": 114107.0,
+          "range": [
+            113667.0,
+            114107.0
+          ]
+        }
+      }
+    },
+    {
+      "quality": "normal",
+      "sector": "03 / ARCHIVES",
+      "baseline": {
+        "p50_ms": {
+          "median": 154.861,
+          "range": [
+            147.189,
+            220.113
+          ]
+        },
+        "p95_ms": {
+          "median": 188.364,
+          "range": [
+            160.309,
+            283.83
+          ]
+        },
+        "draw_calls": {
+          "median": 196.0,
+          "range": [
+            196.0,
+            211.0
+          ]
+        },
+        "triangles": {
+          "median": 66820.0,
+          "range": [
+            66820.0,
+            68492.0
+          ]
+        }
+      },
+      "current": {
+        "p50_ms": {
+          "median": 195.32,
+          "range": [
+            186.624,
+            217.818
+          ]
+        },
+        "p95_ms": {
+          "median": 239.949,
+          "range": [
+            206.67,
+            250.246
+          ]
+        },
+        "draw_calls": {
+          "median": 223.0,
+          "range": [
+            223.0,
+            223.0
+          ]
+        },
+        "triangles": {
+          "median": 88924.0,
+          "range": [
+            88924.0,
+            88924.0
+          ]
+        }
+      }
+    },
+    {
+      "quality": "normal",
+      "sector": "04 / C\u0152UR",
+      "baseline": {
+        "p50_ms": {
+          "median": 133.345,
+          "range": [
+            129.318,
+            194.774
+          ]
+        },
+        "p95_ms": {
+          "median": 146.95,
+          "range": [
+            145.803,
+            256.666
+          ]
+        },
+        "draw_calls": {
+          "median": 70.0,
+          "range": [
+            70.0,
+            96.0
+          ]
+        },
+        "triangles": {
+          "median": 45868.0,
+          "range": [
+            45868.0,
+            48636.0
+          ]
+        }
+      },
+      "current": {
+        "p50_ms": {
+          "median": 165.363,
+          "range": [
+            160.943,
+            171.061
+          ]
+        },
+        "p95_ms": {
+          "median": 188.468,
+          "range": [
+            175.736,
+            216.377
+          ]
+        },
+        "draw_calls": {
+          "median": 89.0,
+          "range": [
+            89.0,
+            103.0
+          ]
+        },
+        "triangles": {
+          "median": 53612.0,
+          "range": [
+            53612.0,
+            54836.0
+          ]
+        }
+      }
+    },
+    {
+      "quality": "low",
+      "sector": "ASCENSEUR / REFUGE",
+      "baseline": {
+        "p50_ms": {
+          "median": 78.766,
+          "range": [
+            77.385,
+            83.876
+          ]
+        },
+        "p95_ms": {
+          "median": 93.272,
+          "range": [
+            89.432,
+            105.797
+          ]
+        },
+        "draw_calls": {
+          "median": 320.0,
+          "range": [
+            320.0,
+            320.0
+          ]
+        },
+        "triangles": {
+          "median": 50902.0,
+          "range": [
+            50902.0,
+            50902.0
+          ]
+        }
+      },
+      "current": {
+        "p50_ms": {
+          "median": 95.082,
+          "range": [
+            91.737,
+            103.215
+          ]
+        },
+        "p95_ms": {
+          "median": 114.771,
+          "range": [
+            106.305,
+            129.294
+          ]
+        },
+        "draw_calls": {
+          "median": 342.0,
+          "range": [
+            342.0,
+            342.0
+          ]
+        },
+        "triangles": {
+          "median": 59986.0,
+          "range": [
+            59986.0,
+            59986.0
+          ]
+        }
+      }
+    },
+    {
+      "quality": "low",
+      "sector": "02 / MAINTENANCE",
+      "baseline": {
+        "p50_ms": {
+          "median": 70.783,
+          "range": [
+            68.941,
+            74.634
+          ]
+        },
+        "p95_ms": {
+          "median": 89.005,
+          "range": [
+            85.208,
+            109.346
+          ]
+        },
+        "draw_calls": {
+          "median": 254.0,
+          "range": [
+            250.0,
+            255.0
+          ]
+        },
+        "triangles": {
+          "median": 51468.0,
+          "range": [
+            50980.0,
+            51880.0
+          ]
+        }
+      },
+      "current": {
+        "p50_ms": {
+          "median": 85.348,
+          "range": [
+            80.888,
+            91.449
+          ]
+        },
+        "p95_ms": {
+          "median": 104.896,
+          "range": [
+            100.339,
+            138.952
+          ]
+        },
+        "draw_calls": {
+          "median": 286.0,
+          "range": [
+            281.0,
+            287.0
+          ]
+        },
+        "triangles": {
+          "median": 65048.0,
+          "range": [
+            64692.0,
+            65192.0
+          ]
+        }
+      }
+    },
+    {
+      "quality": "low",
+      "sector": "03 / ARCHIVES",
+      "baseline": {
+        "p50_ms": {
+          "median": 68.763,
+          "range": [
+            66.361,
+            72.107
+          ]
+        },
+        "p95_ms": {
+          "median": 80.232,
+          "range": [
+            72.686,
+            111.106
+          ]
+        },
+        "draw_calls": {
+          "median": 158.0,
+          "range": [
+            158.0,
+            158.0
+          ]
+        },
+        "triangles": {
+          "median": 47809.0,
+          "range": [
+            47809.0,
+            47809.0
+          ]
+        }
+      },
+      "current": {
+        "p50_ms": {
+          "median": 79.121,
+          "range": [
+            76.693,
+            93.185
+          ]
+        },
+        "p95_ms": {
+          "median": 103.632,
+          "range": [
+            89.634,
+            110.127
+          ]
+        },
+        "draw_calls": {
+          "median": 180.0,
+          "range": [
+            180.0,
+            180.0
+          ]
+        },
+        "triangles": {
+          "median": 58213.0,
+          "range": [
+            58213.0,
+            58213.0
+          ]
+        }
+      }
+    },
+    {
+      "quality": "low",
+      "sector": "04 / C\u0152UR",
+      "baseline": {
+        "p50_ms": {
+          "median": 55.217,
+          "range": [
+            54.007,
+            59.189
+          ]
+        },
+        "p95_ms": {
+          "median": 69.868,
+          "range": [
+            62.924,
+            73.917
+          ]
+        },
+        "draw_calls": {
+          "median": 71.0,
+          "range": [
+            71.0,
+            74.0
+          ]
+        },
+        "triangles": {
+          "median": 30918.0,
+          "range": [
+            30918.0,
+            31134.0
+          ]
+        }
+      },
+      "current": {
+        "p50_ms": {
+          "median": 65.848,
+          "range": [
+            64.884,
+            74.838
+          ]
+        },
+        "p95_ms": {
+          "median": 80.863,
+          "range": [
+            73.945,
+            114.616
+          ]
+        },
+        "draw_calls": {
+          "median": 93.0,
+          "range": [
+            93.0,
+            93.0
+          ]
+        },
+        "triangles": {
+          "median": 36214.0,
+          "range": [
+            36214.0,
+            36214.0
+          ]
+        }
+      }
+    }
+  ],
+  "processes": {
+    "baseline-normal": {
+      "peak_rss_kib": {
+        "median": 813444,
+        "range": [
+          812648,
+          813700
+        ]
+      },
+      "elapsed_seconds": {
+        "median": 22.76,
+        "range": [
+          21.55,
+          27.66
+        ]
+      },
+      "cpu_seconds": {
+        "median": 112.01,
+        "range": [
+          98.72,
+          113.58
+        ]
+      }
+    },
+    "baseline-low": {
+      "peak_rss_kib": {
+        "median": 717176,
+        "range": [
+          717056,
+          718264
+        ]
+      },
+      "elapsed_seconds": {
+        "median": 21.1,
+        "range": [
+          21.01,
+          21.18
+        ]
+      },
+      "cpu_seconds": {
+        "median": 91.44,
+        "range": [
+          89.41,
+          92.89
+        ]
+      }
+    },
+    "current-normal": {
+      "peak_rss_kib": {
+        "median": 872556,
+        "range": [
+          872104,
+          873088
+        ]
+      },
+      "elapsed_seconds": {
+        "median": 25.2,
+        "range": [
+          24.37,
+          25.47
+        ]
+      },
+      "cpu_seconds": {
+        "median": 129.29999999999998,
+        "range": [
+          125.5,
+          132.4
+        ]
+      }
+    },
+    "current-low": {
+      "peak_rss_kib": {
+        "median": 768500,
+        "range": [
+          768100,
+          769576
+        ]
+      },
+      "elapsed_seconds": {
+        "median": 21.42,
+        "range": [
+          21.18,
+          21.51
+        ]
+      },
+      "cpu_seconds": {
+        "median": 91.49,
+        "range": [
+          80.54,
+          92.27
+        ]
+      }
+    }
+  },
+  "runs": [
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "normal",
+      "render_scale": 1.0,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 326.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 4.624695,
+          "memory_mb": null,
+          "objects": 625.0,
+          "p50_ms": 231.149,
+          "p95_ms": 1919.622,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 52576.0
+        },
+        {
+          "draw_calls": 351.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 5.13738,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 248.893,
+          "p95_ms": 337.983,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 103411.0
+        },
+        {
+          "draw_calls": 211.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "search",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 4.498525,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 220.113,
+          "p95_ms": 283.83,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 68492.0
+        },
+        {
+          "draw_calls": 82.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.718846,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 194.774,
+          "p95_ms": 256.666,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 47108.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 812648,
+        "elapsed_seconds": 27.66,
+        "user_seconds": 96.52,
+        "system_seconds": 2.2,
+        "cpu_seconds": 98.72
+      },
+      "binary_sha256": "670afba432166060cf7f5fc5ee4781f89d4dc3b7036148b613a2ac585c39a3f1",
+      "pack_sha256": null,
+      "source_sha256": "beb80b70dd8b238892a23821a6b932db169967eef4ba4f6cbc3fdca460bbb73a",
+      "run": 1,
+      "side": "baseline",
+      "directory": "01-normal-baseline"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "normal",
+      "render_scale": 1.0,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 349.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.861134,
+          "memory_mb": null,
+          "objects": 731.0,
+          "p50_ms": 191.592,
+          "p95_ms": 1989.16,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 61672.0
+        },
+        {
+          "draw_calls": 351.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 4.102104,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 205.708,
+          "p95_ms": 232.864,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 113667.0
+        },
+        {
+          "draw_calls": 223.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.873839,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 193.593,
+          "p95_ms": 250.246,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 88924.0
+        },
+        {
+          "draw_calls": 89.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.310227,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 165.363,
+          "p95_ms": 184.208,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 53612.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 872600,
+        "elapsed_seconds": 25.33,
+        "user_seconds": 130.04,
+        "system_seconds": 2.36,
+        "cpu_seconds": 132.4
+      },
+      "binary_sha256": "d34376a7b337a0f8accff6b82383144e3d86dddcff1213a5503dd1c4ffa48cc6",
+      "pack_sha256": null,
+      "source_sha256": "b00f5289e234e98398cb22816f875b91276e6259024ed5416a80a3a4041a8f06",
+      "run": 1,
+      "side": "current",
+      "directory": "01-normal-current"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "low",
+      "render_scale": 0.670000016689301,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 320.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 38,
+          "measurement_seconds": 3.043235,
+          "memory_mb": null,
+          "objects": 625.0,
+          "p50_ms": 78.766,
+          "p95_ms": 91.482,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 50902.0
+        },
+        {
+          "draw_calls": 254.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 40,
+          "measurement_seconds": 3.075006,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 74.634,
+          "p95_ms": 89.005,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 51468.0
+        },
+        {
+          "draw_calls": 158.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 44,
+          "measurement_seconds": 3.026564,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 68.763,
+          "p95_ms": 80.232,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 47809.0
+        },
+        {
+          "draw_calls": 71.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 54,
+          "measurement_seconds": 3.053009,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 55.217,
+          "p95_ms": 64.507,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 30918.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 717176,
+        "elapsed_seconds": 21.18,
+        "user_seconds": 87.47,
+        "system_seconds": 2.15,
+        "cpu_seconds": 89.62
+      },
+      "binary_sha256": "670afba432166060cf7f5fc5ee4781f89d4dc3b7036148b613a2ac585c39a3f1",
+      "pack_sha256": null,
+      "source_sha256": "beb80b70dd8b238892a23821a6b932db169967eef4ba4f6cbc3fdca460bbb73a",
+      "run": 1,
+      "side": "baseline",
+      "directory": "01-low-baseline"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "low",
+      "render_scale": 0.670000016689301,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 342.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 32,
+          "measurement_seconds": 3.045915,
+          "memory_mb": null,
+          "objects": 731.0,
+          "p50_ms": 95.082,
+          "p95_ms": 106.305,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 59986.0
+        },
+        {
+          "draw_calls": 285.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 35,
+          "measurement_seconds": 3.035948,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 85.348,
+          "p95_ms": 102.489,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 64984.0
+        },
+        {
+          "draw_calls": 180.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "retreat",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 37,
+          "measurement_seconds": 3.038048,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 79.121,
+          "p95_ms": 103.632,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 58213.0
+        },
+        {
+          "draw_calls": 93.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 44,
+          "measurement_seconds": 3.069461,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 66.632,
+          "p95_ms": 84.095,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 36214.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 768496,
+        "elapsed_seconds": 21.42,
+        "user_seconds": 90.06,
+        "system_seconds": 2.21,
+        "cpu_seconds": 92.27
+      },
+      "binary_sha256": "d34376a7b337a0f8accff6b82383144e3d86dddcff1213a5503dd1c4ffa48cc6",
+      "pack_sha256": null,
+      "source_sha256": "b00f5289e234e98398cb22816f875b91276e6259024ed5416a80a3a4041a8f06",
+      "run": 1,
+      "side": "current",
+      "directory": "01-low-current"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "normal",
+      "render_scale": 1.0,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 326.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.110762,
+          "memory_mb": null,
+          "objects": 625.0,
+          "p50_ms": 158.129,
+          "p95_ms": 1714.15,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 52576.0
+        },
+        {
+          "draw_calls": 342.0,
+          "enemy_modes": [
+            "chase",
+            "retreat",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 4.083263,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 203.255,
+          "p95_ms": 281.214,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 102463.0
+        },
+        {
+          "draw_calls": 196.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 21,
+          "measurement_seconds": 3.089721,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 147.189,
+          "p95_ms": 160.309,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 66820.0
+        },
+        {
+          "draw_calls": 70.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 23,
+          "measurement_seconds": 3.020237,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 129.318,
+          "p95_ms": 145.803,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 45868.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 813420,
+        "elapsed_seconds": 22.76,
+        "user_seconds": 111.36,
+        "system_seconds": 2.22,
+        "cpu_seconds": 113.58
+      },
+      "binary_sha256": "670afba432166060cf7f5fc5ee4781f89d4dc3b7036148b613a2ac585c39a3f1",
+      "pack_sha256": null,
+      "source_sha256": "beb80b70dd8b238892a23821a6b932db169967eef4ba4f6cbc3fdca460bbb73a",
+      "run": 2,
+      "side": "baseline",
+      "directory": "02-normal-baseline"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "normal",
+      "render_scale": 1.0,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 349.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 4.004143,
+          "memory_mb": null,
+          "objects": 731.0,
+          "p50_ms": 196.69,
+          "p95_ms": 1917.477,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 61672.0
+        },
+        {
+          "draw_calls": 356.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 4.066441,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 199.417,
+          "p95_ms": 252.485,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 114107.0
+        },
+        {
+          "draw_calls": 223.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "search",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 4.026546,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 201.962,
+          "p95_ms": 241.851,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 88924.0
+        },
+        {
+          "draw_calls": 89.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.301655,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 167.021,
+          "p95_ms": 188.468,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 53612.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 872424,
+        "elapsed_seconds": 25.2,
+        "user_seconds": 125.8,
+        "system_seconds": 2.56,
+        "cpu_seconds": 128.35999999999999
+      },
+      "binary_sha256": "d34376a7b337a0f8accff6b82383144e3d86dddcff1213a5503dd1c4ffa48cc6",
+      "pack_sha256": null,
+      "source_sha256": "b00f5289e234e98398cb22816f875b91276e6259024ed5416a80a3a4041a8f06",
+      "run": 2,
+      "side": "current",
+      "directory": "02-normal-current"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "low",
+      "render_scale": 0.670000016689301,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 320.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 39,
+          "measurement_seconds": 3.090057,
+          "memory_mb": null,
+          "objects": 625.0,
+          "p50_ms": 77.385,
+          "p95_ms": 89.432,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 50902.0
+        },
+        {
+          "draw_calls": 250.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 40,
+          "measurement_seconds": 3.01045,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 74.376,
+          "p95_ms": 103.497,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 50980.0
+        },
+        {
+          "draw_calls": 158.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 42,
+          "measurement_seconds": 3.022901,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 71.518,
+          "p95_ms": 88.001,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 47809.0
+        },
+        {
+          "draw_calls": 71.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 52,
+          "measurement_seconds": 3.013391,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 56.585,
+          "p95_ms": 69.868,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 30918.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 717888,
+        "elapsed_seconds": 21.1,
+        "user_seconds": 90.62,
+        "system_seconds": 2.15,
+        "cpu_seconds": 92.77000000000001
+      },
+      "binary_sha256": "670afba432166060cf7f5fc5ee4781f89d4dc3b7036148b613a2ac585c39a3f1",
+      "pack_sha256": null,
+      "source_sha256": "beb80b70dd8b238892a23821a6b932db169967eef4ba4f6cbc3fdca460bbb73a",
+      "run": 2,
+      "side": "baseline",
+      "directory": "02-low-baseline"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "low",
+      "render_scale": 0.670000016689301,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 342.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 33,
+          "measurement_seconds": 3.044407,
+          "memory_mb": null,
+          "objects": 731.0,
+          "p50_ms": 91.737,
+          "p95_ms": 115.677,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 59986.0
+        },
+        {
+          "draw_calls": 286.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 35,
+          "measurement_seconds": 3.078546,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 86.939,
+          "p95_ms": 108.783,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 65048.0
+        },
+        {
+          "draw_calls": 180.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 39,
+          "measurement_seconds": 3.018282,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 76.693,
+          "p95_ms": 89.634,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 58213.0
+        },
+        {
+          "draw_calls": 93.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 45,
+          "measurement_seconds": 3.002019,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 64.884,
+          "p95_ms": 80.863,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 36214.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 769576,
+        "elapsed_seconds": 21.45,
+        "user_seconds": 89.74,
+        "system_seconds": 2.13,
+        "cpu_seconds": 91.86999999999999
+      },
+      "binary_sha256": "d34376a7b337a0f8accff6b82383144e3d86dddcff1213a5503dd1c4ffa48cc6",
+      "pack_sha256": null,
+      "source_sha256": "b00f5289e234e98398cb22816f875b91276e6259024ed5416a80a3a4041a8f06",
+      "run": 2,
+      "side": "current",
+      "directory": "02-low-current"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "normal",
+      "render_scale": 1.0,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 326.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.001007,
+          "memory_mb": null,
+          "objects": 625.0,
+          "p50_ms": 150.733,
+          "p95_ms": 171.339,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 52576.0
+        },
+        {
+          "draw_calls": 334.0,
+          "enemy_modes": [
+            "chase",
+            "retreat",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.229919,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 160.249,
+          "p95_ms": 185.493,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 101595.0
+        },
+        {
+          "draw_calls": 196.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 21,
+          "measurement_seconds": 3.137937,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 148.04,
+          "p95_ms": 177.953,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 66820.0
+        },
+        {
+          "draw_calls": 70.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 23,
+          "measurement_seconds": 3.051685,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 133.345,
+          "p95_ms": 146.95,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 45868.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 813444,
+        "elapsed_seconds": 21.55,
+        "user_seconds": 110.09,
+        "system_seconds": 1.92,
+        "cpu_seconds": 112.01
+      },
+      "binary_sha256": "670afba432166060cf7f5fc5ee4781f89d4dc3b7036148b613a2ac585c39a3f1",
+      "pack_sha256": null,
+      "source_sha256": "beb80b70dd8b238892a23821a6b932db169967eef4ba4f6cbc3fdca460bbb73a",
+      "run": 3,
+      "side": "baseline",
+      "directory": "03-normal-baseline"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "normal",
+      "render_scale": 1.0,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 349.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.805559,
+          "memory_mb": null,
+          "objects": 731.0,
+          "p50_ms": 191.172,
+          "p95_ms": 1805.036,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 61672.0
+        },
+        {
+          "draw_calls": 351.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.895257,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 186.908,
+          "p95_ms": 250.632,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 113667.0
+        },
+        {
+          "draw_calls": 223.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.809758,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 195.32,
+          "p95_ms": 206.67,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 88924.0
+        },
+        {
+          "draw_calls": 89.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.30786,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 160.943,
+          "p95_ms": 216.377,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 53612.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 873088,
+        "elapsed_seconds": 24.37,
+        "user_seconds": 127.98,
+        "system_seconds": 2.02,
+        "cpu_seconds": 130.0
+      },
+      "binary_sha256": "d34376a7b337a0f8accff6b82383144e3d86dddcff1213a5503dd1c4ffa48cc6",
+      "pack_sha256": null,
+      "source_sha256": "b00f5289e234e98398cb22816f875b91276e6259024ed5416a80a3a4041a8f06",
+      "run": 3,
+      "side": "current",
+      "directory": "03-normal-current"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "low",
+      "render_scale": 0.670000016689301,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 320.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 39,
+          "measurement_seconds": 3.042383,
+          "memory_mb": null,
+          "objects": 625.0,
+          "p50_ms": 77.955,
+          "p95_ms": 93.272,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 50902.0
+        },
+        {
+          "draw_calls": 253.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 43,
+          "measurement_seconds": 3.024966,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 68.941,
+          "p95_ms": 85.208,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 51396.0
+        },
+        {
+          "draw_calls": 158.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "retreat",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 45,
+          "measurement_seconds": 3.009824,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 66.361,
+          "p95_ms": 72.686,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 47809.0
+        },
+        {
+          "draw_calls": 71.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 55,
+          "measurement_seconds": 3.030664,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 54.45,
+          "p95_ms": 62.924,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 30918.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 717056,
+        "elapsed_seconds": 21.03,
+        "user_seconds": 90.64,
+        "system_seconds": 2.25,
+        "cpu_seconds": 92.89
+      },
+      "binary_sha256": "670afba432166060cf7f5fc5ee4781f89d4dc3b7036148b613a2ac585c39a3f1",
+      "pack_sha256": null,
+      "source_sha256": "beb80b70dd8b238892a23821a6b932db169967eef4ba4f6cbc3fdca460bbb73a",
+      "run": 3,
+      "side": "baseline",
+      "directory": "03-low-baseline"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "low",
+      "render_scale": 0.670000016689301,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 342.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 32,
+          "measurement_seconds": 3.040377,
+          "memory_mb": null,
+          "objects": 731.0,
+          "p50_ms": 97.265,
+          "p95_ms": 108.696,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 59986.0
+        },
+        {
+          "draw_calls": 281.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 37,
+          "measurement_seconds": 3.067685,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 80.888,
+          "p95_ms": 104.896,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 64692.0
+        },
+        {
+          "draw_calls": 180.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 38,
+          "measurement_seconds": 3.06028,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 78.145,
+          "p95_ms": 102.92,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 58213.0
+        },
+        {
+          "draw_calls": 93.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 46,
+          "measurement_seconds": 3.063214,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 65.848,
+          "p95_ms": 74.77,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 36214.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 768884,
+        "elapsed_seconds": 21.18,
+        "user_seconds": 89.28,
+        "system_seconds": 2.21,
+        "cpu_seconds": 91.49
+      },
+      "binary_sha256": "d34376a7b337a0f8accff6b82383144e3d86dddcff1213a5503dd1c4ffa48cc6",
+      "pack_sha256": null,
+      "source_sha256": "b00f5289e234e98398cb22816f875b91276e6259024ed5416a80a3a4041a8f06",
+      "run": 3,
+      "side": "current",
+      "directory": "03-low-current"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "normal",
+      "render_scale": 1.0,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 326.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.30072,
+          "memory_mb": null,
+          "objects": 625.0,
+          "p50_ms": 163.495,
+          "p95_ms": 1561.472,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 52576.0
+        },
+        {
+          "draw_calls": 342.0,
+          "enemy_modes": [
+            "chase",
+            "retreat",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.576367,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 175.189,
+          "p95_ms": 235.875,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 102463.0
+        },
+        {
+          "draw_calls": 196.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.087354,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 154.861,
+          "p95_ms": 188.364,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 66820.0
+        },
+        {
+          "draw_calls": 96.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "chase"
+          ],
+          "frames": 23,
+          "measurement_seconds": 3.066076,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 130.707,
+          "p95_ms": 146.877,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 48636.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 813700,
+        "elapsed_seconds": 22.1,
+        "user_seconds": 110.28,
+        "system_seconds": 2.04,
+        "cpu_seconds": 112.32000000000001
+      },
+      "binary_sha256": "670afba432166060cf7f5fc5ee4781f89d4dc3b7036148b613a2ac585c39a3f1",
+      "pack_sha256": null,
+      "source_sha256": "beb80b70dd8b238892a23821a6b932db169967eef4ba4f6cbc3fdca460bbb73a",
+      "run": 4,
+      "side": "baseline",
+      "directory": "04-normal-baseline"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "normal",
+      "render_scale": 1.0,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 349.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.725513,
+          "memory_mb": null,
+          "objects": 731.0,
+          "p50_ms": 187.531,
+          "p95_ms": 1913.078,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 61672.0
+        },
+        {
+          "draw_calls": 356.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 4.375535,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 199.522,
+          "p95_ms": 362.058,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 114107.0
+        },
+        {
+          "draw_calls": 223.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "search",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 4.288344,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 217.818,
+          "p95_ms": 239.949,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 88924.0
+        },
+        {
+          "draw_calls": 103.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.435408,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 171.061,
+          "p95_ms": 200.943,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 54836.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 872104,
+        "elapsed_seconds": 25.47,
+        "user_seconds": 123.41,
+        "system_seconds": 2.09,
+        "cpu_seconds": 125.5
+      },
+      "binary_sha256": "d34376a7b337a0f8accff6b82383144e3d86dddcff1213a5503dd1c4ffa48cc6",
+      "pack_sha256": null,
+      "source_sha256": "b00f5289e234e98398cb22816f875b91276e6259024ed5416a80a3a4041a8f06",
+      "run": 4,
+      "side": "current",
+      "directory": "04-normal-current"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "low",
+      "render_scale": 0.670000016689301,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 320.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 37,
+          "measurement_seconds": 3.066324,
+          "memory_mb": null,
+          "objects": 625.0,
+          "p50_ms": 83.876,
+          "p95_ms": 105.797,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 50902.0
+        },
+        {
+          "draw_calls": 254.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 41,
+          "measurement_seconds": 3.0773,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 70.783,
+          "p95_ms": 109.346,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 51468.0
+        },
+        {
+          "draw_calls": 158.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 40,
+          "measurement_seconds": 3.030219,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 72.107,
+          "p95_ms": 111.106,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 47809.0
+        },
+        {
+          "draw_calls": 71.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 51,
+          "measurement_seconds": 3.049637,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 59.189,
+          "p95_ms": 71.351,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 30918.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 717152,
+        "elapsed_seconds": 21.12,
+        "user_seconds": 87.19,
+        "system_seconds": 2.22,
+        "cpu_seconds": 89.41
+      },
+      "binary_sha256": "670afba432166060cf7f5fc5ee4781f89d4dc3b7036148b613a2ac585c39a3f1",
+      "pack_sha256": null,
+      "source_sha256": "beb80b70dd8b238892a23821a6b932db169967eef4ba4f6cbc3fdca460bbb73a",
+      "run": 4,
+      "side": "baseline",
+      "directory": "04-low-baseline"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "low",
+      "render_scale": 0.670000016689301,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 342.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 29,
+          "measurement_seconds": 3.023188,
+          "memory_mb": null,
+          "objects": 731.0,
+          "p50_ms": 103.215,
+          "p95_ms": 129.294,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 59986.0
+        },
+        {
+          "draw_calls": 287.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 32,
+          "measurement_seconds": 3.053653,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 91.449,
+          "p95_ms": 138.952,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 65192.0
+        },
+        {
+          "draw_calls": 180.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 33,
+          "measurement_seconds": 3.051179,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 93.185,
+          "p95_ms": 110.127,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 58213.0
+        },
+        {
+          "draw_calls": 93.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 39,
+          "measurement_seconds": 3.013778,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 74.838,
+          "p95_ms": 114.616,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 36214.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 768500,
+        "elapsed_seconds": 21.51,
+        "user_seconds": 78.15,
+        "system_seconds": 2.39,
+        "cpu_seconds": 80.54
+      },
+      "binary_sha256": "d34376a7b337a0f8accff6b82383144e3d86dddcff1213a5503dd1c4ffa48cc6",
+      "pack_sha256": null,
+      "source_sha256": "b00f5289e234e98398cb22816f875b91276e6259024ed5416a80a3a4041a8f06",
+      "run": 4,
+      "side": "current",
+      "directory": "04-low-current"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "normal",
+      "render_scale": 1.0,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 326.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.535362,
+          "memory_mb": null,
+          "objects": 625.0,
+          "p50_ms": 173.309,
+          "p95_ms": 1642.019,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 52576.0
+        },
+        {
+          "draw_calls": 342.0,
+          "enemy_modes": [
+            "chase",
+            "retreat",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.557225,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 173.427,
+          "p95_ms": 222.118,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 102463.0
+        },
+        {
+          "draw_calls": 196.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.407378,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 168.319,
+          "p95_ms": 210.346,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 66820.0
+        },
+        {
+          "draw_calls": 70.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "search"
+          ],
+          "frames": 22,
+          "measurement_seconds": 3.042261,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 136.475,
+          "p95_ms": 171.47,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 45868.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 813484,
+        "elapsed_seconds": 22.96,
+        "user_seconds": 104.03,
+        "system_seconds": 1.96,
+        "cpu_seconds": 105.99
+      },
+      "binary_sha256": "670afba432166060cf7f5fc5ee4781f89d4dc3b7036148b613a2ac585c39a3f1",
+      "pack_sha256": null,
+      "source_sha256": "beb80b70dd8b238892a23821a6b932db169967eef4ba4f6cbc3fdca460bbb73a",
+      "run": 5,
+      "side": "baseline",
+      "directory": "05-normal-baseline"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "normal",
+      "render_scale": 1.0,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 349.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.817545,
+          "memory_mb": null,
+          "objects": 731.0,
+          "p50_ms": 188.497,
+          "p95_ms": 1822.169,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 61672.0
+        },
+        {
+          "draw_calls": 356.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 4.119607,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 208.94,
+          "p95_ms": 244.05,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 114107.0
+        },
+        {
+          "draw_calls": 223.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "chase",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.778942,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 186.624,
+          "p95_ms": 216.036,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 88924.0
+        },
+        {
+          "draw_calls": 89.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 20,
+          "measurement_seconds": 3.26773,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 164.023,
+          "p95_ms": 175.736,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 53612.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 872556,
+        "elapsed_seconds": 24.7,
+        "user_seconds": 127.16,
+        "system_seconds": 2.14,
+        "cpu_seconds": 129.29999999999998
+      },
+      "binary_sha256": "d34376a7b337a0f8accff6b82383144e3d86dddcff1213a5503dd1c4ffa48cc6",
+      "pack_sha256": null,
+      "source_sha256": "b00f5289e234e98398cb22816f875b91276e6259024ed5416a80a3a4041a8f06",
+      "run": 5,
+      "side": "current",
+      "directory": "05-normal-current"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "low",
+      "render_scale": 0.670000016689301,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 320.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 37,
+          "measurement_seconds": 3.030189,
+          "memory_mb": null,
+          "objects": 625.0,
+          "p50_ms": 81.008,
+          "p95_ms": 97.376,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 50902.0
+        },
+        {
+          "draw_calls": 255.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 42,
+          "measurement_seconds": 3.00846,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 69.257,
+          "p95_ms": 85.489,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 51880.0
+        },
+        {
+          "draw_calls": 158.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "retreat",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 45,
+          "measurement_seconds": 3.049719,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 67.055,
+          "p95_ms": 78.362,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 47809.0
+        },
+        {
+          "draw_calls": 74.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 54,
+          "measurement_seconds": 3.033301,
+          "memory_mb": null,
+          "objects": 638.0,
+          "p50_ms": 54.007,
+          "p95_ms": 73.917,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 31134.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 718264,
+        "elapsed_seconds": 21.01,
+        "user_seconds": 89.22,
+        "system_seconds": 2.22,
+        "cpu_seconds": 91.44
+      },
+      "binary_sha256": "670afba432166060cf7f5fc5ee4781f89d4dc3b7036148b613a2ac585c39a3f1",
+      "pack_sha256": null,
+      "source_sha256": "beb80b70dd8b238892a23821a6b932db169967eef4ba4f6cbc3fdca460bbb73a",
+      "run": 5,
+      "side": "baseline",
+      "directory": "05-low-baseline"
+    },
+    {
+      "godot": "4.7.2-stable (official)",
+      "method": "1.5s wall-clock warmup; measure until both 3s wall-clock and 20 rendered frames have elapsed per station. Four stationary cameras; enemy motion and attacks active; artificial health reset to 100 before each benchmark frame, including warmup; scan in maintenance. Not a human playthrough.",
+      "quality": "low",
+      "render_scale": 0.670000016689301,
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "rendering_method": "gl_compatibility",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "sample_minimum": 20,
+      "samples": [
+        {
+          "draw_calls": 342.0,
+          "enemy_modes": [
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 32,
+          "measurement_seconds": 3.072465,
+          "memory_mb": null,
+          "objects": 731.0,
+          "p50_ms": 95.065,
+          "p95_ms": 114.771,
+          "player_alive": true,
+          "sector": "ASCENSEUR / REFUGE",
+          "triangles": 59986.0
+        },
+        {
+          "draw_calls": 287.0,
+          "enemy_modes": [
+            "chase",
+            "chase",
+            "investigate",
+            "investigate",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 36,
+          "measurement_seconds": 3.007554,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 81.821,
+          "p95_ms": 100.339,
+          "player_alive": true,
+          "sector": "02 / MAINTENANCE",
+          "triangles": 65192.0
+        },
+        {
+          "draw_calls": 180.0,
+          "enemy_modes": [
+            "search",
+            "search",
+            "chase",
+            "retreat",
+            "patrol",
+            "patrol"
+          ],
+          "frames": 35,
+          "measurement_seconds": 3.041362,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 84.35,
+          "p95_ms": 105.595,
+          "player_alive": true,
+          "sector": "03 / ARCHIVES",
+          "triangles": 58213.0
+        },
+        {
+          "draw_calls": 93.0,
+          "enemy_modes": [
+            "return",
+            "patrol",
+            "search",
+            "search",
+            "chase",
+            "retreat"
+          ],
+          "frames": 46,
+          "measurement_seconds": 3.06451,
+          "memory_mb": null,
+          "objects": 744.0,
+          "p50_ms": 65.837,
+          "p95_ms": 73.945,
+          "player_alive": true,
+          "sector": "04 / C\u0152UR",
+          "triangles": 36214.0
+        }
+      ],
+      "vsync_requested": false,
+      "process": {
+        "peak_rss_kib": 768100,
+        "elapsed_seconds": 21.41,
+        "user_seconds": 88.38,
+        "system_seconds": 2.37,
+        "cpu_seconds": 90.75
+      },
+      "binary_sha256": "d34376a7b337a0f8accff6b82383144e3d86dddcff1213a5503dd1c4ffa48cc6",
+      "pack_sha256": null,
+      "source_sha256": "b00f5289e234e98398cb22816f875b91276e6259024ed5416a80a3a4041a8f06",
+      "run": 5,
+      "side": "current",
+      "directory": "05-low-current"
+    }
+  ],
+  "limits": [
+    "Stationary scripted live scenes, not a human playthrough.",
+    "Peak RSS/CPU cover the complete process including startup.",
+    "Software rendering is not a Windows gaming GPU result.",
+    "No bottleneck diagnosis or significance verdict is inferred by this script."
+  ],
+  "source_notes": {
+    "baseline_game_commit": "30ce44768d45d976d45f51caa2503cece08e23c1",
+    "current_source_commit": "345b69c",
+    "identical_benchmark_sha256": "1a7903cd82057f7bc0c94f907f1be0664dd003a58ef6fa5ba435a26d81d0be8b",
+    "baseline_instrumentation": "The same adaptive scripts/benchmark.gd was copied into the baseline before export; game code/assets remain30ce447.",
+    "shared_host": "Other Godot work used CPU on the host. Owned DISPLAY98 isolated input/window handling, not CPU scheduling.",
+    "excluded_series": [
+      "release-comparison: mouse grab error on shared DISPLAY97",
+      "release-comparison-isolated:9frame station rejected under concurrent CPU load"
+    ]
+  }
+}

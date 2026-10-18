@@ -1,0 +1,125 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (5 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | SiloFpsRig[39m[0m
+[  16% ] [90m[1mupdate_scripts_classes[22m | SiloPlayer[39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | SiloPlayerAudio[39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | SiloWeaponVisual[39m[0m
+[  66% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Dialogue checks failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+RELOAD handling_error=0.00000009996003 palm_surface_error=0.00228028060496
+RIG max_contact_m=0.00000049511334 max_angle_deg=0.05595290968074 failures=0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+JOURNEY: failures=0 travelled=184.2m simulation=38.6s shots=15 health=93
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: ready creates first-person camera
+PASS: player owns articulated rig
+PASS: inactive player cannot shoot
+PASS: equip selects ARC
+PASS: invalid equipment ignored
+PASS: D9 shot consumes one round
+PASS: shot flash follows current rig muzzle
+PASS: fire cooldown prevents double consumption
+PASS: aim input moves both hands and selected weapon
+PASS: partial magazine accepts reload
+PASS: reload is presented before switch
+PASS: switch clears reload presentation in same tick
+PASS: switch cancels reload without free rounds
+PASS: ARC shot consumes shared energy
+PASS: scan consumes same battery
+PASS: scanner cooldown prevents repeat emission
+PASS: reload restarts after switch
+PASS: reload transfers exact missing rounds after delay
+PASS: inactive actions cannot consume resources
+PASS: physical forward movement stops at wall
+PASS: jump lifts capsule from floor
+PASS: gravity returns player to floor
+STEP POSITION (5.0, 0.00085, -1.704798) HEIGHT 0.25999999046326
+PASS: capsule climbs authored low step
+PASS: low ceiling prevents standing into geometry
+PASS: standing resumes after leaving ceiling
+PASS: D9 hits real collider and applies configured damage
+PASS: ARC hits real collider with damage and stun
+PASS: aim cache resolves nearby interactable
+PASS: aim cache clears freed target
+PASS: reload can start before death
+PASS: death cancels reload and blocks fire
+PASS: death clears stale hand transition
+PASS: teleport resets hand pose
+PLAYER TEST FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: physical reload part Magazine
+PASS: physical reload part SpareMagazine
+PASS: physical reload part Slide
+PASS: physical reload part MagazineGrip
+PASS: physical reload part RackGrip
+PASS: empty reload accepted
+PASS: no ammo or firing before mechanical completion
+PASS: long frame commits exact limited reserve
+PASS: ammo commit samples final mechanical pose
+PASS: completion cannot commit twice
+PASS: equip reload starts
+PASS: equip cancels without delayed ammo
+PASS: teleport reload starts
+PASS: teleport cancels without delayed ammo
+PASS: pause reload starts
+PASS: pause cancels without delayed ammo
+PASS: death reload starts
+PASS: death cancels without delayed ammo
+PASS: sound sequence reload starts
+PASS: reload starts without premature mechanical sound
+PASS: withdrawal sound follows magazine grasp
+PASS: insertion sound follows physical seating
+PASS: rack sound only on empty reload
+PASS: completion does not replay mechanical cues
+PASS: sound sequence reload starts
+PASS: reload starts without premature mechanical sound
+PASS: withdrawal sound follows magazine grasp
+PASS: insertion sound follows physical seating
+PASS: rack sound only on empty reload
+PASS: completion does not replay mechanical cues
+PASS: D9 shot before energy weapon switch
+PASS: D9 recoil cannot trigger ARC energy pulse
+PASS: accepted ARC shot pulses charge material
+PASS: rejected ARC shot cannot pulse or spend twice
+RELOAD FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ROBOT VISUAL FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+State checks failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+UI TESTS: 0 failures
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+HANDS vertices=1564 triangles=2400 bones=35 surfaces=2
+GEOMETRY FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Portal investigation final position: (2.632028, 0.000842, -12.14012)
+WORLD: 0 failures

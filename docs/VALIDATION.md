@@ -1,5 +1,7 @@
 # Validation de SILO 9
 
+Le [rapport Mission Astra](ASTRA_VALIDATION.md) décrit les changements, captures et mesures de la branche graphique. Les résultats ci-dessous documentent le prototype initial.
+
 Version de développement du 18 octobre 2026, Godot 4.7.2 stable. Le résultat est un prototype FPS jouable. Le niveau et son équilibrage ne sont pas encore validés comme une expérience humaine de 20 à 30 minutes.
 
 Les mesures globales et captures ci-dessous correspondent à la base `8649b60`. La modification des mains est décrite séparément dans [le rapport du ticket 2](tickets/02-fps-rig.md), avec son scénario, ses preuves et les limites de ses mesures.
@@ -69,4 +71,4 @@ Les résultats complets et le SHA du binaire mesuré sont dans [performance.json
 - Durée, difficulté et plaisir de jeu à calibrer avec Charles et Lou.
 - Aucun test sur un PC Windows physique ni mesure sur GPU matériel.
 - Réponses IA encadrées ; pas de génération libre de nouveaux faits narratifs.
-- Aucun dépôt distant configuré : livraison locale et archives, sans PR ni publication.
+- Ces résultats historiques précèdent la publication du prototype dans la PR #88.

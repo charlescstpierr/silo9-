@@ -62,3 +62,7 @@ Les résultats distinguent le moteur graphique, les temps de frame et les limite
 ## Ressources et licences
 
 Voir [l'audit open source](docs/OPEN_SOURCE.md), les licences CC0 des quatre modèles [Kenney](assets/kenney/LICENSE.txt) et des six modules [Quaternius](assets/quaternius/LICENSE.txt), ainsi que les [notices Godot](docs/licenses/GODOT.txt). Les armes, robots, interfaces et sons sont créés pour ce projet. Les textures industrielles comprennent des images procédurales et une image peinte générée pour SILO 9. Les poids d'un modèle conversationnel ne font pas partie du jeu distribué.
+
+## Mission Astra
+
+La [validation graphique](docs/ASTRA_VALIDATION.md) regroupe les captures avant/après, la démonstration des mains et du rechargement, les résultats de tests et les limites matérielles. Les [choix open source](docs/ASTRA_OPEN_SOURCE.md) détaillent les licences et les outils retenus ou écartés.

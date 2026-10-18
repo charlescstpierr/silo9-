@@ -161,7 +161,7 @@ func set_active(value: bool) -> void:
 func _build_flashlight() -> void:
 	_flashlight = SpotLight3D.new()
 	_flashlight.name = "Flashlight"
-	_flashlight.position = Vector3(0.12, -0.10, -0.15)
+	_flashlight.position = Vector3(0.38, -0.30, -0.60)
 	_flashlight.light_color = Color("f2e8d4")
 	_flashlight.light_energy = 2.5
 	_flashlight.light_cull_mask = 1
@@ -177,7 +177,7 @@ func _build_flashlight() -> void:
 	shape.height = 0.1
 	shape.radial_segments = 8
 	housing.mesh = shape
-	housing.position = Vector3(0.12, -0.10, -0.10)
+	housing.position = Vector3(0.38, -0.30, -0.55)
 	housing.rotation.x = PI / 2
 	housing.layers = 2
 	housing.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

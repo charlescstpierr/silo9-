@@ -30,6 +30,7 @@ var barrier: Node3D
 var barrier_disabled: bool = false
 var ambience: WorldEnvironment
 var time_to_check: float = 0.0
+var neutral_phase: float = 0.0
 
 func setup(run: State, actor: CharacterBody3D) -> void:
 	state = run
@@ -200,7 +201,7 @@ func _reactor() -> void:
 			_box(Vector3(side * 7.5, 2.2, z), Vector3(2, 4.4, 2), "dark", true)
 			_box(Vector3(side * 7.5, 2.2, z + 1.02), Vector3(0.12, 3.5, 0.05), "danger")
 	_box(Vector3(0, 0.3, -72), Vector3(3.6, 0.6, 3.6), "steel", true)
-	_text("CŒUR MÉMORIEL\nNE PAS EXTRAIRE SOUS TENSION", Vector3(0, 3.2, -77.5), 38, Color("ffc27d"))
+	_text("CŒUR MÉMORIEL\nNE PAS EXTRAIRE SOUS TENSION", Vector3(0, 3.2, -77.20), 38, Color("ffc27d"))
 	_light(Vector3(0, 2.7, -72), Color("56e6ed"), 3, 8)
 
 func _batch_static_geometry() -> void:
@@ -441,6 +442,8 @@ func sector_at(pos: Vector3) -> String:
 	return "04 / CŒUR"
 
 func _process(delta: float) -> void:
+	neutral_phase += delta * 1.2
+	RobotVisual.animate(objects["n7"].get_node("Visual"), false, neutral_phase, 0.0, "friendly", 0.0, 0.0, delta)
 	if scan_timer > 0:
 		scan_timer -= delta
 		if scan_timer <= 0:
@@ -484,6 +487,7 @@ func _build_audio() -> void:
 	add_child(colossus_sound)
 
 func set_quality(low: bool) -> void:
+	RobotVisual.set_quality(low)
 	art.set_quality(low)
 	get_viewport().scaling_3d_scale = 0.67 if low else 1.0
 	get_viewport().msaa_3d = Viewport.MSAA_DISABLED

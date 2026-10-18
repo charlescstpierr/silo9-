@@ -1,5 +1,7 @@
 # Ressources open source de SILO 9
 
+La [recherche graphique Mission Astra du 18 octobre 2026](ASTRA_OPEN_SOURCE.md) complète ce registre avec les choix de matériaux, de rig et d'animation.
+
 Audit du 17 octobre 2026. Ce registre distingue les composants utilisés, les références consultées et les candidats non intégrés. Les licences, README, métadonnées de version et fichiers de code cités ont été examinés. Une compatibilité annoncée par un auteur ne constitue pas un test d'exécution dans SILO 9.
 
 Aucun addon de gameplay tiers n'est importé. Le contrôleur, les machines à états ennemies, les dialogues déterministes et les tests headless utilisent les API natives de Godot. Aucun projet amont complet n'est incorporé. Les pins ci-dessous identifient les versions examinées, pas des dépendances implicitement installées.

@@ -43,6 +43,7 @@ var _target: Node
 var _aim_time: float = 0.0
 var _shot_time: float = 0.0
 var _reload_time: float = 0.0
+var _reload_requires_rack := false
 var _scan_time: float = 0.0
 var _effect_time: float = 0.0
 var _recoil: float = 0.0
@@ -90,7 +91,7 @@ func _ready() -> void:
 	_scan_audio = AudioStreamPlayer.new()
 	_scan_audio.volume_db = -13.0
 	add_child(_scan_audio)
-	for kind: String in ["shot", "arc", "scan", "reload", "hurt"]:
+	for kind: String in ["shot", "arc", "scan", "mag_out", "mag_in", "rack", "hurt"]:
 		_sounds[kind] = Audio.synthesize(kind)
 
 func set_active(value: bool) -> void:
@@ -110,14 +111,20 @@ func equip(index: int) -> void:
 		return
 	if index != weapon_index:
 		_cancel_reload()
+		_recoil = 0.0
+		_view_frame.recoil = 0.0
+		_muzzle.visible = false
+		_beam.visible = false
+		_flash_light.visible = false
 	weapon_index = index
 	rig.equip(index)
+	_update_view(0.0)
 
 func _weapon() -> WeaponSpec:
 	return D9 if weapon_index == 0 else ARC
 
 func fire() -> bool:
-	if not active or state == null or state.health <= 0.0 or reloading or _shot_time > 0.0:
+	if not active or state == null or state.health <= 0.0 or reloading or rig.recovering or _shot_time > 0.0:
 		return false
 	var spec := _weapon()
 	if spec.energy_cost > 0.0:
@@ -132,6 +139,8 @@ func fire() -> bool:
 	_update_view(0.0)
 	_effect_time = 0.09 if weapon_index == 0 else 0.16
 	_muzzle.visible = true
+	_muzzle.material_override = _impact.material_override if weapon_index == 0 else _beam.material_override
+	_muzzle.scale = Vector3(1.0,1.0,1.8) if weapon_index == 0 else Vector3(.65,.65,1.0)
 	_flash_light.visible = true
 	_flash_light.light_color = Color(1.0, 0.58, 0.19) if weapon_index == 0 else Color(0.12, 0.85, 1.0)
 	noise_emitted.emit(global_position, spec.noise_radius)
@@ -157,15 +166,18 @@ func fire() -> bool:
 	return true
 
 func reload_weapon() -> bool:
-	if not active or state == null or state.health <= 0.0 or weapon_index != 0 or reloading or state.ammo >= D9.capacity or state.reserve <= 0:
+	if not active or state == null or state.health <= 0.0 or weapon_index != 0 or reloading or rig.recovering or state.ammo >= D9.capacity or state.reserve <= 0:
 		return false
 	reloading = true
+	_reload_requires_rack = state.ammo == 0
 	_reload_time = D9.reload_duration
-	_play("reload")
+	_update_view(0.0)
 	feedback.emit("Rechargement…")
 	return true
 
 func _cancel_reload() -> void:
+	if reloading and _reload_time > 0.0:
+		rig.reset_pose()
 	reloading = false
 	_reload_time = 0.0
 	_view_frame.reload_progress = -1.0
@@ -240,10 +252,15 @@ func _physics_process(delta: float) -> void:
 			_flash_light.visible = false
 	_recoil = move_toward(_recoil, 0.0, delta * 0.2)
 	if not active:
+		_update_view(delta)
 		return
 	if reloading:
-		_reload_time -= delta
-		if _reload_time <= 0.0:
+		var previous := 1.0 - _reload_time / D9.reload_duration
+		_reload_time = maxf(0.0, _reload_time - delta)
+		for cue in FpsRig.reload_cues(previous, 1.0 - _reload_time / D9.reload_duration, _reload_requires_rack):
+			_play(cue)
+		if _reload_time == 0.0:
+			_update_view(0.0)
 			state.reload_rounds(D9.capacity)
 			_cancel_reload()
 	if Input.is_action_pressed("fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
@@ -282,6 +299,8 @@ func _physics_process(delta: float) -> void:
 
 func _update_view(delta: float) -> void:
 	_view_frame.reload_progress = 1.0 - _reload_time / D9.reload_duration if reloading else -1.0
+	_view_frame.reload_requires_rack = _reload_requires_rack
+	_view_frame.energy_fraction = state.energy / state.max_energy()
 	_view_frame.recoil = _recoil
 	rig.update_visual(delta, _view_frame)
 

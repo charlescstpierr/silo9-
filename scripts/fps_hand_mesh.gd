@@ -12,6 +12,15 @@ static func build(skeleton: Skeleton3D, wrists: Array[Transform3D], elbows: Arra
 	cloth.albedo_color = Color("314b60")
 	cloth.roughness = 0.98
 	cloth.vertex_color_use_as_albedo = true
+	for material in [glove, cloth]:
+		material.albedo_texture = load("res://assets/industrial/weave_albedo.png")
+		material.normal_texture = load("res://assets/industrial/weave_normal.png")
+		material.roughness_texture = load("res://assets/industrial/weave_roughness.png")
+		material.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_RED
+		material.uv1_triplanar = true
+		material.uv1_scale = Vector3.ONE * 9.0
+		material.normal_enabled = true
+		material.normal_scale = .25
 	var mesh := ArrayMesh.new()
 	for surface_index in 2:
 		var tool := SurfaceTool.new()
@@ -71,7 +80,7 @@ static func finger_path(finger: int, side: int) -> Array[Vector3]:
 		return [Vector3(x,.067,0),Vector3(x,.095,.002),Vector3(x,.116,.015),Vector3(x,.126,.034),Vector3(x,.126,.051),Vector3(x,.117,.058)]
 	var length: float = [.071,.082,.077,.060][finger]
 	var y: float = .067 - (.008 if finger == 3 else 0.0)
-	return [Vector3(x,y,0),Vector3(x,y+length*.31,.002),Vector3(x,y+length*.48,.014),Vector3(x,y+length*.49,.036),Vector3(x,y+length*.35,.055),Vector3(x,y+length*.16,.061)]
+	return [Vector3(x,y,0),Vector3(x,y+length*.31,.002),Vector3(x,y+length*.52,.014),Vector3(x,y+length*.61,.036),Vector3(x,y+length*.61,.055),Vector3(x,y+length*.57,.061)]
 
 static func thumb_path(side: int) -> Array[Vector3]:
 	var result: Array[Vector3] = [Vector3(-.027,.016,.008),Vector3(-.046,.028,.012),Vector3(-.052,.048,.017),Vector3(-.047,.069,.019),Vector3(-.035,.083,.018)]

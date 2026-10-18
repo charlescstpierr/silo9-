@@ -20,7 +20,8 @@ static func build(electric: bool) -> Node3D:
 		batches.append(batch)
 	_part(batches[1], Vector3(0.104, 0.067, 0.34), Vector3(0, 0.035, -0.035), 0.012)
 	_part(batches[2], Vector3(0.065, 0.135, 0.105), Vector3(0, -0.06, 0.075), 0.018, Vector3(-0.22, 0, 0))
-	_part(batches[1], Vector3(0.075, 0.025, 0.118), Vector3(0, -0.125, 0.089), 0.008)
+	if electric:
+		_part(batches[1], Vector3(0.075, 0.025, 0.118), Vector3(0, -0.125, 0.089), 0.008)
 	for side: float in [-1.0, 1.0]:
 		_part(batches[0], Vector3(0.008, 0.095, 0.063), Vector3(side * 0.034, -0.055, 0.08), 0.002, Vector3(-0.22, 0, 0))
 		for rib in 6:
@@ -44,44 +45,91 @@ static func build(electric: bool) -> Node3D:
 			_tube(batches[0], 0.015, 0.008, 0.043, Vector3(side * 0.073, 0.083, -0.288))
 		_part(batches[4], Vector3(0.025, 0.004, 0.034), Vector3(0, 0.142, 0.045), 0.002)
 	else:
-		_part(batches[0], Vector3(0.108, 0.076, 0.3), Vector3(0, 0.104, -0.048), 0.012)
-		_part(batches[1], Vector3(0.06, 0.012, 0.245), Vector3(0, 0.146, -0.055), 0.004)
+		var slide := _moving_part(root, "Slide", Vector3(0, 0.104, -0.048), Vector3(0.108, 0.076, 0.3), materials[0], .012)
+		_moving_part(slide, "Rail", Vector3(0, .042, -.007), Vector3(.06,.012,.245), materials[1], .004)
+		for label in ["Magazine", "SpareMagazine"]:
+			var magazine := _moving_part(root, label, Vector3(0,-.122,.089), Vector3(.054,.135,.076), materials[2], .008)
+			_moving_part(magazine, "Floorplate", Vector3(0,-.067,0), Vector3(.075,.018,.095), materials[1], .005)
+			for rib in 4:
+				_moving_part(magazine, "Rib%d" % rib, Vector3(-.028,-.045+rib*.025,0), Vector3(.004,.008,.060), materials[3], .001)
+			magazine.visible = label == "Magazine"
 		_cylinder(batches[1], 0.026, 0.18, Vector3(0, 0.087, -0.165))
 		_tube(batches[0], 0.029, 0.015, 0.035, Vector3(0, 0.087, -0.267))
 		_cylinder(batches[2], 0.015, 0.004, Vector3(0, 0.087, -0.247))
-		_part(batches[2], Vector3(0.04, 0.012, 0.084), Vector3(0.018, 0.146, -0.025), 0.002)
-		_part(batches[3], Vector3(0.012, 0.004, 0.065), Vector3(0.019, 0.153, -0.022), 0.001)
+		var slide_batches: Array[SurfaceTool] = []
+		for material in materials:
+			var detail := SurfaceTool.new()
+			detail.begin(Mesh.PRIMITIVE_TRIANGLES)
+			detail.set_material(material)
+			slide_batches.append(detail)
+		_part(slide_batches[2], Vector3(0.04, 0.012, 0.084), Vector3(0.018, 0.146, -0.025), 0.002)
+		_part(slide_batches[3], Vector3(0.012, 0.004, 0.065), Vector3(0.019, 0.153, -0.022), 0.001)
 		for side: float in [-1.0, 1.0]:
 			for groove in 5:
-				_part(batches[2], Vector3(0.003, 0.045, 0.008), Vector3(side * 0.055, 0.1, 0.04 + groove * 0.012), 0.001, Vector3(-0.2, 0, 0))
-			_part(batches[3], Vector3(0.004, 0.009, 0.074), Vector3(side * 0.054, 0.057, -0.094), 0.002)
-		_part(batches[1], Vector3(0.015, 0.016, 0.018), Vector3(0, 0.161, -0.174), 0.003)
-		_part(batches[4], Vector3(0.005, 0.006, 0.006), Vector3(0, 0.166, -0.163), 0.001)
+				_part(slide_batches[2], Vector3(0.003, 0.045, 0.008), Vector3(side * 0.055, 0.1, 0.04 + groove * 0.012), 0.001, Vector3(-0.2, 0, 0))
+			_part(slide_batches[3], Vector3(0.004, 0.009, 0.074), Vector3(side * 0.054, 0.057, -0.094), 0.002)
+		_part(slide_batches[1], Vector3(0.015, 0.016, 0.018), Vector3(0, 0.161, -0.174), 0.003)
+		_part(slide_batches[4], Vector3(0.005, 0.006, 0.006), Vector3(0, 0.166, -0.163), 0.001)
 		for side: float in [-1.0, 1.0]:
-			_part(batches[1], Vector3(0.012, 0.015, 0.015), Vector3(side * 0.02, 0.158, 0.084), 0.003)
-			_part(batches[4], Vector3(0.004, 0.004, 0.004), Vector3(side * 0.02, 0.16, 0.093), 0.001)
+			_part(slide_batches[1], Vector3(0.012, 0.015, 0.015), Vector3(side * 0.02, 0.158, 0.084), 0.003)
+			_part(slide_batches[4], Vector3(0.004, 0.004, 0.004), Vector3(side * 0.02, 0.16, 0.093), 0.001)
+		for index in [1,2,3,4]:
+			var detail := MeshInstance3D.new()
+			detail.mesh = slide_batches[index].commit()
+			detail.position = Vector3(0,-.104,.048)
+			detail.layers = 2
+			detail.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			slide.add_child(detail)
 	for side: float in [-1.0, 1.0]:
 		for depth: float in [-0.12, 0.085]:
 			_cylinder(batches[0], 0.006, 0.005, Vector3(side * 0.055, 0.035, depth), Vector3(0, 0, PI * 0.5))
 	for index in batches.size():
+		if not electric and index >= 3:
+			continue
 		var instance := MeshInstance3D.new()
 		instance.mesh = batches[index].commit()
 		instance.layers = 2
 		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		root.add_child(instance)
 	var grip_basis := Basis(Vector3.UP, Vector3.FORWARD, Vector3.LEFT)
-	for entry: Array in [["GripRight", Vector3(0.035, -0.07, 0.158), Basis(Vector3.UP, -0.35) * grip_basis], ["GripLeft", Vector3(-0.062, -0.10, -0.12) if electric else Vector3(-0.068, -0.10, 0.13), Basis(Vector3.DOWN, Vector3.FORWARD, Vector3.RIGHT)], ["Muzzle", Vector3(0, 0.087, -0.31), Basis.IDENTITY]]:
+	for entry: Array in [["GripRight", Vector3(0.035, -0.092, 0.158), Basis(Vector3.UP, -0.35) * grip_basis], ["GripLeft", Vector3(-0.062, -0.10, -0.144) if electric else Vector3(-0.068, -0.12, 0.115), Basis(Vector3.DOWN, Vector3.FORWARD, Vector3.RIGHT)], ["Muzzle", Vector3(0, 0.087, -0.31), Basis.IDENTITY]]:
 		var marker := Marker3D.new()
 		marker.name = entry[0]
 		marker.transform = Transform3D(entry[2], entry[1])
 		root.add_child(marker)
+	if not electric:
+		for entry: Array in [["MagazineGrip", Vector3(-.052,-.145,.115)], ["RackGrip", Vector3(-.080,.038,.035)]]:
+			var marker := Marker3D.new()
+			marker.name = entry[0]
+			marker.transform = Transform3D(Basis(Vector3.FORWARD, Vector3.UP, Vector3.RIGHT) if entry[0] == "RackGrip" else Basis(Vector3.DOWN, Vector3.FORWARD, Vector3.RIGHT),entry[1])
+			root.add_child(marker)
 	return root
+
+static func _moving_part(parent: Node3D, label: String, pos: Vector3, size: Vector3, material: StandardMaterial3D, bevel: float) -> MeshInstance3D:
+	var part := MeshInstance3D.new()
+	part.name = label
+	part.mesh = _bevel_box(size, bevel)
+	part.material_override = material
+	part.position = pos
+	part.layers = 2
+	part.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	parent.add_child(part)
+	return part
 
 static func _material(color: Color, metal: float, rough: float, glow: float = 0.035) -> StandardMaterial3D:
 	var result := StandardMaterial3D.new()
 	result.albedo_color = color
 	result.metallic = metal
 	result.roughness = rough
+	if glow < .5:
+		result.albedo_texture = load("res://assets/industrial/worn_steel_albedo.png")
+		result.normal_texture = load("res://assets/industrial/worn_steel_normal.png")
+		result.roughness_texture = load("res://assets/industrial/worn_steel_roughness.png")
+		result.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_RED
+		result.uv1_triplanar = true
+		result.uv1_scale = Vector3.ONE * 7.0
+		result.normal_enabled = true
+		result.normal_scale = .3
 	result.emission_enabled = true
 	result.emission = color
 	result.emission_energy_multiplier = glow

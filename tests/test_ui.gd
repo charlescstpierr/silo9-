@@ -31,6 +31,20 @@ func run() -> void:
 	check(InputMap.event_is_action(key_event(KEY_A, KEY_A), "left"), "WASD A moves left")
 	check(InputMap.event_is_action(key_event(KEY_Q, KEY_Q), "scan"), "WASD Q triggers scanner")
 	main.state = load("res://scripts/run_state.gd").new()
+	var quality_player: SiloPlayer = load("res://scripts/player.gd").new()
+	quality_player.setup(main.state)
+	main.add_child(quality_player)
+	main.player = quality_player
+	var glove_material: StandardMaterial3D = quality_player.rig.arms.mesh.surface_get_material(0)
+	var weapon_material: StandardMaterial3D = quality_player.rig._weapons[0].get_node("Slide").material_override
+	main.set_quality(true)
+	check(not glove_material.normal_enabled and glove_material.roughness_texture == null,"performance mode disables hand detail maps")
+	check(not weapon_material.normal_enabled and weapon_material.roughness_texture == null,"performance mode disables weapon detail maps")
+	main.set_quality(false)
+	check(glove_material.normal_enabled and glove_material.roughness_texture != null,"quality mode restores hand detail maps")
+	check(weapon_material.normal_enabled and weapon_material.roughness_texture != null,"quality mode restores weapon detail maps")
+	main.player = null
+	quality_player.queue_free()
 	main.resume_game()
 	check(main.mode == "playing" and not paused, "Resume restores live simulation")
 	var escape := InputEventKey.new()

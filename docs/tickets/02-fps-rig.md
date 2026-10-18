@@ -1,5 +1,7 @@
 # Mains et avant-bras du ticket 2
 
+Historique du rig à `301c2fd`. La [Mission Astra](../ASTRA_VALIDATION.md) reprend ce rig et ajoute les manipulations de chargeur, les corrections de prise et les matériaux. Les mesures ci-dessous portent uniquement sur les révisions indiquées.
+
 Le contrôleur utilise deux mains gantées et deux bras déformés par un `Skeleton3D`. Les armes ne contiennent plus les anciennes mains fusionnées. Les matériaux des bras sont mats, non métalliques et sans émission. Le clic droit rapproche la prise. Il ne modifie ni la précision, ni le champ de vision. L'ADS complet appartient au ticket 7.
 
 ## Propriété et repères

@@ -21,12 +21,11 @@ var search_remaining: float = 0.0
 var sense_remaining: float = 0.0
 var attack_remaining: float = 0.0
 var sees_target: bool = false
-var body_mesh: MeshInstance3D
 var eye_mesh: MeshInstance3D
 var hit_remaining: float = 0.0
 var eye_material: StandardMaterial3D
-var leg_rig: Node3D
 var stride_phase: float = 0.0
+var visual_attack: float = 0.0
 
 func _ready() -> void:
 	collision_layer = 1
@@ -46,9 +45,7 @@ func _ready() -> void:
 	eye_material.emission = Color("ff4020")
 	eye_material.emission_energy_multiplier = 2.5
 	var visual: Array[MeshInstance3D] = RobotVisual.build(self, crawler, eye_material)
-	body_mesh = visual[0]
 	eye_mesh = visual[1]
-	leg_rig = get_node("RobotLegs")
 	if not patrol.is_empty():
 		destination = patrol[0]
 	else:
@@ -63,7 +60,8 @@ func _physics_process(delta: float) -> void:
 	stunned = maxf(0.0, stunned - delta)
 	attack_remaining = maxf(0.0, attack_remaining - delta)
 	hit_remaining = maxf(0.0, hit_remaining - delta)
-	body_mesh.scale.x = 0.73 if hit_remaining > 0 else 0.65
+	visual_attack = maxf(0.0, visual_attack - delta)
+	var previous_yaw: float = rotation.y
 	if stunned > 0.0:
 		velocity.x = 0
 		velocity.z = 0
@@ -77,10 +75,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= 18.0 * delta
 	move_and_slide()
-	if stunned <= 0.0:
-		var actual_speed: float = Vector2(get_real_velocity().x, get_real_velocity().z).length()
-		stride_phase += actual_speed * delta * (7.0 if crawler else 4.0)
-		RobotVisual.animate_legs(leg_rig, crawler, stride_phase, actual_speed)
+	var actual_speed: float = Vector2(get_real_velocity().x, get_real_velocity().z).length()
+	stride_phase += delta * (actual_speed * (7.0 if crawler else 4.0) if actual_speed > 0.05 else 1.2)
+	var turn: float = angle_difference(previous_yaw, rotation.y) / maxf(delta, 0.001)
+	RobotVisual.animate(self, crawler, stride_phase, actual_speed, mode, hit_remaining, visual_attack, delta, turn)
 
 func _sense() -> void:
 	var offset: Vector3 = target.global_position - global_position
@@ -172,6 +170,7 @@ func _route_waypoint(goal: Vector3) -> Vector3:
 	return Vector3(0, global_position.y, portal_z + portal_direction * 1.3)
 
 func _flash_attack() -> void:
+	visual_attack = 0.24
 	eye_mesh.scale.y = 0.32
 	create_tween().tween_property(eye_mesh, "scale:y", 0.1, 0.15)
 

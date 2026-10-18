@@ -1,0 +1,58 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload accepted
+PASS: harness step cannot kill player by falling
+PASS: empty reload must still rearm when partial duration ends
+PASS: empty weapon cannot fire before rearm and return
+PASS: harness step cannot kill player by falling
+PASS: empty transfer occurs once at end
+PASS: empty cues ordered, release before commit
+PASS: harness step cannot kill player by falling
+PASS: empty commit never repeats
+PASS: harness step cannot kill player by falling
+PASS: short reserve does not transfer early
+PASS: partial reload blocks firing until return
+PASS: harness step cannot kill player by falling
+PASS: short reserve transfers only available rounds
+PASS: partial sequence omits rack cues
+PASS: harness step cannot kill player by falling
+PASS: interrupted switch blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: raise blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: new destination during raise stays blocked
+PASS: harness step cannot kill player by falling
+PASS: pending switch consumes large delta without losing destination
+PASS: interrupted switch never commits
+PASS: harness step cannot kill player by falling
+PASS: harness step cannot kill player by falling
+PASS: harness step cannot kill player by falling
+PASS: inactive player interrupted during raise waits below frame
+PASS: harness step cannot kill player by falling
+PASS: reactivation raises selected weapon without a shot
+PASS: harness step cannot kill player by falling
+PASS: inactive stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: inactive conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: teleport stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: teleport conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: death stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: death conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: extraction moves the visible magazine before large tick
+PASS: harness step cannot kill player by falling
+PASS: large completion tick restores visible magazine before firing
+PASS: harness step cannot kill player by falling
+PASS: same-weapon request alone keeps reload
+PASS: harness step cannot kill player by falling
+PASS: last request back to current weapon cancels pending ARC
+PASS: return-to-D9 cancellation never commits
+PASS: harness step cannot kill player by falling
+PASS: large reload delta commits once
+PASS: large delta retains canonical event order
+PASS: large delta does not play obsolete cues
+D9 CONTRACT FAILURES: 0

@@ -1,0 +1,30 @@
+{
+  "purpose": "diagnostic run, excluded from performance comparisons",
+  "command": [
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-04/.tools/Godot_v4.7.2-stable_linux.x86_64",
+    "--path",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-04",
+    "--audio-driver",
+    "Dummy",
+    "--script",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-04/tools/probe_arc_cost.gd",
+    "--",
+    "--candidate",
+    "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-04/.cstack/issue-04/profile"
+  ],
+  "cpu_count": 8,
+  "load_before": [
+    0.95654296875,
+    1.0419921875,
+    0.89501953125
+  ],
+  "probe_sha256": "03771a82bc1a616bb3d7e50c45b524262d752d02e97dea2cf677f9d63f60bc91",
+  "source_manifest": "../calibrated-source.json",
+  "exit_code": 0,
+  "elapsed_seconds": 24.17830816609785,
+  "load_after": [
+    1.8544921875,
+    1.248046875,
+    0.96875
+  ]
+}

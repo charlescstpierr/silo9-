@@ -46,6 +46,10 @@ Le coordinateur accepte explicitement ce coût borné pour les nouveaux équipem
 
 Le profil séparé attribue 458,4 % CPU aux huit threads llvmpipe sur 500,8 % pour le processus Godot. Il établit que le rendu logiciel domine ce banc, sans identifier une méthode GDScript comme cause du surcoût.
 
+## Exécutables
+
+Les exports Windows et Linux ont réussi. Le binaire Linux extrait de son archive a été lancé avec ses ressources embarquées, puis piloté par entrées natives : nouvelle partie, marche vers le secteur 01, scan avec énergie à 80, pause, retour au menu et sortie normale. [Preuve de l’archive](media/12/exports/manifest.json) et [capture du jeu exporté](media/12/exports/linux-native/gameplay.png). Ce contrôle ne rejoue pas une mission complète sur le binaire exporté. Le build Windows n’a pas été exécuté. Les tentatives de sonde externe non prises en charge et le premier essai de navigation sont conservés comme échecs exclus.
+
 ## Reproduire et examiner
 
 Depuis un checkout du projet, avec un affichage X11 disponible :

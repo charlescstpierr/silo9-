@@ -28,18 +28,21 @@ func run() -> void:
 		for pose in 3:
 			frame.pose = pose
 			for phase in 31:
-				frame.reload_progress = float(phase)/30
+				var cycle := Rig.Reload.new()
+				if weapon == 0:
+					cycle.begin(true,2.6,3.25)
+					cycle.advance(float(phase)/30*3.25,true)
+				frame.reload = cycle.view
 				frame.recoil = .045 if phase % 2 == 0 else 0.0
 				frame.bob = sin(phase)*.008
 				rig.update_visual(.05,frame)
 				var gun: Node3D = rig._weapons[weapon]
 				for side in 2:
-					if side == 1 and not rig.left_in_contact:
-						continue
 					var hand: Transform3D = rig.skeleton.global_transform*rig.skeleton.get_bone_global_pose(3+side*17)
-					var grip := gun.get_node("GripRight" if side == 0 else "GripLeft") as Marker3D
-					max_position = maxf(max_position,hand.origin.distance_to(grip.global_position))
-					max_angle = maxf(max_angle,hand.basis.get_rotation_quaternion().angle_to(grip.global_basis.orthonormalized().get_rotation_quaternion()))
+					var grip := gun.get_node("GripRight") as Marker3D if side == 0 else rig.active_left_grip
+					if side == 0 or rig.left_in_contact:
+						max_position = maxf(max_position,hand.origin.distance_to(grip.global_position))
+						max_angle = maxf(max_angle,hand.basis.get_rotation_quaternion().angle_to(grip.global_basis.orthonormalized().get_rotation_quaternion()))
 					var shoulder: Vector3 = rig.skeleton.get_bone_global_pose(1+side*17).origin
 					var elbow: Vector3 = rig.skeleton.get_bone_global_pose(2+side*17).origin
 					var wrist: Vector3 = rig.skeleton.get_bone_global_pose(3+side*17).origin

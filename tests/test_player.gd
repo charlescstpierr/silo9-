@@ -65,9 +65,9 @@ func run() -> void:
 	Input.action_release("aim")
 	check(player.reload_weapon(), "partial magazine accepts reload")
 	await ticks(5)
-	check(player.rig._frame.reload_progress >= 0.0, "reload is presented before switch")
+	check(player.rig._frame.reload.motion == player.Reload.Motion.RELOAD, "reload is presented before switch")
 	player.equip(1)
-	check(player.rig._frame.reload_progress < 0.0, "switch clears reload presentation in same tick")
+	check(player.rig._frame.reload.motion == player.Reload.Motion.LOWER_ABORT, "switch begins continuous cancellation in same tick")
 	check(not player.reloading and run_state.ammo == 11, "switch cancels reload without free rounds")
 	await create_timer(0.6).timeout
 	check(player.fire() and run_state.energy == 88.0, "ARC shot consumes shared energy")
@@ -75,7 +75,7 @@ func run() -> void:
 	check(not player.activate_scan() and run_state.energy == 68.0, "scanner cooldown prevents repeat emission")
 	player.equip(0)
 	check(player.reload_weapon(), "reload restarts after switch")
-	await create_timer(1.8).timeout
+	await create_timer(Player.D9.reload_duration + .2).timeout
 	check(not player.reloading and run_state.ammo == 12 and run_state.reserve == 47, "reload transfers exact missing rounds after delay")
 	player.set_active(false)
 	check(not player.fire() and not player.activate_scan(), "inactive actions cannot consume resources")
@@ -148,10 +148,10 @@ func run() -> void:
 	check(player.reload_weapon(), "reload can start before death")
 	player.apply_damage(100.0)
 	check(not player.active and not player.reloading and not player.fire(), "death cancels reload and blocks fire")
-	check(player.rig.left_in_contact and player.rig._settle == 0.0, "death clears stale hand transition")
+	check(player.reload_cycle.view.motion == player.Reload.Motion.LOWER_ABORT, "death preserves manipulation for safe lowering")
 	player.equip(1)
 	player.teleport(Vector3.ZERO)
-	check(player.rig.left_in_contact and player.rig._pose_offset == Vector3.ZERO, "teleport resets hand pose")
+	check(player.reload_cycle.view.motion == player.Reload.Motion.LOWER_ABORT, "teleport does not snap an interrupted manipulation")
 	floor_body.queue_free()
 	player.queue_free()
 	await create_timer(0.35).timeout

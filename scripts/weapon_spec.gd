@@ -8,6 +8,7 @@ extends Resource
 @export var capacity: int = 12
 @export var cooldown: float = 0.23
 @export var reload_duration: float = 1.35
+@export var reload_empty_duration: float = 3.25
 @export var noise_radius: float = 28.0
 @export var reach: float = 70.0
 @export var recoil: float = 0.035

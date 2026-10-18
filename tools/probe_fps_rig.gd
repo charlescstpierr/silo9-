@@ -82,7 +82,7 @@ func demonstrate() -> void:
 		print("RELOAD weapon=",weapon," accepted=",accepted)
 		await wait(.65)
 		await capture("weapon%d-reload"%weapon)
-		await wait(.9)
+		await wait(app.player.D9.reload_duration)
 		for change in 6:
 			app.player.equip(change%2)
 			await wait(.07)

@@ -1,0 +1,1018 @@
+{
+  "platform": "Linux 7.0.0-31-generic",
+  "cpu_count": 8,
+  "display": ":97",
+  "capture_running": false,
+  "records": [
+    {
+      "side": "before",
+      "run": 0,
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "active_reload": false,
+          "draw_calls_max": 315,
+          "draw_calls_min": 315,
+          "frame_p50_ms": 106.01,
+          "frame_p95_ms": 127.57,
+          "gestures": [],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.022,
+          "rig_call_p95_ms": 0.049,
+          "samples": 61,
+          "triangles_max": 52886,
+          "triangles_min": 52886
+        },
+        {
+          "active_reload": true,
+          "draw_calls_max": 315,
+          "draw_calls_min": 315,
+          "frame_p50_ms": 95.597,
+          "frame_p95_ms": 118.699,
+          "gestures": [],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.023,
+          "rig_call_p95_ms": 0.052,
+          "samples": 67,
+          "triangles_max": 52886,
+          "triangles_min": 52886
+        }
+      ],
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/baseline",
+        "--position",
+        "0,0",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/tools/probe_d9_cost.gd",
+        "--",
+        "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/proof-final/before-0"
+      ],
+      "head": "301c2fde11e0254f962665cf696f4723f1983f72",
+      "source_sha256": {
+        "data/weapons/arc3.tres": "e0a11bf10048ad9e532398f73bca0d5038912a46f58c0c0acb8221397a069873",
+        "data/weapons/d9.tres": "6ffb3ba8299d32c06b16ce2814a352666f1ad8052bee67735c7aa5c748ca19e0",
+        "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+        "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+        "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+        "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+        "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+        "scripts/fps_rig.gd": "7572a84d6b60dbc0f9c3a6b2d53dee10c76c443823665a3381cdcb9a0c5b06b0",
+        "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+        "scripts/main.gd": "dd00b5ef9c830f7eae2c967f928eea129acacc24bf13d95ae55c7fe7484b9114",
+        "scripts/player.gd": "10f0f459af362a0a38b7a876bc70bf0088e771ad3673da16857349daa5404bbf",
+        "scripts/player_audio.gd": "e7c3aeb813d0d6091c60b022e0e82c456e158b4e751bc0f34dfa371102ca5f07",
+        "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+        "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+        "scripts/weapon_spec.gd": "9cc3b1f2c3344f0ef427748afee9e6ecf9b9769c2d3e291e5da3cced5a335fa1",
+        "scripts/weapon_visual.gd": "af66001fbfa881b6957911ec710a4e44c1e58268694f63b84a104354ca0f9e98",
+        "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+        "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f"
+      },
+      "probe_sha256": "b7db1d7787d4a2c7045aa38aa46c08914f90cd445bfa4401841b1f7cc56ce548",
+      "load_before": [
+        1.36669921875,
+        2.7900390625,
+        2.47021484375
+      ]
+    },
+    {
+      "side": "after",
+      "run": 0,
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "active_reload": false,
+          "draw_calls_max": 321,
+          "draw_calls_min": 321,
+          "frame_p50_ms": 100.576,
+          "frame_p95_ms": 127.117,
+          "gestures": [
+            "0"
+          ],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.038,
+          "rig_call_p95_ms": 0.07,
+          "samples": 64,
+          "triangles_max": 53014,
+          "triangles_min": 53014
+        },
+        {
+          "active_reload": true,
+          "draw_calls_max": 321,
+          "draw_calls_min": 318,
+          "frame_p50_ms": 97.431,
+          "frame_p95_ms": 116.478,
+          "gestures": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"
+          ],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.051,
+          "rig_call_p95_ms": 0.098,
+          "samples": 66,
+          "triangles_max": 53014,
+          "triangles_min": 52822
+        }
+      ],
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03",
+        "--position",
+        "0,0",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/tools/probe_d9_cost.gd",
+        "--",
+        "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/proof-final/after-0"
+      ],
+      "head": "fdd69b3d09b7145d6371dfd25622a7f7f398c6eb",
+      "source_sha256": {
+        "data/weapons/arc3.tres": "e0a11bf10048ad9e532398f73bca0d5038912a46f58c0c0acb8221397a069873",
+        "data/weapons/d9.tres": "9139323027d9a3d20c35298c913aaf0bde171e4b1989bf7ee90e366ef85a2c65",
+        "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+        "scripts/d9_reload.gd": "023d648bd4caa297884a9ca5be4444cb547b5caa12055941e2ee1d77db3159ce",
+        "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+        "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+        "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+        "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+        "scripts/fps_rig.gd": "1129fc5905e5bad40d197b42c787441aa6926ba2a601f01d72e9b3f1395c0614",
+        "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+        "scripts/main.gd": "dd00b5ef9c830f7eae2c967f928eea129acacc24bf13d95ae55c7fe7484b9114",
+        "scripts/player.gd": "121e480b54990c955f46eac560fe977a90dbfb6b6fce2de4e9001a3746b46e5a",
+        "scripts/player_audio.gd": "5d2609e165dc8834c9e33c6c691900a0ad2f2f3d065147339469b5fbaa87bb8b",
+        "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+        "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+        "scripts/weapon_spec.gd": "ba03520f3fa9d3e1b722b01fceb00851cfeb2b8d9b5a18f540db0c996248a326",
+        "scripts/weapon_visual.gd": "e8275446ab4ee15822e00582242f7ca242ef6eb7ed738a2667290052150acd3c",
+        "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+        "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f"
+      },
+      "probe_sha256": "b7db1d7787d4a2c7045aa38aa46c08914f90cd445bfa4401841b1f7cc56ce548",
+      "load_before": [
+        2.345703125,
+        2.91845703125,
+        2.5185546875
+      ]
+    },
+    {
+      "side": "after",
+      "run": 1,
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "active_reload": false,
+          "draw_calls_max": 321,
+          "draw_calls_min": 321,
+          "frame_p50_ms": 92.595,
+          "frame_p95_ms": 112.364,
+          "gestures": [
+            "0"
+          ],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.038,
+          "rig_call_p95_ms": 0.063,
+          "samples": 69,
+          "triangles_max": 53014,
+          "triangles_min": 53014
+        },
+        {
+          "active_reload": true,
+          "draw_calls_max": 321,
+          "draw_calls_min": 318,
+          "frame_p50_ms": 101.844,
+          "frame_p95_ms": 120.283,
+          "gestures": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"
+          ],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.045,
+          "rig_call_p95_ms": 0.083,
+          "samples": 64,
+          "triangles_max": 53014,
+          "triangles_min": 52822
+        }
+      ],
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03",
+        "--position",
+        "0,0",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/tools/probe_d9_cost.gd",
+        "--",
+        "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/proof-final/after-1"
+      ],
+      "head": "fdd69b3d09b7145d6371dfd25622a7f7f398c6eb",
+      "source_sha256": {
+        "data/weapons/arc3.tres": "e0a11bf10048ad9e532398f73bca0d5038912a46f58c0c0acb8221397a069873",
+        "data/weapons/d9.tres": "9139323027d9a3d20c35298c913aaf0bde171e4b1989bf7ee90e366ef85a2c65",
+        "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+        "scripts/d9_reload.gd": "023d648bd4caa297884a9ca5be4444cb547b5caa12055941e2ee1d77db3159ce",
+        "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+        "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+        "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+        "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+        "scripts/fps_rig.gd": "1129fc5905e5bad40d197b42c787441aa6926ba2a601f01d72e9b3f1395c0614",
+        "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+        "scripts/main.gd": "dd00b5ef9c830f7eae2c967f928eea129acacc24bf13d95ae55c7fe7484b9114",
+        "scripts/player.gd": "121e480b54990c955f46eac560fe977a90dbfb6b6fce2de4e9001a3746b46e5a",
+        "scripts/player_audio.gd": "5d2609e165dc8834c9e33c6c691900a0ad2f2f3d065147339469b5fbaa87bb8b",
+        "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+        "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+        "scripts/weapon_spec.gd": "ba03520f3fa9d3e1b722b01fceb00851cfeb2b8d9b5a18f540db0c996248a326",
+        "scripts/weapon_visual.gd": "e8275446ab4ee15822e00582242f7ca242ef6eb7ed738a2667290052150acd3c",
+        "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+        "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f"
+      },
+      "probe_sha256": "b7db1d7787d4a2c7045aa38aa46c08914f90cd445bfa4401841b1f7cc56ce548",
+      "load_before": [
+        2.75830078125,
+        2.958984375,
+        2.53955078125
+      ]
+    },
+    {
+      "side": "before",
+      "run": 1,
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "active_reload": false,
+          "draw_calls_max": 315,
+          "draw_calls_min": 315,
+          "frame_p50_ms": 96.336,
+          "frame_p95_ms": 116.728,
+          "gestures": [],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.022,
+          "rig_call_p95_ms": 0.043,
+          "samples": 67,
+          "triangles_max": 52886,
+          "triangles_min": 52886
+        },
+        {
+          "active_reload": true,
+          "draw_calls_max": 315,
+          "draw_calls_min": 315,
+          "frame_p50_ms": 92.936,
+          "frame_p95_ms": 107.627,
+          "gestures": [],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.022,
+          "rig_call_p95_ms": 0.037,
+          "samples": 69,
+          "triangles_max": 52886,
+          "triangles_min": 52886
+        }
+      ],
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/baseline",
+        "--position",
+        "0,0",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/tools/probe_d9_cost.gd",
+        "--",
+        "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/proof-final/before-1"
+      ],
+      "head": "301c2fde11e0254f962665cf696f4723f1983f72",
+      "source_sha256": {
+        "data/weapons/arc3.tres": "e0a11bf10048ad9e532398f73bca0d5038912a46f58c0c0acb8221397a069873",
+        "data/weapons/d9.tres": "6ffb3ba8299d32c06b16ce2814a352666f1ad8052bee67735c7aa5c748ca19e0",
+        "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+        "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+        "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+        "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+        "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+        "scripts/fps_rig.gd": "7572a84d6b60dbc0f9c3a6b2d53dee10c76c443823665a3381cdcb9a0c5b06b0",
+        "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+        "scripts/main.gd": "dd00b5ef9c830f7eae2c967f928eea129acacc24bf13d95ae55c7fe7484b9114",
+        "scripts/player.gd": "10f0f459af362a0a38b7a876bc70bf0088e771ad3673da16857349daa5404bbf",
+        "scripts/player_audio.gd": "e7c3aeb813d0d6091c60b022e0e82c456e158b4e751bc0f34dfa371102ca5f07",
+        "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+        "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+        "scripts/weapon_spec.gd": "9cc3b1f2c3344f0ef427748afee9e6ecf9b9769c2d3e291e5da3cced5a335fa1",
+        "scripts/weapon_visual.gd": "af66001fbfa881b6957911ec710a4e44c1e58268694f63b84a104354ca0f9e98",
+        "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+        "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f"
+      },
+      "probe_sha256": "b7db1d7787d4a2c7045aa38aa46c08914f90cd445bfa4401841b1f7cc56ce548",
+      "load_before": [
+        3.0693359375,
+        3.01123046875,
+        2.5654296875
+      ]
+    },
+    {
+      "side": "before",
+      "run": 2,
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "active_reload": false,
+          "draw_calls_max": 315,
+          "draw_calls_min": 315,
+          "frame_p50_ms": 95.575,
+          "frame_p95_ms": 116.291,
+          "gestures": [],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.023,
+          "rig_call_p95_ms": 0.065,
+          "samples": 67,
+          "triangles_max": 52886,
+          "triangles_min": 52886
+        },
+        {
+          "active_reload": true,
+          "draw_calls_max": 315,
+          "draw_calls_min": 315,
+          "frame_p50_ms": 92.575,
+          "frame_p95_ms": 112.303,
+          "gestures": [],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.023,
+          "rig_call_p95_ms": 0.048,
+          "samples": 69,
+          "triangles_max": 52886,
+          "triangles_min": 52886
+        }
+      ],
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/baseline",
+        "--position",
+        "0,0",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/tools/probe_d9_cost.gd",
+        "--",
+        "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/proof-final/before-2"
+      ],
+      "head": "301c2fde11e0254f962665cf696f4723f1983f72",
+      "source_sha256": {
+        "data/weapons/arc3.tres": "e0a11bf10048ad9e532398f73bca0d5038912a46f58c0c0acb8221397a069873",
+        "data/weapons/d9.tres": "6ffb3ba8299d32c06b16ce2814a352666f1ad8052bee67735c7aa5c748ca19e0",
+        "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+        "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+        "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+        "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+        "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+        "scripts/fps_rig.gd": "7572a84d6b60dbc0f9c3a6b2d53dee10c76c443823665a3381cdcb9a0c5b06b0",
+        "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+        "scripts/main.gd": "dd00b5ef9c830f7eae2c967f928eea129acacc24bf13d95ae55c7fe7484b9114",
+        "scripts/player.gd": "10f0f459af362a0a38b7a876bc70bf0088e771ad3673da16857349daa5404bbf",
+        "scripts/player_audio.gd": "e7c3aeb813d0d6091c60b022e0e82c456e158b4e751bc0f34dfa371102ca5f07",
+        "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+        "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+        "scripts/weapon_spec.gd": "9cc3b1f2c3344f0ef427748afee9e6ecf9b9769c2d3e291e5da3cced5a335fa1",
+        "scripts/weapon_visual.gd": "af66001fbfa881b6957911ec710a4e44c1e58268694f63b84a104354ca0f9e98",
+        "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+        "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f"
+      },
+      "probe_sha256": "b7db1d7787d4a2c7045aa38aa46c08914f90cd445bfa4401841b1f7cc56ce548",
+      "load_before": [
+        3.68798828125,
+        3.14306640625,
+        2.6171875
+      ]
+    },
+    {
+      "side": "after",
+      "run": 2,
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "active_reload": false,
+          "draw_calls_max": 321,
+          "draw_calls_min": 321,
+          "frame_p50_ms": 93.561,
+          "frame_p95_ms": 123.475,
+          "gestures": [
+            "0"
+          ],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.038,
+          "rig_call_p95_ms": 0.081,
+          "samples": 67,
+          "triangles_max": 53014,
+          "triangles_min": 53014
+        },
+        {
+          "active_reload": true,
+          "draw_calls_max": 321,
+          "draw_calls_min": 318,
+          "frame_p50_ms": 99.462,
+          "frame_p95_ms": 128.421,
+          "gestures": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"
+          ],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.045,
+          "rig_call_p95_ms": 0.08,
+          "samples": 63,
+          "triangles_max": 53014,
+          "triangles_min": 52822
+        }
+      ],
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03",
+        "--position",
+        "0,0",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/tools/probe_d9_cost.gd",
+        "--",
+        "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/proof-final/after-2"
+      ],
+      "head": "fdd69b3d09b7145d6371dfd25622a7f7f398c6eb",
+      "source_sha256": {
+        "data/weapons/arc3.tres": "e0a11bf10048ad9e532398f73bca0d5038912a46f58c0c0acb8221397a069873",
+        "data/weapons/d9.tres": "9139323027d9a3d20c35298c913aaf0bde171e4b1989bf7ee90e366ef85a2c65",
+        "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+        "scripts/d9_reload.gd": "023d648bd4caa297884a9ca5be4444cb547b5caa12055941e2ee1d77db3159ce",
+        "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+        "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+        "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+        "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+        "scripts/fps_rig.gd": "1129fc5905e5bad40d197b42c787441aa6926ba2a601f01d72e9b3f1395c0614",
+        "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+        "scripts/main.gd": "dd00b5ef9c830f7eae2c967f928eea129acacc24bf13d95ae55c7fe7484b9114",
+        "scripts/player.gd": "121e480b54990c955f46eac560fe977a90dbfb6b6fce2de4e9001a3746b46e5a",
+        "scripts/player_audio.gd": "5d2609e165dc8834c9e33c6c691900a0ad2f2f3d065147339469b5fbaa87bb8b",
+        "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+        "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+        "scripts/weapon_spec.gd": "ba03520f3fa9d3e1b722b01fceb00851cfeb2b8d9b5a18f540db0c996248a326",
+        "scripts/weapon_visual.gd": "e8275446ab4ee15822e00582242f7ca242ef6eb7ed738a2667290052150acd3c",
+        "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+        "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f"
+      },
+      "probe_sha256": "b7db1d7787d4a2c7045aa38aa46c08914f90cd445bfa4401841b1f7cc56ce548",
+      "load_before": [
+        4.1611328125,
+        3.26806640625,
+        2.6689453125
+      ]
+    },
+    {
+      "side": "after",
+      "run": 3,
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "active_reload": false,
+          "draw_calls_max": 321,
+          "draw_calls_min": 321,
+          "frame_p50_ms": 95.033,
+          "frame_p95_ms": 118.75,
+          "gestures": [
+            "0"
+          ],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.038,
+          "rig_call_p95_ms": 0.067,
+          "samples": 67,
+          "triangles_max": 53014,
+          "triangles_min": 53014
+        },
+        {
+          "active_reload": true,
+          "draw_calls_max": 321,
+          "draw_calls_min": 318,
+          "frame_p50_ms": 93.686,
+          "frame_p95_ms": 110.732,
+          "gestures": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"
+          ],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.047,
+          "rig_call_p95_ms": 0.092,
+          "samples": 69,
+          "triangles_max": 53014,
+          "triangles_min": 52822
+        }
+      ],
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03",
+        "--position",
+        "0,0",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/tools/probe_d9_cost.gd",
+        "--",
+        "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/proof-final/after-3"
+      ],
+      "head": "fdd69b3d09b7145d6371dfd25622a7f7f398c6eb",
+      "source_sha256": {
+        "data/weapons/arc3.tres": "e0a11bf10048ad9e532398f73bca0d5038912a46f58c0c0acb8221397a069873",
+        "data/weapons/d9.tres": "9139323027d9a3d20c35298c913aaf0bde171e4b1989bf7ee90e366ef85a2c65",
+        "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+        "scripts/d9_reload.gd": "023d648bd4caa297884a9ca5be4444cb547b5caa12055941e2ee1d77db3159ce",
+        "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+        "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+        "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+        "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+        "scripts/fps_rig.gd": "1129fc5905e5bad40d197b42c787441aa6926ba2a601f01d72e9b3f1395c0614",
+        "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+        "scripts/main.gd": "dd00b5ef9c830f7eae2c967f928eea129acacc24bf13d95ae55c7fe7484b9114",
+        "scripts/player.gd": "121e480b54990c955f46eac560fe977a90dbfb6b6fce2de4e9001a3746b46e5a",
+        "scripts/player_audio.gd": "5d2609e165dc8834c9e33c6c691900a0ad2f2f3d065147339469b5fbaa87bb8b",
+        "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+        "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+        "scripts/weapon_spec.gd": "ba03520f3fa9d3e1b722b01fceb00851cfeb2b8d9b5a18f540db0c996248a326",
+        "scripts/weapon_visual.gd": "e8275446ab4ee15822e00582242f7ca242ef6eb7ed738a2667290052150acd3c",
+        "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+        "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f"
+      },
+      "probe_sha256": "b7db1d7787d4a2c7045aa38aa46c08914f90cd445bfa4401841b1f7cc56ce548",
+      "load_before": [
+        4.47607421875,
+        3.3837890625,
+        2.71923828125
+      ]
+    },
+    {
+      "side": "before",
+      "run": 3,
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "active_reload": false,
+          "draw_calls_max": 315,
+          "draw_calls_min": 315,
+          "frame_p50_ms": 97.451,
+          "frame_p95_ms": 116.538,
+          "gestures": [],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.022,
+          "rig_call_p95_ms": 0.047,
+          "samples": 66,
+          "triangles_max": 52886,
+          "triangles_min": 52886
+        },
+        {
+          "active_reload": true,
+          "draw_calls_max": 315,
+          "draw_calls_min": 315,
+          "frame_p50_ms": 94.734,
+          "frame_p95_ms": 109.046,
+          "gestures": [],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.022,
+          "rig_call_p95_ms": 0.043,
+          "samples": 68,
+          "triangles_max": 52886,
+          "triangles_min": 52886
+        }
+      ],
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/baseline",
+        "--position",
+        "0,0",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/tools/probe_d9_cost.gd",
+        "--",
+        "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/proof-final/before-3"
+      ],
+      "head": "301c2fde11e0254f962665cf696f4723f1983f72",
+      "source_sha256": {
+        "data/weapons/arc3.tres": "e0a11bf10048ad9e532398f73bca0d5038912a46f58c0c0acb8221397a069873",
+        "data/weapons/d9.tres": "6ffb3ba8299d32c06b16ce2814a352666f1ad8052bee67735c7aa5c748ca19e0",
+        "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+        "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+        "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+        "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+        "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+        "scripts/fps_rig.gd": "7572a84d6b60dbc0f9c3a6b2d53dee10c76c443823665a3381cdcb9a0c5b06b0",
+        "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+        "scripts/main.gd": "dd00b5ef9c830f7eae2c967f928eea129acacc24bf13d95ae55c7fe7484b9114",
+        "scripts/player.gd": "10f0f459af362a0a38b7a876bc70bf0088e771ad3673da16857349daa5404bbf",
+        "scripts/player_audio.gd": "e7c3aeb813d0d6091c60b022e0e82c456e158b4e751bc0f34dfa371102ca5f07",
+        "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+        "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+        "scripts/weapon_spec.gd": "9cc3b1f2c3344f0ef427748afee9e6ecf9b9769c2d3e291e5da3cced5a335fa1",
+        "scripts/weapon_visual.gd": "af66001fbfa881b6957911ec710a4e44c1e58268694f63b84a104354ca0f9e98",
+        "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+        "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f"
+      },
+      "probe_sha256": "b7db1d7787d4a2c7045aa38aa46c08914f90cd445bfa4401841b1f7cc56ce548",
+      "load_before": [
+        5.11376953125,
+        3.5888671875,
+        2.80078125
+      ]
+    },
+    {
+      "side": "before",
+      "run": 4,
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "active_reload": false,
+          "draw_calls_max": 315,
+          "draw_calls_min": 315,
+          "frame_p50_ms": 95.79,
+          "frame_p95_ms": 119.536,
+          "gestures": [],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.024,
+          "rig_call_p95_ms": 0.05,
+          "samples": 66,
+          "triangles_max": 52886,
+          "triangles_min": 52886
+        },
+        {
+          "active_reload": true,
+          "draw_calls_max": 315,
+          "draw_calls_min": 315,
+          "frame_p50_ms": 100.8,
+          "frame_p95_ms": 122.467,
+          "gestures": [],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.025,
+          "rig_call_p95_ms": 0.056,
+          "samples": 64,
+          "triangles_max": 52886,
+          "triangles_min": 52886
+        }
+      ],
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/baseline",
+        "--position",
+        "0,0",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/tools/probe_d9_cost.gd",
+        "--",
+        "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/proof-final/before-4"
+      ],
+      "head": "301c2fde11e0254f962665cf696f4723f1983f72",
+      "source_sha256": {
+        "data/weapons/arc3.tres": "e0a11bf10048ad9e532398f73bca0d5038912a46f58c0c0acb8221397a069873",
+        "data/weapons/d9.tres": "6ffb3ba8299d32c06b16ce2814a352666f1ad8052bee67735c7aa5c748ca19e0",
+        "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+        "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+        "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+        "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+        "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+        "scripts/fps_rig.gd": "7572a84d6b60dbc0f9c3a6b2d53dee10c76c443823665a3381cdcb9a0c5b06b0",
+        "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+        "scripts/main.gd": "dd00b5ef9c830f7eae2c967f928eea129acacc24bf13d95ae55c7fe7484b9114",
+        "scripts/player.gd": "10f0f459af362a0a38b7a876bc70bf0088e771ad3673da16857349daa5404bbf",
+        "scripts/player_audio.gd": "e7c3aeb813d0d6091c60b022e0e82c456e158b4e751bc0f34dfa371102ca5f07",
+        "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+        "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+        "scripts/weapon_spec.gd": "9cc3b1f2c3344f0ef427748afee9e6ecf9b9769c2d3e291e5da3cced5a335fa1",
+        "scripts/weapon_visual.gd": "af66001fbfa881b6957911ec710a4e44c1e58268694f63b84a104354ca0f9e98",
+        "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+        "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f"
+      },
+      "probe_sha256": "b7db1d7787d4a2c7045aa38aa46c08914f90cd445bfa4401841b1f7cc56ce548",
+      "load_before": [
+        5.3974609375,
+        3.74658203125,
+        2.86962890625
+      ]
+    },
+    {
+      "side": "after",
+      "run": 4,
+      "godot": "4.7.2-stable (official)",
+      "records": [
+        {
+          "active_reload": false,
+          "draw_calls_max": 321,
+          "draw_calls_min": 321,
+          "frame_p50_ms": 96.493,
+          "frame_p95_ms": 114.158,
+          "gestures": [
+            "0"
+          ],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.038,
+          "rig_call_p95_ms": 0.079,
+          "samples": 66,
+          "triangles_max": 53014,
+          "triangles_min": 53014
+        },
+        {
+          "active_reload": true,
+          "draw_calls_max": 321,
+          "draw_calls_min": 318,
+          "frame_p50_ms": 97.413,
+          "frame_p95_ms": 117.172,
+          "gestures": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"
+          ],
+          "health": 100.0,
+          "rig_call_p50_ms": 0.046,
+          "rig_call_p95_ms": 0.088,
+          "samples": 66,
+          "triangles_max": 53014,
+          "triangles_min": 52822
+        }
+      ],
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03",
+        "--position",
+        "0,0",
+        "--audio-driver",
+        "Dummy",
+        "--script",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/tools/probe_d9_cost.gd",
+        "--",
+        "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-03/.cstack/issue-03/proof-final/after-4"
+      ],
+      "head": "fdd69b3d09b7145d6371dfd25622a7f7f398c6eb",
+      "source_sha256": {
+        "data/weapons/arc3.tres": "e0a11bf10048ad9e532398f73bca0d5038912a46f58c0c0acb8221397a069873",
+        "data/weapons/d9.tres": "9139323027d9a3d20c35298c913aaf0bde171e4b1989bf7ee90e366ef85a2c65",
+        "scripts/benchmark.gd": "bc8ec8440339e9b63e0ddd4a608f1973d75123602a6278b9cb1ff3c9e1930168",
+        "scripts/d9_reload.gd": "023d648bd4caa297884a9ca5be4444cb547b5caa12055941e2ee1d77db3159ce",
+        "scripts/dialogue.gd": "b2db12129a71a575ac01d725aca9c744f289c85c7a04c24c37dad2b84673fda6",
+        "scripts/edge_smoothing.gd": "926e719417db9399724f273b3e4047701508a1113a78d4ead92987e3e4fd5e3c",
+        "scripts/enemy.gd": "7ef86923a7bfa2dd61c1618c72ad96e9973d6aa267a56368faf1c5fee667491c",
+        "scripts/fps_hand_mesh.gd": "5cf07ed1f11c222124f19cbac2e42ac40e7563a4d183a681fe0e45eab435d7b3",
+        "scripts/fps_rig.gd": "1129fc5905e5bad40d197b42c787441aa6926ba2a601f01d72e9b3f1395c0614",
+        "scripts/interactable.gd": "d95979caf785ac261c527d213836c7faf87132cb775a8c07c7942142d6f2a3e1",
+        "scripts/main.gd": "dd00b5ef9c830f7eae2c967f928eea129acacc24bf13d95ae55c7fe7484b9114",
+        "scripts/player.gd": "121e480b54990c955f46eac560fe977a90dbfb6b6fce2de4e9001a3746b46e5a",
+        "scripts/player_audio.gd": "5d2609e165dc8834c9e33c6c691900a0ad2f2f3d065147339469b5fbaa87bb8b",
+        "scripts/robot_visual.gd": "8390b129ef9da05d834dbfb76e59a5a4ea3a2100920ea521d30e4d93ae24a51a",
+        "scripts/run_state.gd": "4a9302c61eb994edaadd24eaebe5a2c4aa9ea667342bcc052555ad91395dfdf2",
+        "scripts/weapon_spec.gd": "ba03520f3fa9d3e1b722b01fceb00851cfeb2b8d9b5a18f540db0c996248a326",
+        "scripts/weapon_visual.gd": "e8275446ab4ee15822e00582242f7ca242ef6eb7ed738a2667290052150acd3c",
+        "scripts/world.gd": "4935d30d5a317938c0d40a1c2261608650e5ef22b9cb102bb1ba231e61117717",
+        "scripts/world_art.gd": "4a7024c31a6c88860e86524182734a3df7144d78b00966f83a32df857ed8415f"
+      },
+      "probe_sha256": "b7db1d7787d4a2c7045aa38aa46c08914f90cd445bfa4401841b1f7cc56ce548",
+      "load_before": [
+        4.51171875,
+        3.6494140625,
+        2.8564453125
+      ]
+    }
+  ],
+  "summary": {
+    "before-ready": {
+      "frame_p50_ms": {
+        "median": 96.336,
+        "min": 95.575,
+        "max": 106.01
+      },
+      "frame_p95_ms": {
+        "median": 116.728,
+        "min": 116.291,
+        "max": 127.57
+      },
+      "rig_call_p50_ms": {
+        "median": 0.022,
+        "min": 0.022,
+        "max": 0.024
+      },
+      "rig_call_p95_ms": {
+        "median": 0.049,
+        "min": 0.043,
+        "max": 0.065
+      },
+      "draw_calls_min": {
+        "median": 315,
+        "min": 315,
+        "max": 315
+      },
+      "draw_calls_max": {
+        "median": 315,
+        "min": 315,
+        "max": 315
+      },
+      "triangles_min": {
+        "median": 52886,
+        "min": 52886,
+        "max": 52886
+      },
+      "triangles_max": {
+        "median": 52886,
+        "min": 52886,
+        "max": 52886
+      }
+    },
+    "before-reload": {
+      "frame_p50_ms": {
+        "median": 94.734,
+        "min": 92.575,
+        "max": 100.8
+      },
+      "frame_p95_ms": {
+        "median": 112.303,
+        "min": 107.627,
+        "max": 122.467
+      },
+      "rig_call_p50_ms": {
+        "median": 0.023,
+        "min": 0.022,
+        "max": 0.025
+      },
+      "rig_call_p95_ms": {
+        "median": 0.048,
+        "min": 0.037,
+        "max": 0.056
+      },
+      "draw_calls_min": {
+        "median": 315,
+        "min": 315,
+        "max": 315
+      },
+      "draw_calls_max": {
+        "median": 315,
+        "min": 315,
+        "max": 315
+      },
+      "triangles_min": {
+        "median": 52886,
+        "min": 52886,
+        "max": 52886
+      },
+      "triangles_max": {
+        "median": 52886,
+        "min": 52886,
+        "max": 52886
+      }
+    },
+    "after-ready": {
+      "frame_p50_ms": {
+        "median": 95.033,
+        "min": 92.595,
+        "max": 100.576
+      },
+      "frame_p95_ms": {
+        "median": 118.75,
+        "min": 112.364,
+        "max": 127.117
+      },
+      "rig_call_p50_ms": {
+        "median": 0.038,
+        "min": 0.038,
+        "max": 0.038
+      },
+      "rig_call_p95_ms": {
+        "median": 0.07,
+        "min": 0.063,
+        "max": 0.081
+      },
+      "draw_calls_min": {
+        "median": 321,
+        "min": 321,
+        "max": 321
+      },
+      "draw_calls_max": {
+        "median": 321,
+        "min": 321,
+        "max": 321
+      },
+      "triangles_min": {
+        "median": 53014,
+        "min": 53014,
+        "max": 53014
+      },
+      "triangles_max": {
+        "median": 53014,
+        "min": 53014,
+        "max": 53014
+      }
+    },
+    "after-reload": {
+      "frame_p50_ms": {
+        "median": 97.431,
+        "min": 93.686,
+        "max": 101.844
+      },
+      "frame_p95_ms": {
+        "median": 117.172,
+        "min": 110.732,
+        "max": 128.421
+      },
+      "rig_call_p50_ms": {
+        "median": 0.046,
+        "min": 0.045,
+        "max": 0.051
+      },
+      "rig_call_p95_ms": {
+        "median": 0.088,
+        "min": 0.08,
+        "max": 0.098
+      },
+      "draw_calls_min": {
+        "median": 318,
+        "min": 318,
+        "max": 318
+      },
+      "draw_calls_max": {
+        "median": 321,
+        "min": 321,
+        "max": 321
+      },
+      "triangles_min": {
+        "median": 52822,
+        "min": 52822,
+        "max": 52822
+      },
+      "triangles_max": {
+        "median": 53014,
+        "min": 53014,
+        "max": 53014
+      }
+    }
+  }
+}

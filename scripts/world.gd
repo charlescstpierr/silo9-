@@ -201,7 +201,7 @@ func _reactor() -> void:
 			_box(Vector3(side * 7.5, 2.2, z), Vector3(2, 4.4, 2), "dark", true)
 			_box(Vector3(side * 7.5, 2.2, z + 1.02), Vector3(0.12, 3.5, 0.05), "danger")
 	_box(Vector3(0, 0.3, -72), Vector3(3.6, 0.6, 3.6), "steel", true)
-	_text("CŒUR MÉMORIEL\nNE PAS EXTRAIRE SOUS TENSION", Vector3(0, 3.2, -77.5), 38, Color("ffc27d"))
+	_text("CŒUR MÉMORIEL\nNE PAS EXTRAIRE SOUS TENSION", Vector3(0, 3.2, -77.20), 38, Color("ffc27d"))
 	_light(Vector3(0, 2.7, -72), Color("56e6ed"), 3, 8)
 
 func _batch_static_geometry() -> void:

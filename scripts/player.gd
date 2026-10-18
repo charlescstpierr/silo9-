@@ -271,9 +271,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		rotate_y(yaw)
 		camera.rotation.x = clampf(pitch - event.screen_relative.y * sensitivity, -1.45, 1.45)
 		_look_delta += Vector2(yaw, camera.rotation.x - pitch)
-	if event.is_action_pressed("weapon1"):
+	if event.is_action_pressed("weapon1", true):
 		equip(0)
-	elif event.is_action_pressed("weapon2"):
+	elif event.is_action_pressed("weapon2", true):
 		equip(1)
 	elif event.is_action_pressed("reload"):
 		reload_weapon()

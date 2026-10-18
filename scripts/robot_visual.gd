@@ -23,12 +23,15 @@ static func build(parent: Node3D, crawler: bool, eye_material: Material, friendl
 		else:
 			cached_sentry = cached
 	var palette: Array[StandardMaterial3D] = crawler_materials if crawler or friendly else materials
+	var torso := Node3D.new()
+	torso.name = "RobotBody"
+	parent.add_child(torso)
 	for index in cached.size():
 		if cached[index] != null:
-			_instance(parent, cached[index], Vector3.ONE, Vector3.ZERO, palette[index])
+			_instance(torso, cached[index], Vector3.ONE, Vector3.ZERO, palette[index])
 	_build_legs(parent, crawler, palette)
-	var body := _instance(parent, hull, Vector3(0.65, 0.25 if crawler else 0.56, 0.49), Vector3(0, 0.38 if crawler else 1.12, 0), palette[0])
-	var eye := _instance(parent, cube, Vector3(0.28 if crawler else 0.31, 0.1, 0.04), Vector3(0, 0.44 if crawler else 1.56, -0.275), eye_material)
+	var body := _instance(torso, hull, Vector3(0.65, 0.25 if crawler else 0.56, 0.49), Vector3(0, 0.38 if crawler else 1.12, 0), palette[0])
+	var eye := _instance(torso, cube, Vector3(0.28 if crawler else 0.31, 0.1, 0.04), Vector3(0, 0.44 if crawler else 1.56, -0.275), eye_material)
 	return [body, eye]
 
 static func _prepare() -> void:
@@ -37,14 +40,28 @@ static func _prepare() -> void:
 	for color in ["477b9d", "142c48", "ff9b38", "a6cbd8", "f4e5bc"]:
 		var material := StandardMaterial3D.new()
 		material.albedo_color = Color(color)
-		material.metallic = 0.22
-		material.roughness = 0.62
+		material.metallic = 0.52
+		material.roughness = 0.58
+		material.albedo_texture = load("res://assets/industrial/worn_steel_albedo.png")
+		material.roughness_texture = load("res://assets/industrial/worn_steel_roughness.png")
+		material.normal_texture = load("res://assets/industrial/worn_steel_normal.png")
+		material.normal_enabled = true
+		material.normal_scale = 0.18
+		material.uv1_triplanar = true
+		material.uv1_scale = Vector3.ONE * 3.0
 		materials.append(material)
 	for color in ["38b7ba", "183c51", "f4e5bc", "98d5dc", "fff4d8"]:
 		var material := StandardMaterial3D.new()
 		material.albedo_color = Color(color)
-		material.metallic = 0.18
-		material.roughness = 0.62
+		material.metallic = 0.45
+		material.roughness = 0.58
+		material.albedo_texture = load("res://assets/industrial/worn_steel_albedo.png")
+		material.roughness_texture = load("res://assets/industrial/worn_steel_roughness.png")
+		material.normal_texture = load("res://assets/industrial/worn_steel_normal.png")
+		material.normal_enabled = true
+		material.normal_scale = 0.18
+		material.uv1_triplanar = true
+		material.uv1_scale = Vector3.ONE * 3.0
 		crawler_materials.append(material)
 	hull = _chamfered_hull()
 	cylinder = CylinderMesh.new()
@@ -54,6 +71,11 @@ static func _prepare() -> void:
 	cylinder.radial_segments = 12
 	cylinder.rings = 1
 	cube = BoxMesh.new()
+
+static func set_quality(low: bool) -> void:
+	for material in materials + crawler_materials:
+		material.normal_enabled = not low
+		material.roughness_texture = null if low else load("res://assets/industrial/worn_steel_roughness.png")
 
 static func _geometry(crawler: bool, friendly: bool = false) -> Array[ArrayMesh]:
 	var batches: Array[SurfaceTool] = []
@@ -114,43 +136,72 @@ static func _build_legs(parent: Node3D, crawler: bool, palette: Array[StandardMa
 			leg.set_meta("base_y", leg.rotation.y)
 			leg.set_meta("side", side)
 			rig.add_child(leg)
-			for material_index in meshes.size():
-				_instance(leg, meshes[material_index], Vector3.ONE, Vector3.ZERO, palette[material_index])
+			_instance(leg, meshes[0], Vector3.ONE, Vector3.ZERO, palette[0])
+			var knee := Node3D.new()
+			knee.name = "Knee"
+			knee.position = Vector3(0.2, -0.06, 0) if crawler else Vector3(0.03, -0.33, 0.05)
+			leg.add_child(knee)
+			_instance(knee, meshes[1], Vector3.ONE, Vector3.ZERO, palette[3])
+			var foot := Node3D.new()
+			foot.name = "Foot"
+			foot.position = Vector3(0.08, -0.19, 0) if crawler else Vector3(-0.01, -0.31, -0.09)
+			knee.add_child(foot)
+			_instance(foot, meshes[2], Vector3.ONE, Vector3.ZERO, palette[1])
 
 static func _leg_geometry(crawler: bool) -> Array[ArrayMesh]:
-	var batches: Array[SurfaceTool] = []
-	for index in (2 if crawler else 4):
-		var batch := SurfaceTool.new()
-		batch.begin(Mesh.PRIMITIVE_TRIANGLES)
-		batches.append(batch)
+	var parts: Array[SurfaceTool] = []
+	for index in 3:
+		var part := SurfaceTool.new()
+		part.begin(Mesh.PRIMITIVE_TRIANGLES)
+		parts.append(part)
 	if crawler:
-		_beam(batches[0], Vector3.ZERO, Vector3(0.2, -0.06, 0), 0.07)
-		_add(batches[0], cylinder, Vector3(0.095, 0.07, 0.095), Vector3(0.2, -0.06, 0), Vector3(0, 0, PI / 2))
-		_beam(batches[1], Vector3(0.2, -0.06, 0), Vector3(0.28, -0.25, 0), 0.045)
+		_beam(parts[0], Vector3.ZERO, Vector3(0.2, -0.06, 0), 0.07)
+		_add(parts[1], cylinder, Vector3(0.095, 0.07, 0.095), Vector3.ZERO, Vector3(0, 0, PI / 2))
+		_beam(parts[1], Vector3.ZERO, Vector3(0.08, -0.19, 0), 0.045)
+		_add(parts[2], hull, Vector3(0.09, 0.04, 0.13), Vector3(0, -0.01, -0.025))
 	else:
-		_add(batches[3], cylinder, Vector3(0.17, 0.09, 0.17), Vector3(0.01, 0, 0), Vector3(0, 0, PI / 2))
-		_beam(batches[0], Vector3(-0.01, -0.03, 0), Vector3(0.03, -0.33, 0.05), 0.15)
-		_add(batches[2], hull, Vector3(0.18, 0.13, 0.17), Vector3(0.03, -0.33, -0.04))
-		_beam(batches[1], Vector3(0.03, -0.36, 0.05), Vector3(0.02, -0.64, -0.04), 0.12)
-		_beam(batches[3], Vector3(0.06, -0.12, -0.05), Vector3(0.06, -0.58, -0.12), 0.04)
-		_add(batches[0], hull, Vector3(0.23, 0.13, 0.34), Vector3(0.02, -0.685, -0.08))
+		_add(parts[0], cylinder, Vector3(0.17, 0.09, 0.17), Vector3(0.01, 0, 0), Vector3(0, 0, PI / 2))
+		_beam(parts[0], Vector3(-0.01, -0.03, 0), Vector3(0.03, -0.33, 0.05), 0.15)
+		_add(parts[0], hull, Vector3(0.18, 0.13, 0.17), Vector3(0.03, -0.33, -0.04))
+		_add(parts[1], cylinder, Vector3(0.13, 0.11, 0.13), Vector3.ZERO, Vector3(0, 0, PI / 2))
+		_beam(parts[1], Vector3(0, -0.03, 0), Vector3(-0.01, -0.31, -0.09), 0.105)
+		_beam(parts[1], Vector3(0.05, -0.04, -0.08), Vector3(0.04, -0.27, -0.13), 0.035)
+		_add(parts[2], hull, Vector3(0.23, 0.13, 0.34), Vector3(0, -0.045, -0.04))
 	var result: Array[ArrayMesh] = []
-	for batch in batches:
-		result.append(batch.commit())
+	for part in parts:
+		result.append(part.commit())
 	return result
 
 static func animate_legs(rig: Node3D, crawler: bool, phase: float, speed: float) -> void:
-	var amplitude: float = minf(speed * 0.15, 0.3)
-	var index: int = 0
+	var amplitude: float = minf(speed * 0.15, 0.38)
+	var index := 0
 	for leg: Node3D in rig.get_children():
 		var wave: float = sin(phase + (index % 2) * PI)
+		var lift: float = maxf(0.0, wave) * amplitude
+		var knee := leg.get_node("Knee") as Node3D
+		var foot := knee.get_node("Foot") as Node3D
 		if crawler:
 			var side: float = leg.get_meta("side")
-			leg.rotation.z = maxf(0, wave) * amplitude * side
+			leg.rotation.z = lift * side
 			leg.rotation.y = float(leg.get_meta("base_y")) + cos(phase + (index % 2) * PI) * amplitude * 0.4
+			knee.rotation.z = -lift * side * 1.5
+			foot.rotation.z = -leg.rotation.z - knee.rotation.z
 		else:
 			leg.rotation.x = wave * amplitude
+			knee.rotation.x = -lift * 1.7
+			foot.rotation.x = -leg.rotation.x - knee.rotation.x
 		index += 1
+
+static func animate(parent: Node3D, crawler: bool, phase: float, speed: float, mode: String, hit: float, attack: float, delta: float, turn: float = 0.0) -> void:
+	animate_legs(parent.get_node("RobotLegs"), crawler, phase, speed)
+	var torso := parent.get_node("RobotBody") as Node3D
+	var moving: float = minf(speed / 2.5, 1.0)
+	var recoil: float = sin(clampf(hit / 0.18, 0.0, 1.0) * PI)
+	var strike: float = sin(clampf(attack / 0.24, 0.0, 1.0) * PI)
+	var looking: float = sin(phase * 0.7) * 0.15 if mode in ["search", "investigate", "friendly"] else 0.0
+	var lean := Vector3(moving * 0.035 + strike * (0.15 if crawler else -0.055) - recoil * 0.13, looking, clampf(-turn * 0.04, -0.12, 0.12))
+	torso.rotation = torso.rotation.lerp(lean, 1.0 - exp(-delta * 14.0))
+	torso.position.y = sin(phase * 2.0) * 0.018 * moving - recoil * 0.025 + sin(phase) * 0.004
 
 static func _add(batch: SurfaceTool, mesh: Mesh, size: Vector3, position: Vector3, rotation: Vector3 = Vector3.ZERO) -> void:
 	batch.append_from(mesh, 0, Transform3D(Basis.from_euler(rotation).scaled(size), position))

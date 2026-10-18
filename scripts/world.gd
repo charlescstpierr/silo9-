@@ -30,6 +30,7 @@ var barrier: Node3D
 var barrier_disabled: bool = false
 var ambience: WorldEnvironment
 var time_to_check: float = 0.0
+var neutral_phase: float = 0.0
 
 func setup(run: State, actor: CharacterBody3D) -> void:
 	state = run
@@ -441,6 +442,8 @@ func sector_at(pos: Vector3) -> String:
 	return "04 / CŒUR"
 
 func _process(delta: float) -> void:
+	neutral_phase += delta * 1.2
+	RobotVisual.animate(objects["n7"].get_node("Visual"), false, neutral_phase, 0.0, "friendly", 0.0, 0.0, delta)
 	if scan_timer > 0:
 		scan_timer -= delta
 		if scan_timer <= 0:
@@ -484,6 +487,7 @@ func _build_audio() -> void:
 	add_child(colossus_sound)
 
 func set_quality(low: bool) -> void:
+	RobotVisual.set_quality(low)
 	art.set_quality(low)
 	get_viewport().scaling_3d_scale = 0.67 if low else 1.0
 	get_viewport().msaa_3d = Viewport.MSAA_DISABLED

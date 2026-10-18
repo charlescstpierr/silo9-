@@ -25,8 +25,17 @@ func prepare_materials(base: Dictionary) -> void:
 		var material: StandardMaterial3D = base[key]
 		var tint: Color = material.albedo_color
 		if kind == "alloy":
-			material.roughness = 0.75
-			material.metallic = 0.12
+			material.roughness = 0.72 if key == "dark" else 0.64
+			material.metallic = 0.18 if key in ["dark", "yellow", "teal"] else 0.72
+			material.albedo_texture = load("res://assets/industrial/worn_steel_albedo.png")
+			material.roughness_texture = load("res://assets/industrial/worn_steel_roughness.png")
+			material.normal_texture = load("res://assets/industrial/worn_steel_normal.png")
+			material.normal_enabled = true
+			material.normal_scale = 0.22
+			material.uv1_triplanar = true
+			material.uv1_world_triplanar = true
+			material.uv1_scale = Vector3.ONE * 1.6
+			textured_materials.append(material)
 			continue
 		material.albedo_color = Color.WHITE if key in ["wall", "floor", "steel"] else tint.lightened(0.2)
 		material.albedo_texture = load("res://assets/industrial/painted_panel_v2.png") if key == "wall" else load("res://assets/industrial/" + kind + "_albedo.png")
@@ -34,8 +43,8 @@ func prepare_materials(base: Dictionary) -> void:
 		material.normal_texture = null if key == "wall" else load("res://assets/industrial/" + kind + "_normal.png")
 		material.normal_scale = 0.35
 		material.roughness_texture = null if key == "wall" else load("res://assets/industrial/" + kind + "_roughness.png")
-		material.roughness = 0.8
-		material.metallic = 0.32
+		material.roughness = 0.72
+		material.metallic = 0.38
 		material.uv1_triplanar = true
 		material.uv1_world_triplanar = true
 		material.uv1_scale = Vector3.ONE * (0.45 if key == "wall" else 0.7)
@@ -74,6 +83,8 @@ func build() -> void:
 	_walls_and_deck()
 	_frames()
 	_machines()
+	_maintenance_details()
+	_archive_details()
 	_reactor()
 	_flush()
 	_flush_assets()
@@ -139,6 +150,19 @@ func _lift_panels() -> void:
 	_part("box", Vector3(4.43,1.5,4), Vector3(0.1,2.2,1.5), "rubber")
 	_part("box", Vector3(4.35,2.5,4), Vector3(0.2,0.12,1.7), "steel")
 	_part("box", Vector3(4.3,2.38,4), Vector3(0.08,0.06,1.25), "cyan")
+	for side in [-1.0, 1.0]:
+		for z in [3.5, 4.65, 5.8, 6.95, 8.1]:
+			_part("box", Vector3(side * 4.43, 1.15, z), Vector3(0.12, 1.05, 0.96), "rubber")
+			_part("box", Vector3(side * 4.35, 1.15, z), Vector3(0.08, 0.91, 0.81), "paint")
+			for y in [0.79, 1.51]:
+				_part("box", Vector3(side * 4.30, y, z), Vector3(0.025, 0.025, 0.67), "rubber")
+		_part("pipe", Vector3(side * 4.16, 1.82, 5.4), Vector3(0.09, 4.8, 0.09), "steel", Vector3(PI / 2, 0, 0))
+		for z in [3.2, 5.4, 7.6]:
+			_part("box", Vector3(side * 4.3, 1.82, z), Vector3(0.28, 0.08, 0.12), "steel")
+		_part("box", Vector3(side * 4.20, 2.25, 2.9), Vector3(0.25, 3.9, 0.32), "steel")
+		_part("box", Vector3(side * 4.04, 2.55, 3.09), Vector3(0.10, 2.25, 0.05), "glow")
+	_part("box", Vector3(0, 4.22, 2.9), Vector3(8.65, 0.24, 0.32), "steel")
+	_part("box", Vector3(0, 4.08, 2.9), Vector3(7.85, 0.045, 0.20), "glow")
 
 func _walls_and_deck() -> void:
 	for z in range(-76, 1, 4):
@@ -220,6 +244,59 @@ func _machines() -> void:
 			_part("box", Vector3(side * 9.5,1.1,z), Vector3(0.15,1.7,2.8), "paint")
 			_part("box", Vector3(side * 9.4,1.1,z), Vector3(0.06,0.18,2.8), "teal")
 
+func _maintenance_details() -> void:
+	for z in [-19.2, -24.0, -30.0]:
+		_part("box", Vector3(7.64, 1.75, z), Vector3(0.12, 1.65, 1.3), "steel")
+		_part("box", Vector3(7.55, 1.75, z), Vector3(0.08, 1.46, 1.12), "teal")
+		_part("box", Vector3(7.48, 2.30, z), Vector3(0.04, 0.12, 0.72), "yellow")
+		for y in [1.17, 2.33]:
+			for dz in [-0.47, 0.47]:
+				_part("pipe", Vector3(7.48, y, z + dz), Vector3(0.055, 0.035, 0.055), "steel", Vector3(0, 0, PI / 2))
+		for y in [1.45, 1.55, 1.65]:
+			_part("box", Vector3(7.49, y, z), Vector3(0.04, 0.025, 0.6), "rubber")
+		_part("pipe", Vector3(7.48, 1.95, z - 0.33), Vector3(0.07, 0.045, 0.07), "cyan", Vector3(0, 0, PI / 2))
+	for z in [-18.0, -22.0, -26.0, -30.0, -33.0]:
+		_part("box", Vector3(-7.7, 2.9, z), Vector3(0.45, 0.12, 0.16), "steel")
+		_part("box", Vector3(-7.5, 3.13, z), Vector3(0.08, 0.55, 0.14), "steel")
+	for lane in 3:
+		var x: float = -7.65 + lane * 0.15
+		_conduit([Vector3(x, 3.02 + lane * 0.11, -17), Vector3(x, 3.02 + lane * 0.11, -29), Vector3(x, 2.8, -29.45), Vector3(x, 0.65, -29.45)], 0.075, "teal" if lane == 0 else "steel")
+	for lane in 4:
+		var z: float = -24.0 + lane * 0.11
+		_conduit([Vector3(-7.5, 4.5, z), Vector3(-4.0, 4.1, z - 0.10), Vector3(0, 3.85, z - 0.2), Vector3(3.8, 4.1, z), Vector3(7.6, 4.5, z)], 0.035, "rubber")
+	_part("box", Vector3(3.0, 4.66, -24), Vector3(1.6, 0.18, 0.55), "steel")
+	_part("box", Vector3(3.0, 4.55, -24), Vector3(1.35, 0.04, 0.34), "glow")
+	for x in [2.5, 2.75, 3.0, 3.25, 3.5]:
+		_part("box", Vector3(x, 4.50, -24), Vector3(0.035, 0.08, 0.42), "rubber")
+
+func _conduit(points: Array[Vector3], width: float, material: String) -> void:
+	for index in points.size() - 1:
+		var start := points[index]
+		var end := points[index + 1]
+		var rotation := Quaternion(Vector3.UP, (end - start).normalized()).get_euler()
+		_part("pipe", (start + end) * 0.5, Vector3(width, start.distance_to(end), width), material, rotation)
+		_part("pipe", start, Vector3(width * 1.4, width * 0.7, width * 1.4), "rubber", rotation)
+
+func _archive_details() -> void:
+	for side in [-1.0, 1.0]:
+		for z in [-38.0, -46.0, -51.0]:
+			for dz in [-1.43, 1.43]:
+				_part("box", Vector3(side * 8.15, 1.75, z + dz), Vector3(0.17, 3.5, 0.12), "steel")
+			for y in [0.35, 1.1, 1.85, 2.6, 3.35]:
+				_part("box", Vector3(side * 8.12, y, z), Vector3(0.22, 0.09, 2.98), "steel")
+			for y in [0.72, 1.47, 2.22, 2.97]:
+				for dz in [-0.9, -0.3, 0.3, 0.9]:
+					_part("box", Vector3(side * 8.18, y, z + dz), Vector3(0.12, 0.55, 0.49), "dark")
+					_part("box", Vector3(side * 8.10, y + 0.16, z + dz), Vector3(0.045, 0.06, 0.35), "paint")
+					_part("box", Vector3(side * 8.08, y - 0.13, z + dz), Vector3(0.045, 0.035, 0.08), "cyan")
+		for z in [-40.5, -45.0, -50.0]:
+			_part("box", Vector3(side * 2.75, 3.94, z), Vector3(0.85, 0.08, 4.3), "grate")
+			_part("box", Vector3(side * 2.75, 4.45, z), Vector3(0.08, 1.02, 0.12), "steel")
+		for lane in 3:
+			var x: float = side * (2.5 + lane * 0.17)
+			_conduit([Vector3(x, 4.03, -36), Vector3(x, 4.03, -50), Vector3(side * 7.9, 3.65, -51)], 0.055, "teal")
+		_part("box", Vector3(side * 7.94, 3.53, -46), Vector3(0.15, 0.12, 2.8), "cyan")
+
 func _reactor() -> void:
 	for side in [-1.0,1.0]:
 		for z in [-63,-68,-74]:
@@ -239,6 +316,20 @@ func _reactor() -> void:
 	_part("ring", Vector3(0,2.5,-72), Vector3(1.1,0.3,1.1), "cyan")
 	_part("ring", Vector3(0,0.62,-72), Vector3(1.6,0.5,1.6), "cyan")
 	_part("box", Vector3(0,3.5,-77.65), Vector3(8.5,2.6,0.12), "grate")
+	for side in [-1.0, 1.0]:
+		_conduit([Vector3(side * 7.0, 2.7, -68), Vector3(side * 6.0, 2.7, -68), Vector3(side * 5.4, 3.5, -68), Vector3(side * 5.4, 4.3, -68), Vector3(side * 1.7, 4.3, -72)], 0.28, "steel")
+		for z in [-67.0, -70.0, -73.0]:
+			_part("box", Vector3(side * 3.0, 4.22, z), Vector3(2.4, 0.16, 1.7), "steel", Vector3(0, 0, side * 0.16))
+			_part("box", Vector3(side * 3.0, 4.32, z), Vector3(0.14, 0.4, 1.9), "rust")
+		for z in [-67.4, -69.4, -71.4, -73.4]:
+			_part("box", Vector3(side * 4.48, 0.59, z), Vector3(0.16, 0.96, 1.5), "grate")
+			_part("box", Vector3(side * 4.37, 0.58, z), Vector3(0.035, 0.11, 1.0), "yellow", Vector3(side * 0.5, 0, 0))
+		_part("pipe", Vector3(side * 1.6, 0.52, -72), Vector3(0.20, 2.8, 0.20), "steel", Vector3(PI / 2, 0, 0))
+	for x in [-2.8, -1.4, 0.0, 1.4, 2.8]:
+		_part("box", Vector3(x, 2.20, -77.45), Vector3(1.26, 3.5, 0.10), "steel", Vector3(0, x * 0.04, 0))
+		_part("box", Vector3(x, 0.68, -77.32), Vector3(1.20, 0.18, 0.08), "rust")
+		for y in [1.05, 3.5]:
+			_part("box", Vector3(x, y, -77.30), Vector3(0.12, 0.20, 0.12), "yellow")
 
 func _flush() -> void:
 	for key: String in batches:
@@ -398,6 +489,8 @@ func update_focus(pos: Vector3) -> void:
 	shadow_key.position = Vector3(-1.3,4.5,z)
 	shadow_key.rotation_degrees = Vector3(-90,0,0)
 	shadow_key.light_color = Color("ffe0bb") if z in [6.0,-22.0,-42.0,-63.0] else Color("b9e7f3")
+	shadow_key.light_energy = 3.4 if z == -22 else 3.0
+	shadow_key.spot_angle = 52.0 if z == -22 else 58.0
 	if z == 6:
 		shadow_key.position = Vector3(1.5,4.5,6)
 		shadow_key.look_at(Vector3(3.8,0.8,4), Vector3.UP)

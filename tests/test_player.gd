@@ -62,9 +62,10 @@ func run() -> void:
 	check(player.fire() and run_state.ammo == 11, "D9 shot consumes one round")
 	check(player._d9_flash.global_position.distance_to(player.rig.muzzle.global_position) < .0001, "shot flash follows current rig muzzle")
 	check(not player.fire() and run_state.ammo == 11, "fire cooldown prevents double consumption")
+	var pose_rest := player.rig._weapons[0].global_position
 	Input.action_press("aim")
 	await ticks(12)
-	check(player._view_frame.pose == player.FpsRig.ViewFrame.Pose.AIM and player.rig._pose_offset.x < -.1, "aim input moves both hands and selected weapon")
+	check(player._view_frame.aim_weight > 0.0 and player.rig._weapons[0].global_position.x < pose_rest.x - .1, "aim input moves both hands and selected weapon")
 	Input.action_release("aim")
 	check(player.reload_weapon(), "partial magazine accepts reload")
 	await ticks(5)

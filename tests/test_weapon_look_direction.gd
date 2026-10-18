@@ -66,7 +66,7 @@ func run() -> void:
 			pitch = player.camera.rotation.x
 			await ticks(2)
 			var aimed_offset := wrist_y()-aimed
-			check(aimed_offset*pitch < 0, "aimed vertical lag opposes applied camera pitch")
+			check(absf(aimed_offset) < .00001, "stable ADS removes vertical lag from applied camera pitch")
 			check(absf(aimed_offset) < absf(rest_offset)*.4, "aim attenuates vertical lag")
 			Input.action_release("aim")
 			player.teleport(Vector3.ZERO)

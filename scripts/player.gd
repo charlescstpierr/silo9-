@@ -25,6 +25,8 @@ var camera: Camera3D
 var active: bool = false
 var weapon_index: int:
 	get: return reload_cycle.weapon_index
+var aim_weight: float:
+	get: return _view_frame.aim_weight
 var sensitivity: float = 0.002
 var reload_cycle := Reload.new()
 var reloading: bool:
@@ -51,7 +53,13 @@ var _submitted_generation := 0
 var _drawn_generation := 0
 var _shot_spec: WeaponSpec
 var _recoil_active := false
-var _rest_fov := 76.0
+var _base_fov := 76.0
+var _aim_magnification := 1.25
+var _aim_sensitivity := .65
+var _aim_progress := 0.0
+var _capture_aim := false
+var _capture_jump := false
+var _fov_impulse := 0.0
 var _beam: MeshInstance3D
 var _beam_hit := Vector3.ZERO
 var _impact: MeshInstance3D
@@ -129,7 +137,9 @@ func set_active(value: bool) -> void:
 	active = value and state != null and state.health > 0.0
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if active else Input.MOUSE_MODE_VISIBLE
 	if active and not was_active:
-		_capture_fire = InputMap.has_action("fire") and Input.is_action_pressed("fire")
+		_capture_fire = _fire_held()
+		_capture_aim = _aim_held()
+		_capture_jump = true
 	if not active:
 		_cancel_reload()
 		_clear_motion_input()
@@ -162,8 +172,6 @@ func fire() -> bool:
 		feedback.emit("Chargeur vide · R pour recharger")
 		return false
 	_shot_time = spec.cooldown
-	if not _recoil_active:
-		_rest_fov = camera.fov
 	_shot_spec = spec
 	_shot_age = 0.0
 	_shot_generation += 1
@@ -288,7 +296,8 @@ func _clear_motion_input() -> void:
 	_view_frame.local_velocity = Vector3.ZERO
 	_view_frame.grounded = false
 	_view_frame.pose = FpsRig.ViewFrame.Pose.REST
-	_capture_fire = InputMap.has_action("fire") and Input.is_action_pressed("fire")
+	_capture_fire = _fire_held()
+	_reset_aim()
 	_event_shot = false
 
 func aim_target() -> Node:
@@ -298,10 +307,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not active:
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		var yaw: float = -event.screen_relative.x * sensitivity
+		var yaw: float = -event.screen_relative.x * sensitivity * _look_scale()
 		var pitch := camera.rotation.x
 		rotate_y(yaw)
-		camera.rotation.x = clampf(pitch - event.screen_relative.y * sensitivity, -1.45, 1.45)
+		camera.rotation.x = clampf(pitch - event.screen_relative.y * sensitivity * _look_scale(), -1.45, 1.45)
 		_look_delta += Vector2(yaw, camera.rotation.x - pitch)
 	if event.is_action_pressed("weapon1", true):
 		equip(0)
@@ -317,7 +326,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			interacted.emit(_target)
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if not event.pressed:
-			_capture_fire = false
+			_capture_fire = _capture_fire and _fire_held()
 		elif Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 			_capture_fire = true
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -329,22 +338,41 @@ func _physics_process(delta: float) -> void:
 	_event_shot = false
 	if not event_shot:
 		_shot_time = maxf(0.0, _shot_time - delta)
-	if not Input.is_action_pressed("fire"):
+	if not _fire_held():
 		_capture_fire = false
 	_scan_time = maxf(0.0, _scan_time - delta)
 	_advance_reload(delta)
+	if not active or Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		_reset_aim()
+		_cancel_recoil()
+	var aim_held := _aim_held()
+	if not aim_held:
+		_capture_aim = false
+	var aiming := active and state.health > 0.0 and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and reload_cycle.ready and not _capture_aim and aim_held
+	var duration := _weapon().aim_enter_seconds if aiming else _weapon().aim_exit_seconds
+	_aim_progress = move_toward(_aim_progress, 1.0 if aiming else 0.0, delta / duration)
+	_view_frame.aim_weight = smoothstep(0.0, 1.0, _aim_progress)
+	_compose_fov()
 	if not active:
 		_update_view(delta)
 		return
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and InputMap.has_action("look_left"):
+		var look := Input.get_vector("look_left", "look_right", "look_up", "look_down", .2) * 2.0 * delta * _look_scale()
+		var pitch := camera.rotation.x
+		rotate_y(-look.x)
+		camera.rotation.x = clampf(pitch - look.y, -1.45, 1.45)
+		_look_delta += Vector2(-look.x, camera.rotation.x - pitch)
+	if not Input.is_action_pressed("jump") and not Input.is_action_just_pressed("jump"):
+		_capture_jump = false
 	_set_crouch(Input.is_action_pressed("crouch"))
-	var input := Input.get_vector("left", "right", "forward", "back")
+	var input := Input.get_vector("left", "right", "forward", "back", .2)
 	var direction := global_basis * Vector3(input.x, 0.0, input.y)
-	var speed: float = 2.2 if _crouched else (6.5 if Input.is_action_pressed("sprint") else 4.0)
+	var speed: float = 2.2 if _crouched else (6.5 if Input.is_action_pressed("sprint") and not aiming else 4.0)
 	velocity.x = move_toward(velocity.x, direction.x * speed, delta * 25.0)
 	velocity.z = move_toward(velocity.z, direction.z * speed, delta * 25.0)
 	if not is_on_floor():
 		velocity.y -= 22.0 * delta
-	elif Input.is_action_just_pressed("jump") and not _crouched:
+	elif Input.is_action_just_pressed("jump") and not _capture_jump and not _crouched:
 		velocity.y = 7.0
 	var stepped: bool = false
 	if is_on_floor() and velocity.y <= 0.0:
@@ -364,11 +392,9 @@ func _physics_process(delta: float) -> void:
 	_look_delta = Vector2.ZERO
 	var moving := is_on_floor() and Vector2(_view_frame.local_velocity.x, _view_frame.local_velocity.z).length_squared() > .01
 	camera.position.y = move_toward(camera.position.y, 0.94 if _crouched else 1.58, delta * 4.0)
-	_view_frame.pose = FpsRig.ViewFrame.Pose.RUN if moving and Input.is_action_pressed("sprint") else FpsRig.ViewFrame.Pose.REST
-	if InputMap.has_action("aim") and Input.is_action_pressed("aim"):
-		_view_frame.pose = FpsRig.ViewFrame.Pose.AIM
+	_view_frame.pose = FpsRig.ViewFrame.Pose.RUN if moving and Input.is_action_pressed("sprint") and not aiming else FpsRig.ViewFrame.Pose.REST
 	_update_view(delta)
-	if not event_shot and not _capture_fire and Input.is_action_pressed("fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+	if not event_shot and not _capture_fire and _fire_held() and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		fire()
 
 func _update_view(delta: float) -> void:
@@ -545,7 +571,8 @@ func _compose_feedback() -> void:
 		if _recoil_active:
 			var envelope := 1.0 - smoothstep(0.0, _shot_spec.recoil_duration, _shot_age)
 			_recoil = _shot_spec.recoil * envelope
-			camera.fov = _rest_fov + _shot_spec.fov_impulse * _camera_strength * envelope
+			_fov_impulse = _shot_spec.fov_impulse * _camera_strength * envelope
+			_compose_fov()
 			_view_frame.shot_slide = _shot_spec.shot_slide * (1.0 - smoothstep(0.0, _shot_spec.shot_slide_duration, _shot_age))
 			if envelope == 0.0:
 				_cancel_recoil()
@@ -571,10 +598,11 @@ func _attenuate(mesh: MeshInstance3D, color: Color, energy: float) -> void:
 
 func _cancel_recoil() -> void:
 	if _recoil_active:
-		camera.fov = _rest_fov
 		rig.clear_shot_slide()
 	_recoil_active = false
 	_recoil = 0.0
+	_fov_impulse = 0.0
+	_compose_fov()
 	_view_frame.shot_slide = 0.0
 
 func _clear_shot() -> void:
@@ -586,3 +614,28 @@ func _clear_shot() -> void:
 func _clear_feedback() -> void:
 	_clear_shot()
 	_casings.clear()
+
+func configure_aim(base_fov: float, magnification: float, sensitivity_scale: float) -> void:
+	_base_fov = base_fov
+	_aim_magnification = magnification
+	_aim_sensitivity = sensitivity_scale
+	_compose_fov()
+
+func _compose_fov() -> void:
+	var ads_fov := rad_to_deg(2.0 * atan(tan(deg_to_rad(_base_fov) * .5) / _aim_magnification))
+	camera.fov = lerpf(_base_fov, ads_fov, _view_frame.aim_weight) + _fov_impulse
+
+func _look_scale() -> float:
+	return lerpf(1.0, _aim_sensitivity, _view_frame.aim_weight)
+
+func _aim_held() -> bool:
+	return (InputMap.has_action("aim") and Input.is_action_pressed("aim")) or Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) or Input.get_joy_axis(0, JOY_AXIS_TRIGGER_LEFT) > .5
+
+func _fire_held() -> bool:
+	return (InputMap.has_action("fire") and Input.is_action_pressed("fire")) or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.get_joy_axis(0, JOY_AXIS_TRIGGER_RIGHT) > .5
+
+func _reset_aim() -> void:
+	_aim_progress = 0.0
+	_view_frame.aim_weight = 0.0
+	_capture_aim = _aim_held()
+	_compose_fov()

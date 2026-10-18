@@ -14,7 +14,7 @@ func run() -> void:
 	var profiles: Array[Array] = []
 	for weapon in [0, 1]:
 		reset(weapon)
-		player.camera.fov = 60.0 if weapon == 0 else 90.0
+		player.configure_aim(60.0 if weapon == 0 else 90.0, 1.25, .65)
 		var base_fov := player.camera.fov
 		var ray := player.camera.global_transform
 		var hits := target.hits
@@ -62,7 +62,7 @@ func run() -> void:
 	check(is_equal_approx(target.damage, 67.0), "one D9 plus one ARC inflict exactly 28 + 39 damage")
 	reset()
 	if configure(1.0, 1.0, 2):
-		player.camera.fov = 90
+		player.configure_aim(90, 1.25, .65)
 		check(player.fire(), "camera options fixture fires")
 		var first_peak := player.camera.fov
 		player._shot_time = 0

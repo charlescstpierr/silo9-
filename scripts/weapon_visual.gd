@@ -40,6 +40,9 @@ static func build(electric: bool) -> Node3D:
 			_tube(batches[0], 0.015, 0.008, 0.043, Vector3(side * 0.073, 0.083, -0.288))
 		_part(batches[4], Vector3(0.025, 0.004, 0.034), Vector3(0, 0.142, 0.045), 0.002)
 		_arc_parts(root, materials)
+		_part(batches[1], Vector3(.014, .13, .018), Vector3(0, .175, -.25), .003)
+		_part(batches[1], Vector3(.052, .09, .018), Vector3(0, .20, .10), .004)
+		_sights(root, batches, .27, .10, -.25)
 	else:
 		var slide := Node3D.new()
 		slide.name = "Slide"
@@ -53,11 +56,7 @@ static func build(electric: bool) -> Node3D:
 			for groove in 5:
 				_part(slide_batches[2], Vector3(0.003, 0.045, 0.008), Vector3(side * 0.055, 0.1, 0.04 + groove * 0.012), 0.001, Vector3(-0.2, 0, 0))
 			_part(slide_batches[3], Vector3(0.004, 0.009, 0.074), Vector3(side * 0.054, 0.057, -0.094), 0.002)
-		_part(slide_batches[1], Vector3(0.015, 0.016, 0.018), Vector3(0, 0.161, -0.174), 0.003)
-		_part(slide_batches[4], Vector3(0.005, 0.006, 0.006), Vector3(0, 0.166, -0.163), 0.001)
-		for side: float in [-1.0, 1.0]:
-			_part(slide_batches[1], Vector3(0.012, 0.015, 0.015), Vector3(side * 0.02, 0.158, 0.084), 0.003)
-			_part(slide_batches[4], Vector3(0.004, 0.004, 0.004), Vector3(side * 0.02, 0.16, 0.093), 0.001)
+		_sights(slide, slide_batches, .169, .093, -.163)
 		_cylinder(batches[1], 0.026, 0.18, Vector3(0, 0.087, -0.165))
 		_tube(batches[0], 0.029, 0.015, 0.035, Vector3(0, 0.087, -0.267))
 		_cylinder(batches[2], 0.015, 0.004, Vector3(0, 0.087, -0.247))
@@ -86,6 +85,17 @@ static func build(electric: bool) -> Node3D:
 		marker.transform = Transform3D(entry[2], entry[1])
 		root.add_child(marker)
 	return root
+
+static func _sights(parent: Node3D, batches: Array[SurfaceTool], height: float, rear_z: float, front_z: float) -> void:
+	var front := Vector3(0, height, front_z)
+	var rear := Vector3(0, height, rear_z)
+	_part(batches[1], Vector3(.014, .03, .018), front - Vector3(0, .015, 0), .002)
+	_part(batches[4], Vector3(.006, .008, .006), front + Vector3(0, -.004, .009), .001)
+	for side: float in [-1.0, 1.0]:
+		_part(batches[1], Vector3(.012, .025, .016), rear + Vector3(side * .019, -.0125, 0), .002)
+		_part(batches[4], Vector3(.004, .004, .004), rear + Vector3(side * .019, -.004, .008), .001)
+	_marker(parent, "SightRear", rear, Basis.IDENTITY)
+	_marker(parent, "SightFront", front, Basis.IDENTITY)
 
 static func _arc_parts(root: Node3D, materials: Array[StandardMaterial3D]) -> void:
 	var socket := Node3D.new()

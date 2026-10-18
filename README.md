@@ -22,7 +22,7 @@ Depuis ce workspace Linux :
 | Clic gauche | Tir |
 | Clic droit maintenu | Rapprocher la prise de visée. ADS complet prévu au ticket 7 |
 | 1 / 2 | D9 / ARC-3 |
-| R | Recharger le D9 |
+| R | Recharger l'arme équipée |
 | Q en WASD, A en ZQSD | SCAN ÉCHO |
 | E | Interagir avec la cible |
 | Tab | Inventaire |
@@ -48,6 +48,8 @@ Vous écrivez librement. Le modèle sélectionne les faits pertinents, une réac
 ./tools/export.sh
 ```
 
+Sous Linux, la vérification nécessite un affichage X11 accessible via `DISPLAY`, ou `xvfb-run` lorsque `DISPLAY` est absent. Les quatre suites de souris et de regard utilisent X11 avec le rendu et l'audio factices pour tester la capture réelle du curseur ; les autres suites restent headless.
+
 `GODOT_BIN` peut désigner un autre exécutable Godot 4.7.2. L'export utilise les modèles officiels de la même version placés dans `.tools/templates/`. Modifiez les chemins de modèles personnalisés dans `export_presets.cfg` pour une autre installation.
 
 Le benchmark rend les quatre secteurs en 1080p, avec l'IA ennemie active et un scan en maintenance :
@@ -57,7 +59,7 @@ Le benchmark rend les quatre secteurs en 1080p, avec l'IA ennemie active et un s
 ./tools/godot.sh --path . -- --benchmark --low
 ```
 
-Les résultats distinguent le moteur graphique, les temps de frame et les limites de la machine. Un test headless ne mesure pas les performances graphiques. Voir [les résultats de validation](docs/VALIDATION.md) et [la preuve du rechargement D9](docs/tickets/03-d9-reload.md).
+Les résultats distinguent le moteur graphique, les temps de frame et les limites de la machine. Un test headless ne mesure pas les performances graphiques. Voir [les résultats de validation](docs/VALIDATION.md), [la preuve du rechargement D9](docs/tickets/03-d9-reload.md) et [le maniement des armes](docs/tickets/05-weapon-handling.md).
 
 ## Ressources et licences
 

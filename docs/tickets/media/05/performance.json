@@ -1,0 +1,4775 @@
+{
+  "runs": [
+    {
+      "camera_y_range_m": 0.0156615972518921,
+      "captures": [],
+      "draw_calls_max": 371,
+      "draw_calls_min": 305,
+      "end_frame": 249,
+      "events": [
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 93,
+          "stage": "d9-partial",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 106,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 113,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 123,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 137,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 4,
+          "frame": 142,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 8,
+          "frame": 144,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 151,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 163,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 169,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 180,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 185,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 189,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 32,
+          "frame": 203,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 211,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 216,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 225,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 231,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 235,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 236,
+          "stage": "b-return",
+          "weapon": 0
+        }
+      ],
+      "film_start_frame": 0,
+      "frame_p50_ms": 93.687,
+      "frame_p95_ms": 111.399,
+      "gestures": {
+        "0": 115,
+        "1": 6,
+        "10": 6,
+        "11": 6,
+        "12": 4,
+        "13": 7,
+        "14": 6,
+        "15": 7,
+        "16": 7,
+        "17": 6,
+        "18": 5,
+        "19": 8,
+        "2": 8,
+        "3": 10,
+        "4": 10,
+        "5": 7,
+        "6": 3,
+        "7": 2,
+        "8": 2,
+        "9": 14
+      },
+      "godot": "4.7.2-stable (official)",
+      "health": 100.0,
+      "max_actual_speed": 6.50000095367432,
+      "max_contact_m": 4.92415153985348e-07,
+      "max_muzzle_error_m": 4.93541222112981e-07,
+      "mode": "perf",
+      "motions": {
+        "0": 109,
+        "1": 62,
+        "2": 2,
+        "4": 4,
+        "5": 62
+      },
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "samples": 239,
+      "stage_motion": {
+        "0-aim": {
+          "end_wrist": "(0.066762, -0.173253, -0.374879)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.101271, -0.184503, -0.366142)"
+        },
+        "0-fire": {
+          "end_wrist": "(0.206584, -0.218195, -0.339924)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066625, -0.173208, -0.36658)"
+        },
+        "0-look": {
+          "end_wrist": "(0.231596, -0.25863, -0.314924)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231596, -0.25863, -0.314924)"
+        },
+        "0-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "0-sprint": {
+          "end_wrist": "(0.231589, -0.2518, -0.314931)",
+          "grounded_frames": 6,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.223815, -0.24882, -0.322705)"
+        },
+        "0-stop": {
+          "end_wrist": "(0.207198, -0.219037, -0.339322)",
+          "grounded_frames": 3,
+          "max_speed": 4.41037559509277,
+          "start_wrist": "(0.214385, -0.229099, -0.332135)"
+        },
+        "0-urgent-sprint": {
+          "end_wrist": "(0.231599, -0.260885, -0.299921)",
+          "grounded_frames": 1,
+          "max_speed": 6.50000095367432,
+          "start_wrist": "(0.231599, -0.260885, -0.299921)"
+        },
+        "0-walk": {
+          "end_wrist": "(0.2066, -0.218454, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.21317, -0.33992)"
+        },
+        "1-aim": {
+          "end_wrist": "(0.066858, -0.173284, -0.374855)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.101271, -0.184503, -0.366142)"
+        },
+        "1-fire": {
+          "end_wrist": "(0.20658, -0.218194, -0.339925)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066664, -0.173221, -0.369904)"
+        },
+        "1-look": {
+          "end_wrist": "(0.231591, -0.246729, -0.314929)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231591, -0.246729, -0.314929)"
+        },
+        "1-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "1-sprint": {
+          "end_wrist": "(0.231564, -0.24603, -0.314956)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.225435, -0.246057, -0.321085)"
+        },
+        "1-stop": {
+          "end_wrist": "(0.207198, -0.219037, -0.339322)",
+          "grounded_frames": 3,
+          "max_speed": 3.99370884895325,
+          "start_wrist": "(0.212764, -0.22683, -0.333756)"
+        },
+        "1-urgent-sprint": {
+          "end_wrist": "(0.231597, -0.253047, -0.306589)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231597, -0.253047, -0.306589)"
+        },
+        "1-walk": {
+          "end_wrist": "(0.2066, -0.211845, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.22201, -0.33992)"
+        },
+        "arc-cell": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 13,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191044, -0.222089, -0.334735)"
+        },
+        "arc-cell-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 23,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "arc-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-from-d9": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 34,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "d9-empty": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 26,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195933, -0.202962, -0.332301)"
+        },
+        "d9-empty-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 11,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-partial": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191844, -0.19712, -0.32938)"
+        },
+        "d9-partial-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 21,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "final-ready": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "rapid-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-0": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-1": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        }
+      },
+      "stages": {
+        "0-aim": 5,
+        "0-fire": 7,
+        "0-look": 1,
+        "0-rest": 4,
+        "0-sprint": 6,
+        "0-stop": 3,
+        "0-urgent-sprint": 1,
+        "0-walk": 5,
+        "1-aim": 5,
+        "1-fire": 7,
+        "1-look": 1,
+        "1-rest": 4,
+        "1-sprint": 5,
+        "1-stop": 3,
+        "1-urgent-sprint": 1,
+        "1-walk": 5,
+        "arc-cell": 13,
+        "arc-cell-return": 23,
+        "arc-selection": 4,
+        "b-from-d9": 9,
+        "b-return": 34,
+        "d9-empty": 26,
+        "d9-empty-return": 11,
+        "d9-partial": 9,
+        "d9-partial-return": 21,
+        "d9-selection": 4,
+        "final-ready": 5,
+        "rapid-selection": 9,
+        "selection-0": 4,
+        "selection-1": 4
+      },
+      "triangles_max": 73365,
+      "triangles_min": 49494,
+      "warm_rig_zero_p50_ms": 0.059,
+      "warm_rig_zero_p95_ms": 0.112,
+      "run": 1,
+      "revision_label": "baseline"
+    },
+    {
+      "camera_y_range_m": 0.0,
+      "captures": [],
+      "draw_calls_max": 371,
+      "draw_calls_min": 306,
+      "end_frame": 247,
+      "events": [
+        {
+          "ammo": 10,
+          "cells": 2,
+          "energy": 100.0,
+          "event": 32,
+          "frame": 48,
+          "stage": "selection-1",
+          "weapon": 1
+        },
+        {
+          "ammo": 10,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 32,
+          "frame": 85,
+          "stage": "d9-selection",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 95,
+          "stage": "d9-partial",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 109,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 115,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 126,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 138,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 4,
+          "frame": 142,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 8,
+          "frame": 144,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 149,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 32,
+          "frame": 153,
+          "stage": "arc-selection",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 161,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 165,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 177,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 182,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 185,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 190,
+          "stage": "rapid-selection",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 194,
+          "stage": "rapid-selection",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 32,
+          "frame": 198,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 205,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 211,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 223,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 228,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 231,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 233,
+          "stage": "b-return",
+          "weapon": 0
+        }
+      ],
+      "film_start_frame": 0,
+      "frame_p50_ms": 95.316,
+      "frame_p95_ms": 118.956,
+      "gestures": {
+        "0": 120,
+        "1": 6,
+        "10": 5,
+        "11": 5,
+        "12": 4,
+        "13": 6,
+        "14": 8,
+        "15": 8,
+        "16": 8,
+        "17": 4,
+        "18": 6,
+        "19": 6,
+        "2": 8,
+        "3": 9,
+        "4": 10,
+        "5": 7,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 11
+      },
+      "godot": "4.7.2-stable (official)",
+      "health": 100.0,
+      "max_actual_speed": 6.50000047683716,
+      "max_contact_m": 4.91865307594708e-07,
+      "max_muzzle_error_m": 4.92415153985348e-07,
+      "mode": "perf",
+      "motions": {
+        "0": 98,
+        "1": 57,
+        "2": 8,
+        "4": 14,
+        "5": 60
+      },
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "samples": 237,
+      "stage_motion": {
+        "0-aim": {
+          "end_wrist": "(0.066661, -0.17322, -0.374905)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.094876, -0.182539, -0.367843)"
+        },
+        "0-fire": {
+          "end_wrist": "(0.206597, -0.218199, -0.339921)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066616, -0.173205, -0.356583)"
+        },
+        "0-look": {
+          "end_wrist": "(0.230234, -0.249684, -0.314923)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.230234, -0.249684, -0.314923)"
+        },
+        "0-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "0-sprint": {
+          "end_wrist": "(0.231589, -0.248455, -0.314931)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.226553, -0.24732, -0.319967)"
+        },
+        "0-stop": {
+          "end_wrist": "(0.206651, -0.219458, -0.339866)",
+          "grounded_frames": 3,
+          "max_speed": 3.99370884895325,
+          "start_wrist": "(0.207563, -0.224327, -0.338901)"
+        },
+        "0-urgent-sprint": {
+          "end_wrist": "(0.211372, -0.226152, -0.319873)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.211372, -0.226152, -0.319873)"
+        },
+        "0-walk": {
+          "end_wrist": "(0.2066, -0.21518, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.217995, -0.33992)"
+        },
+        "1-aim": {
+          "end_wrist": "(0.069556, -0.174207, -0.37416)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.139111, -0.197895, -0.356275)"
+        },
+        "1-fire": {
+          "end_wrist": "(0.20593, -0.217985, -0.340088)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.067762, -0.173596, -0.372954)"
+        },
+        "1-look": {
+          "end_wrist": "(0.229765, -0.251351, -0.315189)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.229765, -0.251351, -0.315189)"
+        },
+        "1-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "1-sprint": {
+          "end_wrist": "(0.231002, -0.250418, -0.315518)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.220367, -0.237759, -0.326153)"
+        },
+        "1-stop": {
+          "end_wrist": "(0.207833, -0.221299, -0.338604)",
+          "grounded_frames": 3,
+          "max_speed": 3.99370884895325,
+          "start_wrist": "(0.211944, -0.228247, -0.334215)"
+        },
+        "1-urgent-sprint": {
+          "end_wrist": "(0.218493, -0.235953, -0.318889)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.218493, -0.235953, -0.318889)"
+        },
+        "1-walk": {
+          "end_wrist": "(0.2066, -0.216304, -0.33992)",
+          "grounded_frames": 6,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.218121, -0.33992)"
+        },
+        "arc-cell": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 11,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191044, -0.222089, -0.334735)"
+        },
+        "arc-cell-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "arc-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-from-d9": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 37,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "d9-empty": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 24,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195933, -0.202962, -0.332301)"
+        },
+        "d9-empty-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-partial": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195933, -0.202962, -0.332301)"
+        },
+        "d9-partial-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "final-ready": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "rapid-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-0": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-1": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        }
+      },
+      "stages": {
+        "0-aim": 5,
+        "0-fire": 8,
+        "0-look": 1,
+        "0-rest": 4,
+        "0-sprint": 5,
+        "0-stop": 3,
+        "0-urgent-sprint": 1,
+        "0-walk": 5,
+        "1-aim": 5,
+        "1-fire": 8,
+        "1-look": 1,
+        "1-rest": 4,
+        "1-sprint": 5,
+        "1-stop": 3,
+        "1-urgent-sprint": 1,
+        "1-walk": 6,
+        "arc-cell": 11,
+        "arc-cell-return": 22,
+        "arc-selection": 4,
+        "b-from-d9": 9,
+        "b-return": 37,
+        "d9-empty": 24,
+        "d9-empty-return": 9,
+        "d9-partial": 9,
+        "d9-partial-return": 22,
+        "d9-selection": 4,
+        "final-ready": 5,
+        "rapid-selection": 8,
+        "selection-0": 4,
+        "selection-1": 4
+      },
+      "triangles_max": 73365,
+      "triangles_min": 49494,
+      "warm_rig_zero_p50_ms": 0.06,
+      "warm_rig_zero_p95_ms": 0.118,
+      "run": 1,
+      "revision_label": "candidate"
+    },
+    {
+      "camera_y_range_m": 0.015974760055542,
+      "captures": [],
+      "draw_calls_max": 371,
+      "draw_calls_min": 306,
+      "end_frame": 248,
+      "events": [
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 91,
+          "stage": "d9-partial",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 105,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 111,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 123,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 136,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 4,
+          "frame": 141,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 8,
+          "frame": 143,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 149,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 161,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 166,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 178,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 183,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 187,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 32,
+          "frame": 201,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 209,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 214,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 224,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 229,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 233,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 235,
+          "stage": "b-return",
+          "weapon": 0
+        }
+      ],
+      "film_start_frame": 0,
+      "frame_p50_ms": 95.611,
+      "frame_p95_ms": 115.295,
+      "gestures": {
+        "0": 116,
+        "1": 6,
+        "10": 6,
+        "11": 6,
+        "12": 4,
+        "13": 6,
+        "14": 7,
+        "15": 7,
+        "16": 8,
+        "17": 4,
+        "18": 6,
+        "19": 8,
+        "2": 9,
+        "3": 9,
+        "4": 10,
+        "5": 8,
+        "6": 3,
+        "7": 2,
+        "8": 2,
+        "9": 12
+      },
+      "godot": "4.7.2-stable (official)",
+      "health": 100.0,
+      "max_actual_speed": 6.50000095367432,
+      "max_contact_m": 4.91865307594708e-07,
+      "max_muzzle_error_m": 5.02458647133608e-07,
+      "mode": "perf",
+      "motions": {
+        "0": 111,
+        "1": 61,
+        "2": 3,
+        "4": 2,
+        "5": 62
+      },
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "samples": 239,
+      "stage_motion": {
+        "0-aim": {
+          "end_wrist": "(0.066858, -0.173283, -0.374855)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.101197, -0.184399, -0.366216)"
+        },
+        "0-fire": {
+          "end_wrist": "(0.206588, -0.218196, -0.339923)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.06665, -0.173216, -0.363241)"
+        },
+        "0-look": {
+          "end_wrist": "(0.231597, -0.260652, -0.314923)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231597, -0.260652, -0.314923)"
+        },
+        "0-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "0-sprint": {
+          "end_wrist": "(0.231586, -0.253941, -0.314934)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.226718, -0.2542, -0.319802)"
+        },
+        "0-stop": {
+          "end_wrist": "(0.206897, -0.218616, -0.339623)",
+          "grounded_frames": 3,
+          "max_speed": 3.99370980262756,
+          "start_wrist": "(0.212765, -0.226831, -0.333755)"
+        },
+        "0-urgent-sprint": {
+          "end_wrist": "(0.231599, -0.259136, -0.299921)",
+          "grounded_frames": 1,
+          "max_speed": 6.50000095367432,
+          "start_wrist": "(0.231599, -0.259136, -0.299921)"
+        },
+        "0-walk": {
+          "end_wrist": "(0.2066, -0.22193, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.212498, -0.33992)"
+        },
+        "1-aim": {
+          "end_wrist": "(0.066858, -0.173284, -0.374855)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.101271, -0.184503, -0.366142)"
+        },
+        "1-fire": {
+          "end_wrist": "(0.206592, -0.218198, -0.339922)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.06668, -0.173226, -0.366566)"
+        },
+        "1-look": {
+          "end_wrist": "(0.231593, -0.249962, -0.314927)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231593, -0.249962, -0.314927)"
+        },
+        "1-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "1-sprint": {
+          "end_wrist": "(0.231571, -0.24517, -0.314949)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.225435, -0.248593, -0.321085)"
+        },
+        "1-stop": {
+          "end_wrist": "(0.207198, -0.219037, -0.339322)",
+          "grounded_frames": 3,
+          "max_speed": 3.99370884895325,
+          "start_wrist": "(0.212764, -0.22683, -0.333756)"
+        },
+        "1-urgent-sprint": {
+          "end_wrist": "(0.231598, -0.257071, -0.306589)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231598, -0.257071, -0.306589)"
+        },
+        "1-walk": {
+          "end_wrist": "(0.2066, -0.213829, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.220332, -0.33992)"
+        },
+        "arc-cell": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 12,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191044, -0.222089, -0.334735)"
+        },
+        "arc-cell-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 23,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "arc-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-from-d9": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 35,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "d9-empty": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 27,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191844, -0.19712, -0.32938)"
+        },
+        "d9-empty-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 10,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-partial": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191844, -0.19712, -0.32938)"
+        },
+        "d9-partial-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 3,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "final-ready": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "rapid-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-0": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-1": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        }
+      },
+      "stages": {
+        "0-aim": 4,
+        "0-fire": 8,
+        "0-look": 1,
+        "0-rest": 4,
+        "0-sprint": 5,
+        "0-stop": 3,
+        "0-urgent-sprint": 1,
+        "0-walk": 5,
+        "1-aim": 5,
+        "1-fire": 8,
+        "1-look": 1,
+        "1-rest": 4,
+        "1-sprint": 5,
+        "1-stop": 3,
+        "1-urgent-sprint": 1,
+        "1-walk": 5,
+        "arc-cell": 12,
+        "arc-cell-return": 23,
+        "arc-selection": 4,
+        "b-from-d9": 9,
+        "b-return": 35,
+        "d9-empty": 27,
+        "d9-empty-return": 10,
+        "d9-partial": 9,
+        "d9-partial-return": 22,
+        "d9-selection": 3,
+        "final-ready": 5,
+        "rapid-selection": 9,
+        "selection-0": 4,
+        "selection-1": 4
+      },
+      "triangles_max": 73365,
+      "triangles_min": 49494,
+      "warm_rig_zero_p50_ms": 0.062,
+      "warm_rig_zero_p95_ms": 0.1,
+      "run": 2,
+      "revision_label": "baseline"
+    },
+    {
+      "camera_y_range_m": 0.0,
+      "captures": [],
+      "draw_calls_max": 371,
+      "draw_calls_min": 306,
+      "end_frame": 245,
+      "events": [
+        {
+          "ammo": 10,
+          "cells": 2,
+          "energy": 100.0,
+          "event": 32,
+          "frame": 46,
+          "stage": "selection-1",
+          "weapon": 1
+        },
+        {
+          "ammo": 10,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 32,
+          "frame": 81,
+          "stage": "d9-selection",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 92,
+          "stage": "d9-partial",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 105,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 112,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 121,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 136,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 4,
+          "frame": 140,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 8,
+          "frame": 142,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 148,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 32,
+          "frame": 152,
+          "stage": "arc-selection",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 160,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 165,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 177,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 181,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 185,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 190,
+          "stage": "rapid-selection",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 194,
+          "stage": "rapid-selection",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 32,
+          "frame": 198,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 206,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 211,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 223,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 227,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 231,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 232,
+          "stage": "b-return",
+          "weapon": 0
+        }
+      ],
+      "film_start_frame": 0,
+      "frame_p50_ms": 94.587,
+      "frame_p95_ms": 114.834,
+      "gestures": {
+        "0": 113,
+        "1": 6,
+        "10": 6,
+        "11": 5,
+        "12": 4,
+        "13": 6,
+        "14": 8,
+        "15": 8,
+        "16": 8,
+        "17": 4,
+        "18": 4,
+        "19": 8,
+        "2": 8,
+        "3": 9,
+        "4": 10,
+        "5": 9,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 13
+      },
+      "godot": "4.7.2-stable (official)",
+      "health": 100.0,
+      "max_actual_speed": 6.50000095367432,
+      "max_contact_m": 4.91865307594708e-07,
+      "max_muzzle_error_m": 4.93541222112981e-07,
+      "mode": "perf",
+      "motions": {
+        "0": 94,
+        "1": 61,
+        "2": 7,
+        "4": 12,
+        "5": 61
+      },
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "samples": 235,
+      "stage_motion": {
+        "0-aim": {
+          "end_wrist": "(0.06668, -0.173227, -0.3749)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.094883, -0.182621, -0.367835)"
+        },
+        "0-fire": {
+          "end_wrist": "(0.206596, -0.218199, -0.339921)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066616, -0.173205, -0.359916)"
+        },
+        "0-look": {
+          "end_wrist": "(0.230553, -0.250321, -0.314923)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.230553, -0.250321, -0.314923)"
+        },
+        "0-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "0-sprint": {
+          "end_wrist": "(0.231586, -0.248394, -0.314934)",
+          "grounded_frames": 4,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.227734, -0.250824, -0.318786)"
+        },
+        "0-stop": {
+          "end_wrist": "(0.206689, -0.219861, -0.339828)",
+          "grounded_frames": 3,
+          "max_speed": 3.99370884895325,
+          "start_wrist": "(0.207875, -0.224851, -0.33859)"
+        },
+        "0-urgent-sprint": {
+          "end_wrist": "(0.212914, -0.228518, -0.314998)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.212914, -0.228518, -0.314998)"
+        },
+        "0-walk": {
+          "end_wrist": "(0.2066, -0.216297, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.217827, -0.33992)"
+        },
+        "1-aim": {
+          "end_wrist": "(0.069184, -0.17408, -0.374258)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.129996, -0.194786, -0.358675)"
+        },
+        "1-fire": {
+          "end_wrist": "(0.2056, -0.217879, -0.34017)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.067761, -0.173595, -0.369622)"
+        },
+        "1-look": {
+          "end_wrist": "(0.230024, -0.251174, -0.315126)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.230024, -0.251174, -0.315126)"
+        },
+        "1-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "1-sprint": {
+          "end_wrist": "(0.231077, -0.251136, -0.315443)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.220367, -0.236147, -0.326153)"
+        },
+        "1-stop": {
+          "end_wrist": "(0.207691, -0.221242, -0.338765)",
+          "grounded_frames": 3,
+          "max_speed": 3.99370884895325,
+          "start_wrist": "(0.210739, -0.226593, -0.335539)"
+        },
+        "1-urgent-sprint": {
+          "end_wrist": "(0.215811, -0.232125, -0.328503)",
+          "grounded_frames": 1,
+          "max_speed": 6.50000095367432,
+          "start_wrist": "(0.215811, -0.232125, -0.328503)"
+        },
+        "1-walk": {
+          "end_wrist": "(0.2066, -0.215252, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.218121, -0.33992)"
+        },
+        "arc-cell": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 12,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191044, -0.222089, -0.334735)"
+        },
+        "arc-cell-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "arc-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-from-d9": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 35,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "d9-empty": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 25,
+          "max_speed": 0.0,
+          "start_wrist": "(0.187338, -0.190683, -0.326161)"
+        },
+        "d9-empty-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 11,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-partial": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195933, -0.202962, -0.332301)"
+        },
+        "d9-partial-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "final-ready": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "rapid-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-0": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-1": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        }
+      },
+      "stages": {
+        "0-aim": 5,
+        "0-fire": 7,
+        "0-look": 1,
+        "0-rest": 4,
+        "0-sprint": 4,
+        "0-stop": 3,
+        "0-urgent-sprint": 1,
+        "0-walk": 5,
+        "1-aim": 5,
+        "1-fire": 7,
+        "1-look": 1,
+        "1-rest": 4,
+        "1-sprint": 5,
+        "1-stop": 3,
+        "1-urgent-sprint": 1,
+        "1-walk": 5,
+        "arc-cell": 12,
+        "arc-cell-return": 22,
+        "arc-selection": 4,
+        "b-from-d9": 9,
+        "b-return": 35,
+        "d9-empty": 25,
+        "d9-empty-return": 11,
+        "d9-partial": 9,
+        "d9-partial-return": 22,
+        "d9-selection": 4,
+        "final-ready": 5,
+        "rapid-selection": 8,
+        "selection-0": 4,
+        "selection-1": 4
+      },
+      "triangles_max": 73365,
+      "triangles_min": 49494,
+      "warm_rig_zero_p50_ms": 0.063,
+      "warm_rig_zero_p95_ms": 0.12,
+      "run": 2,
+      "revision_label": "candidate"
+    },
+    {
+      "camera_y_range_m": 0.0157452821731567,
+      "captures": [],
+      "draw_calls_max": 371,
+      "draw_calls_min": 306,
+      "end_frame": 254,
+      "events": [
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 93,
+          "stage": "d9-partial",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 107,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 113,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 123,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 138,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 4,
+          "frame": 143,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 8,
+          "frame": 145,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 152,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 164,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 170,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 182,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 187,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 190,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 32,
+          "frame": 204,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 211,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 217,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 229,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 234,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 239,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 241,
+          "stage": "b-return",
+          "weapon": 0
+        }
+      ],
+      "film_start_frame": 0,
+      "frame_p50_ms": 92.183,
+      "frame_p95_ms": 107.011,
+      "gestures": {
+        "0": 116,
+        "1": 6,
+        "10": 6,
+        "11": 4,
+        "12": 5,
+        "13": 7,
+        "14": 8,
+        "15": 8,
+        "16": 8,
+        "17": 4,
+        "18": 6,
+        "19": 8,
+        "2": 9,
+        "3": 9,
+        "4": 12,
+        "5": 8,
+        "6": 2,
+        "7": 3,
+        "8": 2,
+        "9": 13
+      },
+      "godot": "4.7.2-stable (official)",
+      "health": 100.0,
+      "max_actual_speed": 6.50000095367432,
+      "max_contact_m": 4.92415153985348e-07,
+      "max_muzzle_error_m": 4.93541222112981e-07,
+      "mode": "perf",
+      "motions": {
+        "0": 110,
+        "1": 64,
+        "2": 3,
+        "4": 3,
+        "5": 64
+      },
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "samples": 244,
+      "stage_motion": {
+        "0-aim": {
+          "end_wrist": "(0.066858, -0.173284, -0.374855)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.088342, -0.180288, -0.369415)"
+        },
+        "0-fire": {
+          "end_wrist": "(0.206575, -0.218192, -0.339926)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066664, -0.173221, -0.359904)"
+        },
+        "0-look": {
+          "end_wrist": "(0.231596, -0.258873, -0.314924)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231596, -0.258873, -0.314924)"
+        },
+        "0-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "0-sprint": {
+          "end_wrist": "(0.231582, -0.250692, -0.314938)",
+          "grounded_frames": 6,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.225435, -0.252398, -0.321085)"
+        },
+        "0-stop": {
+          "end_wrist": "(0.207198, -0.219037, -0.339322)",
+          "grounded_frames": 3,
+          "max_speed": 4.41037750244141,
+          "start_wrist": "(0.214385, -0.229098, -0.330469)"
+        },
+        "0-urgent-sprint": {
+          "end_wrist": "(0.231599, -0.26112, -0.296588)",
+          "grounded_frames": 1,
+          "max_speed": 6.50000095367432,
+          "start_wrist": "(0.231599, -0.26112, -0.296588)"
+        },
+        "0-walk": {
+          "end_wrist": "(0.2066, -0.220244, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.21317, -0.33992)"
+        },
+        "1-aim": {
+          "end_wrist": "(0.066763, -0.173254, -0.374878)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.101498, -0.184822, -0.365914)"
+        },
+        "1-fire": {
+          "end_wrist": "(0.20659, -0.218197, -0.339922)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.06664, -0.173213, -0.36991)"
+        },
+        "1-look": {
+          "end_wrist": "(0.231591, -0.245462, -0.314929)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231591, -0.245462, -0.314929)"
+        },
+        "1-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "1-sprint": {
+          "end_wrist": "(0.231564, -0.247821, -0.314956)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.223815, -0.239442, -0.322705)"
+        },
+        "1-stop": {
+          "end_wrist": "(0.20812, -0.220328, -0.3384)",
+          "grounded_frames": 2,
+          "max_speed": 3.99370884895325,
+          "start_wrist": "(0.212764, -0.22683, -0.333756)"
+        },
+        "1-urgent-sprint": {
+          "end_wrist": "(0.231598, -0.251586, -0.309922)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231598, -0.251586, -0.309922)"
+        },
+        "1-walk": {
+          "end_wrist": "(0.2066, -0.210522, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.223661, -0.33992)"
+        },
+        "arc-cell": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 12,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191044, -0.222089, -0.334735)"
+        },
+        "arc-cell-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 23,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "arc-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-from-d9": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 38,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "d9-empty": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 27,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191844, -0.19712, -0.32938)"
+        },
+        "d9-empty-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 12,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-partial": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195933, -0.202962, -0.332301)"
+        },
+        "d9-partial-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "final-ready": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "rapid-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-0": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-1": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        }
+      },
+      "stages": {
+        "0-aim": 4,
+        "0-fire": 7,
+        "0-look": 1,
+        "0-rest": 4,
+        "0-sprint": 6,
+        "0-stop": 3,
+        "0-urgent-sprint": 1,
+        "0-walk": 5,
+        "1-aim": 5,
+        "1-fire": 8,
+        "1-look": 1,
+        "1-rest": 4,
+        "1-sprint": 5,
+        "1-stop": 2,
+        "1-urgent-sprint": 1,
+        "1-walk": 5,
+        "arc-cell": 12,
+        "arc-cell-return": 23,
+        "arc-selection": 4,
+        "b-from-d9": 9,
+        "b-return": 38,
+        "d9-empty": 27,
+        "d9-empty-return": 12,
+        "d9-partial": 9,
+        "d9-partial-return": 22,
+        "d9-selection": 4,
+        "final-ready": 5,
+        "rapid-selection": 9,
+        "selection-0": 4,
+        "selection-1": 4
+      },
+      "triangles_max": 73365,
+      "triangles_min": 49494,
+      "warm_rig_zero_p50_ms": 0.058,
+      "warm_rig_zero_p95_ms": 0.104,
+      "run": 3,
+      "revision_label": "baseline"
+    },
+    {
+      "camera_y_range_m": 0.0,
+      "captures": [],
+      "draw_calls_max": 371,
+      "draw_calls_min": 305,
+      "end_frame": 249,
+      "events": [
+        {
+          "ammo": 10,
+          "cells": 2,
+          "energy": 100.0,
+          "event": 32,
+          "frame": 48,
+          "stage": "selection-1",
+          "weapon": 1
+        },
+        {
+          "ammo": 10,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 32,
+          "frame": 82,
+          "stage": "d9-selection",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 93,
+          "stage": "d9-partial",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 107,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 113,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 124,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 138,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 4,
+          "frame": 143,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 8,
+          "frame": 144,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 151,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 32,
+          "frame": 155,
+          "stage": "arc-selection",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 163,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 168,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 180,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 185,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 189,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 194,
+          "stage": "rapid-selection",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 198,
+          "stage": "rapid-selection",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 32,
+          "frame": 202,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 209,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 215,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 225,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 230,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 234,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 235,
+          "stage": "b-return",
+          "weapon": 0
+        }
+      ],
+      "film_start_frame": 0,
+      "frame_p50_ms": 94.762,
+      "frame_p95_ms": 112.99,
+      "gestures": {
+        "0": 116,
+        "1": 6,
+        "10": 6,
+        "11": 4,
+        "12": 4,
+        "13": 7,
+        "14": 7,
+        "15": 7,
+        "16": 8,
+        "17": 4,
+        "18": 6,
+        "19": 8,
+        "2": 9,
+        "3": 9,
+        "4": 11,
+        "5": 8,
+        "6": 3,
+        "7": 2,
+        "8": 1,
+        "9": 13
+      },
+      "godot": "4.7.2-stable (official)",
+      "health": 100.0,
+      "max_actual_speed": 6.50000095367432,
+      "max_contact_m": 4.93541222112981e-07,
+      "max_muzzle_error_m": 4.92415153985348e-07,
+      "mode": "perf",
+      "motions": {
+        "0": 96,
+        "1": 62,
+        "2": 7,
+        "4": 13,
+        "5": 61
+      },
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "samples": 239,
+      "stage_motion": {
+        "0-aim": {
+          "end_wrist": "(0.066661, -0.17322, -0.374905)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.103514, -0.185267, -0.365683)"
+        },
+        "0-fire": {
+          "end_wrist": "(0.206593, -0.218198, -0.339922)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066609, -0.173203, -0.363251)"
+        },
+        "0-look": {
+          "end_wrist": "(0.230555, -0.251493, -0.314921)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.230555, -0.251493, -0.314921)"
+        },
+        "0-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "0-sprint": {
+          "end_wrist": "(0.231595, -0.248252, -0.314925)",
+          "grounded_frames": 6,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.22501, -0.243126, -0.32151)"
+        },
+        "0-stop": {
+          "end_wrist": "(0.20664, -0.218978, -0.339878)",
+          "grounded_frames": 3,
+          "max_speed": 4.41037559509277,
+          "start_wrist": "(0.207875, -0.225176, -0.33859)"
+        },
+        "0-urgent-sprint": {
+          "end_wrist": "(0.211437, -0.228411, -0.319873)",
+          "grounded_frames": 1,
+          "max_speed": 6.50000095367432,
+          "start_wrist": "(0.211437, -0.228411, -0.319873)"
+        },
+        "0-walk": {
+          "end_wrist": "(0.2066, -0.214216, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.217995, -0.33992)"
+        },
+        "1-aim": {
+          "end_wrist": "(0.071638, -0.174921, -0.373624)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.130055, -0.194876, -0.358602)"
+        },
+        "1-fire": {
+          "end_wrist": "(0.205606, -0.217881, -0.340168)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.068581, -0.173877, -0.372744)"
+        },
+        "1-look": {
+          "end_wrist": "(0.229542, -0.251159, -0.315189)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.229542, -0.251159, -0.315189)"
+        },
+        "1-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "1-sprint": {
+          "end_wrist": "(0.231077, -0.25074, -0.315443)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.221769, -0.239169, -0.324751)"
+        },
+        "1-stop": {
+          "end_wrist": "(0.207821, -0.22144, -0.338604)",
+          "grounded_frames": 3,
+          "max_speed": 4.41037750244141,
+          "start_wrist": "(0.211893, -0.227665, -0.334215)"
+        },
+        "1-urgent-sprint": {
+          "end_wrist": "(0.216909, -0.233374, -0.323807)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.216909, -0.233374, -0.323807)"
+        },
+        "1-walk": {
+          "end_wrist": "(0.2066, -0.215581, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.218055, -0.33992)"
+        },
+        "arc-cell": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 12,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195283, -0.221029, -0.336148)"
+        },
+        "arc-cell-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 23,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "arc-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-from-d9": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 36,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "d9-empty": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 26,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191844, -0.19712, -0.32938)"
+        },
+        "d9-empty-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 11,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-partial": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 10,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195933, -0.202962, -0.332301)"
+        },
+        "d9-partial-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "final-ready": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "rapid-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-0": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-1": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        }
+      },
+      "stages": {
+        "0-aim": 5,
+        "0-fire": 7,
+        "0-look": 1,
+        "0-rest": 4,
+        "0-sprint": 6,
+        "0-stop": 3,
+        "0-urgent-sprint": 1,
+        "0-walk": 5,
+        "1-aim": 4,
+        "1-fire": 7,
+        "1-look": 1,
+        "1-rest": 4,
+        "1-sprint": 5,
+        "1-stop": 3,
+        "1-urgent-sprint": 1,
+        "1-walk": 5,
+        "arc-cell": 12,
+        "arc-cell-return": 23,
+        "arc-selection": 4,
+        "b-from-d9": 9,
+        "b-return": 36,
+        "d9-empty": 26,
+        "d9-empty-return": 11,
+        "d9-partial": 10,
+        "d9-partial-return": 22,
+        "d9-selection": 4,
+        "final-ready": 4,
+        "rapid-selection": 8,
+        "selection-0": 4,
+        "selection-1": 4
+      },
+      "triangles_max": 73365,
+      "triangles_min": 49494,
+      "warm_rig_zero_p50_ms": 0.059,
+      "warm_rig_zero_p95_ms": 0.116,
+      "run": 3,
+      "revision_label": "candidate"
+    },
+    {
+      "camera_y_range_m": 0.0158911943435669,
+      "captures": [],
+      "draw_calls_max": 371,
+      "draw_calls_min": 306,
+      "end_frame": 246,
+      "events": [
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 89,
+          "stage": "d9-partial",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 102,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 109,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 120,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 133,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 4,
+          "frame": 138,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 8,
+          "frame": 140,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 147,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 157,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 163,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 174,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 179,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 183,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 32,
+          "frame": 196,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 204,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 210,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 222,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 227,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 231,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 233,
+          "stage": "b-return",
+          "weapon": 0
+        }
+      ],
+      "film_start_frame": 0,
+      "frame_p50_ms": 94.791,
+      "frame_p95_ms": 118.992,
+      "gestures": {
+        "0": 112,
+        "1": 6,
+        "10": 6,
+        "11": 4,
+        "12": 5,
+        "13": 7,
+        "14": 7,
+        "15": 8,
+        "16": 8,
+        "17": 5,
+        "18": 5,
+        "19": 8,
+        "2": 8,
+        "3": 8,
+        "4": 10,
+        "5": 8,
+        "6": 2,
+        "7": 3,
+        "8": 2,
+        "9": 14
+      },
+      "godot": "4.7.2-stable (official)",
+      "health": 100.0,
+      "max_actual_speed": 6.50000095367432,
+      "max_contact_m": 4.92415153985348e-07,
+      "max_muzzle_error_m": 5.02458647133608e-07,
+      "mode": "perf",
+      "motions": {
+        "0": 105,
+        "1": 61,
+        "2": 3,
+        "4": 4,
+        "5": 63
+      },
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "samples": 236,
+      "stage_motion": {
+        "0-aim": {
+          "end_wrist": "(0.066763, -0.173254, -0.374878)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.101498, -0.184822, -0.365914)"
+        },
+        "0-fire": {
+          "end_wrist": "(0.206584, -0.218195, -0.339924)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066632, -0.173211, -0.363245)"
+        },
+        "0-look": {
+          "end_wrist": "(0.231597, -0.261058, -0.314923)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231597, -0.261058, -0.314923)"
+        },
+        "0-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 3,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "0-sprint": {
+          "end_wrist": "(0.231582, -0.252464, -0.314938)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.223815, -0.250192, -0.322705)"
+        },
+        "0-stop": {
+          "end_wrist": "(0.20812, -0.220328, -0.3384)",
+          "grounded_frames": 2,
+          "max_speed": 3.99370980262756,
+          "start_wrist": "(0.212765, -0.226831, -0.333755)"
+        },
+        "0-urgent-sprint": {
+          "end_wrist": "(0.231599, -0.256808, -0.303254)",
+          "grounded_frames": 1,
+          "max_speed": 6.50000095367432,
+          "start_wrist": "(0.231599, -0.256808, -0.303254)"
+        },
+        "0-walk": {
+          "end_wrist": "(0.2066, -0.22193, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.212498, -0.33992)"
+        },
+        "1-aim": {
+          "end_wrist": "(0.067013, -0.173337, -0.374814)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.094174, -0.182317, -0.36785)"
+        },
+        "1-fire": {
+          "end_wrist": "(0.206575, -0.218192, -0.339926)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066702, -0.173234, -0.369894)"
+        },
+        "1-look": {
+          "end_wrist": "(0.231594, -0.253383, -0.314926)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231594, -0.253383, -0.314926)"
+        },
+        "1-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "1-sprint": {
+          "end_wrist": "(0.231577, -0.246108, -0.314943)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.225435, -0.250207, -0.321085)"
+        },
+        "1-stop": {
+          "end_wrist": "(0.207804, -0.219885, -0.338716)",
+          "grounded_frames": 2,
+          "max_speed": 3.57704377174377,
+          "start_wrist": "(0.211482, -0.225034, -0.335038)"
+        },
+        "1-urgent-sprint": {
+          "end_wrist": "(0.231599, -0.26043, -0.309921)",
+          "grounded_frames": 1,
+          "max_speed": 6.50000095367432,
+          "start_wrist": "(0.231599, -0.26043, -0.309921)"
+        },
+        "1-walk": {
+          "end_wrist": "(0.2066, -0.215661, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.217412, -0.33992)"
+        },
+        "arc-cell": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 11,
+          "max_speed": 0.0,
+          "start_wrist": "(0.186435, -0.223241, -0.333198)"
+        },
+        "arc-cell-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "arc-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-from-d9": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 10,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 37,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "d9-empty": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 25,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195933, -0.202962, -0.332301)"
+        },
+        "d9-empty-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 11,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-partial": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191844, -0.19712, -0.32938)"
+        },
+        "d9-partial-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "final-ready": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "rapid-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-0": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-1": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        }
+      },
+      "stages": {
+        "0-aim": 5,
+        "0-fire": 8,
+        "0-look": 1,
+        "0-rest": 3,
+        "0-sprint": 5,
+        "0-stop": 2,
+        "0-urgent-sprint": 1,
+        "0-walk": 5,
+        "1-aim": 4,
+        "1-fire": 7,
+        "1-look": 1,
+        "1-rest": 4,
+        "1-sprint": 5,
+        "1-stop": 2,
+        "1-urgent-sprint": 1,
+        "1-walk": 5,
+        "arc-cell": 11,
+        "arc-cell-return": 22,
+        "arc-selection": 4,
+        "b-from-d9": 10,
+        "b-return": 37,
+        "d9-empty": 25,
+        "d9-empty-return": 11,
+        "d9-partial": 9,
+        "d9-partial-return": 22,
+        "d9-selection": 4,
+        "final-ready": 5,
+        "rapid-selection": 9,
+        "selection-0": 4,
+        "selection-1": 4
+      },
+      "triangles_max": 73365,
+      "triangles_min": 49494,
+      "warm_rig_zero_p50_ms": 0.062,
+      "warm_rig_zero_p95_ms": 0.108,
+      "run": 4,
+      "revision_label": "baseline"
+    },
+    {
+      "camera_y_range_m": 0.0,
+      "captures": [],
+      "draw_calls_max": 371,
+      "draw_calls_min": 306,
+      "end_frame": 250,
+      "events": [
+        {
+          "ammo": 10,
+          "cells": 2,
+          "energy": 100.0,
+          "event": 32,
+          "frame": 47,
+          "stage": "selection-1",
+          "weapon": 1
+        },
+        {
+          "ammo": 10,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 32,
+          "frame": 83,
+          "stage": "d9-selection",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 93,
+          "stage": "d9-partial",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 105,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 112,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 122,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 137,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 4,
+          "frame": 141,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 8,
+          "frame": 143,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 149,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 32,
+          "frame": 153,
+          "stage": "arc-selection",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 161,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 166,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 179,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 184,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 188,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 193,
+          "stage": "rapid-selection",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 197,
+          "stage": "rapid-selection",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 32,
+          "frame": 201,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 209,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 214,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 226,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 231,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 235,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 237,
+          "stage": "b-return",
+          "weapon": 0
+        }
+      ],
+      "film_start_frame": 0,
+      "frame_p50_ms": 93.337,
+      "frame_p95_ms": 113.264,
+      "gestures": {
+        "0": 116,
+        "1": 6,
+        "10": 7,
+        "11": 4,
+        "12": 4,
+        "13": 6,
+        "14": 8,
+        "15": 7,
+        "16": 10,
+        "17": 4,
+        "18": 6,
+        "19": 8,
+        "2": 8,
+        "3": 9,
+        "4": 11,
+        "5": 7,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 13
+      },
+      "godot": "4.7.2-stable (official)",
+      "health": 100.0,
+      "max_actual_speed": 6.50000095367432,
+      "max_contact_m": 4.93541222112981e-07,
+      "max_muzzle_error_m": 4.92415153985348e-07,
+      "mode": "perf",
+      "motions": {
+        "0": 94,
+        "1": 60,
+        "2": 8,
+        "4": 14,
+        "5": 64
+      },
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "samples": 240,
+      "stage_motion": {
+        "0-aim": {
+          "end_wrist": "(0.06668, -0.173228, -0.3749)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.094896, -0.183035, -0.367822)"
+        },
+        "0-fire": {
+          "end_wrist": "(0.206597, -0.218199, -0.339921)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066616, -0.173206, -0.359916)"
+        },
+        "0-look": {
+          "end_wrist": "(0.230554, -0.249783, -0.314922)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.230554, -0.249783, -0.314922)"
+        },
+        "0-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "0-sprint": {
+          "end_wrist": "(0.231589, -0.248648, -0.314931)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.22501, -0.243734, -0.32151)"
+        },
+        "0-stop": {
+          "end_wrist": "(0.206751, -0.221746, -0.339762)",
+          "grounded_frames": 2,
+          "max_speed": 3.99370884895325,
+          "start_wrist": "(0.207348, -0.224384, -0.33914)"
+        },
+        "0-urgent-sprint": {
+          "end_wrist": "(0.210304, -0.225662, -0.324388)",
+          "grounded_frames": 1,
+          "max_speed": 6.50000095367432,
+          "start_wrist": "(0.210304, -0.225662, -0.324388)"
+        },
+        "0-walk": {
+          "end_wrist": "(0.2066, -0.214675, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.217827, -0.33992)"
+        },
+        "1-aim": {
+          "end_wrist": "(0.071009, -0.174705, -0.373786)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.122136, -0.192152, -0.360637)"
+        },
+        "1-fire": {
+          "end_wrist": "(0.205934, -0.217986, -0.340087)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.068581, -0.173876, -0.36941)"
+        },
+        "1-look": {
+          "end_wrist": "(0.229653, -0.251988, -0.315078)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.229653, -0.251988, -0.315078)"
+        },
+        "1-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "1-sprint": {
+          "end_wrist": "(0.231293, -0.250435, -0.315227)",
+          "grounded_frames": 6,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.220367, -0.236453, -0.326153)"
+        },
+        "1-stop": {
+          "end_wrist": "(0.207827, -0.221393, -0.338598)",
+          "grounded_frames": 3,
+          "max_speed": 4.41037559509277,
+          "start_wrist": "(0.211918, -0.22866, -0.334189)"
+        },
+        "1-urgent-sprint": {
+          "end_wrist": "(0.216958, -0.234884, -0.323758)",
+          "grounded_frames": 1,
+          "max_speed": 6.50000095367432,
+          "start_wrist": "(0.216958, -0.234884, -0.323758)"
+        },
+        "1-walk": {
+          "end_wrist": "(0.2066, -0.2154, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.218055, -0.33992)"
+        },
+        "arc-cell": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 12,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191044, -0.222089, -0.334735)"
+        },
+        "arc-cell-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 24,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "arc-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-from-d9": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 37,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "d9-empty": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 26,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191844, -0.19712, -0.32938)"
+        },
+        "d9-empty-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 11,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-partial": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195933, -0.202962, -0.332301)"
+        },
+        "d9-partial-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 21,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "final-ready": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "rapid-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-0": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-1": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        }
+      },
+      "stages": {
+        "0-aim": 5,
+        "0-fire": 8,
+        "0-look": 1,
+        "0-rest": 4,
+        "0-sprint": 5,
+        "0-stop": 2,
+        "0-urgent-sprint": 1,
+        "0-walk": 5,
+        "1-aim": 4,
+        "1-fire": 8,
+        "1-look": 1,
+        "1-rest": 4,
+        "1-sprint": 6,
+        "1-stop": 3,
+        "1-urgent-sprint": 1,
+        "1-walk": 5,
+        "arc-cell": 12,
+        "arc-cell-return": 24,
+        "arc-selection": 4,
+        "b-from-d9": 9,
+        "b-return": 37,
+        "d9-empty": 26,
+        "d9-empty-return": 11,
+        "d9-partial": 8,
+        "d9-partial-return": 21,
+        "d9-selection": 4,
+        "final-ready": 5,
+        "rapid-selection": 8,
+        "selection-0": 4,
+        "selection-1": 4
+      },
+      "triangles_max": 73365,
+      "triangles_min": 49494,
+      "warm_rig_zero_p50_ms": 0.059,
+      "warm_rig_zero_p95_ms": 0.102,
+      "run": 4,
+      "revision_label": "candidate"
+    },
+    {
+      "camera_y_range_m": 0.0154149532318115,
+      "captures": [],
+      "draw_calls_max": 371,
+      "draw_calls_min": 306,
+      "end_frame": 249,
+      "events": [
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 90,
+          "stage": "d9-partial",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 104,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 111,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 121,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 135,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 4,
+          "frame": 140,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 8,
+          "frame": 143,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 150,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 162,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 168,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 179,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 184,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 188,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 32,
+          "frame": 201,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 209,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 214,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 225,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 230,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 235,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 237,
+          "stage": "b-return",
+          "weapon": 0
+        }
+      ],
+      "film_start_frame": 0,
+      "frame_p50_ms": 94.947,
+      "frame_p95_ms": 113.553,
+      "gestures": {
+        "0": 113,
+        "1": 6,
+        "10": 6,
+        "11": 5,
+        "12": 4,
+        "13": 7,
+        "14": 7,
+        "15": 7,
+        "16": 8,
+        "17": 4,
+        "18": 6,
+        "19": 9,
+        "2": 7,
+        "3": 10,
+        "4": 10,
+        "5": 8,
+        "6": 3,
+        "7": 2,
+        "8": 3,
+        "9": 14
+      },
+      "godot": "4.7.2-stable (official)",
+      "health": 100.0,
+      "max_actual_speed": 6.50000047683716,
+      "max_contact_m": 4.92415153985348e-07,
+      "max_muzzle_error_m": 4.93541222112981e-07,
+      "mode": "perf",
+      "motions": {
+        "0": 107,
+        "1": 63,
+        "2": 3,
+        "4": 3,
+        "5": 63
+      },
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "samples": 239,
+      "stage_motion": {
+        "0-aim": {
+          "end_wrist": "(0.066858, -0.173284, -0.374855)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.110383, -0.187474, -0.363835)"
+        },
+        "0-fire": {
+          "end_wrist": "(0.20658, -0.218194, -0.339925)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066664, -0.173221, -0.359904)"
+        },
+        "0-look": {
+          "end_wrist": "(0.231591, -0.254173, -0.314929)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231591, -0.254173, -0.314929)"
+        },
+        "0-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "0-sprint": {
+          "end_wrist": "(0.231571, -0.247436, -0.314949)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.225435, -0.252161, -0.321085)"
+        },
+        "0-stop": {
+          "end_wrist": "(0.207198, -0.219037, -0.339322)",
+          "grounded_frames": 3,
+          "max_speed": 4.41037750244141,
+          "start_wrist": "(0.214384, -0.229098, -0.332136)"
+        },
+        "0-urgent-sprint": {
+          "end_wrist": "(0.231598, -0.260733, -0.299922)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231598, -0.260733, -0.299922)"
+        },
+        "0-walk": {
+          "end_wrist": "(0.2066, -0.219357, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.21317, -0.33992)"
+        },
+        "1-aim": {
+          "end_wrist": "(0.066858, -0.173284, -0.374855)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.094012, -0.18209, -0.368012)"
+        },
+        "1-fire": {
+          "end_wrist": "(0.206584, -0.218195, -0.339924)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.06664, -0.173213, -0.37491)"
+        },
+        "1-look": {
+          "end_wrist": "(0.231591, -0.245624, -0.314929)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231591, -0.245624, -0.314929)"
+        },
+        "1-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "1-sprint": {
+          "end_wrist": "(0.231564, -0.252082, -0.314956)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.225435, -0.238964, -0.321085)"
+        },
+        "1-stop": {
+          "end_wrist": "(0.206975, -0.218725, -0.339545)",
+          "grounded_frames": 3,
+          "max_speed": 3.99370884895325,
+          "start_wrist": "(0.212764, -0.22683, -0.333756)"
+        },
+        "1-urgent-sprint": {
+          "end_wrist": "(0.231598, -0.24747, -0.309922)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.231598, -0.24747, -0.309922)"
+        },
+        "1-walk": {
+          "end_wrist": "(0.2066, -0.210582, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.225748, -0.33992)"
+        },
+        "arc-cell": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 12,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191044, -0.222089, -0.334735)"
+        },
+        "arc-cell-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "arc-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-from-d9": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 36,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "d9-empty": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 27,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191844, -0.19712, -0.32938)"
+        },
+        "d9-empty-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 12,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-partial": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.191844, -0.19712, -0.32938)"
+        },
+        "d9-partial-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 22,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "final-ready": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "rapid-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-0": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-1": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        }
+      },
+      "stages": {
+        "0-aim": 5,
+        "0-fire": 7,
+        "0-look": 1,
+        "0-rest": 4,
+        "0-sprint": 5,
+        "0-stop": 3,
+        "0-urgent-sprint": 1,
+        "0-walk": 5,
+        "1-aim": 4,
+        "1-fire": 7,
+        "1-look": 1,
+        "1-rest": 4,
+        "1-sprint": 5,
+        "1-stop": 3,
+        "1-urgent-sprint": 1,
+        "1-walk": 5,
+        "arc-cell": 12,
+        "arc-cell-return": 22,
+        "arc-selection": 4,
+        "b-from-d9": 9,
+        "b-return": 36,
+        "d9-empty": 27,
+        "d9-empty-return": 12,
+        "d9-partial": 8,
+        "d9-partial-return": 22,
+        "d9-selection": 4,
+        "final-ready": 5,
+        "rapid-selection": 9,
+        "selection-0": 4,
+        "selection-1": 4
+      },
+      "triangles_max": 73365,
+      "triangles_min": 49494,
+      "warm_rig_zero_p50_ms": 0.061,
+      "warm_rig_zero_p95_ms": 0.111,
+      "run": 5,
+      "revision_label": "baseline"
+    },
+    {
+      "camera_y_range_m": 0.0,
+      "captures": [],
+      "draw_calls_max": 371,
+      "draw_calls_min": 306,
+      "end_frame": 248,
+      "events": [
+        {
+          "ammo": 10,
+          "cells": 2,
+          "energy": 100.0,
+          "event": 32,
+          "frame": 46,
+          "stage": "selection-1",
+          "weapon": 1
+        },
+        {
+          "ammo": 10,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 32,
+          "frame": 82,
+          "stage": "d9-selection",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 93,
+          "stage": "d9-partial",
+          "weapon": 0
+        },
+        {
+          "ammo": 5,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 107,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 114,
+          "stage": "d9-partial-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 1,
+          "frame": 124,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 2,
+          "frame": 139,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 4,
+          "frame": 143,
+          "stage": "d9-empty",
+          "weapon": 0
+        },
+        {
+          "ammo": 0,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 8,
+          "frame": 145,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 16,
+          "frame": 151,
+          "stage": "d9-empty-return",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 76.0,
+          "event": 32,
+          "frame": 155,
+          "stage": "arc-selection",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 164,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 169,
+          "stage": "arc-cell",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 4,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 179,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 185,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 188,
+          "stage": "arc-cell-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 192,
+          "stage": "rapid-selection",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 196,
+          "stage": "rapid-selection",
+          "weapon": 0
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 32,
+          "frame": 200,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 64,
+          "frame": 207,
+          "stage": "b-from-d9",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 128,
+          "frame": 213,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 3,
+          "energy": 10.0,
+          "event": 256,
+          "frame": 225,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 512,
+          "frame": 230,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 1024,
+          "frame": 234,
+          "stage": "b-return",
+          "weapon": 1
+        },
+        {
+          "ammo": 12,
+          "cells": 2,
+          "energy": 70.0,
+          "event": 32,
+          "frame": 235,
+          "stage": "b-return",
+          "weapon": 0
+        }
+      ],
+      "film_start_frame": 0,
+      "frame_p50_ms": 93.6,
+      "frame_p95_ms": 112.051,
+      "gestures": {
+        "0": 112,
+        "1": 6,
+        "10": 6,
+        "11": 5,
+        "12": 4,
+        "13": 7,
+        "14": 6,
+        "15": 7,
+        "16": 9,
+        "17": 5,
+        "18": 6,
+        "19": 7,
+        "2": 9,
+        "3": 9,
+        "4": 10,
+        "5": 10,
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 13
+      },
+      "godot": "4.7.2-stable (official)",
+      "health": 100.0,
+      "max_actual_speed": 6.50000095367432,
+      "max_contact_m": 4.93541222112981e-07,
+      "max_muzzle_error_m": 4.92415153985348e-07,
+      "mode": "perf",
+      "motions": {
+        "0": 91,
+        "1": 63,
+        "2": 7,
+        "4": 14,
+        "5": 62
+      },
+      "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
+      "resolution": "1280x720",
+      "samples": 237,
+      "stage_motion": {
+        "0-aim": {
+          "end_wrist": "(0.066778, -0.17326, -0.374875)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.08826, -0.180489, -0.369497)"
+        },
+        "0-fire": {
+          "end_wrist": "(0.206593, -0.218198, -0.339922)",
+          "grounded_frames": 7,
+          "max_speed": 0.0,
+          "start_wrist": "(0.066636, -0.173212, -0.359911)"
+        },
+        "0-look": {
+          "end_wrist": "(0.230234, -0.24886, -0.314924)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.230234, -0.24886, -0.314924)"
+        },
+        "0-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "0-sprint": {
+          "end_wrist": "(0.231586, -0.249419, -0.314934)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.22501, -0.243126, -0.32151)"
+        },
+        "0-stop": {
+          "end_wrist": "(0.206667, -0.220333, -0.339849)",
+          "grounded_frames": 2,
+          "max_speed": 3.16037511825562,
+          "start_wrist": "(0.207033, -0.223293, -0.339462)"
+        },
+        "0-urgent-sprint": {
+          "end_wrist": "(0.210255, -0.223357, -0.324388)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.210255, -0.223357, -0.324388)"
+        },
+        "0-walk": {
+          "end_wrist": "(0.2066, -0.214216, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.217995, -0.33992)"
+        },
+        "1-aim": {
+          "end_wrist": "(0.069568, -0.174241, -0.374146)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.130334, -0.195552, -0.35831)"
+        },
+        "1-fire": {
+          "end_wrist": "(0.205931, -0.217985, -0.340087)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.067934, -0.173668, -0.369572)"
+        },
+        "1-look": {
+          "end_wrist": "(0.229799, -0.251644, -0.315155)",
+          "grounded_frames": 1,
+          "max_speed": 6.49999713897705,
+          "start_wrist": "(0.229799, -0.251644, -0.315155)"
+        },
+        "1-rest": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "1-sprint": {
+          "end_wrist": "(0.231077, -0.250315, -0.315443)",
+          "grounded_frames": 5,
+          "max_speed": 6.50000047683716,
+          "start_wrist": "(0.218765, -0.235101, -0.327755)"
+        },
+        "1-stop": {
+          "end_wrist": "(0.208442, -0.222928, -0.337954)",
+          "grounded_frames": 2,
+          "max_speed": 3.99370884895325,
+          "start_wrist": "(0.211284, -0.227693, -0.33492)"
+        },
+        "1-urgent-sprint": {
+          "end_wrist": "(0.217024, -0.234577, -0.323792)",
+          "grounded_frames": 1,
+          "max_speed": 6.50000095367432,
+          "start_wrist": "(0.217024, -0.234577, -0.323792)"
+        },
+        "1-walk": {
+          "end_wrist": "(0.2066, -0.216304, -0.33992)",
+          "grounded_frames": 6,
+          "max_speed": 3.99999594688416,
+          "start_wrist": "(0.2066, -0.218121, -0.33992)"
+        },
+        "arc-cell": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 12,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195283, -0.221029, -0.336148)"
+        },
+        "arc-cell-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 21,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "arc-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-from-d9": {
+          "end_wrist": "(0.1466, -0.2332, -0.31992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "b-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 36,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1466, -0.2332, -0.31992)"
+        },
+        "d9-empty": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 27,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195933, -0.202962, -0.332301)"
+        },
+        "d9-empty-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 10,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-partial": {
+          "end_wrist": "(0.1366, -0.1182, -0.28992)",
+          "grounded_frames": 9,
+          "max_speed": 0.0,
+          "start_wrist": "(0.195933, -0.202962, -0.332301)"
+        },
+        "d9-partial-return": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 23,
+          "max_speed": 0.0,
+          "start_wrist": "(0.1366, -0.1182, -0.28992)"
+        },
+        "d9-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "final-ready": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 5,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "rapid-selection": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 8,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-0": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        },
+        "selection-1": {
+          "end_wrist": "(0.2066, -0.2182, -0.33992)",
+          "grounded_frames": 4,
+          "max_speed": 0.0,
+          "start_wrist": "(0.2066, -0.2182, -0.33992)"
+        }
+      },
+      "stages": {
+        "0-aim": 4,
+        "0-fire": 7,
+        "0-look": 1,
+        "0-rest": 4,
+        "0-sprint": 5,
+        "0-stop": 2,
+        "0-urgent-sprint": 1,
+        "0-walk": 5,
+        "1-aim": 5,
+        "1-fire": 8,
+        "1-look": 1,
+        "1-rest": 4,
+        "1-sprint": 5,
+        "1-stop": 2,
+        "1-urgent-sprint": 1,
+        "1-walk": 6,
+        "arc-cell": 12,
+        "arc-cell-return": 21,
+        "arc-selection": 4,
+        "b-from-d9": 9,
+        "b-return": 36,
+        "d9-empty": 27,
+        "d9-empty-return": 10,
+        "d9-partial": 9,
+        "d9-partial-return": 23,
+        "d9-selection": 4,
+        "final-ready": 5,
+        "rapid-selection": 8,
+        "selection-0": 4,
+        "selection-1": 4
+      },
+      "triangles_max": 73365,
+      "triangles_min": 49494,
+      "warm_rig_zero_p50_ms": 0.06,
+      "warm_rig_zero_p95_ms": 0.11,
+      "run": 5,
+      "revision_label": "candidate"
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "frame_p50_ms": {
+        "median": 94.791,
+        "min": 92.183,
+        "max": 95.611
+      },
+      "frame_p95_ms": {
+        "median": 113.553,
+        "min": 107.011,
+        "max": 118.992
+      },
+      "warm_rig_zero_p50_ms": {
+        "median": 0.061,
+        "min": 0.058,
+        "max": 0.062
+      },
+      "warm_rig_zero_p95_ms": {
+        "median": 0.108,
+        "min": 0.1,
+        "max": 0.112
+      }
+    },
+    "candidate": {
+      "frame_p50_ms": {
+        "median": 94.587,
+        "min": 93.337,
+        "max": 95.316
+      },
+      "frame_p95_ms": {
+        "median": 113.264,
+        "min": 112.051,
+        "max": 118.956
+      },
+      "warm_rig_zero_p50_ms": {
+        "median": 0.06,
+        "min": 0.059,
+        "max": 0.063
+      },
+      "warm_rig_zero_p95_ms": {
+        "median": 0.116,
+        "min": 0.102,
+        "max": 0.12
+      }
+    }
+  }
+}

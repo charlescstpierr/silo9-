@@ -1,6 +1,6 @@
 extends SceneTree
 
-const Reload = preload("res://scripts/d9_reload.gd")
+const Reload = preload("res://scripts/weapon_handling.gd")
 var app: Node
 var output := "res://.cstack/issue-03/proof"
 var mode := "film"
@@ -126,6 +126,7 @@ func inspect() -> void:
 		rig.position = [Vector3.ZERO,Vector3(-.28,.09,0),Vector3(.28,.09,-.1)][angle]
 		for sample: Array in [["rest",0.0],["grasp",.338],["extracted",.728],["pocket",1.144],["insertion",1.9],["slide-grasp",2.262],["slide-pulled",2.457],["return",2.85]]:
 			app.player.reload_cycle = Reload.new()
+			app.player.reload_cycle.state = app.state
 			app.player._view_frame.reload = app.player.reload_cycle.view
 			rig.reset_pose()
 			app.state.ammo = 0

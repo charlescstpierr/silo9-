@@ -1,0 +1,118 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: R ARC accepts energy 0 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: R ARC accepts energy 10 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: R ARC accepts energy 15 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: R ARC accepts energy 40 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: R ARC accepts energy 99 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: R ARC accepts energy 149 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: ARC availability follows common energy 0
+PASS: ARC spends exactly 12 or nothing
+PASS: SCAN availability follows common energy 0
+PASS: SCAN spends exactly 20 or nothing
+PASS: ARC availability follows common energy 10
+PASS: ARC spends exactly 12 or nothing
+PASS: SCAN availability follows common energy 10
+PASS: SCAN spends exactly 20 or nothing
+PASS: ARC availability follows common energy 15
+PASS: ARC spends exactly 12 or nothing
+PASS: SCAN availability follows common energy 15
+PASS: SCAN spends exactly 20 or nothing
+PASS: ARC availability follows common energy 40
+PASS: ARC spends exactly 12 or nothing
+PASS: SCAN availability follows common energy 40
+PASS: SCAN spends exactly 20 or nothing
+PASS: full rejects R using current health/activity
+PASS: full rejection cannot spend or queue a cell
+PASS: empty rejects R using current health/activity
+PASS: empty rejection cannot spend or queue a cell
+PASS: dead rejects R using current health/activity
+PASS: dead rejection cannot spend or queue a cell
+PASS: inactive rejects R using current health/activity
+PASS: inactive rejection cannot spend or queue a cell
+PASS: scan coexistence starts an ARC manipulation
+PASS: SCAN remains available before transfer
+PASS: ARC reaches a bounded transfer milestone
+PASS: transfer uses the energy left by earlier SCAN
+PASS: latch transfer still blocks fire until the hand returns
+PASS: SCAN after transfer spends the newly charged balance
+PASS: scan cannot cause double consumption
+PASS: boundary scan scenario starts ARC manipulation
+PASS: last sampled tick before transfer has no early gain
+PASS: SCAN input immediately before transfer uses old balance
+PASS: next tick transfers against the post-SCAN balance
+PASS: low-energy scan scenario starts ARC manipulation
+PASS: insufficient SCAN during manipulation cannot go negative
+PASS: refused SCAN leaves the cell transfer intact
+PASS: stock scenario starts before mutation
+PASS: stock removed before milestone cannot create energy
+PASS: refuge scenario starts before mutation
+PASS: refuge fill makes pending transfer free of cell consumption
+PASS: capacity scenario starts before mutation
+PASS: transfer revalidates upgraded capacity
+PASS: inactive scenario starts before mutation
+PASS: current inactive prevents economic milestone
+PASS: dead scenario starts before mutation
+PASS: current dead prevents economic milestone
+PASS: equip scenario starts
+PASS: equip preserves committed resources only
+PASS: equip scenario starts
+PASS: interruption after transfer reaches milestone
+PASS: equip preserves committed resources only
+PASS: teleport scenario starts
+PASS: teleport preserves committed resources only
+PASS: teleport scenario starts
+PASS: interruption after transfer reaches milestone
+PASS: teleport preserves committed resources only
+PASS: inactive scenario starts
+PASS: inactive preserves committed resources only
+PASS: inactive scenario starts
+PASS: interruption after transfer reaches milestone
+PASS: inactive preserves committed resources only
+PASS: death scenario starts
+PASS: death preserves committed resources only
+PASS: death scenario starts
+PASS: interruption after transfer reaches milestone
+PASS: death preserves committed resources only
+PASS: large delta scenario starts
+PASS: repeated R is rejected while service is active
+PASS: large delta crosses transfer exactly once
+PASS: later large delta cannot duplicate transfer
+PASS: large delta finishes visual return before allowing fire
+PASS: mechanical milestone scenario starts
+PASS: ARC exposes distinct cell, latch and socket
+PASS: moving ARC pieces own their grip markers
+PASS: cell and latch visibly move before transfer
+PASS: economic transfer occurs only with latch fully closed
+PASS: ready ARC has its cell seated
+ARC CELL CONTRACT FAILURES: 0

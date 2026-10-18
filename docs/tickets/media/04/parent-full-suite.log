@@ -1,0 +1,532 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (11 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | SiloFpsRig[39m[0m
+[   8% ] [90m[1mupdate_scripts_classes[22m | SiloPlayer[39m[0m
+[  16% ] [90m[1mupdate_scripts_classes[22m | WeaponHandling[39m[0m
+[  25% ] [90m[1mupdate_scripts_classes[22m | SiloWeaponVisual[39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  41% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  58% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  66% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  75% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  83% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: ARC cues are distinct from each other and D9
+PASS: audio fixture starts manipulation
+PASS: threshold starts manipulation audio
+PASS: manual selection stops old manipulation cue
+PASS: audio fixture starts manipulation
+PASS: threshold starts manipulation audio
+PASS: manual selection stops old manipulation cue
+ARC AUDIO FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: R ARC accepts energy 0 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: R ARC accepts energy 10 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: R ARC accepts energy 15 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: R ARC accepts energy 40 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: R ARC accepts energy 99 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: R ARC accepts energy 149 with one cell
+PASS: R request cannot debit before visible manipulation
+PASS: ARC manipulation blocks fire with zero cooldown
+PASS: cell grants 60 capped at current capacity exactly once
+PASS: R ARC remains on ARC
+PASS: ready ARC fires using the common battery
+PASS: ARC availability follows common energy 0
+PASS: ARC spends exactly 12 or nothing
+PASS: SCAN availability follows common energy 0
+PASS: SCAN spends exactly 20 or nothing
+PASS: ARC availability follows common energy 10
+PASS: ARC spends exactly 12 or nothing
+PASS: SCAN availability follows common energy 10
+PASS: SCAN spends exactly 20 or nothing
+PASS: ARC availability follows common energy 15
+PASS: ARC spends exactly 12 or nothing
+PASS: SCAN availability follows common energy 15
+PASS: SCAN spends exactly 20 or nothing
+PASS: ARC availability follows common energy 40
+PASS: ARC spends exactly 12 or nothing
+PASS: SCAN availability follows common energy 40
+PASS: SCAN spends exactly 20 or nothing
+PASS: full rejects R using current health/activity
+PASS: full rejection cannot spend or queue a cell
+PASS: empty rejects R using current health/activity
+PASS: empty rejection cannot spend or queue a cell
+PASS: dead rejects R using current health/activity
+PASS: dead rejection cannot spend or queue a cell
+PASS: inactive rejects R using current health/activity
+PASS: inactive rejection cannot spend or queue a cell
+PASS: scan coexistence starts an ARC manipulation
+PASS: SCAN remains available before transfer
+PASS: ARC reaches a bounded transfer milestone
+PASS: transfer uses the energy left by earlier SCAN
+PASS: latch transfer still blocks fire until the hand returns
+PASS: SCAN after transfer spends the newly charged balance
+PASS: scan cannot cause double consumption
+PASS: boundary scan scenario starts ARC manipulation
+PASS: last sampled tick before transfer has no early gain
+PASS: SCAN input immediately before transfer uses old balance
+PASS: next tick transfers against the post-SCAN balance
+PASS: low-energy scan scenario starts ARC manipulation
+PASS: insufficient SCAN during manipulation cannot go negative
+PASS: refused SCAN leaves the cell transfer intact
+PASS: stock scenario starts before mutation
+PASS: stock removed before milestone cannot create energy
+PASS: refuge scenario starts before mutation
+PASS: refuge fill makes pending transfer free of cell consumption
+PASS: capacity scenario starts before mutation
+PASS: transfer revalidates upgraded capacity
+PASS: inactive scenario starts before mutation
+PASS: current inactive prevents economic milestone
+PASS: dead scenario starts before mutation
+PASS: current dead prevents economic milestone
+PASS: equip scenario starts
+PASS: equip preserves committed resources only
+PASS: equip scenario starts
+PASS: interruption after transfer reaches milestone
+PASS: equip preserves committed resources only
+PASS: teleport scenario starts
+PASS: teleport preserves committed resources only
+PASS: teleport scenario starts
+PASS: interruption after transfer reaches milestone
+PASS: teleport preserves committed resources only
+PASS: inactive scenario starts
+PASS: inactive preserves committed resources only
+PASS: inactive scenario starts
+PASS: interruption after transfer reaches milestone
+PASS: inactive preserves committed resources only
+PASS: death scenario starts
+PASS: death preserves committed resources only
+PASS: death scenario starts
+PASS: interruption after transfer reaches milestone
+PASS: death preserves committed resources only
+PASS: large delta scenario starts
+PASS: repeated R is rejected while service is active
+PASS: large delta crosses transfer exactly once
+PASS: later large delta cannot duplicate transfer
+PASS: large delta finishes visual return before allowing fire
+PASS: mechanical milestone scenario starts
+PASS: ARC exposes distinct cell, latch and socket
+PASS: moving ARC pieces own their grip markers
+PASS: cell and latch visibly move before transfer
+PASS: economic transfer occurs only with latch fully closed
+PASS: ready ARC has its cell seated
+ARC CELL CONTRACT FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: field B never consumes on request
+PASS: field accepted cell resumes live play synchronously
+PASS: field cannot announce success before transfer
+PASS: field blocks firing through approach and manipulation
+PASS: field refuses R while cell service is active
+PASS: field repeated B has no queue or instant bypass
+PASS: field from D9 visibly passes through ARC
+PASS: field returns to original weapon after transfer
+PASS: field B never consumes on request
+PASS: field accepted cell resumes live play synchronously
+PASS: field cannot announce success before transfer
+PASS: field blocks firing through approach and manipulation
+PASS: field refuses R while cell service is active
+PASS: field repeated B has no queue or instant bypass
+PASS: field from D9 visibly passes through ARC
+PASS: field returns to original weapon after transfer
+PASS: inventory B never consumes on request
+PASS: inventory accepted cell resumes live play synchronously
+PASS: inventory cannot announce success before transfer
+PASS: inventory blocks firing through approach and manipulation
+PASS: inventory refuses R while cell service is active
+PASS: inventory repeated B has no queue or instant bypass
+PASS: inventory from D9 visibly passes through ARC
+PASS: inventory returns to original weapon after transfer
+PASS: inventory B never consumes on request
+PASS: inventory accepted cell resumes live play synchronously
+PASS: inventory cannot announce success before transfer
+PASS: inventory blocks firing through approach and manipulation
+PASS: inventory refuses R while cell service is active
+PASS: inventory repeated B has no queue or instant bypass
+PASS: inventory from D9 visibly passes through ARC
+PASS: inventory returns to original weapon after transfer
+PASS: inventory exposes its real cell button
+PASS: button B never consumes on request
+PASS: button accepted cell resumes live play synchronously
+PASS: button cannot announce success before transfer
+PASS: button blocks firing through approach and manipulation
+PASS: button refuses R while cell service is active
+PASS: button repeated B has no queue or instant bypass
+PASS: button from D9 visibly passes through ARC
+PASS: button returns to original weapon after transfer
+PASS: inventory exposes its real cell button
+PASS: button B never consumes on request
+PASS: button accepted cell resumes live play synchronously
+PASS: button cannot announce success before transfer
+PASS: button blocks firing through approach and manipulation
+PASS: button refuses R while cell service is active
+PASS: button repeated B has no queue or instant bypass
+PASS: button from D9 visibly passes through ARC
+PASS: button returns to original weapon after transfer
+PASS: inventory full refusal keeps inventory open in same turn
+PASS: inventory full refusal preserves resources
+PASS: inventory empty refusal keeps inventory open in same turn
+PASS: inventory empty refusal preserves resources
+PASS: inventory dead refusal keeps inventory open in same turn
+PASS: inventory dead refusal preserves resources
+PASS: inventory exposes its real cell button
+PASS: button full refusal keeps inventory open in same turn
+PASS: button full refusal preserves resources
+PASS: inventory exposes its real cell button
+PASS: button empty refusal keeps inventory open in same turn
+PASS: button empty refusal preserves resources
+PASS: inventory exposes its real cell button
+PASS: button dead refusal keeps inventory open in same turn
+PASS: button dead refusal preserves resources
+PASS: inventory button announces resumption
+PASS: inventory explains ARC passage when holding D9
+PASS: field B validates current inactive without an intervening tick
+PASS: refused inactive cannot leave a ghost intention
+PASS: field B validates current dead without an intervening tick
+PASS: refused dead cannot leave a ghost intention
+PASS: active D9 service starts
+PASS: B during active D9 service cannot interrupt its reload
+PASS: B during active D9 service is refused without queuing
+PASS: manual ARC choice defeats automatic D9 return
+PASS: late stock refusal safely returns from ARC to D9
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: none bounds or clears deferred cell intention
+PASS: deferred cell returns to original D9
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: modal bounds or clears deferred cell intention
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: manual bounds or clears deferred cell intention
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: manual_same bounds or clears deferred cell intention
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: teleport bounds or clears deferred cell intention
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: death bounds or clears deferred cell intention
+PASS: real refuge remains immediate and free without cells
+PASS: free refuge restores scanner access
+PASS: refuge revalidation starts ARC service
+PASS: real refuge before latch prevents waste of a cell
+PASS: pause/save scenario begins ARC service
+PASS: F9 replaces actual player
+PASS: F5/F9 restores counts on correct side of transfer
+PASS: loaded player has no ghost operation
+PASS: loaded weapon readiness uses restored energy
+PASS: pause scenario begins ARC service
+PASS: pause freezes all actual rig transforms
+PASS: pause cannot transfer resources
+PASS: resumed cancelled exit preserves only acquired transfer
+PASS: pause/save scenario begins ARC service
+PASS: save after transfer reaches economic milestone
+PASS: F9 replaces actual player
+PASS: F5/F9 restores counts on correct side of transfer
+PASS: loaded player has no ghost operation
+PASS: loaded weapon readiness uses restored energy
+PASS: pause scenario begins ARC service
+PASS: pause after transfer reaches economic milestone
+PASS: pause freezes all actual rig transforms
+PASS: pause cannot transfer resources
+PASS: resumed cancelled exit preserves only acquired transfer
+PASS: 100 full ARC cycles each consume exactly one cell
+PASS: 100 ARC cycles do not add nodes
+PASS: 100 ARC cycles reuse mesh resources
+ARC CELL UI FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: late refusal request accepted before stock changes
+PASS: late stock refusal announces reason
+PASS: late refusal returns to D9 without success
+PASS: R refuses full battery
+PASS: R full refusal is visible to player
+ARC FEEDBACK FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ARC GEOMETRY max_step_m=0.01498742587864 contact_m=0.00000009996003 palm_m=0.01823995634913..0.01976003497839 finger_m=0.00308297341689..0.01172003429383 failures=0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: visible horizontal indicator reads actual battery
+PASS: donor connection has a distinct lamp
+PASS: indicator fixture starts ARC service
+PASS: extracted donor cannot fake battery gain
+PASS: disconnected donor lamp is dark
+PASS: scanner spends from connected common battery
+PASS: indicator follows SCAN during extraction
+PASS: indicator follows actual latch transfer
+PASS: closed latch reconnects donor lamp
+PASS: refuge fill is shown immediately on next view update
+PASS: ready ARC fires after transfer
+PASS: fire updates indicator with new balance
+ARC INDICATOR FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: B from D9 accepted
+PASS: cell completion begins automatic return
+PASS: automatic return is busy, not a cancelled exit
+PASS: automatic return cannot queue another cell
+PASS: new READY request accepted
+PASS: explicitly cancelled exit accepts one intention
+PASS: cancelled exit intention remains bounded
+PASS: destination scenario starts D9 reload
+PASS: cell request accepted during manually cancelled switch
+PASS: cell returns to desired ARC during pending manual switch
+ARC LIFECYCLE FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+D9 AUDIO distinct cues: 4
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload accepted
+PASS: harness step cannot kill player by falling
+PASS: empty reload must still rearm when partial duration ends
+PASS: empty weapon cannot fire before rearm and return
+PASS: harness step cannot kill player by falling
+PASS: empty transfer occurs once at end
+PASS: empty cues ordered, release before commit
+PASS: harness step cannot kill player by falling
+PASS: empty commit never repeats
+PASS: harness step cannot kill player by falling
+PASS: short reserve does not transfer early
+PASS: partial reload blocks firing until return
+PASS: harness step cannot kill player by falling
+PASS: short reserve transfers only available rounds
+PASS: partial sequence omits rack cues
+PASS: harness step cannot kill player by falling
+PASS: interrupted switch blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: raise blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: new destination during raise stays blocked
+PASS: harness step cannot kill player by falling
+PASS: pending switch consumes large delta without losing destination
+PASS: interrupted switch never commits
+PASS: harness step cannot kill player by falling
+PASS: harness step cannot kill player by falling
+PASS: harness step cannot kill player by falling
+PASS: inactive player interrupted during raise waits below frame
+PASS: harness step cannot kill player by falling
+PASS: reactivation raises selected weapon without a shot
+PASS: harness step cannot kill player by falling
+PASS: inactive stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: inactive conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: teleport stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: teleport conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: death stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: death conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: extraction moves the visible magazine before large tick
+PASS: harness step cannot kill player by falling
+PASS: large completion tick restores visible magazine before firing
+PASS: harness step cannot kill player by falling
+PASS: same-weapon request alone keeps reload
+PASS: harness step cannot kill player by falling
+PASS: last request back to current weapon cancels pending ARC
+PASS: return-to-D9 cancellation never commits
+PASS: harness step cannot kill player by falling
+PASS: large reload delta commits once
+PASS: large delta retains canonical event order
+PASS: large delta does not play obsolete cues
+D9 CONTRACT FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+D9 GEOMETRY max_step_m=0.00561010837555 contact_m=0.00000009541399 palm_m=0.02013997361064..0.02090001665056 failures=0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real scene begins partial reload
+PASS: Escape pauses actual player tree
+PASS: pause stops actual manipulation player
+PASS: paused tree keeps manipulation pose frozen
+PASS: resume safely lowers and raises without committing
+PASS: save/load before commit restores previous counts with ready D9
+PASS: normal reload commits in live scene
+PASS: save/load after commit restores new counts with ready D9
+PASS: 100 reloads do not add scene nodes
+PASS: reload reuses mesh resource 0
+PASS: reload reuses mesh resource 1
+PASS: reload reuses mesh resource 2
+PASS: reload reuses mesh resource 3
+PASS: reload reuses mesh resource 4
+PASS: reload reuses mesh resource 5
+PASS: reload reuses mesh resource 6
+PASS: reload reuses mesh resource 7
+PASS: reload reuses mesh resource 8
+PASS: reload reuses mesh resource 9
+PASS: reload reuses mesh resource 10
+PASS: reload reuses mesh resource 11
+PASS: reload reuses mesh resource 12
+PASS: reload reuses mesh resource 13
+PASS: reload reuses mesh resource 14
+PASS: reload reuses mesh resource 15
+PASS: reload reuses mesh resource 16
+PASS: reload reuses mesh resource 17
+PASS: reload reuses mesh resource 18
+PASS: reload reuses mesh resource 19
+PASS: reload reuses mesh resource 20
+PASS: reload reuses mesh resource 21
+PASS: reload reuses mesh resource 22
+PASS: reload reuses mesh resource 23
+PASS: reload reuses mesh resource 24
+PASS: reload reuses mesh resource 25
+PASS: reload reuses mesh resource 26
+PASS: reload reuses mesh resource 27
+PASS: reload reuses mesh resource 28
+PASS: reload reuses mesh resource 29
+PASS: reload reuses mesh resource 30
+D9 MODAL/SAVE FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: partial reload starts
+PASS: repeated R does not restart
+PASS: no transfer during manipulation
+PASS: fire blocked during manipulation
+PASS: cancel keeps visible D9 until lowered
+PASS: cancel cannot fire while weapon is being lowered
+PASS: last destination equipped only after hidden
+PASS: fire blocked during raise
+PASS: destination change during raise starts another safe lowering
+PASS: queued destination eventually equipped
+PASS: cancel conserves both resources
+PASS: reload can restart after cancellation
+PASS: large delta commits exactly one transfer
+PASS: later ticks do not repeat transfer
+PASS: D9 has an actual moving magazine
+PASS: D9 has an actual moving slide
+D9 RELOAD FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload stays blocked at partial duration
+PASS: large step retains remove and insert events
+PASS: rack pull precedes rack release
+PASS: empty sequence releases slide before readiness
+PASS: no event can repeat after completion
+PASS: partial reload skips both rack cues
+PASS: cancel freezes sampled manipulation
+PASS: cancel lowers continuously before hidden
+PASS: long cancellation emits hidden without commit
+PASS: large delta traverses hidden and full raise without lost time
+PASS: inactive controller stays hidden without commit
+PASS: hidden event occurs once while inactive
+PASS: reactivation accounts for elapsed raise time
+PASS: deactivation during raise cannot jump the visible height
+PASS: deactivation during raise waits hidden
+D9 TIMELINE FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Dialogue checks failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+RIG max_contact_m=0.00000049151248 max_angle_deg=0.03956468118525 failures=0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+JOURNEY: failures=0 travelled=184.2m simulation=40.6s shots=15 health=77
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: ready creates first-person camera
+PASS: player owns articulated rig
+PASS: inactive player cannot shoot
+PASS: equip selects ARC
+PASS: invalid equipment ignored
+PASS: D9 shot consumes one round
+PASS: shot flash follows current rig muzzle
+PASS: fire cooldown prevents double consumption
+PASS: aim input moves both hands and selected weapon
+PASS: partial magazine accepts reload
+PASS: reload is presented before switch
+PASS: switch begins continuous cancellation in same tick
+PASS: switch cancels reload without free rounds
+PASS: ARC shot consumes shared energy
+PASS: scan consumes same battery
+PASS: scanner cooldown prevents repeat emission
+PASS: reload restarts after switch
+PASS: reload transfers exact missing rounds after delay
+PASS: inactive actions cannot consume resources
+PASS: physical forward movement stops at wall
+PASS: jump lifts capsule from floor
+PASS: gravity returns player to floor
+STEP POSITION (5.0, 0.00085, -1.704798) HEIGHT 0.25999999046326
+PASS: capsule climbs authored low step
+PASS: low ceiling prevents standing into geometry
+PASS: standing resumes after leaving ceiling
+PASS: D9 hits real collider and applies configured damage
+PASS: ARC hits real collider with damage and stun
+PASS: aim cache resolves nearby interactable
+PASS: aim cache clears freed target
+PASS: reload can start before death
+PASS: death cancels reload and blocks fire
+PASS: death preserves manipulation for safe lowering
+PASS: teleport does not snap an interrupted manipulation
+PLAYER TEST FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+State checks failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+UI TESTS: 0 failures
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+HANDS vertices=1564 triangles=2400 bones=35 surfaces=2
+GEOMETRY FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Portal investigation final position: (2.632028, 0.000842, -12.14012)
+WORLD: 0 failures

@@ -4,9 +4,9 @@ extends CharacterBody3D
 const State = preload("res://scripts/run_state.gd")
 const WeaponSpec = preload("res://scripts/weapon_spec.gd")
 const Audio = preload("res://scripts/player_audio.gd")
-const Reload = preload("res://scripts/d9_reload.gd")
+const Reload = preload("res://scripts/weapon_handling.gd")
 const FpsRig = preload("res://scripts/fps_rig.gd")
-const RELOAD_EVENTS := [Reload.REMOVE, Reload.INSERT, Reload.RACK_PULL, Reload.RACK_RELEASE, Reload.COMMIT, Reload.HIDDEN]
+const RELOAD_EVENTS := [Reload.REMOVE, Reload.INSERT, Reload.RACK_PULL, Reload.RACK_RELEASE, Reload.COMMIT, Reload.HIDDEN, Reload.CELL_UNLOCK, Reload.CELL_REMOVE, Reload.CELL_INSERT, Reload.CELL_TRANSFER, Reload.CELL_DONE, Reload.CELL_REFUSED]
 const D9: Resource = preload("res://data/weapons/d9.tres")
 const ARC: Resource = preload("res://data/weapons/arc3.tres")
 const STANDING_HEIGHT: float = 1.8
@@ -22,12 +22,12 @@ signal reload_event(event: int)
 var state: State
 var camera: Camera3D
 var active: bool = false
-var weapon_index: int = 0
+var weapon_index: int:
+	get: return reload_cycle.weapon_index
 var sensitivity: float = 0.002
 var reload_cycle := Reload.new()
 var reloading: bool:
-	get: return reload_cycle.view.motion == Reload.Motion.RELOAD
-var _pending_weapon := 0
+	get: return reload_cycle.view.motion in [Reload.Motion.RELOAD, Reload.Motion.CELL]
 var _body_shape: CollisionShape3D
 var _capsule: CapsuleShape3D
 var _headroom_shape: CapsuleShape3D
@@ -57,6 +57,7 @@ var _walk_phase: float = 0.0
 
 func setup(run: State) -> void:
 	state = run
+	reload_cycle.state = run
 
 func _ready() -> void:
 	collision_layer = 2
@@ -100,7 +101,7 @@ func _ready() -> void:
 	_manipulation_audio.volume_db = -8.0
 	add_child(_manipulation_audio)
 	_view_frame.reload = reload_cycle.view
-	for kind: String in ["shot", "arc", "scan", "remove", "insert", "rack_pull", "rack_release", "hurt"]:
+	for kind: String in ["shot", "arc", "scan", "remove", "insert", "rack_pull", "rack_release", "cell_unlock", "cell_remove", "cell_insert", "cell_transfer", "hurt"]:
 		_sounds[kind] = Audio.synthesize(kind)
 
 func set_active(value: bool) -> void:
@@ -120,13 +121,11 @@ func set_active(value: bool) -> void:
 func equip(index: int) -> void:
 	if index < 0 or index > 1:
 		return
-	_pending_weapon = index
-	if not reload_cycle.ready:
-		if index != weapon_index and reload_cycle.view.motion == Reload.Motion.RELOAD:
-			_cancel_reload()
-		return
-	weapon_index = index
-	rig.equip(index)
+	reload_cycle.select(index)
+	if reload_cycle.view.motion == Reload.Motion.LOWER_ABORT:
+		_manipulation_audio.stop()
+	if rig.weapon_index != weapon_index:
+		rig.equip(weapon_index)
 
 func _weapon() -> WeaponSpec:
 	return D9 if weapon_index == 0 else ARC
@@ -172,28 +171,28 @@ func fire() -> bool:
 	return true
 
 func reload_weapon() -> bool:
-	if not active or state == null or state.health <= 0.0 or weapon_index != 0 or not reload_cycle.ready or state.ammo >= D9.capacity or state.reserve <= 0:
+	if not reload_cycle.request_reload(active):
+		if weapon_index == 1:
+			feedback.emit(reload_cycle.refusal)
 		return false
-	reload_cycle.begin(state.ammo == 0, D9.reload_duration, D9.reload_empty_duration)
-	feedback.emit("Rechargement…")
+	feedback.emit("Remplacement de cellule…" if weapon_index == 1 else "Rechargement…")
 	return true
 
+func request_cell() -> bool:
+	var accepted := reload_cycle.request_cell(active)
+	feedback.emit("Remplacement de cellule · passage par ARC…" if accepted else reload_cycle.refusal)
+	return accepted
+
 func _cancel_reload() -> void:
-	if not reload_cycle.ready:
-		reload_cycle.cancel()
+	reload_cycle.cancel()
 	_manipulation_audio.stop()
 
 func _advance_reload(delta: float) -> void:
 	var events := reload_cycle.advance(delta, active)
-	if events & Reload.HIDDEN:
-		weapon_index = _pending_weapon
+	if events & (Reload.HIDDEN | Reload.COMMIT | Reload.CELL_DONE):
 		rig.restore_reload_parts()
+	if rig.weapon_index != weapon_index:
 		rig.equip(weapon_index)
-	if events & Reload.COMMIT:
-		state.reload_rounds(D9.capacity)
-		rig.restore_reload_parts()
-	if reload_cycle.ready and _pending_weapon != weapon_index:
-		reload_cycle.cancel()
 	var cue := ""
 	for event: int in RELOAD_EVENTS:
 		if events & event:
@@ -203,7 +202,14 @@ func _advance_reload(delta: float) -> void:
 				Reload.INSERT: cue = "insert"
 				Reload.RACK_PULL: cue = "rack_pull"
 				Reload.RACK_RELEASE: cue = "rack_release"
-	if not cue.is_empty() and not events & Reload.COMMIT and reload_cycle.cue_age < .16:
+				Reload.CELL_UNLOCK: cue = "cell_unlock"
+				Reload.CELL_REMOVE: cue = "cell_remove"
+				Reload.CELL_INSERT: cue = "cell_insert"
+				Reload.CELL_REFUSED: feedback.emit(reload_cycle.refusal)
+				Reload.CELL_TRANSFER:
+					cue = "cell_transfer" if reload_cycle.view.transferred else "cell_unlock"
+					feedback.emit("Batterie rechargée." if reload_cycle.view.transferred else "Cellule conservée · transfert devenu inutile ou indisponible.")
+	if not cue.is_empty() and not events & (Reload.COMMIT | Reload.CELL_DONE) and reload_cycle.cue_age < .16:
 		_manipulation_audio.stream = _sounds[cue]
 		_manipulation_audio.play()
 
@@ -319,6 +325,8 @@ func _physics_process(delta: float) -> void:
 func _update_view(delta: float) -> void:
 	_view_frame.reload = reload_cycle.view
 	_view_frame.recoil = _recoil
+	_view_frame.energy = state.energy
+	_view_frame.capacity = state.max_energy()
 	rig.update_visual(delta, _view_frame)
 
 func _set_crouch(wanted: bool) -> void:

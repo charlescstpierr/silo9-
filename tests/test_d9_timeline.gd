@@ -1,6 +1,6 @@
 extends SceneTree
 
-const Reload = preload("res://scripts/d9_reload.gd")
+const Reload = preload("res://scripts/weapon_handling.gd")
 var failures := 0
 
 func check(value: bool, label: String) -> void:

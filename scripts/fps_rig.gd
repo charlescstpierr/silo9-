@@ -2,7 +2,7 @@ class_name SiloFpsRig
 extends Node3D
 
 const Visual = preload("res://scripts/weapon_visual.gd")
-const Reload = preload("res://scripts/d9_reload.gd")
+const Reload = preload("res://scripts/weapon_handling.gd")
 const HandMesh = preload("res://scripts/fps_hand_mesh.gd")
 const UPPER_LENGTH := 0.32
 const FOREARM_LENGTH := 0.30
@@ -14,6 +14,8 @@ class ViewFrame extends RefCounted:
 	var reload := Reload.View.new()
 	var recoil: float = 0.0
 	var bob: float = 0.0
+	var energy := 100.0
+	var capacity := 100.0
 
 var muzzle: Marker3D
 var skeleton: Skeleton3D
@@ -35,6 +37,11 @@ var _slide: Node3D
 var _seat := Vector3.ZERO
 var active_left_grip: Marker3D
 var _last_lower := 0.0
+var _cell: Node3D
+var _latch: Node3D
+var _cell_seat: Vector3
+var _indicator: Node3D
+var _connection: Node3D
 
 func _ready() -> void:
 	skeleton = Skeleton3D.new()
@@ -47,6 +54,11 @@ func _ready() -> void:
 	_magazine = _weapons[0].get_node("Magazine")
 	_slide = _weapons[0].get_node("Slide")
 	_seat = _magazine.position
+	_cell = _weapons[1].get_node("ArcCell")
+	_latch = _weapons[1].get_node("ArcLatch")
+	_cell_seat = _cell.position
+	_indicator = _weapons[1].get_node("EnergyIndicator")
+	_connection = _weapons[1].get_node("ConnectionIndicator")
 	var gun_transform := Transform3D(Basis.IDENTITY,Vector3(.19,-.16,-.34))*_weapons[0].transform
 	for side in 2:
 		var grip := _weapons[0].get_node("GripRight" if side == 0 else "GripLeft") as Marker3D
@@ -116,10 +128,13 @@ func reset_pose() -> void:
 func restore_reload_parts() -> void:
 	_magazine.position = _seat
 	_slide.position = Vector3.ZERO
+	_cell.position = _cell_seat
+	_latch.rotation = Vector3.ZERO
 	_settle = 0.0
 
 func update_visual(delta: float, frame: ViewFrame) -> void:
 	_frame = frame
+	_indicator.scale.x = maxf(.001, frame.energy/frame.capacity)
 	var lower := frame.reload.lower
 	skeleton.position.y = -lower*1.15
 	if frame.reload.motion == Reload.Motion.LOWER_ABORT:
@@ -136,14 +151,16 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 	_pose_offset = _pose_offset.lerp(target,1.0-exp(-delta*14.0))
 	var gesture := frame.reload.gesture
 	var t := smoothstep(0,1,frame.reload.fraction)
-	var manipulating := frame.reload.motion == Reload.Motion.RELOAD
+	var manipulating := frame.reload.motion in [Reload.Motion.RELOAD, Reload.Motion.CELL]
 	var amount := 0.0
 	if manipulating:
-		amount = t if gesture == Reload.Gesture.REACH else (1.0-t if gesture == Reload.Gesture.RETURN else 1.0)
+		amount = t if gesture in [Reload.Gesture.REACH, Reload.Gesture.CELL_REACH] else (1.0-t if gesture in [Reload.Gesture.RETURN, Reload.Gesture.CELL_RETURN] else 1.0)
 	var wrist := _rest_wrists[0]
 	wrist.origin += _pose_offset*(1.0-amount) + Vector3(0,frame.bob,frame.recoil)*(1.0-amount)
-	wrist.origin += Vector3(-.07,.10,.05)*amount
+	wrist.origin += (Vector3(-.06,-.015,.02) if frame.reload.motion == Reload.Motion.CELL else Vector3(-.07,.10,.05))*amount
 	wrist.basis = Basis(Vector3.FORWARD,deg_to_rad(22)*amount)*wrist.basis
+	if frame.reload.motion == Reload.Motion.CELL:
+		wrist.basis = Basis(Vector3.UP,1.15*amount)*wrist.basis
 	if not _pose_arm(0,wrist):
 		return
 	skeleton.force_update_all_bone_transforms()
@@ -155,7 +172,7 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 	active_left_grip = support
 	left_in_contact = _settle <= 0.0
 	if manipulating:
-		left = _reload_pose(gun_pose,frame.reload,t,left)
+		left = _arc_pose(gun_pose,frame.reload,t,left) if frame.reload.motion == Reload.Motion.CELL else _reload_pose(gun_pose,frame.reload,t,left)
 	elif not left_in_contact:
 		var blend := 1.0-_settle/.22
 		left = _left_from.interpolate_with(left,smoothstep(0,1,blend))
@@ -171,6 +188,7 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 	mouth.basis = mouth.basis.orthonormalized()
 	mouth.origin += skeleton.position
 	muzzle.transform = mouth
+	_connection.visible = _cell.position.is_equal_approx(_cell_seat) and _latch.rotation.is_zero_approx()
 
 func _reload_pose(gun_pose: Transform3D, view: Reload.View, t: float, support: Transform3D) -> Transform3D:
 	var extracted := _seat+Vector3(0,-.17,.038)
@@ -212,6 +230,52 @@ func _reload_pose(gun_pose: Transform3D, view: Reload.View, t: float, support: T
 			return (slide_hand if view.empty else mag_hand).interpolate_with(support,t)
 	return mag_hand
 
+func _arc_pose(gun_pose: Transform3D, view: Reload.View, t: float, support: Transform3D) -> Transform3D:
+	var extracted := _cell_seat+Vector3(-.18,0,0)
+	var pocket := Vector3(-.12,-.64,-.20)
+	_cell.position = _cell_seat
+	_latch.rotation.x = 1.8
+	match view.gesture:
+		Reload.Gesture.CELL_REACH:
+			_latch.rotation.x = 0.0
+		Reload.Gesture.UNLOCK:
+			_latch.rotation.x = 1.8*t
+		Reload.Gesture.CELL_EXTRACT:
+			_cell.position = _cell_seat.lerp(extracted,t)
+		Reload.Gesture.CELL_STOW:
+			_cell.position = extracted.lerp(pocket,t)
+		Reload.Gesture.CELL_FETCH:
+			_cell.position = pocket.lerp(extracted,t)
+		Reload.Gesture.CELL_INSERT:
+			_cell.position = extracted.lerp(_cell_seat,t)
+		Reload.Gesture.LOCK:
+			_latch.rotation.x = 1.8*(1.0-t)
+		Reload.Gesture.CELL_RETURN:
+			_latch.rotation.x = 0.0
+	var cell_grip := _cell.get_node("CellGrip") as Marker3D
+	var latch_grip := _latch.get_node("LatchGrip") as Marker3D
+	var cell_hand := gun_pose*_cell.transform*cell_grip.transform
+	var latch_hand := gun_pose*_latch.transform*latch_grip.transform
+	left_in_contact = true
+	active_left_grip = cell_grip
+	match view.gesture:
+		Reload.Gesture.CELL_REACH:
+			left_in_contact = false
+			return support.interpolate_with(latch_hand,t)
+		Reload.Gesture.UNLOCK, Reload.Gesture.LOCK:
+			active_left_grip = latch_grip
+			return latch_hand
+		Reload.Gesture.CELL_GRIP:
+			left_in_contact = false
+			return latch_hand.interpolate_with(cell_hand,t)
+		Reload.Gesture.LATCH_REACH:
+			left_in_contact = false
+			return cell_hand.interpolate_with(latch_hand,t)
+		Reload.Gesture.CELL_RETURN:
+			left_in_contact = false
+			return latch_hand.interpolate_with(support,t)
+	return cell_hand
+
 func _pose_fingers(amount: float, gesture: Reload.Gesture, t: float) -> void:
 	for side in 2:
 		for bone in range(4+side*17,18+side*17):
@@ -219,7 +283,7 @@ func _pose_fingers(amount: float, gesture: Reload.Gesture, t: float) -> void:
 	for bone in [4,5,6]:
 		skeleton.set_bone_pose_rotation(bone,Quaternion(Vector3.RIGHT,-.22*amount))
 	var open := 0.0
-	if gesture == Reload.Gesture.REACH or gesture == Reload.Gesture.RACK_REACH or gesture == Reload.Gesture.RETURN:
+	if gesture in [Reload.Gesture.REACH, Reload.Gesture.RACK_REACH, Reload.Gesture.RETURN, Reload.Gesture.CELL_REACH, Reload.Gesture.CELL_GRIP, Reload.Gesture.LATCH_REACH, Reload.Gesture.CELL_RETURN]:
 		open = sin(t*PI)*amount
 	for finger in 4:
 		skeleton.set_bone_pose_rotation(21+finger*3,Quaternion(Vector3.RIGHT,-.15*open))

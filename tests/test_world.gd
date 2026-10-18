@@ -25,8 +25,16 @@ func run() -> void:
 	await physics_frame
 	world.set_quality(true)
 	check(is_equal_approx(world.get_viewport().scaling_3d_scale, 0.67), "Low quality reduces internal 3D pixel count")
+	check(world.get_viewport().msaa_3d == Viewport.MSAA_DISABLED, "Low quality disables MSAA")
+	check(not world.art.shadow_key.visible, "Low quality disables the bounded shadow light")
+	for material in world.art.textured_materials:
+		check(not material.normal_enabled and material.roughness_texture == null, "Low quality avoids normal and roughness texture sampling")
 	world.set_quality(false)
 	check(is_equal_approx(world.get_viewport().scaling_3d_scale, 1.0), "High quality restores native 3D resolution")
+	check(world.get_viewport().msaa_3d == Viewport.MSAA_DISABLED and world.get_viewport().screen_space_aa == Viewport.SCREEN_SPACE_AA_DISABLED, "Compatibility high quality avoids costly MSAA and unsupported native screen-space AA")
+	check(world.art.shadow_key.visible, "High quality restores the bounded shadow light")
+	for material in world.art.textured_materials:
+		check(material.normal_enabled == world.art.original_normal[material] and material.roughness_texture == world.art.original_roughness[material], "High quality restores original material detail")
 	var gate_query := PhysicsRayQueryParameters3D.create(Vector3(0,1,-52), Vector3(0,1,-56), 1)
 	var gate_hit := world.get_world_3d().direct_space_state.intersect_ray(gate_query)
 	check(not gate_hit.is_empty(), "Reactor blast door physically blocks access before power")

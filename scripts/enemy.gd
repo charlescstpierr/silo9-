@@ -2,6 +2,7 @@ class_name SiloEnemy
 extends CharacterBody3D
 
 const State = preload("res://scripts/run_state.gd")
+const RobotVisual = preload("res://scripts/robot_visual.gd")
 const BULKHEAD_Z: Array[float] = [2.0, -14.0, -34.0, -54.0]
 var state: State
 var target: CharacterBody3D
@@ -24,19 +25,13 @@ var body_mesh: MeshInstance3D
 var eye_mesh: MeshInstance3D
 var hit_remaining: float = 0.0
 var eye_material: StandardMaterial3D
-static var metal: StandardMaterial3D
-static var box: BoxMesh
+var leg_rig: Node3D
+var stride_phase: float = 0.0
 
 func _ready() -> void:
 	collision_layer = 1
 	collision_mask = 3
 	add_to_group("enemies")
-	if metal == null:
-		metal = StandardMaterial3D.new()
-		metal.albedo_color = Color("3b454a")
-		metal.metallic = 0.7
-		metal.roughness = 0.55
-		box = BoxMesh.new()
 	var height: float = 0.6 if crawler else 1.8
 	var shape := CollisionShape3D.new()
 	var capsule := CapsuleShape3D.new()
@@ -45,33 +40,20 @@ func _ready() -> void:
 	shape.shape = capsule
 	shape.position.y = height / 2.0
 	add_child(shape)
-	body_mesh = _part(Vector3(0.65, height * 0.65, 0.55), Vector3(0, height * 0.5, 0), metal)
 	eye_material = StandardMaterial3D.new()
 	eye_material.albedo_color = Color("ff7041")
 	eye_material.emission_enabled = true
 	eye_material.emission = Color("ff4020")
 	eye_material.emission_energy_multiplier = 2.5
-	eye_mesh = _part(Vector3(0.42, 0.1, 0.06), Vector3(0, height * 0.72, -0.31), eye_material)
-	for side in [-1.0, 1.0]:
-		_part(Vector3(0.13, height * 0.35, 0.2), Vector3(side * 0.3, height * 0.17, 0), metal)
-		if crawler:
-			for z in [-0.3, 0.3]:
-				var leg := _part(Vector3(0.6, 0.09, 0.12), Vector3(side * 0.4, 0.16, z), metal)
-				leg.rotation.z = side * 0.35
+	var visual: Array[MeshInstance3D] = RobotVisual.build(self, crawler, eye_material)
+	body_mesh = visual[0]
+	eye_mesh = visual[1]
+	leg_rig = get_node("RobotLegs")
 	if not patrol.is_empty():
 		destination = patrol[0]
 	else:
 		destination = global_position
 	last_known = global_position
-
-func _part(size: Vector3, pos: Vector3, material: Material) -> MeshInstance3D:
-	var mesh := MeshInstance3D.new()
-	mesh.mesh = box
-	mesh.scale = size
-	mesh.position = pos
-	mesh.material_override = material
-	add_child(mesh)
-	return mesh
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(target) or health <= 0.0:
@@ -95,6 +77,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= 18.0 * delta
 	move_and_slide()
+	if stunned <= 0.0:
+		var actual_speed: float = Vector2(get_real_velocity().x, get_real_velocity().z).length()
+		stride_phase += actual_speed * delta * (7.0 if crawler else 4.0)
+		RobotVisual.animate_legs(leg_rig, crawler, stride_phase, actual_speed)
 
 func _sense() -> void:
 	var offset: Vector3 = target.global_position - global_position

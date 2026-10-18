@@ -60,4 +60,4 @@ Les résultats distinguent le moteur graphique, les temps de frame et les limite
 
 ## Ressources et licences
 
-Voir [l'audit open source](docs/OPEN_SOURCE.md), la licence CC0 des quatre modèles [Kenney](assets/kenney/LICENSE.txt), et les [notices Godot](docs/licenses/GODOT.txt). Les autres formes, interfaces et sons sont créés pour ce projet. Les poids d'un modèle conversationnel ne font pas partie du jeu distribué.
+Voir [l'audit open source](docs/OPEN_SOURCE.md), les licences CC0 des quatre modèles [Kenney](assets/kenney/LICENSE.txt) et des six modules [Quaternius](assets/quaternius/LICENSE.txt), ainsi que les [notices Godot](docs/licenses/GODOT.txt). Les armes, robots, interfaces et sons sont créés pour ce projet. Les textures industrielles comprennent des images procédurales et une image peinte générée pour SILO 9. Les poids d'un modèle conversationnel ne font pas partie du jeu distribué.

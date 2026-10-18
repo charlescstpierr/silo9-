@@ -10,6 +10,7 @@ var state: RefCounted
 var player: Node3D
 var world: Node3D
 var dialogue: Node
+var edge_smoothing: CanvasLayer
 var mode: String = "menu"
 var previous_mode: String = "menu"
 var character: String = "mother"
@@ -25,6 +26,8 @@ var content: VBoxContainer
 var hud: Control
 var health_label: Label
 var energy_label: Label
+var health_bar: ProgressBar
+var energy_bar: ProgressBar
 var ammo_label: Label
 var mission_label: Label
 var sector_label: Label
@@ -48,6 +51,9 @@ func _ready() -> void:
 	_load_settings()
 	_configure_inputs()
 	_build_ui()
+	edge_smoothing = load("res://scripts/edge_smoothing.gd").new()
+	add_child(edge_smoothing)
+	edge_smoothing.visible = not low_quality
 	if boot_world:
 		_start_run(StateScript.new())
 	show_menu()
@@ -102,6 +108,11 @@ func _build_ui() -> void:
 	bottom.add_child(vitals)
 	health_label = _label(vitals, "", 24, PALE)
 	energy_label = _label(vitals, "", 24, TEAL)
+	var bars := HBoxContainer.new()
+	bars.add_theme_constant_override("separation", 12)
+	bottom.add_child(bars)
+	health_bar = _gauge(bars, Color("a8dfb1"), 190)
+	energy_bar = _gauge(bars, TEAL, 275)
 	ammo_label = _label(bottom, "", 20, AMBER)
 	controls_label = _label(bottom, "", 14, MUTED)
 	_update_controls_label()
@@ -165,12 +176,42 @@ func _build_ui() -> void:
 	ui.add_child(notice_label)
 
 func _box(parent: Control, pos: Vector2, dimensions: Vector2) -> VBoxContainer:
+	var plate := PanelContainer.new()
+	plate.position = pos
+	plate.size = dimensions
+	plate.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.025, 0.06, 0.1, 0.82)
+	style.border_width_left = 3
+	style.border_color = AMBER
+	style.corner_radius_top_right = 8
+	style.corner_radius_bottom_right = 8
+	style.content_margin_left = 16
+	style.content_margin_right = 16
+	style.content_margin_top = 10
+	style.content_margin_bottom = 10
+	plate.add_theme_stylebox_override("panel", style)
+	parent.add_child(plate)
 	var box := VBoxContainer.new()
-	box.position = pos
-	box.size = dimensions
 	box.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	parent.add_child(box)
+	plate.add_child(box)
 	return box
+
+func _gauge(parent: Control, color: Color, width: float) -> ProgressBar:
+	var bar := ProgressBar.new()
+	bar.custom_minimum_size = Vector2(width, 8)
+	bar.show_percentage = false
+	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var background := StyleBoxFlat.new()
+	background.bg_color = Color(0.015, 0.035, 0.055, 0.9)
+	background.set_corner_radius_all(4)
+	var fill := StyleBoxFlat.new()
+	fill.bg_color = color
+	fill.set_corner_radius_all(4)
+	bar.add_theme_stylebox_override("background", background)
+	bar.add_theme_stylebox_override("fill", fill)
+	parent.add_child(bar)
+	return bar
 
 func _label(parent: Node, text: String, size_px: int = 18, color: Color = PALE) -> Label:
 	var label := Label.new()
@@ -213,6 +254,9 @@ func _set_mode(next: String) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if playing else Input.MOUSE_MODE_VISIBLE
 	panel.visible = not playing
 	overlay.visible = not playing
+	panel.offset_left = 740 if mode == "dialogue" else 64
+	panel.offset_right = -32 if mode == "dialogue" else -380
+	overlay.color.a = 0.35 if mode == "dialogue" else 0.69
 	hud.visible = playing
 
 func show_menu() -> void:
@@ -250,7 +294,7 @@ func _start_run(run: RefCounted) -> void:
 	world.process_mode = Node.PROCESS_MODE_PAUSABLE
 	world.setup(state, player)
 	add_child(world)
-	world.set_quality(low_quality)
+	set_quality(low_quality)
 	player.interacted.connect(world.interact)
 	player.scanned.connect(world.scan)
 	player.noise_emitted.connect(world.emit_noise)
@@ -351,7 +395,7 @@ func _apply_settings() -> void:
 	set_layout(azerty)
 	if is_instance_valid(player):
 		player.sensitivity = sensitivity
-		world.set_quality(low_quality)
+		set_quality(low_quality)
 	var config := ConfigFile.new()
 	config.set_value("controls", "sensitivity", sensitivity)
 	config.set_value("controls", "azerty", azerty)
@@ -415,7 +459,7 @@ func _send_chat() -> void:
 	if text.is_empty():
 		return
 	if dialogue.busy:
-		notify_player("Réponse en cours. L'indice immédiat reste disponible.")
+		chat_log.append_text("\nRéponse en cours. L'indice immédiat reste disponible.\n")
 		return
 	chat_log.append_text("\nVOUS : " + text + "\n")
 	chat_input.clear()
@@ -474,7 +518,7 @@ func _process(delta: float) -> void:
 		if state.health <= 0:
 			_death()
 	notice_time = maxf(0, notice_time - delta)
-	notice_label.visible = notice_time > 0
+	notice_label.visible = notice_time > 0 and mode != "dialogue"
 	ui_clock += delta
 	if ui_clock < 0.1:
 		return
@@ -486,6 +530,9 @@ func _process(delta: float) -> void:
 		return
 	health_label.text = "VIE  %03d" % state.health
 	energy_label.text = "ÉNERGIE  %03d / %d" % [state.energy, state.max_energy()]
+	health_bar.value = state.health
+	energy_bar.max_value = state.max_energy()
+	energy_bar.value = state.energy
 	ammo_label.text = "D9  %02d / %02d%s" % [state.ammo, state.reserve, "  •  RECHARGEMENT" if player.reloading else ""] if player.weapon_index == 0 else "ARC-3  •  12 ÉNERGIE / DÉCHARGE"
 	mission_label.text = state.objective()
 	sector_label.text = "SILO 9  /  " + world.sector_at(player.global_position).to_upper()
@@ -556,3 +603,10 @@ func _bind_key(action: String, key: Key, physical: bool = true) -> void:
 	else:
 		event.keycode = key
 	InputMap.action_add_event(action, event)
+
+func set_quality(low: bool) -> void:
+	low_quality = low
+	if is_instance_valid(world):
+		world.set_quality(low)
+	if is_instance_valid(edge_smoothing):
+		edge_smoothing.visible = not low

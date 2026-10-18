@@ -1,6 +1,8 @@
 class_name SiloWorld
 extends Node3D
 
+const RobotVisual = preload("res://scripts/robot_visual.gd")
+const Art = preload("res://scripts/world_art.gd")
 const State = preload("res://scripts/run_state.gd")
 const Enemy = preload("res://scripts/enemy.gd")
 const Interactable = preload("res://scripts/interactable.gd")
@@ -11,6 +13,7 @@ var player: CharacterBody3D
 var state: State
 var spawn_position := Vector3(0, 0, 7)
 var materials: Dictionary = {}
+var art: Art
 var objects: Dictionary = {}
 var enemies: Array[Enemy] = []
 var lights: Array[OmniLight3D] = []
@@ -34,17 +37,24 @@ func setup(run: State, actor: CharacterBody3D) -> void:
 
 func _ready() -> void:
 	_materials()
+	art = Art.new()
+	art.prepare_materials(materials)
+	add_child(art)
 	_environment()
 	_build_structure()
 	_build_interactables()
 	_build_enemies()
 	_batch_static_geometry()
+	art.build()
+	art.build_core(objects["core"])
+	art.build_console(objects["mother"])
+	art.build_console(objects["relay"])
 	_build_audio()
 	state.changed.connect(refresh)
 	refresh()
 
 func _materials() -> void:
-	for entry in [["wall", "26333d"], ["floor", "303a40"], ["steel", "536168"], ["dark", "101b23"], ["yellow", "c2943f"], ["red", "9d3828"], ["teal", "187f89"]]:
+	for entry in [["wall", "8ab7c5"], ["floor", "397ca0"], ["steel", "8ab7c5"], ["dark", "142b48"], ["yellow", "ed8741"], ["red", "b95132"], ["teal", "397ca0"]]:
 		var material := StandardMaterial3D.new()
 		material.albedo_color = Color(entry[1])
 		material.roughness = 0.75
@@ -55,7 +65,7 @@ func _materials() -> void:
 		material.albedo_color = Color(entry[1])
 		material.emission_enabled = true
 		material.emission = Color(entry[1])
-		material.emission_energy_multiplier = 2.0
+		material.emission_energy_multiplier = 0.7
 		materials[entry[0]] = material
 
 func _environment() -> void:
@@ -65,11 +75,11 @@ func _environment() -> void:
 	environment.background_color = Color("08111b")
 	environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	environment.ambient_light_color = Color("7c9eac")
-	environment.ambient_light_energy = 0.4
+	environment.ambient_light_energy = 0.18
 	environment.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	environment.fog_enabled = true
 	environment.fog_light_color = Color("172a32")
-	environment.fog_density = 0.009
+	environment.fog_density = 0.006
 	ambience.environment = environment
 	add_child(ambience)
 
@@ -116,17 +126,17 @@ func _light(pos: Vector3, color: Color, energy: float, radius: float) -> void:
 func _bulkhead(z: float, number: String, title: String, locked: bool = false) -> void:
 	for side in [-1.0, 1.0]:
 		_box(Vector3(side * 6.4, 2.5, z), Vector3(7.2, 5, 0.5), "wall", true)
-		_box(Vector3(side * 2.65, 2, z + 0.3), Vector3(0.2, 4, 0.25), "yellow")
 	_box(Vector3(0, 4.3, z), Vector3(5.6, 1.4, 0.5), "dark", true)
-	_text(number + "  /  " + title, Vector3(0, 4.05, z + 0.32), 38)
+	_text(number + "  /  " + title, Vector3(0, 4.12, z + 0.37), 38)
 	_box(Vector3(0, 3.55, z + 0.3), Vector3(4.9, 0.08, 0.1), "danger" if locked else "cyan")
-	_box(Vector3(0, 0.015, z), Vector3(5.2, 0.03, 0.9), "yellow")
+	_box(Vector3(0, 0.04, z), Vector3(5.2, 0.025, 0.7), "steel")
+	_box(Vector3(0, 0.062, z + 0.31), Vector3(5.2, 0.012, 0.06), "yellow")
 
 func _build_structure() -> void:
-	_box(Vector3(0, -0.3, -34), Vector3(20, 0.6, 88), "floor", true)
-	_box(Vector3(0, 5.2, -34), Vector3(20, 0.4, 88), "dark", true)
+	_box(Vector3(0, -0.3, -34), Vector3(20, 0.6, 88), "floor", true).visible = false
+	_box(Vector3(0, 5.2, -34), Vector3(20, 0.4, 88), "dark", true).visible = false
 	for side in [-1.0, 1.0]:
-		_box(Vector3(side * 10, 2.5, -34), Vector3(0.5, 5, 88), "wall", true)
+		_box(Vector3(side * 10, 2.5, -34), Vector3(0.5, 5, 88), "wall", true).visible = false
 	_box(Vector3(0, 2.5, 10), Vector3(20, 5, 0.5), "wall", true)
 	_box(Vector3(0, 2.5, -78), Vector3(20, 5, 0.5), "wall", true)
 	_bulkhead(2, "01", "DÉCONTAMINATION")
@@ -147,20 +157,17 @@ func _build_structure() -> void:
 		_box(Vector3(0, 5, z), Vector3(20, 0.22, 0.2), "steel")
 		_box(Vector3(0, 0.012, z), Vector3(20, 0.02, 0.035), "dark")
 	for z in [6, -5, -22, -42, -63, -73]:
-		_box(Vector3(0, 4.9, z), Vector3(4, 0.08, 0.25), "glow")
-		_light(Vector3(0, 4.0, z), Color("ffc27d"), 2.2, 12)
+		_box(Vector3(0, 4.9, z), Vector3(3.8, 0.08, 0.18), "glow")
+		_light(Vector3(-1.3, 3.8, z), Color("b0d6df") if z in [-5,-42] else Color("ffd19d"), 1.3, 13)
 	for z in [-30, -58]:
 		_box(Vector3(-9.6, 3.6, z), Vector3(0.16, 0.4, 0.7), "danger")
 		_light(Vector3(-8, 2.9, z), Color("ff6439"), 1.5, 7)
-	for side in [-1.0, 1.0]:
-		for y in [3.8, 4.2]:
-			_box(Vector3(side * 8.7, y, -34), Vector3(0.23, 0.23, 87), "teal" if y < 4 else "steel")
 	for z in [-6, -19, -29, -40, -49, -62]:
 		var side: float = -1 if int(z) % 2 == 0 else 1
 		_box(Vector3(side * 6.6, 0.8, z), Vector3(2.3, 1.6, 2.5), "dark", true)
 		_box(Vector3(side * 6.6, 1.62, z), Vector3(2.5, 0.1, 2.7), "steel")
 		_box(Vector3(side * 6.6, 1.15, z + 1.26), Vector3(1.6, 0.35, 0.035), "teal")
-		_text("S9 / " + str(absi(int(z))) + "\nSYSTÈME AUXILIAIRE", Vector3(side * 6.6, 0.8, z + 1.29), 18)
+		_text("RÉVISION D9 / 29\nOUTILS DE MAINTENANCE" if z == -29 else "S9 / " + str(absi(int(z))) + "\nSYSTÈME AUXILIAIRE", Vector3(side * 6.6, 0.8, z + 1.29), 18)
 	for z in [-4, -24, -44, -64]:
 		_text("↓", Vector3(0, 0.04, z), 95, Color("c19449")).rotation_degrees.x = -90
 	_lift()
@@ -191,9 +198,9 @@ func _reactor() -> void:
 		for z in [-63, -68, -74]:
 			_box(Vector3(side * 4.5, 0.6, z), Vector3(0.12, 1.2, 0.12), "steel")
 			_box(Vector3(side * 7.5, 2.2, z), Vector3(2, 4.4, 2), "dark", true)
-			_box(Vector3(side * 7.5, 2.2, z + 1.02), Vector3(1.2, 3.5, 0.05), "danger")
+			_box(Vector3(side * 7.5, 2.2, z + 1.02), Vector3(0.12, 3.5, 0.05), "danger")
 	_box(Vector3(0, 0.3, -72), Vector3(3.6, 0.6, 3.6), "steel", true)
-	_text("CŒUR MÉMORIEL\nNE PAS EXTRAIRE SOUS TENSION", Vector3(0, 3.2, -77.7), 38, Color("ffc27d"))
+	_text("CŒUR MÉMORIEL\nNE PAS EXTRAIRE SOUS TENSION", Vector3(0, 3.2, -77.5), 38, Color("ffc27d"))
 	_light(Vector3(0, 2.7, -72), Color("56e6ed"), 3, 8)
 
 func _batch_static_geometry() -> void:
@@ -238,6 +245,7 @@ func _kenney_props() -> void:
 				_box(entry[1] + Vector3(0, collision_box.y / 2.0, 0), collision_box, "dark", true).visible = false
 				for mesh in prop.find_children("*", "MeshInstance3D", true, false):
 					mesh.visibility_range_end = 45
+					mesh.material_override = materials["steel"]
 
 func _object(id: String, prompt: String, pos: Vector3, color: String = "cyan", size: Vector3 = Vector3(0.8, 1.2, 0.45)) -> StaticBody3D:
 	var object := Interactable.new()
@@ -270,8 +278,16 @@ func _build_interactables() -> void:
 	relay.collision_layer = 0
 	hidden_panel = _box(relay_position + Vector3(0, 1, 0.5), Vector3(2, 2, 0.1), "wall")
 	_text("ANOMALIE ÉLECTROMAGNÉTIQUE\nSCAN ÉCHO REQUIS [SCAN]", Vector3(7, 2.7, -26), 25, Color("5be4e5"))
-	_object("n7", "Parler à N-7", Vector3(-7, 0, -43), "cyan", Vector3(0.8, 1.6, 0.7))
-	_text("N — 7", Vector3(-7, 2, -43), 40, Color("5be4e5"))
+	var n7 := _object("n7", "Parler à N-7", Vector3(-7, 0, -43), "cyan", Vector3(0.8, 1.6, 0.7))
+	for child in n7.get_children():
+		if child is MeshInstance3D: child.queue_free()
+	var n7_visual := Node3D.new()
+	n7_visual.name = "Visual"
+	n7_visual.rotation.y = -PI / 2.0
+	n7.add_child(n7_visual)
+	RobotVisual.build(n7_visual, false, materials["cyan"], true)
+	var n7_label := _text("N — 7", Vector3(-7, 2.3, -43), 30, Color("5be4e5"))
+	n7_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	_object("evidence", "Lire l'archive : signal de surface", Vector3(6, 0, -47), "cyan")
 	_object("core", "Extraire le cœur mémoriel", Vector3(0, 0.6, -72), "cyan", Vector3(0.7, 1.3, 0.7))
 	var device := _object("device", "Verrou électrique · ARC-3 ou détour latéral", Vector3(2.8, 0, -57), "danger") as Interactable
@@ -438,6 +454,7 @@ func _process(delta: float) -> void:
 	time_to_check -= delta
 	if time_to_check > 0: return
 	time_to_check = 0.5
+	if is_instance_valid(player): art.update_focus(player.global_position)
 	if is_instance_valid(player) and player.position.z < -55 and not colossus_triggered:
 		colossus_triggered = true
 		colossus_sound.play()
@@ -467,7 +484,11 @@ func _build_audio() -> void:
 	add_child(colossus_sound)
 
 func set_quality(low: bool) -> void:
+	art.set_quality(low)
 	get_viewport().scaling_3d_scale = 0.67 if low else 1.0
+	get_viewport().msaa_3d = Viewport.MSAA_DISABLED
+	get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 	for i in lights.size():
 		lights[i].visible = not low or i < 6
+		if i < 6: lights[i].light_energy = 2.1 if low else 1.3
 	ambience.environment.fog_enabled = not low

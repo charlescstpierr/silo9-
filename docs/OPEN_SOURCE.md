@@ -80,15 +80,15 @@ Aucun addon de gameplay tiers n'est importé. Le contrôleur, les machines à é
 - Modifications amont : aucune.
 - Sources : [version](https://github.com/ggml-org/llama.cpp/releases/tag/b11716), [serveur](https://github.com/ggml-org/llama.cpp/blob/797de63b2fa7396dcc8caca76834c699ac84e1c3/tools/server/README.md), [licence](https://github.com/ggml-org/llama.cpp/blob/797de63b2fa7396dcc8caca76834c699ac84e1c3/LICENSE).
 
-## Quaternius Modular Sci-Fi MegaKit, candidat non intégré
+## Quaternius Modular Sci-Fi MegaKit, édition Standard utilisée
 
-- Page examinée le 17 octobre 2026 : [pack officiel](https://quaternius.com/packs/modularscifimegakit.html) et [distribution itch.io](https://quaternius.itch.io/modular-sci-fi-megakit).
-- Licence annoncée : **CC0-1.0** pour les ressources, usage commercial autorisé.
-- Périmètre gratuit : édition **Standard** uniquement. Le site distingue les éditions Pro et Source payantes. Les scènes Godot prêtes à utiliser, les shaders spécifiques et les collisions optimisées de Source ne sont pas supposés disponibles dans Standard.
-- Version : aucun tag immuable ni archive locale épinglée dans cette passe. Une date de consultation ne remplace pas un hash d'archive.
-- Compatibilité : les modèles nécessitent un import et une vérification des matériaux, dimensions et collisions sous Godot 4.7.2. La mention de Godot dans l'édition Source ne prouve pas la compatibilité de toute l'offre gratuite.
-- Décision : candidat non intégré. Aucun achat, téléchargement premium ni copie de modèle. Pro et Source exclus du MVP gratuit. Aucun fichier modifié.
-- Licence de référence : [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- Source gratuite : [page du pack](https://quaternius.com/packs/modularscifimegakit.html) et [distribution itch.io](https://quaternius.itch.io/modular-sci-fi-megakit).
+- Licence **CC0-1.0**, confirmée dans la notice interne de l'archive Standard. Pro et Source payants ne sont pas utilisés.
+- Archive Standard, SHA-256 : `6fae60cf5189e44dff0bd91097f094a765acc6d57d64a85a0cc0dd56e03035e3`.
+- Dix-huit modèles ont été examinés et instanciés sous Godot 4.7.2. Les six utilisés sont conservés : `WallAstra_Straight`, `WallAstra_Straight_Window`, `TopCables_Straight`, `Door_Frame_SquareTall`, `Prop_Vent_Big`, `Prop_Computer`.
+- Les images et géométries originales sont inchangées. Le jeu clone leurs matériaux pour appliquer sa palette stylisée. Les paramètres d'import Godot activent les mipmaps.
+- [Licence conservée](../assets/quaternius/LICENSE.txt), [provenance](../assets/quaternius/PROVENANCE.json) et [inventaire des dépendances](../assets/quaternius/asset-manifest.json).
+- Les autres éléments du décor, les armes et les robots sont construits pour SILO 9. Les textures procédurales sont reproductibles avec `assets/industrial/generate_textures.py`. Le panneau peint `painted_panel_v2.png` a été généré spécialement avec imagegen ; ce script ne le reproduit pas. Sa provenance figure dans `assets/industrial/README.md`.
 
 ## Kenney Factory Kit, sous-ensemble utilisé
 

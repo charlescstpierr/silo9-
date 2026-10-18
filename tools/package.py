@@ -12,7 +12,8 @@ for platform in ("windows", "linux"):
     folder = builds / platform
     required = [folder / "README.md", folder / "docs/VALIDATION.md", folder / "docs/performance.json",
                 folder / "docs/licenses/GODOT.txt", folder / "docs/licenses/GODOT-COPYRIGHT.txt",
-                folder / "assets/kenney/LICENSE.txt"]
+                folder / "assets/kenney/LICENSE.txt", folder / "assets/quaternius/LICENSE.txt",
+                folder / "assets/quaternius/PROVENANCE.json", folder / "assets/quaternius/asset-manifest.json"]
     if any(not path.is_file() for path in required):
         raise SystemExit(f"Missing distribution file for {platform}")
 with zipfile.ZipFile(builds / "SILO9-Windows-x64.zip", "w", zipfile.ZIP_DEFLATED, compresslevel=6) as archive:

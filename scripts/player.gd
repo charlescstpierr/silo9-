@@ -4,6 +4,7 @@ extends CharacterBody3D
 const State = preload("res://scripts/run_state.gd")
 const WeaponSpec = preload("res://scripts/weapon_spec.gd")
 const Audio = preload("res://scripts/player_audio.gd")
+const WeaponVisual = preload("res://scripts/weapon_visual.gd")
 const D9: Resource = preload("res://data/weapons/d9.tres")
 const ARC: Resource = preload("res://data/weapons/arc3.tres")
 const STANDING_HEIGHT: float = 1.8
@@ -342,36 +343,30 @@ func _box(parent: Node3D, size: Vector3, pos: Vector3, material: StandardMateria
 	return mesh
 
 func _build_weapons() -> void:
-	var steel := _material(Color("37444b"))
-	var dark := _material(Color("111c23"))
-	var orange := _material(Color("f6a63d"), 1.8)
-	var cyan := _material(Color("49e7ed"), 2.2)
-	var grip := _material(Color("232d2e"))
+	var orange := _material(Color("f6a63d"), 1.3)
+	var cyan := _material(Color("49e7ed"), 1.5)
 	_gun_root = Node3D.new()
 	_gun_root.position = Vector3(0.24, -0.24, -0.42)
 	camera.add_child(_gun_root)
 	for index in 2:
-		var gun := Node3D.new()
+		var gun := WeaponVisual.build(index == 1)
 		_gun_root.add_child(gun)
 		_guns.append(gun)
-		var handle := _box(gun, Vector3(0.095, 0.19, 0.115), Vector3(0, -0.04, 0.08), grip)
-		handle.rotation.x = -0.2
-		_box(gun, Vector3(0.125, 0.105, 0.37), Vector3(0, 0.07, -0.03), steel)
-		_box(gun, Vector3(0.1, 0.045, 0.31), Vector3(0, 0.137, -0.035), dark)
-		_box(gun, Vector3(0.04, 0.036, 0.045), Vector3(0, 0.17, -0.17), orange if index == 0 else cyan)
-		_box(gun, Vector3(0.04, 0.04, 0.06), Vector3(0, 0.075, -0.245), dark)
-		for rib in 4:
-			_box(gun, Vector3(0.132, 0.016, 0.012), Vector3(0, 0.09, 0.05 + rib * 0.025), dark)
-		if index == 1:
-			for side in [-1.0, 1.0]:
-				_box(gun, Vector3(0.028, 0.065, 0.31), Vector3(side * 0.095, 0.065, -0.12), cyan)
-				_box(gun, Vector3(0.055, 0.085, 0.06), Vector3(side * 0.095, 0.065, -0.26), steel)
-			_box(gun, Vector3(0.085, 0.035, 0.16), Vector3(0, 0.01, -0.11), cyan)
 		gun.visible = index == 0
-	_muzzle = _box(_gun_root, Vector3(0.08, 0.08, 0.13), Vector3(0, 0.075, -0.31), orange)
+	var key := OmniLight3D.new()
+	key.position = Vector3(-0.25, 0.32, 0.06)
+	key.light_color = Color("d0e7ef")
+	key.light_energy = 0.65
+	key.light_specular = 0.45
+	key.omni_range = 1.4
+	key.omni_attenuation = 0.8
+	key.light_cull_mask = 2
+	key.shadow_enabled = false
+	camera.add_child(key)
+	_muzzle = _box(_gun_root, Vector3(0.045, 0.045, 0.07), Vector3(-0.01, 0.061, -0.36), orange)
 	_muzzle.visible = false
 	_flash_light = OmniLight3D.new()
-	_flash_light.position = Vector3(0, 0.075, -0.3)
+	_flash_light.position = Vector3(-0.01, 0.061, -0.35)
 	_flash_light.omni_range = 3.0
 	_flash_light.light_energy = 1.5
 	_flash_light.shadow_enabled = false

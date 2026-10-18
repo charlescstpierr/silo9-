@@ -1,0 +1,226 @@
+{
+  "pack": "Modular SciFi MegaKit Standard",
+  "author": "Quaternius",
+  "license": "CC0-1.0",
+  "source": "https://quaternius.itch.io/modular-sci-fi-megakit",
+  "free_upload_id": "13454739",
+  "archive_sha256": "6fae60cf5189e44dff0bd91097f094a765acc6d57d64a85a0cc0dd56e03035e3",
+  "license_sha256": "885b700f02932c08a41163b35cc97d1abe0895a05de29d9a9062fde5132969a8",
+  "changes": "Six original glTF models and their original dependencies retained for the level. Source geometry and images unchanged. Godot import metadata enables mipmaps; runtime clones use stylized materials.",
+  "assets": [
+    {
+      "name": "WallAstra_Straight",
+      "source": "Modular SciFi MegaKit[Standard]/glTF/Walls/WallAstra_Straight.gltf",
+      "triangles": 355,
+      "min": [
+        -2.774,
+        -0.006,
+        -2.0
+      ],
+      "max": [
+        -1.565,
+        3.021,
+        2.0
+      ],
+      "size": [
+        1.209,
+        3.028,
+        4.0
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "WallAstra_Straight"
+        }
+      ],
+      "dependencies": [
+        "WallAstra_Straight.bin",
+        "T_Trim_03_Normal.png",
+        "T_Trim_03_BaseColor.png",
+        "T_Trim_03_ORM.png",
+        "T_Trim_02_Normal.png",
+        "T_Trim_02_BaseColor_Red.png",
+        "T_Trim_02_ORM.png",
+        "T_Trim_01_Normal.png",
+        "T_Trim_01_BaseColor_Red.png",
+        "T_Trim_01_ORM.png",
+        "T_Decals.png",
+        "T_Trim_03_Cables.png"
+      ]
+    },
+    {
+      "name": "WallAstra_Straight_Window",
+      "source": "Modular SciFi MegaKit[Standard]/glTF/Walls/WallAstra_Straight_Window.gltf",
+      "triangles": 488,
+      "min": [
+        -2.497,
+        -0.0,
+        -2.0
+      ],
+      "max": [
+        -2,
+        3,
+        2.0
+      ],
+      "size": [
+        0.497,
+        3.0,
+        4.0
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "WallAstra_Straight_Window"
+        }
+      ],
+      "dependencies": [
+        "WallAstra_Straight_Window.bin",
+        "T_Trim_03_Normal.png",
+        "T_Trim_03_BaseColor.png",
+        "T_Trim_03_ORM.png",
+        "T_Trim_03_Cables.png",
+        "T_Trim_02_Normal.png",
+        "T_Trim_02_BaseColor_Red.png",
+        "T_Trim_02_ORM.png"
+      ]
+    },
+    {
+      "name": "TopCables_Straight",
+      "source": "Modular SciFi MegaKit[Standard]/glTF/Walls/TopCables_Straight.gltf",
+      "triangles": 942,
+      "min": [
+        -2.169,
+        3,
+        -2.0
+      ],
+      "max": [
+        -1.785,
+        5,
+        2.0
+      ],
+      "size": [
+        0.384,
+        2,
+        4.0
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "TopCables_Straight"
+        }
+      ],
+      "dependencies": [
+        "TopCables_Straight.bin",
+        "T_Trim_02_Normal.png",
+        "T_Trim_02_BaseColor_Red.png",
+        "T_Trim_02_ORM.png",
+        "T_Trim_01_Normal.png",
+        "T_Trim_01_BaseColor_Red.png",
+        "T_Trim_01_ORM.png",
+        "T_Trim_03_Normal.png",
+        "T_Trim_03_Cables.png",
+        "T_Trim_03_ORM.png"
+      ]
+    },
+    {
+      "name": "Door_Frame_SquareTall",
+      "source": "Modular SciFi MegaKit[Standard]/glTF/Platforms/Door_Frame_SquareTall.gltf",
+      "triangles": 272,
+      "min": [
+        -2.422,
+        -0.013,
+        -0.253
+      ],
+      "max": [
+        2.422,
+        5,
+        0.253
+      ],
+      "size": [
+        4.844,
+        5.013,
+        0.507
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "Door_Frame_SquareTall"
+        }
+      ],
+      "dependencies": [
+        "Door_Frame_SquareTall.bin",
+        "T_Trim_01_Normal.png",
+        "T_Trim_01_BaseColor_Red.png",
+        "T_Trim_01_ORM.png"
+      ]
+    },
+    {
+      "name": "Prop_Computer",
+      "source": "Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Computer.gltf",
+      "triangles": 519,
+      "min": [
+        -0.372,
+        -0.001,
+        -0.216
+      ],
+      "max": [
+        0.372,
+        1.592,
+        0.346
+      ],
+      "size": [
+        0.743,
+        1.593,
+        0.562
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "Prop_Computer"
+        }
+      ],
+      "dependencies": [
+        "Prop_Computer.bin",
+        "T_Decals.png",
+        "T_Trim_01_Normal.png",
+        "T_Trim_01_BaseColor_Red.png",
+        "T_Trim_01_ORM.png"
+      ]
+    },
+    {
+      "name": "Prop_Vent_Big",
+      "source": "Modular SciFi MegaKit[Standard]/glTF/Props/Prop_Vent_Big.gltf",
+      "triangles": 328,
+      "min": [
+        -1.0,
+        -0.069,
+        -0.495
+      ],
+      "max": [
+        1.0,
+        0,
+        0.481
+      ],
+      "size": [
+        2.0,
+        0.069,
+        0.976
+      ],
+      "nodes": [
+        {
+          "mesh": 0,
+          "name": "Prop_Vent_Big"
+        }
+      ],
+      "dependencies": [
+        "Prop_Vent_Big.bin",
+        "T_Trim_01_Normal.png",
+        "T_Trim_01_BaseColor_Red.png",
+        "T_Trim_01_ORM.png",
+        "T_Trim_02_Normal.png",
+        "T_Trim_02_BaseColor_Red.png",
+        "T_Trim_02_ORM.png"
+      ]
+    }
+  ]
+}

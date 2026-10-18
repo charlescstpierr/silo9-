@@ -14,4 +14,6 @@ for target in windows linux; do
     cp -R docs/. "builds/$target/docs/"
     mkdir -p "builds/$target/assets/kenney"
     cp assets/kenney/LICENSE.txt "builds/$target/assets/kenney/LICENSE.txt"
+    mkdir -p "builds/$target/assets/quaternius"
+    cp assets/quaternius/LICENSE.txt assets/quaternius/PROVENANCE.json assets/quaternius/asset-manifest.json "builds/$target/assets/quaternius/"
 done

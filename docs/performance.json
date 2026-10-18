@@ -1,5 +1,5 @@
 {
-  "binary_sha256": "46794d3a1f5045251b9110a8f718dc9cad97e88fc6d4e66fb7c28c23c855b082",
+  "binary_sha256": "c115fdae995f670d14fd849aff9af4a73a9116ae7e58f2a15b3592d25e46b87f",
   "runs_per_mode": 5,
   "renderer": "llvmpipe (LLVM 21.1.8, 256 bits)",
   "resolution": [
@@ -16,77 +16,77 @@
     {
       "sector": "ASCENSEUR / REFUGE",
       "normal": {
-        "p50_median_ms": 63.696,
+        "p50_median_ms": 152.353,
         "p50_range_ms": [
-          62.937,
-          65.663
+          147.626,
+          164.638
         ],
-        "p95_median_ms": 74.221
+        "p95_median_ms": 187.349
       },
       "low": {
-        "p50_median_ms": 48.205,
+        "p50_median_ms": 78.752,
         "p50_range_ms": [
-          46.606,
-          49.839
+          77.398,
+          92.791
         ],
-        "p95_median_ms": 58.702
+        "p95_median_ms": 93.251
       }
     },
     {
       "sector": "02 / MAINTENANCE",
       "normal": {
-        "p50_median_ms": 71.843,
+        "p50_median_ms": 166.15,
         "p50_range_ms": [
-          70.311,
-          74.852
+          159.961,
+          171.191
         ],
-        "p95_median_ms": 87.538
+        "p95_median_ms": 189.409
       },
       "low": {
-        "p50_median_ms": 47.522,
+        "p50_median_ms": 71.874,
         "p50_range_ms": [
-          46.672,
-          50.301
+          69.122,
+          75.47
         ],
-        "p95_median_ms": 58.806
+        "p95_median_ms": 86.53
       }
     },
     {
       "sector": "03 / ARCHIVES",
       "normal": {
-        "p50_median_ms": 61.244,
+        "p50_median_ms": 156.455,
         "p50_range_ms": [
-          60.596,
-          63.542
+          148.345,
+          160.26
         ],
-        "p95_median_ms": 72.719
+        "p95_median_ms": 197.738
       },
       "low": {
-        "p50_median_ms": 43.676,
+        "p50_median_ms": 68.966,
         "p50_range_ms": [
-          40.406,
-          46.818
+          65.347,
+          70.65
         ],
-        "p95_median_ms": 50.223
+        "p95_median_ms": 77.995
       }
     },
     {
-      "sector": "04 / CŒUR",
+      "sector": "04 / C\u0152UR",
       "normal": {
-        "p50_median_ms": 53.925,
+        "p50_median_ms": 135.048,
         "p50_range_ms": [
-          52.422,
-          54.667
+          129.026,
+          137.173
         ],
-        "p95_median_ms": 67.775
+        "p95_median_ms": 161.558
       },
       "low": {
-        "p50_median_ms": 38.084,
+        "p50_median_ms": 55.577,
         "p50_range_ms": [
-          37.611,
-          39.58
+          54.818,
+          56.099
         ],
-        "p95_median_ms": 47.733
+        "p95_median_ms": 66.496
       }
     }
   ]

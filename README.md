@@ -25,6 +25,7 @@ Depuis ce workspace Linux :
 | R | Recharger l'arme équipée |
 | Q en WASD, A en ZQSD | SCAN ÉCHO |
 | E | Interagir avec la cible |
+| F / R3 | Allumer ou éteindre la lampe, sans dépense d’énergie |
 | Tab | Inventaire |
 | H / B | Trousse / cellule d'énergie |
 | Échap | Pause, libération et reprise de la souris |
@@ -32,6 +33,8 @@ Depuis ce workspace Linux :
 | F3 | Afficher les performances |
 
 Le scan et l'ARC-3 partagent la batterie. Le scan révèle le relais caché en maintenance et alerte les machines. L'ascenseur permet de recharger gratuitement ; ses améliorations et la réparation du relais consomment des composants.
+
+Dans Réglages, « Réduire les variations lumineuses » stabilise le néon, les alarmes et les variations du colosse, sans retirer leurs sons ni leurs événements.
 
 ## Conversations
 
@@ -59,7 +62,7 @@ Le benchmark rend les quatre secteurs en 1080p, avec l'IA ennemie active et un s
 ./tools/godot.sh --path . -- --benchmark --low
 ```
 
-Les résultats distinguent le moteur graphique, les temps de frame et les limites de la machine. Un test headless ne mesure pas les performances graphiques. Voir [les résultats de validation](docs/VALIDATION.md), [la preuve du rechargement D9](docs/tickets/03-d9-reload.md), [le maniement des armes](docs/tickets/05-weapon-handling.md), [les effets de tir](docs/tickets/06-shot-feedback.md), [la visée ADS](docs/tickets/07-ads.md) et [les matériaux FPS](docs/tickets/08-materials.md).
+Les résultats distinguent le moteur graphique, les temps de frame et les limites de la machine. Un test headless ne mesure pas les performances graphiques. Voir [les résultats de validation](docs/VALIDATION.md), [la preuve du rechargement D9](docs/tickets/03-d9-reload.md), [le maniement des armes](docs/tickets/05-weapon-handling.md), [les effets de tir](docs/tickets/06-shot-feedback.md), [la visée ADS](docs/tickets/07-ads.md), [les matériaux FPS](docs/tickets/08-materials.md) et [la lampe et les éclairages](docs/tickets/09-lighting.md).
 
 ## Ressources et licences
 

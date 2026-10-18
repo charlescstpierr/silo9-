@@ -1,0 +1,167 @@
+.FFFFFFFFFFFFFFFF......FF..
+======================================================================
+FAIL: test_cost_windows_duration_and_observations (__main__.ProofValidation.test_cost_windows_duration_and_observations) (problem='short')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 98, in test_cost_windows_duration_and_observations
+    self.assertTrue(validate_result(broken, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_windows_duration_and_observations (__main__.ProofValidation.test_cost_windows_duration_and_observations) (problem='long')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 98, in test_cost_windows_duration_and_observations
+    self.assertTrue(validate_result(broken, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_windows_duration_and_observations (__main__.ProofValidation.test_cost_windows_duration_and_observations) (problem='missing_after')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 98, in test_cost_windows_duration_and_observations
+    self.assertTrue(validate_result(broken, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_windows_duration_and_observations (__main__.ProofValidation.test_cost_windows_duration_and_observations) (problem='wrong_after')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 98, in test_cost_windows_duration_and_observations
+    self.assertTrue(validate_result(broken, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_windows_duration_and_observations (__main__.ProofValidation.test_cost_windows_duration_and_observations) (problem='alarm_timer')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 98, in test_cost_windows_duration_and_observations
+    self.assertTrue(validate_result(broken, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_cost_windows_duration_and_observations (__main__.ProofValidation.test_cost_windows_duration_and_observations) (problem='alarm_light')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 98, in test_cost_windows_duration_and_observations
+    self.assertTrue(validate_result(broken, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_full_catalogue_and_critical_pose (__main__.ProofValidation.test_full_catalogue_and_critical_pose) (prefix='critical_')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 79, in test_full_catalogue_and_critical_pose
+    with self.subTest(prefix=prefix): self.assertTrue(validate_result(report, 0, ''))
+                                      ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_full_catalogue_and_critical_pose (__main__.ProofValidation.test_full_catalogue_and_critical_pose) (prefix='neon_')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 79, in test_full_catalogue_and_critical_pose
+    with self.subTest(prefix=prefix): self.assertTrue(validate_result(report, 0, ''))
+                                      ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_full_catalogue_and_critical_pose (__main__.ProofValidation.test_full_catalogue_and_critical_pose) (prefix='reduced_')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 79, in test_full_catalogue_and_critical_pose
+    with self.subTest(prefix=prefix): self.assertTrue(validate_result(report, 0, ''))
+                                      ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_full_catalogue_and_critical_pose (__main__.ProofValidation.test_full_catalogue_and_critical_pose) (prefix='alarm_')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 79, in test_full_catalogue_and_critical_pose
+    with self.subTest(prefix=prefix): self.assertTrue(validate_result(report, 0, ''))
+                                      ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_full_catalogue_and_critical_pose (__main__.ProofValidation.test_full_catalogue_and_critical_pose)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 82, in test_full_catalogue_and_critical_pose
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_lamp_must_emit_into_world (__main__.ProofValidation.test_lamp_must_emit_into_world) (key='energy', value=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 73, in test_lamp_must_emit_into_world
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_lamp_must_emit_into_world (__main__.ProofValidation.test_lamp_must_emit_into_world) (key='energy', value=nan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 73, in test_lamp_must_emit_into_world
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_lamp_must_emit_into_world (__main__.ProofValidation.test_lamp_must_emit_into_world) (key='range', value=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 73, in test_lamp_must_emit_into_world
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_lamp_must_emit_into_world (__main__.ProofValidation.test_lamp_must_emit_into_world) (key='range', value=inf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 73, in test_lamp_must_emit_into_world
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_lamp_must_emit_into_world (__main__.ProofValidation.test_lamp_must_emit_into_world) (key='mask', value=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 73, in test_lamp_must_emit_into_world
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_requested_power_matches_effective_even_baseline (__main__.ProofValidation.test_requested_power_matches_effective_even_baseline) (baseline=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 66, in test_requested_power_matches_effective_even_baseline
+    with self.subTest(baseline=baseline): self.assertTrue(validate_result(report, 0, ''))
+                                          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_requested_power_matches_effective_even_baseline (__main__.ProofValidation.test_requested_power_matches_effective_even_baseline) (baseline=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 66, in test_requested_power_matches_effective_even_baseline
+    with self.subTest(baseline=baseline): self.assertTrue(validate_result(report, 0, ''))
+                                          ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.039s
+
+FAILED (failures=18)

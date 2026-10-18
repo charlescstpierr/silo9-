@@ -1,0 +1,8 @@
+{
+  "purpose": "Isolated route-synchronized CPU profile; never used in the twenty paired runs",
+  "only_probe_delta": "print PROFILE_ROUTE_BEGIN at entry to performance_route, after startup and warmup",
+  "sha256": {
+    "prove_sector_power.py": "bc45ab99e5dd1cf55401fe99d67385ad365588f4f8b63fe4b887762e050124cd",
+    "probe_sector_power.gd": "0325df7d368fb3d2c2e30b860e9f0ffbb1aa62bb0d560cbe57065f492c27902d"
+  }
+}

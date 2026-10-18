@@ -1,0 +1,14 @@
+.......F.
+======================================================================
+FAIL: test_required_lighting_mission_needs_native_f (__main__.ProofValidation.test_required_lighting_mission_needs_native_f)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 71, in test_required_lighting_mission_needs_native_f
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.005s
+
+FAILED (failures=1)

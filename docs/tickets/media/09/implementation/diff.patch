@@ -1,0 +1,589 @@
+diff --git a/scripts/data/power_consumers.gd b/scripts/data/power_consumers.gd
+index 09e68bf..7ef3f29 100644
+--- a/scripts/data/power_consumers.gd
++++ b/scripts/data/power_consumers.gd
+@@ -19,6 +19,7 @@ var closure_query := PhysicsShapeQueryParameters3D.new()
+ var _box := BoxMesh.new()
+ 
+ func build(config: Spec, body: StaticBody3D, palette: Dictionary) -> void:
++	process_priority = -1
+ 	spec = config
+ 	breaker = body
+ 	for child: Node in breaker.get_children():
+@@ -66,7 +67,6 @@ func build(config: Spec, body: StaticBody3D, palette: Dictionary) -> void:
+ 	airflow = sound(fan, Vector3.ZERO, tone(1.0, true), -31, 9)
+ 	alarm = sound(self, spec.alarm_position, tone(spec.alarm_duration, false), -13, 16)
+ 	alarm_lens = part(self, spec.alarm_position, Vector3(0.35, 0.16, 0.2), palette.glow)
+-	alarm_lens.visible = false
+ 	var query_shape := BoxShape3D.new()
+ 	query_shape.size = Vector3(1.0, 3.4, 0.35)
+ 	var clearance := BoxShape3D.new()
+@@ -137,14 +137,12 @@ func cut_alarm() -> bool:
+ 	if cooldown_remaining > 0: return false
+ 	cooldown_remaining = spec.alarm_cooldown
+ 	alarm_remaining = spec.alarm_duration
+-	alarm_lens.visible = true
+ 	alarm.play()
+ 	return true
+ 
+ func stop_alarm() -> void:
+ 	alarm_remaining = 0
+ 	alarm.stop()
+-	alarm_lens.visible = false
+ 
+ func _pose_leaves(value: bool) -> void:
+ 	closed = value
+diff --git a/scripts/main.gd b/scripts/main.gd
+index 27eee51..87ee0d8 100644
+--- a/scripts/main.gd
++++ b/scripts/main.gd
+@@ -16,6 +16,8 @@ var previous_mode: String = "menu"
+ var character: String = "mother"
+ var azerty: bool = false
+ var low_quality: bool = false
++var reduced_light_effects: bool = false
++var reduced_light_check: CheckButton
+ var sensitivity: float = 0.002
+ var base_fov := 76.0
+ var aim_zoom := 1.25
+@@ -314,6 +316,7 @@ func _start_run(run: RefCounted) -> void:
+ 	world.process_mode = Node.PROCESS_MODE_PAUSABLE
+ 	world.setup(state, player)
+ 	add_child(world)
++	world.set_reduced_light_effects(reduced_light_effects)
+ 	set_quality(low_quality)
+ 	player.interacted.connect(world.interact)
+ 	player.scanned.connect(world.scan)
+@@ -397,6 +400,10 @@ func open_settings() -> void:
+ 	quality_check.text = "Mode performance • résolution 3D 67 % et éclairage simplifié"
+ 	quality_check.button_pressed = low_quality
+ 	content.add_child(quality_check)
++	reduced_light_check = CheckButton.new()
++	reduced_light_check.text = "Réduire les variations lumineuses"
++	reduced_light_check.button_pressed = reduced_light_effects
++	content.add_child(reduced_light_check)
+ 	_label(content, "Impulsion caméra", 18)
+ 	camera_slider = _effect_slider(camera_impulse)
+ 	_label(content, "Lumière des départs et faisceaux", 18)
+@@ -420,7 +427,10 @@ func open_settings() -> void:
+ 	_button("Appliquer et revenir", _apply_settings)
+ 
+ func _apply_settings() -> void:
+-	if is_instance_valid(dialogue) and not dialogue.configure(endpoint_input.text.strip_edges(), model_input.text.strip_edges()):
++	if not is_instance_valid(dialogue):
++		dialogue = load("res://scripts/dialogue.gd").new()
++		add_child(dialogue)
++	if not dialogue.configure(endpoint_input.text.strip_edges(), model_input.text.strip_edges()):
+ 		notify_player("Adresse refusée. Utilisez localhost ou un proxy HTTPS, sans identifiants.")
+ 		return
+ 	base_fov = fov_slider.value
+@@ -432,6 +442,7 @@ func _apply_settings() -> void:
+ 	sensitivity = sensitivity_slider.value
+ 	azerty = layout_check.button_pressed
+ 	low_quality = quality_check.button_pressed
++	reduced_light_effects = reduced_light_check.button_pressed
+ 	endpoint = endpoint_input.text.strip_edges()
+ 	model_id = model_input.text.strip_edges()
+ 	set_layout(azerty)
+@@ -440,6 +451,8 @@ func _apply_settings() -> void:
+ 		player.configure_feedback(camera_impulse, shot_light, effects_budget)
+ 		player.configure_aim(base_fov, aim_zoom, aim_sensitivity)
+ 		set_quality(low_quality)
++	if is_instance_valid(world):
++		world.set_reduced_light_effects(reduced_light_effects)
+ 	var config := ConfigFile.new()
+ 	config.set_value("controls", "base_fov", base_fov)
+ 	config.set_value("controls", "aim_zoom", aim_zoom)
+@@ -447,6 +460,7 @@ func _apply_settings() -> void:
+ 	config.set_value("controls", "sensitivity", sensitivity)
+ 	config.set_value("controls", "azerty", azerty)
+ 	config.set_value("graphics", "low_quality", low_quality)
++	config.set_value("graphics", "reduced_light_effects", reduced_light_effects)
+ 	config.set_value("graphics", "camera_impulse", camera_impulse)
+ 	config.set_value("graphics", "shot_light", shot_light)
+ 	config.set_value("graphics", "effects_budget", effects_budget)
+@@ -470,6 +484,8 @@ func _load_settings() -> void:
+ 	sensitivity = clampf(float(config.get_value("controls", "sensitivity", 0.002)), 0.0005, 0.006)
+ 	azerty = bool(config.get_value("controls", "azerty", false))
+ 	low_quality = bool(config.get_value("graphics", "low_quality", false))
++	var reduced: Variant = config.get_value("graphics", "reduced_light_effects", false)
++	reduced_light_effects = reduced if reduced is bool else false
+ 	camera_impulse = _effect_strength(config.get_value("graphics", "camera_impulse", .5), .5)
+ 	shot_light = _effect_strength(config.get_value("graphics", "shot_light", 1.0), 1.0)
+ 	effects_budget = _effect_budget(config.get_value("graphics", "effects_budget", 2))
+@@ -599,6 +615,7 @@ func _process(delta: float) -> void:
+ 	energy_bar.max_value = state.max_energy()
+ 	energy_bar.value = state.energy
+ 	ammo_label.text = "D9  %02d / %02d%s" % [state.ammo, state.reserve, "  •  RECHARGEMENT" if player.reloading else ""] if player.weapon_index == 0 else "ARC-3  •  " + ("CELLULE EN COURS" if player.reloading else "12 ÉNERGIE / DÉCHARGE")
++	if player.flashlight_on: ammo_label.text += "  •  LAMPE ON"
+ 	mission_label.text = state.objective()
+ 	sector_label.text = "SILO 9  /  " + world.sector_at(player.global_position).to_upper()
+ 	var target: Node = player.aim_target()
+@@ -635,7 +652,7 @@ func _input(event: InputEvent) -> void:
+ 
+ func _configure_inputs() -> void:
+ 	set_layout(azerty)
+-	for binding: Array in [["sprint", KEY_SHIFT], ["jump", KEY_SPACE], ["crouch", KEY_CTRL], ["interact", KEY_E], ["reload", KEY_R], ["weapon1", KEY_1], ["weapon2", KEY_2]]:
++	for binding: Array in [["flashlight", KEY_F], ["sprint", KEY_SHIFT], ["jump", KEY_SPACE], ["crouch", KEY_CTRL], ["interact", KEY_E], ["reload", KEY_R], ["weapon1", KEY_1], ["weapon2", KEY_2]]:
+ 		_bind_key(binding[0], binding[1])
+ 	_bind_key("pause", KEY_ESCAPE, false)
+ 	if not InputMap.has_action("fire"):
+@@ -655,7 +672,7 @@ func _configure_inputs() -> void:
+ 		axis.axis = binding[1]
+ 		axis.axis_value = binding[2]
+ 		_bind_joy_event(binding[0], axis)
+-	for binding: Array in [["jump", JOY_BUTTON_A], ["reload", JOY_BUTTON_X], ["interact", JOY_BUTTON_Y], ["scan", JOY_BUTTON_RIGHT_SHOULDER], ["weapon1", JOY_BUTTON_LEFT_SHOULDER], ["weapon2", JOY_BUTTON_DPAD_RIGHT], ["sprint", JOY_BUTTON_LEFT_STICK], ["pause", JOY_BUTTON_START], ["ui_accept", JOY_BUTTON_A], ["ui_up", JOY_BUTTON_DPAD_UP], ["ui_down", JOY_BUTTON_DPAD_DOWN], ["ui_left", JOY_BUTTON_DPAD_LEFT], ["ui_right", JOY_BUTTON_DPAD_RIGHT]]:
++	for binding: Array in [["flashlight", JOY_BUTTON_RIGHT_STICK], ["jump", JOY_BUTTON_A], ["reload", JOY_BUTTON_X], ["interact", JOY_BUTTON_Y], ["scan", JOY_BUTTON_RIGHT_SHOULDER], ["weapon1", JOY_BUTTON_LEFT_SHOULDER], ["weapon2", JOY_BUTTON_DPAD_RIGHT], ["sprint", JOY_BUTTON_LEFT_STICK], ["pause", JOY_BUTTON_START], ["ui_accept", JOY_BUTTON_A], ["ui_up", JOY_BUTTON_DPAD_UP], ["ui_down", JOY_BUTTON_DPAD_DOWN], ["ui_left", JOY_BUTTON_DPAD_LEFT], ["ui_right", JOY_BUTTON_DPAD_RIGHT]]:
+ 		var button := InputEventJoypadButton.new()
+ 		button.button_index = binding[1]
+ 		_bind_joy_event(binding[0], button)
+@@ -677,7 +694,7 @@ func set_layout(use_azerty: bool) -> void:
+ 
+ func _update_controls_label() -> void:
+ 	if is_instance_valid(controls_label):
+-		controls_label.text = "1 / 2 Armes • R Recharger • %s ÉCHO • E Interagir • TAB Sac • ÉCHAP Pause" % ("A" if azerty else "Q")
++		controls_label.text = "1 / 2 Armes • R Recharger • %s ÉCHO • E Interagir • F / R3 Lampe • TAB Sac • ÉCHAP Pause" % ("A" if azerty else "Q")
+ 
+ func _bind_key(action: String, key: Key, physical: bool = true) -> void:
+ 	if not InputMap.has_action(action):
+@@ -694,6 +711,8 @@ func _bind_key(action: String, key: Key, physical: bool = true) -> void:
+ 
+ func set_quality(low: bool) -> void:
+ 	low_quality = low
++	if is_instance_valid(player):
++		player.set_flashlight_quality(low)
+ 	if is_instance_valid(world):
+ 		world.set_quality(low)
+ 	if is_instance_valid(edge_smoothing):
+diff --git a/scripts/player.gd b/scripts/player.gd
+index 20c19f9..dfb8ca8 100644
+--- a/scripts/player.gd
++++ b/scripts/player.gd
+@@ -23,6 +23,9 @@ signal reload_event(event: int)
+ var state: State
+ var camera: Camera3D
+ var active: bool = false
++var flashlight_on: bool = false
++var _flashlight: SpotLight3D
++var _capture_flashlight: bool = false
+ var weapon_index: int:
+ 	get: return reload_cycle.weapon_index
+ var aim_weight: float:
+@@ -115,6 +118,7 @@ func _ready() -> void:
+ 	camera.current = true
+ 	add_child(camera)
+ 	_build_weapons()
++	_build_flashlight()
+ 	_casings = CasingPool.new()
+ 	add_child(_casings)
+ 	RenderingServer.frame_pre_draw.connect(_before_draw)
+@@ -140,6 +144,10 @@ func set_active(value: bool) -> void:
+ 		_capture_fire = _fire_held()
+ 		_capture_aim = _aim_held()
+ 		_capture_jump = true
++		_capture_flashlight = Input.is_action_pressed("flashlight") if InputMap.has_action("flashlight") else false
++	if state.health <= 0:
++		flashlight_on = false
++		_flashlight.visible = false
+ 	if not active:
+ 		_cancel_reload()
+ 		_clear_motion_input()
+@@ -150,6 +158,45 @@ func set_active(value: bool) -> void:
+ 		if reload_cycle.ready:
+ 			rig.reset_pose()
+ 
++func _build_flashlight() -> void:
++	_flashlight = SpotLight3D.new()
++	_flashlight.name = "Flashlight"
++	_flashlight.position = Vector3(0.12, -0.10, -0.15)
++	_flashlight.light_color = Color("f2e8d4")
++	_flashlight.light_energy = 2.5
++	_flashlight.light_cull_mask = 1
++	_flashlight.spot_range = 14
++	_flashlight.spot_angle = 32
++	_flashlight.shadow_enabled = true
++	_flashlight.visible = false
++	camera.add_child(_flashlight)
++	var housing := MeshInstance3D.new()
++	var shape := CylinderMesh.new()
++	shape.top_radius = 0.025
++	shape.bottom_radius = 0.03
++	shape.height = 0.1
++	shape.radial_segments = 8
++	housing.mesh = shape
++	housing.position = Vector3(0.12, -0.10, -0.10)
++	housing.rotation.x = PI / 2
++	housing.layers = 2
++	housing.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
++	var material := StandardMaterial3D.new()
++	material.albedo_color = Color("394a57")
++	material.roughness = 0.6
++	housing.material_override = material
++	camera.add_child(housing)
++
++func toggle_flashlight() -> bool:
++	if not active or state.health <= 0 or Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
++		return false
++	flashlight_on = not flashlight_on
++	_flashlight.visible = flashlight_on
++	return true
++
++func set_flashlight_quality(low: bool) -> void:
++	_flashlight.shadow_enabled = not low
++
+ func equip(index: int) -> void:
+ 	if index < 0 or index > 1:
+ 		return
+@@ -304,6 +351,8 @@ func aim_target() -> Node:
+ 	return _target if is_instance_valid(_target) else null
+ 
+ func _unhandled_input(event: InputEvent) -> void:
++	if InputMap.has_action("flashlight") and event.is_action_released("flashlight"):
++		_capture_flashlight = Input.is_action_pressed("flashlight")
+ 	if not active:
+ 		return
+ 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+@@ -312,7 +361,11 @@ func _unhandled_input(event: InputEvent) -> void:
+ 		rotate_y(yaw)
+ 		camera.rotation.x = clampf(pitch - event.screen_relative.y * sensitivity * _look_scale(), -1.45, 1.45)
+ 		_look_delta += Vector2(yaw, camera.rotation.x - pitch)
+-	if event.is_action_pressed("weapon1", true):
++	if InputMap.has_action("flashlight") and event.is_action_pressed("flashlight") and not event.is_echo():
++		if not _capture_flashlight:
++			toggle_flashlight()
++		_capture_flashlight = true
++	elif event.is_action_pressed("weapon1", true):
+ 		equip(0)
+ 	elif event.is_action_pressed("weapon2", true):
+ 		equip(1)
+diff --git a/scripts/world.gd b/scripts/world.gd
+index 201402f..da2b97e 100644
+--- a/scripts/world.gd
++++ b/scripts/world.gd
+@@ -11,7 +11,37 @@ var power_materials := PowerMaterials.new()
+ var _power_busy: bool = false
+ var _low_quality: bool = false
+ var _colossus_gain: float = 1.0
+-var _light_colors: Array[Color] = []
++var _reduced_light_effects: bool = false
++var _neon_phase: float = 0.0
++var _luminaires: Array[Luminaire] = []
++
++class Luminaire:
++	enum Role { CEILING, REACTOR, ALARM }
++	enum Supply { MAIN, AUTONOMOUS }
++	var id: StringName
++	var role: Role
++	var supply: Supply
++	var circuit: StringName
++	var origin: Vector3
++	var tint: Color
++	var normal_energy: float
++	var low_energy: float
++	var radius: float
++	var faulty: bool = false
++	var light: OmniLight3D
++	var emitter: StandardMaterial3D
++	var lens: MeshInstance3D
++
++	func _init(source_id: StringName, kind: Role, power: Supply, circuit_id: StringName, position: Vector3, color: Color, normal: float, low: float, reach: float) -> void:
++		id = source_id
++		role = kind
++		supply = power
++		circuit = circuit_id
++		origin = position
++		tint = color
++		normal_energy = normal
++		low_energy = low
++		radius = reach
+ 
+ const RobotVisual = preload("res://scripts/robot_visual.gd")
+ const Art = preload("res://scripts/world_art.gd")
+@@ -59,6 +89,7 @@ func _ready() -> void:
+ 	_build_power()
+ 	_build_enemies()
+ 	_batch_static_geometry()
++	_build_luminaires()
+ 	art.build()
+ 	art.build_core(objects["core"])
+ 	art.build_console(objects["mother"])
+@@ -82,6 +113,13 @@ func _materials() -> void:
+ 		material.emission_energy_multiplier = 0.7
+ 		materials[entry[0]] = material
+ 
++	var route := StandardMaterial3D.new()
++	route.albedo_color = Color("b9e5ea")
++	route.emission_enabled = true
++	route.emission = route.albedo_color
++	route.emission_energy_multiplier = 0.15
++	materials["route"] = route
++
+ func _environment() -> void:
+ 	ambience = WorldEnvironment.new()
+ 	var environment := Environment.new()
+@@ -127,17 +165,6 @@ func _text(text: String, pos: Vector3, size: int = 44, color: Color = Color("bed
+ 	parent.add_child(label)
+ 	return label
+ 
+-func _light(pos: Vector3, color: Color, energy: float, radius: float) -> void:
+-	var light := OmniLight3D.new()
+-	light.position = pos
+-	light.light_color = color
+-	light.light_energy = energy
+-	light.omni_range = radius
+-	light.shadow_enabled = false
+-	add_child(light)
+-	lights.append(light)
+-	_light_colors.append(color)
+-
+ func _bulkhead(z: float, number: String, title: String, locked: bool = false) -> void:
+ 	for side in [-1.0, 1.0]:
+ 		_box(Vector3(side * 6.4, 2.5, z), Vector3(7.2, 5, 0.5), "wall", true)
+@@ -167,16 +194,13 @@ func _build_structure() -> void:
+ 	for z in range(-76, 10, 4):
+ 		for side in [-1.0, 1.0]:
+ 			_box(Vector3(side * 9.7, 2.5, z), Vector3(0.35, 5, 0.25), "steel")
+-			_box(Vector3(side * 2.1, 0.025, z), Vector3(0.08, 0.03, 2.5), "yellow")
++			var route := _box(Vector3(side * 2.1, 0.025, z), Vector3(0.08, 0.03, 2.5), "yellow")
++			route.material_override = materials["route"]
+ 			_box(Vector3(side * 9.6, 0.5, z), Vector3(0.12, 0.08, 1.7), "cyan")
+ 		_box(Vector3(0, 5, z), Vector3(20, 0.22, 0.2), "steel")
+ 		_box(Vector3(0, 0.012, z), Vector3(20, 0.02, 0.035), "dark")
+-	for z in [6, -5, -22, -42, -63, -73]:
+-		_box(Vector3(0, 4.9, z), Vector3(3.8, 0.08, 0.18), "glow")
+-		_light(Vector3(-1.3, 3.8, z), Color("b0d6df") if z in [-5,-42] else Color("ffd19d"), 1.3, 13)
+ 	for z in [-30, -58]:
+ 		_box(Vector3(-9.6, 3.6, z), Vector3(0.16, 0.4, 0.7), "danger")
+-		_light(Vector3(-8, 2.9, z), Color("ff6439"), 1.5, 7)
+ 	for z in [-6, -19, -29, -40, -49, -62]:
+ 		var side: float = -1 if int(z) % 2 == 0 else 1
+ 		_box(Vector3(side * 6.6, 0.8, z), Vector3(2.3, 1.6, 2.5), "dark", true)
+@@ -216,7 +240,6 @@ func _reactor() -> void:
+ 			_box(Vector3(side * 7.5, 2.2, z + 1.02), Vector3(0.12, 3.5, 0.05), "danger")
+ 	_box(Vector3(0, 0.3, -72), Vector3(3.6, 0.6, 3.6), "steel", true)
+ 	_text("CŒUR MÉMORIEL\nNE PAS EXTRAIRE SOUS TENSION", Vector3(0, 3.2, -77.5), 38, Color("ffc27d"))
+-	_light(Vector3(0, 2.7, -72), Color("56e6ed"), 3, 8)
+ 
+ func _batch_static_geometry() -> void:
+ 	var batches: Dictionary = {}
+@@ -461,6 +484,8 @@ func sector_at(pos: Vector3) -> String:
+ 	return "04 / CŒUR"
+ 
+ func _process(delta: float) -> void:
++	_neon_phase = fposmod(_neon_phase + delta, 6.0)
++	_compose_lights(true)
+ 	if scan_timer > 0:
+ 		scan_timer -= delta
+ 		if scan_timer <= 0:
+@@ -474,9 +499,6 @@ func _process(delta: float) -> void:
+ 	time_to_check -= delta
+ 	if time_to_check > 0: return
+ 	time_to_check = 0.5
+-	if is_instance_valid(player):
+-		art.update_focus(player.global_position)
+-		_compose_lights()
+ 	if is_instance_valid(player) and player.position.z < -55 and not colossus_triggered:
+ 		colossus_triggered = true
+ 		colossus_sound.play()
+@@ -548,24 +570,85 @@ func _refresh_power() -> void:
+ 	_compose_lights()
+ 	power_materials.apply(state)
+ 
+-func _powered_at(z: float) -> bool:
+-	var circuit: StringName = Spec.at_z(z)
+-	return circuit == &"" or state.circuit_on(circuit)
+-
+ func _set_colossus_gain(value: float) -> void:
+ 	_colossus_gain = value
+ 	_compose_lights()
+ 
+-func _compose_lights() -> void:
+-	var ending_color: Color = Color("ff6737") if state.ending == "mother" else Color("63e9e0")
+-	for i: int in lights.size():
+-		var powered: bool = _powered_at(lights[i].position.z)
+-		var base: float = (2.1 if _low_quality else 1.3) if i < 6 else (3.0 if i == 8 else 1.5)
+-		lights[i].visible = powered and (not _low_quality or i < 6)
+-		lights[i].light_energy = base * _colossus_gain if powered else 0.0
+-		lights[i].light_color = _light_colors[i] if state.ending.is_empty() else ending_color
+-	if art.shadow_key != null:
+-		var powered: bool = _powered_at(art.focused_z)
+-		art.shadow_key.visible = powered and not _low_quality
+-		art.shadow_key.light_energy = 3.0 * _colossus_gain if powered and not _low_quality else 0.0
+-		art.shadow_key.light_color = art.focus_color if state.ending.is_empty() else ending_color
++func set_reduced_light_effects(value: bool) -> void:
++	_reduced_light_effects = value
++	_compose_lights()
++
++func _build_luminaires() -> void:
++	_luminaires = [
++		Luminaire.new(&"ceiling_refuge", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"", Vector3(0, 4.68, 6), Color("ffe1b5"), 1.3, 2.1, 12),
++		Luminaire.new(&"ceiling_decontamination", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"", Vector3(0, 4.68, -5), Color("b9e5ea"), 1.3, 2.1, 12),
++		Luminaire.new(&"ceiling_maintenance", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"maintenance", Vector3(0, 4.68, -22), Color("ffd09a"), 1.5, 2.2, 12),
++		Luminaire.new(&"ceiling_archives", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"archives", Vector3(0, 4.68, -42), Color("b4d0ef"), 1.3, 2.1, 12),
++		Luminaire.new(&"ceiling_core_entry", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"", Vector3(0, 4.68, -63), Color("ffd09a"), 1.2, 2.0, 11),
++		Luminaire.new(&"ceiling_core_end", Luminaire.Role.CEILING, Luminaire.Supply.MAIN, &"", Vector3(0, 4.68, -73), Color("d5e7df"), 1.0, 1.9, 10),
++		Luminaire.new(&"reactor", Luminaire.Role.REACTOR, Luminaire.Supply.MAIN, &"", Vector3(0, 2.5, -72), Color("63e9e0"), 2.4, 0.0, 7),
++	]
++	for circuit: StringName in power_consumers:
++		var consumer: Consumers = power_consumers[circuit]
++		_luminaires.append(Luminaire.new(StringName("alarm_" + str(circuit)), Luminaire.Role.ALARM, Luminaire.Supply.AUTONOMOUS, circuit, consumer.spec.alarm_position, Color("ff513b"), 0.9, 0.65, 4))
++	for binding: Luminaire in _luminaires:
++		binding.faulty = binding.id == &"ceiling_maintenance"
++		binding.emitter = StandardMaterial3D.new()
++		binding.emitter.albedo_color = binding.tint
++		binding.emitter.emission_enabled = true
++		binding.emitter.emission = binding.tint
++		binding.emitter.emission_energy_multiplier = 0.7
++		if binding.role == Luminaire.Role.ALARM:
++			binding.lens = power_consumers[binding.circuit].alarm_lens
++		else:
++			binding.lens = MeshInstance3D.new()
++			binding.lens.position = binding.origin
++			if binding.role == Luminaire.Role.CEILING:
++				binding.lens.mesh = box_mesh
++				binding.lens.scale = Vector3(3.8, 0.08, 0.24)
++			else:
++				var ring := TorusMesh.new()
++				ring.inner_radius = 0.84
++				ring.outer_radius = 1.0
++				ring.rings = 32
++				ring.ring_segments = 6
++				binding.lens.mesh = ring
++				binding.lens.scale = Vector3(1.1, 0.3, 1.1)
++			add_child(binding.lens)
++		binding.lens.material_override = binding.emitter
++		binding.lens.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
++		binding.light = OmniLight3D.new()
++		binding.light.name = binding.id
++		binding.light.position = binding.origin + Vector3(0, -0.12, 0)
++		binding.light.omni_range = binding.radius
++		binding.light.shadow_enabled = false
++		binding.light.light_cull_mask = 1
++		add_child(binding.light)
++		lights.append(binding.light)
++
++func _compose_lights(animated_only: bool = false) -> void:
++	var ending_color := Color("ff6737") if state.ending == "mother" else Color("63e9e0")
++	for binding: Luminaire in _luminaires:
++		if animated_only and binding.role != Luminaire.Role.ALARM and (not binding.faulty or _reduced_light_effects or not state.ending.is_empty()): continue
++		var powered: bool = binding.supply == Luminaire.Supply.AUTONOMOUS or binding.circuit == &"" or state.circuit_on(binding.circuit)
++		var gain: float = 1.0 if _reduced_light_effects else _colossus_gain
++		var color: Color = binding.tint if state.ending.is_empty() else ending_color
++		if binding.role == Luminaire.Role.ALARM:
++			var consumer: Consumers = power_consumers[binding.circuit]
++			powered = consumer.alarm_remaining > 0 and state.ending != "n7"
++			gain = 1.0 if _reduced_light_effects else lerpf(0.2, 1.0, clampf((consumer.spec.alarm_duration - consumer.alarm_remaining) / 0.15, 0, 1))
++			color = binding.tint
++			binding.lens.visible = powered
++		elif binding.faulty and not _reduced_light_effects and state.ending.is_empty():
++			if _neon_phase > 5.2:
++				gain *= lerpf(0.65, 1.0, smoothstep(5.2, 6.0, _neon_phase))
++			elif _neon_phase > 4.8:
++				gain *= lerpf(1.0, 0.65, smoothstep(4.8, 5.2, _neon_phase))
++		if not powered: gain = 0.0
++		var energy: float = binding.low_energy if _low_quality else binding.normal_energy
++		binding.light.visible = powered and energy > 0
++		binding.light.light_energy = energy * gain
++		binding.light.light_color = color
++		binding.emitter.albedo_color = color if powered else color.darkened(0.8)
++		binding.emitter.emission = color
++		binding.emitter.emission_energy_multiplier = 0.7 * gain
+diff --git a/scripts/world_art.gd b/scripts/world_art.gd
+index 523af11..fce2cce 100644
+--- a/scripts/world_art.gd
++++ b/scripts/world_art.gd
+@@ -4,7 +4,6 @@ extends Node3D
+ const Spec = preload("res://scripts/data/circuit_spec.gd")
+ const PowerMaterials = preload("res://scripts/data/power_materials.gd")
+ var power_materials: PowerMaterials
+-var focus_color := Color("cce4ef")
+ var palette: Dictionary = {}
+ var batches: Dictionary = {}
+ var asset_batches: Dictionary = {}
+@@ -12,8 +11,6 @@ var prepared_meshes: Dictionary = {}
+ var prepared_materials: Dictionary = {}
+ var surfaces: Dictionary = {}
+ var decor_groups: Array[MeshInstance3D] = []
+-var shadow_key: SpotLight3D
+-var focused_z: float = INF
+ var core_rotor: Node3D
+ var mesh_box := BoxMesh.new()
+ var mesh_pipe := CylinderMesh.new()
+@@ -82,7 +79,6 @@ func build() -> void:
+ 	_flush()
+ 	_flush_assets()
+ 	_commit_surfaces()
+-	_shadow_light()
+ 
+ func _part(shape: String, pos: Vector3, size: Vector3, material: String, angles: Vector3 = Vector3.ZERO) -> void:
+ 	var bucket: int = clampi(int((-pos.z + 10.0) / 20.0), 0, 4)
+@@ -166,9 +162,8 @@ func _walls_and_deck() -> void:
+ 			_part("pipe", Vector3(side * 8.6,4.15,z + 1.8), Vector3(0.5,0.14,0.5), "rubber", Vector3(PI/2,0,0))
+ 		if z < -54:
+ 			_part("box", Vector3(0,0.018,z), Vector3(3.8,0.025,3.85), "grate")
+-	for z in [-5,-22,-42,-63,-73]:
++	for z in [6,-5,-22,-42,-63,-73]:
+ 		_part("box", Vector3(0,4.82,z), Vector3(4.35,0.24,0.65), "rubber")
+-		_part("box", Vector3(0,4.68,z), Vector3(3.8,0.08,0.24), "glow")
+ 		for x in [-1.6,-0.8,0.0,0.8,1.6]:
+ 			_part("box", Vector3(x,4.62,z), Vector3(0.045,0.12,0.45), "steel")
+ 
+@@ -240,7 +235,6 @@ func _reactor() -> void:
+ 		var z: float = -72 + cos(angle)*1.3
+ 		_part("pipe", Vector3(x,2.1,z), Vector3(0.12,2.9,0.12), "steel")
+ 	_part("pipe", Vector3(0,4.3,-72), Vector3(0.65,1.4,0.65), "steel")
+-	_part("ring", Vector3(0,2.5,-72), Vector3(1.1,0.3,1.1), "cyan")
+ 	_part("ring", Vector3(0,0.62,-72), Vector3(1.6,0.5,1.6), "cyan")
+ 	_part("box", Vector3(0,3.5,-77.65), Vector3(8.5,2.6,0.12), "grate")
+ 
+@@ -380,37 +374,6 @@ func _process(delta: float) -> void:
+ 	if is_instance_valid(core_rotor) and core_rotor.is_visible_in_tree():
+ 		core_rotor.rotation.y += delta * 0.35
+ 
+-func _shadow_light() -> void:
+-	shadow_key = SpotLight3D.new()
+-	shadow_key.rotation_degrees.x = -90
+-	shadow_key.spot_range = 12
+-	shadow_key.spot_angle = 58
+-	shadow_key.spot_attenuation = 0.8
+-	shadow_key.shadow_enabled = true
+-	shadow_key.shadow_bias = 0.12
+-	shadow_key.shadow_normal_bias = 1.2
+-	shadow_key.light_cull_mask = 1
+-	add_child(shadow_key)
+-	update_focus(Vector3(0,0,7))
+-
+-func update_focus(pos: Vector3) -> void:
+-	if shadow_key == null: return
+-	var z: float = 6 if pos.z > 2 else (-5 if pos.z > -14 else (-22 if pos.z > -34 else (-42 if pos.z > -54 else (-63 if pos.z > -68 else -73))))
+-	if z == focused_z: return
+-	focused_z = z
+-	shadow_key.position = Vector3(-1.3,4.5,z)
+-	shadow_key.rotation_degrees = Vector3(-90,0,0)
+-	focus_color = Color("ffe0bb") if z in [6.0,-22.0,-42.0,-63.0] else Color("b9e7f3")
+-	if z == 6:
+-		shadow_key.position = Vector3(1.5,4.5,6)
+-		shadow_key.look_at(Vector3(3.8,0.8,4), Vector3.UP)
+-	elif z == -22:
+-		shadow_key.position = Vector3(3.0,4.5,-24)
+-		shadow_key.look_at(Vector3(6.6,1.1,-27), Vector3.UP)
+-	elif z == -42:
+-		shadow_key.position = Vector3(-3.5,4.5,-41)
+-		shadow_key.look_at(Vector3(-7,0.7,-43), Vector3.UP)
+-
+ func set_quality(low: bool) -> void:
+ 	for group in decor_groups:
+ 		group.visibility_range_end = 32.0 if low else 44.0
+diff --git a/tools/verify.sh b/tools/verify.sh
+index f59e923..dce6b76 100755
+--- a/tools/verify.sh
++++ b/tools/verify.sh
+@@ -7,7 +7,7 @@ export XDG_DATA_HOME="$PWD/.cstack/silo9/test-user-data"
+ if rg -q 'SCRIPT ERROR|Parse Error|ERROR:' .cstack/silo9/evidence/import.log; then exit 1; fi
+ for test_file in tests/test_*.gd; do
+     log_file=".cstack/silo9/evidence/$(basename "$test_file" .gd).log"
+-    if [[ "$test_file" == tests/test_weapon_input.gd || "$test_file" == tests/test_weapon_modal_input.gd || "$test_file" == tests/test_menu_held_button.gd || "$test_file" == tests/test_weapon_motion.gd || "$test_file" == tests/test_player.gd || "$test_file" == tests/test_jump_tap.gd || "$test_file" == tests/test_weapon_beam_motion.gd || "$test_file" == tests/test_weapon_look_direction.gd || "$test_file" == tests/test_shot_*.gd || "$test_file" == tests/test_ads_*.gd ]]; then
++    if [[ "$test_file" == tests/test_flashlight_input.gd || "$test_file" == tests/test_weapon_input.gd || "$test_file" == tests/test_weapon_modal_input.gd || "$test_file" == tests/test_menu_held_button.gd || "$test_file" == tests/test_weapon_motion.gd || "$test_file" == tests/test_player.gd || "$test_file" == tests/test_jump_tap.gd || "$test_file" == tests/test_weapon_beam_motion.gd || "$test_file" == tests/test_weapon_look_direction.gd || "$test_file" == tests/test_shot_*.gd || "$test_file" == tests/test_ads_*.gd ]]; then
+         if [[ -n "${DISPLAY:-}" ]]; then
+             timeout 120 ./tools/godot.sh --display-driver x11 --rendering-driver dummy --audio-driver Dummy --path . --script "$test_file" 2>&1 | tee "$log_file"
+         else

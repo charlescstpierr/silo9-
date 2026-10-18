@@ -1,0 +1,115 @@
+FEEEE..FFFFFF.
+======================================================================
+ERROR: test_malformed_reports_fail_closed (__main__.ProofValidation.test_malformed_reports_fail_closed) (report=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 31, in test_malformed_reports_fail_closed
+    self.assertTrue(validate_result(report, 0, ''))
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/prove_sector_power.py", line 15, in validate_result
+    errors = list(report.get('failures', ['missing failures field']))
+                  ^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+ERROR: test_malformed_reports_fail_closed (__main__.ProofValidation.test_malformed_reports_fail_closed) (report=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 31, in test_malformed_reports_fail_closed
+    self.assertTrue(validate_result(report, 0, ''))
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/prove_sector_power.py", line 15, in validate_result
+    errors = list(report.get('failures', ['missing failures field']))
+                  ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_malformed_reports_fail_closed (__main__.ProofValidation.test_malformed_reports_fail_closed) (report={'failures': None})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 31, in test_malformed_reports_fail_closed
+    self.assertTrue(validate_result(report, 0, ''))
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/prove_sector_power.py", line 15, in validate_result
+    errors = list(report.get('failures', ['missing failures field']))
+TypeError: 'NoneType' object is not iterable
+
+======================================================================
+ERROR: test_malformed_reports_fail_closed (__main__.ProofValidation.test_malformed_reports_fail_closed) (report={'mode': 'perf', 'failures': [], 'performance_valid': True, 'waypoint_positions': [[0, 0, -10], [0, 0, -16], [0, 0, -22], [0, 0, -32], [0, 0, -36], [0, 0, -42], [0, 0, -32], [0, 0, -12], [0, 0, 7]], 'frames_drawn': 121, 'frame_intervals_ms': [16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7, 16.7], 'frame_stages': ['walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk', 'walk'], 'travelled_m': 'far', 'waypoints_completed': 9, 'rendering_method': 'gl_compatibility', 'display_driver': 'X11', 'renderer': 'llvmpipe', 'resolution': [1280, 720], 'commands': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 31, in test_malformed_reports_fail_closed
+    self.assertTrue(validate_result(report, 0, ''))
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/prove_sector_power.py", line 25, in validate_result
+    if report.get('travelled_m', 0) < 90 or report.get('waypoints_completed', 0) < 8:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+======================================================================
+FAIL: test_lighting_requires_real_observations (__main__.ProofValidation.test_lighting_requires_real_observations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 35, in test_lighting_requires_real_observations
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_route_and_frame_forgery (__main__.ProofValidation.test_rejects_route_and_frame_forgery) (key='performance_valid')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 26, in test_rejects_route_and_frame_forgery
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_route_and_frame_forgery (__main__.ProofValidation.test_rejects_route_and_frame_forgery) (key='frames_drawn')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 26, in test_rejects_route_and_frame_forgery
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_route_and_frame_forgery (__main__.ProofValidation.test_rejects_route_and_frame_forgery) (key='waypoints_completed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 26, in test_rejects_route_and_frame_forgery
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_route_and_frame_forgery (__main__.ProofValidation.test_rejects_route_and_frame_forgery) (key='waypoint_positions')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 26, in test_rejects_route_and_frame_forgery
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_route_and_frame_forgery (__main__.ProofValidation.test_rejects_route_and_frame_forgery) (key='mode')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 26, in test_rejects_route_and_frame_forgery
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_rejects_route_and_frame_forgery (__main__.ProofValidation.test_rejects_route_and_frame_forgery) (key='frame_intervals_ms')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 26, in test_rejects_route_and_frame_forgery
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.007s
+
+FAILED (failures=7, errors=4)

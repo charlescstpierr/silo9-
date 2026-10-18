@@ -1,0 +1,138 @@
+{
+  "passed": true,
+  "head": "e5b0bafa7b8bad369e6767a908b1d8391343b9f2",
+  "tests_sha256": {
+    "tests/lighting_fixture.gd": "7314110ec6c045cc64a5cd3f3ff5520f00d59bb342786b8126c06ef82d052448",
+    "tests/test_lighting_composition.gd": "f76d6852901b12efad9812493bfd5cf80e4d622092b5fccd7b38e784ea062f34",
+    "tests/test_lighting_alarms.gd": "f22ce6e4f1ba938d324364251611563b33d56f0fd7e52a5f3bf5909cd4789d97",
+    "tests/test_lighting_settings.gd": "19675e810f9417cb2bd6b95afbae9ca73f2595c7bc8d90ad87eb5e4351a35846",
+    "tests/test_flashlight_input.gd": "9b51fdbadfb9b41ab42290a1f625214b134d7fd65b0eff806f0897103f496425",
+    "tests/test_sector_power_effects.gd": "7ad768d657f73003c62cb989bdcddb9838b5e04080e554cf929913f9616de61f",
+    "tests/test_sector_power_commands.gd": "0ead73ecea6af19fb2f77b5e802a82e54a99cab60a34d2f139c1986d714408ca",
+    "tests/test_world.gd": "b7712cef26ef65a972713faeb03e8ce862192a35e4b4f6b9baf82072f0c05657"
+  },
+  "results": [
+    {
+      "test": "test_lighting_composition",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09",
+        "--script",
+        "tests/test_lighting_composition.gd"
+      ],
+      "exit": 1,
+      "semantic_red": true,
+      "failures": 10
+    },
+    {
+      "test": "test_lighting_alarms",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09",
+        "--script",
+        "tests/test_lighting_alarms.gd"
+      ],
+      "exit": 1,
+      "semantic_red": true,
+      "failures": 10
+    },
+    {
+      "test": "test_lighting_settings",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09",
+        "--script",
+        "tests/test_lighting_settings.gd"
+      ],
+      "exit": 1,
+      "semantic_red": true,
+      "failures": 1
+    },
+    {
+      "test": "test_flashlight_input",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09",
+        "--script",
+        "tests/test_flashlight_input.gd"
+      ],
+      "exit": 1,
+      "semantic_red": true,
+      "failures": 1
+    },
+    {
+      "test": "test_sector_power_effects",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09",
+        "--script",
+        "tests/test_sector_power_effects.gd"
+      ],
+      "exit": 1,
+      "semantic_red": true,
+      "failures": 41
+    },
+    {
+      "test": "test_sector_power_commands",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09",
+        "--script",
+        "tests/test_sector_power_commands.gd"
+      ],
+      "exit": 1,
+      "semantic_red": true,
+      "failures": 1
+    },
+    {
+      "test": "test_world",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09",
+        "--script",
+        "tests/test_world.gd"
+      ],
+      "exit": 1,
+      "semantic_red": true,
+      "failures": 2,
+      "expected_assertions": [
+        "World has no static exploration shadow in Low",
+        "Exploration shadow belongs to Player, never a sector spot"
+      ]
+    }
+  ],
+  "production_unchanged": true,
+  "validation_correction": "Initial parent classifier accepted FAIL: only; test_world uses push_error and WORLD count. Exact two expected assertions inspected, no re-execution or log modification.",
+  "tests_commit": "896f044"
+}

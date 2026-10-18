@@ -1,0 +1,703 @@
+{
+  "partial": false,
+  "checks": 3658,
+  "errors": [],
+  "runs": [
+    {
+      "name": "normal-1-baseline",
+      "quality": "normal",
+      "side": "baseline",
+      "pair": 1,
+      "intervals": 230,
+      "frames": 231,
+      "duration_ms": 21024.008,
+      "travelled_m": 92.4334392547607,
+      "p50": 91.738,
+      "p95": 130.702,
+      "p99": 140.839,
+      "draw_calls_max": 298,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "scale": 1.0,
+      "lights_visible_final": 9,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "normal-1-candidate",
+      "quality": "normal",
+      "side": "candidate",
+      "pair": 1,
+      "intervals": 292,
+      "frames": 293,
+      "duration_ms": 21112.735,
+      "travelled_m": 92.4334392547607,
+      "p50": 74.222,
+      "p95": 93.822,
+      "p99": 102.32,
+      "draw_calls_max": 277,
+      "nodes_max": 607,
+      "resources_max": 101,
+      "scale": 1.0,
+      "lights_visible_final": 7,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "normal-2-candidate",
+      "quality": "normal",
+      "side": "candidate",
+      "pair": 2,
+      "intervals": 299,
+      "frames": 300,
+      "duration_ms": 21155.36,
+      "travelled_m": 92.4334392547607,
+      "p50": 71.7,
+      "p95": 88.218,
+      "p99": 97.944,
+      "draw_calls_max": 277,
+      "nodes_max": 607,
+      "resources_max": 101,
+      "scale": 1.0,
+      "lights_visible_final": 7,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "normal-2-baseline",
+      "quality": "normal",
+      "side": "baseline",
+      "pair": 2,
+      "intervals": 247,
+      "frames": 248,
+      "duration_ms": 21005.448,
+      "travelled_m": 92.4334392547607,
+      "p50": 87.989,
+      "p95": 109.335,
+      "p99": 115.025,
+      "draw_calls_max": 301,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "scale": 1.0,
+      "lights_visible_final": 9,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "normal-3-baseline",
+      "quality": "normal",
+      "side": "baseline",
+      "pair": 3,
+      "intervals": 246,
+      "frames": 247,
+      "duration_ms": 21175.47,
+      "travelled_m": 92.4334392547607,
+      "p50": 89.028,
+      "p95": 110.602,
+      "p99": 118.467,
+      "draw_calls_max": 300,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "scale": 1.0,
+      "lights_visible_final": 9,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "normal-3-candidate",
+      "quality": "normal",
+      "side": "candidate",
+      "pair": 3,
+      "intervals": 286,
+      "frames": 287,
+      "duration_ms": 21123.798,
+      "travelled_m": 92.4334392547607,
+      "p50": 74.872,
+      "p95": 93.845,
+      "p99": 101.421,
+      "draw_calls_max": 277,
+      "nodes_max": 607,
+      "resources_max": 101,
+      "scale": 1.0,
+      "lights_visible_final": 7,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "normal-4-candidate",
+      "quality": "normal",
+      "side": "candidate",
+      "pair": 4,
+      "intervals": 298,
+      "frames": 299,
+      "duration_ms": 20998.902,
+      "travelled_m": 92.4334392547607,
+      "p50": 72.493,
+      "p95": 88.745,
+      "p99": 96.459,
+      "draw_calls_max": 277,
+      "nodes_max": 607,
+      "resources_max": 101,
+      "scale": 1.0,
+      "lights_visible_final": 7,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "normal-4-baseline",
+      "quality": "normal",
+      "side": "baseline",
+      "pair": 4,
+      "intervals": 241,
+      "frames": 242,
+      "duration_ms": 21118.225,
+      "travelled_m": 92.4334392547607,
+      "p50": 89.13,
+      "p95": 109.047,
+      "p99": 120.646,
+      "draw_calls_max": 298,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "scale": 1.0,
+      "lights_visible_final": 9,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "normal-5-baseline",
+      "quality": "normal",
+      "side": "baseline",
+      "pair": 5,
+      "intervals": 247,
+      "frames": 248,
+      "duration_ms": 20949.099,
+      "travelled_m": 92.4334392547607,
+      "p50": 87.161,
+      "p95": 107.468,
+      "p99": 118.327,
+      "draw_calls_max": 298,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "scale": 1.0,
+      "lights_visible_final": 9,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "normal-5-candidate",
+      "quality": "normal",
+      "side": "candidate",
+      "pair": 5,
+      "intervals": 290,
+      "frames": 291,
+      "duration_ms": 21123.509000000002,
+      "travelled_m": 92.4334392547607,
+      "p50": 74.142,
+      "p95": 89.879,
+      "p99": 100.519,
+      "draw_calls_max": 277,
+      "nodes_max": 607,
+      "resources_max": 101,
+      "scale": 1.0,
+      "lights_visible_final": 7,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "low-1-baseline",
+      "quality": "low",
+      "side": "baseline",
+      "pair": 1,
+      "intervals": 486,
+      "frames": 487,
+      "duration_ms": 21073.34,
+      "travelled_m": 92.4334392547607,
+      "p50": 43.853,
+      "p95": 59.367,
+      "p99": 69.464,
+      "draw_calls_max": 265,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "scale": 0.670000016689301,
+      "lights_visible_final": 6,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "low-1-candidate",
+      "quality": "low",
+      "side": "candidate",
+      "pair": 1,
+      "intervals": 472,
+      "frames": 473,
+      "duration_ms": 21062.763,
+      "travelled_m": 92.4334392547607,
+      "p50": 45.214,
+      "p95": 61.052,
+      "p99": 69.504,
+      "draw_calls_max": 270,
+      "nodes_max": 607,
+      "resources_max": 101,
+      "scale": 0.670000016689301,
+      "lights_visible_final": 6,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "low-2-candidate",
+      "quality": "low",
+      "side": "candidate",
+      "pair": 2,
+      "intervals": 481,
+      "frames": 482,
+      "duration_ms": 20990.118,
+      "travelled_m": 92.4334392547607,
+      "p50": 44.211,
+      "p95": 58.84,
+      "p99": 65.949,
+      "draw_calls_max": 270,
+      "nodes_max": 607,
+      "resources_max": 101,
+      "scale": 0.670000016689301,
+      "lights_visible_final": 6,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "low-2-baseline",
+      "quality": "low",
+      "side": "baseline",
+      "pair": 2,
+      "intervals": 460,
+      "frames": 461,
+      "duration_ms": 21029.955,
+      "travelled_m": 92.4334392547607,
+      "p50": 46.943,
+      "p95": 62.212,
+      "p99": 69.776,
+      "draw_calls_max": 265,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "scale": 0.670000016689301,
+      "lights_visible_final": 6,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "low-3-baseline",
+      "quality": "low",
+      "side": "baseline",
+      "pair": 3,
+      "intervals": 467,
+      "frames": 468,
+      "duration_ms": 20894.59,
+      "travelled_m": 92.4334392547607,
+      "p50": 45.349,
+      "p95": 60.587,
+      "p99": 67.639,
+      "draw_calls_max": 265,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "scale": 0.670000016689301,
+      "lights_visible_final": 6,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "low-3-candidate",
+      "quality": "low",
+      "side": "candidate",
+      "pair": 3,
+      "intervals": 464,
+      "frames": 465,
+      "duration_ms": 20951.277,
+      "travelled_m": 92.4334392547607,
+      "p50": 46.053,
+      "p95": 61.17,
+      "p99": 72.988,
+      "draw_calls_max": 270,
+      "nodes_max": 607,
+      "resources_max": 101,
+      "scale": 0.670000016689301,
+      "lights_visible_final": 6,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "low-4-candidate",
+      "quality": "low",
+      "side": "candidate",
+      "pair": 4,
+      "intervals": 495,
+      "frames": 496,
+      "duration_ms": 21086.376,
+      "travelled_m": 92.4334392547607,
+      "p50": 43.865,
+      "p95": 57.434,
+      "p99": 64.42,
+      "draw_calls_max": 270,
+      "nodes_max": 607,
+      "resources_max": 101,
+      "scale": 0.670000016689301,
+      "lights_visible_final": 6,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "low-4-baseline",
+      "quality": "low",
+      "side": "baseline",
+      "pair": 4,
+      "intervals": 479,
+      "frames": 480,
+      "duration_ms": 21004.265,
+      "travelled_m": 92.4334392547607,
+      "p50": 43.99,
+      "p95": 58.401,
+      "p99": 69.596,
+      "draw_calls_max": 265,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "scale": 0.670000016689301,
+      "lights_visible_final": 6,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "low-5-baseline",
+      "quality": "low",
+      "side": "baseline",
+      "pair": 5,
+      "intervals": 493,
+      "frames": 494,
+      "duration_ms": 21066.985,
+      "travelled_m": 92.4334392547607,
+      "p50": 42.915,
+      "p95": 56.923,
+      "p99": 65.145,
+      "draw_calls_max": 265,
+      "nodes_max": 603,
+      "resources_max": 101,
+      "scale": 0.670000016689301,
+      "lights_visible_final": 6,
+      "shadows_visible_final": 0
+    },
+    {
+      "name": "low-5-candidate",
+      "quality": "low",
+      "side": "candidate",
+      "pair": 5,
+      "intervals": 479,
+      "frames": 480,
+      "duration_ms": 21138.551,
+      "travelled_m": 92.4334392547607,
+      "p50": 44.411,
+      "p95": 58.388,
+      "p99": 65.341,
+      "draw_calls_max": 270,
+      "nodes_max": 607,
+      "resources_max": 101,
+      "scale": 0.670000016689301,
+      "lights_visible_final": 6,
+      "shadows_visible_final": 0
+    }
+  ],
+  "interval_count": 7452,
+  "summary": {
+    "normal": {
+      "p50": {
+        "baseline": {
+          "median": 89.028,
+          "range": [
+            87.161,
+            91.738
+          ]
+        },
+        "candidate": {
+          "median": 74.142,
+          "range": [
+            71.7,
+            74.872
+          ]
+        },
+        "median_difference_percent": -16.720582288718166,
+        "paired_differences": [
+          -17.516000000000005,
+          -16.289,
+          -14.156000000000006,
+          -16.637,
+          -13.019000000000005
+        ],
+        "paired_median_difference": -16.289
+      },
+      "p95": {
+        "baseline": {
+          "median": 109.335,
+          "range": [
+            107.468,
+            130.702
+          ]
+        },
+        "candidate": {
+          "median": 89.879,
+          "range": [
+            88.218,
+            93.845
+          ]
+        },
+        "median_difference_percent": -17.794850688251696,
+        "paired_differences": [
+          -36.879999999999995,
+          -21.11699999999999,
+          -16.757000000000005,
+          -20.301999999999992,
+          -17.589
+        ],
+        "paired_median_difference": -20.301999999999992
+      },
+      "p99": {
+        "baseline": {
+          "median": 118.467,
+          "range": [
+            115.025,
+            140.839
+          ]
+        },
+        "candidate": {
+          "median": 100.519,
+          "range": [
+            96.459,
+            102.32
+          ]
+        },
+        "median_difference_percent": -15.150210607173298,
+        "paired_differences": [
+          -38.519000000000005,
+          -17.081000000000003,
+          -17.045999999999992,
+          -24.186999999999998,
+          -17.807999999999993
+        ],
+        "paired_median_difference": -17.807999999999993
+      },
+      "draw_calls_max": {
+        "baseline": {
+          "median": 298,
+          "range": [
+            298,
+            301
+          ]
+        },
+        "candidate": {
+          "median": 277,
+          "range": [
+            277,
+            277
+          ]
+        },
+        "median_difference_percent": -7.0469798657718075,
+        "paired_differences": [
+          -21,
+          -24,
+          -23,
+          -21,
+          -21
+        ],
+        "paired_median_difference": -21
+      },
+      "nodes_max": {
+        "baseline": {
+          "median": 603,
+          "range": [
+            603,
+            603
+          ]
+        },
+        "candidate": {
+          "median": 607,
+          "range": [
+            607,
+            607
+          ]
+        },
+        "median_difference_percent": 0.6633499170812573,
+        "paired_differences": [
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "paired_median_difference": 4
+      },
+      "resources_max": {
+        "baseline": {
+          "median": 101,
+          "range": [
+            101,
+            101
+          ]
+        },
+        "candidate": {
+          "median": 101,
+          "range": [
+            101,
+            101
+          ]
+        },
+        "median_difference_percent": 0.0,
+        "paired_differences": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "paired_median_difference": 0
+      }
+    },
+    "low": {
+      "p50": {
+        "baseline": {
+          "median": 43.99,
+          "range": [
+            42.915,
+            46.943
+          ]
+        },
+        "candidate": {
+          "median": 44.411,
+          "range": [
+            43.865,
+            46.053
+          ]
+        },
+        "median_difference_percent": 0.9570356899295307,
+        "paired_differences": [
+          1.360999999999997,
+          -2.7319999999999993,
+          0.7040000000000006,
+          -0.125,
+          1.4960000000000022
+        ],
+        "paired_median_difference": 0.7040000000000006
+      },
+      "p95": {
+        "baseline": {
+          "median": 59.367,
+          "range": [
+            56.923,
+            62.212
+          ]
+        },
+        "candidate": {
+          "median": 58.84,
+          "range": [
+            57.434,
+            61.17
+          ]
+        },
+        "median_difference_percent": -0.8876985530681947,
+        "paired_differences": [
+          1.6850000000000023,
+          -3.372,
+          0.5829999999999984,
+          -0.9670000000000059,
+          1.4649999999999963
+        ],
+        "paired_median_difference": 0.5829999999999984
+      },
+      "p99": {
+        "baseline": {
+          "median": 69.464,
+          "range": [
+            65.145,
+            69.776
+          ]
+        },
+        "candidate": {
+          "median": 65.949,
+          "range": [
+            64.42,
+            72.988
+          ]
+        },
+        "median_difference_percent": -5.0601750547045965,
+        "paired_differences": [
+          0.04000000000000625,
+          -3.826999999999998,
+          5.349000000000004,
+          -5.176000000000002,
+          0.19599999999999795
+        ],
+        "paired_median_difference": 0.04000000000000625
+      },
+      "draw_calls_max": {
+        "baseline": {
+          "median": 265,
+          "range": [
+            265,
+            265
+          ]
+        },
+        "candidate": {
+          "median": 270,
+          "range": [
+            270,
+            270
+          ]
+        },
+        "median_difference_percent": 1.8867924528301883,
+        "paired_differences": [
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "paired_median_difference": 5
+      },
+      "nodes_max": {
+        "baseline": {
+          "median": 603,
+          "range": [
+            603,
+            603
+          ]
+        },
+        "candidate": {
+          "median": 607,
+          "range": [
+            607,
+            607
+          ]
+        },
+        "median_difference_percent": 0.6633499170812573,
+        "paired_differences": [
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "paired_median_difference": 4
+      },
+      "resources_max": {
+        "baseline": {
+          "median": 101,
+          "range": [
+            101,
+            101
+          ]
+        },
+        "candidate": {
+          "median": 101,
+          "range": [
+            101,
+            101
+          ]
+        },
+        "median_difference_percent": 0.0,
+        "paired_differences": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "paired_median_difference": 0
+      }
+    }
+  },
+  "artifact_hashes": {
+    "engine": "8d106cbe6144c2dc7e881d61d2429c1a8a76e6b22ef48bd5e48dcf934953f71e",
+    "wrapper": "bc45ab99e5dd1cf55401fe99d67385ad365588f4f8b63fe4b887762e050124cd",
+    "probe": "28e9cd57c0e56f0c06601539d5cd7d35154e1191eea2568d9e6cbe0d2e47bf44"
+  },
+  "source_heads": {
+    "baseline": "e5b0bafa7b8bad369e6767a908b1d8391343b9f2",
+    "candidate": "653e2a79c7f36e9ac7422335c85cef3b937ed0f9"
+  }
+}

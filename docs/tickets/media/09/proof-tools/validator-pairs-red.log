@@ -1,0 +1,32 @@
+FFF......
+======================================================================
+FAIL: test_lighting_rejects_missing_pairs_and_wrong_pose (__main__.ProofValidation.test_lighting_rejects_missing_pairs_and_wrong_pose) (problem='missing_pair')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 56, in test_lighting_rejects_missing_pairs_and_wrong_pose
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_lighting_rejects_missing_pairs_and_wrong_pose (__main__.ProofValidation.test_lighting_rejects_missing_pairs_and_wrong_pose) (problem='pose')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 56, in test_lighting_rejects_missing_pairs_and_wrong_pose
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_lighting_rejects_missing_pairs_and_wrong_pose (__main__.ProofValidation.test_lighting_rejects_missing_pairs_and_wrong_pose) (problem='shadow')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/selfcheck_sector_power.py", line 56, in test_lighting_rejects_missing_pairs_and_wrong_pose
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.005s
+
+FAILED (failures=3)

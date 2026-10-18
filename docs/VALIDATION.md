@@ -6,6 +6,8 @@ Les mesures globales et captures ci-dessous correspondent à la base `8649b60`. 
 
 Le [ticket 12](tickets/12-sector-power.md) ajoute les circuits Maintenance et Archives, les sauvegardes de schéma 3 avec migration du schéma 2, et deux parcours complets par commandes natives. Ses mesures distinctes signalent un surcoût en qualité normale sur llvmpipe. Le tableau historique ci-dessous reste celui de la base.
 
+Le [ticket 9](tickets/09-lighting.md) ajoute la lampe F/R3, les alarmes lumineuses autonomes et le réglage de réduction des variations. Ses preuves séparent les tests, les parcours natifs et les captures contrôlées. Sur son trajet llvmpipe lampe éteinte, le p95 Normal baisse de 17,79 % ; le résultat Low reste inconclusif. En Maintenance Low avec alarme tenue et lampe allumée, le p95 augmente de 15,03 % face à la base sans lampe. Ce résultat ne certifie ni GPU joueur ni Windows. Les tableaux historiques ci-dessous restent ceux de leurs versions de référence.
+
 ## Comportements vérifiés
 
 Sur la base `8649b60`, `./tools/verify.sh` importait le projet puis exécutait sept suites Godot headless avec des sauvegardes isolées dans `.cstack/silo9/test-user-data`. Le tableau ci-dessous décrit cette base.

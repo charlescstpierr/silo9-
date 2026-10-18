@@ -1,0 +1,11 @@
+# Mesures prévues avant campagne finale
+
+Question principale: quel coût rendu apporte le ticket09 sur le même trajet physique que le ticket12? Baseline e5b0baf dans worktree12, candidat09 à geler après revue. Même Godot4.7.2 source, X11 Compatibility,1280x720,llvmpipe, même copie figée sonde/wrapper. Cinq paires alternées par qualité, ordre inversé une paire sur deux. Un seul moteur, aucun encodeur/capture/profileur pendant mesure. Warmup2s puis neuf stations physiques92,4m, ennemis retirés, circuitsON, lampeOFF par défaut. Ce trajet couvre refuge/Maintenance/Archives et ne mesure pas cœur/alarme/lampeON. Ne pas réutiliser les anciennes mesures12 comme baseline09.
+
+Chaque run exige exit0, aucune erreur moteur/script, source et outils/moteur inchangés, vrais frames et intervalles, neuf coordonnées exactes dans l'ordre, rendu/échelle/qualité vérifiés. Recalculer quantiles depuis brut avec même définition; médiane et plage par groupe. Captures et missions hors campagne. Relever hôte/charge avant; profil CPU séparé pour attribuer le limiteur sans contaminer chiffres. Le nombre de lumières ne prouve pas un gain.
+
+Complément d'observation: modes lighting-perf sur cœur lampeOFF/ON et Maintenance alarme tenue OFF/ON, états figés explicites. Commencer par un run de chaque version/qualité, fenêtres séparées6s; valeurs exploratoires et noncomparaison de livraison. Ce complément sert à chercher un coût manifestement oublié, pas à annoncer un gain statistique. S'il révèle un risque de régression matériel, lancer une campagne appariée ciblée cinq répétitions avant conclusion sur ce risque. Ne pas mélanger aux timings du trajet principal ni appeler les poses une marche. L'alarme maintenue mesure son état, pas sa durée naturelle complète.
+
+La campagne devra enregistrer nombre de lumières réellement visibles, ombres, drawcalls et échelle. Respecter <=1ombre explorationNormal et0Low, matériaux/nœuds stables. Revue indépendante des calculs et limites. Tout coût reproductible doit être expliqué/arbitré, pas masqué par l'amélioration visuelle.
+
+Machine actuelle cirrus-qemu, rendu logiciel llvmpipe. Aucun seuilFPSjoueur, performanceWindows ni tempsGPUcible validé. Question matériel cible envoyée en parallèle. Les tests fonctionnels et captures ne prouvent pas le coût GPU.

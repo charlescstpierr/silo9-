@@ -1,0 +1,57 @@
+[
+  {
+    "name": "render-final-normal",
+    "command": [
+      "python3",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/prove_sector_power.py",
+      "--project",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09",
+      "--godot",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--output",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/render-final-normal",
+      "--mode",
+      "lighting",
+      "--require-circuits",
+      "--require-lighting"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "render-final-low",
+    "command": [
+      "python3",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/prove_sector_power.py",
+      "--project",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-09",
+      "--godot",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--output",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/render-final-low",
+      "--mode",
+      "lighting",
+      "--require-circuits",
+      "--require-lighting",
+      "--low"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "render-baseline-low",
+    "command": [
+      "python3",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/proof-tools/prove_sector_power.py",
+      "--project",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-12",
+      "--godot",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+      "--output",
+      "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue09/render-baseline-low",
+      "--mode",
+      "lighting",
+      "--require-circuits",
+      "--low"
+    ],
+    "exit": 0
+  }
+]

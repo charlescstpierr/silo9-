@@ -1,0 +1,134 @@
+{
+  "primary_intervals": 7452,
+  "primary_runs": 20,
+  "primary_summary": {
+    "normal": {
+      "p50": {
+        "baseline": {
+          "median": 89.028,
+          "range": [
+            87.161,
+            91.738
+          ]
+        },
+        "candidate": {
+          "median": 74.142,
+          "range": [
+            71.7,
+            74.872
+          ]
+        }
+      },
+      "p95": {
+        "baseline": {
+          "median": 109.335,
+          "range": [
+            107.468,
+            130.702
+          ]
+        },
+        "candidate": {
+          "median": 89.879,
+          "range": [
+            88.218,
+            93.845
+          ]
+        }
+      }
+    },
+    "low": {
+      "p50": {
+        "baseline": {
+          "median": 43.99,
+          "range": [
+            42.915,
+            46.943
+          ]
+        },
+        "candidate": {
+          "median": 44.411,
+          "range": [
+            43.865,
+            46.053
+          ]
+        }
+      },
+      "p95": {
+        "baseline": {
+          "median": 59.367,
+          "range": [
+            56.923,
+            62.212
+          ]
+        },
+        "candidate": {
+          "median": 58.84,
+          "range": [
+            57.434,
+            61.17
+          ]
+        }
+      }
+    }
+  },
+  "confirm_intervals": 5185,
+  "corrected_runs_validated": [
+    {
+      "folder": "cost-final-normal-candidate",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-final-low-baseline",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-final-normal-baseline",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-final-low-candidate",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-confirm/low-1-candidate",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-confirm/low-2-candidate",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-confirm/low-4-baseline",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-confirm/low-1-baseline",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-confirm/low-3-candidate",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-confirm/low-2-baseline",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-confirm/low-4-candidate",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-confirm/low-5-baseline",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-confirm/low-5-candidate",
+      "validator_errors": []
+    },
+    {
+      "folder": "cost-confirm/low-3-baseline",
+      "validator_errors": []
+    }
+  ],
+  "errors": []
+}

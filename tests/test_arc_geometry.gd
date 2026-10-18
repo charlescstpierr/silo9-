@@ -21,6 +21,10 @@ func run() -> void:
 	cycle.state.energy = 10
 	cycle.state.cells = 10
 	cycle.select(1)
+	for tick in 100:
+		if cycle.ready and cycle.weapon_index == 1: break
+		cycle.advance(.01, true)
+	check(cycle.ready and cycle.weapon_index == 1, "ARC selection prepared before all 602 gesture samples")
 	frame.reload = cycle.view
 	var cell: Node3D = rig._weapons[1].get_node("ArcCell")
 	var latch: Node3D = rig._weapons[1].get_node("ArcLatch")

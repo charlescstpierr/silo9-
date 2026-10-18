@@ -1,4 +1,5 @@
 extends SceneTree
+const Ready = preload("res://tests/weapon_ready.gd")
 const Player = preload("res://scripts/player.gd")
 const State = preload("res://scripts/run_state.gd")
 var failures := 0
@@ -15,6 +16,7 @@ func run() -> void:
 	player.set_physics_process(false)
 	player.set_active(true)
 	player.equip(1)
+	check(Ready.wait_for(player, 1), "ARC fixture reaches final READY")
 	var arc := player.rig._weapons[1]
 	var indicator := arc.get_node("EnergyIndicator") as Node3D
 	var connection := arc.get_node_or_null("ConnectionIndicator") as Node3D

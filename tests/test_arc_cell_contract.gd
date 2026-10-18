@@ -1,4 +1,5 @@
 extends SceneTree
+const Ready = preload("res://tests/weapon_ready.gd")
 
 const Player = preload("res://scripts/player.gd")
 const State = preload("res://scripts/run_state.gd")
@@ -26,6 +27,7 @@ func reset(energy: float = 40.0, cells: int = 2, upgraded: bool = false) -> void
 	player.set_physics_process(false)
 	player.set_active(true)
 	player.equip(1)
+	check(Ready.wait_for(player, 1), "ARC fixture reaches final READY before service")
 	step(.016)
 
 func step(delta: float) -> void:

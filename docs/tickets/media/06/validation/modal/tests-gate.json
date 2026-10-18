@@ -1,0 +1,31 @@
+{
+  "approved": true,
+  "tests_head": "9e2cf819e8d1fff26a452e95affaa1f92e162401",
+  "base": "1e0ef98d00d3386cdb7185df154083759c593b4c",
+  "production_unchanged": true,
+  "command": [
+    "timeout",
+    "40",
+    "./tools/godot.sh",
+    "--display-driver",
+    "x11",
+    "--rendering-driver",
+    "dummy",
+    "--audio-driver",
+    "Dummy",
+    "--path",
+    ".",
+    "--script",
+    "tests/test_menu_held_button.gd"
+  ],
+  "exit": 1,
+  "failures": [
+    "FAIL: Escape resumes gameplay while settings button is held",
+    "FAIL: resume hides the modal and restores the HUD",
+    "FAIL: releasing the cancelled click does not reopen settings",
+    "FAIL: F5 remains available after held-button resume"
+  ],
+  "test_sha256": "615d5ab502053e3ec1f14ef369cae64fdfb88f48055ae9b602542e08310c8d7c",
+  "parent_review": "Complete test/report read; real GUI dispatch, normal click positive control; expected engine busy errors belong to reproduced bug, no parse/script errors. Minimal candidate visibility guard supported by measured callback state.",
+  "checked_at": "2026-10-18T06:25:49.967326+00:00"
+}

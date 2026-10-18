@@ -1,0 +1,32 @@
+{
+  "excluded_from_performance_comparison": true,
+  "cpu_count": 8,
+  "samples": 29,
+  "mean_cpu_percent_by_thread_name": {
+    "Godot_v4.7.2-st": 60.34635459051341,
+    "WorkerThread 0": 0.06662016625759862,
+    "WorkerThread 1": 0.06601094587484278,
+    "WorkerThread 2": 0.0669355628202416,
+    "WorkerThread 3": 0.06631079904254121,
+    "WorkerThread 4": 0.06631079904254121,
+    "WorkerThread 5": 0.06632076656106259,
+    "WorkerThread 6": 0.06591496549366196,
+    "WorkerThread 7": 0.06591496549366196,
+    "llvmpipe-0": 39.1066629292741,
+    "llvmpipe-1": 39.186063657445715,
+    "llvmpipe-2": 39.90813022162611,
+    "llvmpipe-3": 39.776279032562535,
+    "llvmpipe-4": 39.05285925169648,
+    "llvmpipe-5": 40.30607465553361,
+    "llvmpipe-6": 39.7728883936978,
+    "llvmpipe-7": 38.70811037389883,
+    "Godot_v:disk$0": 0.0,
+    "async-io": 0.0
+  },
+  "interpretation": "See worker thread shares: llvmpipe is software rendering. This sampling identifies CPU rendering work, not target gaming GPU performance. No profiler attached to later measured campaign.",
+  "steady_window_samples": 15,
+  "steady_window_rule": "Approximate host-clock window: after warmup PNG mtime +1s to journey JSON mtime -1s; profiler run excluded from comparison",
+  "software_renderer_cpu_share": 0.9106759888627134,
+  "steady_mean_total_core_percent": 491.6428235945004,
+  "steady_mean_llvmpipe_core_percent": 447.7273145441782
+}

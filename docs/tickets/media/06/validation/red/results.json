@@ -1,0 +1,98 @@
+{
+  "head": "88dc413ed15f72d20c6ef9388ebc5a770925a1dd",
+  "base": "0473efbc0d271ff73f89a1f0bd6a3d38e42c8aa6",
+  "results": [
+    {
+      "suite": "test_shot_feedback",
+      "command": [
+        "timeout",
+        "60",
+        "./tools/godot.sh",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_shot_feedback.gd"
+      ],
+      "exit": 1,
+      "failures": [
+        "FAIL: accepted shot gives bounded FOV impulse from current rest FOV",
+        "FAIL: departure is opaque unshaded geometry",
+        "FAIL: accepted D9 shot retracts real slide within 18 mm",
+        "FAIL: physics and process before first draw cannot consume flash or recoil",
+        "FAIL: first submitted frame contains accepted departure and recoil",
+        "FAIL: accepted shot gives bounded FOV impulse from current rest FOV",
+        "FAIL: departure is opaque unshaded geometry",
+        "FAIL: physics and process before first draw cannot consume flash or recoil",
+        "FAIL: first submitted frame contains accepted departure and recoil",
+        "FAIL: D9 flash and ARC pulse have distinct geometry and color",
+        "FAIL: Player exposes configure_feedback",
+        "FAIL: Player exposes configure_feedback",
+        "FAIL: repeated shots fully return without accumulated recoil or FOV drift",
+        "FAIL: reload clears recoil and slide immediately but preserves accepted departure",
+        "FAIL: cell clears recoil and slide immediately but preserves accepted departure",
+        "FAIL: HIDDEN clears outgoing shot before new weapon appears",
+        "FAIL: inactive purges every shot effect immediately",
+        "FAIL: death purges every shot effect immediately",
+        "FAIL: teleport purges every shot effect immediately",
+        "FAIL: ARC R preserves beam while cancelling recoil",
+        "FAIL: preserved ARC beam still expires"
+      ],
+      "errors": [],
+      "test_sha256": "0485c7b6ab9911c254141c5e751c18498ef3b79aae1cbc0e20bc644825c9ae62"
+    },
+    {
+      "suite": "test_shot_casings",
+      "command": [
+        "timeout",
+        "60",
+        "./tools/godot.sh",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_shot_casings.gd"
+      ],
+      "exit": 1,
+      "failures": [
+        "FAIL: accepted design provides a world casing pool owned by Player"
+      ],
+      "errors": [],
+      "test_sha256": "b74e326b8d5ea53c3789e9ae75876752021348b685cd2e0be7ee0b888205c0a6"
+    },
+    {
+      "suite": "test_shot_settings",
+      "command": [
+        "timeout",
+        "60",
+        "./tools/godot.sh",
+        "--display-driver",
+        "x11",
+        "--rendering-driver",
+        "dummy",
+        "--audio-driver",
+        "Dummy",
+        "--path",
+        ".",
+        "--script",
+        "tests/test_shot_settings.gd"
+      ],
+      "exit": 1,
+      "failures": [
+        "FAIL: real Main settings expose camera, shot light and budget widgets"
+      ],
+      "errors": [],
+      "test_sha256": "c7bf1fc122a98b4c652b6393bfef0d4e7d3a03e4d33257017fe39c30f70a6e7c"
+    }
+  ]
+}

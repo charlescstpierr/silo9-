@@ -1,0 +1,148 @@
+{
+  "verdict": "PASS evidence integrity; no difference isolated beyond run variation on software renderer",
+  "source_file_counts": {
+    "0473efbc0d271ff73f89a1f0bd6a3d38e42c8aa6": 180,
+    "5fd906f97c3e6635ad7767d9a29b4c838429e072": 187
+  },
+  "summary": {
+    "baseline": {
+      "frame_p50_ms": {
+        "median": 92.706,
+        "min": 92.024,
+        "max": 94.898
+      },
+      "frame_p95_ms": {
+        "median": 110.849,
+        "min": 108.325,
+        "max": 112.18
+      },
+      "draw_calls_max": {
+        "median": 343,
+        "min": 343,
+        "max": 343
+      },
+      "nodes_max": {
+        "median": 669,
+        "min": 669,
+        "max": 669
+      },
+      "resources_max": {
+        "median": 82,
+        "min": 82,
+        "max": 82
+      }
+    },
+    "candidate-normal": {
+      "frame_p50_ms": {
+        "median": 94.103,
+        "min": 91.993,
+        "max": 94.67
+      },
+      "frame_p95_ms": {
+        "median": 112.328,
+        "min": 109.821,
+        "max": 114.247
+      },
+      "draw_calls_max": {
+        "median": 343,
+        "min": 343,
+        "max": 343
+      },
+      "nodes_max": {
+        "median": 681,
+        "min": 681,
+        "max": 681
+      },
+      "resources_max": {
+        "median": 83,
+        "min": 83,
+        "max": 83
+      }
+    },
+    "candidate-minimal": {
+      "frame_p50_ms": {
+        "median": 95.269,
+        "min": 92.746,
+        "max": 96.07
+      },
+      "frame_p95_ms": {
+        "median": 111.466,
+        "min": 104.813,
+        "max": 130.343
+      },
+      "draw_calls_max": {
+        "median": 343,
+        "min": 343,
+        "max": 343
+      },
+      "nodes_max": {
+        "median": 681,
+        "min": 681,
+        "max": 681
+      },
+      "resources_max": {
+        "median": 83,
+        "min": 83,
+        "max": 83
+      }
+    },
+    "candidate-reduced": {
+      "frame_p50_ms": {
+        "median": 93.163,
+        "min": 90.277,
+        "max": 97.239
+      },
+      "frame_p95_ms": {
+        "median": 113.291,
+        "min": 101.816,
+        "max": 115.183
+      },
+      "draw_calls_max": {
+        "median": 343,
+        "min": 343,
+        "max": 343
+      },
+      "nodes_max": {
+        "median": 681,
+        "min": 681,
+        "max": 681
+      },
+      "resources_max": {
+        "median": 83,
+        "min": 83,
+        "max": 83
+      }
+    }
+  },
+  "exact_two_sided_p50_ranksum_p": {
+    "candidate-normal": 0.8412698412698413,
+    "candidate-minimal": 0.09523809523809523,
+    "candidate-reduced": 1.0
+  },
+  "cpu": {
+    "all_samples": 29,
+    "steady_indices": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ],
+    "same_boot_reconstruction_matches": true,
+    "steady_samples": 15,
+    "total_core_percent": 491.6428235945004,
+    "llvmpipe_core_percent": 447.7273145441782,
+    "llvmpipe_share": 0.9106759888627135,
+    "limit": "approximate host-clock window, process threads only; not GPU utilization or proof of exclusive bottleneck"
+  }
+}

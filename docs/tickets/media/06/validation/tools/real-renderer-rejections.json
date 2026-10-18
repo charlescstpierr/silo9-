@@ -1,0 +1,66 @@
+[
+  {
+    "mode": "headless",
+    "exit": 1,
+    "journey_exists": false,
+    "command": [
+      "./tools/godot.sh",
+      "--path",
+      ".",
+      "--headless",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tools/probe_shot_feedback.gd",
+      "--",
+      "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue06/tool-validation/headless",
+      "--probe-mode=perf",
+      "--require-feedback"
+    ]
+  },
+  {
+    "mode": "dummy",
+    "exit": 1,
+    "journey_exists": false,
+    "command": [
+      "./tools/godot.sh",
+      "--path",
+      ".",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tools/probe_shot_feedback.gd",
+      "--",
+      "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue06/tool-validation/dummy",
+      "--probe-mode=perf",
+      "--require-feedback"
+    ]
+  },
+  {
+    "mode": "disabled",
+    "exit": 1,
+    "journey_exists": false,
+    "command": [
+      "./tools/godot.sh",
+      "--path",
+      ".",
+      "--display-driver",
+      "x11",
+      "--rendering-method",
+      "gl_compatibility",
+      "--disable-render-loop",
+      "--audio-driver",
+      "Dummy",
+      "--script",
+      "res://tools/probe_shot_feedback.gd",
+      "--",
+      "--proof-output=/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue06/tool-validation/disabled",
+      "--probe-mode=perf",
+      "--require-feedback"
+    ]
+  }
+]

@@ -1,0 +1,164 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: UI fixture reaches final READY
+PASS: field B never consumes on request
+PASS: field accepted cell resumes live play synchronously
+PASS: field cannot announce success before transfer
+PASS: field blocks firing through approach and manipulation
+PASS: field refuses R while cell service is active
+PASS: field repeated B has no queue or instant bypass
+PASS: field from D9 visibly passes through ARC
+PASS: field returns to original weapon after transfer
+PASS: UI fixture reaches final READY
+PASS: field B never consumes on request
+PASS: field accepted cell resumes live play synchronously
+PASS: field cannot announce success before transfer
+PASS: field blocks firing through approach and manipulation
+PASS: field refuses R while cell service is active
+PASS: field repeated B has no queue or instant bypass
+PASS: field from D9 visibly passes through ARC
+PASS: field returns to original weapon after transfer
+PASS: UI fixture reaches final READY
+PASS: inventory B never consumes on request
+PASS: inventory accepted cell resumes live play synchronously
+PASS: inventory cannot announce success before transfer
+PASS: inventory blocks firing through approach and manipulation
+PASS: inventory refuses R while cell service is active
+PASS: inventory repeated B has no queue or instant bypass
+PASS: inventory from D9 visibly passes through ARC
+PASS: inventory returns to original weapon after transfer
+PASS: UI fixture reaches final READY
+PASS: inventory B never consumes on request
+PASS: inventory accepted cell resumes live play synchronously
+PASS: inventory cannot announce success before transfer
+PASS: inventory blocks firing through approach and manipulation
+PASS: inventory refuses R while cell service is active
+PASS: inventory repeated B has no queue or instant bypass
+PASS: inventory from D9 visibly passes through ARC
+PASS: inventory returns to original weapon after transfer
+PASS: UI fixture reaches final READY
+PASS: inventory exposes its real cell button
+PASS: button B never consumes on request
+PASS: button accepted cell resumes live play synchronously
+PASS: button cannot announce success before transfer
+PASS: button blocks firing through approach and manipulation
+PASS: button refuses R while cell service is active
+PASS: button repeated B has no queue or instant bypass
+PASS: button from D9 visibly passes through ARC
+PASS: button returns to original weapon after transfer
+PASS: UI fixture reaches final READY
+PASS: inventory exposes its real cell button
+PASS: button B never consumes on request
+PASS: button accepted cell resumes live play synchronously
+PASS: button cannot announce success before transfer
+PASS: button blocks firing through approach and manipulation
+PASS: button refuses R while cell service is active
+PASS: button repeated B has no queue or instant bypass
+PASS: button from D9 visibly passes through ARC
+PASS: button returns to original weapon after transfer
+PASS: UI fixture reaches final READY
+PASS: inventory full refusal keeps inventory open in same turn
+PASS: inventory full refusal preserves resources
+PASS: UI fixture reaches final READY
+PASS: inventory empty refusal keeps inventory open in same turn
+PASS: inventory empty refusal preserves resources
+PASS: UI fixture reaches final READY
+PASS: inventory dead refusal keeps inventory open in same turn
+PASS: inventory dead refusal preserves resources
+PASS: UI fixture reaches final READY
+PASS: inventory exposes its real cell button
+PASS: button full refusal keeps inventory open in same turn
+PASS: button full refusal preserves resources
+PASS: UI fixture reaches final READY
+PASS: inventory exposes its real cell button
+PASS: button empty refusal keeps inventory open in same turn
+PASS: button empty refusal preserves resources
+PASS: UI fixture reaches final READY
+PASS: inventory exposes its real cell button
+PASS: button dead refusal keeps inventory open in same turn
+PASS: button dead refusal preserves resources
+PASS: UI fixture reaches final READY
+PASS: inventory button announces resumption
+PASS: inventory explains ARC passage when holding D9
+PASS: UI fixture reaches final READY
+PASS: field B validates current inactive without an intervening tick
+PASS: refused inactive cannot leave a ghost intention
+PASS: UI fixture reaches final READY
+PASS: field B validates current dead without an intervening tick
+PASS: refused dead cannot leave a ghost intention
+PASS: UI fixture reaches final READY
+PASS: active D9 service starts
+PASS: B during active D9 service cannot interrupt its reload
+PASS: B during active D9 service is refused without queuing
+PASS: UI fixture reaches final READY
+PASS: manual ARC choice defeats automatic D9 return
+PASS: UI fixture reaches final READY
+PASS: late stock refusal safely returns from ARC to D9
+PASS: UI fixture reaches final READY
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: none bounds or clears deferred cell intention
+PASS: deferred cell returns to original D9
+PASS: UI fixture reaches final READY
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: modal bounds or clears deferred cell intention
+PASS: UI fixture reaches final READY
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: manual bounds or clears deferred cell intention
+PASS: UI fixture reaches final READY
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: manual_same bounds or clears deferred cell intention
+PASS: UI fixture reaches final READY
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: teleport bounds or clears deferred cell intention
+PASS: UI fixture reaches final READY
+PASS: D9 reload starts before inventory cancellation
+PASS: one B intention may wait for cancelled D9 exit without reserving
+PASS: cancelled D9 never transfers rounds
+PASS: death bounds or clears deferred cell intention
+PASS: UI fixture reaches final READY
+PASS: real refuge remains immediate and free without cells
+PASS: free refuge restores scanner access
+PASS: UI fixture reaches final READY
+PASS: refuge revalidation starts ARC service
+PASS: real refuge before latch prevents waste of a cell
+PASS: UI fixture reaches final READY
+PASS: pause/save scenario begins ARC service
+PASS: F9 replaces actual player
+PASS: F5/F9 restores counts on correct side of transfer
+PASS: loaded player has no ghost operation
+PASS: loaded ARC reaches final READY
+PASS: loaded weapon readiness uses restored energy
+PASS: UI fixture reaches final READY
+PASS: pause scenario begins ARC service
+PASS: pause freezes all actual rig transforms
+PASS: pause cannot transfer resources
+PASS: resumed cancelled exit preserves only acquired transfer
+PASS: UI fixture reaches final READY
+PASS: pause/save scenario begins ARC service
+PASS: save after transfer reaches economic milestone
+PASS: F9 replaces actual player
+PASS: F5/F9 restores counts on correct side of transfer
+PASS: loaded player has no ghost operation
+PASS: loaded ARC reaches final READY
+PASS: loaded weapon readiness uses restored energy
+PASS: UI fixture reaches final READY
+PASS: pause scenario begins ARC service
+PASS: pause after transfer reaches economic milestone
+PASS: pause freezes all actual rig transforms
+PASS: pause cannot transfer resources
+PASS: resumed cancelled exit preserves only acquired transfer
+PASS: UI fixture reaches final READY
+PASS: 100 full ARC cycles each consume exactly one cell
+PASS: 100 ARC cycles do not add nodes
+PASS: 100 ARC cycles reuse mesh resources
+ARC CELL UI FAILURES: 0

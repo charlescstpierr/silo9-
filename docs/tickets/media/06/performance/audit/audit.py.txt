@@ -1,0 +1,146 @@
+#!/usr/bin/env python3
+"""Read-only independent audit of the archived ticket 6 campaign; never launches Godot."""
+import hashlib
+import itertools
+import json
+import math
+from pathlib import Path
+import re
+import statistics
+import subprocess
+import time
+
+OUT = Path(__file__).resolve().parent
+ISSUE = OUT.parent
+ROOT = ISSUE.parents[3]
+PERF = ISSUE / "performance-final"
+PROFILE = ISSUE / "perf-profile"
+REVISIONS = {"baseline": "0473efbc0d271ff73f89a1f0bd6a3d38e42c8aa6", "candidate": "5fd906f97c3e6635ad7767d9a29b4c838429e072"}
+
+def read(path):
+    return json.loads(path.read_text())
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+def require(condition, detail):
+    if not condition:
+        raise AssertionError(detail)
+
+def git(*args):
+    return subprocess.check_output(["git", *args], cwd=ROOT)
+
+def verify_sources(identity):
+    revision = identity["revision"]
+    expected_paths = git("ls-tree", "-r", "--name-only", revision, "--", "scripts", "data", "assets", "scenes", "main.tscn", "project.godot", "tests").decode().splitlines()
+    require(set(expected_paths) == set(identity["source_sha256"]), "manifest source coverage differs from Git")
+    for name, digest in identity["source_sha256"].items():
+        require(sha(git("show", f"{revision}:{name}")) == digest, f"Git hash mismatch {revision}:{name}")
+    return len(expected_paths)
+
+campaign = read(PERF / "campaign.json")
+report = read(PERF / "performance.json")
+stored_runs = read(PERF / "runs.json")
+require(report["campaign"] == campaign and report["runs"] == stored_runs, "aggregate copies differ")
+require(len(stored_runs) == 20, "not 20 runs")
+source_counts = {}
+for project, identity in campaign["projects"].items():
+    require(identity["revision"] in REVISIONS.values(), "unexpected revision")
+    source_counts[identity["revision"]] = verify_sources(identity)
+    for name, digest in identity["source_sha256"].items():
+        require(sha((Path(project) / name).read_bytes()) == digest, f"live source mismatch {project}:{name}")
+require(len(source_counts) == 2, "missing comparison revision")
+for filename, digest in campaign["tools_sha256"].items():
+    require(sha(Path(filename).read_bytes()) == digest, f"tool/engine hash mismatch {filename}")
+for prep in PERF.glob("prepare-*"):
+    m = read(prep / "manifest.json")
+    require(m["before"] == m["after"] == campaign and m["exit_code"] == 0, "preparation failure or changed campaign")
+
+labels = ["baseline", "candidate-normal", "candidate-minimal", "candidate-reduced"]
+expected_order = [(pair, label) for pair in range(1, 6) for label in (labels if pair % 2 else labels[::-1])]
+require([(r["pair"], r["label"]) for r in stored_runs] == expected_order, "alternating order mismatch")
+rows = []
+artifacts = {}
+for stored in stored_runs:
+    folder = PERF / f"perf-{stored['pair']}-{stored['label']}"
+    m, j = read(folder / "manifest.json"), read(folder / "journey.json")
+    identity = campaign["projects"][m["project"]]
+    require(m["revision"] == REVISIONS["baseline" if stored["label"] == "baseline" else "candidate"], "wrong run revision")
+    require(m["source_sha256"] == identity["source_sha256"] and stored["project_identity"] == identity, "run identity mismatch")
+    require(m["campaign_unchanged"] and m["source_verified_against_git"] and m["exit_code"] == 0, "failed run or integrity check")
+    require(stored == dict(j, project_identity=identity, pair=stored["pair"], label=stored["label"]), "journey differs from aggregate")
+    require(not re.search(r"SCRIPT ERROR|ERROR:|Parse Error|Assertion failed", (folder / "godot.log").read_text()), "engine error")
+    for filename, key, suffix in [("probe-at-launch.gd", "probe_sha256", "probe_shot_feedback.gd"), ("runner-at-launch.py.txt", "runner_sha256", "prove_shot_feedback.py")]:
+        expected = next(v for k, v in campaign["tools_sha256"].items() if k.endswith(suffix))
+        require(sha((folder / filename).read_bytes()) == m[key] == expected, "archived tool changed")
+    require(j["performance_valid"] and not j["failures"] and j["accepted_shots"] == j["target_hits"] == 9 and j["target_damage"] == 296, "workload failure")
+    require(len(j["events"]) == 9 and sum(e["damage"] for e in j["events"]) == 296, "event damage mismatch")
+    require(sum(e["weapon"] == 0 for e in j["events"]) == 5 and sum(e["weapon"] == 1 for e in j["events"]) == 4, "weapon workload differs")
+    for event in j["events"]:
+        require(event["ammo_before"] - event["ammo_after"] == (1 if event["weapon"] == 0 else 0), "ammo debit mismatch")
+        require(event["energy_before"] - event["energy_after"] == (12 if event["weapon"] == 1 else 0), "energy debit mismatch")
+    require(j["display_driver"] == "X11" and j["rendering_method"] == "gl_compatibility" and j["rendering_driver"] == "opengl3", "wrong rendering backend")
+    require(j["renderer"] == "llvmpipe (LLVM 21.1.8, 256 bits)" and j["resolution"] == "1280x720" and j["normal_quality"], "unexpected comparison environment")
+    require(j["engine_version"]["string"] == "4.7.2-stable (official)" and j["frames_drawn_end"] > j["frames_drawn_start"], "no real draw progression")
+    frames = j["frame_intervals_ms"]
+    require(len(frames) == j["frame_samples"] == len(j["frame_stages"]) and all(math.isfinite(v) and v > 0 for v in frames), "invalid raw samples")
+    row = {"pair": stored["pair"], "label": stored["label"], "frame_samples": len(frames), "timed_seconds": sum(frames) / 1000}
+    for metric, fraction in [("frame_p50_ms", .5), ("frame_p95_ms", .95)]:
+        row[metric] = sorted(frames)[min(math.floor(len(frames) * fraction), len(frames) - 1)]
+        require(row[metric] == j[metric], "incorrect percentile")
+    for metric in ["draw_calls_max", "nodes_max", "resources_max"]:
+        row[metric] = j[metric]
+    png = (folder / "renderer-warmup.png").read_bytes()
+    require(png[:8] == b"\x89PNG\r\n\x1a\n" and [int.from_bytes(png[i:i+4], "big") for i in (16, 20)] == [1280, 720], "invalid warmup")
+    for f in folder.iterdir():
+        if f.is_file():
+            artifacts[str(f.relative_to(ISSUE))] = sha(f.read_bytes())
+    rows.append(row)
+
+summary = {}
+for label in labels:
+    matching = [r for r in rows if r["label"] == label]
+    require(len(matching) == 5, "not five repeats")
+    summary[label] = {}
+    for metric in ["frame_p50_ms", "frame_p95_ms", "draw_calls_max", "nodes_max", "resources_max"]:
+        values = [r[metric] for r in matching]
+        summary[label][metric] = {"median": statistics.median(values), "min": min(values), "max": max(values)}
+require(summary == report["summary"], "summary differs from independent aggregation")
+
+# Exact two-sided rank-sum permutation check on five per-run p50 values per side.
+# Diagnostic only: these small paired/alternating runs do not establish equivalence.
+ranksum = {}
+base = [r["frame_p50_ms"] for r in rows if r["label"] == "baseline"]
+for label in labels[1:]:
+    values = base + [r["frame_p50_ms"] for r in rows if r["label"] == label]
+    ranks = [1 + sum(v < x for v in values) + (sum(v == x for v in values) - 1) / 2 for x in values]
+    expected = sum(ranks) / 2
+    deviation = abs(sum(ranks[:5]) - expected)
+    combinations = list(itertools.combinations(range(10), 5))
+    ranksum[label] = sum(abs(sum(ranks[i] for i in c) - expected) >= deviation for c in combinations) / len(combinations)
+
+cpu, limiter = read(PROFILE / "cpu-threads.json"), read(PROFILE / "limiter.json")
+profile = read(PROFILE / "run/journey.json")
+profile_manifest = read(PROFILE / "run/manifest.json")
+require(profile_manifest["revision"] == REVISIONS["candidate"] and profile_manifest["exit_code"] == 0 and profile_manifest["campaign_unchanged"], "profiling identity/exit mismatch")
+require(profile_manifest["source_sha256"] == next(i["source_sha256"] for i in campaign["projects"].values() if i["revision"] == REVISIONS["candidate"]), "profile source mismatch")
+require(not re.search(r"SCRIPT ERROR|ERROR:|Parse Error|Assertion failed", (PROFILE / "run/godot.log").read_text()), "profiling engine error")
+for filename in ["cpu-threads.json", "limiter.json", "run.py", "run/journey.json", "run/manifest.json"]:
+    artifacts[f"perf-profile/{filename}"] = sha((PROFILE / filename).read_bytes())
+require(cpu["excluded_from_comparison"] and limiter["excluded_from_performance_comparison"] and len(cpu["samples"]) == 29, "profiler inclusion or sample mismatch")
+require(profile["accepted_shots"] == profile["target_hits"] == 9 and profile["target_damage"] == 296 and not profile["failures"], "profiling workload failure")
+# Freeze the selected indices so re-audits after reboot remain reproducible. The
+# accompanying approximate clock reconstruction is applicable on this boot only.
+offset = time.time() - time.monotonic()
+start = (PROFILE / "run/renderer-warmup.png").stat().st_mtime - offset + 1
+end = (PROFILE / "run/journey.json").stat().st_mtime - offset - 1
+current_indices = [i for i, s in enumerate(cpu["samples"]) if start <= s["monotonic"] <= end]
+indices = list(range(12, 27))
+selected = [cpu["samples"][i] for i in indices]
+total = statistics.mean(sum(t["cpu_percent"] for t in s["threads"]) for s in selected)
+software = statistics.mean(sum(t["cpu_percent"] for t in s["threads"] if t["name"].startswith("llvmpipe-")) for s in selected)
+require(math.isclose(total, limiter["steady_mean_total_core_percent"]) and math.isclose(software, limiter["steady_mean_llvmpipe_core_percent"]), "CPU aggregation mismatch")
+require(cpu["cpu_count"] == 8 and 0 <= software <= total <= 800, "CPU arithmetic beyond capacity")
+result = {"verdict": "PASS evidence integrity; no difference isolated beyond run variation on software renderer", "source_file_counts": source_counts, "tool_hashes": campaign["tools_sha256"], "runs": rows, "summary": summary, "exact_two_sided_p50_ranksum_p": ranksum, "cpu": {"all_samples": 29, "steady_indices": indices, "same_boot_reconstruction_matches": current_indices == indices, "steady_samples": len(selected), "total_core_percent": total, "llvmpipe_core_percent": software, "llvmpipe_share": software / total, "limit": "approximate host-clock window, process threads only; not GPU utilization or proof of exclusive bottleneck"}, "warmup_review": "Manually inspected perf-1-candidate-normal/renderer-warmup.png: real 1280x720 industrial FPS scene, weapon and HUD visible. Does not prove transient effect quality.", "limits": ["No target GPU, Windows, 60fps or equivalence conclusion", "Stationary short scenario, software rendering, full-frame intervals include scheduling and VSync", "Five repeats per variant; effect may be smaller than observed noise", "No new benchmark/render was launched during audit"], "artifact_hashes": artifacts}
+(OUT / "audit.json").write_text(json.dumps(result, indent=2) + "\n")
+print(json.dumps({k: result[k] for k in ["verdict", "source_file_counts", "summary", "exact_two_sided_p50_ranksum_p", "cpu"]}, indent=2))

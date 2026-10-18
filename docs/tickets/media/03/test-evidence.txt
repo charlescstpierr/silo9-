@@ -1,0 +1,706 @@
+FILE red.log
+SHA256 449931782de4bf20357c9c12f07c04e0acba245dc4fc0ade634f8cba02b51444
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: partial reload starts
+PASS: repeated R does not restart
+PASS: no transfer during manipulation
+PASS: fire blocked during manipulation
+FAIL: cancel keeps visible D9 until lowered
+FAIL: cancel cannot fire while weapon is being lowered
+PASS: last destination equipped only after hidden
+PASS: fire blocked during raise
+PASS: destination change during raise starts another safe lowering
+PASS: queued destination eventually equipped
+PASS: cancel conserves both resources
+PASS: reload can restart after cancellation
+PASS: large delta commits exactly one transfer
+PASS: later ticks do not repeat transfer
+FAIL: D9 has an actual moving magazine
+FAIL: D9 has an actual moving slide
+D9 RELOAD FAILURES: 4
+WARNING: 7 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+
+
+FILE contract-baseline-red.log
+SHA256 e54b22b38d2750984a25e2d105791662cfa9c8c9705a7a197b92a53f12e49dc7
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload accepted
+FAIL: empty reload must still rearm when partial duration ends
+FAIL: empty weapon cannot fire before rearm and return
+PASS: empty transfer occurs once at end
+FAIL: empty cues ordered, release before commit
+FAIL: empty commit never repeats
+PASS: short reserve does not transfer early
+PASS: partial reload blocks firing until return
+PASS: short reserve transfers only available rounds
+FAIL: partial sequence omits rack cues
+FAIL: interrupted switch blocks fire without cooldown masking
+FAIL: raise blocks fire without cooldown masking
+PASS: new destination during raise stays blocked
+PASS: pending switch consumes large delta without losing destination
+PASS: interrupted switch never commits
+FAIL: inactive stops dedicated manipulation audio
+PASS: inactive conserves resources after insertion
+FAIL: teleport stops dedicated manipulation audio
+PASS: teleport conserves resources after insertion
+FAIL: death stops dedicated manipulation audio
+PASS: death conserves resources after insertion
+PASS: large reload delta commits once
+FAIL: large delta retains canonical event order
+FAIL: large delta does not play obsolete cues
+D9 CONTRACT FAILURES: 12
+WARNING: 4 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+
+
+FILE contract-grounded-red.log
+SHA256 61528e2018ab2fe1ad5a1bfd9475f28056922331b1593704d962ec30c71464b0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload accepted
+PASS: harness step cannot kill player by falling
+FAIL: empty reload must still rearm when partial duration ends
+FAIL: empty weapon cannot fire before rearm and return
+PASS: harness step cannot kill player by falling
+PASS: empty transfer occurs once at end
+FAIL: empty cues ordered, release before commit
+PASS: harness step cannot kill player by falling
+FAIL: empty commit never repeats
+PASS: harness step cannot kill player by falling
+PASS: short reserve does not transfer early
+PASS: partial reload blocks firing until return
+PASS: harness step cannot kill player by falling
+PASS: short reserve transfers only available rounds
+FAIL: partial sequence omits rack cues
+PASS: harness step cannot kill player by falling
+FAIL: interrupted switch blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+FAIL: raise blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: new destination during raise stays blocked
+PASS: harness step cannot kill player by falling
+PASS: pending switch consumes large delta without losing destination
+PASS: interrupted switch never commits
+PASS: harness step cannot kill player by falling
+FAIL: inactive stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: inactive conserves resources after insertion
+PASS: harness step cannot kill player by falling
+FAIL: teleport stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: teleport conserves resources after insertion
+PASS: harness step cannot kill player by falling
+FAIL: death stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: death conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: large reload delta commits once
+FAIL: large delta retains canonical event order
+FAIL: large delta does not play obsolete cues
+D9 CONTRACT FAILURES: 12
+WARNING: 6 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+
+
+FILE timeline-first.log
+SHA256 fc6ad32e25a22372035a96b695b20a79e3883e955c9931a390283ed256153a4d
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload stays blocked at partial duration
+PASS: large step retains remove and insert events
+PASS: rack pull precedes rack release
+PASS: empty sequence releases slide before readiness
+PASS: no event can repeat after completion
+PASS: partial reload skips both rack cues
+PASS: cancel freezes sampled manipulation
+PASS: cancel lowers continuously before hidden
+PASS: long cancellation emits hidden without commit
+FAIL: large delta traverses hidden and full raise without lost time
+PASS: inactive controller stays hidden without commit
+PASS: hidden event occurs once while inactive
+FAIL: reactivation accounts for elapsed raise time
+D9 TIMELINE FAILURES: 2
+
+
+FILE timeline-green.log
+SHA256 c930498a181909258223b32264efc114d44bb08cb77f44bbded7aeb4b806d5c7
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload stays blocked at partial duration
+PASS: large step retains remove and insert events
+PASS: rack pull precedes rack release
+PASS: empty sequence releases slide before readiness
+PASS: no event can repeat after completion
+PASS: partial reload skips both rack cues
+PASS: cancel freezes sampled manipulation
+PASS: cancel lowers continuously before hidden
+PASS: long cancellation emits hidden without commit
+PASS: large delta traverses hidden and full raise without lost time
+PASS: inactive controller stays hidden without commit
+PASS: hidden event occurs once while inactive
+PASS: reactivation accounts for elapsed raise time
+D9 TIMELINE FAILURES: 0
+
+
+FILE audio-red.log
+SHA256 8b3542c97c8465cf2e9370e2d85d755929b4e275ef5e15615d07a692c19b8cd0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+D9 AUDIO distinct cues: 1
+
+
+FILE audio-green.log
+SHA256 2d24fef524b50aac765bddcc32c9887a2bdf94efceaef50d07c748a2ab1670d5
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+D9 AUDIO distinct cues: 4
+
+
+FILE geometry-first.log
+SHA256 9e538b2663ea2b02f30f7ed611a72747e012c8f482ec1339eccf9621bc08975b
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL: palm meets actual mesh within glove thickness: 0.020140 to inf
+D9 GEOMETRY max_step_m=0.00561013119295 contact_m=0.00000012338531 palm_m=0.02013997361064..inf failures=1
+
+
+FILE geometry-green.log
+SHA256 4d97c35b9c80e5f558a551220d7a7fe42935816a96258980326ccad938384afe
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+D9 GEOMETRY max_step_m=0.00561010185629 contact_m=0.00000009884312 palm_m=0.02013997361064..0.02090002223849 failures=0
+
+
+FILE large-pose-red.log
+SHA256 f40dad9ad5d50f64a82dd3d83d210a27a70f07a354a3a95f680ba300ae7c8d5a
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload accepted
+PASS: harness step cannot kill player by falling
+PASS: empty reload must still rearm when partial duration ends
+PASS: empty weapon cannot fire before rearm and return
+PASS: harness step cannot kill player by falling
+PASS: empty transfer occurs once at end
+PASS: empty cues ordered, release before commit
+PASS: harness step cannot kill player by falling
+PASS: empty commit never repeats
+PASS: harness step cannot kill player by falling
+PASS: short reserve does not transfer early
+PASS: partial reload blocks firing until return
+PASS: harness step cannot kill player by falling
+PASS: short reserve transfers only available rounds
+PASS: partial sequence omits rack cues
+PASS: harness step cannot kill player by falling
+PASS: interrupted switch blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: raise blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: new destination during raise stays blocked
+PASS: harness step cannot kill player by falling
+PASS: pending switch consumes large delta without losing destination
+PASS: interrupted switch never commits
+PASS: harness step cannot kill player by falling
+PASS: inactive stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: inactive conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: teleport stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: teleport conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: death stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: death conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: extraction moves the visible magazine before large tick
+PASS: harness step cannot kill player by falling
+FAIL: large completion tick restores visible magazine before firing
+PASS: harness step cannot kill player by falling
+PASS: same-weapon request alone keeps reload
+PASS: harness step cannot kill player by falling
+PASS: last request back to current weapon cancels pending ARC
+PASS: return-to-D9 cancellation never commits
+PASS: harness step cannot kill player by falling
+PASS: large reload delta commits once
+PASS: large delta retains canonical event order
+PASS: large delta does not play obsolete cues
+D9 CONTRACT FAILURES: 1
+
+
+FILE large-pose-green.log
+SHA256 b330066601702e9e607386f19249d113f799d25c002524313a083d0b553459d5
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload accepted
+PASS: harness step cannot kill player by falling
+PASS: empty reload must still rearm when partial duration ends
+PASS: empty weapon cannot fire before rearm and return
+PASS: harness step cannot kill player by falling
+PASS: empty transfer occurs once at end
+PASS: empty cues ordered, release before commit
+PASS: harness step cannot kill player by falling
+PASS: empty commit never repeats
+PASS: harness step cannot kill player by falling
+PASS: short reserve does not transfer early
+PASS: partial reload blocks firing until return
+PASS: harness step cannot kill player by falling
+PASS: short reserve transfers only available rounds
+PASS: partial sequence omits rack cues
+PASS: harness step cannot kill player by falling
+PASS: interrupted switch blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: raise blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: new destination during raise stays blocked
+PASS: harness step cannot kill player by falling
+PASS: pending switch consumes large delta without losing destination
+PASS: interrupted switch never commits
+PASS: harness step cannot kill player by falling
+PASS: inactive stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: inactive conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: teleport stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: teleport conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: death stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: death conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: extraction moves the visible magazine before large tick
+PASS: harness step cannot kill player by falling
+PASS: large completion tick restores visible magazine before firing
+PASS: harness step cannot kill player by falling
+PASS: same-weapon request alone keeps reload
+PASS: harness step cannot kill player by falling
+PASS: last request back to current weapon cancels pending ARC
+PASS: return-to-D9 cancellation never commits
+PASS: harness step cannot kill player by falling
+PASS: large reload delta commits once
+PASS: large delta retains canonical event order
+PASS: large delta does not play obsolete cues
+D9 CONTRACT FAILURES: 0
+
+
+FILE inactive-raise-player-red.log
+SHA256 fe74bf215850b4583dba45704bb1026d3d8bfaa3c2b82d18e0cf9e4eaf4b410b
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload accepted
+PASS: harness step cannot kill player by falling
+PASS: empty reload must still rearm when partial duration ends
+PASS: empty weapon cannot fire before rearm and return
+PASS: harness step cannot kill player by falling
+PASS: empty transfer occurs once at end
+PASS: empty cues ordered, release before commit
+PASS: harness step cannot kill player by falling
+PASS: empty commit never repeats
+PASS: harness step cannot kill player by falling
+PASS: short reserve does not transfer early
+PASS: partial reload blocks firing until return
+PASS: harness step cannot kill player by falling
+PASS: short reserve transfers only available rounds
+PASS: partial sequence omits rack cues
+PASS: harness step cannot kill player by falling
+PASS: interrupted switch blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: raise blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: new destination during raise stays blocked
+PASS: harness step cannot kill player by falling
+PASS: pending switch consumes large delta without losing destination
+PASS: interrupted switch never commits
+PASS: harness step cannot kill player by falling
+PASS: harness step cannot kill player by falling
+PASS: harness step cannot kill player by falling
+FAIL: inactive player interrupted during raise waits below frame
+PASS: harness step cannot kill player by falling
+PASS: reactivation raises selected weapon without a shot
+PASS: harness step cannot kill player by falling
+PASS: inactive stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: inactive conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: teleport stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: teleport conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: death stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: death conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: extraction moves the visible magazine before large tick
+PASS: harness step cannot kill player by falling
+PASS: large completion tick restores visible magazine before firing
+PASS: harness step cannot kill player by falling
+PASS: same-weapon request alone keeps reload
+PASS: harness step cannot kill player by falling
+PASS: last request back to current weapon cancels pending ARC
+PASS: return-to-D9 cancellation never commits
+PASS: harness step cannot kill player by falling
+PASS: large reload delta commits once
+PASS: large delta retains canonical event order
+PASS: large delta does not play obsolete cues
+D9 CONTRACT FAILURES: 1
+
+
+FILE inactive-raise-player-green.log
+SHA256 d25cd18dd202626558caa06ccf07119d157a03c147f2d380cc83963e00922540
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload accepted
+PASS: harness step cannot kill player by falling
+PASS: empty reload must still rearm when partial duration ends
+PASS: empty weapon cannot fire before rearm and return
+PASS: harness step cannot kill player by falling
+PASS: empty transfer occurs once at end
+PASS: empty cues ordered, release before commit
+PASS: harness step cannot kill player by falling
+PASS: empty commit never repeats
+PASS: harness step cannot kill player by falling
+PASS: short reserve does not transfer early
+PASS: partial reload blocks firing until return
+PASS: harness step cannot kill player by falling
+PASS: short reserve transfers only available rounds
+PASS: partial sequence omits rack cues
+PASS: harness step cannot kill player by falling
+PASS: interrupted switch blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: raise blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: new destination during raise stays blocked
+PASS: harness step cannot kill player by falling
+PASS: pending switch consumes large delta without losing destination
+PASS: interrupted switch never commits
+PASS: harness step cannot kill player by falling
+PASS: harness step cannot kill player by falling
+PASS: harness step cannot kill player by falling
+PASS: inactive player interrupted during raise waits below frame
+PASS: harness step cannot kill player by falling
+PASS: reactivation raises selected weapon without a shot
+PASS: harness step cannot kill player by falling
+PASS: inactive stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: inactive conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: teleport stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: teleport conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: death stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: death conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: extraction moves the visible magazine before large tick
+PASS: harness step cannot kill player by falling
+PASS: large completion tick restores visible magazine before firing
+PASS: harness step cannot kill player by falling
+PASS: same-weapon request alone keeps reload
+PASS: harness step cannot kill player by falling
+PASS: last request back to current weapon cancels pending ARC
+PASS: return-to-D9 cancellation never commits
+PASS: harness step cannot kill player by falling
+PASS: large reload delta commits once
+PASS: large delta retains canonical event order
+PASS: large delta does not play obsolete cues
+D9 CONTRACT FAILURES: 0
+
+
+FILE inactive-raise-red.log
+SHA256 9239c2f3ae88bd49e8f95abf7cc035b7e316953225cd551b657403cb4bd542cb
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload stays blocked at partial duration
+PASS: large step retains remove and insert events
+PASS: rack pull precedes rack release
+PASS: empty sequence releases slide before readiness
+PASS: no event can repeat after completion
+PASS: partial reload skips both rack cues
+PASS: cancel freezes sampled manipulation
+PASS: cancel lowers continuously before hidden
+PASS: long cancellation emits hidden without commit
+PASS: large delta traverses hidden and full raise without lost time
+PASS: inactive controller stays hidden without commit
+PASS: hidden event occurs once while inactive
+PASS: reactivation accounts for elapsed raise time
+PASS: deactivation during raise cannot jump the visible height
+FAIL: deactivation during raise waits hidden
+D9 TIMELINE FAILURES: 1
+
+
+FILE inactive-raise-green.log
+SHA256 b3fa4feb1c3882cd2fea13b68eda843b1fd594838942ea4e15b6acc7876b8405
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload stays blocked at partial duration
+PASS: large step retains remove and insert events
+PASS: rack pull precedes rack release
+PASS: empty sequence releases slide before readiness
+PASS: no event can repeat after completion
+PASS: partial reload skips both rack cues
+PASS: cancel freezes sampled manipulation
+PASS: cancel lowers continuously before hidden
+PASS: long cancellation emits hidden without commit
+PASS: large delta traverses hidden and full raise without lost time
+PASS: inactive controller stays hidden without commit
+PASS: hidden event occurs once while inactive
+PASS: reactivation accounts for elapsed raise time
+PASS: deactivation during raise cannot jump the visible height
+PASS: deactivation during raise waits hidden
+D9 TIMELINE FAILURES: 0
+
+
+FILE modal-save-strengthened.log
+SHA256 945de7da27b719a992fe92f06439ba71291de09797f17c9989b9bf63b7847de6
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real scene begins partial reload
+PASS: Escape pauses actual player tree
+PASS: pause stops actual manipulation player
+PASS: paused tree keeps manipulation pose frozen
+PASS: resume safely lowers and raises without committing
+PASS: save/load before commit restores previous counts with ready D9
+PASS: normal reload commits in live scene
+PASS: save/load after commit restores new counts with ready D9
+PASS: 100 reloads do not add scene nodes
+PASS: reload reuses mesh resource 0
+PASS: reload reuses mesh resource 1
+PASS: reload reuses mesh resource 2
+PASS: reload reuses mesh resource 3
+PASS: reload reuses mesh resource 4
+PASS: reload reuses mesh resource 5
+PASS: reload reuses mesh resource 6
+PASS: reload reuses mesh resource 7
+PASS: reload reuses mesh resource 8
+PASS: reload reuses mesh resource 9
+PASS: reload reuses mesh resource 10
+PASS: reload reuses mesh resource 11
+PASS: reload reuses mesh resource 12
+PASS: reload reuses mesh resource 13
+PASS: reload reuses mesh resource 14
+PASS: reload reuses mesh resource 15
+PASS: reload reuses mesh resource 16
+PASS: reload reuses mesh resource 17
+D9 MODAL/SAVE FAILURES: 0
+
+
+FILE verify-final.log
+SHA256 769c97eac33a28ccac3f04a460b86192928aadd4a159cb341409fb736757c90a
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+D9 AUDIO distinct cues: 4
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload accepted
+PASS: harness step cannot kill player by falling
+PASS: empty reload must still rearm when partial duration ends
+PASS: empty weapon cannot fire before rearm and return
+PASS: harness step cannot kill player by falling
+PASS: empty transfer occurs once at end
+PASS: empty cues ordered, release before commit
+PASS: harness step cannot kill player by falling
+PASS: empty commit never repeats
+PASS: harness step cannot kill player by falling
+PASS: short reserve does not transfer early
+PASS: partial reload blocks firing until return
+PASS: harness step cannot kill player by falling
+PASS: short reserve transfers only available rounds
+PASS: partial sequence omits rack cues
+PASS: harness step cannot kill player by falling
+PASS: interrupted switch blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: raise blocks fire without cooldown masking
+PASS: harness step cannot kill player by falling
+PASS: new destination during raise stays blocked
+PASS: harness step cannot kill player by falling
+PASS: pending switch consumes large delta without losing destination
+PASS: interrupted switch never commits
+PASS: harness step cannot kill player by falling
+PASS: harness step cannot kill player by falling
+PASS: harness step cannot kill player by falling
+PASS: inactive player interrupted during raise waits below frame
+PASS: harness step cannot kill player by falling
+PASS: reactivation raises selected weapon without a shot
+PASS: harness step cannot kill player by falling
+PASS: inactive stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: inactive conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: teleport stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: teleport conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: death stops dedicated manipulation audio
+PASS: harness step cannot kill player by falling
+PASS: death conserves resources after insertion
+PASS: harness step cannot kill player by falling
+PASS: extraction moves the visible magazine before large tick
+PASS: harness step cannot kill player by falling
+PASS: large completion tick restores visible magazine before firing
+PASS: harness step cannot kill player by falling
+PASS: same-weapon request alone keeps reload
+PASS: harness step cannot kill player by falling
+PASS: last request back to current weapon cancels pending ARC
+PASS: return-to-D9 cancellation never commits
+PASS: harness step cannot kill player by falling
+PASS: large reload delta commits once
+PASS: large delta retains canonical event order
+PASS: large delta does not play obsolete cues
+D9 CONTRACT FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+D9 GEOMETRY max_step_m=0.00561010837555 contact_m=0.00000009541399 palm_m=0.02013997361064..0.02090001665056 failures=0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: real scene begins partial reload
+PASS: Escape pauses actual player tree
+PASS: pause stops actual manipulation player
+PASS: paused tree keeps manipulation pose frozen
+PASS: resume safely lowers and raises without committing
+PASS: save/load before commit restores previous counts with ready D9
+PASS: normal reload commits in live scene
+PASS: save/load after commit restores new counts with ready D9
+PASS: 100 reloads do not add scene nodes
+PASS: reload reuses mesh resource 0
+PASS: reload reuses mesh resource 1
+PASS: reload reuses mesh resource 2
+PASS: reload reuses mesh resource 3
+PASS: reload reuses mesh resource 4
+PASS: reload reuses mesh resource 5
+PASS: reload reuses mesh resource 6
+PASS: reload reuses mesh resource 7
+PASS: reload reuses mesh resource 8
+PASS: reload reuses mesh resource 9
+PASS: reload reuses mesh resource 10
+PASS: reload reuses mesh resource 11
+PASS: reload reuses mesh resource 12
+PASS: reload reuses mesh resource 13
+PASS: reload reuses mesh resource 14
+PASS: reload reuses mesh resource 15
+PASS: reload reuses mesh resource 16
+PASS: reload reuses mesh resource 17
+D9 MODAL/SAVE FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: partial reload starts
+PASS: repeated R does not restart
+PASS: no transfer during manipulation
+PASS: fire blocked during manipulation
+PASS: cancel keeps visible D9 until lowered
+PASS: cancel cannot fire while weapon is being lowered
+PASS: last destination equipped only after hidden
+PASS: fire blocked during raise
+PASS: destination change during raise starts another safe lowering
+PASS: queued destination eventually equipped
+PASS: cancel conserves both resources
+PASS: reload can restart after cancellation
+PASS: large delta commits exactly one transfer
+PASS: later ticks do not repeat transfer
+PASS: D9 has an actual moving magazine
+PASS: D9 has an actual moving slide
+D9 RELOAD FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: empty reload stays blocked at partial duration
+PASS: large step retains remove and insert events
+PASS: rack pull precedes rack release
+PASS: empty sequence releases slide before readiness
+PASS: no event can repeat after completion
+PASS: partial reload skips both rack cues
+PASS: cancel freezes sampled manipulation
+PASS: cancel lowers continuously before hidden
+PASS: long cancellation emits hidden without commit
+PASS: large delta traverses hidden and full raise without lost time
+PASS: inactive controller stays hidden without commit
+PASS: hidden event occurs once while inactive
+PASS: reactivation accounts for elapsed raise time
+PASS: deactivation during raise cannot jump the visible height
+PASS: deactivation during raise waits hidden
+D9 TIMELINE FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Dialogue checks failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+RIG max_contact_m=0.00000049151248 max_angle_deg=0.03956468118525 failures=0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+JOURNEY: failures=0 travelled=184.2m simulation=40.6s shots=15 health=77
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: ready creates first-person camera
+PASS: player owns articulated rig
+PASS: inactive player cannot shoot
+PASS: equip selects ARC
+PASS: invalid equipment ignored
+PASS: D9 shot consumes one round
+PASS: shot flash follows current rig muzzle
+PASS: fire cooldown prevents double consumption
+PASS: aim input moves both hands and selected weapon
+PASS: partial magazine accepts reload
+PASS: reload is presented before switch
+PASS: switch begins continuous cancellation in same tick
+PASS: switch cancels reload without free rounds
+PASS: ARC shot consumes shared energy
+PASS: scan consumes same battery
+PASS: scanner cooldown prevents repeat emission
+PASS: reload restarts after switch
+PASS: reload transfers exact missing rounds after delay
+PASS: inactive actions cannot consume resources
+PASS: physical forward movement stops at wall
+PASS: jump lifts capsule from floor
+PASS: gravity returns player to floor
+STEP POSITION (5.0, 0.00085, -1.704798) HEIGHT 0.25999999046326
+PASS: capsule climbs authored low step
+PASS: low ceiling prevents standing into geometry
+PASS: standing resumes after leaving ceiling
+PASS: D9 hits real collider and applies configured damage
+PASS: ARC hits real collider with damage and stun
+PASS: aim cache resolves nearby interactable
+PASS: aim cache clears freed target
+PASS: reload can start before death
+PASS: death cancels reload and blocks fire
+PASS: death preserves manipulation for safe lowering
+PASS: teleport does not snap an interrupted manipulation
+PLAYER TEST FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+State checks failures: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+UI TESTS: 0 failures
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+HANDS vertices=1564 triangles=2400 bones=35 surfaces=2
+GEOMETRY FAILURES: 0
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+Portal investigation final position: (2.632028, 0.000842, -12.14012)
+WORLD: 0 failures
+
+
+FILE deslop-final-geometry.log
+SHA256 231a58b13ca0e11ca94008897c52589ef533e5d033b3ca4333ba4f39ff0194ee
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+D9 GEOMETRY max_step_m=0.00561010837555 contact_m=0.00000009541399 palm_m=0.02013997361064..0.02090001665056 failures=0

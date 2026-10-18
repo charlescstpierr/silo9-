@@ -67,13 +67,12 @@ func run() -> void:
 		cycle.advance(.08,false)
 		rig.update_visual(0,frame)
 		for fov in [60.0,76.0,90.0]:
-			for aspect in [4.0/3.0,16.0/9.0,21.0/9.0]:
-				for part: Node3D in [magazine,slide]:
-					for node in part.find_children("*","MeshInstance3D",true,false):
-						var mesh := node as MeshInstance3D
-						for corner in 8:
-							var point := mesh.global_transform*mesh.mesh.get_aabb().get_endpoint(corner)
-							check(point.z < -.05 and point.y < point.z*tan(deg_to_rad(fov)*.5),"all AABB corners lie below lower frustum plane")
+			for part: Node3D in [magazine,slide]:
+				for node in part.find_children("*","MeshInstance3D",true,false):
+					var mesh := node as MeshInstance3D
+					for corner in 8:
+						var point := mesh.global_transform*mesh.mesh.get_aabb().get_endpoint(corner)
+						check(point.z < -.05 and point.y < point.z*tan(deg_to_rad(fov)*.5),"all AABB corners lie below lower frustum plane")
 		rig.restore_reload_parts()
 		cycle.advance(.2,true)
 		rig.update_visual(.2,frame)

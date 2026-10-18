@@ -57,7 +57,7 @@ Le benchmark rend les quatre secteurs en 1080p, avec l'IA ennemie active et un s
 ./tools/godot.sh --path . -- --benchmark --low
 ```
 
-Les résultats distinguent le moteur graphique, les temps de frame et les limites de la machine. Un test headless ne mesure pas les performances graphiques. Voir [les résultats de validation](docs/VALIDATION.md).
+Les résultats distinguent le moteur graphique, les temps de frame et les limites de la machine. Un test headless ne mesure pas les performances graphiques. Voir [les résultats de validation](docs/VALIDATION.md) et [la preuve du rechargement D9](docs/tickets/03-d9-reload.md).
 
 ## Ressources et licences
 

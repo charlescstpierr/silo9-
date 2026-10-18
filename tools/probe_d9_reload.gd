@@ -134,4 +134,3 @@ func inspect() -> void:
 			app.player._physics_process(sample[1])
 			assert(rig.calibration_valid)
 			await capture("%d-%s"%[angle,sample[0]])
-

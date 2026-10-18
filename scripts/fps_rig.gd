@@ -41,6 +41,7 @@ var _cell: Node3D
 var _latch: Node3D
 var _cell_seat: Vector3
 var _indicator: Node3D
+var _connection: Node3D
 
 func _ready() -> void:
 	skeleton = Skeleton3D.new()
@@ -57,6 +58,7 @@ func _ready() -> void:
 	_latch = _weapons[1].get_node("ArcLatch")
 	_cell_seat = _cell.position
 	_indicator = _weapons[1].get_node("EnergyIndicator")
+	_connection = _weapons[1].get_node("ConnectionIndicator")
 	var gun_transform := Transform3D(Basis.IDENTITY,Vector3(.19,-.16,-.34))*_weapons[0].transform
 	for side in 2:
 		var grip := _weapons[0].get_node("GripRight" if side == 0 else "GripLeft") as Marker3D
@@ -132,7 +134,7 @@ func restore_reload_parts() -> void:
 
 func update_visual(delta: float, frame: ViewFrame) -> void:
 	_frame = frame
-	_indicator.scale.z = maxf(.001, frame.energy/frame.capacity)
+	_indicator.scale.x = maxf(.001, frame.energy/frame.capacity)
 	var lower := frame.reload.lower
 	skeleton.position.y = -lower*1.15
 	if frame.reload.motion == Reload.Motion.LOWER_ABORT:
@@ -155,8 +157,10 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 		amount = t if gesture in [Reload.Gesture.REACH, Reload.Gesture.CELL_REACH] else (1.0-t if gesture in [Reload.Gesture.RETURN, Reload.Gesture.CELL_RETURN] else 1.0)
 	var wrist := _rest_wrists[0]
 	wrist.origin += _pose_offset*(1.0-amount) + Vector3(0,frame.bob,frame.recoil)*(1.0-amount)
-	wrist.origin += Vector3(-.07,.10,.05)*amount
+	wrist.origin += (Vector3(-.06,-.015,.02) if frame.reload.motion == Reload.Motion.CELL else Vector3(-.07,.10,.05))*amount
 	wrist.basis = Basis(Vector3.FORWARD,deg_to_rad(22)*amount)*wrist.basis
+	if frame.reload.motion == Reload.Motion.CELL:
+		wrist.basis = Basis(Vector3.UP,1.15*amount)*wrist.basis
 	if not _pose_arm(0,wrist):
 		return
 	skeleton.force_update_all_bone_transforms()
@@ -184,6 +188,7 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 	mouth.basis = mouth.basis.orthonormalized()
 	mouth.origin += skeleton.position
 	muzzle.transform = mouth
+	_connection.visible = _cell.position.is_equal_approx(_cell_seat) and _latch.rotation.is_zero_approx()
 
 func _reload_pose(gun_pose: Transform3D, view: Reload.View, t: float, support: Transform3D) -> Transform3D:
 	var extracted := _seat+Vector3(0,-.17,.038)
@@ -227,14 +232,14 @@ func _reload_pose(gun_pose: Transform3D, view: Reload.View, t: float, support: T
 
 func _arc_pose(gun_pose: Transform3D, view: Reload.View, t: float, support: Transform3D) -> Transform3D:
 	var extracted := _cell_seat+Vector3(-.18,0,0)
-	var pocket := Vector3(-.25,-.64,.22)
+	var pocket := Vector3(-.12,-.64,-.20)
 	_cell.position = _cell_seat
-	_latch.rotation.x = -1.25
+	_latch.rotation.x = 1.8
 	match view.gesture:
 		Reload.Gesture.CELL_REACH:
 			_latch.rotation.x = 0.0
 		Reload.Gesture.UNLOCK:
-			_latch.rotation.x = -1.25*t
+			_latch.rotation.x = 1.8*t
 		Reload.Gesture.CELL_EXTRACT:
 			_cell.position = _cell_seat.lerp(extracted,t)
 		Reload.Gesture.CELL_STOW:
@@ -244,7 +249,7 @@ func _arc_pose(gun_pose: Transform3D, view: Reload.View, t: float, support: Tran
 		Reload.Gesture.CELL_INSERT:
 			_cell.position = extracted.lerp(_cell_seat,t)
 		Reload.Gesture.LOCK:
-			_latch.rotation.x = -1.25*(1.0-t)
+			_latch.rotation.x = 1.8*(1.0-t)
 		Reload.Gesture.CELL_RETURN:
 			_latch.rotation.x = 0.0
 	var cell_grip := _cell.get_node("CellGrip") as Marker3D

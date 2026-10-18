@@ -23,5 +23,15 @@ func _initialize() -> void:
 	handling.cancel()
 	check(handling.request_cell(true),"explicitly cancelled exit accepts one intention")
 	check(not handling.request_cell(true),"cancelled exit intention remains bounded")
+	handling = Handling.new()
+	handling.state = State.new()
+	handling.state.ammo = 4
+	handling.state.energy = 10
+	check(handling.request_reload(true),"destination scenario starts D9 reload")
+	handling.advance(.3,true)
+	handling.select(1)
+	check(handling.request_cell(true),"cell request accepted during manually cancelled switch")
+	for tick in 1000: handling.advance(.01,true)
+	check(handling.weapon_index == 1 and handling.ready,"cell returns to desired ARC during pending manual switch")
 	print("ARC LIFECYCLE FAILURES: ",failures)
 	quit(1 if failures else 0)

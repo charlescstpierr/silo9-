@@ -6,7 +6,7 @@ const WeaponSpec = preload("res://scripts/weapon_spec.gd")
 const Audio = preload("res://scripts/player_audio.gd")
 const Reload = preload("res://scripts/weapon_handling.gd")
 const FpsRig = preload("res://scripts/fps_rig.gd")
-const RELOAD_EVENTS := [Reload.REMOVE, Reload.INSERT, Reload.RACK_PULL, Reload.RACK_RELEASE, Reload.COMMIT, Reload.HIDDEN, Reload.CELL_UNLOCK, Reload.CELL_REMOVE, Reload.CELL_INSERT, Reload.CELL_TRANSFER, Reload.CELL_DONE]
+const RELOAD_EVENTS := [Reload.REMOVE, Reload.INSERT, Reload.RACK_PULL, Reload.RACK_RELEASE, Reload.COMMIT, Reload.HIDDEN, Reload.CELL_UNLOCK, Reload.CELL_REMOVE, Reload.CELL_INSERT, Reload.CELL_TRANSFER, Reload.CELL_DONE, Reload.CELL_REFUSED]
 const D9: Resource = preload("res://data/weapons/d9.tres")
 const ARC: Resource = preload("res://data/weapons/arc3.tres")
 const STANDING_HEIGHT: float = 1.8
@@ -122,6 +122,8 @@ func equip(index: int) -> void:
 	if index < 0 or index > 1:
 		return
 	reload_cycle.select(index)
+	if reload_cycle.view.motion == Reload.Motion.LOWER_ABORT:
+		_manipulation_audio.stop()
 	if rig.weapon_index != weapon_index:
 		rig.equip(weapon_index)
 
@@ -170,6 +172,8 @@ func fire() -> bool:
 
 func reload_weapon() -> bool:
 	if not reload_cycle.request_reload(active):
+		if weapon_index == 1:
+			feedback.emit(reload_cycle.refusal)
 		return false
 	feedback.emit("Remplacement de cellule…" if weapon_index == 1 else "Rechargement…")
 	return true
@@ -201,6 +205,7 @@ func _advance_reload(delta: float) -> void:
 				Reload.CELL_UNLOCK: cue = "cell_unlock"
 				Reload.CELL_REMOVE: cue = "cell_remove"
 				Reload.CELL_INSERT: cue = "cell_insert"
+				Reload.CELL_REFUSED: feedback.emit(reload_cycle.refusal)
 				Reload.CELL_TRANSFER:
 					cue = "cell_transfer" if reload_cycle.view.transferred else "cell_unlock"
 					feedback.emit("Batterie rechargée." if reload_cycle.view.transferred else "Cellule conservée · transfert devenu inutile ou indisponible.")

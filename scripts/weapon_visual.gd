@@ -111,23 +111,33 @@ static func _arc_parts(root: Node3D, materials: Array[StandardMaterial3D]) -> vo
 		_part(capsule[3],Vector3(.012,.025,.018),Vector3(.052,0,z),.002)
 	_part(capsule[2],Vector3(.009,.055,.07),Vector3(-.055,0,0),.004)
 	_meshes(cell,capsule)
-	_marker(cell,"CellGrip",Vector3(-.075,0,.04),Basis(Vector3.DOWN,Vector3.FORWARD,Vector3.RIGHT))
+	_marker(cell,"CellGrip",Vector3(-.08,0,.04),Basis(Vector3.DOWN,Vector3.FORWARD,Vector3.RIGHT))
 	var latch := Node3D.new()
 	latch.name = "ArcLatch"
 	latch.position = Vector3(-.14,.235,.015)
 	root.add_child(latch)
 	var lever := _batches(materials)
 	_part(lever[3],Vector3(.018,.072,.018),Vector3(0,-.028,0),.005)
-	_part(lever[0],Vector3(.024,.026,.10),Vector3(0,-.06,0),.006)
+	_part(lever[0],Vector3(.064,.08,.10),Vector3(.02,-.06,0),.006)
 	_meshes(latch,lever)
 	_marker(latch,"LatchGrip",Vector3(-.036,-.06,.04),Basis(Vector3.DOWN,Vector3.FORWARD,Vector3.RIGHT))
 	var indicator := Node3D.new()
 	indicator.name = "EnergyIndicator"
-	indicator.position = Vector3(0,.258,.015)
+	indicator.position = Vector3(0,.15,.123)
 	root.add_child(indicator)
 	var light := _batches(materials)
-	_part(light[4],Vector3(.018,.008,.09),Vector3.ZERO,.002)
+	_part(light[4],Vector3(.08,.012,.008),Vector3.ZERO,.002)
 	_meshes(indicator,light)
+	var housing := _batches(materials)
+	_part(housing[2],Vector3(.09,.03,.04),Vector3(0,.145,.10),.003)
+	_meshes(root,housing)
+	var connection := Node3D.new()
+	connection.name = "ConnectionIndicator"
+	connection.position = Vector3(-.06,.25,.08)
+	root.add_child(connection)
+	var connected := _batches(materials)
+	_part(connected[4],Vector3(.012,.008,.008),Vector3.ZERO,.002)
+	_meshes(connection,connected)
 
 static func _batches(materials: Array[StandardMaterial3D]) -> Array[SurfaceTool]:
 	var result: Array[SurfaceTool] = []

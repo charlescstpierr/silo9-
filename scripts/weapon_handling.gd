@@ -14,6 +14,7 @@ const CELL_REMOVE := 128
 const CELL_INSERT := 256
 const CELL_TRANSFER := 512
 const CELL_DONE := 1024
+const CELL_REFUSED := 2048
 const CELL_CUES := [[.18, CELL_UNLOCK], [.36, CELL_REMOVE], [.72, CELL_INSERT], [.88, CELL_TRANSFER]]
 const CELL_THRESHOLDS := [0.0, .10, .18, .25, .36, .47, .59, .72, .79, .88, 1.0]
 const CELL_GESTURES := [Gesture.CELL_REACH, Gesture.UNLOCK, Gesture.CELL_GRIP, Gesture.CELL_EXTRACT, Gesture.CELL_STOW, Gesture.CELL_FETCH, Gesture.CELL_INSERT, Gesture.LATCH_REACH, Gesture.LOCK, Gesture.CELL_RETURN]
@@ -62,7 +63,7 @@ func request_cell(active: bool) -> bool:
 	if not refusal.is_empty():
 		return false
 	_cell = Cell.WAITING
-	_cell_return = weapon_index
+	_cell_return = _destination
 	_start_cell(active)
 	return true
 
@@ -84,23 +85,24 @@ func select(index: int) -> void:
 	elif view.motion == Motion.CELL or (view.motion == Motion.RELOAD and index != weapon_index):
 		_lower()
 
-func _start_cell(active: bool) -> void:
+func _start_cell(active: bool) -> int:
 	if not ready or _cell != Cell.WAITING:
-		return
+		return 0
 	if weapon_index != 1:
 		_destination = 1
 		_lower()
-		return
+		return 0
 	refusal = _cell_refusal(active)
 	if not refusal.is_empty():
 		_finish_cell()
-		return
+		return CELL_REFUSED
 	_cell = Cell.ACTIVE
 	view.motion = Motion.CELL
 	view.gesture = Gesture.CELL_REACH
 	view.fraction = 0.0
 	view.transferred = false
 	_time = 0.0
+	return 0
 
 func _finish_cell() -> void:
 	_cell = Cell.NONE if _cell_return == weapon_index else Cell.RETURNING
@@ -208,7 +210,7 @@ func advance(delta: float, active: bool) -> int:
 		_lower()
 	if ready and _cell == Cell.RETURNING:
 		_cell = Cell.NONE
-	_start_cell(active)
+	events |= _start_cell(active)
 	return events
 
 func _update_gesture() -> void:

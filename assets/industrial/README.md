@@ -9,3 +9,9 @@ Run: `python3 assets/industrial/generate_textures.py`.
 Wall materials repeat in world space. The 88-metre floor uses planar repeating UVs to avoid three texture projections per pixel. Low graphics disables normal mapping while retaining albedo detail and all collision geometry.
 
 `painted_panel_v2.png` is an original image generated for this project with the built-in imagegen tool on 2026-10-17. It supplies a painted color surface, not a screenshot or a borrowed game asset. The procedural generator does not reproduce that image.
+
+## Astra microdetail
+
+`python3 assets/industrial/generate_detail_materials.py` creates six original seamless 256×256 maps with fixed seed 9009. `worn_steel` adds directional scratches and roughness variation; `weave` adds alternating textile threads. Each family has albedo, tangent-space normal and roughness. Neutral albedo supports the existing blue, grey and glove tints. No third-party pixels, model output or downloaded texture is incorporated. These original project assets introduce no third-party license obligation.
+
+The generator needs the same Pillow and NumPy tools as the existing generator. The shipped game only reads the PNGs. [PROVENANCE_ASTRA.json](PROVENANCE_ASTRA.json) records their hashes and source. Regeneration was checked twice for identical bytes.

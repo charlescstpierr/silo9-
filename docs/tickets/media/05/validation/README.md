@@ -16,3 +16,5 @@ Le test d'ordre du masquage est une vérification supplémentaire ajoutée aprè
 `media-independent-validation.json` conserve le statut 143 inexpliqué du wrapper des captures. Les manifestes moteur attestent sortie 0 et hashes stables ; le contrôle indépendant compare les sources aux objets Git, les archives d'outils aux hashes de lancement, et décode les 701 images du MP4 sans erreur. Ces faits ne transforment pas le statut du wrapper en sortie 0.
 
 Les mesures finales proviennent de dix lancements distincts et sérialisés. Leurs manifestes et copies exactes des outils figurent dans les dossiers `../perf-*`. Le coût du second appel du rig à delta zéro reste un microcoût de recomposition, sans progression des filtres, distinct des intervalles muraux du parcours complet.
+
+La copie publique du relevé `top` supprime uniquement ses espaces de fin de ligne. Le relevé brut reste conservé dans `.cstack/issue-05/capture-delivery-cpu-threads.log`.

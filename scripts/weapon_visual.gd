@@ -74,6 +74,7 @@ static func build(electric: bool) -> Node3D:
 		_meshes(magazine,mag_batches)
 		_marker(magazine,"Grip",Vector3(-.065,-.005,.055),Basis(Vector3.DOWN,Vector3.FORWARD,Vector3.RIGHT))
 		_marker(root,"MagazineSeat",magazine.position,Basis.IDENTITY)
+		_marker(root,"Ejection",Vector3(.058,.13,-.025),Basis.IDENTITY)
 	for side: float in [-1.0, 1.0]:
 		for depth: float in [-0.12, 0.085]:
 			_cylinder(batches[0], 0.006, 0.005, Vector3(side * 0.055, 0.035, depth), Vector3(0, 0, PI * 0.5))

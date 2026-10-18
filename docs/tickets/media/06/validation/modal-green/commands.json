@@ -1,0 +1,163 @@
+[
+  {
+    "cwd": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-06",
+    "command": [
+      "timeout",
+      "40",
+      "./tools/godot.sh",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_menu_held_button.gd"
+    ],
+    "env": {
+      "DISPLAY": ":100",
+      "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue06/modal-bug/user-data"
+    },
+    "exit": 0,
+    "log": "green.log",
+    "elapsed_seconds": 2.6900250911712646,
+    "test_sha256": "615d5ab502053e3ec1f14ef369cae64fdfb88f48055ae9b602542e08310c8d7c"
+  },
+  {
+    "cwd": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-06",
+    "command": [
+      "timeout",
+      "120",
+      "./tools/godot.sh",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_ui.gd"
+    ],
+    "env": {
+      "DISPLAY": ":100",
+      "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue06/modal-bug/fix/neighbor-user-data"
+    },
+    "exit": 0,
+    "log": "ui.log",
+    "elapsed_seconds": 2.453209161758423,
+    "test_sha256": "29d495b28aa8b686772fe6a7c90e98ecca627c0590b2dedd3bd3f1bc09a2a827",
+    "errors": []
+  },
+  {
+    "cwd": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-06",
+    "command": [
+      "timeout",
+      "120",
+      "./tools/godot.sh",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_shot_settings.gd"
+    ],
+    "env": {
+      "DISPLAY": ":100",
+      "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue06/modal-bug/fix/neighbor-user-data"
+    },
+    "exit": 0,
+    "log": "shot_settings.log",
+    "elapsed_seconds": 3.2755565643310547,
+    "test_sha256": "c7bf1fc122a98b4c652b6393bfef0d4e7d3a03e4d33257017fe39c30f70a6e7c",
+    "errors": []
+  },
+  {
+    "cwd": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-06",
+    "command": [
+      "timeout",
+      "120",
+      "./tools/godot.sh",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_weapon_modal_input.gd"
+    ],
+    "env": {
+      "DISPLAY": ":100",
+      "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue06/modal-bug/fix/neighbor-user-data"
+    },
+    "exit": 0,
+    "log": "weapon_modal_input.log",
+    "elapsed_seconds": 4.261202573776245,
+    "test_sha256": "ba73561682ef72447d7279d8fa19b0d37b86108180181c05c1ec55c1d31fd11f",
+    "errors": []
+  },
+  {
+    "cwd": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-06",
+    "command": [
+      "timeout",
+      "120",
+      "./tools/godot.sh",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_arc_cell_ui.gd"
+    ],
+    "env": {
+      "DISPLAY": ":100",
+      "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue06/modal-bug/fix/neighbor-user-data"
+    },
+    "exit": 0,
+    "log": "arc_cell_ui.log",
+    "elapsed_seconds": 11.944554328918457,
+    "test_sha256": "9d43b9cd0dc1dea068b298cc27c9d8356b243845c3690ef459d7a6eaca91c5cc",
+    "errors": []
+  },
+  {
+    "cwd": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-06",
+    "command": [
+      "timeout",
+      "40",
+      "./tools/godot.sh",
+      "--display-driver",
+      "x11",
+      "--rendering-driver",
+      "dummy",
+      "--audio-driver",
+      "Dummy",
+      "--path",
+      ".",
+      "--script",
+      "tests/test_menu_held_button.gd"
+    ],
+    "env": {
+      "DISPLAY": ":100",
+      "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue06/modal-bug/user-data"
+    },
+    "exit": 0,
+    "log": "deslop-green.log",
+    "elapsed_seconds": 2.88594913482666,
+    "test_sha256": "615d5ab502053e3ec1f14ef369cae64fdfb88f48055ae9b602542e08310c8d7c",
+    "errors": []
+  }
+]

@@ -15,6 +15,7 @@ class ViewFrame extends RefCounted:
 	var pose: Pose = Pose.REST
 	var reload := Reload.View.new()
 	var recoil: float = 0.0
+	var shot_slide: float = 0.0
 	var local_velocity := Vector3.ZERO
 	var grounded := false
 	var crouched := false
@@ -23,6 +24,7 @@ class ViewFrame extends RefCounted:
 	var capacity := 100.0
 
 var muzzle: Marker3D
+var ejection: Marker3D
 var skeleton: Skeleton3D
 var arms: MeshInstance3D
 var weapon_index := 0
@@ -101,6 +103,9 @@ func _ready() -> void:
 	muzzle = Marker3D.new()
 	muzzle.name = "Muzzle"
 	add_child(muzzle)
+	ejection = Marker3D.new()
+	ejection.name = "Ejection"
+	add_child(ejection)
 	equip(0)
 	reset_pose()
 
@@ -153,6 +158,9 @@ func reset_pose() -> void:
 	restore_reload_parts()
 	update_visual(0.0, _frame)
 
+func clear_shot_slide() -> void:
+	_slide.position = Vector3.ZERO
+
 func restore_reload_parts() -> void:
 	_magazine.position = _seat
 	_slide.position = Vector3.ZERO
@@ -166,6 +174,7 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 	skeleton.position.y = -lower*1.15
 	if frame.reload.motion == Reload.Motion.LOWER_ABORT:
 		muzzle.position.y -= (lower-_last_lower)*1.15
+		ejection.position.y -= (lower-_last_lower)*1.15
 		_last_lower = lower
 		return
 	_last_lower = lower
@@ -215,12 +224,18 @@ func update_visual(delta: float, frame: ViewFrame) -> void:
 		return
 	_pose_fingers(amount,gesture,t)
 	if not manipulating:
+		_slide.position.z = frame.shot_slide if weapon_index == 0 else 0.0
 		skeleton.set_bone_pose_rotation(5,Quaternion(Vector3.RIGHT,clampf(frame.recoil/.045,0,1)*.13))
 	skeleton.force_update_all_bone_transforms()
 	var mouth := gun_pose*(gun.get_node("Muzzle") as Marker3D).transform
 	mouth.basis = mouth.basis.orthonormalized()
 	mouth.origin += skeleton.position
 	muzzle.transform = mouth
+	if weapon_index == 0:
+		var port := gun_pose*(gun.get_node("Ejection") as Marker3D).transform
+		port.basis = port.basis.orthonormalized()
+		port.origin += skeleton.position
+		ejection.transform = port
 	_connection.visible = _cell.position.is_equal_approx(_cell_seat) and _latch.rotation.is_zero_approx()
 
 func _reload_pose(gun_pose: Transform3D, view: Reload.View, t: float, support: Transform3D) -> Transform3D:

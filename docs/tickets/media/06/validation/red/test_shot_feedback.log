@@ -1,0 +1,92 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: fixture reaches READY
+PASS: real shot accepted weapon=0
+PASS: hitscan reaches real target once with correct stun
+PASS: accepted shot debits only its weapon resource
+PASS: shot preserves actual camera ray transform
+PASS: actual physics query retains original origin and direction
+FAIL: accepted shot gives bounded FOV impulse from current rest FOV
+FAIL: departure is opaque unshaded geometry
+FAIL: accepted D9 shot retracts real slide within 18 mm
+FAIL: physics and process before first draw cannot consume flash or recoil
+PASS: event-shot first tick preserves cooldown; refused follow-up does not debit
+PASS: refused follow-up causes no repeated hit
+FAIL: first submitted frame contains accepted departure and recoil
+PASS: presentation returns monotonically to exact recoil/FOV rest
+PASS: submitted departure expires on presentation clock
+PASS: presentation never traces or damages again
+PASS: fixture reaches READY
+PASS: real shot accepted weapon=1
+PASS: hitscan reaches real target once with correct stun
+PASS: accepted shot debits only its weapon resource
+PASS: shot preserves actual camera ray transform
+PASS: actual physics query retains original origin and direction
+FAIL: accepted shot gives bounded FOV impulse from current rest FOV
+FAIL: departure is opaque unshaded geometry
+FAIL: physics and process before first draw cannot consume flash or recoil
+PASS: event-shot first tick preserves cooldown; refused follow-up does not debit
+PASS: refused follow-up causes no repeated hit
+FAIL: first submitted frame contains accepted departure and recoil
+PASS: presentation returns monotonically to exact recoil/FOV rest
+PASS: submitted departure expires on presentation clock
+PASS: presentation never traces or damages again
+FAIL: D9 flash and ARC pulse have distinct geometry and color
+PASS: one D9 plus one ARC inflict exactly 28 + 39 damage
+PASS: fixture reaches READY
+FAIL: Player exposes configure_feedback
+PASS: fixture reaches READY
+FAIL: Player exposes configure_feedback
+PASS: fixture reaches READY
+PASS: 24 accepted shots reuse initialized nodes, meshes and materials
+FAIL: repeated shots fully return without accumulated recoil or FOV drift
+PASS: fixture reaches READY
+PASS: inactive refusal preserves resources
+PASS: inactive refusal creates no departure
+PASS: fixture reaches READY
+PASS: dead refusal preserves resources
+PASS: dead refusal creates no departure
+PASS: fixture reaches READY
+PASS: empty refusal preserves resources
+PASS: empty refusal creates no departure
+PASS: fixture reaches READY
+PASS: energy refusal preserves resources
+PASS: energy refusal creates no departure
+PASS: fixture reaches READY
+PASS: busy refusal preserves resources
+PASS: busy refusal creates no departure
+PASS: fixture reaches READY
+PASS: cooldown refusal preserves resources
+PASS: cooldown refusal creates no departure
+PASS: fixture reaches READY
+PASS: reload starts with accepted shot
+PASS: R accepted during shot
+FAIL: reload clears recoil and slide immediately but preserves accepted departure
+PASS: fixture reaches READY
+PASS: cell starts with accepted shot
+PASS: B accepted during shot
+FAIL: cell clears recoil and slide immediately but preserves accepted departure
+PASS: fixture reaches READY
+PASS: switch starts with accepted shot
+PASS: LOWER preserves outgoing recoil
+FAIL: HIDDEN clears outgoing shot before new weapon appears
+PASS: fixture reaches READY
+PASS: inactive starts with accepted shot
+FAIL: inactive purges every shot effect immediately
+PASS: inactive restores recoil and FOV
+PASS: fixture reaches READY
+PASS: death starts with accepted shot
+FAIL: death purges every shot effect immediately
+PASS: death restores recoil and FOV
+PASS: fixture reaches READY
+PASS: teleport starts with accepted shot
+FAIL: teleport purges every shot effect immediately
+PASS: teleport restores recoil and FOV
+PASS: fixture reaches READY
+PASS: raw pause fixture fires
+PASS: raw SceneTree pause freezes active presentation
+PASS: fixture reaches READY
+PASS: ARC interruption fixture fires
+FAIL: ARC R preserves beam while cancelling recoil
+FAIL: preserved ARC beam still expires
+SHOT FEEDBACK FAILURES: 21

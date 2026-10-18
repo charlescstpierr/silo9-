@@ -1,0 +1,19 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: partial reload starts
+PASS: repeated R does not restart
+PASS: no transfer during manipulation
+PASS: fire blocked during manipulation
+PASS: cancel keeps visible D9 until lowered
+PASS: cancel cannot fire while weapon is being lowered
+PASS: last destination equipped only after hidden
+PASS: fire blocked during raise
+PASS: destination change during raise starts another safe lowering
+PASS: queued destination eventually equipped
+PASS: cancel conserves both resources
+PASS: reload can restart after cancellation
+PASS: large delta commits exactly one transfer
+PASS: later ticks do not repeat transfer
+PASS: D9 has an actual moving magazine
+PASS: D9 has an actual moving slide
+D9 RELOAD FAILURES: 0

@@ -1,0 +1,117 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: fixture reaches READY
+PASS: real shot accepted weapon=0
+PASS: hitscan reaches real target once with correct stun
+PASS: accepted shot debits only its weapon resource
+PASS: shot preserves actual camera ray transform
+PASS: actual physics query retains original origin and direction
+PASS: accepted shot gives bounded FOV impulse from current rest FOV
+PASS: departure is opaque unshaded geometry
+PASS: accepted D9 shot retracts real slide within 18 mm
+PASS: physics and process before first draw cannot consume flash or recoil
+PASS: event-shot first tick preserves cooldown; refused follow-up does not debit
+PASS: refused follow-up causes no repeated hit
+PASS: first submitted frame contains accepted departure and recoil
+PASS: presentation returns monotonically to exact recoil/FOV rest
+PASS: submitted departure expires on presentation clock
+PASS: presentation never traces or damages again
+PASS: fixture reaches READY
+PASS: real shot accepted weapon=1
+PASS: hitscan reaches real target once with correct stun
+PASS: accepted shot debits only its weapon resource
+PASS: shot preserves actual camera ray transform
+PASS: actual physics query retains original origin and direction
+PASS: accepted shot gives bounded FOV impulse from current rest FOV
+PASS: departure is opaque unshaded geometry
+PASS: physics and process before first draw cannot consume flash or recoil
+PASS: event-shot first tick preserves cooldown; refused follow-up does not debit
+PASS: refused follow-up causes no repeated hit
+PASS: first submitted frame contains accepted departure and recoil
+PASS: presentation returns monotonically to exact recoil/FOV rest
+PASS: submitted departure expires on presentation clock
+PASS: presentation never traces or damages again
+PASS: D9 flash and ARC pulse have distinct geometry and color
+PASS: one D9 plus one ARC inflict exactly 28 + 39 damage
+PASS: fixture reaches READY
+PASS: Player exposes configure_feedback
+PASS: camera options fixture fires
+PASS: coalesced shot resets impulse without accumulating modified FOV
+PASS: mouse input during return survives presentation
+PASS: Player exposes configure_feedback
+PASS: camera zero immediately restores current base
+PASS: camera zero suppresses subsequent impulse without suppressing shot
+PASS: Player exposes configure_feedback
+PASS: raising options does not replay expired shot
+PASS: fixture reaches READY
+PASS: Player exposes configure_feedback
+PASS: full light ARC shot accepted
+PASS: normal light has bounded range, layer mask and no shadows
+PASS: target impact material is independent from shot attenuation
+PASS: Player exposes configure_feedback
+PASS: intermediate light strength attenuates both source light and departure material
+PASS: Player exposes configure_feedback
+PASS: zero light hides departure, pulse, beam and dynamic light immediately
+PASS: light attenuation preserves actual target impact
+PASS: changing light options never repeats shot debit
+PASS: Player exposes configure_feedback
+PASS: light increase after expiry does not resurrect departure
+PASS: fixture reaches READY
+PASS: 24 accepted shots reuse initialized nodes, meshes and materials
+PASS: repeated shots fully return without accumulated recoil or FOV drift
+PASS: fixture reaches READY
+PASS: inactive refusal preserves resources
+PASS: inactive refusal creates no departure
+PASS: inactive refusal creates no casing
+PASS: fixture reaches READY
+PASS: dead refusal preserves resources
+PASS: dead refusal creates no departure
+PASS: dead refusal creates no casing
+PASS: fixture reaches READY
+PASS: empty refusal preserves resources
+PASS: empty refusal creates no departure
+PASS: empty refusal creates no casing
+PASS: fixture reaches READY
+PASS: energy refusal preserves resources
+PASS: energy refusal creates no departure
+PASS: energy refusal creates no casing
+PASS: fixture reaches READY
+PASS: busy refusal preserves resources
+PASS: busy refusal creates no departure
+PASS: busy refusal creates no casing
+PASS: fixture reaches READY
+PASS: cooldown refusal preserves resources
+PASS: cooldown refusal creates no departure
+PASS: cooldown refusal creates no casing
+PASS: fixture reaches READY
+PASS: reload starts with accepted shot
+PASS: R accepted during shot
+PASS: reload clears recoil and slide immediately but preserves accepted departure
+PASS: fixture reaches READY
+PASS: cell starts with accepted shot
+PASS: B accepted during shot
+PASS: cell clears recoil and slide immediately but preserves accepted departure
+PASS: fixture reaches READY
+PASS: switch starts with accepted shot
+PASS: LOWER preserves outgoing recoil
+PASS: HIDDEN clears outgoing shot before new weapon appears
+PASS: fixture reaches READY
+PASS: inactive starts with accepted shot
+PASS: inactive purges every shot effect immediately
+PASS: inactive restores recoil and FOV
+PASS: fixture reaches READY
+PASS: death starts with accepted shot
+PASS: death purges every shot effect immediately
+PASS: death restores recoil and FOV
+PASS: fixture reaches READY
+PASS: teleport starts with accepted shot
+PASS: teleport purges every shot effect immediately
+PASS: teleport restores recoil and FOV
+PASS: fixture reaches READY
+PASS: raw pause fixture fires
+PASS: raw SceneTree pause freezes active presentation
+PASS: fixture reaches READY
+PASS: ARC interruption fixture fires
+PASS: ARC R preserves beam while cancelling recoil
+PASS: preserved ARC beam still expires
+SHOT FEEDBACK FAILURES: 0

@@ -2,13 +2,13 @@
 
 Version de développement du 18 octobre 2026, Godot 4.7.2 stable. Le résultat est un prototype FPS jouable. Le niveau et son équilibrage ne sont pas encore validés comme une expérience humaine de 20 à 30 minutes.
 
-Les mesures globales et captures ci-dessous correspondent à la base `8649b60`. La modification des mains est décrite séparément dans [le rapport du ticket 2](tickets/02-fps-rig.md), avec son scénario, ses preuves et les limites de ses mesures. Le [rapport du ticket 3](tickets/03-d9-reload.md) ajoute le rechargement mécanique du D9, sa vidéo sonore et les mesures pendant le geste. Le [ticket 4](tickets/04-arc-cell.md) couvre la cellule ARC et le [ticket 5](tickets/05-weapon-handling.md) les transitions et la réponse au mouvement.
+Les mesures globales et captures ci-dessous correspondent à la base `8649b60`. La modification des mains est décrite séparément dans [le rapport du ticket 2](tickets/02-fps-rig.md), avec son scénario, ses preuves et les limites de ses mesures. Le [rapport du ticket 3](tickets/03-d9-reload.md) ajoute le rechargement mécanique du D9, sa vidéo sonore et les mesures pendant le geste. Le [ticket 4](tickets/04-arc-cell.md) couvre la cellule ARC et le [ticket 5](tickets/05-weapon-handling.md) les transitions et la réponse au mouvement. Le [ticket 6](tickets/06-shot-feedback.md) ajoute le retour de tir, les douilles et les réglages des effets.
 
 ## Comportements vérifiés
 
 Sur la base `8649b60`, `./tools/verify.sh` importait le projet puis exécutait sept suites Godot headless avec des sauvegardes isolées dans `.cstack/silo9/test-user-data`. Le tableau ci-dessous décrit cette base.
 
-Après le ticket 5, la commande exécute 30 suites, dont quatre nécessitent X11 ou `xvfb-run` pour la capture souris. Les [preuves du maniement](tickets/05-weapon-handling.md) donnent les résultats et les prérequis actuels.
+Après le ticket 6, la commande sélectionne 34 suites, dont 10 nécessitent X11 ou `xvfb-run` pour les comportements de capture et de rendu. Les [preuves du retour de tir](tickets/06-shot-feedback.md) distinguent les 33 suites exécutées sur `1e0ef98` de la régression de menu et des quatre suites voisines exécutées sur `5fd906f`.
 
 | Vérification | Résultat observé |
 |---|---|

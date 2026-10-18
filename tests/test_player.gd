@@ -60,7 +60,7 @@ func run() -> void:
 	check(Ready.wait_for(player, 0), "D9 fixture reaches final READY")
 	player.set_active(true)
 	check(player.fire() and run_state.ammo == 11, "D9 shot consumes one round")
-	check(player._muzzle.global_position.distance_to(player.rig.muzzle.global_position) < .0001, "shot flash follows current rig muzzle")
+	check(player._d9_flash.global_position.distance_to(player.rig.muzzle.global_position) < .0001, "shot flash follows current rig muzzle")
 	check(not player.fire() and run_state.ammo == 11, "fire cooldown prevents double consumption")
 	Input.action_press("aim")
 	await ticks(12)

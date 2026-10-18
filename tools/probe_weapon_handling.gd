@@ -143,9 +143,11 @@ func sample(label: String, seconds: float, capture_pose: bool = true) -> void:
 	await wait(seconds)
 	if mode == "inspection" and capture_pose:
 		var processing: bool = app.player.is_physics_processing()
+		var presenting: bool = app.player.is_processing()
+		app.player.set_process(false)
 		app.player.set_physics_process(false)
 		var rig: Node3D = app.player.rig
-		var effects: Array[Node3D] = [app.player._beam,app.player._muzzle,app.player._flash_light,app.player._impact]
+		var effects: Array[Node3D] = [app.player._beam,app.player._d9_flash,app.player._arc_pulse,app.player._flash_light,app.player._impact]
 		var visibility: Array[bool] = []
 		for effect in effects: visibility.append(effect.visible)
 		for angle in [0,1]:
@@ -165,6 +167,7 @@ func sample(label: String, seconds: float, capture_pose: bool = true) -> void:
 		for index in effects.size(): effects[index].visible = visibility[index]
 		app.player._update_view(0.0)
 		app.player.set_physics_process(processing)
+		app.player.set_process(presenting)
 
 func journey() -> void:
 	if mode == "inspection":

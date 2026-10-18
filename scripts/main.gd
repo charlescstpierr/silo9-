@@ -17,6 +17,9 @@ var character: String = "mother"
 var azerty: bool = false
 var low_quality: bool = false
 var sensitivity: float = 0.002
+var camera_impulse := .5
+var shot_light := 1.0
+var effects_budget := 2
 var endpoint: String = ""
 var model_id: String = ""
 var ui: Control
@@ -39,6 +42,9 @@ var notice_time: float = 0.0
 var ui_clock: float = 0.0
 var chat_log: RichTextLabel
 var chat_input: LineEdit
+var camera_slider: HSlider
+var shot_light_slider: HSlider
+var effects_budget_option: OptionButton
 var sensitivity_slider: HSlider
 var endpoint_input: LineEdit
 var model_input: LineEdit
@@ -234,7 +240,10 @@ func _button(text: String, callback: Callable, node_name: String = "") -> Button
 	button.custom_minimum_size.y = 44
 	if not node_name.is_empty():
 		button.name = node_name
-	button.pressed.connect(callback)
+	button.pressed.connect(func() -> void:
+		if button.is_visible_in_tree():
+			callback.call()
+	)
 	content.add_child(button)
 	return button
 
@@ -289,6 +298,7 @@ func _start_run(run: RefCounted) -> void:
 	player.setup(state)
 	add_child(player)
 	player.sensitivity = sensitivity
+	player.configure_feedback(camera_impulse, shot_light, effects_budget)
 	player.teleport(state.player_position, state.player_yaw)
 	world = load("res://scripts/world.gd").new()
 	world.process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -371,6 +381,16 @@ func open_settings() -> void:
 	quality_check.text = "Mode performance • résolution 3D 67 % et éclairage simplifié"
 	quality_check.button_pressed = low_quality
 	content.add_child(quality_check)
+	_label(content, "Impulsion caméra", 18)
+	camera_slider = _effect_slider(camera_impulse)
+	_label(content, "Lumière des départs et faisceaux", 18)
+	shot_light_slider = _effect_slider(shot_light)
+	_label(content, "Budget des effets", 18)
+	effects_budget_option = OptionButton.new()
+	for level in ["Minimal", "Réduit", "Normal"]:
+		effects_budget_option.add_item(level)
+	effects_budget_option.select(effects_budget)
+	content.add_child(effects_budget_option)
 	_label(content, "IA conversationnelle (facultatif)", 20, TEAL)
 	_paragraph("Sans serveur, les deux personnages répondent hors ligne. Pour llama.cpp : http://127.0.0.1:8080. Un service distant doit utiliser un proxy HTTPS sans clé dans le jeu.")
 	endpoint_input = LineEdit.new()
@@ -387,6 +407,9 @@ func _apply_settings() -> void:
 	if is_instance_valid(dialogue) and not dialogue.configure(endpoint_input.text.strip_edges(), model_input.text.strip_edges()):
 		notify_player("Adresse refusée. Utilisez localhost ou un proxy HTTPS, sans identifiants.")
 		return
+	camera_impulse = _effect_strength(camera_slider.value / 100.0, .5)
+	shot_light = _effect_strength(shot_light_slider.value / 100.0, 1.0)
+	effects_budget = _effect_budget(effects_budget_option.selected)
 	sensitivity = sensitivity_slider.value
 	azerty = layout_check.button_pressed
 	low_quality = quality_check.button_pressed
@@ -395,11 +418,15 @@ func _apply_settings() -> void:
 	set_layout(azerty)
 	if is_instance_valid(player):
 		player.sensitivity = sensitivity
+		player.configure_feedback(camera_impulse, shot_light, effects_budget)
 		set_quality(low_quality)
 	var config := ConfigFile.new()
 	config.set_value("controls", "sensitivity", sensitivity)
 	config.set_value("controls", "azerty", azerty)
 	config.set_value("graphics", "low_quality", low_quality)
+	config.set_value("graphics", "camera_impulse", camera_impulse)
+	config.set_value("graphics", "shot_light", shot_light)
+	config.set_value("graphics", "effects_budget", effects_budget)
 	config.set_value("conversation", "endpoint", endpoint)
 	config.set_value("conversation", "model", model_id)
 	var error: Error = config.save("user://settings.cfg")
@@ -417,6 +444,9 @@ func _load_settings() -> void:
 	sensitivity = clampf(float(config.get_value("controls", "sensitivity", 0.002)), 0.0005, 0.006)
 	azerty = bool(config.get_value("controls", "azerty", false))
 	low_quality = bool(config.get_value("graphics", "low_quality", false))
+	camera_impulse = _effect_strength(config.get_value("graphics", "camera_impulse", .5), .5)
+	shot_light = _effect_strength(config.get_value("graphics", "shot_light", 1.0), 1.0)
+	effects_budget = _effect_budget(config.get_value("graphics", "effects_budget", 2))
 	endpoint = str(config.get_value("conversation", "endpoint", ""))
 	model_id = str(config.get_value("conversation", "model", ""))
 
@@ -621,3 +651,20 @@ func set_quality(low: bool) -> void:
 		world.set_quality(low)
 	if is_instance_valid(edge_smoothing):
 		edge_smoothing.visible = not low
+
+func _effect_slider(value: float) -> HSlider:
+	var slider := HSlider.new()
+	slider.min_value = 0
+	slider.max_value = 100
+	slider.step = 10
+	slider.value = value * 100
+	content.add_child(slider)
+	return slider
+
+func _effect_strength(value: Variant, fallback: float) -> float:
+	if (value is float or value is int) and is_finite(float(value)):
+		return clampf(float(value), 0.0, 1.0)
+	return fallback
+
+func _effect_budget(value: Variant) -> int:
+	return value if value is int and value >= 0 and value <= 2 else 2

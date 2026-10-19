@@ -1,0 +1,123 @@
+from pathlib import Path
+import hashlib
+import json
+import os
+import subprocess
+import sys
+import time
+
+ROOT = Path(__file__).resolve().parents[4]
+TASK = Path(__file__).resolve().parent
+PROJECTS = {side: ROOT / '.worktrees' / name for side, name in [('reference', 'silo9-issue-10'), ('candidate', 'silo9-issue-18')]}
+HEADS = {'reference': '28e402821469655598c6a84bc415d8ea04da97c2', 'candidate': 'c105da61b2b490546f01c9d67703bfb405a2a44f'}
+ENGINE = ROOT / '.tools/Godot_v4.7.2-stable_linux.x86_64'
+FREEZE = TASK / 'perf-freeze.json'
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def identities():
+    result = {'projects': {}, 'artifacts': {name: digest(TASK / 'proof-tools' / name) for name in ['probe_sector_power.gd', 'prove_sector_power.py', 'selfcheck_sector_power.py']}, 'engine': digest(ENGINE), 'runner': digest(Path(__file__))}
+    for side, project in PROJECTS.items():
+        head = subprocess.check_output(['git', '-C', str(project), 'rev-parse', 'HEAD'], text=True).strip()
+        if head != HEADS[side]:
+            raise ValueError('Unexpected HEAD for ' + side)
+        names = subprocess.check_output(['git', '-C', str(project), 'ls-files', '--cached', '--others', '--exclude-standard', '-z']).decode().split('\0')
+        result['projects'][side] = {'head': head, 'source': {name: digest(project / name) for name in names if name and (project / name).is_file()}}
+    return result
+
+
+def check_run(folder, frozen, side):
+    manifest = json.loads((folder / 'manifest.json').read_text())
+    expected = frozen['projects'][side]
+    assert manifest['head'] == expected['head']
+    assert manifest['source_before'] == manifest['source_after'] == expected['source']
+    assert manifest['exit_code'] == 0 and manifest['validation_errors'] == []
+    artifacts = manifest['artifacts_before']
+    assert artifacts == manifest['artifacts_after']
+    assert artifacts['engine'] == frozen['engine']
+    for key, name in [('probe', 'probe_sector_power.gd'), ('wrapper', 'prove_sector_power.py'), ('selfcheck', 'selfcheck_sector_power.py')]:
+        assert artifacts[key] == frozen['artifacts'][name]
+    assert artifacts['input_helper'] == expected['source']['tools/x11_input.py']
+    report = json.loads((folder / 'journey.json').read_text())
+    assert report['terminal']['variant'] == side
+    return report
+
+
+def fixture(report):
+    terminal = report['terminal']
+    return {
+        'robots': [{key: robot[key] for key in ['id', 'position_before', 'yaw_before', 'health_before', 'collision_before', 'damage']} for robot in sorted(terminal['robots'], key=lambda row: row['id'])],
+        'crate': {key: terminal['crate_shot'][key] for key in ['weapon', 'ammo_before', 'ammo_after', 'energy_before', 'energy_after', 'impact', 'ray_from', 'ray_to', 'target_position', 'target_half_size']},
+        'start': terminal['preparation_start'],
+        'low_quality': report['low_quality'],
+    }
+
+
+def host_sample():
+    processes = []
+    for path in Path('/proc').iterdir():
+        if not path.name.isdigit():
+            continue
+        try:
+            name = (path / 'comm').read_text().strip()
+            if 'godot' in name.lower() or name in ('ffmpeg', 'pidstat', 'perf', 'py-spy'):
+                status = (path / 'status').read_text().splitlines()
+                parent = int(next(line.split()[1] for line in status if line.startswith('PPid:')))
+                processes.append({'pid': int(path.name), 'parent': parent, 'name': name})
+        except (OSError, StopIteration):
+            continue
+    return {'unix': time.time(), 'load_average': os.getloadavg(), 'logical_cpus': os.cpu_count(), 'processes': processes}
+
+
+def main():
+    if sys.argv[1:] == ['--freeze']:
+        with FREEZE.open('x') as output:
+            json.dump(identities(), output, indent=2)
+        print('Campaign identities frozen; no engine executed')
+        return
+    quality, index = sys.argv[1], int(sys.argv[2])
+    if quality not in ('normal', 'low') or not 1 <= index <= 5:
+        raise ValueError('Expected normal|low and pair index 1..5')
+    frozen = json.loads(FREEZE.read_text())
+    rows, reports = [], {}
+    order = ['reference', 'candidate'] if index % 2 else ['candidate', 'reference']
+    for side in order:
+        assert identities() == frozen, 'Campaign source or tools changed'
+        destination = TASK / 'perf' / f'{quality}-{index}-{side}'
+        command = ['python3', str(TASK / 'proof-tools/prove_sector_power.py'), '--godot', str(ENGINE), '--project', str(PROJECTS[side]), '--mode', 'perf', '--output', str(destination), '--timeout', '120', '--require-circuits', '--require-lighting', '--flashlight-on', '--terminal-variant', side]
+        if quality == 'low':
+            command.append('--low')
+        started = time.time()
+        host = [host_sample()]
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        (destination.parent / f'{quality}-{index}-{side}-host-preflight.json').write_text(json.dumps(host[0], indent=2) + '\n')
+        assert not host[0]['processes'], 'Runtime occupied before run'
+        process = subprocess.Popen(command)
+        contamination = []
+        while True:
+            try:
+                exit_code = process.wait(timeout=1)
+                break
+            except subprocess.TimeoutExpired:
+                sample = host_sample()
+                host.append(sample)
+                if len(sample['processes']) > 1:
+                    contamination.extend(sample['processes'])
+                contamination.extend(item for item in sample['processes'] if 'godot' not in item['name'].lower() or item['parent'] != process.pid)
+        host.append(host_sample())
+        contamination.extend(host[-1]['processes'])
+        rows.append(dict(side=side, start=started, end=time.time(), exit_code=exit_code, command=command, wrapper_pid=process.pid, host_samples=host, unexpected_processes=contamination))
+        (TASK / 'perf' / f'{quality}-{index}-progress.json').write_text(json.dumps(rows, indent=2) + '\n')
+        assert exit_code == 0 and not contamination, 'Run failed or concurrent process observed; preserved progress record'
+        assert identities() == frozen, 'Campaign source or tools changed'
+        reports[side] = check_run(destination, frozen, side)
+        assert reports[side]['low_quality'] is (quality == 'low')
+    assert fixture(reports['reference']) == fixture(reports['candidate']), 'Observed preparation differs between sides'
+    (TASK / 'perf' / f'{quality}-{index}-pair.json').write_text(json.dumps(rows, indent=2) + '\n')
+
+
+if __name__ == '__main__':
+    main()

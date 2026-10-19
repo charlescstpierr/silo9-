@@ -1,0 +1,33 @@
+{
+  "command": [
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+    "--path",
+    "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+    "--script",
+    "tests/test_shot_casings.gd"
+  ],
+  "environment": {
+    "DISPLAY": ":100",
+    "LIBGL_ALWAYS_SOFTWARE": "1"
+  },
+  "exit": 0,
+  "seconds": 3.009317336138338,
+  "test_sha256": "b74e326b8d5ea53c3789e9ae75876752021348b685cd2e0be7ee0b888205c0a6",
+  "errors": [
+    "ERROR: Condition \"status < 0\" is true. Returning: ERR_CANT_OPEN"
+  ],
+  "warnings": [
+    "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.",
+    "WARNING: All audio drivers failed, falling back to the dummy driver."
+  ],
+  "tail": [
+    "PASS: settled case has no continuing movement",
+    "PASS: inactive casing fixture emits",
+    "PASS: inactive clears world casings",
+    "PASS: teleport casing fixture emits",
+    "PASS: teleport clears world casings",
+    "PASS: death casing fixture emits",
+    "PASS: death clears world casings",
+    "SHOT CASINGS FAILURES: 0"
+  ]
+}

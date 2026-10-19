@@ -1,0 +1,26 @@
+{
+  "valid_passed": true,
+  "negative_controls": [
+    {
+      "case": "process nonzero",
+      "rejected": true
+    },
+    {
+      "case": "process bool",
+      "rejected": true
+    },
+    {
+      "case": "missing event",
+      "rejected": true
+    },
+    {
+      "case": "event nonzero",
+      "rejected": true
+    },
+    {
+      "case": "event bool",
+      "rejected": true
+    }
+  ],
+  "archives_executed": false
+}

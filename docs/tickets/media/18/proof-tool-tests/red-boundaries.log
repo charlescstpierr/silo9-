@@ -1,0 +1,23 @@
+FF................................
+======================================================================
+FAIL: test_artifacts_require_real_contained_png_and_exact_save (__main__.Issue18BoundaryValidation.test_artifacts_require_real_contained_png_and_exact_save)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 475, in test_artifacts_require_real_contained_png_and_exact_save
+    first.unlink(); self.assertTrue(validate_artifacts(report, output)); first.write_bytes(png)
+                    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_request_is_compared_to_observed_scene (__main__.Issue18BoundaryValidation.test_terminal_request_is_compared_to_observed_scene)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 458, in test_terminal_request_is_compared_to_observed_scene
+    self.assertTrue(validate_result(terminal_fixture(), 0, '', terminal_variant='reference'))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.632s
+
+FAILED (failures=2)

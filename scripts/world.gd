@@ -43,6 +43,8 @@ class Luminaire:
 		low_energy = low
 		radius = reach
 
+const RobotSpec = preload("res://scripts/data/robot_spec.gd")
+const Crate = preload("res://scripts/destructible_crate.gd")
 const RobotVisual = preload("res://scripts/robot_visual.gd")
 const Art = preload("res://scripts/world_art.gd")
 const State = preload("res://scripts/run_state.gd")
@@ -58,6 +60,8 @@ var materials: Dictionary = {}
 var art: Art
 var objects: Dictionary = {}
 var enemies: Array[Enemy] = []
+var _death_traces: Dictionary[String, Node3D] = {}
+var _crate: Crate
 var lights: Array[OmniLight3D] = []
 var box_mesh := BoxMesh.new()
 var relay_position := Vector3(7, 0, -26)
@@ -186,6 +190,9 @@ func _build_structure() -> void:
 	_bulkhead(-34, "03", "ARCHIVES")
 	_bulkhead(-54, "04", "CŒUR / ACCÈS RÉSERVÉ", true)
 	reactor_gate = Node3D.new()
+	if state.phase >= State.Phase.POWER_RESTORED:
+		reactor_gate.position.y = 4.0
+		reactor_gate_open = true
 	add_child(reactor_gate)
 	_box(Vector3(0,1.7,-54), Vector3(5.1,3.4,0.35), "steel", true, reactor_gate)
 	for side in [-1.0, 1.0]:
@@ -270,7 +277,12 @@ func _batch_static_geometry() -> void:
 		add_child(instances)
 
 func _kenney_props() -> void:
-	for entry in [["machine", Vector3(8.5, 0, -7), Vector3(1.8,1.95,2.25)], ["machine-fortified", Vector3(-8, 0, -25), Vector3(1.8,2.03,2.4)], ["box-large", Vector3(4, 0, -12), Vector3(1.65,0.825,1.5)], ["pipe-large-valve", Vector3(8, 1, -58), Vector3(1.5,1.5,1.52)]]:
+	_crate = Crate.new()
+	_crate.name = "DestructibleCrate"
+	_crate.position = Vector3(4, 0, -12)
+	_crate.setup(state, materials["steel"], box_mesh)
+	add_child(_crate)
+	for entry in [["machine", Vector3(8.5, 0, -7), Vector3(1.8,1.95,2.25)], ["machine-fortified", Vector3(-8, 0, -25), Vector3(1.8,2.03,2.4)], ["pipe-large-valve", Vector3(8, 1, -58), Vector3(1.5,1.5,1.52)]]:
 		var path: String = "res://assets/kenney/" + entry[0] + ".glb"
 		if ResourceLoader.exists(path):
 			var packed := load(path) as PackedScene
@@ -347,17 +359,32 @@ func _build_interactables() -> void:
 		item.set_meta("amount", entry[3])
 
 func _build_enemies() -> void:
-	for entry in [["sentinel_1", false, Vector3(3,0,-20)], ["crawler_1", true, Vector3(-5,0,-28)], ["sentinel_2", false, Vector3(-3,0,-45)], ["crawler_2", true, Vector3(3,0,-51)], ["sentinel_3", false, Vector3(0,0,-66)], ["crawler_3", true, Vector3(-3,0,-70)]]:
+	for id: String in RobotSpec.CATALOG:
+		if state.defeated.has(id): continue
+		var spec: Dictionary = RobotSpec.CATALOG[id]
 		var enemy := Enemy.new()
-		enemy.enemy_id = entry[0]
-		enemy.crawler = entry[1]
+		enemy.enemy_id = id
+		enemy.crawler = spec.crawler
 		enemy.health = 35.0 if enemy.crawler else 65.0
 		enemy.state = state
 		enemy.target = player
-		enemy.position = entry[2]
-		enemy.patrol = [entry[2], entry[2] + Vector3(0,0,4), entry[2] + Vector3(-2,0,2)]
+		enemy.position = spec.spawn
+		enemy.patrol = [spec.spawn, spec.spawn + Vector3(0,0,4), spec.spawn + Vector3(-2,0,2)]
 		add_child(enemy)
 		enemies.append(enemy)
+
+func _restore_death_traces() -> void:
+	for id: String in RobotSpec.CATALOG:
+		if _death_traces.has(id): continue
+		var pose: State.DeathPose = state.death_pose(id)
+		if pose == null: continue
+		var trace := Node3D.new()
+		trace.name = "Remains_" + id
+		trace.position = pose.position
+		trace.rotation.y = pose.yaw
+		add_child(trace)
+		RobotVisual.build_remains(trace, RobotSpec.CATALOG[id].crawler)
+		_death_traces[id] = trace
 
 func interact(target: Node) -> void:
 	if target == null or not target.has_meta("id"):
@@ -438,20 +465,26 @@ func emit_noise(origin: Vector3, radius: float) -> void:
 			enemy.hear_noise(origin, radius)
 
 func _disable_barrier() -> void:
-	barrier_disabled = true
-	state.add_fact("arc_lock_disabled")
-	state.remember("Le verrou ARC a été désactivé.")
-	if is_instance_valid(barrier) and not barrier.is_queued_for_deletion():
-		barrier.queue_free()
-	message.emit("Verrou électrique hors tension.")
+	if state.disable_arc_lock():
+		message.emit("Verrou électrique hors tension.")
 
 func refresh() -> void:
 	if state.phase >= 2 and not reactor_gate_open:
 		reactor_gate_open = true
 		create_tween().tween_property(reactor_gate, "position:y", 4.0, 0.65)
-	if state.facts.has("arc_lock_disabled") and is_instance_valid(barrier) and not barrier.is_queued_for_deletion():
+	if state.facts.has("arc_lock_disabled"):
 		barrier_disabled = true
-		barrier.queue_free()
+		var device: Interactable = objects["device"]
+		device.is_disabled = true
+		device.set_meta("prompt", "Verrou hors tension")
+		for mesh: MeshInstance3D in device.find_children("*", "MeshInstance3D", true, false):
+			mesh.material_override = materials["dark"]
+		if is_instance_valid(barrier) and not barrier.is_queued_for_deletion():
+			for body: CollisionObject3D in barrier.find_children("*", "CollisionObject3D", true, false):
+				body.collision_layer = 0
+			barrier.queue_free()
+	_crate.refresh()
+	_restore_death_traces()
 	for id: String in objects:
 		var object: StaticBody3D = objects[id]
 		var available: bool = not state.collected.has(id)

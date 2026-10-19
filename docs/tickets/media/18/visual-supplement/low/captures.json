@@ -1,0 +1,184 @@
+{
+	"death_position": [
+		0.927953839302063,
+		0.000942740123718977,
+		-16.324462890625
+	],
+	"death_yaw": 2.9879493713378906,
+	"failures": [],
+	"images": [
+		{
+			"camera_position": [
+				0.0,
+				2.0,
+				-12.824462890625
+			],
+			"center_ray_clear": true,
+			"controlled_camera": true,
+			"file": "sentinel_front.png",
+			"fov": 76.0,
+			"target": [
+				0.927953839302063,
+				0.3509427309036255,
+				-16.324462890625
+			]
+		},
+		{
+			"camera_position": [
+				0.0,
+				2.0,
+				-19.824462890625
+			],
+			"center_ray_clear": true,
+			"controlled_camera": true,
+			"file": "sentinel_back.png",
+			"fov": 76.0,
+			"target": [
+				0.927953839302063,
+				0.3509427309036255,
+				-16.324462890625
+			]
+		},
+		{
+			"camera_position": [
+				4.0,
+				2.0,
+				-9.0
+			],
+			"center_ray_clear": true,
+			"controlled_camera": true,
+			"file": "crate.png",
+			"fov": 76.0,
+			"target": [
+				4.0,
+				0.25,
+				-12.0
+			]
+		},
+		{
+			"camera_position": [
+				1.399999976158142,
+				1.7999999523162842,
+				-54.5
+			],
+			"center_ray_clear": true,
+			"controlled_camera": true,
+			"file": "arc.png",
+			"fov": 76.0,
+			"target": [
+				2.799999952316284,
+				0.699999988079071,
+				-57.0
+			]
+		}
+	],
+	"limits": "Actual journey save reconstructed for controlled-camera images. No movement or combat proof. Player rig and HUD hidden for visibility.",
+	"low_quality": true,
+	"save_sha256": "3d187e633f79296fc5643122b834dfab8f504818787db9bee149a83f30cb8990",
+	"snapshot": {
+		"ammo": 7,
+		"cells": 2,
+		"circuits": {
+			"archives": true,
+			"maintenance": false
+		},
+		"collected": [
+			"component_0",
+			"component_1",
+			"component_2"
+		],
+		"components": 0,
+		"crate_broken": true,
+		"death_poses": {
+			"crawler_1": {
+				"position": [
+					-0.7899742126464844,
+					0.0008385046385228634,
+					-21.74813461303711
+				],
+				"yaw": -3.05450439453125
+			},
+			"crawler_2": {
+				"position": [
+					0.4663533866405487,
+					0.0008417610079050064,
+					-38.88241958618164
+				],
+				"yaw": 3.06630325317383
+			},
+			"crawler_3": {
+				"position": [
+					-0.867341160774231,
+					0.0009093480184674263,
+					-58.674373626708984
+				],
+				"yaw": -2.79597401618958
+			},
+			"sentinel_1": {
+				"position": [
+					0.927953839302063,
+					0.000942740123718977,
+					-16.324462890625
+				],
+				"yaw": 2.98794937133789
+			},
+			"sentinel_2": {
+				"position": [
+					-1.1824803352355957,
+					0.0008042773697525263,
+					-41.88484573364258
+				],
+				"yaw": -1.74859142303467
+			},
+			"sentinel_3": {
+				"position": [
+					-0.21987207233905792,
+					0.0008356601465493441,
+					-63.39704895019531
+				],
+				"yaw": -3.11369609832764
+			}
+		},
+		"defeated": [
+			"sentinel_1",
+			"crawler_1",
+			"sentinel_2",
+			"crawler_2",
+			"sentinel_3",
+			"crawler_3"
+		],
+		"elapsed": 97.07899604761927,
+		"ending": "",
+		"energy": 68.0,
+		"facts": [
+			"relay_location",
+			"power_restored",
+			"surface_signal",
+			"arc_lock_disabled",
+			"core_recovered"
+		],
+		"health": 70.0,
+		"medkits": 2,
+		"memory": [
+			"SCAN ÉCHO a révélé l'accès au relais.",
+			"Le joueur a réparé le relais.",
+			"Le joueur a découvert un signal humain à la surface.",
+			"Le verrou ARC a été désactivé.",
+			"Le joueur transporte le noyau de contrôle."
+		],
+		"phase": 3,
+		"player_position": [
+			0.00671541690826416,
+			0.0009415129316039383,
+			7.390467166900635
+		],
+		"player_yaw": 3.13906359672546,
+		"relations": {
+			"mother": 0,
+			"n7": 0
+		},
+		"reserve": 36,
+		"schema": 4,
+		"upgraded": false
+	}
+}

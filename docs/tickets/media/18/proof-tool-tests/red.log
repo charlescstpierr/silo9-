@@ -1,0 +1,210 @@
+F....FFFFFFFFFFFFFFFFFFFFF........................
+======================================================================
+FAIL: test_persistence_accepts_complete_synthetic_contract_only (__main__.Issue18Validation.test_persistence_accepts_complete_synthetic_contract_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 415, in test_persistence_accepts_complete_synthetic_contract_only
+    self.assertEqual(validate_result(persistence_fixture(), 0, ''), [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['unknown mode'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'unknown mode'
+
+- ['unknown mode']
++ []
+
+======================================================================
+FAIL: test_terminal_rejects_cli_count_or_fake_crate_shot (__main__.Issue18Validation.test_terminal_rejects_cli_count_or_fake_crate_shot) (key='accepted')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 409, in test_terminal_rejects_cli_count_or_fake_crate_shot
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_cli_count_or_fake_crate_shot (__main__.Issue18Validation.test_terminal_rejects_cli_count_or_fake_crate_shot) (key='ammo_after')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 409, in test_terminal_rejects_cli_count_or_fake_crate_shot
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_cli_count_or_fake_crate_shot (__main__.Issue18Validation.test_terminal_rejects_cli_count_or_fake_crate_shot) (key='impact_visible')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 409, in test_terminal_rejects_cli_count_or_fake_crate_shot
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_cli_count_or_fake_crate_shot (__main__.Issue18Validation.test_terminal_rejects_cli_count_or_fake_crate_shot) (key='impact')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 409, in test_terminal_rejects_cli_count_or_fake_crate_shot
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_cli_count_or_fake_crate_shot (__main__.Issue18Validation.test_terminal_rejects_cli_count_or_fake_crate_shot) (key='target_before')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 409, in test_terminal_rejects_cli_count_or_fake_crate_shot
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_cli_count_or_fake_crate_shot (__main__.Issue18Validation.test_terminal_rejects_cli_count_or_fake_crate_shot) (key='ray_from')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 409, in test_terminal_rejects_cli_count_or_fake_crate_shot
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_cli_count_or_fake_crate_shot (__main__.Issue18Validation.test_terminal_rejects_cli_count_or_fake_crate_shot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 412, in test_terminal_rejects_cli_count_or_fake_crate_shot
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unchecked_start_or_wrong_visuals (__main__.Issue18Validation.test_terminal_rejects_unchecked_start_or_wrong_visuals) (stage='before_warmup', key='live_ids')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 400, in test_terminal_rejects_unchecked_start_or_wrong_visuals
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unchecked_start_or_wrong_visuals (__main__.Issue18Validation.test_terminal_rejects_unchecked_start_or_wrong_visuals) (stage='before_warmup', key='casings')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 400, in test_terminal_rejects_unchecked_start_or_wrong_visuals
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unchecked_start_or_wrong_visuals (__main__.Issue18Validation.test_terminal_rejects_unchecked_start_or_wrong_visuals) (stage='before_warmup', key='velocity')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 400, in test_terminal_rejects_unchecked_start_or_wrong_visuals
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unchecked_start_or_wrong_visuals (__main__.Issue18Validation.test_terminal_rejects_unchecked_start_or_wrong_visuals) (stage='before_warmup', key='trace_count')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 400, in test_terminal_rejects_unchecked_start_or_wrong_visuals
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unchecked_start_or_wrong_visuals (__main__.Issue18Validation.test_terminal_rejects_unchecked_start_or_wrong_visuals)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 402, in test_terminal_rejects_unchecked_start_or_wrong_visuals
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unobserved_death_or_mutated_pose (__main__.Issue18Validation.test_terminal_rejects_unobserved_death_or_mutated_pose) (field='defeated')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 391, in test_terminal_rejects_unobserved_death_or_mutated_pose
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unobserved_death_or_mutated_pose (__main__.Issue18Validation.test_terminal_rejects_unobserved_death_or_mutated_pose) (field='health_after')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 391, in test_terminal_rejects_unobserved_death_or_mutated_pose
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unobserved_death_or_mutated_pose (__main__.Issue18Validation.test_terminal_rejects_unobserved_death_or_mutated_pose) (field='health_before')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 391, in test_terminal_rejects_unobserved_death_or_mutated_pose
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unobserved_death_or_mutated_pose (__main__.Issue18Validation.test_terminal_rejects_unobserved_death_or_mutated_pose) (field='collision_after')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 391, in test_terminal_rejects_unobserved_death_or_mutated_pose
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unobserved_death_or_mutated_pose (__main__.Issue18Validation.test_terminal_rejects_unobserved_death_or_mutated_pose) (field='physics_after')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 391, in test_terminal_rejects_unobserved_death_or_mutated_pose
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unobserved_death_or_mutated_pose (__main__.Issue18Validation.test_terminal_rejects_unobserved_death_or_mutated_pose) (field='position_after')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 391, in test_terminal_rejects_unobserved_death_or_mutated_pose
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unobserved_death_or_mutated_pose (__main__.Issue18Validation.test_terminal_rejects_unobserved_death_or_mutated_pose) (field='instance')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 391, in test_terminal_rejects_unobserved_death_or_mutated_pose
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unobserved_death_or_mutated_pose (__main__.Issue18Validation.test_terminal_rejects_unobserved_death_or_mutated_pose) (field='yaw_before')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 391, in test_terminal_rejects_unobserved_death_or_mutated_pose
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_terminal_rejects_unobserved_death_or_mutated_pose (__main__.Issue18Validation.test_terminal_rejects_unobserved_death_or_mutated_pose)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 393, in test_terminal_rejects_unobserved_death_or_mutated_pose
+    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.583s
+
+FAILED (failures=22)

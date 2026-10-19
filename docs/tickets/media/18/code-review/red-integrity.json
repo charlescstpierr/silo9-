@@ -1,0 +1,68 @@
+{
+  "red_logs": [
+    {
+      "file": ".cstack/orchestrate/silo9/issue18/red-tests/test_persistence_state.log",
+      "sha256": "92e1b25a823909f686b3fd4315b33cbaca814914f413189e8c9e23152d229afe",
+      "passes": 150,
+      "failures": [
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED migration writes schema 4 with intact crate and no invented poses",
+        "FAIL: SCHEMA_RED valid schema 4 with defeated robot pose loads",
+        "FAIL: SCHEMA_RED inclusive pose boundaries remain loadable",
+        "FAIL: CAPACITY_RED six real robot IDs fit beyond 128 historical IDs",
+        "FAIL: CAPACITY_RED no historical ID evicted and every real robot recorded",
+        "FAIL: CAPACITY_RED all 134 IDs survive disk roundtrip",
+        "FAIL: SIZE_RED refuse 65537 UTF-8 bytes before touching files",
+        "FAIL: SIZE_RED oversized save preserves previous valid file byte-for-byte",
+        "FAIL: SIZE_RED oversized save does not open or truncate temporary",
+        "FAIL: SIZE_RED previous valid save remains loadable after refused write"
+      ],
+      "errors": []
+    },
+    {
+      "file": ".cstack/orchestrate/silo9/issue18/red-tests/test_world_persistence.log",
+      "sha256": "23f23867d3debefb1d4315d7ab74099e770fbfea58727488a49642e357640ba2",
+      "passes": 26,
+      "failures": [
+        "FAIL: CRATE_RED ballistic hit removes blocking crate collider",
+        "FAIL: CRATE_RED ballistic hit leaves three visible static panels",
+        "FAIL: CRATE_RED ballistic hit records broken crate in canonical snapshot",
+        "FAIL: CRATE_RED restored crate has debris and no blocking collider",
+        "FAIL: CRATE_RED player capsule traverses restored debris",
+        "FAIL: ROBOT_RED one changed notification exposes defeat and pose together",
+        "FAIL: ROBOT_RED death creates immediate static trace at moved position",
+        "FAIL: ROBOT_RED trace survives old death animation lifetime",
+        "FAIL: ROBOT_RED snapshot records actual death position and yaw",
+        "FAIL: ROBOT_RED reconstruction restores visible trace at death pose",
+        "FAIL: ROBOT_RED one changed notification exposes defeat and pose together",
+        "FAIL: ROBOT_RED death creates immediate static trace at moved position",
+        "FAIL: ROBOT_RED trace survives old death animation lifetime",
+        "FAIL: ROBOT_RED snapshot records actual death position and yaw",
+        "FAIL: ROBOT_RED reconstruction restores visible trace at death pose",
+        "FAIL: ARC_RED first disable notifies once with fact and memory committed",
+        "FAIL: ARC_RED reconstructed device is already disabled",
+        "FAIL: ARC_RED reconstructed device advertises inactive prompt",
+        "FAIL: ARC_RED reconstructed lock is non-emissive",
+        "FAIL: ARC_RED second impact emits no disabled, message or changed",
+        "FAIL: ARC_RED second impact does not append journal entry",
+        "FAIL: GATE_RED restored gate is open immediately before any frame or tween",
+        "FAIL: GATE_RED restored gate collider is already above doorway",
+        "FAIL: GATE_RED restored doorway permits passage after physics synchronization"
+      ],
+      "errors": []
+    }
+  ],
+  "world_removing_two_added_circuit_lines_sha256": "74b7288a9a950fff5b6d62c21adecae96d4c6d1a8df143abf972257dbf1ecf1e",
+  "state_sha256": "0a109337c2c759f854ea38f19ff14162b97c7f46e40d0de8171ee288d6d8a4c5",
+  "fixture_sha256": "237953f18f798dee09b72fa3562f1ee4400e9860b9eb66637779f4c53fe688c0"
+}

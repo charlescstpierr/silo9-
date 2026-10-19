@@ -1,0 +1,733 @@
+{
+  "validation": "PASS",
+  "comparison_verdict": {
+    "normal": "Inconclusive timing difference within observed run-to-run variation",
+    "low": "Reproducible p50 overhead within these five pairs; p95/p99 inconclusive",
+    "gain_claim": false,
+    "low_p50_positive_pairs": 5,
+    "low_p50_total_pairs": 5,
+    "low_p50_ranges_disjoint": true,
+    "statistical_limit": "Five pairs only. Descriptive repeatability in this campaign, not a population-wide confidence guarantee."
+  },
+  "heads": {
+    "reference": "28e402821469655598c6a84bc415d8ea04da97c2",
+    "candidate": "c105da61b2b490546f01c9d67703bfb405a2a44f"
+  },
+  "freeze_sha256": "17857f5b48a0dddab62a5087f0c0c9d8ffb04e8e05c3a4a26d73860156d8bbb5",
+  "runs": 20,
+  "pairs": 10,
+  "intervals": 7666,
+  "drawn_frames": 7686,
+  "route_m": 92.4334392547607,
+  "stations": 9,
+  "flashlight": "ON in every observed callback",
+  "resolution": [
+    1280,
+    720
+  ],
+  "renderer": "llvmpipe",
+  "warmup_ms_range": [
+    2001.248,
+    2076.546
+  ],
+  "host": {
+    "samples": 764,
+    "maximum_gap_seconds": 1.059532880783081,
+    "logical_cpus": [
+      8
+    ],
+    "load_1m_range": [
+      1.5302734375,
+      5.3037109375
+    ],
+    "unexpected_targeted_processes": 0,
+    "limit": "Point samples about once per second of named runtime/encoder/profiler processes; not continuous or all-host CPU isolation"
+  },
+  "groups": {
+    "normal": {
+      "reference": {
+        "p50": {
+          "median": 76.899,
+          "min": 75.768,
+          "max": 79.405,
+          "values": [
+            79.405,
+            76.899,
+            76.207,
+            78.205,
+            75.768
+          ]
+        },
+        "p95": {
+          "median": 96.05,
+          "min": 92.635,
+          "max": 97.744,
+          "values": [
+            96.96,
+            96.05,
+            92.635,
+            97.744,
+            95.426
+          ]
+        },
+        "p99": {
+          "median": 105.359,
+          "min": 99.464,
+          "max": 122.602,
+          "values": [
+            113.3,
+            105.359,
+            100.993,
+            122.602,
+            99.464
+          ]
+        },
+        "samples": {
+          "median": 274,
+          "min": 262,
+          "max": 276,
+          "values": [
+            264,
+            274,
+            275,
+            262,
+            276
+          ]
+        },
+        "frames_drawn": {
+          "median": 275,
+          "min": 263,
+          "max": 277,
+          "values": [
+            265,
+            275,
+            276,
+            263,
+            277
+          ]
+        },
+        "interval_sum_ms": {
+          "median": 21051.912,
+          "min": 20898.405,
+          "max": 21078.857,
+          "values": [
+            21051.931,
+            20898.405,
+            21051.912,
+            20959.766,
+            21078.857
+          ]
+        },
+        "draw_calls_max": {
+          "median": 305,
+          "min": 305,
+          "max": 305,
+          "values": [
+            305,
+            305,
+            305,
+            305,
+            305
+          ]
+        },
+        "nodes_max": {
+          "median": 600,
+          "min": 600,
+          "max": 600,
+          "values": [
+            600,
+            600,
+            600,
+            600,
+            600
+          ]
+        },
+        "resources_max": {
+          "median": 101,
+          "min": 101,
+          "max": 101,
+          "values": [
+            101,
+            101,
+            101,
+            101,
+            101
+          ]
+        }
+      },
+      "candidate": {
+        "p50": {
+          "median": 78.687,
+          "min": 76.834,
+          "max": 80.28,
+          "values": [
+            77.365,
+            78.881,
+            78.687,
+            80.28,
+            76.834
+          ]
+        },
+        "p95": {
+          "median": 95.65,
+          "min": 94.448,
+          "max": 108.343,
+          "values": [
+            94.448,
+            97.243,
+            95.064,
+            108.343,
+            95.65
+          ]
+        },
+        "p99": {
+          "median": 105.074,
+          "min": 102.307,
+          "max": 121.884,
+          "values": [
+            102.307,
+            112.48,
+            104.353,
+            121.884,
+            105.074
+          ]
+        },
+        "samples": {
+          "median": 270,
+          "min": 252,
+          "max": 275,
+          "values": [
+            270,
+            265,
+            270,
+            252,
+            275
+          ]
+        },
+        "frames_drawn": {
+          "median": 271,
+          "min": 253,
+          "max": 276,
+          "values": [
+            271,
+            266,
+            271,
+            253,
+            276
+          ]
+        },
+        "interval_sum_ms": {
+          "median": 21012.969,
+          "min": 20970.737,
+          "max": 21131.547,
+          "values": [
+            21012.969,
+            21131.547,
+            21101.463,
+            20970.737,
+            20985.872
+          ]
+        },
+        "draw_calls_max": {
+          "median": 311,
+          "min": 311,
+          "max": 311,
+          "values": [
+            311,
+            311,
+            311,
+            311,
+            311
+          ]
+        },
+        "nodes_max": {
+          "median": 624,
+          "min": 624,
+          "max": 624,
+          "values": [
+            624,
+            624,
+            624,
+            624,
+            624
+          ]
+        },
+        "resources_max": {
+          "median": 104,
+          "min": 104,
+          "max": 104,
+          "values": [
+            104,
+            104,
+            104,
+            104,
+            104
+          ]
+        }
+      },
+      "paired_candidate_minus_reference": {
+        "p50": {
+          "ms": {
+            "median": 1.9819999999999993,
+            "min": -2.0400000000000063,
+            "max": 2.480000000000004,
+            "values": [
+              -2.0400000000000063,
+              1.9819999999999993,
+              2.480000000000004,
+              2.075000000000003,
+              1.0660000000000025
+            ]
+          },
+          "percent": {
+            "median": 2.577406728305959,
+            "min": -2.5691077388073875,
+            "max": 3.254294224939972,
+            "values": [
+              -2.5691077388073875,
+              2.577406728305959,
+              3.254294224939972,
+              2.6532830381689188,
+              1.4069264069264102
+            ]
+          }
+        },
+        "p95": {
+          "ms": {
+            "median": 1.1929999999999978,
+            "min": -2.5120000000000005,
+            "max": 10.599000000000004,
+            "values": [
+              -2.5120000000000005,
+              1.1929999999999978,
+              2.428999999999988,
+              10.599000000000004,
+              0.22400000000000375
+            ]
+          },
+          "percent": {
+            "median": 1.2420614263404455,
+            "min": -2.5907590759075916,
+            "max": 10.843632345719433,
+            "values": [
+              -2.5907590759075916,
+              1.2420614263404455,
+              2.622119069466171,
+              10.843632345719433,
+              0.23473686416700243
+            ]
+          }
+        },
+        "p99": {
+          "ms": {
+            "median": 3.3599999999999994,
+            "min": -10.992999999999995,
+            "max": 7.121000000000009,
+            "values": [
+              -10.992999999999995,
+              7.121000000000009,
+              3.3599999999999994,
+              -0.7180000000000035,
+              5.609999999999999
+            ]
+          },
+          "percent": {
+            "median": 3.3269632548790504,
+            "min": -9.70255957634598,
+            "max": 6.758796116136267,
+            "values": [
+              -9.70255957634598,
+              6.758796116136267,
+              3.3269632548790504,
+              -0.5856348183553315,
+              5.64023164159897
+            ]
+          }
+        }
+      }
+    },
+    "low": {
+      "reference": {
+        "p50": {
+          "median": 41.537,
+          "min": 40.861,
+          "max": 41.603,
+          "values": [
+            41.537,
+            41.582,
+            41.197,
+            40.861,
+            41.603
+          ]
+        },
+        "p95": {
+          "median": 53.612,
+          "min": 51.451,
+          "max": 54.49,
+          "values": [
+            53.688,
+            52.183,
+            53.612,
+            54.49,
+            51.451
+          ]
+        },
+        "p99": {
+          "median": 60.854,
+          "min": 56.48,
+          "max": 65.024,
+          "values": [
+            59.056,
+            64.158,
+            65.024,
+            60.854,
+            56.48
+          ]
+        },
+        "samples": {
+          "median": 504,
+          "min": 503,
+          "max": 509,
+          "values": [
+            503,
+            507,
+            503,
+            509,
+            504
+          ]
+        },
+        "frames_drawn": {
+          "median": 505,
+          "min": 504,
+          "max": 510,
+          "values": [
+            504,
+            508,
+            504,
+            510,
+            505
+          ]
+        },
+        "interval_sum_ms": {
+          "median": 21056.864,
+          "min": 21025.762,
+          "max": 21119.275,
+          "values": [
+            21044.664,
+            21119.275,
+            21025.762,
+            21061.068,
+            21056.864
+          ]
+        },
+        "draw_calls_max": {
+          "median": 267,
+          "min": 267,
+          "max": 267,
+          "values": [
+            267,
+            267,
+            267,
+            267,
+            267
+          ]
+        },
+        "nodes_max": {
+          "median": 600,
+          "min": 600,
+          "max": 600,
+          "values": [
+            600,
+            600,
+            600,
+            600,
+            600
+          ]
+        },
+        "resources_max": {
+          "median": 101,
+          "min": 101,
+          "max": 101,
+          "values": [
+            101,
+            101,
+            101,
+            101,
+            101
+          ]
+        }
+      },
+      "candidate": {
+        "p50": {
+          "median": 43.023,
+          "min": 42.973,
+          "max": 44.381,
+          "values": [
+            43.181,
+            44.381,
+            43.007,
+            42.973,
+            43.023
+          ]
+        },
+        "p95": {
+          "median": 56.464,
+          "min": 52.174,
+          "max": 57.846,
+          "values": [
+            56.897,
+            57.846,
+            55.554,
+            52.174,
+            56.464
+          ]
+        },
+        "p99": {
+          "median": 63.36,
+          "min": 55.808,
+          "max": 72.299,
+          "values": [
+            63.36,
+            72.299,
+            63.181,
+            55.808,
+            68.868
+          ]
+        },
+        "samples": {
+          "median": 492,
+          "min": 479,
+          "max": 506,
+          "values": [
+            486,
+            479,
+            494,
+            506,
+            492
+          ]
+        },
+        "frames_drawn": {
+          "median": 493,
+          "min": 480,
+          "max": 507,
+          "values": [
+            487,
+            480,
+            495,
+            507,
+            493
+          ]
+        },
+        "interval_sum_ms": {
+          "median": 21099.566,
+          "min": 21034.257,
+          "max": 21141.708,
+          "values": [
+            21034.257,
+            21086.38,
+            21141.708,
+            21101.411,
+            21099.566
+          ]
+        },
+        "draw_calls_max": {
+          "median": 273,
+          "min": 273,
+          "max": 273,
+          "values": [
+            273,
+            273,
+            273,
+            273,
+            273
+          ]
+        },
+        "nodes_max": {
+          "median": 624,
+          "min": 624,
+          "max": 624,
+          "values": [
+            624,
+            624,
+            624,
+            624,
+            624
+          ]
+        },
+        "resources_max": {
+          "median": 104,
+          "min": 104,
+          "max": 104,
+          "values": [
+            104,
+            104,
+            104,
+            104,
+            104
+          ]
+        }
+      },
+      "paired_candidate_minus_reference": {
+        "p50": {
+          "ms": {
+            "median": 1.8099999999999952,
+            "min": 1.4200000000000017,
+            "max": 2.7989999999999995,
+            "values": [
+              1.6439999999999984,
+              2.7989999999999995,
+              1.8099999999999952,
+              2.112000000000002,
+              1.4200000000000017
+            ]
+          },
+          "percent": {
+            "median": 4.393523800276707,
+            "min": 3.4132153931206926,
+            "max": 6.731277956808234,
+            "values": [
+              3.9579170378216975,
+              6.731277956808234,
+              4.393523800276707,
+              5.168742810993373,
+              3.4132153931206926
+            ]
+          }
+        },
+        "p95": {
+          "ms": {
+            "median": 3.208999999999996,
+            "min": -2.3160000000000025,
+            "max": 5.662999999999997,
+            "values": [
+              3.208999999999996,
+              5.662999999999997,
+              1.9420000000000002,
+              -2.3160000000000025,
+              5.012999999999998
+            ]
+          },
+          "percent": {
+            "median": 5.977127104753383,
+            "min": -4.250321159845848,
+            "max": 10.85219324301017,
+            "values": [
+              5.977127104753383,
+              10.85219324301017,
+              3.6223233604416922,
+              -4.250321159845848,
+              9.74325086004159
+            ]
+          }
+        },
+        "p99": {
+          "ms": {
+            "median": 4.304000000000002,
+            "min": -5.045999999999999,
+            "max": 12.387999999999998,
+            "values": [
+              4.304000000000002,
+              8.141000000000005,
+              -1.8430000000000035,
+              -5.045999999999999,
+              12.387999999999998
+            ]
+          },
+          "percent": {
+            "median": 7.287997832565704,
+            "min": -8.291977519965819,
+            "max": 21.933427762039656,
+            "values": [
+              7.287997832565704,
+              12.6889865644191,
+              -2.8343380905511864,
+              -8.291977519965819,
+              21.933427762039656
+            ]
+          }
+        }
+      }
+    }
+  },
+  "profile": {
+    "passed": true,
+    "profile_engine_pid": "3432049",
+    "profile_seconds": 5,
+    "profile_after_campaign": true,
+    "source_unchanged": true,
+    "only_instrumentation": "one print marker at performance_route entry",
+    "source_head": "c105da61b2b490546f01c9d67703bfb405a2a44f",
+    "quality": "normal",
+    "lamp": "on",
+    "process_cpu_percent": 446.4,
+    "main_thread_cpu_percent": 30.8,
+    "llvmpipe_cpu_percent_sum": 411.0,
+    "llvmpipe_process_cpu_share_percent": 92.06989247311829,
+    "llvmpipe_threads": 8,
+    "raw_process_cpu_percent": [
+      424.0,
+      460.0,
+      419.0,
+      490.0,
+      439.0
+    ],
+    "warnings": [
+      "WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver."
+    ],
+    "profile_window_unix": [
+      1792342374.46828,
+      1792342379.46828
+    ],
+    "source_count": 2602,
+    "limits": [
+      "CPU percentages are normalized to one logical CPU; 100 percent equals one core",
+      "Thread names identify dominant software-renderer CPU work, not the marginal cost of carcasses",
+      "Single five-second Normal sample, not a separate Low profile or full-route attribution",
+      "Route-marker handshake and source establish phase; no continuous per-frame profile timestamps",
+      "Profile frame timings intentionally excluded from all paired campaign results"
+    ]
+  },
+  "warnings": {
+    "vsync_runs": 20,
+    "objectdb_4_reference_runs": 5,
+    "objectdb_4_candidate_runs": 3,
+    "errors": 0,
+    "note": "Four-reference ObjectDB warnings preserved, classes not re-diagnosed by these nonverbose campaign runs"
+  },
+  "exclusions": [
+    {
+      "directory": "perf-interrupted-01",
+      "evidence": {
+        "reason": "exec supervisor returned 143 during candidate; no final candidate manifest; cause unestablished",
+        "session": 1783,
+        "excluded_all_runs": true,
+        "no_godot_observed_after": true,
+        "recorded_unix": 1792340902.5716403
+      }
+    },
+    {
+      "directory": "profile-route-candidate",
+      "reason": "Separate post-campaign CPU profile; excluded from pair timings"
+    },
+    {
+      "directory": "proof-tool-tests",
+      "reason": "Pre-freeze diagnostics and synthetic checks excluded"
+    }
+  ],
+  "decision_boundary": "Measured local Low p50 cost must be documented as feature cost; no production optimization or delivery decision made by auditor",
+  "limits": [
+    "Instrumented source builds, not packaged release benchmarking",
+    "No live combat in measured route; genuine damage and shot fixture precedes warmup",
+    "No target physical GPU, Windows, audio audibility or 60 FPS 1080p claim",
+    "One Normal-only five-second CPU profile establishes dominant software-renderer CPU use, not exact marginal cost of traces",
+    "CPU callback wall-clock intervals are not GPU timing",
+    "No per-frame drawcall series, only observed maxima and source inspection"
+  ],
+  "evidence": {
+    "campaign": "perf-audit/campaign-audit.json",
+    "profile": "perf-audit/profile-audit.json",
+    "review": "perf-review.md",
+    "replay_audit": "perf-audit/audit_campaign.py",
+    "replay_profile_audit": "perf-audit/audit_profile.py"
+  }
+}

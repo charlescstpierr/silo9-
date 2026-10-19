@@ -1,0 +1,189 @@
+--- initial/prove_sector_power.py
++++ final/prove_sector_power.py
+@@ -274,11 +274,12 @@
+ 
+ 
+ def validate_crate(crate, broken, position=False):
+-    keys(crate, 'broken intact panels collision' + (' position' if position else ''))
++    keys(crate, 'broken intact panels collision' + (' position instance' if position else ''))
+     require(crate['broken'] is broken and crate['intact'] is (not broken), 'crate visual differs from canonical state')
+     require(type(crate['panels']) is int and crate['panels'] == (3 if broken else 0), 'crate panels absent')
+     require(type(crate['collision']) is int and crate['collision'] == (0 if broken else 1), 'crate collision mismatch')
+     if position:
++        require(type(crate['instance']) is int and crate['instance'] > 0, 'crate instance absent')
+         require(close_vector(crate['position'], [4, 0, -12]), 'wrong crate position')
+ 
+ 
+@@ -302,26 +303,76 @@
+     require(close_vector(terminal['crate_shot']['target_position'], [4, .4125, -12]), 'wrong perf crate')
+     for stage in ['before_warmup', 'before_measure']:
+         state = terminal[stage]
+-        keys(state, 'defeated live_ids trace_count crate flashlight position velocity casings usec')
++        keys(state, 'defeated live_ids trace_count crate flashlight position velocity casings effects usec')
+         require(type(state['defeated']) is list and len(state['defeated']) == 6 and set(state['defeated']) == ROBOT_IDS and state['live_ids'] == [], 'terminal scene still has living or missing robots')
+         require(type(state['trace_count']) is int and state['trace_count'] == (6 if terminal['variant'] == 'candidate' else 0), 'terminal traces mismatch')
+         validate_crate(state['crate'], terminal['variant'] == 'candidate')
+         lamp = state['flashlight']
+         require(lamp['visible'] is True and lamp['intent'] is True and emitting(lamp) and lamp['shadow'] is (not report['low_quality']), 'terminal physical lamp/quality mismatch')
+         require(close_vector(state['position'], terminal['preparation_start']) and close_vector(state['velocity'], [0, 0, 0]) and type(state['casings']) is int and state['casings'] == 0, 'terminal measured start contaminated')
++        effects = state['effects']; keys(effects, 'impact muzzle beam light remaining')
++        require(all(effects[k] is False for k in ['impact', 'muzzle', 'beam', 'light']) and number(effects['remaining']) and effects['remaining'] == 0, 'transient effects overlap preparation boundary')
+         require(type(state['usec']) is int and state['usec'] > 0, 'invalid preparation timestamp')
+     start, end = terminal['measurement_start_usec'], terminal['measurement_end_usec']
+     require(type(start) is int and type(end) is int and end > start, 'invalid measured bounds')
+     require(terminal['crate_shot']['usec'] < terminal['before_warmup']['usec'] and terminal['before_measure']['usec'] - terminal['before_warmup']['usec'] >= 2000000, 'preparation or warmup incomplete')
+     require(terminal['before_measure']['usec'] <= start, 'measurement preceded preparation')
++    samples = report['perf_flashlight_samples']
++    require(all(type(row['usec']) is int for row in samples) and start <= samples[0]['usec'] < samples[-1]['usec'] <= end, 'frame timestamps outside measured window')
++    require(all(abs((right['usec']-left['usec'])/1000-interval) <= .000001 for left, right, interval in zip(samples, samples[1:], report['frame_intervals_ms'])), 'frame timestamps disagree with raw intervals')
+     require(abs((end-start)/1000-sum(report['frame_intervals_ms'])) <= max(report['frame_intervals_ms'])*2, 'measured clock disagrees with raw intervals')
++
++
++def require_bound_target(shot, position, ident):
++    require(vector(position), 'primary target pose absent')
++    offset = {'crate': .4125, 'sentinel_1': .9, 'arc': .6}[ident]
++    require(close_vector(shot['target_position'], [position[0], position[1]+offset, position[2]]), 'shot collider differs from primary pose')
++    if ident != 'sentinel_1':
++        expected = [.825, .4125, .75] if ident == 'crate' else [.4, .6, .225]
++        require(close_vector(shot['target_half_size'], expected), 'shot collider differs from primary shape')
++    else:
++        half = shot['target_half_size']
++        require(abs(half[1]-.9) < .01 and all(.39 <= half[i] <= .58 for i in [0, 2]), 'sentinel collision geometry mismatch')
++
++
++def validate_snapshot_types(snapshot):
++    require(type(snapshot) is dict and set(snapshot) == SAVE_KEYS, 'save snapshot field mismatch')
++    for key in ['schema', 'ammo', 'reserve', 'components', 'medkits', 'cells', 'phase']:
++        require(number(snapshot[key]) and float(snapshot[key]).is_integer(), 'snapshot integer type: ' + key)
++    for key in ['health', 'energy', 'elapsed', 'player_yaw']:
++        require(number(snapshot[key]), 'snapshot numeric type: ' + key)
++    for key in ['upgraded', 'crate_broken']:
++        require(type(snapshot[key]) is bool, 'snapshot boolean type: ' + key)
++    require(type(snapshot['ending']) is str and vector(snapshot['player_position']), 'snapshot string/position type')
++    for key in ['collected', 'defeated', 'facts', 'memory']:
++        require(type(snapshot[key]) is list and all(type(x) is str for x in snapshot[key]), 'snapshot collection type: ' + key)
++    keys(snapshot['circuits'], 'maintenance archives')
++    require(all(type(v) is bool for v in snapshot['circuits'].values()), 'snapshot circuit type')
++    keys(snapshot['relations'], 'mother n7')
++    require(all(number(v) and float(v).is_integer() for v in snapshot['relations'].values()), 'snapshot relation type')
++    require(type(snapshot['death_poses']) is dict and set(snapshot['death_poses']) <= ROBOT_IDS, 'snapshot death IDs')
++    for pose in snapshot['death_poses'].values():
++        keys(pose, 'position yaw')
++        require(vector(pose['position']) and number(pose['yaw']), 'snapshot death pose type')
++
++
++def snapshot_after_vector_decode(saved):
++    # State reconstructs only these positions as Godot Vector3 (float32).
++    # Other fields remain exact; elapsed legitimately advances after loading.
++    result = {k:v for k,v in saved.items() if k != 'elapsed'}
++    def vec32(value):
++        require(vector(value), 'invalid saved Vector3')
++        return [struct.unpack('f', struct.pack('f', x))[0] for x in value]
++    result['player_position'] = vec32(saved['player_position'])
++    result['death_poses'] = {ident: dict(pose, position=vec32(pose['position'])) for ident, pose in saved['death_poses'].items()}
++    return result
+ 
+ 
+ def validate_persistence(report):
+     p = report['persistence']
+     keys(p, 'schema observations movement visits actions save_load arc_repeat images')
+     require(type(p['schema']) is int and p['schema'] == 1 and report['schema'] == 4, 'persistence schema absent')
+-    require(report['phase'] == 4 and report['ending'] == report['expected_ending'] and report['ending'] in ('mother', 'n7') and report['health'] > 0, 'persistence mission incomplete')
++    require(report['phase'] == 4 and report['ending'] == report['expected_ending'] and report['ending'] in ('mother', 'n7') and number(report['health']) and report['health'] > 0, 'persistence mission incomplete')
+     observations = p['observations']
+     require([o['label'] for o in observations] == PERSISTENCE_STAGES, 'persistence stages absent or unordered')
+     for index, observation in enumerate(observations):
+@@ -332,11 +383,13 @@
+         initial = index == 0
+         validate_crate(objects['crate'], not initial, True)
+         robot = objects['sentinel_1']
+-        keys(robot, 'alive defeated position yaw visible collision processing meshes')
++        keys(robot, 'instance alive defeated position yaw visible collision processing meshes')
++        require(type(robot['instance']) is int and robot['instance'] > 0, 'robot instance absent')
+         require(vector(robot['position']) and number(robot['yaw']) and robot['alive'] is initial and robot['defeated'] is (not initial), 'robot state mismatch')
+         require(robot['visible'] is True and robot['processing'] is initial and type(robot['collision']) is int and (robot['collision'] > 0 if initial else robot['collision'] == 0), 'robot visual/collision mismatch')
+         require(type(robot['meshes']) is int and (robot['meshes'] == 0 if initial else 1 <= robot['meshes'] <= 3), 'robot trace budget mismatch')
+-        arc = objects['arc']; keys(arc, 'disabled fact barrier prompt emissive position')
++        arc = objects['arc']; keys(arc, 'instance disabled fact barrier prompt emissive position')
++        require(type(arc['instance']) is int and arc['instance'] > 0, 'ARC instance absent')
+         require(arc['disabled'] is (not initial) and arc['fact'] is (not initial) and arc['barrier'] is initial and arc['emissive'] is initial, 'ARC state mismatch')
+         require(type(arc['prompt']) is str and bool(arc['prompt']) and (initial or arc['prompt'] == 'Verrou hors tension'), 'ARC prompt mismatch')
+         require(close_vector(arc['position'], [2.8, 0, -57]), 'wrong ARC object')
+@@ -345,8 +398,10 @@
+         keys(observation['circuits'], 'maintenance archives')
+         require(all(type(v) is bool for v in observation['circuits'].values()), 'invalid circuits')
+         if index > 1:
+-            require(objects['crate'] == observations[1]['objects']['crate'] and objects['arc'] == observations[1]['objects']['arc'] and observation['circuits'] == observations[1]['circuits'], 'persistent projection changed')
++            require(all({k:v for k,v in objects[ident].items() if k != 'instance'} == {k:v for k,v in observations[1]['objects'][ident].items() if k != 'instance'} for ident in ['crate', 'arc']) and observation['circuits'] == observations[1]['circuits'], 'persistent projection changed')
+             require(close_vector(robot['position'], observations[1]['objects']['sentinel_1']['position']) and yaw_equal(robot['yaw'], observations[1]['objects']['sentinel_1']['yaw']), 'restored death pose changed')
++    for ident in PRIMARY_IDS:
++        require(observations[1]['objects'][ident]['instance'] == observations[2]['objects'][ident]['instance'] and observations[3]['objects'][ident]['instance'] != observations[2]['objects'][ident]['instance'], 'primary instances not preserved then reconstructed')
+     require(observations[1]['circuits']['maintenance'] != observations[1]['circuits']['archives'], 'mixed circuits absent')
+     actions = p['actions']
+     require(len(actions) == 3 and {a['id'] for a in actions} == PRIMARY_IDS, 'real modification actions absent')
+@@ -354,6 +409,9 @@
+     for action in actions:
+         keys(action, 'id shot' + (' health_before health_after position_before yaw_before spawn' if action['id'] == 'sentinel_1' else ''))
+         validate_shot(action['shot'], 1 if action['id'] == 'arc' else 0)
++        require(action['shot']['target_before'] == observations[0]['objects'][action['id']]['instance'], 'action hits a different primary instance')
++        position = action['position_before'] if action['id'] == 'sentinel_1' else observations[0]['objects'][action['id']]['position']
++        require_bound_target(action['shot'], position, action['id'])
+         require(observations[0]['usec'] < action['shot']['usec'] < observations[1]['usec'], 'action outside modification stage')
+         if action['id'] == 'sentinel_1':
+             require(number(action['health_before']) and action['health_before'] > 0 and number(action['health_after']) and action['health_after'] == 0, 'lethal hit absent')
+@@ -367,15 +425,22 @@
+     require(save['before_ids'] == [observations[2]['player_id'], observations[2]['world_id']] and save['after_ids'] == [observations[3]['player_id'], observations[3]['world_id']] and all(a != b for a, b in zip(save['before_ids'], save['after_ids'])), 'both actors must be reconstructed')
+     require(all([o['player_id'], o['world_id']] == save['before_ids'] for o in observations[:3]), 'unexpected reconstruction during revisits')
+     require(type(save['f5_usec']) is int and type(save['f9_usec']) is int and observations[2]['usec'] < save['f5_usec'] < save['f9_usec'] < observations[3]['usec'], 'save/load order invalid')
+-    require(set(save['saved']) == SAVE_KEYS and set(save['restored']) == SAVE_KEYS, 'save snapshot field mismatch')
+-    require({k:v for k,v in save['saved'].items() if k != 'elapsed'} == {k:v for k,v in save['restored'].items() if k != 'elapsed'}, 'inventory/quest changed across load')
++    validate_snapshot_types(save['saved'])
++    validate_snapshot_types(save['restored'])
++    require(snapshot_after_vector_decode(save['saved']) == {k:v for k,v in save['restored'].items() if k != 'elapsed'}, 'inventory/quest changed across load')
+     require(save['saved']['schema'] == 4 and save['saved']['crate_broken'] is True and 'sentinel_1' in save['saved']['defeated'] and 'arc_lock_disabled' in save['saved']['facts'] and save['saved']['phase'] == 3, 'saved canonical state absent')
+     pose = save['saved']['death_poses']['sentinel_1']; robot = observations[1]['objects']['sentinel_1']
+     require(close_vector(pose['position'], robot['position']) and yaw_equal(pose['yaw'], robot['yaw']), 'saved death pose differs from scene')
+     require(relative_artifact(save['save_file'], '.json') and re.fullmatch('[a-f0-9]{64}', save['save_sha256']) and type(save['save_bytes']) is int and 0 < save['save_bytes'] <= 65536, 'save artifact invalid')
+-    repeat = p['arc_repeat']; keys(repeat, 'disabled_signals changed_signals messages memory_before memory_after facts_before facts_after shot')
++    repeat = p['arc_repeat']; keys(repeat, 'disabled_signals changed_signals messages memory_before memory_after facts_before facts_after state_before state_after changed_snapshots shot')
+     require(all(type(repeat[k]) is int and repeat[k] == 0 for k in ['disabled_signals', 'messages']) and type(repeat['changed_signals']) is int and repeat['changed_signals'] == 1 and repeat['memory_before'] == repeat['memory_after'] and repeat['facts_before'] == repeat['facts_after'], 'ARC repeated transition beyond energy consumption')
+     validate_shot(repeat['shot'], 1)
++    require(repeat['shot']['usec'] > observations[3]['usec'] and repeat['shot']['target_before'] == observations[3]['objects']['arc']['instance'], 'second ARC is not on the reconstructed object')
++    require_bound_target(repeat['shot'], observations[3]['objects']['arc']['position'], 'arc')
++    for snapshot in [repeat['state_before'], repeat['state_after'], *repeat['changed_snapshots']]: validate_snapshot_types(snapshot)
++    expected = dict(repeat['state_before']); expected['energy'] -= repeat['shot']['energy_cost']
++    require(repeat['state_before']['energy'] == repeat['shot']['energy_before'] and repeat['state_after']['energy'] == repeat['shot']['energy_after'], 'ARC energy observations disagree')
++    require(repeat['changed_snapshots'] == [expected] and repeat['state_after'] == expected, 'ARC changed includes a mutation beyond energy')
+     movement = p['movement']; require(type(movement) is list and len(movement) >= 10, 'walking samples absent')
+     epochs, distance = [], 0.
+     for index, row in enumerate(movement):
+@@ -405,6 +470,9 @@
+     require(len({x['file'] for x in images}) == 12, 'image artifact reused')
+     for image in images:
+         keys(image, 'label id file camera_position camera_rotation fov controlled_camera')
++        if image['label'] in ['revisited', 'restored']:
++            reference = next(x for x in images if x['label'] == 'modified' and x['id'] == image['id'])
++            require(close_vector(image['camera_position'], reference['camera_position']) and close_vector(image['camera_rotation'], reference['camera_rotation']) and abs(image['fov']-reference['fov']) < .01, 'comparison camera changed')
+         require(relative_artifact(image['file'], '.png') and vector(image['camera_position']) and vector(image['camera_rotation']) and number(image['fov']) and 1 < image['fov'] < 180 and image['controlled_camera'] is True, 'invalid controlled capture metadata')
+ 
+ 
+@@ -420,6 +488,9 @@
+ def validate_issue18(report):
+     try:
+         finite_tree(report)
++        require(type(report['low_quality']) is bool, 'invalid observed quality type')
++        allowed = set('schema waypoint_positions require_lighting lighting_available scene_inspection lighting_samples cost_windows final_observation mode low_quality expected_ending ending phase health ammo reserve medkits shots defeated circuits_available travelled_m waypoints_completed frames_drawn frame_intervals_ms frame_stages frame_p50_ms frame_p95_ms frame_p99_ms draw_calls_max nodes_max resources_max commands events failures engine display_driver rendering_method renderer resolution performance_valid scenario limits flashlight_requested perf_flashlight_before_warmup perf_flashlight_samples terminal persistence'.split())
++        require(set(report) <= allowed, 'unknown proof top-level field')
+         require(type(report['failures']) is list and report['failures'] == [], 'proof failures are not an empty list')
+         if 'terminal' in report:
+             validate_terminal(report)
+@@ -471,7 +542,8 @@
+         require(path.resolve().parent == output and path.is_file(), 'missing or escaped save')
+         data = path.read_bytes()
+         require(len(data) == save['save_bytes'] and hashlib.sha256(data).hexdigest() == save['save_sha256'], 'save bytes/hash mismatch')
+-        require(json.loads(data) == save['saved'], 'saved artifact differs from observations')
++        artifact = json.loads(data); validate_snapshot_types(artifact)
++        require(snapshot_after_vector_decode(artifact) == snapshot_after_vector_decode(save['saved']) and artifact['elapsed'] == save['saved']['elapsed'], 'saved artifact differs from observations')
+         return []
+     except (OSError, ValueError, TypeError, KeyError, AttributeError, struct.error, zlib.error) as error:
+         return ['issue18 artifacts: ' + str(error)]

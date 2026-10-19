@@ -1,0 +1,98 @@
+{
+  "head": "28e402821469655598c6a84bc415d8ea04da97c2",
+  "environment": {
+    "XDG_DATA_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/code-review/userdata",
+    "XDG_CONFIG_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/code-review/config",
+    "XDG_CACHE_HOME": "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/code-review/cache"
+  },
+  "before": {
+    "scripts/run_state.gd": "b84555d5ae457fd5f0aedc0d73c5d84f88425d2fbaf5c50bd9427945bfd27753",
+    "scripts/world.gd": "52088f7bb82fd98126573b0badb2c1db071a7129597eb365fff61319be3313f8",
+    "scripts/enemy.gd": "3cc4b07577a610077aa88f9221143d56bb4f322c401fe4a5fa30b29c1a9bb448",
+    "scripts/robot_visual.gd": "e6f5aad8bd95128f171e88846a7b91503431acb7ed2c93ce8ef5f207e6b997fd",
+    "scripts/data/robot_spec.gd": "18a04d6dde6ab0f32cfdb310ead646576eee7d0aa2f0e249acb4bfcb774a737c",
+    "scripts/destructible_crate.gd": "64243224791b06f56c303f489c4d41bbe2c0801afaec303aab60761d3b05ef7d",
+    "tests/test_persistence_state.gd": "0a109337c2c759f854ea38f19ff14162b97c7f46e40d0de8171ee288d6d8a4c5",
+    "tests/test_world_persistence.gd": "1debcf08c4a30762d65cd42f4b8c599e1d7f77739eb2bc285dbc810c2645dbce",
+    "tests/persistence_fixture.gd": "237953f18f798dee09b72fa3562f1ee4400e9860b9eb66637779f4c53fe688c0",
+    "tests/test_sector_power_state.gd": "9ec820c2f14833edf37c2d4131948d96087141ebae6d56d4b953d3416e689c80",
+    "tests/test_remains_geometry.gd": "657df091c8edc02b99e4de5572ca50a3cc29688b820b6fb9884a7d2f698b5757"
+  },
+  "rows": [
+    {
+      "suite": "persistence_state",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+        "--script",
+        "tests/test_persistence_state.gd"
+      ],
+      "exit": 0,
+      "seconds": 0.5226589259691536,
+      "passed": 179,
+      "failed": 0,
+      "errors": [],
+      "warnings": [],
+      "summary": [
+        "PERSISTENCE STATE: 179 checks, 0 failures"
+      ]
+    },
+    {
+      "suite": "world_persistence",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+        "--script",
+        "tests/test_world_persistence.gd"
+      ],
+      "exit": 0,
+      "seconds": 20.56770477304235,
+      "passed": 58,
+      "failed": 0,
+      "errors": [],
+      "warnings": [
+        "WARNING: 4 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+      ],
+      "summary": [
+        "WORLD PERSISTENCE: 58 checks, 0 failures"
+      ]
+    },
+    {
+      "suite": "remains_geometry",
+      "command": [
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.tools/Godot_v4.7.2-stable_linux.x86_64",
+        "--headless",
+        "--path",
+        "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.worktrees/silo9-issue-18",
+        "--script",
+        "tests/test_remains_geometry.gd"
+      ],
+      "exit": 0,
+      "seconds": 0.4258030732162297,
+      "passed": 93,
+      "failed": 0,
+      "errors": [],
+      "warnings": [],
+      "summary": [
+        "REMAINS GEOMETRY: 0 failures"
+      ]
+    }
+  ],
+  "after": {
+    "scripts/run_state.gd": "b84555d5ae457fd5f0aedc0d73c5d84f88425d2fbaf5c50bd9427945bfd27753",
+    "scripts/world.gd": "52088f7bb82fd98126573b0badb2c1db071a7129597eb365fff61319be3313f8",
+    "scripts/enemy.gd": "3cc4b07577a610077aa88f9221143d56bb4f322c401fe4a5fa30b29c1a9bb448",
+    "scripts/robot_visual.gd": "e6f5aad8bd95128f171e88846a7b91503431acb7ed2c93ce8ef5f207e6b997fd",
+    "scripts/data/robot_spec.gd": "18a04d6dde6ab0f32cfdb310ead646576eee7d0aa2f0e249acb4bfcb774a737c",
+    "scripts/destructible_crate.gd": "64243224791b06f56c303f489c4d41bbe2c0801afaec303aab60761d3b05ef7d",
+    "tests/test_persistence_state.gd": "0a109337c2c759f854ea38f19ff14162b97c7f46e40d0de8171ee288d6d8a4c5",
+    "tests/test_world_persistence.gd": "1debcf08c4a30762d65cd42f4b8c599e1d7f77739eb2bc285dbc810c2645dbce",
+    "tests/persistence_fixture.gd": "237953f18f798dee09b72fa3562f1ee4400e9860b9eb66637779f4c53fe688c0",
+    "tests/test_sector_power_state.gd": "9ec820c2f14833edf37c2d4131948d96087141ebae6d56d4b953d3416e689c80",
+    "tests/test_remains_geometry.gd": "657df091c8edc02b99e4de5572ca50a3cc29688b820b6fb9884a7d2f698b5757"
+  }
+}

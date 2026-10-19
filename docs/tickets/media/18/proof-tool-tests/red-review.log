@@ -1,0 +1,59 @@
+....FFFFFF.................................
+======================================================================
+FAIL: test_review_counterexamples_are_rejected (__main__.Issue18BoundaryValidation.test_review_counterexamples_are_rejected) (mutation='arc_time')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 471, in test_review_counterexamples_are_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_review_counterexamples_are_rejected (__main__.Issue18BoundaryValidation.test_review_counterexamples_are_rejected) (mutation='unrelated_shot')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 471, in test_review_counterexamples_are_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_review_counterexamples_are_rejected (__main__.Issue18BoundaryValidation.test_review_counterexamples_are_rejected) (mutation='camera')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 471, in test_review_counterexamples_are_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_review_counterexamples_are_rejected (__main__.Issue18BoundaryValidation.test_review_counterexamples_are_rejected) (mutation='same_arc_instance')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 471, in test_review_counterexamples_are_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_review_counterexamples_are_rejected (__main__.Issue18BoundaryValidation.test_review_counterexamples_are_rejected) (mutation='frame_clock')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 471, in test_review_counterexamples_are_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+======================================================================
+FAIL: test_review_counterexamples_are_rejected (__main__.Issue18BoundaryValidation.test_review_counterexamples_are_rejected) (mutation='unknown_field')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 471, in test_review_counterexamples_are_rejected
+    self.assertTrue(validate_result(report, 0, ''))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 38 tests in 1.114s
+
+FAILED (failures=6)

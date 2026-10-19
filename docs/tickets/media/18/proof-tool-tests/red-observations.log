@@ -1,0 +1,37 @@
+.....F...F...........................
+======================================================================
+FAIL: test_persistence_accepts_complete_synthetic_contract_only (__main__.Issue18Validation.test_persistence_accepts_complete_synthetic_contract_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 417, in test_persistence_accepts_complete_synthetic_contract_only
+    self.assertEqual(validate_result(persistence_fixture(), 0, ''), [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['issue18 contract: unexpected or missing proof fields'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'issue18 contract: unexpected or missing proof fields'
+
+- ['issue18 contract: unexpected or missing proof fields']
++ []
+
+======================================================================
+FAIL: test_terminal_reference_and_candidate_contract (__main__.Issue18Validation.test_terminal_reference_and_candidate_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/ubuntu/Documents/Codex/2026-10-17/prompt-ma-tre-pour-astra-pro/.cstack/orchestrate/silo9/issue18/proof-tools/selfcheck_sector_power.py", line 385, in test_terminal_reference_and_candidate_contract
+    self.assertEqual(validate_result(terminal_fixture(variant), 0, '', flashlight_requested=True), [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['issue18 contract: unexpected or missing proof fields'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'issue18 contract: unexpected or missing proof fields'
+
+- ['issue18 contract: unexpected or missing proof fields']
++ []
+
+----------------------------------------------------------------------
+Ran 37 tests in 1.009s
+
+FAILED (failures=2)

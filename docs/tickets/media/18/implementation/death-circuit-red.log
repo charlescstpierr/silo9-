@@ -1,0 +1,69 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE crate: actual hitscan, debris, collision, reconstruction
+PASS: crate fixture ray hits the authored crate collider
+PASS: fixture completes real weapon switch before firing
+PASS: real ARC shot is fired at crate
+PASS: ARC keeps crate intact and blocking
+PASS: fixture completes real weapon switch before firing
+PASS: D9 camera ray targets the same authored crate collider
+PASS: real D9 shot consumes a round against crate
+PASS: D9 hitscan impact actually lands on targeted crate collider
+PASS: CRATE_RED ballistic hit removes blocking crate collider
+PASS: CRATE_RED ballistic hit leaves three visible static panels
+PASS: CRATE_RED ballistic hit records broken crate in canonical snapshot
+PASS: main.load_run replaces both Player and World
+PASS: CRATE_RED restored crate has debris and no blocking collider
+PASS: CRATE_RED player capsule traverses restored debris
+CASE robot: sentinel_1 moved pose and durable trace
+PASS: robot fixture finds authored sentinel_1
+PASS: robot damage records identified defeat
+PASS: ROBOT_RED one changed notification exposes defeat and pose together
+PASS: ROBOT_RED death creates immediate static trace at moved position
+PASS: ROBOT_RED trace survives old death animation lifetime
+PASS: circuit commands remain usable after the defeated robot node is freed
+PASS: ROBOT_RED snapshot records actual death position and yaw
+PASS: main.load_run replaces both Player and World
+PASS: defeated robot is absent after reconstruction
+PASS: ROBOT_RED reconstruction restores visible trace at death pose
+PASS: trace has no collision, timers or lights
+PASS: trace has no per-frame processing
+PASS: refresh does not duplicate trace geometry
+CASE robot: crawler_1 moved pose and durable trace
+PASS: robot fixture finds authored crawler_1
+PASS: robot damage records identified defeat
+PASS: ROBOT_RED one changed notification exposes defeat and pose together
+PASS: ROBOT_RED death creates immediate static trace at moved position
+PASS: ROBOT_RED trace survives old death animation lifetime
+PASS: circuit commands remain usable after the defeated robot node is freed
+PASS: ROBOT_RED snapshot records actual death position and yaw
+PASS: main.load_run replaces both Player and World
+PASS: defeated robot is absent after reconstruction
+PASS: ROBOT_RED reconstruction restores visible trace at death pose
+PASS: trace has no collision, timers or lights
+PASS: trace has no per-frame processing
+PASS: refresh does not duplicate trace geometry
+CASE ARC: reconstructed device then second impact
+PASS: first ARC impact records canonical fact
+PASS: ARC_RED first disable notifies once with fact and memory committed
+PASS: main.load_run replaces both Player and World
+PASS: ARC_RED reconstructed device is already disabled
+PASS: ARC_RED reconstructed device advertises inactive prompt
+PASS: ARC_RED reconstructed lock is non-emissive
+PASS: ARC_RED second impact emits no disabled, message or changed
+PASS: ARC_RED second impact does not append journal entry
+PASS: restored disabled barrier has no remaining node
+CASE gate: final pose synchronously after main.load_run
+PASS: gate fixture reaches power through existing progression
+PASS: played gate opening remains animated
+PASS: played gate reaches open pose
+PASS: main.load_run replaces both Player and World
+PASS: GATE_RED restored gate is open immediately before any frame or tween
+PASS: GATE_RED restored gate collider is already above doorway
+PASS: GATE_RED restored doorway permits passage after physics synchronization
+CASE invalid load: active world retained
+PASS: fixture can write silo9-save.json
+PASS: invalid orphan pose leaves active state, Player and World unchanged
+WORLD PERSISTENCE: 58 checks, 0 failures
+WARNING: 4 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)

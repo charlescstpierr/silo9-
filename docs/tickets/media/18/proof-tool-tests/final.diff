@@ -1,0 +1,1201 @@
+--- 28e4028/tools/probe_sector_power.gd
++++ proof-tools/probe_sector_power.gd
+@@ -1,6 +1,24 @@
+ extends SceneTree
+ 
+ var app: Node
++var terminal_variant := ""
++var terminal_data: Dictionary = {}
++var persistence_data: Dictionary = {}
++var persistence_actions: Array[Dictionary] = []
++var persistence_observations: Array[Dictionary] = []
++var persistence_visits: Array[Dictionary] = []
++var persistence_images: Array[Dictionary] = []
++var movement_samples: Array[Array] = []
++var movement_clock := 0.0
++var movement_ticks := 0
++var track_movement := false
++var witness_spawn := Vector3.ZERO
++var crate_body: Node3D
++var arc_disabled_signals := 0
++var arc_changed_signals := 0
++var arc_changed_snapshots: Array[Dictionary] = []
++var arc_messages := 0
++var measurement_start_usec := 0
+ var output := ""
+ var mode := "perf"
+ var flashlight_requested := false
+@@ -43,6 +61,7 @@
+ 		if argument == "--require-circuits": require_circuits = true
+ 		if argument == "--low": low = true
+ 		if argument == "--flashlight-on": flashlight_requested = true
++		if argument.begins_with("--terminal-variant="): terminal_variant = argument.trim_prefix("--terminal-variant=")
+ 	run.call_deferred()
+ 
+ func check(ok: bool, message: String) -> bool:
+@@ -52,6 +71,7 @@
+ 	return ok
+ 
+ func run() -> void:
++	check(terminal_variant.is_empty() or (mode == "perf" and terminal_variant in ["reference", "candidate"]), "terminal preparation requires perf and a known variant")
+ 	check(not flashlight_requested or mode == "perf", "--flashlight-on requires --mode perf")
+ 	check(DisplayServer.get_name().to_lower() == "x11", "X11 required")
+ 	check(RenderingServer.get_current_rendering_method() == "gl_compatibility", "Compatibility required")
+@@ -85,6 +105,15 @@
+ 		app.state.phase = 1
+ 		app.state.energy = 0
+ 		app.state.changed.emit()
++	if mode == "persistence":
++		check(app.state.has_method("crate_broken") and app.state.has_method("death_pose"), "persistence capabilities required")
++		for enemy in app.world.enemies:
++			if is_instance_valid(enemy) and enemy.enemy_id == "sentinel_1": witness_spawn = enemy.global_position
++		track_movement = true
++		await physics_frame
++		crate_body = find_crate_body()
++		await native_flashlight_on()
++		await persistence_stage("initial")
+ 	if mode == "perf":
+ 		if flashlight_requested:
+ 			var flashlight := app.player.find_child("Flashlight", true, false) as SpotLight3D
+@@ -92,13 +121,27 @@
+ 				if app.player.get("flashlight_on") == false:
+ 					check(app.player.call("toggle_flashlight") == true, "perf flashlight toggle accepted")
+ 				check(app.player.get("flashlight_on") == true and flashlight.is_visible_in_tree(), "perf flashlight enabled before warmup")
+-		for enemy in app.world.enemies:
+-			enemy.queue_free()
+-		app.world.enemies.clear()
+-		await process_frame
++		if terminal_variant.is_empty():
++			for enemy in app.world.enemies: enemy.queue_free()
++			app.world.enemies.clear()
++			await process_frame
++		else:
++			check(flashlight_requested, "terminal campaign requires flashlight ON")
++			await prepare_terminal()
+ 		perf_flashlight_before_warmup = {"flashlight": flashlight_observation(), "usec": Time.get_ticks_usec(), "stage": "before_warmup"}
+ 	await wait(2.0)
+-	if require_lighting and mode in ["mission", "capture"] and failures.is_empty(): await native_flashlight_on()
++	if (require_lighting and mode in ["mission", "capture"]) and failures.is_empty(): await native_flashlight_on()
++	if not terminal_variant.is_empty() and not terminal_data.is_empty():
++		while Time.get_ticks_usec() - int(terminal_data["before_warmup"]["usec"]) < 2000000:
++			await process_frame
++		terminal_data["before_measure"] = terminal_observation()
++	travelled = 0.0
++	waypoints = 0
++	waypoint_positions.clear()
++	previous_usec = 0
++	intervals.clear()
++	stages.clear()
++	measurement_start_usec = Time.get_ticks_usec()
+ 	var drawn_start := Engine.get_frames_drawn()
+ 	measuring = true
+ 	if failures.is_empty():
+@@ -106,15 +149,19 @@
+ 		elif mode in ["lighting", "lighting-perf"]: await lighting_route()
+ 		else: await mission_route()
+ 	measuring = false
++	track_movement = false
++	if not terminal_data.is_empty():
++		terminal_data["measurement_start_usec"] = measurement_start_usec
++		terminal_data["measurement_end_usec"] = Time.get_ticks_usec()
+ 	for action in ["forward", "sprint"]: Input.action_release(action)
+ 	var drawn := Engine.get_frames_drawn() - drawn_start
+ 	check(drawn > 0, "no frames drawn")
+ 	if mode in ["perf", "mission", "capture"]: check(travelled >= 90.0 and waypoints >= 8, "route incomplete")
+ 	var report := {
+-		"schema": 3 if mode == "perf" else 2, "waypoint_positions": waypoint_positions,
++		"schema": 4 if mode == "persistence" else (3 if mode == "perf" else 2), "waypoint_positions": waypoint_positions,
+ 		"require_lighting": require_lighting, "lighting_available": lighting_available,
+ 		"scene_inspection": mode in ["lighting", "lighting-perf"], "lighting_samples": lighting_samples, "cost_windows": cost_windows,
+-		"final_observation": observation("final"), "mode": mode, "low_quality": low, "expected_ending": ending, "ending": app.state.ending,
++		"final_observation": observation("final"), "mode": mode, "low_quality": app.low_quality, "expected_ending": ending, "ending": app.state.ending,
+ 		"phase": app.state.phase, "health": app.state.health, "ammo": app.state.ammo, "reserve": app.state.reserve,
+ 		"medkits": app.state.medkits, "shots": shots, "defeated": app.state.defeated,
+ 		"circuits_available": circuits, "travelled_m": travelled, "waypoints_completed": waypoints,
+@@ -126,18 +173,25 @@
+ 		"rendering_method": RenderingServer.get_current_rendering_method(), "renderer": RenderingServer.get_video_adapter_name(),
+ 		"resolution": [root.size.x, root.size.y], "performance_valid": mode == "perf" and failures.is_empty(),
+ 		"scenario": "controlled poses; actors frozen alive; phase1 fixture; zero energy; colossus suppressed; no native journey" if mode in ["lighting", "lighting-perf"] else "refuge -> maintenance -> archives -> refuge; enemies removed; no circuit switching" if mode == "perf" else "fresh mission with live combat and native E interactions",
+-		"limits": "Linux X11 only; no Windows or target GPU claim. Walking uses Input actions, yaw/camera scripted; E is native OS press/release. Perf is an isolated no-enemy bench, not full mission. Mission/capture timings include interactions and are not a comparative benchmark. Screenshots need visual review; they are not video. Dummy audio does not prove audible output. Mission/perf: no teleports after normal new_game spawn. Lighting modes: explicitly teleported scene inspection, frozen living actors, deterministic process advances, not a native journey. Lighting-perf measures only named isolated windows; global timing includes setup and is not comparative."
++		"limits": "Linux X11 only; no Windows or target GPU claim. Walking uses Input actions, yaw/camera scripted; E is native OS press/release. Perf is an isolated no-enemy bench, not full mission. Mission/capture timings include interactions and are not a comparative benchmark. Screenshots need visual review; they are not video. Dummy audio does not prove audible output. Historical mission/perf without terminal fixture: no teleports after normal new_game spawn. Terminal preparation teleports are explicitly outside warmup and measurement. Lighting modes: explicitly teleported scene inspection, frozen living actors, deterministic process advances, not a native journey. Lighting-perf measures only named isolated windows; global timing includes setup and is not comparative."
+ 	}
+ 	if mode == "perf":
+ 		report["flashlight_requested"] = flashlight_requested
+ 		report["perf_flashlight_before_warmup"] = perf_flashlight_before_warmup
+ 		report["perf_flashlight_samples"] = perf_flashlight_samples
++	if not terminal_data.is_empty(): report["terminal"] = terminal_data
++	if mode == "persistence":
++		persistence_data.merge({"schema": 1, "observations": persistence_observations, "actions": persistence_actions, "movement": movement_samples, "visits": persistence_visits, "images": persistence_images})
++		report["persistence"] = persistence_data
++		report["scenario"] = "real shots; Input physics walking; native X11 E/F5/F9; controlled cameras only for labeled images"
++		report["limits"] += " Persistence controlled cameras do not count as movement. Native save/load is bounded by new Player/World IDs."
++	if not terminal_data.is_empty(): report["scenario"] = "terminal fixture: six real receive_hit deaths and real crate shot before warmup; physical nine-station route"
+ 	var file := FileAccess.open(output + "/journey.json", FileAccess.WRITE)
+ 	if file == null:
+ 		printerr("cannot write journey.json")
+ 		quit(1)
+ 		return
+-	file.store_string(JSON.stringify(report, "\t"))
++	file.store_string(JSON.stringify(report, "\t", true, true))
+ 	file.close()
+ 	print("SECTOR_PROOF mode=%s travelled=%.1f failures=%d" % [mode, travelled, failures.size()])
+ 	app.queue_free()
+@@ -158,6 +212,14 @@
+ 	await use_object("component_0", Vector3(-2.5,0,-3))
+ 	await walk_to(Vector3(0,0,-7))
+ 	await use_object("component_1", Vector3(3.3,0,-9))
++	if mode == "persistence":
++		await walk_to(Vector3(4,0,-9))
++		await ready_weapon(0)
++		aim(Vector3(4,.4125,-12))
++		await wait(.1)
++		var shot := observed_shot(crate_body)
++		persistence_actions.append({"id": "crate", "shot": shot})
++		check(app.state.call("crate_broken"), "real ballistic shot breaks crate")
+ 	await walk_to(Vector3(0,0,-11))
+ 	await use_object("component_2", Vector3(-5.3,0,-11))
+ 	if not check(app.state.components == 3, "three gathered repair components"): return
+@@ -181,7 +243,7 @@
+ 	await use_object("evidence", Vector3(4.2,0,-46))
+ 	if not check(app.state.facts.has("surface_signal"), "physical archive read"): return
+ 	await walk_to(Vector3(0,0,-56))
+-	if ending == "n7":
++	if ending == "n7" or mode == "persistence":
+ 		await use_arc_lock()
+ 		await walk_to(Vector3(0,0,-61))
+ 	else:
+@@ -190,6 +252,9 @@
+ 	await walk_to(Vector3(0,0,-65))
+ 	await use_object("core", Vector3(0,0,-69.5))
+ 	if not check(app.state.phase == 3, "physical core extracted"): return
++	if mode == "persistence":
++		await persistence_revisits_and_load()
++		if not failures.is_empty(): return
+ 	await walk_to(Vector3(3.6,0,-61))
+ 	await walk_to(Vector3(3.6,0,-56))
+ 	await walk_to(Vector3(0,0,-53))
+@@ -209,7 +274,10 @@
+ 		await physics_frame
+ 	aim(object.global_position + Vector3(0,.7,0))
+ 	await wait(.1)
+-	check(app.player.fire(), "ARC fires from earned starting energy")
++	if mode == "persistence":
++		persistence_actions.append({"id": "arc", "shot": observed_shot(object)})
++	else:
++		check(app.player.fire(), "ARC fires from earned starting energy")
+ 	await wait(.2)
+ 	check(app.state.facts.has("arc_lock_disabled"), "ARC destroys mission lock")
+ 	app.player.equip(0)
+@@ -245,7 +313,7 @@
+ 	aim(object.global_position + Vector3(0,.25 if id.begins_with("component") else .7,0))
+ 	await wait(.15)
+ 	if not check(app.player.aim_target() == object, "aim immediately before native E: " + id): return
+-	var before := observation("before_" + id)
++	var before := {"usec": Time.get_ticks_usec(), "phase": app.state.phase} if mode == "persistence" else observation("before_" + id)
+ 	var native_output: Array = []
+ 	var native_code := OS.execute("python3", [ProjectSettings.globalize_path("res://tools/x11_input.py"), "key", "e", "--display", display, "--duration", "0.1"], native_output, true)
+ 	await wait(.3)
+@@ -257,7 +325,7 @@
+ 		check(changed, "native E changes circuit and revision: " + circuit)
+ 		check(prompt_changed, "breaker prompt changes: " + circuit)
+ 	check(native_code == 0, "native E helper exit")
+-	commands.append({"id": id, "native": native_code == 0, "aim_valid": aimed, "changed": changed, "prompt_changed": prompt_changed, "prompt_before": prompt_before, "prompt_after": str(object.get_meta("prompt", "")), "bit_before": bit_before if breaker else null, "bit_after": app.state.call("circuit_on", StringName(circuit)) if breaker else null, "before": before, "after": observation("after_" + id), "native_output": native_output})
++	commands.append({"id": id, "native": native_code == 0, "aim_valid": aimed, "changed": changed, "prompt_changed": prompt_changed, "prompt_before": prompt_before, "prompt_after": str(object.get_meta("prompt", "")), "bit_before": bit_before if breaker else null, "bit_after": app.state.call("circuit_on", StringName(circuit)) if breaker else null, "before": before, "after": ({"usec": Time.get_ticks_usec(), "phase": app.state.phase} if mode == "persistence" else observation("after_" + id)), "native_output": native_output})
+ 	await capture("after_%02d_%s" % [commands.size(), id])
+ 	if breaker: await capture_consumers(circuit, "after_%02d" % commands.size())
+ 	aim(object.global_position + Vector3(0,.25 if id.begins_with("component") else .7,0))
+@@ -271,7 +339,7 @@
+ 		if app.state.health < 55 and app.state.medkits > 0: app.state.heal()
+ 		aim(enemy.global_position + Vector3(0,.35 if enemy.crawler else 1,0))
+ 		if app.state.ammo == 0: app.player.reload_weapon()
+-		elif app.player.fire(): shots += 1
++		elif combat_fire(enemy): shots += 1
+ 		await physics_frame
+ 	if not check(visible_enemy() == null, "capture threat cleared with real combat"): return
+ 	var maintenance := circuit == "maintenance"
+@@ -285,6 +353,7 @@
+ 
+ func walk_to(destination: Vector3) -> void:
+ 	if not failures.is_empty(): return
++	if mode == "persistence": print("PERSISTENCE walk ", destination)
+ 	app.resume_game()
+ 	stage = "walk_" + str(destination)
+ 	var reached := false
+@@ -303,7 +372,7 @@
+ 			Input.action_release("sprint")
+ 			aim(enemy.global_position + Vector3(0,.35 if enemy.crawler else 1,0))
+ 			if app.state.ammo == 0: app.player.reload_weapon()
+-			elif app.player.fire(): shots += 1
++			elif combat_fire(enemy): shots += 1
+ 		else:
+ 			app.player.rotation.y = atan2(-offset.x, -offset.z)
+ 			app.player.camera.rotation.x = 0
+@@ -534,3 +603,257 @@
+ 	var visible_after := flashlight.is_visible_in_tree()
+ 	events.append({"id": "flashlight_native_f", "native_exit": native_code, "intent_before": intent_before, "intent_after": intent_after, "visible_before": visible_before, "visible_after": visible_after, "native_output": native_output, "observation": observation("native_f_after")})
+ 	check(native_code == 0 and not intent_before and intent_after and not visible_before and visible_after, "native F enables real flashlight before mission")
++
++func find_crate_body() -> Node3D:
++	for shape: CollisionShape3D in app.world.find_children("*", "CollisionShape3D", true, false):
++		if shape.shape is BoxShape3D and shape.global_position.distance_to(Vector3(4,.4125,-12)) < .03:
++			return shape.get_parent() as Node3D
++	check(false, "real crate collider not found at historical position")
++	return null
++
++func collider_bounds(target: Node3D) -> AABB:
++	for shape: CollisionShape3D in target.find_children("*", "CollisionShape3D", true, false):
++		var half := Vector3.ZERO
++		if shape.shape is BoxShape3D: half = shape.shape.size / 2.0
++		elif shape.shape is CapsuleShape3D: half = Vector3(shape.shape.radius, shape.shape.height / 2.0, shape.shape.radius)
++		if half != Vector3.ZERO:
++			return shape.global_transform * AABB(-half, half * 2.0)
++	check(false, "target collision geometry absent")
++	return AABB()
++
++func observed_shot(target: Node3D) -> Dictionary:
++	if not check(is_instance_valid(target), "shot target instance exists"): return {}
++	var bounds := collider_bounds(target)
++	var ammo_before: int = app.state.ammo
++	var energy_before: float = app.state.energy
++	var target_id := target.get_instance_id()
++	# Clear only the transient marker so a miss cannot reuse the preceding hit.
++	app.player._impact.visible = false
++	var accepted: bool = app.player.fire()
++	var query: PhysicsRayQueryParameters3D = app.player._shot_query
++	return {"accepted": accepted, "weapon": app.player.weapon_index, "ammo_before": ammo_before, "ammo_after": app.state.ammo, "energy_before": energy_before, "energy_after": app.state.energy, "energy_cost": app.player._weapon().energy_cost, "impact_visible": app.player._impact.visible, "impact": vec(app.player._impact.global_position), "ray_from": vec(query.from), "ray_to": vec(query.to), "target_before": target_id, "target_position": vec(bounds.get_center()), "target_half_size": vec(bounds.size / 2.0), "usec": Time.get_ticks_usec()}
++
++func ready_weapon(index: int) -> void:
++	app.player.equip(index)
++	for tick in 1200:
++		if app.player.weapon_index == index and app.player.reload_cycle.ready and app.player._shot_time <= 0.0: return
++		await physics_frame
++	check(false, "weapon did not become ready")
++
++func casing_count() -> int:
++	var count := 0
++	for slot in app.player._casings._slots:
++		if slot.motion != 0 and slot.mesh.is_visible_in_tree(): count += 1
++	return count
++
++func crate_observation(with_position: bool = false) -> Dictionary:
++	var candidate: bool = app.state.has_method("crate_broken")
++	var broken: bool = app.state.call("crate_broken") if candidate else false
++	var intact := false
++	var panels := 0
++	if candidate:
++		var crate: Node3D = app.world.find_child("DestructibleCrate", true, false)
++		if is_instance_valid(crate):
++			intact = crate._intact.is_visible_in_tree()
++			if crate._remains.is_visible_in_tree(): panels = crate._remains.multimesh.instance_count
++	else:
++		for child in app.world.get_children():
++			if child is Node3D and not child is CollisionObject3D and child.global_position.distance_to(Vector3(4,0,-12)) < .03:
++				for mesh in child.find_children("*", "MeshInstance3D", true, false):
++					intact = intact or mesh.is_visible_in_tree()
++	var body := find_crate_body()
++	var result := {"broken": broken, "intact": intact, "panels": panels, "collision": body.collision_layer if is_instance_valid(body) else -1}
++	if with_position:
++		result["position"] = vec(body.global_position) if is_instance_valid(body) else []
++		result["instance"] = body.get_instance_id() if is_instance_valid(body) else 0
++	return result
++
++func terminal_observation() -> Dictionary:
++	var live: Array[String] = []
++	for enemy in app.world.enemies:
++		if is_instance_valid(enemy) and enemy.health > 0: live.append(enemy.enemy_id)
++	var traces: int = app.world.find_children("Remains_*", "Node3D", true, false).size()
++	return {"defeated": app.state.defeated.duplicate(), "live_ids": live, "trace_count": traces, "crate": crate_observation(), "flashlight": flashlight_observation(), "position": vec(app.player.global_position), "velocity": vec(app.player.velocity), "casings": casing_count(), "effects": {"impact": app.player._impact.is_visible_in_tree(), "muzzle": app.player._d9_flash.is_visible_in_tree() or app.player._arc_pulse.is_visible_in_tree(), "beam": app.player._beam.is_visible_in_tree(), "light": app.player._flash_light.is_visible_in_tree(), "remaining": app.player._effect_time}, "usec": Time.get_ticks_usec()}
++
++func prepare_terminal() -> void:
++	var start: Vector3 = app.player.global_position
++	var rows: Array[Dictionary] = []
++	for enemy in app.world.enemies:
++		if not is_instance_valid(enemy): continue
++		enemy.set_physics_process(false)
++		var row := {"id": enemy.enemy_id, "instance": enemy.get_instance_id(), "position_before": vec(enemy.global_position), "yaw_before": enemy.global_rotation.y, "health_before": enemy.health, "collision_before": enemy.collision_layer, "damage": 1000.0}
++		enemy.receive_hit(1000.0, 0.0)
++		row.merge({"position_after": vec(enemy.global_position), "yaw_after": enemy.global_rotation.y, "health_after": enemy.health, "collision_after": enemy.collision_layer, "physics_after": enemy.is_physics_processing(), "defeated": app.state.defeated.has(enemy.enemy_id)})
++		rows.append(row)
++	await wait(.5)
++	crate_body = find_crate_body()
++	app.player.teleport(Vector3(4,0,-9))
++	await physics_frame
++	await ready_weapon(0)
++	aim(Vector3(4,.4125,-12))
++	var shot := observed_shot(crate_body)
++	await wait(2.1)
++	app.player.teleport(start)
++	for action in ["forward", "sprint"]: Input.action_release(action)
++	await physics_frame
++	terminal_data = {"schema": 1, "variant": terminal_variant, "fixture": true, "robots": rows, "crate_shot": shot, "preparation_start": vec(start), "before_warmup": terminal_observation()}
++
++func witness_observation() -> Dictionary:
++	for enemy in app.world.enemies:
++		if is_instance_valid(enemy) and enemy.enemy_id == "sentinel_1" and enemy.health > 0:
++			return {"instance": enemy.get_instance_id(), "alive": true, "defeated": app.state.defeated.has("sentinel_1"), "position": vec(enemy.global_position), "yaw": enemy.global_rotation.y, "visible": enemy.is_visible_in_tree(), "collision": enemy.collision_layer, "processing": enemy.is_physics_processing(), "meshes": 0}
++	var trace: Node3D = app.world.find_child("Remains_sentinel_1", true, false)
++	if not check(trace != null, "witness trace exists"): return {}
++	var collision := 0
++	var processing := trace.is_processing() or trace.is_physics_processing()
++	for node in trace.find_children("*", "Node", true, false):
++		processing = processing or node.is_processing() or node.is_physics_processing()
++		if node is CollisionObject3D: collision |= node.collision_layer
++	return {"instance": trace.get_instance_id(), "alive": false, "defeated": app.state.defeated.has("sentinel_1"), "position": vec(trace.global_position), "yaw": trace.global_rotation.y, "visible": trace.is_visible_in_tree(), "collision": collision, "processing": processing, "meshes": trace.find_children("*", "MeshInstance3D", true, false).size()}
++
++func persistence_stage(label: String) -> void:
++	if not failures.is_empty(): return
++	print("PERSISTENCE stage ", label)
++	var device: Node3D = app.world.objects["device"]
++	var emissive := false
++	for mesh: MeshInstance3D in device.find_children("*", "MeshInstance3D", true, false):
++		var material: Material = mesh.get_active_material(0)
++		if material is BaseMaterial3D: emissive = emissive or material.emission_enabled
++	var ray := PhysicsRayQueryParameters3D.create(Vector3(0,1,-53), Vector3(0,1,-55), 1)
++	var blocked: bool = not app.player.get_world_3d().direct_space_state.intersect_ray(ray).is_empty()
++	var objects := {"crate": crate_observation(true), "sentinel_1": witness_observation(), "arc": {"instance": device.get_instance_id(), "disabled": device.is_disabled, "fact": app.state.facts.has("arc_lock_disabled"), "barrier": is_instance_valid(app.world.barrier) and not app.world.barrier.is_queued_for_deletion(), "prompt": str(device.get_meta("prompt", "")), "emissive": emissive, "position": vec(device.global_position)}}
++	persistence_observations.append({"label": label, "usec": Time.get_ticks_usec(), "objects": objects, "player_id": app.player.get_instance_id(), "world_id": app.world.get_instance_id(), "gate_y": app.world.reactor_gate.position.y, "gate_blocked": blocked, "circuits": {"maintenance": app.state.call("circuit_on", &"maintenance"), "archives": app.state.call("circuit_on", &"archives")}, "core_available": app.world.objects["core"].is_visible_in_tree() and app.world.objects["core"].collision_layer != 0})
++	for id in ["crate", "sentinel_1", "arc"]:
++		if objects[id].is_empty(): continue
++		var position: Array = objects[id]["position"]
++		await capture_persistence(label, id, Vector3(position[0], position[1], position[2]))
++
++func capture_persistence(label: String, id: String, target: Vector3) -> void:
++	var camera := Camera3D.new()
++	app.world.add_child(camera)
++	camera.global_position = target + Vector3(3,2.2,3)
++	camera.look_at(target + Vector3(0,.5,0))
++	camera.fov = 76
++	camera.make_current()
++	await RenderingServer.frame_post_draw
++	var filename := label + "_" + id + ".png"
++	check(root.get_texture().get_image().save_png(output + "/" + filename) == OK, "persistence PNG written")
++	persistence_images.append({"label": label, "id": id, "file": filename, "camera_position": vec(camera.global_position), "camera_rotation": vec(camera.global_rotation), "fov": camera.fov, "controlled_camera": true})
++	app.player.camera.make_current()
++	camera.queue_free()
++
++func _physics_process(delta: float) -> bool:
++	if track_movement and is_instance_valid(app) and is_instance_valid(app.player):
++		movement_clock += delta
++		movement_ticks += 1
++		if movement_ticks % 6 == 0: movement_sample()
++	return false
++
++func movement_sample() -> void:
++	if not movement_samples.is_empty() and movement_samples[-1][0] == movement_clock: return
++	var position: Vector3 = app.player.global_position
++	movement_samples.append([movement_clock, position.x, position.y, position.z, app.world.get_instance_id()])
++
++func visit_primary(label: String) -> void:
++	var ids: Array = ["arc", "sentinel_1", "crate"] if label == "modified" else ["crate", "sentinel_1", "arc"]
++	for id in ids:
++		var target := Vector3(4,0,-12) if id == "crate" else Vector3(2.8,0,-57)
++		if id == "sentinel_1":
++			var observed := witness_observation()
++			if observed.is_empty(): return
++			var position: Array = observed["position"]
++			target = Vector3(position[0], 0, position[2])
++		await walk_to(Vector3(0,0,app.player.global_position.z))
++		await walk_to(Vector3(0,0,target.z + 2.5))
++		await walk_to(Vector3(target.x,0,target.z + 2.5))
++		movement_sample()
++		persistence_visits.append({"label": label, "id": id, "sample": movement_samples.size()-1})
++
++func native_key(key_name: String) -> int:
++	var native_output: Array = []
++	var result := OS.execute("python3", [ProjectSettings.globalize_path("res://tools/x11_input.py"), "key", key_name, "--display", display, "--duration", "0.03"], native_output, true)
++	await process_frame
++	return result
++
++func persistence_revisits_and_load() -> void:
++	# Return along the central passage before approaching the breaker furniture.
++	await walk_to(Vector3(0,0,-36))
++	await use_object("breaker_archives", Vector3(2,0,-36))
++	await visit_primary("modified")
++	await persistence_stage("modified")
++	await walk_to(Vector3(0,0,7))
++	await visit_primary("revisited")
++	await persistence_stage("revisited")
++	await walk_to(Vector3(0,0,7))
++	if not failures.is_empty(): return
++	await ready_weapon(0)
++	aim(Vector3(0,2,10))
++	check(app.player.fire(), "real shot emits casing before F5")
++	var save_path := "user://silo9-save.json"
++	var result := {"before_ids": [app.player.get_instance_id(), app.world.get_instance_id()], "file_absent_before": not FileAccess.file_exists(save_path), "casings_before_f5": casing_count(), "f5_usec": Time.get_ticks_usec()}
++	persistence_data["save_load"] = result
++	result["f5_exit"] = await native_key("F5")
++	var save_deadline := Time.get_ticks_usec() + 2000000
++	while not FileAccess.file_exists(save_path) and Time.get_ticks_usec() < save_deadline:
++		await process_frame
++	result["casings_after_f5"] = casing_count()
++	if not check(FileAccess.file_exists(save_path), "native F5 produced save"): return
++	var serialized := FileAccess.get_file_as_string(save_path)
++	result["saved"] = JSON.parse_string(serialized)
++	result["save_file"] = "save.json"
++	result["save_bytes"] = serialized.to_utf8_buffer().size()
++	var file := FileAccess.open(output + "/save.json", FileAccess.WRITE)
++	if not check(file != null, "copy save artifact opened"): return
++	file.store_string(serialized)
++	file.close()
++	result["save_sha256"] = FileAccess.get_sha256(output + "/save.json")
++	result["f9_usec"] = Time.get_ticks_usec()
++	result["f9_exit"] = await native_key("F9")
++	var load_deadline := Time.get_ticks_usec() + 2000000
++	while (app.player.get_instance_id() == result["before_ids"][0] or app.world.get_instance_id() == result["before_ids"][1]) and Time.get_ticks_usec() < load_deadline:
++		await process_frame
++	result["after_ids"] = [app.player.get_instance_id(), app.world.get_instance_id()]
++	result["casings_after_f9"] = casing_count()
++	result["restored"] = app.state._snapshot().duplicate(true)
++	persistence_data["save_load"] = result
++	crate_body = find_crate_body()
++	await native_flashlight_on()
++	await persistence_stage("restored")
++	await visit_primary("restored")
++	await walk_to(Vector3(2.8,0,-54.5))
++	await ready_weapon(1)
++	var device: Node3D = app.world.objects["device"]
++	device.disabled.connect(count_arc_disabled)
++	app.state.changed.connect(count_arc_changed)
++	app.world.message.connect(count_arc_message)
++	var memory_before: Array = app.state.memory.duplicate()
++	var facts_before: Array = app.state.facts.duplicate()
++	var state_before: Dictionary = app.state._snapshot().duplicate(true)
++	aim(device.global_position + Vector3(0,.7,0))
++	var shot := observed_shot(device)
++	device.disabled.disconnect(count_arc_disabled)
++	app.state.changed.disconnect(count_arc_changed)
++	app.world.message.disconnect(count_arc_message)
++	persistence_data["arc_repeat"] = {"disabled_signals": arc_disabled_signals, "changed_signals": arc_changed_signals, "messages": arc_messages, "memory_before": memory_before, "memory_after": app.state.memory.duplicate(), "facts_before": facts_before, "facts_after": app.state.facts.duplicate(), "state_before": state_before, "state_after": app.state._snapshot().duplicate(true), "changed_snapshots": arc_changed_snapshots, "shot": shot}
++	await ready_weapon(0)
++
++func count_arc_disabled() -> void:
++	arc_disabled_signals += 1
++
++func count_arc_changed() -> void:
++	arc_changed_signals += 1
++	arc_changed_snapshots.append(app.state._snapshot().duplicate(true))
++
++func count_arc_message(_text: String) -> void:
++	arc_messages += 1
++
++func combat_fire(enemy: Node3D) -> bool:
++	if mode != "persistence": return app.player.fire()
++	var position_before: Vector3 = enemy.global_position
++	var yaw_before: float = enemy.global_rotation.y
++	var health_before: float = enemy.health
++	var enemy_id: String = enemy.enemy_id
++	var shot := observed_shot(enemy)
++	if shot.get("accepted", false) and enemy_id == "sentinel_1" and enemy.health <= 0:
++		persistence_actions.append({"id": enemy_id, "shot": shot, "health_before": health_before, "health_after": enemy.health, "position_before": vec(position_before), "yaw_before": yaw_before, "spawn": vec(witness_spawn)})
++	return shot.get("accepted", false)
+--- 28e4028/tools/prove_sector_power.py
++++ proof-tools/prove_sector_power.py
+@@ -9,6 +9,8 @@
+ import subprocess
+ import sys
+ import time
++import struct
++import zlib
+ 
+ 
+ LIGHT_IDS = {'ceiling_refuge', 'ceiling_decontamination', 'ceiling_maintenance', 'ceiling_archives', 'ceiling_core_entry', 'ceiling_core_end', 'reactor', 'alarm_maintenance', 'alarm_archives'}
+@@ -62,10 +64,13 @@
+     return errors
+ 
+ 
+-def validate_result(report, exit_code, log, *, flashlight_requested=None):
++def validate_result(report, exit_code, log, *, flashlight_requested=None, terminal_variant=None):
+     try:
+-        return _validate_result(report, exit_code, log, flashlight_requested)
+-    except (TypeError, ValueError, AttributeError, KeyError, OverflowError, StopIteration):
++        errors = _validate_result(report, exit_code, log, flashlight_requested)
++        if terminal_variant is not None and report.get('terminal', {}).get('variant') != terminal_variant:
++            errors.append('requested terminal variant not observed')
++        return errors
++    except (TypeError, ValueError, AttributeError, KeyError, IndexError, OverflowError, StopIteration):
+         return ['malformed proof report']
+ 
+ 
+@@ -81,7 +86,7 @@
+     if report.get('frames_drawn', 0) <= 0 or not samples or any(type(v) not in (int, float) or not math.isfinite(v) or v <= 0 for v in samples) or len(samples) != len(report.get('frame_stages', [])):
+         errors.append('invalid rendered frame samples')
+     mode = report.get('mode')
+-    if mode not in ('perf', 'mission', 'capture', 'lighting', 'lighting-perf'):
++    if mode not in ('perf', 'mission', 'capture', 'lighting', 'lighting-perf', 'persistence'):
+         errors.append('unknown mode')
+     if mode in ('perf', 'mission', 'capture') and report.get('frames_drawn') != len(samples) + 1:
+         errors.append('drawn frames disagree with intervals')
+@@ -207,7 +212,341 @@
+                             errors.append('cost alarm timer inactive')
+                         if report.get('lighting_available') and not emitting(next(x for x in observation['lights'] if x['id'] == 'alarm_maintenance')):
+                             errors.append('cost physical alarm inactive')
++    if 'terminal' in report or mode == 'persistence':
++        errors.extend(validate_issue18(report))
+     return errors
++
++
++ROBOT_IDS = {'sentinel_1', 'crawler_1', 'sentinel_2', 'crawler_2', 'sentinel_3', 'crawler_3'}
++PRIMARY_IDS = {'crate', 'sentinel_1', 'arc'}
++PERSISTENCE_STAGES = ['initial', 'modified', 'revisited', 'restored']
++SAVE_KEYS = {'schema', 'crate_broken', 'death_poses', 'circuits', 'relations', 'health', 'energy', 'ammo',
++             'reserve', 'components', 'medkits', 'cells', 'upgraded', 'phase', 'ending', 'collected',
++             'defeated', 'facts', 'memory', 'player_position', 'player_yaw', 'elapsed'}
++
++
++def require(value, message):
++    if not value:
++        raise ValueError(message)
++
++
++def keys(value, expected):
++    require(type(value) is dict and set(value) == set(expected.split()), 'unexpected or missing proof fields')
++
++
++def number(value):
++    return type(value) in (int, float) and math.isfinite(value)
++
++
++def vector(value):
++    return type(value) is list and len(value) == 3 and all(number(x) for x in value)
++
++
++def close_vector(a, b, tolerance=.03):
++    return vector(a) and vector(b) and math.dist(a, b) <= tolerance
++
++
++def yaw_equal(a, b):
++    return number(a) and number(b) and abs(math.remainder(a-b, 2*math.pi)) < .01
++
++
++def relative_artifact(value, suffix):
++    return (type(value) is str and bool(value) and Path(value).name == value
++            and value.endswith(suffix) and '\\' not in value)
++
++
++def validate_shot(shot, weapon):
++    keys(shot, 'accepted weapon ammo_before ammo_after energy_before energy_after energy_cost impact_visible impact ray_from ray_to target_before target_position target_half_size usec')
++    require(shot['accepted'] is True and type(shot['weapon']) is int and shot['weapon'] == weapon, 'real shot absent')
++    require(type(shot['target_before']) is int and shot['target_before'] > 0, 'target instance absent')
++    require(shot['impact_visible'] is True and type(shot['usec']) is int and shot['usec'] > 0, 'impact observation absent')
++    require(all(type(shot[k]) is int and shot[k] >= 0 for k in ['ammo_before', 'ammo_after']), 'invalid shot ammunition')
++    require(all(number(shot[k]) and shot[k] >= 0 for k in ['energy_before', 'energy_after', 'energy_cost']), 'invalid shot energy')
++    require(shot['ammo_after'] == shot['ammo_before'] - (1 if weapon == 0 else 0), 'shot ammunition not consumed')
++    require(shot['energy_cost'] > 0 if weapon == 1 else shot['energy_cost'] == 0, 'weapon energy cost mismatch')
++    require(abs(shot['energy_after']-(shot['energy_before']-shot['energy_cost'])) < .001, 'shot energy inconsistent')
++    require(all(vector(shot[k]) for k in ['impact', 'ray_from', 'ray_to', 'target_position', 'target_half_size']), 'invalid shot vector')
++    require(all(x > 0 for x in shot['target_half_size']), 'invalid target bounds')
++    impact, start, end = shot['impact'], shot['ray_from'], shot['ray_to']
++    distance = math.dist(start, end)
++    require(distance > 0 and abs(math.dist(start, impact)+math.dist(impact, end)-distance) < .03, 'impact outside actual shot segment')
++    require(all(abs(p-c) <= h+.03 for p, c, h in zip(impact, shot['target_position'], shot['target_half_size'])), 'impact outside observed collider bounds')
++
++
++def validate_crate(crate, broken, position=False):
++    keys(crate, 'broken intact panels collision' + (' position instance' if position else ''))
++    require(crate['broken'] is broken and crate['intact'] is (not broken), 'crate visual differs from canonical state')
++    require(type(crate['panels']) is int and crate['panels'] == (3 if broken else 0), 'crate panels absent')
++    require(type(crate['collision']) is int and crate['collision'] == (0 if broken else 1), 'crate collision mismatch')
++    if position:
++        require(type(crate['instance']) is int and crate['instance'] > 0, 'crate instance absent')
++        require(close_vector(crate['position'], [4, 0, -12]), 'wrong crate position')
++
++
++def validate_terminal(report):
++    terminal = report['terminal']
++    keys(terminal, 'schema variant fixture robots crate_shot before_warmup before_measure measurement_start_usec measurement_end_usec preparation_start')
++    require(type(terminal['schema']) is int and terminal['schema'] == 1 and terminal['fixture'] is True, 'terminal fixture contract absent')
++    require(report['mode'] == 'perf' and terminal['variant'] in ('reference', 'candidate'), 'unknown terminal scenario')
++    robots = terminal['robots']
++    require(type(robots) is list and len(robots) == 6 and {r['id'] for r in robots} == ROBOT_IDS, 'six observed robots required')
++    require(len({r['instance'] for r in robots}) == 6, 'duplicate robot instance')
++    for robot in robots:
++        keys(robot, 'id instance position_before yaw_before health_before collision_before position_after yaw_after health_after collision_after physics_after defeated damage')
++        require(type(robot['instance']) is int and robot['instance'] > 0, 'robot instance absent')
++        require(number(robot['health_before']) and robot['health_before'] > 0 and number(robot['health_after']) and robot['health_after'] == 0, 'real robot death absent')
++        require(number(robot['damage']) and robot['damage'] >= robot['health_before'], 'preparation damage insufficient')
++        require(type(robot['collision_before']) is int and robot['collision_before'] > 0 and type(robot['collision_after']) is int and robot['collision_after'] == 0, 'robot death collision absent')
++        require(robot['physics_after'] is False and robot['defeated'] is True, 'robot death state absent')
++        require(close_vector(robot['position_before'], robot['position_after']) and yaw_equal(robot['yaw_before'], robot['yaw_after']), 'frozen death pose changed')
++    validate_shot(terminal['crate_shot'], 0)
++    require(close_vector(terminal['crate_shot']['target_position'], [4, .4125, -12]), 'wrong perf crate')
++    for stage in ['before_warmup', 'before_measure']:
++        state = terminal[stage]
++        keys(state, 'defeated live_ids trace_count crate flashlight position velocity casings effects usec')
++        require(type(state['defeated']) is list and len(state['defeated']) == 6 and set(state['defeated']) == ROBOT_IDS and state['live_ids'] == [], 'terminal scene still has living or missing robots')
++        require(type(state['trace_count']) is int and state['trace_count'] == (6 if terminal['variant'] == 'candidate' else 0), 'terminal traces mismatch')
++        validate_crate(state['crate'], terminal['variant'] == 'candidate')
++        lamp = state['flashlight']
++        require(lamp['visible'] is True and lamp['intent'] is True and emitting(lamp) and lamp['shadow'] is (not report['low_quality']), 'terminal physical lamp/quality mismatch')
++        require(close_vector(state['position'], terminal['preparation_start']) and close_vector(state['velocity'], [0, 0, 0]) and type(state['casings']) is int and state['casings'] == 0, 'terminal measured start contaminated')
++        effects = state['effects']; keys(effects, 'impact muzzle beam light remaining')
++        require(all(effects[k] is False for k in ['impact', 'muzzle', 'beam', 'light']) and number(effects['remaining']) and effects['remaining'] == 0, 'transient effects overlap preparation boundary')
++        require(type(state['usec']) is int and state['usec'] > 0, 'invalid preparation timestamp')
++    start, end = terminal['measurement_start_usec'], terminal['measurement_end_usec']
++    require(type(start) is int and type(end) is int and end > start, 'invalid measured bounds')
++    require(terminal['crate_shot']['usec'] < terminal['before_warmup']['usec'] and terminal['before_measure']['usec'] - terminal['before_warmup']['usec'] >= 2000000, 'preparation or warmup incomplete')
++    require(terminal['before_measure']['usec'] <= start, 'measurement preceded preparation')
++    samples = report['perf_flashlight_samples']
++    require(all(type(row['usec']) is int for row in samples) and start <= samples[0]['usec'] < samples[-1]['usec'] <= end, 'frame timestamps outside measured window')
++    require(all(abs((right['usec']-left['usec'])/1000-interval) <= .000001 for left, right, interval in zip(samples, samples[1:], report['frame_intervals_ms'])), 'frame timestamps disagree with raw intervals')
++    require(abs((end-start)/1000-sum(report['frame_intervals_ms'])) <= max(report['frame_intervals_ms'])*2, 'measured clock disagrees with raw intervals')
++
++
++def require_bound_target(shot, position, ident):
++    require(vector(position), 'primary target pose absent')
++    offset = {'crate': .4125, 'sentinel_1': .9, 'arc': .6}[ident]
++    require(close_vector(shot['target_position'], [position[0], position[1]+offset, position[2]]), 'shot collider differs from primary pose')
++    if ident != 'sentinel_1':
++        expected = [.825, .4125, .75] if ident == 'crate' else [.4, .6, .225]
++        require(close_vector(shot['target_half_size'], expected), 'shot collider differs from primary shape')
++    else:
++        half = shot['target_half_size']
++        require(abs(half[1]-.9) < .01 and all(.39 <= half[i] <= .58 for i in [0, 2]), 'sentinel collision geometry mismatch')
++
++
++def validate_snapshot_types(snapshot):
++    require(type(snapshot) is dict and set(snapshot) == SAVE_KEYS, 'save snapshot field mismatch')
++    for key in ['schema', 'ammo', 'reserve', 'components', 'medkits', 'cells', 'phase']:
++        require(number(snapshot[key]) and float(snapshot[key]).is_integer(), 'snapshot integer type: ' + key)
++    for key in ['health', 'energy', 'elapsed', 'player_yaw']:
++        require(number(snapshot[key]), 'snapshot numeric type: ' + key)
++    for key in ['upgraded', 'crate_broken']:
++        require(type(snapshot[key]) is bool, 'snapshot boolean type: ' + key)
++    require(type(snapshot['ending']) is str and vector(snapshot['player_position']), 'snapshot string/position type')
++    for key in ['collected', 'defeated', 'facts', 'memory']:
++        require(type(snapshot[key]) is list and all(type(x) is str for x in snapshot[key]), 'snapshot collection type: ' + key)
++    keys(snapshot['circuits'], 'maintenance archives')
++    require(all(type(v) is bool for v in snapshot['circuits'].values()), 'snapshot circuit type')
++    keys(snapshot['relations'], 'mother n7')
++    require(all(number(v) and float(v).is_integer() for v in snapshot['relations'].values()), 'snapshot relation type')
++    require(type(snapshot['death_poses']) is dict and set(snapshot['death_poses']) <= ROBOT_IDS, 'snapshot death IDs')
++    for pose in snapshot['death_poses'].values():
++        keys(pose, 'position yaw')
++        require(vector(pose['position']) and number(pose['yaw']), 'snapshot death pose type')
++
++
++def snapshot_after_vector_decode(saved):
++    # State reconstructs only these positions as Godot Vector3 (float32).
++    # Other fields remain exact; elapsed legitimately advances after loading.
++    result = {k:v for k,v in saved.items() if k != 'elapsed'}
++    def vec32(value):
++        require(vector(value), 'invalid saved Vector3')
++        return [struct.unpack('f', struct.pack('f', x))[0] for x in value]
++    result['player_position'] = vec32(saved['player_position'])
++    result['death_poses'] = {ident: dict(pose, position=vec32(pose['position'])) for ident, pose in saved['death_poses'].items()}
++    return result
++
++
++def validate_persistence(report):
++    p = report['persistence']
++    keys(p, 'schema observations movement visits actions save_load arc_repeat images')
++    require(type(p['schema']) is int and p['schema'] == 1 and report['schema'] == 4, 'persistence schema absent')
++    require(report['phase'] == 4 and report['ending'] == report['expected_ending'] and report['ending'] in ('mother', 'n7') and number(report['health']) and report['health'] > 0, 'persistence mission incomplete')
++    observations = p['observations']
++    require([o['label'] for o in observations] == PERSISTENCE_STAGES, 'persistence stages absent or unordered')
++    for index, observation in enumerate(observations):
++        keys(observation, 'label usec objects player_id world_id gate_y gate_blocked circuits core_available')
++        require(type(observation['usec']) is int and observation['usec'] > 0 and (index == 0 or observation['usec'] > observations[index-1]['usec']), 'stage clock invalid')
++        require(all(type(observation[k]) is int and observation[k] > 0 for k in ['player_id', 'world_id']), 'actor IDs absent')
++        objects = observation['objects']; require(set(objects) == PRIMARY_IDS, 'primary objects missing')
++        initial = index == 0
++        validate_crate(objects['crate'], not initial, True)
++        robot = objects['sentinel_1']
++        keys(robot, 'instance alive defeated position yaw visible collision processing meshes')
++        require(type(robot['instance']) is int and robot['instance'] > 0, 'robot instance absent')
++        require(vector(robot['position']) and number(robot['yaw']) and robot['alive'] is initial and robot['defeated'] is (not initial), 'robot state mismatch')
++        require(robot['visible'] is True and robot['processing'] is initial and type(robot['collision']) is int and (robot['collision'] > 0 if initial else robot['collision'] == 0), 'robot visual/collision mismatch')
++        require(type(robot['meshes']) is int and (robot['meshes'] == 0 if initial else 1 <= robot['meshes'] <= 3), 'robot trace budget mismatch')
++        arc = objects['arc']; keys(arc, 'instance disabled fact barrier prompt emissive position')
++        require(type(arc['instance']) is int and arc['instance'] > 0, 'ARC instance absent')
++        require(arc['disabled'] is (not initial) and arc['fact'] is (not initial) and arc['barrier'] is initial and arc['emissive'] is initial, 'ARC state mismatch')
++        require(type(arc['prompt']) is str and bool(arc['prompt']) and (initial or arc['prompt'] == 'Verrou hors tension'), 'ARC prompt mismatch')
++        require(close_vector(arc['position'], [2.8, 0, -57]), 'wrong ARC object')
++        require(number(observation['gate_y']) and abs(observation['gate_y']-(0 if initial else 4)) < .03 and observation['gate_blocked'] is initial, 'gate restore mismatch')
++        require(type(observation['core_available']) is bool and (initial or not observation['core_available']), 'quest core duplicated')
++        keys(observation['circuits'], 'maintenance archives')
++        require(all(type(v) is bool for v in observation['circuits'].values()), 'invalid circuits')
++        if index > 1:
++            require(all({k:v for k,v in objects[ident].items() if k != 'instance'} == {k:v for k,v in observations[1]['objects'][ident].items() if k != 'instance'} for ident in ['crate', 'arc']) and observation['circuits'] == observations[1]['circuits'], 'persistent projection changed')
++            require(close_vector(robot['position'], observations[1]['objects']['sentinel_1']['position']) and yaw_equal(robot['yaw'], observations[1]['objects']['sentinel_1']['yaw']), 'restored death pose changed')
++    for ident in PRIMARY_IDS:
++        require(observations[1]['objects'][ident]['instance'] == observations[2]['objects'][ident]['instance'] and observations[3]['objects'][ident]['instance'] != observations[2]['objects'][ident]['instance'], 'primary instances not preserved then reconstructed')
++    require(observations[1]['circuits']['maintenance'] != observations[1]['circuits']['archives'], 'mixed circuits absent')
++    actions = p['actions']
++    require(len(actions) == 3 and {a['id'] for a in actions} == PRIMARY_IDS, 'real modification actions absent')
++    require(len({a['shot']['target_before'] for a in actions}) == 3, 'actions reuse a target instance')
++    for action in actions:
++        keys(action, 'id shot' + (' health_before health_after position_before yaw_before spawn' if action['id'] == 'sentinel_1' else ''))
++        validate_shot(action['shot'], 1 if action['id'] == 'arc' else 0)
++        require(action['shot']['target_before'] == observations[0]['objects'][action['id']]['instance'], 'action hits a different primary instance')
++        position = action['position_before'] if action['id'] == 'sentinel_1' else observations[0]['objects'][action['id']]['position']
++        require_bound_target(action['shot'], position, action['id'])
++        require(observations[0]['usec'] < action['shot']['usec'] < observations[1]['usec'], 'action outside modification stage')
++        if action['id'] == 'sentinel_1':
++            require(number(action['health_before']) and action['health_before'] > 0 and number(action['health_after']) and action['health_after'] == 0, 'lethal hit absent')
++            require(vector(action['spawn']) and not close_vector(action['position_before'], action['spawn'], .1), 'death pose merely spawn')
++            robot = observations[1]['objects']['sentinel_1']
++            require(close_vector(robot['position'], action['position_before']) and yaw_equal(robot['yaw'], action['yaw_before']), 'trace differs from observed death')
++    save = p['save_load']
++    keys(save, 'f5_exit f9_exit file_absent_before casings_before_f5 casings_after_f5 casings_after_f9 before_ids after_ids saved restored save_file save_sha256 save_bytes f5_usec f9_usec')
++    require(type(save['f5_exit']) is int and save['f5_exit'] == 0 and type(save['f9_exit']) is int and save['f9_exit'] == 0 and save['file_absent_before'] is True, 'native save/load absent')
++    require(all(type(save[k]) is int for k in ['casings_before_f5', 'casings_after_f5', 'casings_after_f9']) and min(save['casings_before_f5'], save['casings_after_f5']) > 0 and save['casings_after_f9'] == 0, 'transient effects not observed around save/load')
++    require(save['before_ids'] == [observations[2]['player_id'], observations[2]['world_id']] and save['after_ids'] == [observations[3]['player_id'], observations[3]['world_id']] and all(a != b for a, b in zip(save['before_ids'], save['after_ids'])), 'both actors must be reconstructed')
++    require(all([o['player_id'], o['world_id']] == save['before_ids'] for o in observations[:3]), 'unexpected reconstruction during revisits')
++    require(type(save['f5_usec']) is int and type(save['f9_usec']) is int and observations[2]['usec'] < save['f5_usec'] < save['f9_usec'] < observations[3]['usec'], 'save/load order invalid')
++    validate_snapshot_types(save['saved'])
++    validate_snapshot_types(save['restored'])
++    require(snapshot_after_vector_decode(save['saved']) == {k:v for k,v in save['restored'].items() if k != 'elapsed'}, 'inventory/quest changed across load')
++    require(save['saved']['schema'] == 4 and save['saved']['crate_broken'] is True and 'sentinel_1' in save['saved']['defeated'] and 'arc_lock_disabled' in save['saved']['facts'] and save['saved']['phase'] == 3, 'saved canonical state absent')
++    pose = save['saved']['death_poses']['sentinel_1']; robot = observations[1]['objects']['sentinel_1']
++    require(close_vector(pose['position'], robot['position']) and yaw_equal(pose['yaw'], robot['yaw']), 'saved death pose differs from scene')
++    require(relative_artifact(save['save_file'], '.json') and re.fullmatch('[a-f0-9]{64}', save['save_sha256']) and type(save['save_bytes']) is int and 0 < save['save_bytes'] <= 65536, 'save artifact invalid')
++    repeat = p['arc_repeat']; keys(repeat, 'disabled_signals changed_signals messages memory_before memory_after facts_before facts_after state_before state_after changed_snapshots shot')
++    require(all(type(repeat[k]) is int and repeat[k] == 0 for k in ['disabled_signals', 'messages']) and type(repeat['changed_signals']) is int and repeat['changed_signals'] == 1 and repeat['memory_before'] == repeat['memory_after'] and repeat['facts_before'] == repeat['facts_after'], 'ARC repeated transition beyond energy consumption')
++    validate_shot(repeat['shot'], 1)
++    require(repeat['shot']['usec'] > observations[3]['usec'] and repeat['shot']['target_before'] == observations[3]['objects']['arc']['instance'], 'second ARC is not on the reconstructed object')
++    require_bound_target(repeat['shot'], observations[3]['objects']['arc']['position'], 'arc')
++    for snapshot in [repeat['state_before'], repeat['state_after'], *repeat['changed_snapshots']]: validate_snapshot_types(snapshot)
++    expected = dict(repeat['state_before']); expected['energy'] -= repeat['shot']['energy_cost']
++    require(repeat['state_before']['energy'] == repeat['shot']['energy_before'] and repeat['state_after']['energy'] == repeat['shot']['energy_after'], 'ARC energy observations disagree')
++    require(repeat['changed_snapshots'] == [expected] and repeat['state_after'] == expected, 'ARC changed includes a mutation beyond energy')
++    movement = p['movement']; require(type(movement) is list and len(movement) >= 10, 'walking samples absent')
++    epochs, distance = [], 0.
++    for index, row in enumerate(movement):
++        require(type(row) is list and len(row) == 5 and all(number(x) for x in row[:4]) and type(row[4]) is int, 'invalid walking sample')
++        if not epochs or epochs[-1] != row[4]: epochs.append(row[4])
++        if index:
++            previous = movement[index-1]; dt = row[0]-previous[0]
++            require(dt > 0 and dt <= .5, 'walking coverage gap')
++            if row[4] == previous[4]:
++                step = math.dist(row[1:4], previous[1:4]); distance += step
++                require(step <= 7*dt+.12, 'teleport inside native walking')
++    require(epochs == [save['before_ids'][1], save['after_ids'][1]] and distance >= 150, 'walking/reconstruction sequence incomplete')
++    visits = p['visits']
++    require(len(visits) == 9 and {(v['label'], v['id']) for v in visits} == {(label, ident) for label in PERSISTENCE_STAGES[1:] for ident in PRIMARY_IDS}, 'physical revisits absent')
++    last = -1
++    for visit in visits:
++        keys(visit, 'label id sample'); sample = visit['sample']
++        require(type(sample) is int and last < sample < len(movement), 'visits not ordered')
++        last = sample; row = movement[sample]
++        observation = observations[PERSISTENCE_STAGES.index(visit['label'])]
++        require(row[4] == observation['world_id'] and math.dist(row[1:4], observation['objects'][visit['id']]['position']) <= 5, 'object never physically revisited')
++        if visit['label'] == 'revisited':
++            prior = next(v['sample'] for v in visits if v['label'] == 'modified' and v['id'] == visit['id'])
++            require(any(x[3] > 2 for x in movement[prior:sample]), 'no return through refuge between visits')
++    images = p['images']
++    require(len(images) == 12 and {(x['label'], x['id']) for x in images} == {(label, ident) for label in PERSISTENCE_STAGES for ident in PRIMARY_IDS}, 'proof images incomplete')
++    require(len({x['file'] for x in images}) == 12, 'image artifact reused')
++    for image in images:
++        keys(image, 'label id file camera_position camera_rotation fov controlled_camera')
++        if image['label'] in ['revisited', 'restored']:
++            reference = next(x for x in images if x['label'] == 'modified' and x['id'] == image['id'])
++            require(close_vector(image['camera_position'], reference['camera_position']) and close_vector(image['camera_rotation'], reference['camera_rotation']) and abs(image['fov']-reference['fov']) < .01, 'comparison camera changed')
++        require(relative_artifact(image['file'], '.png') and vector(image['camera_position']) and vector(image['camera_rotation']) and number(image['fov']) and 1 < image['fov'] < 180 and image['controlled_camera'] is True, 'invalid controlled capture metadata')
++
++
++def finite_tree(value):
++    if type(value) is float:
++        require(math.isfinite(value), 'nonfinite proof value')
++    elif type(value) is dict:
++        for item in value.values(): finite_tree(item)
++    elif type(value) is list:
++        for item in value: finite_tree(item)
++
++
++def validate_issue18(report):
++    try:
++        finite_tree(report)
++        require(type(report['low_quality']) is bool, 'invalid observed quality type')
++        allowed = set('schema waypoint_positions require_lighting lighting_available scene_inspection lighting_samples cost_windows final_observation mode low_quality expected_ending ending phase health ammo reserve medkits shots defeated circuits_available travelled_m waypoints_completed frames_drawn frame_intervals_ms frame_stages frame_p50_ms frame_p95_ms frame_p99_ms draw_calls_max nodes_max resources_max commands events failures engine display_driver rendering_method renderer resolution performance_valid scenario limits flashlight_requested perf_flashlight_before_warmup perf_flashlight_samples terminal persistence'.split())
++        require(set(report) <= allowed, 'unknown proof top-level field')
++        require(type(report['failures']) is list and report['failures'] == [], 'proof failures are not an empty list')
++        if 'terminal' in report:
++            validate_terminal(report)
++        if report['mode'] == 'persistence':
++            validate_persistence(report)
++        return []
++    except (ValueError, TypeError, AttributeError, KeyError, IndexError, OverflowError, StopIteration) as error:
++        return ['issue18 contract: ' + str(error)]
++
++
++def validate_png(path, resolution):
++    data = path.read_bytes()
++    require(len(data) <= 16*1024*1024 and data.startswith(b'\x89PNG\r\n\x1a\n'), 'invalid PNG signature/size')
++    offset, compressed, header, ended = 8, bytearray(), None, False
++    while offset < len(data):
++        require(offset+12 <= len(data), 'truncated PNG chunk')
++        length = struct.unpack('>I', data[offset:offset+4])[0]
++        kind = data[offset+4:offset+8]; end = offset+12+length
++        require(end <= len(data), 'truncated PNG data')
++        payload = data[offset+8:end-4]
++        require(zlib.crc32(kind+payload) == struct.unpack('>I', data[end-4:end])[0], 'PNG checksum mismatch')
++        if kind == b'IHDR':
++            require(header is None and offset == 8 and length == 13, 'invalid PNG header')
++            header = struct.unpack('>IIBBBBB', payload)
++        elif kind == b'IDAT': compressed.extend(payload)
++        elif kind == b'IEND':
++            require(length == 0 and end == len(data), 'invalid PNG end'); ended = True
++        offset = end
++    require(header is not None and ended and bool(compressed), 'incomplete PNG')
++    width, height, depth, color, compression, filtering, interlace = header
++    require([width, height] == resolution and depth == 8 and color in (2, 6) and (compression, filtering, interlace) == (0, 0, 0), 'PNG format/resolution mismatch')
++    stride = 1 + width*(3 if color == 2 else 4)
++    decoder = zlib.decompressobj(); raw = decoder.decompress(compressed, stride*height+1)
++    require(decoder.eof and not decoder.unused_data and len(raw) == stride*height and all(raw[row*stride] <= 4 for row in range(height)), 'invalid PNG image data')
++
++
++def validate_artifacts(report, output):
++    if report.get('mode') != 'persistence':
++        return []
++    try:
++        output = output.resolve(); p = report['persistence']
++        for image in p['images']:
++            require(relative_artifact(image['file'], '.png'), 'PNG escapes output')
++            path = output / image['file']
++            require(path.resolve().parent == output and path.is_file(), 'missing or escaped PNG')
++            validate_png(path, report['resolution'])
++        save = p['save_load']; require(relative_artifact(save['save_file'], '.json'), 'save escapes output')
++        path = output / save['save_file']
++        require(path.resolve().parent == output and path.is_file(), 'missing or escaped save')
++        data = path.read_bytes()
++        require(len(data) == save['save_bytes'] and hashlib.sha256(data).hexdigest() == save['save_sha256'], 'save bytes/hash mismatch')
++        artifact = json.loads(data); validate_snapshot_types(artifact)
++        require(snapshot_after_vector_decode(artifact) == snapshot_after_vector_decode(save['saved']) and artifact['elapsed'] == save['saved']['elapsed'], 'saved artifact differs from observations')
++        return []
++    except (OSError, ValueError, TypeError, KeyError, AttributeError, struct.error, zlib.error) as error:
++        return ['issue18 artifacts: ' + str(error)]
+ 
+ 
+ def hashes(project):
+@@ -220,17 +559,20 @@
+     p.add_argument('--project', type=Path, required=True)
+     p.add_argument('--godot', required=True)
+     p.add_argument('--output', type=Path, required=True)
+-    p.add_argument('--mode', choices=['perf', 'mission', 'capture', 'lighting', 'lighting-perf'], required=True)
++    p.add_argument('--mode', choices=['perf', 'mission', 'capture', 'lighting', 'lighting-perf', 'persistence'], required=True)
+     p.add_argument('--ending', choices=['mother', 'n7'], default='mother')
+     p.add_argument('--display', default=':100')
+     p.add_argument('--require-circuits', action='store_true')
+     p.add_argument('--require-lighting', action='store_true')
+     p.add_argument('--low', action='store_true')
+     p.add_argument('--flashlight-on', action='store_true', help='perf only; enable the physical flashlight before warmup')
++    p.add_argument('--terminal-variant', choices=['reference', 'candidate'], help='perf fixture; observed deaths and crate impact before warmup')
+     p.add_argument('--timeout', type=int, default=900)
+     a = p.parse_args()
+     if a.flashlight_on and a.mode != 'perf':
+         p.error('--flashlight-on requires --mode perf')
++    if a.terminal_variant and (a.mode != 'perf' or not a.flashlight_on):
++        p.error('--terminal-variant requires --mode perf --flashlight-on')
+     project, output = a.project.resolve(), a.output.resolve()
+     if output.exists():
+         p.error('output must be new to prevent stale evidence')
+@@ -241,7 +583,7 @@
+     before = hashes(project)
+     engine = Path(a.godot).resolve()
+     wrapper = Path(__file__).resolve()
+-    artifact_paths = {'engine': engine, 'wrapper': wrapper, 'probe': wrapper.with_name('probe_sector_power.gd')}
++    artifact_paths = {'engine': engine, 'wrapper': wrapper, 'probe': wrapper.with_name('probe_sector_power.gd'), 'selfcheck': wrapper.with_name('selfcheck_sector_power.py'), 'input_helper': project / 'tools/x11_input.py'}
+     artifact_before = {key: hashlib.sha256(path.read_bytes()).hexdigest() for key, path in artifact_paths.items()}
+     probe = Path(__file__).with_name('probe_sector_power.gd').resolve()
+     command = [a.godot, '--path', str(project), '--display-driver', 'x11', '--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--resolution', '1280x720', '--position', '0,0', '--script', str(probe), '--', '--proof-output=' + str(output), '--probe-mode=' + a.mode, '--ending=' + a.ending, '--display=' + a.display]
+@@ -253,6 +595,8 @@
+         command.append('--flashlight-on')
+     if a.low:
+         command.append('--low')
++    if a.terminal_variant:
++        command.append('--terminal-variant=' + a.terminal_variant)
+     manifest = {'artifacts_before': artifact_before, 'command': command, 'project': str(project), 'head': subprocess.check_output(['git', '-C', str(project), 'rev-parse', 'HEAD']).decode().strip(), 'probe_sha256': hashlib.sha256(probe.read_bytes()).hexdigest(), 'source_before': before, 'started_unix': time.time(), 'display': a.display, 'limits': 'Linux X11; renderer recorded by probe; no target GPU or Windows claim. Capture screenshots are not video or performance; Dummy audio does not prove audible output. No X server lifecycle changes.'}
+     if a.mode == 'perf':
+         manifest['flashlight_requested'] = a.flashlight_on
+@@ -268,11 +612,14 @@
+         report = json.loads(report_path.read_text())
+     except (OSError, ValueError):
+         report = {}
+-    if isinstance(report, dict):
+-        report['require_lighting'] = a.require_lighting
+-    errors = validate_result(report, exit_code, (output / 'engine.log').read_text(errors='replace'), flashlight_requested=a.flashlight_on if a.mode == 'perf' else None)
++    errors = validate_result(report, exit_code, (output / 'engine.log').read_text(errors='replace'), flashlight_requested=a.flashlight_on if a.mode == 'perf' else None, terminal_variant=a.terminal_variant)
+     if not isinstance(report, dict):
+         report = {}
++    errors.extend(validate_artifacts(report, output))
++    if report.get('require_lighting') is not a.require_lighting:
++        errors.append('requested lighting capability differs from report')
++    if a.terminal_variant is None and 'terminal' in report:
++        errors.append('unexpected terminal preparation')
+     if report.get('mode') != a.mode or report.get('low_quality') is not a.low:
+         errors.append('requested scenario/quality mismatch')
+     after = hashes(project)
+--- 28e4028/tools/selfcheck_sector_power.py
++++ proof-tools/selfcheck_sector_power.py
+@@ -3,7 +3,7 @@
+ import subprocess
+ import sys
+ from pathlib import Path
+-from prove_sector_power import validate_result, LIGHT_IDS
++from prove_sector_power import validate_result, validate_artifacts, LIGHT_IDS
+ 
+ 
+ def valid():
+@@ -283,5 +283,262 @@
+         self.assertTrue(validate_result(report, 0, ''))
+ 
+ 
++
++# Synthetic reports exercise rejection only; they are never runtime evidence.
++ROBOT_IDS = ['sentinel_1', 'crawler_1', 'sentinel_2', 'crawler_2', 'sentinel_3', 'crawler_3']
++
++
++def shot_fixture():
++    return {'accepted': True, 'weapon': 0, 'ammo_before': 12, 'ammo_after': 11,
++            'energy_before': 100, 'energy_after': 100, 'energy_cost': 0, 'impact_visible': True,
++            'impact': [4, .4, -11.25], 'ray_from': [4, .4, -8], 'ray_to': [4, .4, -20],
++            'target_before': 101, 'target_position': [4, .4125, -12],
++            'target_half_size': [.825, .4125, .75], 'usec': 100}
++
++
++def terminal_fixture(variant='candidate'):
++    report = perf_flashlight_fixture()
++    robots = []
++    for index, ident in enumerate(ROBOT_IDS):
++        robots.append({'id': ident, 'instance': index + 10, 'position_before': [index, 0, -20],
++                       'yaw_before': .5, 'health_before': 65, 'collision_before': 1,
++                       'position_after': [index, 0, -20], 'yaw_after': .5, 'health_after': 0,
++                       'collision_after': 0, 'physics_after': False, 'defeated': True, 'damage': 1000})
++    state = {'defeated': ROBOT_IDS.copy(), 'live_ids': [], 'trace_count': 6 if variant == 'candidate' else 0,
++             'crate': {'broken': variant == 'candidate', 'intact': variant == 'reference',
++                       'panels': 3 if variant == 'candidate' else 0, 'collision': 0 if variant == 'candidate' else 1},
++             'flashlight': copy.deepcopy(report['final_observation']['flashlight']),
++             'position': [0, 0, 7], 'velocity': [0, 0, 0], 'casings': 0, 'usec': 200, 'effects': {'impact': False, 'muzzle': False, 'beam': False, 'light': False, 'remaining': 0}}
++    report['terminal'] = {'schema': 1, 'variant': variant, 'fixture': True, 'robots': robots,
++                          'crate_shot': shot_fixture(), 'before_warmup': copy.deepcopy(state),
++                          'before_measure': copy.deepcopy(state), 'measurement_start_usec': 2000200,
++                          'measurement_end_usec': 4004200, 'preparation_start': [0, 0, 7]}
++    report['terminal']['before_measure']['usec'] = 2000200
++    for index, row in enumerate(report['perf_flashlight_samples']): row['usec'] = 2000200 + index*16700
++    return report
++
++
++def persistence_fixture():
++    report = valid() | {'mode': 'persistence', 'schema': 4, 'low_quality': False,
++                        'ending': 'mother', 'expected_ending': 'mother', 'phase': 4, 'health': 50}
++    def objects(initial=False, restored=False):
++        return {'crate': {'instance': 1101 if restored else 101, 'broken': not initial, 'intact': initial, 'panels': 0 if initial else 3,
++                          'collision': 1 if initial else 0, 'position': [4, 0, -12]},
++                'sentinel_1': {'instance': 1202 if restored else (102 if initial else 202), 'alive': initial, 'defeated': not initial, 'position': [3, 0, -20 if initial else -18],
++                               'yaw': .3, 'visible': True, 'collision': 1 if initial else 0,
++                               'processing': initial, 'meshes': 0 if initial else 3},
++                'arc': {'instance': 1103 if restored else 103, 'disabled': not initial, 'fact': not initial, 'barrier': initial,
++                        'prompt': 'Verrou électrique' if initial else 'Verrou hors tension', 'emissive': initial,
++                        'position': [2.8, 0, -57]}}
++    observations = []
++    for index, label in enumerate(['initial', 'modified', 'revisited', 'restored']):
++        observations.append({'label': label, 'usec': index * 1000 + 1, 'objects': objects(index == 0, index == 3),
++                             'player_id': 1 if index < 3 else 3, 'world_id': 2 if index < 3 else 4,
++                             'gate_y': 0 if index == 0 else 4, 'gate_blocked': index == 0,
++                             'circuits': {'maintenance': False, 'archives': True}, 'core_available': index == 0})
++    movement, visits = [], []
++    t, z = 0., 7.
++    for epoch, label in [(2, 'modified'), (2, 'revisited'), (4, 'restored')]:
++        if epoch == 4:
++            t += .1
++            movement.append([t, 0, 0, z, epoch])
++        for ident, destination in [('crate', -12), ('sentinel_1', -18), ('arc', -57), ('refuge', 7)]:
++            while abs(z-destination) > .01:
++                z += max(-.5, min(.5, destination-z)); t += .1
++                movement.append([t, 0, 0, z, epoch])
++            if ident != 'refuge': visits.append({'label': label, 'id': ident, 'sample': len(movement)-1})
++    save = {'schema': 4, 'crate_broken': True, 'death_poses': {'sentinel_1': {'position': [3, 0, -18], 'yaw': .3}},
++            'circuits': {'maintenance': False, 'archives': True}, 'relations': {'mother': 0, 'n7': 0},
++            'health': 50, 'energy': 85, 'ammo': 10, 'reserve': 30, 'components': 0, 'medkits': 2, 'cells': 2,
++            'upgraded': False, 'phase': 3, 'ending': '', 'collected': ['core'], 'defeated': ['sentinel_1'],
++            'facts': ['arc_lock_disabled', 'core_recovered'], 'memory': [], 'player_position': [0, 0, 7],
++            'player_yaw': 0, 'elapsed': 50}
++    crate_shot = shot_fixture()
++    robot_shot = shot_fixture() | {'target_before': 102, 'target_position': [3, .9, -18], 'target_half_size': [.5, .9, .5],
++                                  'impact': [3, 1, -17.5], 'ray_from': [3, 1, -15], 'ray_to': [3, 1, -30], 'usec': 200}
++    arc_shot = shot_fixture() | {'target_before': 103, 'weapon': 1, 'ammo_after': 12, 'energy_after': 85, 'energy_cost': 15,
++                                'target_position': [2.8, .6, -57], 'target_half_size': [.4, .6, .225],
++                                'impact': [2.8, .7, -56.775], 'ray_from': [2.8, .7, -54], 'ray_to': [2.8, .7, -65], 'usec': 300}
++    payload = {'schema': 1, 'observations': observations, 'movement': movement, 'visits': visits,
++               'actions': [{'id': 'crate', 'shot': crate_shot},
++                           {'id': 'sentinel_1', 'shot': robot_shot, 'health_before': 5, 'health_after': 0,
++                            'position_before': [3, 0, -18], 'yaw_before': .3, 'spawn': [3, 0, -20]},
++                           {'id': 'arc', 'shot': arc_shot}],
++               'save_load': {'f5_exit': 0, 'f9_exit': 0, 'file_absent_before': True,
++                             'casings_before_f5': 1, 'casings_after_f5': 1, 'casings_after_f9': 0,
++                             'before_ids': [1, 2], 'after_ids': [3, 4], 'saved': save,
++                             'restored': copy.deepcopy(save), 'save_file': 'save.json', 'save_sha256': 'a'*64,
++                             'save_bytes': 1000, 'f5_usec': 2200, 'f9_usec': 2500},
++               'arc_repeat': {'disabled_signals': 0, 'changed_signals': 1, 'messages': 0,
++                              'memory_before': [], 'memory_after': [], 'facts_before': ['arc_lock_disabled'], 'facts_after': ['arc_lock_disabled'], 'shot': copy.deepcopy(arc_shot)},
++               'images': [{'label': label, 'id': ident, 'file': label+'_'+ident+'.png', 'camera_position': [0, 2, 0],
++                           'camera_rotation': [0, 0, 0], 'fov': 76, 'controlled_camera': True}
++                          for label in ['initial', 'modified', 'revisited', 'restored'] for ident in ['crate', 'sentinel_1', 'arc']]}
++    payload['arc_repeat']['shot'].update(usec=3500, target_before=1103)
++    before = copy.deepcopy(save); before['energy'] = 100
++    payload['arc_repeat'].update(state_before=before, state_after=copy.deepcopy(save), changed_snapshots=[copy.deepcopy(save)])
++    report['persistence'] = payload
++    return report
++
++
++class Issue18Validation(unittest.TestCase):
++    def test_terminal_reference_and_candidate_contract(self):
++        for variant in ['reference', 'candidate']:
++            self.assertEqual(validate_result(terminal_fixture(variant), 0, '', flashlight_requested=True), [])
++
++    def test_terminal_rejects_unobserved_death_or_mutated_pose(self):
++        for field, value in [('defeated', False), ('health_after', 5), ('health_before', 0),
++                             ('collision_after', 1), ('physics_after', True), ('position_after', [99, 0, 0]),
++                             ('instance', True), ('yaw_before', float('nan'))]:
++            with self.subTest(field=field):
++                report = terminal_fixture(); report['terminal']['robots'][0][field] = value
++                self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
++        report = terminal_fixture(); report['terminal']['robots'].pop()
++        self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
++
++    def test_terminal_rejects_unchecked_start_or_wrong_visuals(self):
++        for stage in ['before_warmup', 'before_measure']:
++            for key, value in [('live_ids', ['sentinel_1']), ('casings', 1), ('velocity', [1, 0, 0]), ('trace_count', 0)]:
++                with self.subTest(stage=stage, key=key):
++                    report = terminal_fixture(); report['terminal'][stage][key] = value
++                    self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
++            report = terminal_fixture(); report['terminal'][stage]['flashlight']['visible'] = False
++            self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
++
++    def test_terminal_rejects_cli_count_or_fake_crate_shot(self):
++        for key, value in [('accepted', False), ('ammo_after', 12), ('impact_visible', False),
++                           ('impact', [0, 0, 0]), ('target_before', 0), ('ray_from', [True, 0, 0])]:
++            with self.subTest(key=key):
++                report = terminal_fixture(); report['terminal']['crate_shot'][key] = value
++                self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
++        for key in ['robots', 'before_measure', 'schema']:
++            report = terminal_fixture(); del report['terminal'][key]
++            self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
++
++    def test_persistence_accepts_complete_synthetic_contract_only(self):
++        self.assertEqual(validate_result(persistence_fixture(), 0, ''), [])
++
++    def test_persistence_rejects_missing_or_inconsistent_stages(self):
++        for mutation in ['object', 'stage', 'pose', 'collision', 'gate', 'arc', 'image', 'extra']:
++            with self.subTest(mutation=mutation):
++                report = persistence_fixture(); p = report['persistence']
++                if mutation == 'object': del p['observations'][2]['objects']['crate']
++                if mutation == 'stage': p['observations'].pop(2)
++                if mutation == 'pose': p['observations'][3]['objects']['sentinel_1']['position'][0] += 1
++                if mutation == 'collision': p['observations'][3]['objects']['crate']['collision'] = 1
++                if mutation == 'gate': p['observations'][3]['gate_y'] = 0
++                if mutation == 'arc': p['observations'][3]['objects']['arc']['disabled'] = False
++                if mutation == 'image': p['images'].pop()
++                if mutation == 'extra': p['invented'] = True
++                self.assertTrue(validate_result(report, 0, ''))
++
++    def test_persistence_rejects_teleports_fixed_camera_or_fake_revisit(self):
++        for mutation in ['jump', 'frozen', 'visit', 'epoch', 'spawn_death']:
++            with self.subTest(mutation=mutation):
++                report = persistence_fixture(); p = report['persistence']
++                if mutation == 'jump': p['movement'][5][1] += 100
++                if mutation == 'frozen':
++                    for row in p['movement']: row[1:4] = [0, 0, 7]
++                if mutation == 'visit': p['visits'][3]['sample'] = p['visits'][0]['sample']
++                if mutation == 'epoch': p['movement'][5][4] = 999
++                if mutation == 'spawn_death': p['actions'][1]['position_before'] = p['actions'][1]['spawn']
++                self.assertTrue(validate_result(report, 0, ''))
++
++    def test_persistence_rejects_fake_load_effect_or_duplicate_arc(self):
++        for key, value in [('before_ids', [3, 2]), ('f5_exit', 1), ('file_absent_before', False),
++                           ('casings_after_f5', 0), ('casings_after_f9', 1), ('f9_usec', 2000), ('save_file', '../save.json')]:
++            with self.subTest(key=key):
++                report = persistence_fixture(); report['persistence']['save_load'][key] = value
++                self.assertTrue(validate_result(report, 0, ''))
++        report = persistence_fixture(); report['persistence']['save_load']['restored']['ammo'] += 1
++        self.assertTrue(validate_result(report, 0, ''))
++        report = persistence_fixture(); report['persistence']['arc_repeat']['disabled_signals'] = 1
++        self.assertTrue(validate_result(report, 0, ''))
++
++
++
++class Issue18BoundaryValidation(unittest.TestCase):
++    def test_only_saved_Vector3_positions_are_decoded_to_float32(self):
++        import struct
++        report = persistence_fixture()
++        saved = report['persistence']['save_load']['saved']
++        restored = report['persistence']['save_load']['restored']
++        saved['player_position'][1] = .00094166450435295
++        restored['player_position'][1] = struct.unpack('f', struct.pack('f', saved['player_position'][1]))[0]
++        self.assertEqual(validate_result(report, 0, ''), [])
++        restored['player_position'][1] += .000001
++        self.assertTrue(validate_result(report, 0, ''))
++
++    def test_booleans_are_not_health_numbers(self):
++        report = persistence_fixture(); report['health'] = True
++        self.assertTrue(validate_result(report, 0, ''))
++        report = persistence_fixture()
++        for label in ['saved', 'restored']: report['persistence']['save_load'][label]['health'] = True
++        self.assertTrue(validate_result(report, 0, ''))
++
++    def test_review_counterexamples_are_rejected(self):
++        for mutation in ['arc_time', 'unrelated_shot', 'camera', 'same_arc_instance', 'frame_clock', 'unknown_field']:
++            with self.subTest(mutation=mutation):
++                report = terminal_fixture() if mutation == 'frame_clock' else persistence_fixture()
++                if mutation == 'arc_time': report['persistence']['arc_repeat']['shot']['usec'] = 300
++                if mutation == 'unrelated_shot':
++                    for key in ['impact', 'ray_from', 'ray_to', 'target_position']: report['persistence']['actions'][0]['shot'][key][0] += 100
++                if mutation == 'camera': report['persistence']['images'][-1]['camera_position'] = [9000,9000,9000]
++                if mutation == 'same_arc_instance': report['persistence']['arc_repeat']['shot']['target_before'] = report['persistence']['actions'][2]['shot']['target_before']
++                if mutation == 'frame_clock':
++                    for row in report['perf_flashlight_samples']: row['usec'] = 1
++                if mutation == 'unknown_field': report['invented'] = True
++                self.assertTrue(validate_result(report, 0, ''))
++
++    def test_arc_changed_snapshot_and_all_transients_are_observed(self):
++        report = persistence_fixture(); report['persistence']['arc_repeat']['changed_snapshots'][0]['ammo'] -= 1
++        self.assertTrue(validate_result(report, 0, ''))
++        report = persistence_fixture(); report['persistence']['arc_repeat']['changed_snapshots'] = []
++        self.assertTrue(validate_result(report, 0, ''))
++        for stage in ['before_warmup', 'before_measure']:
++            for field in ['impact', 'muzzle', 'beam', 'light', 'remaining']:
++                report = terminal_fixture(); report['terminal'][stage]['effects'][field] = 1 if field == 'remaining' else True
++                self.assertTrue(validate_result(report, 0, '', flashlight_requested=True))
++
++    def test_nonfinite_snapshot_value_is_rejected(self):
++        report = persistence_fixture()
++        report['persistence']['save_load']['saved']['elapsed'] = float('nan')
++        self.assertTrue(validate_result(report, 0, ''))
++
++    def test_arc_repetition_allows_only_exact_energy_notification(self):
++        report = persistence_fixture()
++        report['persistence']['arc_repeat']['shot']['energy_after'] = 99
++        self.assertTrue(validate_result(report, 0, ''))
++        report = persistence_fixture(); report['persistence']['arc_repeat']['changed_signals'] = 0
++        self.assertTrue(validate_result(report, 0, ''))
++        report = persistence_fixture(); report['persistence']['arc_repeat']['facts_after'].append('extra')
++        self.assertTrue(validate_result(report, 0, ''))
++
++    def test_terminal_request_is_compared_to_observed_scene(self):
++        self.assertTrue(validate_result(terminal_fixture(), 0, '', terminal_variant='reference'))
++        self.assertTrue(validate_result(perf_flashlight_fixture(), 0, '', terminal_variant='candidate'))
++
++    def test_artifacts_require_real_contained_png_and_exact_save(self):
++        import tempfile, json, hashlib, struct, zlib
++        def chunk(kind, data):
++            return struct.pack('>I', len(data)) + kind + data + struct.pack('>I', zlib.crc32(kind+data))
++        png = b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('>IIBBBBB', 1280, 720, 8, 2, 0, 0, 0))
++        png += chunk(b'IDAT', zlib.compress((b'\0' + b'\0' * (1280*3)) * 720)) + chunk(b'IEND', b'')
++        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parents[1] / 'proof-tool-tests') as directory:
++            output = Path(directory); report = persistence_fixture()
++            data = json.dumps(report['persistence']['save_load']['saved']).encode()
++            (output/'save.json').write_bytes(data)
++            save = report['persistence']['save_load']; save['save_bytes'] = len(data); save['save_sha256'] = hashlib.sha256(data).hexdigest()
++            for image in report['persistence']['images']: (output/image['file']).write_bytes(png)
++            self.assertEqual(validate_artifacts(report, output), [])
++            first = output/report['persistence']['images'][0]['file']
++            first.unlink(); self.assertTrue(validate_artifacts(report, output)); first.write_bytes(png)
++            first.write_bytes(png[:8]); self.assertTrue(validate_artifacts(report, output)); first.write_bytes(png)
++            (output/'save.json').write_bytes(data+b' '); self.assertTrue(validate_artifacts(report, output))
++            (output/'save.json').write_bytes(data)
++            report['persistence']['images'][0]['file'] = '../outside.png'
++            self.assertTrue(validate_artifacts(report, output))
++
++
+ if __name__ == '__main__':
+     unittest.main()

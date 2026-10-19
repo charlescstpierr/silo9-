@@ -10,6 +10,8 @@ static var cube: BoxMesh
 static var cached_sentry: Array[ArrayMesh] = []
 static var cached_crawler: Array[ArrayMesh] = []
 static var cached_friendly: Array[ArrayMesh] = []
+static var _fallen_sentry: Array[ArrayMesh] = []
+static var _fallen_crawler: Array[ArrayMesh] = []
 
 static func build(parent: Node3D, crawler: bool, eye_material: Material, friendly: bool = false) -> Array[MeshInstance3D]:
 	_prepare()
@@ -193,3 +195,56 @@ static func _chamfered_hull() -> ArrayMesh:
 	tool.generate_normals()
 	tool.index()
 	return tool.commit()
+
+static func build_remains(parent: Node3D, crawler: bool) -> void:
+	_prepare()
+	var meshes: Array[ArrayMesh] = _fallen_crawler if crawler else _fallen_sentry
+	if meshes.is_empty():
+		meshes = _remains_geometry(crawler)
+		if crawler: _fallen_crawler = meshes
+		else: _fallen_sentry = meshes
+	for index in meshes.size():
+		var instance := _instance(parent, meshes[index], Vector3.ONE, Vector3.ZERO, materials[index])
+		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		instance.visibility_range_end = 45
+
+static func _remains_geometry(crawler: bool) -> Array[ArrayMesh]:
+	var batches: Array[SurfaceTool] = []
+	for index in 3:
+		var batch := SurfaceTool.new()
+		batch.begin(Mesh.PRIMITIVE_TRIANGLES)
+		batches.append(batch)
+	var fallen := Transform3D(Basis.IDENTITY.scaled(Vector3(1, 0.45, 1)), Vector3(0, 0.025, 0)) if crawler else Transform3D(Basis.from_euler(Vector3(PI / 2, 0, 0)), Vector3(0, 0.36, -0.85))
+	var palette: Array[int] = [0, 1, 2, 1, 2]
+	var body: Array[ArrayMesh] = _geometry(crawler)
+	for index in body.size():
+		if body[index] != null: batches[palette[index]].append_from(body[index], 0, fallen)
+	var legs: Array[ArrayMesh] = _leg_geometry(crawler)
+	var mirrored_legs: Array[ArrayMesh] = []
+	for mesh: ArrayMesh in legs: mirrored_legs.append(_reversed_winding(mesh))
+	for side in [-1.0, 1.0]:
+		for index in (3 if crawler else 1):
+			var origin := Vector3(side * 0.24, 0.29, (index - 1) * 0.2) if crawler else Vector3(side * 0.23, 0.76, 0)
+			var angle: float = (index - 1) * -0.4 * side if crawler else 0.0
+			var leg := Transform3D(Basis.from_euler(Vector3(0, angle, 0)).scaled_local(Vector3(side, 1, 1)), origin)
+			for material_index in legs.size():
+				batches[palette[material_index]].append_from(mirrored_legs[material_index] if side < 0 else legs[material_index], 0, fallen * leg)
+	var hull_size := Vector3(0.65, 0.25 if crawler else 0.56, 0.49)
+	var hull_position := Vector3(0, 0.38 if crawler else 1.12, 0)
+	batches[0].append_from(hull, 0, fallen * Transform3D(Basis.IDENTITY.scaled(hull_size), hull_position))
+	batches[1].append_from(cube, 0, fallen * Transform3D(Basis.IDENTITY.scaled(Vector3(0.28 if crawler else 0.31, 0.1, 0.04)), Vector3(0, 0.44 if crawler else 1.56, -0.275)))
+	var result: Array[ArrayMesh] = []
+	for batch in batches: result.append(batch.commit())
+	return result
+
+static func _reversed_winding(mesh: ArrayMesh) -> ArrayMesh:
+	var arrays: Array = mesh.surface_get_arrays(0)
+	var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+	for triangle in range(0, indices.size(), 3):
+		var second: int = indices[triangle + 1]
+		indices[triangle + 1] = indices[triangle + 2]
+		indices[triangle + 2] = second
+	arrays[Mesh.ARRAY_INDEX] = indices
+	var reversed := ArrayMesh.new()
+	reversed.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	return reversed

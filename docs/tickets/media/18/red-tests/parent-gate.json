@@ -1,0 +1,23 @@
+{
+  "checked_utc": "2026-10-18T15:30:42.629547+00:00",
+  "base_head": "28e402821469655598c6a84bc415d8ea04da97c2",
+  "status": "red_gate_verified",
+  "production_before_tests": "unchanged",
+  "tracked_files_checked": 2557,
+  "test_files_read_in_full": 3,
+  "world": {
+    "checks": 50,
+    "expected_failures": 24
+  },
+  "state": {
+    "checks": 171,
+    "expected_failures": 21
+  },
+  "limits": [
+    "No functional green yet",
+    "Pose copy and trace subtree assertions await feature existence",
+    "No independent red for temporary re-read guard",
+    "Four known audio references at World test exit",
+    "No native revisit or visual/render-cost proof yet"
+  ]
+}
